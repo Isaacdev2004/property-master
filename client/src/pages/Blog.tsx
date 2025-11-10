@@ -66,37 +66,39 @@ export default function Blog() {
               <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Featured Articles</h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
                 {featuredPosts.slice(0, 2).map((post, index) => (
-                  <Card key={post.id} className="group hover-elevate transition-all duration-300 overflow-hidden">
-                    <CardContent className="p-0">
-                      <div className="aspect-[16/9] overflow-hidden bg-muted">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <Badge className="mb-3">{post.category}</Badge>
-                        <h3 className="text-2xl font-bold mb-3 font-[Montserrat] line-clamp-2 group-hover:text-primary transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
-                        <div className="flex items-center justify-between text-sm text-muted-foreground">
-                          <span>{post.author}</span>
-                          <div className="flex items-center gap-4">
-                            <span className="flex items-center gap-1">
-                              <Calendar className="w-4 h-4" />
-                              {new Date(post.publishedAt).toLocaleDateString()}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              5 min read
-                            </span>
+                  <Link key={post.id} href={`/blog/${post.slug}`}>
+                    <Card className="group hover-elevate transition-all duration-300 overflow-hidden cursor-pointer">
+                      <CardContent className="p-0">
+                        <div className="aspect-[16/9] overflow-hidden bg-muted">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <Badge className="mb-3">{post.category}</Badge>
+                          <h3 className="text-2xl font-bold mb-3 font-[Montserrat] line-clamp-2 group-hover:text-primary transition-colors">
+                            {post.title}
+                          </h3>
+                          <p className="text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
+                          <div className="flex items-center justify-between text-sm text-muted-foreground">
+                            <span>{post.author}</span>
+                            <div className="flex items-center gap-4">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
+                                {new Date(post.publishedAt).toLocaleDateString()}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                5 min read
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 ))}
               </div>
             </motion.div>
@@ -135,35 +137,37 @@ export default function Blog() {
                   {...fadeInUp}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                 >
-                  <Card className="group h-full hover-elevate transition-all duration-300 overflow-hidden cursor-pointer">
-                    <CardContent className="p-0">
-                      <div className="aspect-[16/9] overflow-hidden bg-muted">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <Badge variant="secondary" className="mb-3">{post.category}</Badge>
-                        <h3 className="text-xl font-bold mb-3 font-[Montserrat] line-clamp-2 group-hover:text-primary transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{post.excerpt}</p>
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                          <span>{post.author}</span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            {new Date(post.publishedAt).toLocaleDateString()}
-                          </span>
+                  <Link href={`/blog/${post.slug}`} data-testid={`link-blog-${post.slug}`}>
+                    <Card className="group h-full hover-elevate transition-all duration-300 overflow-hidden cursor-pointer">
+                      <CardContent className="p-0">
+                        <div className="aspect-[16/9] overflow-hidden bg-muted">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
                         </div>
-                        <Button variant="ghost" className="group/btn p-0 h-auto">
-                          Read More
-                          <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                        <div className="p-6">
+                          <Badge variant="secondary" className="mb-3">{post.category}</Badge>
+                          <h3 className="text-xl font-bold mb-3 font-[Montserrat] line-clamp-2 group-hover:text-primary transition-colors">
+                            {post.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{post.excerpt}</p>
+                          <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
+                            <span>{post.author}</span>
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {new Date(post.publishedAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <Button variant="ghost" className="group/btn p-0 h-auto" data-testid={`button-read-more-${post.slug}`}>
+                            Read More
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </motion.div>
               ))}
             </div>

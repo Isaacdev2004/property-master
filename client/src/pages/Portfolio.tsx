@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ReactCompareImage from "react-compare-image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import kitchenBefore from "@assets/generated_images/kitchen_before_renovation_de1bcc3a.png";
 import kitchenAfter from "@assets/generated_images/kitchen_after_renovation_cecd16b9.png";
 import officeImage from "@assets/generated_images/commercial_office_design_d5324a05.png";
@@ -133,25 +133,21 @@ export default function Portfolio() {
                   key={project.id}
                   {...fadeInUp}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group cursor-pointer"
-                  onClick={() => setCompareProject(compareProject === project.id ? null : project.id)}
+                  className="group"
                   data-testid={`project-${project.id}`}
                 >
                   <div className="relative overflow-hidden rounded-lg aspect-[4/3] mb-4">
                     {compareProject === project.id ? (
-                      <div className="relative w-full h-full">
-                        <ReactCompareImage
-                          leftImage={project.beforeImage}
-                          rightImage={project.afterImage}
-                          leftImageLabel="Before"
-                          rightImageLabel="After"
-                          sliderLineColor="#d97706"
-                          sliderLineWidth={2}
-                          handleSize={40}
-                        />
-                      </div>
+                      <BeforeAfterSlider
+                        beforeImage={project.beforeImage}
+                        afterImage={project.afterImage}
+                        alt={project.title}
+                      />
                     ) : (
-                      <>
+                      <div 
+                        className="relative w-full h-full cursor-pointer"
+                        onClick={() => setCompareProject(project.id)}
+                      >
                         <img
                           src={project.afterImage}
                           alt={project.title}
@@ -163,7 +159,20 @@ export default function Portfolio() {
                             <div className="text-white text-sm">Click to compare before/after</div>
                           </div>
                         </div>
-                      </>
+                      </div>
+                    )}
+                    {compareProject === project.id && (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        className="absolute top-4 left-4 z-10"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCompareProject(null);
+                        }}
+                      >
+                        Close
+                      </Button>
                     )}
                   </div>
                   <h3 className="text-xl font-bold mb-2 font-[Montserrat] group-hover:text-primary transition-colors">
