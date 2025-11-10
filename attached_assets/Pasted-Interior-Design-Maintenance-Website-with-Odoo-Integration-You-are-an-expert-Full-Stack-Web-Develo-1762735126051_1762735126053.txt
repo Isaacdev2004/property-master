@@ -1,0 +1,148 @@
+Interior Design & Maintenance Website with Odoo Integration
+
+You are an expert Full Stack Web Developer specializing in Next.js / React.js, Node.js  and Odoo CRM API integration.
+Your goal is to build a premium, fully responsive website for an Interior Design & Maintenance Company that provides residential and commercial services — inspired by the following reference sites:
+
+https://interiorcompany.com
+
+https://thehealthyhome.me
+
+https://www.renohome.ae
+
+🏢 Business Overview
+
+The company offers interior design contracting, home maintenance, and commercial facility management services.
+They also sell selected home décor and maintenance products through an e-commerce section.
+All customer interactions — bookings, purchases, and inquiries — are managed in Odoo CRM, which also handles inventory, products, and orders.
+
+🎯 Project Objectives
+
+Create a modern, high-end, and fully functional website that:
+
+Reflects luxury interior design aesthetics and trustworthy maintenance services
+
+Delivers a smooth, interactive customer journey from discovery to booking/purchase
+
+Integrates with Odoo CRM and Inventory for automated management
+
+Performs fast, works across all devices, and is SEO-optimized
+
+⚙️ Core Pages & Features
+1. Home Page
+
+Hero section with smooth scroll animation, intro video/banner, and CTA
+
+Overview of core services (Interior Design, Home Maintenance, Commercial Maintenance)
+
+Featured portfolio section with project thumbnails
+
+Quick links to “Book a Service” or “Shop Now”
+
+Testimonials carousel and partner logos
+
+2. About Page
+
+Company history, mission, and team section
+
+Certifications and milestones
+
+Photo gallery or short video showcase
+
+3. Services Pages
+
+Separate service pages with sections for:
+
+Interior Design (Residential & Commercial)
+
+Home Maintenance
+
+Commercial Maintenance
+Each page includes details, pricing cards, and a “Request Service” form linked to Odoo CRM.
+
+4. Portfolio / Projects Page
+
+Dynamic gallery with category filters (Living Room, Office, Renovation, etc.)
+
+Before-and-after sliders for visual comparison
+
+Optional embedded video testimonials
+
+5. E-Commerce Section
+
+Product listings fetched dynamically from Odoo Inventory API
+
+Product detail pages with image zoom, specs, and “Add to Cart”
+
+Cart, checkout, and order confirmation pages
+
+Orders synced directly with Odoo for fulfillment
+
+User account area to view order history and status
+
+6. Booking & Inquiry System
+
+Step-based booking form: service → date/time → address → confirmation
+
+Captures leads directly into Odoo CRM (with tags like “Web Booking”)
+
+Email/SMS confirmation on successful submission
+
+7. Blog Page
+
+SEO-optimized blog managed via admin CMS
+
+Categories like “Home Design Tips,” “Maintenance Advice,” “Commercial Upgrades”
+
+8. Contact Page
+
+Google Map integration, WhatsApp Chat, and direct inquiry form
+
+All form data synced to Odoo as leads
+
+🧩 Admin Panel (Custom CMS)
+
+Manage pages, services, blog posts, and images
+
+Manage products (sync with Odoo API)
+
+View and manage bookings and inquiries
+
+Role-based access (Admin, Editor)
+
+🔗 Integration Requirements
+
+Odoo CRM: Leads, contacts, and service requests auto-created via API
+
+Odoo Inventory: Product catalog, stock levels, and pricing synced dynamically
+
+Odoo Sales: Orders placed on the website auto-logged as sales orders
+
+Authentication: Token-based secure communication between website and Odoo
+
+Optional: Email/SMS notifications using Odoo workflow
+
+🛠️ Tech Stack Requirements
+
+Frontend: Next.js (React), TailwindCSS, Framer Motion for animations
+
+Backend: Node.js (Express)
+Database: MongoDB or MySQL
+
+API Integration: Odoo REST API or XML-RPC (based on setup)
+
+Hosting: Vercel or AWS
+
+Security: HTTPS, JWT tokens, form validation, and rate limiting
+
+🧱 Design Direction
+
+Follow the clean, elegant layout and modern UI of:
+
+interiorcompany.com → for color balance, spacing, and structure
+
+thehealthyhome.me → for smooth navigation and simplicity
+
+renohome.ae → for polished e-commerce and section transitions
+
+Visual Keywords:
+Minimalist · Premium · Soft gradients · White space · Motion transitions · Sharp typography
