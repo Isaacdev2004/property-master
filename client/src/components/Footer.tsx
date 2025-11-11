@@ -35,23 +35,30 @@ export function Footer() {
             <h3 className="font-semibold text-base mb-4 font-[Montserrat]">Services</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/services/interior-design" data-testid="link-footer-interior-design">
+                <Link href="/services/residential-interior-design" data-testid="link-footer-residential-interior">
                   <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    Interior Design
+                    Residential Interior Design
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/home-maintenance" data-testid="link-footer-home-maintenance">
+                <Link href="/services/spa-wellness-design" data-testid="link-footer-wellness">
                   <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    Home Maintenance
+                    Wellness Services
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/commercial-maintenance" data-testid="link-footer-commercial-maintenance">
+                <Link href="/services/general-maintenance" data-testid="link-footer-maintenance">
                   <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    Commercial Maintenance
+                    Maintenance Services
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" data-testid="link-footer-about">
+                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                    About Us
                   </span>
                 </Link>
               </li>
@@ -89,7 +96,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>123 Design Street, Dubai, UAE</span>
+                <span>AL Saqr Business Tower - Office A-36, Dubai, UAE</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 flex-shrink-0" />

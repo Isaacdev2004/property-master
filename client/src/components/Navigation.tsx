@@ -1,13 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import type { Service } from "@shared/schema";
+
+interface MegaMenuItem {
+  label: string;
+  href?: string;
+  category?: string;
+}
 
 export function Navigation() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const { data: services = [] } = useQuery<Service[]>({
+    queryKey: ["/api/services"],
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,14 +31,37 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleMouseEnter = (menu: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setActiveMegaMenu(menu);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 150);
+  };
+
+  const megaMenuItems: MegaMenuItem[] = [
+    { label: "Interior Design & Fit-Out Works", category: "interior-design-fitout" },
+    { label: "Wellness Services", category: "wellness-services" },
+    { label: "Maintenance Services", category: "maintenance-services" },
+  ];
+
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/shop", label: "Shop" },
+    { href: "/about", label: "About" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
+
+  const getServicesByCategory = (category: string) => {
+    return services.filter(s => s.category === category);
+  };
 
   return (
     <header
@@ -50,7 +87,7 @@ export function Navigation() {
             </motion.div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase()}`}>
                 <span
@@ -63,6 +100,57 @@ export function Navigation() {
                   {link.label}
                 </span>
               </Link>
+            ))}
+            
+            {megaMenuItems.map((item) => (
+              <div
+                key={item.category}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(item.category!)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  className={`text-sm font-medium transition-colors flex items-center gap-1 ${
+                    isScrolled ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                  }`}
+                  data-testid={`menu-${item.category}`}
+                >
+                  {item.label}
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+
+                <AnimatePresence>
+                  {activeMegaMenu === item.category && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-background border border-border rounded-lg shadow-xl p-6"
+                    >
+                      <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide">
+                        {item.label}
+                      </h3>
+                      <div className="space-y-2">
+                        {getServicesByCategory(item.category!).map((service) => (
+                          <Link key={service.id} href={`/services/${service.slug}`}>
+                            <div
+                              className="p-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer"
+                              onClick={() => setActiveMegaMenu(null)}
+                              data-testid={`megamenu-service-${service.slug}`}
+                            >
+                              <h4 className="font-semibold text-sm mb-1">{service.title}</h4>
+                              <p className="text-xs text-muted-foreground line-clamp-2">
+                                {service.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             ))}
           </nav>
 
@@ -97,7 +185,7 @@ export function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-background border-b border-border"
           >
-            <nav className="flex flex-col px-6 py-4 gap-4">
+            <nav className="flex flex-col px-6 py-4 gap-4 max-h-[80vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <Link key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)} data-testid={`mobile-link-${link.label.toLowerCase()}`}>
                   <span
@@ -109,7 +197,27 @@ export function Navigation() {
                   </span>
                 </Link>
               ))}
-              <div className="flex gap-3 pt-2">
+              
+              {megaMenuItems.map((item) => (
+                <div key={item.category} className="border-t border-border pt-4">
+                  <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
+                    {item.label}
+                  </h3>
+                  <div className="space-y-2 pl-4">
+                    {getServicesByCategory(item.category!).map((service) => (
+                      <Link key={service.id} href={`/services/${service.slug}`} onClick={() => setIsMobileMenuOpen(false)}>
+                        <div className="py-2 cursor-pointer">
+                          <h4 className="font-medium text-sm hover:text-primary transition-colors">
+                            {service.title}
+                          </h4>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              
+              <div className="flex gap-3 pt-2 border-t border-border">
                 <Link href="/cart" className="flex-1" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-cart">
                   <Button variant="outline" className="w-full">
                     <ShoppingCart className="w-4 h-4 mr-2" />

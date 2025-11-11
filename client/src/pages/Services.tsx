@@ -1,9 +1,14 @@
 import { useParams } from "wouter";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Sparkles, Home as HomeIcon, Building2, Check, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { 
+  Sparkles, Home, Building2, Check, ArrowRight, Hammer, Droplets, 
+  Dumbbell, Heart, Wrench, Wind, Droplet, Zap 
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import type { Service } from "@shared/schema";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -12,110 +17,59 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 };
 
-const servicesData = {
-  "interior-design": {
-    title: "Interior Design",
-    icon: Sparkles,
-    description: "Transform your residential or commercial space with our expert interior design services. From initial concept to final execution, we create stunning environments that reflect your style and enhance your lifestyle.",
-    features: [
-      "Comprehensive Design Consultation",
-      "3D Visualization & Rendering",
-      "Custom Furniture Selection",
-      "Color Scheme & Material Selection",
-      "Space Planning & Layout",
-      "Project Management & Coordination",
-      "Lighting Design",
-      "Accessory & Art Curation",
-    ],
-    packages: [
-      {
-        name: "Essential",
-        price: "Starting at AED 15,000",
-        features: ["Design Consultation", "Floor Plan Layout", "Color Palette", "Material Board"],
-      },
-      {
-        name: "Premium",
-        price: "Starting at AED 30,000",
-        features: ["Everything in Essential", "3D Renderings", "Custom Furniture Design", "Full Project Management"],
-      },
-      {
-        name: "Luxury",
-        price: "Custom Quote",
-        features: ["Everything in Premium", "Bespoke Solutions", "Premium Materials", "Dedicated Design Team"],
-      },
-    ],
-  },
-  "home-maintenance": {
-    title: "Home Maintenance",
-    icon: HomeIcon,
-    description: "Keep your home in pristine condition with our comprehensive maintenance services. From routine care to emergency repairs, our skilled professionals ensure your property remains beautiful and functional.",
-    features: [
-      "Regular Preventive Maintenance",
-      "HVAC Service & Repair",
-      "Plumbing Solutions",
-      "Electrical Maintenance",
-      "Painting & Touch-ups",
-      "Carpentry Work",
-      "Deep Cleaning Services",
-      "24/7 Emergency Support",
-    ],
-    packages: [
-      {
-        name: "Basic Care",
-        price: "AED 500/month",
-        features: ["Quarterly Inspections", "Minor Repairs", "Priority Scheduling", "Maintenance Reports"],
-      },
-      {
-        name: "Complete Care",
-        price: "AED 1,200/month",
-        features: ["Monthly Inspections", "All Repairs Included", "24/7 Emergency Support", "Deep Cleaning (Quarterly)"],
-      },
-      {
-        name: "Premium Care",
-        price: "AED 2,500/month",
-        features: ["Bi-weekly Inspections", "Unlimited Repairs", "Dedicated Technician", "Annual Renovation Budget"],
-      },
-    ],
-  },
-  "commercial-maintenance": {
-    title: "Commercial Maintenance",
-    icon: Building2,
-    description: "Professional facility management for commercial properties. We provide reliable, efficient maintenance solutions that minimize downtime and maximize the lifespan of your commercial space.",
-    features: [
-      "Facility Management Systems",
-      "Scheduled Preventive Maintenance",
-      "HVAC & MEP Services",
-      "Safety Compliance Audits",
-      "Energy Efficiency Solutions",
-      "Cleaning & Janitorial Services",
-      "Security Systems Maintenance",
-      "Landscape Management",
-    ],
-    packages: [
-      {
-        name: "Standard",
-        price: "Starting at AED 5,000/month",
-        features: ["Monthly Inspections", "Basic MEP Maintenance", "Cleaning Services", "Compliance Reports"],
-      },
-      {
-        name: "Professional",
-        price: "Starting at AED 12,000/month",
-        features: ["Weekly Inspections", "Full MEP Coverage", "Daily Cleaning", "Energy Monitoring"],
-      },
-      {
-        name: "Enterprise",
-        price: "Custom Quote",
-        features: ["24/7 Monitoring", "Dedicated Team", "Comprehensive Coverage", "Custom Solutions"],
-      },
-    ],
-  },
+const iconMap: Record<string, any> = {
+  "Home": Home,
+  "Building2": Building2,
+  "Hammer": Hammer,
+  "Droplets": Droplets,
+  "Dumbbell": Dumbbell,
+  "Heart": Heart,
+  "Wrench": Wrench,
+  "Wind": Wind,
+  "Droplet": Droplet,
+  "Zap": Zap,
+  "Sparkles": Sparkles,
 };
 
 export default function Services() {
   const params = useParams();
-  const serviceSlug = params.slug as keyof typeof servicesData || "interior-design";
-  const service = servicesData[serviceSlug] || servicesData["interior-design"];
-  const Icon = service.icon;
+  const serviceSlug = params.slug;
+
+  const { data: services = [], isLoading } = useQuery<Service[]>({
+    queryKey: ["/api/services"],
+  });
+
+  const currentService = services.find(s => s.slug === serviceSlug) || services[0];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading services...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentService || services.length === 0) {
+    return (
+      <div className="min-h-screen pt-20 flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-6">
+          <h1 className="text-3xl font-bold mb-4 font-[Montserrat]">Service Not Found</h1>
+          <p className="text-muted-foreground mb-6">
+            The service you're looking for could not be found. Please check the URL or explore our other services.
+          </p>
+          <Link href="/">
+            <Button>Return to Homepage</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const Icon = iconMap[currentService.icon] || Sparkles;
+  const categoryServices = services.filter(s => s.category === currentService.category);
 
   return (
     <div className="min-h-screen pt-20">
@@ -130,8 +84,8 @@ export default function Services() {
             <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6">
               <Icon className="w-8 h-8 text-primary" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">{service.title}</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">{service.description}</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">{currentService.title}</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">{currentService.description}</p>
           </motion.div>
         </div>
       </section>
@@ -140,8 +94,8 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center font-[Montserrat]">What's Included</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {service.features.map((feature, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentService.features.map((feature, index) => (
                 <motion.div
                   key={feature}
                   {...fadeInUp}
@@ -159,71 +113,65 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[Montserrat]">Service Packages</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Choose the package that best fits your needs
-            </p>
-          </motion.div>
+      {categoryServices.length > 1 && (
+        <section className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <motion.div {...fadeInUp} className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-[Montserrat]">Related Services</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Explore our other services in this category
+              </p>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {service.packages.map((pkg, index) => (
-              <motion.div
-                key={pkg.name}
-                {...fadeInUp}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className={`h-full ${index === 1 ? "border-primary shadow-lg scale-105" : ""}`}>
-                  <CardContent className="p-8">
-                    {index === 1 && (
-                      <div className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full inline-block mb-4">
-                        MOST POPULAR
-                      </div>
-                    )}
-                    <h3 className="text-2xl font-bold mb-2 font-[Montserrat]">{pkg.name}</h3>
-                    <div className="text-3xl font-bold text-primary mb-6">{pkg.price}</div>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/book" data-testid={`button-book-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}>
-                      <Button className="w-full" variant={index === 1 ? "default" : "outline"}>
-                        Get Started
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {categoryServices
+                .filter(s => s.id !== currentService.id)
+                .map((service, index) => {
+                  const ServiceIcon = iconMap[service.icon] || Sparkles;
+                  return (
+                    <motion.div
+                      key={service.id}
+                      {...fadeInUp}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <Card className="h-full hover-elevate">
+                        <CardContent className="p-8">
+                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                            <ServiceIcon className="w-6 h-6 text-primary" />
+                          </div>
+                          <h3 className="text-xl font-bold mb-3 font-[Montserrat]">{service.title}</h3>
+                          <p className="text-sm text-muted-foreground mb-6 line-clamp-3">{service.description}</p>
+                          <Link href={`/services/${service.slug}`}>
+                            <Button variant="outline" className="w-full group">
+                              Learn More
+                              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                            </Button>
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-b from-background to-primary/5">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-[Montserrat]">
-              Ready to Get Started?
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-[Montserrat]">Ready to Get Started?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Book a consultation with our experts or contact us to discuss your project
+              Let's bring your vision to life. Book a consultation with our experts today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/book" data-testid="button-service-book">
-                <Button size="lg">
-                  Book Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
+              <Link href="/book">
+                <Button size="lg" className="w-full sm:w-auto">
+                  Book a Consultation
                 </Button>
               </Link>
-              <Link href="/contact" data-testid="button-service-contact">
-                <Button size="lg" variant="outline">
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto">
                   Contact Us
                 </Button>
               </Link>

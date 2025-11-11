@@ -13,6 +13,7 @@ import Cart from "@/pages/Cart";
 import BookService from "@/pages/BookService";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
+import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
@@ -31,6 +32,7 @@ function Router() {
           <Route path="/book" component={BookService} />
           <Route path="/blog/:slug" component={BlogPost} />
           <Route path="/blog" component={Blog} />
+          <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

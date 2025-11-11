@@ -23,7 +23,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["123 Design Street", "Dubai Marina, Dubai", "United Arab Emirates"],
+    details: ["AL Saqr Business Tower", "Office A-36", "Dubai, United Arab Emirates"],
   },
   {
     icon: Phone,
@@ -215,12 +215,16 @@ export default function Contact() {
 
             <motion.div {...fadeInUp} className="space-y-6">
               <div className="bg-muted rounded-lg overflow-hidden aspect-video">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground">Map integration available with Google Maps API</p>
-                  </div>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1234567890123!2d55.2!3d25.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzAwLjAiTiA1NcKwMTInMDAuMCJF!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="AL Saqr Business Tower Location"
+                />
               </div>
 
               <Card className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 border-green-200 dark:border-green-800">

@@ -8,7 +8,8 @@ export const serviceSchema = z.object({
   description: z.string(),
   icon: z.string(),
   features: z.array(z.string()),
-  category: z.enum(["interior-design", "home-maintenance", "commercial-maintenance"]),
+  category: z.enum(["interior-design-fitout", "wellness-services", "maintenance-services"]),
+  subcategory: z.string().optional(),
 });
 
 export const insertServiceSchema = serviceSchema.omit({ id: true });
