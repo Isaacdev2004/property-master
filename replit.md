@@ -1,10 +1,10 @@
 # The Property Masters
 
-A premium interior design and maintenance website featuring e-commerce, service booking, and Odoo CRM integration.
+A premium interior design, wellness, and maintenance website featuring e-commerce, service booking, and Odoo CRM integration.
 
 ## Project Overview
 
-The Property Masters is a full-stack web application built for a luxury interior design and property maintenance company. The website showcases a sophisticated, minimalist design following a warm color palette with exceptional attention to visual detail and user experience.
+The Property Masters is a full-stack web application built for a luxury interior design, wellness, and property maintenance company based in Dubai, UAE. The website showcases a sophisticated, minimalist design following a warm color palette with exceptional attention to visual detail and user experience. The site features comprehensive service offerings across three main categories with dynamic mega menu navigation.
 
 ## Tech Stack
 
@@ -21,40 +21,52 @@ The Property Masters is a full-stack web application built for a luxury interior
 ### Core Pages
 1. **Homepage** (`/`)
    - Full-screen hero with gradient overlay
-   - Services overview (fetched from backend)
+   - Services overview organized by three main categories
    - Featured portfolio projects
    - Client testimonials (fetched from backend)
    - Company statistics
    - Call-to-action sections
 
-2. **Services** (`/services`, `/services/:slug`)
-   - Service listings with filtering
-   - Individual service detail pages
-   - Package pricing information
-   - Feature highlights
+2. **Services** (`/services/:slug`)
+   - **Dynamic mega menu navigation** with three main categories:
+     - Interior Design & Fit-Out Works
+     - Wellness Services
+     - Maintenance Services
+   - Individual service detail pages fetched from backend API
+   - Service features displayed dynamically
+   - Related services from the same category
+   - Call-to-action for booking and contact
 
-3. **Portfolio** (`/portfolio`)
+3. **About** (`/about`)
+   - Company story and mission
+   - Company statistics (500+ Projects, 1000+ Happy Clients, etc.)
+   - Timeline of company evolution
+   - Core values and principles
+   - Team introduction
+   - Why choose us section
+
+4. **Portfolio** (`/portfolio`)
    - Project gallery with category filters
    - **Custom before/after comparison slider**
    - Click to toggle slider view
    - Draggable handle for before/after comparison
    - Categories: Kitchen, Bedroom, Bathroom, Office
 
-4. **Shop** (`/shop`)
+5. **Shop** (`/shop`)
    - Product catalog with filtering
    - Category filters: Furniture, Lighting, Decor, Textiles
    - Add to cart functionality
    - Stock status indicators
    - Product cards with images and pricing
 
-5. **Shopping Cart** (`/cart`)
+6. **Shopping Cart** (`/cart`)
    - Session-based cart persistence
    - Quantity controls (increase/decrease)
    - Remove items
    - Order summary with subtotal, shipping, and total
    - Free shipping promotion (over AED 5,000)
 
-6. **Book Service** (`/book`)
+7. **Book Service** (`/book`)
    - Multi-step booking form (4 steps)
    - Step 1: Service details (type, date, time)
    - Step 2: Contact information
@@ -64,30 +76,33 @@ The Property Masters is a full-stack web application built for a luxury interior
    - Form validation with Zod
    - Odoo CRM lead creation on submission
 
-7. **Blog** (`/blog`, `/blog/:slug`)
+8. **Blog** (`/blog`, `/blog/:slug`)
    - Blog post listings with category filters
    - Featured articles section
    - Individual blog post pages
    - Related articles
    - Author and publish date display
 
-8. **Contact** (`/contact`)
+9. **Contact** (`/contact`)
    - Contact form with validation
    - Subject selection
-   - Company contact information
+   - Company contact information (AL Saqr Business Tower - Office A-36)
    - WhatsApp integration button
+   - Embedded Google Maps showing office location
    - Odoo CRM lead creation on submission
 
 ### Key Features
+- **Dynamic Mega Menu Navigation**: Three-category service menu that fetches from backend API
 - **Responsive Design**: Mobile-first approach, works across all breakpoints
 - **Smooth Animations**: Framer Motion for page transitions and element animations
 - **Loading States**: Beautiful skeleton loaders and loading indicators
-- **Error Handling**: Graceful error states with user-friendly messages
+- **Error Handling**: Graceful error states with user-friendly messages and empty state handling
 - **Session Management**: Cart persistence using localStorage
-- **API Integration**: All pages fetch data from backend APIs
+- **API Integration**: All pages fetch data from backend APIs with TanStack Query
 - **Form Validation**: Client-side and server-side validation using Zod
 - **CRM Integration**: Odoo XML-RPC for lead capture (booking and contact forms)
-- **Custom Components**: Before/after slider, multi-step form, navigation
+- **Custom Components**: Before/after slider, multi-step form, mega menu navigation
+- **Google Maps Integration**: Embedded map showing office location in Dubai
 
 ## Design Guidelines
 
@@ -149,9 +164,18 @@ These are optional - the application gracefully handles missing credentials:
 
 ## Recent Changes
 
+**November 11, 2025**
+- ✅ Restructured services into three mega menu categories: Interior Design & Fit-Out Works, Wellness Services, and Maintenance Services
+- ✅ Implemented dynamic mega menu navigation that fetches services from backend API
+- ✅ Created About page with company story, statistics, timeline, team, and values sections
+- ✅ Updated location information throughout site to AL Saqr Business Tower - Office A-36 with embedded Google Maps integration
+- ✅ Fixed service detail page routing to dynamically display correct content based on service slug
+- ✅ Added empty state handling for Services page API fetch failures
+- ✅ All navigation, service detail, and location tests passing successfully
+
 **January 10, 2025**
 - ✅ Completed MVP development
-- ✅ Implemented all core features (8 pages)
+- ✅ Implemented all core features (9 pages)
 - ✅ Connected frontend to backend APIs with TanStack Query
 - ✅ Implemented cart functionality with session persistence
 - ✅ Created custom before/after comparison slider for portfolio
@@ -179,6 +203,7 @@ These are optional - the application gracefully handles missing credentials:
 │   │   │   ├── BookService.tsx
 │   │   │   ├── Blog.tsx
 │   │   │   ├── BlogPost.tsx
+│   │   │   ├── About.tsx
 │   │   │   └── Contact.tsx
 │   │   ├── lib/
 │   │   │   ├── queryClient.ts
@@ -210,6 +235,9 @@ All core features have been tested end-to-end:
 ✅ Portfolio before/after slider
 ✅ Homepage with dynamic content
 ✅ Category filtering (shop, portfolio, blog)
+✅ Mega menu navigation and service detail pages
+✅ About page content display
+✅ Location and Google Maps integration
 
 ## Known Limitations
 
