@@ -23,6 +23,8 @@ export function Navigation() {
     queryKey: ["/api/services"],
   });
 
+  const isHomePage = location === "/";
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -66,7 +68,7 @@ export function Navigation() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || !isHomePage
           ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
@@ -81,7 +83,7 @@ export function Navigation() {
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-md flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg font-[Montserrat]">PM</span>
               </div>
-              <span className={`text-xl font-bold font-[Montserrat] transition-colors ${isScrolled ? "text-foreground" : "text-white drop-shadow-lg"}`}>
+              <span className={`text-xl font-bold font-[Montserrat] transition-colors ${isScrolled || !isHomePage ? "text-foreground" : "text-white drop-shadow-lg"}`}>
                 The Property Masters
               </span>
             </motion.div>
@@ -93,8 +95,8 @@ export function Navigation() {
                 <span
                   className={`text-sm font-medium transition-colors cursor-pointer ${
                     location === link.href
-                      ? isScrolled ? "text-primary" : "text-white font-semibold"
-                      : isScrolled ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                      ? (isScrolled || !isHomePage) ? "text-primary" : "text-white font-semibold"
+                      : (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -111,7 +113,7 @@ export function Navigation() {
               >
                 <button
                   className={`text-sm font-medium transition-colors flex items-center gap-1 ${
-                    isScrolled ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                    (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
                   }`}
                   data-testid={`menu-${item.category}`}
                 >
@@ -156,7 +158,7 @@ export function Navigation() {
 
           <div className="hidden lg:flex items-center gap-4">
             <Link href="/cart" data-testid="link-cart">
-              <Button variant={isScrolled ? "ghost" : "outline"} size="icon" className={!isScrolled ? "border-white text-white hover:bg-white/10" : ""}>
+              <Button variant={(isScrolled || !isHomePage) ? "ghost" : "outline"} size="icon" className={(!isScrolled && isHomePage) ? "border-white text-white hover:bg-white/10" : ""}>
                 <ShoppingCart className="w-5 h-5" />
               </Button>
             </Link>
@@ -166,9 +168,9 @@ export function Navigation() {
           </div>
 
           <Button
-            variant={isScrolled ? "ghost" : "outline"}
+            variant={(isScrolled || !isHomePage) ? "ghost" : "outline"}
             size="icon"
-            className={`lg:hidden ${!isScrolled ? "border-white text-white" : ""}`}
+            className={`lg:hidden ${(!isScrolled && isHomePage) ? "border-white text-white" : ""}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="button-menu-toggle"
           >
