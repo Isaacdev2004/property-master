@@ -1,0 +1,1025 @@
+// server/index.ts
+import express2 from "express";
+
+// server/routes.ts
+import { createServer } from "http";
+
+// server/storage.ts
+import { randomUUID } from "crypto";
+var MemStorage = class {
+  services;
+  portfolioProjects;
+  products;
+  cartItems;
+  bookings;
+  blogPosts;
+  testimonials;
+  contactInquiries;
+  constructor() {
+    this.services = /* @__PURE__ */ new Map();
+    this.portfolioProjects = /* @__PURE__ */ new Map();
+    this.products = /* @__PURE__ */ new Map();
+    this.cartItems = /* @__PURE__ */ new Map();
+    this.bookings = /* @__PURE__ */ new Map();
+    this.blogPosts = /* @__PURE__ */ new Map();
+    this.testimonials = /* @__PURE__ */ new Map();
+    this.contactInquiries = /* @__PURE__ */ new Map();
+    this.initializeMockData();
+  }
+  initializeMockData() {
+    const services = [
+      {
+        id: randomUUID(),
+        title: "Residential Interior Design",
+        slug: "residential-interior-design",
+        description: "Create stunning living spaces that reflect your personal style and enhance your lifestyle.",
+        icon: "Home",
+        category: "interior-design-fitout",
+        subcategory: "Residential",
+        features: [
+          "Custom Design Concepts",
+          "3D Visualization & Rendering",
+          "Space Planning & Layout",
+          "Furniture & Decor Selection",
+          "Project Management"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Commercial Interior Design",
+        slug: "commercial-interior-design",
+        description: "Professional workspace design that enhances productivity and brand identity.",
+        icon: "Building2",
+        category: "interior-design-fitout",
+        subcategory: "Commercial",
+        features: [
+          "Brand-Aligned Design",
+          "Ergonomic Space Planning",
+          "Lighting Design",
+          "Material & Finish Selection",
+          "Turnkey Solutions"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Fit-Out Works",
+        slug: "fit-out-works",
+        description: "Complete fit-out solutions for residential and commercial properties.",
+        icon: "Hammer",
+        category: "interior-design-fitout",
+        subcategory: "Fit-Out",
+        features: [
+          "Shell & Core Fit-Out",
+          "MEP Integration",
+          "Custom Joinery",
+          "Quality Finishes",
+          "Timeline Guarantee"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Spa & Wellness Center Design",
+        slug: "spa-wellness-design",
+        description: "Create tranquil wellness spaces that promote relaxation and rejuvenation.",
+        icon: "Droplets",
+        category: "wellness-services",
+        subcategory: "Spa Design",
+        features: [
+          "Calming Ambiance Design",
+          "Treatment Room Planning",
+          "Wellness Equipment Integration",
+          "Soundproofing Solutions",
+          "Aromatherapy Integration"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Gym & Fitness Center",
+        slug: "gym-fitness-design",
+        description: "Energizing fitness spaces designed for optimal performance and motivation.",
+        icon: "Dumbbell",
+        category: "wellness-services",
+        subcategory: "Fitness",
+        features: [
+          "Equipment Layout Planning",
+          "Motivational Design Elements",
+          "Proper Ventilation",
+          "Acoustic Treatment",
+          "Safety Compliance"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Yoga & Meditation Spaces",
+        slug: "yoga-meditation-spaces",
+        description: "Peaceful environments designed to enhance mindfulness and inner peace.",
+        icon: "Heart",
+        category: "wellness-services",
+        subcategory: "Mindfulness",
+        features: [
+          "Zen-Inspired Design",
+          "Natural Lighting",
+          "Acoustic Privacy",
+          "Calming Color Palettes",
+          "Air Quality Optimization"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "General Property Maintenance",
+        slug: "general-maintenance",
+        description: "Comprehensive maintenance services to keep your property in perfect condition.",
+        icon: "Wrench",
+        category: "maintenance-services",
+        subcategory: "General",
+        features: [
+          "Regular Inspections",
+          "Preventive Maintenance",
+          "Emergency Repairs",
+          "Quality Guarantee",
+          "24/7 Support"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "HVAC Maintenance",
+        slug: "hvac-maintenance",
+        description: "Keep your heating and cooling systems running efficiently year-round.",
+        icon: "Wind",
+        category: "maintenance-services",
+        subcategory: "HVAC",
+        features: [
+          "System Cleaning",
+          "Filter Replacement",
+          "Performance Optimization",
+          "Energy Efficiency Checks",
+          "Seasonal Tune-Ups"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Plumbing Services",
+        slug: "plumbing-services",
+        description: "Professional plumbing solutions for residential and commercial properties.",
+        icon: "Droplet",
+        category: "maintenance-services",
+        subcategory: "Plumbing",
+        features: [
+          "Leak Detection & Repair",
+          "Pipe Installation",
+          "Drain Cleaning",
+          "Fixture Replacement",
+          "Emergency Response"
+        ]
+      },
+      {
+        id: randomUUID(),
+        title: "Electrical Services",
+        slug: "electrical-services",
+        description: "Safe and reliable electrical installations and repairs.",
+        icon: "Zap",
+        category: "maintenance-services",
+        subcategory: "Electrical",
+        features: [
+          "Wiring & Rewiring",
+          "Lighting Installation",
+          "Electrical Safety Inspections",
+          "Circuit Breaker Services",
+          "Smart Home Integration"
+        ]
+      }
+    ];
+    services.forEach((service) => this.services.set(service.id, service));
+    const products = [
+      {
+        id: randomUUID(),
+        name: "Modern Leather Sofa",
+        description: "Premium Italian leather sofa with contemporary design and exceptional comfort",
+        price: 8500,
+        category: "Furniture",
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800",
+        inStock: true,
+        featured: true
+      },
+      {
+        id: randomUUID(),
+        name: "Designer Pendant Light",
+        description: "Elegant brass pendant light with adjustable height, perfect for dining areas",
+        price: 1200,
+        category: "Lighting",
+        image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800",
+        inStock: true,
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        name: "Marble Coffee Table",
+        description: "Stunning white marble coffee table with gold metal base",
+        price: 2800,
+        category: "Furniture",
+        image: "https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?w=800",
+        inStock: true,
+        featured: true
+      },
+      {
+        id: randomUUID(),
+        name: "Abstract Wall Art",
+        description: "Large-format contemporary abstract painting with gold accents",
+        price: 3500,
+        category: "Decor",
+        image: "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800",
+        inStock: true,
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        name: "Velvet Armchair",
+        description: "Luxurious velvet armchair in deep emerald green with brass legs",
+        price: 1850,
+        category: "Furniture",
+        image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800",
+        inStock: true,
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        name: "Crystal Chandelier",
+        description: "Opulent crystal chandelier with chrome finish, 8 lights",
+        price: 4200,
+        category: "Lighting",
+        image: "https://images.unsplash.com/photo-1565007299-36e89c374c32?w=800",
+        inStock: false,
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        name: "Silk Throw Pillows",
+        description: "Set of 4 luxury silk throw pillows in complementary neutral tones",
+        price: 380,
+        category: "Textiles",
+        image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800",
+        inStock: true,
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        name: "Ceramic Vase Set",
+        description: "Handcrafted ceramic vase collection in matte white and gold",
+        price: 650,
+        category: "Decor",
+        image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800",
+        inStock: true,
+        featured: false
+      }
+    ];
+    products.forEach((product) => this.products.set(product.id, product));
+    const blogPosts = [
+      {
+        id: randomUUID(),
+        title: "10 Interior Design Trends to Watch in 2025",
+        slug: "interior-design-trends-2025",
+        excerpt: "Discover the latest interior design trends that are shaping modern homes this year.",
+        content: "Full article content here...",
+        category: "Design Tips",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
+        author: "Sarah Johnson",
+        publishedAt: (/* @__PURE__ */ new Date("2024-01-15")).toISOString(),
+        featured: true
+      },
+      {
+        id: randomUUID(),
+        title: "Essential Home Maintenance Checklist for Every Season",
+        slug: "home-maintenance-checklist",
+        excerpt: "Keep your home in top condition with our comprehensive seasonal maintenance guide.",
+        content: "Full article content here...",
+        category: "Maintenance",
+        image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800",
+        author: "Michael Chen",
+        publishedAt: (/* @__PURE__ */ new Date("2024-02-10")).toISOString(),
+        featured: true
+      },
+      {
+        id: randomUUID(),
+        title: "Creating a Productive Office Space: Design Tips for Businesses",
+        slug: "productive-office-design",
+        excerpt: "Transform your commercial workspace into a hub of creativity and efficiency.",
+        content: "Full article content here...",
+        category: "Commercial",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
+        author: "Emily Rodriguez",
+        publishedAt: (/* @__PURE__ */ new Date("2024-03-05")).toISOString(),
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        title: "Maximizing Small Spaces: Smart Storage Solutions",
+        slug: "small-space-storage-solutions",
+        excerpt: "Learn how to make the most of limited space with clever storage ideas.",
+        content: "Full article content here...",
+        category: "Design Tips",
+        image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800",
+        author: "Sarah Johnson",
+        publishedAt: (/* @__PURE__ */ new Date("2024-04-12")).toISOString(),
+        featured: false
+      },
+      {
+        id: randomUUID(),
+        title: "HVAC Maintenance: When to Call the Professionals",
+        slug: "hvac-maintenance-guide",
+        excerpt: "Understanding when DIY isn't enough for your heating and cooling systems.",
+        content: "Full article content here...",
+        category: "Maintenance",
+        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800",
+        author: "Michael Chen",
+        publishedAt: (/* @__PURE__ */ new Date("2024-05-20")).toISOString(),
+        featured: false
+      }
+    ];
+    blogPosts.forEach((post) => this.blogPosts.set(post.id, post));
+    const testimonials = [
+      {
+        id: randomUUID(),
+        name: "Sarah Ahmed",
+        role: "Homeowner",
+        company: "Dubai Marina",
+        content: "The Property Masters transformed our villa into a dream home. Their attention to detail and professionalism exceeded all expectations.",
+        rating: 5
+      },
+      {
+        id: randomUUID(),
+        name: "Michael Chen",
+        role: "Business Owner",
+        company: "Tech Innovations LLC",
+        content: "Outstanding service! They renovated our office space beautifully and finished ahead of schedule. Highly recommended!",
+        rating: 5
+      },
+      {
+        id: randomUUID(),
+        name: "Fatima Al-Mansoori",
+        role: "Property Manager",
+        company: "Emirates Properties",
+        content: "Reliable, professional, and always delivering quality work. They've been maintaining our properties for over 2 years.",
+        rating: 5
+      }
+    ];
+    testimonials.forEach((testimonial) => this.testimonials.set(testimonial.id, testimonial));
+  }
+  // Services
+  async getAllServices() {
+    return Array.from(this.services.values());
+  }
+  async getService(id) {
+    return this.services.get(id);
+  }
+  async createService(insertService) {
+    const id = randomUUID();
+    const service = { ...insertService, id };
+    this.services.set(id, service);
+    return service;
+  }
+  // Portfolio Projects
+  async getAllPortfolioProjects() {
+    return Array.from(this.portfolioProjects.values());
+  }
+  async getPortfolioProject(id) {
+    return this.portfolioProjects.get(id);
+  }
+  async createPortfolioProject(insertProject) {
+    const id = randomUUID();
+    const project = { ...insertProject, id };
+    this.portfolioProjects.set(id, project);
+    return project;
+  }
+  // Products
+  async getAllProducts() {
+    return Array.from(this.products.values());
+  }
+  async getProduct(id) {
+    return this.products.get(id);
+  }
+  async createProduct(insertProduct) {
+    const id = randomUUID();
+    const product = { ...insertProduct, id };
+    this.products.set(id, product);
+    return product;
+  }
+  // Cart Items
+  async getCartItems(sessionId) {
+    return Array.from(this.cartItems.values()).filter(
+      (item) => item.sessionId === sessionId
+    );
+  }
+  async addToCart(insertItem) {
+    const id = randomUUID();
+    const item = { ...insertItem, id };
+    this.cartItems.set(id, item);
+    return item;
+  }
+  async updateCartItem(id, quantity) {
+    const item = this.cartItems.get(id);
+    if (item) {
+      item.quantity = quantity;
+      this.cartItems.set(id, item);
+      return item;
+    }
+    return void 0;
+  }
+  async removeFromCart(id) {
+    return this.cartItems.delete(id);
+  }
+  // Bookings
+  async getAllBookings() {
+    return Array.from(this.bookings.values());
+  }
+  async getBooking(id) {
+    return this.bookings.get(id);
+  }
+  async createBooking(insertBooking) {
+    const id = randomUUID();
+    const booking = {
+      ...insertBooking,
+      id,
+      status: "pending",
+      createdAt: (/* @__PURE__ */ new Date()).toISOString()
+    };
+    this.bookings.set(id, booking);
+    return booking;
+  }
+  // Blog Posts
+  async getAllBlogPosts() {
+    return Array.from(this.blogPosts.values());
+  }
+  async getBlogPost(id) {
+    return this.blogPosts.get(id);
+  }
+  async createBlogPost(insertPost) {
+    const id = randomUUID();
+    const post = { ...insertPost, id };
+    this.blogPosts.set(id, post);
+    return post;
+  }
+  // Testimonials
+  async getAllTestimonials() {
+    return Array.from(this.testimonials.values());
+  }
+  // Contact Inquiries
+  async createContactInquiry(insertInquiry) {
+    const id = randomUUID();
+    const inquiry = {
+      ...insertInquiry,
+      id,
+      createdAt: (/* @__PURE__ */ new Date()).toISOString()
+    };
+    this.contactInquiries.set(id, inquiry);
+    return inquiry;
+  }
+};
+var storage = new MemStorage();
+
+// server/odoo.ts
+import Odoo from "async-odoo-xmlrpc";
+var OdooService = class {
+  client = null;
+  isConfigured = false;
+  constructor() {
+    this.initialize();
+  }
+  initialize() {
+    const url = process.env.ODOO_URL;
+    const db = process.env.ODOO_DB;
+    const username = process.env.ODOO_USERNAME;
+    const password = process.env.ODOO_API_KEY;
+    if (url && db && username && password) {
+      try {
+        this.client = new Odoo({
+          url,
+          port: 443,
+          db,
+          username,
+          password
+        });
+        this.isConfigured = true;
+        console.log("Odoo integration configured successfully");
+      } catch (error) {
+        console.error("Failed to initialize Odoo client:", error);
+        this.isConfigured = false;
+      }
+    } else {
+      console.log("Odoo credentials not configured. Integration will be skipped.");
+      this.isConfigured = false;
+    }
+  }
+  async createLead(data) {
+    if (!this.isConfigured || !this.client) {
+      console.log("Odoo not configured. Skipping lead creation.");
+      return { success: false, error: "Odoo not configured" };
+    }
+    try {
+      await this.client.connect();
+      const leadData = {
+        name: data.name,
+        email_from: data.email,
+        phone: data.phone,
+        description: data.description,
+        type: data.type || "opportunity",
+        tag_ids: [[6, 0, []]]
+      };
+      const leadId = await this.client.execute_kw("crm.lead", "create", [[leadData]]);
+      console.log(`Successfully created Odoo lead with ID: ${leadId}`);
+      return { success: true, leadId };
+    } catch (error) {
+      console.error("Error creating Odoo lead:", error);
+      return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
+    }
+  }
+  async createPartner(data) {
+    if (!this.isConfigured || !this.client) {
+      console.log("Odoo not configured. Skipping partner creation.");
+      return { success: false, error: "Odoo not configured" };
+    }
+    try {
+      await this.client.connect();
+      const partnerData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        street: data.street || "",
+        city: data.city || "",
+        is_company: false,
+        customer_rank: 1
+      };
+      const partnerId = await this.client.execute_kw("res.partner", "create", [[partnerData]]);
+      console.log(`Successfully created Odoo partner with ID: ${partnerId}`);
+      return { success: true, partnerId };
+    } catch (error) {
+      console.error("Error creating Odoo partner:", error);
+      return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
+    }
+  }
+  isAvailable() {
+    return this.isConfigured;
+  }
+};
+var odooService = new OdooService();
+
+// shared/schema.ts
+import { z } from "zod";
+var serviceSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  description: z.string(),
+  icon: z.string(),
+  features: z.array(z.string()),
+  category: z.enum(["interior-design-fitout", "wellness-services", "maintenance-services"]),
+  subcategory: z.string().optional()
+});
+var insertServiceSchema = serviceSchema.omit({ id: true });
+var portfolioProjectSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  category: z.string(),
+  description: z.string(),
+  beforeImage: z.string(),
+  afterImage: z.string(),
+  tags: z.array(z.string()),
+  featured: z.boolean()
+});
+var insertPortfolioProjectSchema = portfolioProjectSchema.omit({ id: true });
+var productSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  price: z.number(),
+  category: z.string(),
+  image: z.string(),
+  inStock: z.boolean(),
+  featured: z.boolean()
+});
+var insertProductSchema = productSchema.omit({ id: true });
+var cartItemSchema = z.object({
+  id: z.string(),
+  productId: z.string(),
+  quantity: z.number(),
+  sessionId: z.string()
+});
+var insertCartItemSchema = cartItemSchema.omit({ id: true });
+var bookingSchema = z.object({
+  id: z.string(),
+  serviceType: z.string(),
+  fullName: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  address: z.string(),
+  city: z.string(),
+  preferredDate: z.string(),
+  preferredTime: z.string(),
+  message: z.string().optional(),
+  status: z.enum(["pending", "confirmed", "completed", "cancelled"]),
+  createdAt: z.string()
+});
+var insertBookingSchema = bookingSchema.omit({ id: true, status: true, createdAt: true }).extend({
+  message: z.string().optional()
+});
+var blogPostSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  excerpt: z.string(),
+  content: z.string(),
+  category: z.string(),
+  image: z.string(),
+  author: z.string(),
+  publishedAt: z.string(),
+  featured: z.boolean()
+});
+var insertBlogPostSchema = blogPostSchema.omit({ id: true });
+var testimonialSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  role: z.string(),
+  company: z.string().optional(),
+  content: z.string(),
+  rating: z.number().min(1).max(5),
+  image: z.string().optional()
+});
+var insertTestimonialSchema = testimonialSchema.omit({ id: true });
+var contactInquirySchema = z.object({
+  id: z.string(),
+  fullName: z.string(),
+  email: z.string().email(),
+  phone: z.string(),
+  subject: z.string(),
+  message: z.string(),
+  createdAt: z.string()
+});
+var insertContactInquirySchema = contactInquirySchema.omit({ id: true, createdAt: true });
+
+// server/routes.ts
+import { z as z2 } from "zod";
+async function registerRoutes(app2) {
+  app2.get("/api/services", async (_req, res) => {
+    try {
+      const services = await storage.getAllServices();
+      res.json(services);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch services" });
+    }
+  });
+  app2.get("/api/services/:id", async (req, res) => {
+    try {
+      const service = await storage.getService(req.params.id);
+      if (service) {
+        res.json(service);
+      } else {
+        res.status(404).json({ error: "Service not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch service" });
+    }
+  });
+  app2.get("/api/portfolio", async (_req, res) => {
+    try {
+      const projects = await storage.getAllPortfolioProjects();
+      res.json(projects);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch portfolio projects" });
+    }
+  });
+  app2.get("/api/products", async (_req, res) => {
+    try {
+      const products = await storage.getAllProducts();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch products" });
+    }
+  });
+  app2.get("/api/products/:id", async (req, res) => {
+    try {
+      const product = await storage.getProduct(req.params.id);
+      if (product) {
+        res.json(product);
+      } else {
+        res.status(404).json({ error: "Product not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch product" });
+    }
+  });
+  app2.get("/api/cart/:sessionId", async (req, res) => {
+    try {
+      const items = await storage.getCartItems(req.params.sessionId);
+      res.json(items);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch cart items" });
+    }
+  });
+  app2.post("/api/cart", async (req, res) => {
+    try {
+      const validatedData = insertCartItemSchema.parse(req.body);
+      const item = await storage.addToCart(validatedData);
+      res.status(201).json(item);
+    } catch (error) {
+      if (error instanceof z2.ZodError) {
+        res.status(400).json({ error: "Invalid cart item data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to add item to cart" });
+      }
+    }
+  });
+  app2.patch("/api/cart/:id", async (req, res) => {
+    try {
+      const { quantity } = req.body;
+      if (typeof quantity !== "number" || quantity < 1) {
+        return res.status(400).json({ error: "Invalid quantity" });
+      }
+      const item = await storage.updateCartItem(req.params.id, quantity);
+      if (item) {
+        res.json(item);
+      } else {
+        res.status(404).json({ error: "Cart item not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update cart item" });
+    }
+  });
+  app2.delete("/api/cart/:id", async (req, res) => {
+    try {
+      const deleted = await storage.removeFromCart(req.params.id);
+      if (deleted) {
+        res.status(204).send();
+      } else {
+        res.status(404).json({ error: "Cart item not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to remove cart item" });
+    }
+  });
+  app2.get("/api/bookings", async (_req, res) => {
+    try {
+      const bookings = await storage.getAllBookings();
+      res.json(bookings);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch bookings" });
+    }
+  });
+  app2.post("/api/bookings", async (req, res) => {
+    try {
+      const validatedData = insertBookingSchema.parse(req.body);
+      const booking = await storage.createBooking(validatedData);
+      const odooResult = await odooService.createLead({
+        name: `Service Booking: ${validatedData.serviceType} - ${validatedData.fullName}`,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        description: `
+Service Type: ${validatedData.serviceType}
+Preferred Date: ${validatedData.preferredDate}
+Preferred Time: ${validatedData.preferredTime}
+Address: ${validatedData.address}, ${validatedData.city}
+${validatedData.message ? `Message: ${validatedData.message}` : ""}
+        `.trim(),
+        type: "opportunity"
+      });
+      res.status(201).json({
+        booking,
+        odooIntegration: {
+          enabled: odooService.isAvailable(),
+          success: odooResult.success,
+          leadId: odooResult.leadId
+        }
+      });
+    } catch (error) {
+      if (error instanceof z2.ZodError) {
+        res.status(400).json({ error: "Invalid booking data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create booking" });
+      }
+    }
+  });
+  app2.get("/api/blog", async (_req, res) => {
+    try {
+      const posts = await storage.getAllBlogPosts();
+      res.json(posts);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch blog posts" });
+    }
+  });
+  app2.get("/api/blog/:id", async (req, res) => {
+    try {
+      const post = await storage.getBlogPost(req.params.id);
+      if (post) {
+        res.json(post);
+      } else {
+        res.status(404).json({ error: "Blog post not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch blog post" });
+    }
+  });
+  app2.get("/api/testimonials", async (_req, res) => {
+    try {
+      const testimonials = await storage.getAllTestimonials();
+      res.json(testimonials);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch testimonials" });
+    }
+  });
+  app2.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactInquirySchema.parse(req.body);
+      const inquiry = await storage.createContactInquiry(validatedData);
+      const odooResult = await odooService.createLead({
+        name: `Contact Inquiry: ${validatedData.subject} - ${validatedData.fullName}`,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        description: `
+Subject: ${validatedData.subject}
+Message: ${validatedData.message}
+        `.trim(),
+        type: "lead"
+      });
+      res.status(201).json({
+        inquiry,
+        odooIntegration: {
+          enabled: odooService.isAvailable(),
+          success: odooResult.success,
+          leadId: odooResult.leadId
+        }
+      });
+    } catch (error) {
+      if (error instanceof z2.ZodError) {
+        res.status(400).json({ error: "Invalid inquiry data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create inquiry" });
+      }
+    }
+  });
+  const httpServer = createServer(app2);
+  return httpServer;
+}
+
+// server/vite.ts
+import express from "express";
+import fs from "fs";
+import path2 from "path";
+import { createServer as createViteServer, createLogger } from "vite";
+
+// vite.config.ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+var vite_config_default = defineConfig({
+  plugins: [
+    react(),
+    runtimeErrorOverlay(),
+    ...process.env.NODE_ENV !== "production" && process.env.REPL_ID !== void 0 ? [
+      await import("@replit/vite-plugin-cartographer").then(
+        (m) => m.cartographer()
+      ),
+      await import("@replit/vite-plugin-dev-banner").then(
+        (m) => m.devBanner()
+      )
+    ] : []
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets")
+    }
+  },
+  root: path.resolve(import.meta.dirname, "client"),
+  build: {
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    emptyOutDir: true
+  },
+  server: {
+    fs: {
+      strict: true,
+      deny: ["**/.*"]
+    }
+  }
+});
+
+// server/vite.ts
+import { nanoid } from "nanoid";
+var viteLogger = createLogger();
+function log(message, source = "express") {
+  const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  });
+  console.log(`${formattedTime} [${source}] ${message}`);
+}
+async function setupVite(app2, server) {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true
+  };
+  const vite = await createViteServer({
+    ...vite_config_default,
+    configFile: false,
+    customLogger: {
+      ...viteLogger,
+      error: (msg, options) => {
+        viteLogger.error(msg, options);
+        process.exit(1);
+      }
+    },
+    server: serverOptions,
+    appType: "custom"
+  });
+  app2.use(vite.middlewares);
+  app2.use("*", async (req, res, next) => {
+    const url = req.originalUrl;
+    try {
+      const clientTemplate = path2.resolve(
+        import.meta.dirname,
+        "..",
+        "client",
+        "index.html"
+      );
+      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      template = template.replace(
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
+      );
+      const page = await vite.transformIndexHtml(url, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e) {
+      vite.ssrFixStacktrace(e);
+      next(e);
+    }
+  });
+}
+function serveStatic(app2) {
+  const distPath = path2.resolve(import.meta.dirname, "public");
+  if (!fs.existsSync(distPath)) {
+    throw new Error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
+    );
+  }
+  app2.use(express.static(distPath));
+  app2.use("*", (_req, res) => {
+    res.sendFile(path2.resolve(distPath, "index.html"));
+  });
+}
+
+// server/index.ts
+var app = express2();
+app.use(express2.json({
+  verify: (req, _res, buf) => {
+    req.rawBody = buf;
+  }
+}));
+app.use(express2.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+  const start = Date.now();
+  const path3 = req.path;
+  let capturedJsonResponse = void 0;
+  const originalResJson = res.json;
+  res.json = function(bodyJson, ...args) {
+    capturedJsonResponse = bodyJson;
+    return originalResJson.apply(res, [bodyJson, ...args]);
+  };
+  res.on("finish", () => {
+    const duration = Date.now() - start;
+    if (path3.startsWith("/api")) {
+      let logLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
+      if (capturedJsonResponse) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      }
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "\u2026";
+      }
+      log(logLine);
+    }
+  });
+  next();
+});
+(async () => {
+  const server = await registerRoutes(app);
+  app.use((err, _req, res, _next) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+    res.status(status).json({ message });
+    throw err;
+  });
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+  const port = parseInt(process.env.PORT || "5000", 10);
+  server.listen({
+    port,
+    host: "0.0.0.0",
+    reusePort: true
+  }, () => {
+    log(`serving on port ${port}`);
+  });
+})();
