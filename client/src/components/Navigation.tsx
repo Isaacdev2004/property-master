@@ -53,7 +53,6 @@ export function Navigation() {
   ];
 
   const navLinks = [
-    { href: "/", label: "Home" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/shop", label: "Shop" },
     { href: "/about", label: "About" },

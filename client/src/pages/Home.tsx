@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Sparkles, Home as HomeIcon, Building2, Check } from "lucide-react";
+import { ArrowRight, CheckCircle2, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { Service, Testimonial } from "@shared/schema";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Service, Product, PortfolioProject } from "@shared/schema";
+import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
-import kitchenAfter from "@assets/generated_images/kitchen_after_renovation_cecd16b9.png";
-import officeImage from "@assets/generated_images/commercial_office_design_d5324a05.png";
-import bedroomImage from "@assets/generated_images/bedroom_interior_design_d3372076.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -17,35 +16,83 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-const iconMap: Record<string, any> = {
-  "Sparkles": Sparkles,
-  "Home": HomeIcon,
-  "Building2": Building2,
-};
-
 const stats = [
-  { value: "500+", label: "Projects Completed" },
-  { value: "250+", label: "Happy Clients" },
-  { value: "15+", label: "Years Experience" },
-  { value: "98%", label: "Satisfaction Rate" },
+  { value: "500+", label: "Interior Projects", icon: Award },
+  { value: "50+", label: "Design Experts", icon: Users },
+  { value: "3 Cities", label: "2 Countries", icon: MapPin },
+  { value: "10,000+", label: "Design Options", icon: Sparkles },
+];
+
+const turnkeyServices = [
+  {
+    icon: Palette,
+    title: "We Design",
+    description: "From completed homes to modular kitchens, and storage to decor, our top interior designers create spaces that match your vision.",
+  },
+  {
+    icon: Hammer,
+    title: "We Execute",
+    description: "We follow a meticulous planning approach with detail-driven designs for interiors of your homes.",
+  },
+  {
+    icon: Shield,
+    title: "We Manage",
+    description: "Our top interior designers spearhead quality assurance by extending support after the execution of home projects.",
+  },
+];
+
+const designCategories = [
+  "Living Room",
+  "Modular Kitchen",
+  "Master Bedroom",
+  "Bathroom",
+  "Kids Room",
+  "Office",
 ];
 
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState("Living Room");
+  
   const { data: services = [] } = useQuery<Service[]>({
     queryKey: ["/api/services"],
   });
 
-  const { data: testimonials = [] } = useQuery<Testimonial[]>({
-    queryKey: ["/api/testimonials"],
+  const { data: products = [] } = useQuery<Product[]>({
+    queryKey: ["/api/products"],
   });
+
+  const { data: portfolioProjects = [] } = useQuery<PortfolioProject[]>({
+    queryKey: ["/api/portfolio"],
+  });
+
+  const featuredProducts = products.filter(p => p.featured).slice(0, 6);
+
+  const getProjectsByDesignCategory = (designCategory: string) => {
+    const categoryMap: Record<string, string> = {
+      "Living Room": "Living Room",
+      "Modular Kitchen": "Kitchen",
+      "Master Bedroom": "Bedroom",
+      "Bathroom": "Bathroom",
+      "Kids Room": "Kids Room",
+      "Office": "Office",
+    };
+
+    const mappedCategory = categoryMap[designCategory] || designCategory;
+    const filtered = portfolioProjects.filter(project => 
+      project.category === mappedCategory
+    );
+
+    return filtered.length > 0 ? filtered : portfolioProjects.slice(0, 8);
+  };
+
   return (
     <div className="min-h-screen">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -55,127 +102,93 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-[Montserrat] tracking-tight">
-              Transform Your Space Into
-              <span className="block text-primary mt-2">Timeless Elegance</span>
+              Interior Design that
+              <span className="block text-primary mt-2">Speaks of You</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Premium interior design and maintenance services for residential and commercial properties
+              From foundation to furnishings, we style your space like our own.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/book" data-testid="button-hero-book">
-                <Button size="lg" className="text-base px-8 py-6 shadow-xl">
-                  Book a Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/portfolio" data-testid="button-hero-portfolio">
-                <Button size="lg" variant="outline" className="text-base px-8 py-6 bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white/20">
-                  View Portfolio
-                </Button>
-              </Link>
-            </div>
+            <Link href="/book" data-testid="button-hero-consultation">
+              <Button size="lg">
+                Book Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full p-1"
-          >
-            <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="absolute bottom-12 left-0 right-0 z-20"
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                    className="bg-white/95 backdrop-blur-sm rounded-lg p-4 text-center shadow-xl"
+                    data-testid={`stat-${index}`}
+                  >
+                    <Icon className="w-8 h-8 mx-auto mb-2 text-primary" />
+                    <div className="text-2xl md:text-3xl font-bold text-primary mb-1 font-[Montserrat]">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs md:text-sm text-muted-foreground font-medium">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">Our Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive solutions for all your interior design and maintenance needs
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">
+              Complete Turnkey Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              With an emphasis on details, extraordinary designs and exceptional customer service, we bring your dreams to life.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = iconMap[service.icon] || Sparkles;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {turnkeyServices.map((service, index) => {
+              const Icon = service.icon;
               return (
                 <motion.div
-                  key={service.id}
+                  key={service.title}
                   {...fadeInUp}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover-elevate transition-transform duration-300 hover:-translate-y-1">
+                  <Card className="h-full text-center hover-elevate transition-transform duration-300 hover:-translate-y-1">
                     <CardContent className="p-8">
-                      <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                        <Icon className="w-7 h-7 text-primary" />
+                      <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <Icon className="w-10 h-10 text-primary" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-3 font-[Montserrat]">{service.title}</h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
-                      <ul className="space-y-2 mb-6">
-                        {service.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-2 text-sm">
-                            <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Link href={`/services/${service.slug}`} data-testid={`link-service-${service.slug}`}>
-                        <Button variant="outline" className="w-full group">
-                          Learn More
-                          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
+                      <h3 className="text-2xl font-bold mb-4 font-[Montserrat]">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">Featured Projects</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our portfolio of stunning transformations
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { image: kitchenAfter, title: "Modern Kitchen Renovation", category: "Residential" },
-              { image: officeImage, title: "Corporate Office Design", category: "Commercial" },
-              { image: bedroomImage, title: "Luxury Bedroom Suite", category: "Residential" },
-            ].map((project, index) => (
-              <motion.div
-                key={project.title}
-                {...fadeInUp}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-lg cursor-pointer aspect-[4/3]"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm font-medium text-primary mb-1">{project.category}</p>
-                    <h3 className="text-xl font-bold font-[Montserrat]">{project.title}</h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/portfolio" data-testid="button-view-all-projects">
-              <Button size="lg" variant="outline">
-                View All Projects
+          <div className="text-center">
+            <Link href="/about" data-testid="button-know-more">
+              <Button variant="outline" size="lg">
+                Know More
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -183,20 +196,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-card">
+      <section className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">
+              Discover Our Furniture & Decor Collection
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Premium products with exclusive discounts for your dream space
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            {featuredProducts.map((product, index) => (
               <motion.div
-                key={stat.label}
+                key={product.id}
                 {...fadeInUp}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 font-[Montserrat]">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <Link href={`/shop`}>
+                  <Card className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative aspect-square overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded">
+                        SALE
+                      </div>
+                    </div>
+                    <CardContent className="p-4">
+                      <h3 className="font-semibold text-sm mb-1 line-clamp-1">{product.category}</h3>
+                      <p className="text-xs text-muted-foreground">Up to 50% Off</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/shop" data-testid="button-explore-shop">
+              <Button size="lg">
+                Explore More Deals - Shop Now
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -204,41 +250,68 @@ export default function Home() {
       <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">Client Testimonials</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-[Montserrat]">
+              Design Ideas for Every Space
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear what our clients say about working with us
+              Because every corner holds a unique design potential.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                {...fadeInUp}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-8">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-primary text-lg">★</span>
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                      "{testimonial.content}"
-                    </p>
-                    <div>
-                      <div className="font-semibold font-[Montserrat]">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      {testimonial.company && (
-                        <div className="text-sm text-muted-foreground">{testimonial.company}</div>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+          <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+            <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent mb-12">
+              {designCategories.map((category) => (
+                <TabsTrigger
+                  key={category}
+                  value={category}
+                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full px-6 py-2"
+                  data-testid={`tab-${category.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {category}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {designCategories.map((category) => (
+              <TabsContent key={category} value={category} className="mt-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {getProjectsByDesignCategory(category).map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      {...fadeInUp}
+                      transition={{ duration: 0.6, delay: index * 0.05 }}
+                    >
+                      <Link href="/portfolio">
+                        <Card className="group cursor-pointer overflow-hidden hover-elevate transition-all duration-300">
+                          <div className="relative aspect-[4/3] overflow-hidden">
+                            <img
+                              src={project.beforeImage}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                          </div>
+                          <CardContent className="p-4">
+                            <h3 className="font-semibold text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                              {project.title}
+                            </h3>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="text-center mt-12">
+                  <Link href="/portfolio" data-testid="button-view-all-designs">
+                    <Button variant="outline" size="lg">
+                      View All {category} Designs
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </TabsContent>
             ))}
-          </div>
+          </Tabs>
         </div>
       </section>
 
@@ -249,17 +322,17 @@ export default function Home() {
               Ready to Transform Your Space?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Book a consultation with our design experts and bring your vision to life
+              Book a free consultation with our design experts and bring your vision to life
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book" data-testid="button-cta-book">
-                <Button size="lg" variant="secondary" className="px-8">
-                  Schedule Consultation
+                <Button size="lg" variant="secondary">
+                  Schedule Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link href="/contact" data-testid="button-cta-contact">
-                <Button size="lg" variant="outline" className="px-8 border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-white text-white backdrop-blur-sm">
                   Contact Us
                 </Button>
               </Link>
