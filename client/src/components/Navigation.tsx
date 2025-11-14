@@ -52,12 +52,14 @@ export function Navigation() {
     { label: "Maintenance Services", category: "maintenance-services" },
   ];
 
-  const navLinks = [
+  const aboutDropdownItems = [
+    { href: "/about", label: "About Us" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/contact", label: "Contact Us" },
+  ];
+
+  const navLinks = [
     { href: "/shop", label: "Shop" },
-    { href: "/about", label: "About" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
   ];
 
   const getServicesByCategory = (category: string) => {
@@ -89,20 +91,6 @@ export function Navigation() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase()}`}>
-                <span
-                  className={`text-sm font-medium transition-colors cursor-pointer ${
-                    location === link.href
-                      ? (isScrolled || !isHomePage) ? "text-primary" : "text-white font-semibold"
-                      : (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                </span>
-              </Link>
-            ))}
-            
             {megaMenuItems.map((item) => (
               <div
                 key={item.category}
@@ -153,6 +141,62 @@ export function Navigation() {
                 </AnimatePresence>
               </div>
             ))}
+
+            <div
+              className="relative"
+              onMouseEnter={() => handleMouseEnter('about')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                className={`text-sm font-medium transition-colors flex items-center gap-1 ${
+                  (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                }`}
+                data-testid="menu-about"
+              >
+                About
+                <ChevronDown className="w-4 h-4" />
+              </button>
+
+              <AnimatePresence>
+                {activeMegaMenu === 'about' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-background border border-border rounded-lg shadow-xl p-4"
+                  >
+                    <div className="space-y-1">
+                      {aboutDropdownItems.map((item) => (
+                        <Link key={item.href} href={item.href}>
+                          <div
+                            className="p-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer"
+                            onClick={() => setActiveMegaMenu(null)}
+                            data-testid={`about-dropdown-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            <span className="font-medium text-sm">{item.label}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase()}`}>
+                <span
+                  className={`text-sm font-medium transition-colors cursor-pointer ${
+                    location === link.href
+                      ? (isScrolled || !isHomePage) ? "text-primary" : "text-white font-semibold"
+                      : (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </span>
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
@@ -160,9 +204,6 @@ export function Navigation() {
               <Button variant={(isScrolled || !isHomePage) ? "ghost" : "outline"} size="icon" className={(!isScrolled && isHomePage) ? "border-white text-white hover:bg-white/10" : ""}>
                 <ShoppingCart className="w-5 h-5" />
               </Button>
-            </Link>
-            <Link href="/book" data-testid="link-book">
-              <Button className="font-medium">Book a Service</Button>
             </Link>
           </div>
 
@@ -187,20 +228,8 @@ export function Navigation() {
             className="lg:hidden bg-background border-b border-border"
           >
             <nav className="flex flex-col px-6 py-4 gap-4 max-h-[80vh] overflow-y-auto">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)} data-testid={`mobile-link-${link.label.toLowerCase()}`}>
-                  <span
-                    className={`text-base font-medium transition-colors cursor-pointer block py-2 ${
-                      location === link.href ? "text-primary font-semibold" : "text-foreground hover:text-primary"
-                    }`}
-                  >
-                    {link.label}
-                  </span>
-                </Link>
-              ))}
-              
               {megaMenuItems.map((item) => (
-                <div key={item.category} className="border-t border-border pt-4">
+                <div key={item.category} className="border-b border-border pb-4">
                   <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
                     {item.label}
                   </h3>
@@ -217,16 +246,42 @@ export function Navigation() {
                   </div>
                 </div>
               ))}
+
+              <div className="border-b border-border pb-4">
+                <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
+                  About
+                </h3>
+                <div className="space-y-2 pl-4">
+                  {aboutDropdownItems.map((item) => (
+                    <Link key={item.href} href={item.href} onClick={() => setIsMobileMenuOpen(false)} data-testid={`mobile-about-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <div className="py-2 cursor-pointer">
+                        <h4 className="font-medium text-sm hover:text-primary transition-colors">
+                          {item.label}
+                        </h4>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
               
-              <div className="flex gap-3 pt-2 border-t border-border">
-                <Link href="/cart" className="flex-1" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-cart">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)} data-testid={`mobile-link-${link.label.toLowerCase()}`}>
+                  <span
+                    className={`text-base font-medium transition-colors cursor-pointer block py-2 ${
+                      location === link.href ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
+              
+              <div className="pt-2 border-t border-border">
+                <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-cart">
                   <Button variant="outline" className="w-full">
                     <ShoppingCart className="w-4 h-4 mr-2" />
                     Cart
                   </Button>
-                </Link>
-                <Link href="/book" className="flex-1" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-book">
-                  <Button className="w-full">Book Service</Button>
                 </Link>
               </div>
             </nav>
