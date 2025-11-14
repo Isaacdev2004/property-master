@@ -8,7 +8,9 @@ Drawing inspiration from interiorcompany.com (elegant spacing and structure), th
 
 ## Core Design Principles
 
-**Visual Language:** Luxury minimalism - every element serves a purpose, breathing room is intentional, and sophistication comes from restraint rather than embellishment.
+**Visual Language:** Warm luxury minimalism - sophisticated beige-gold palette with serif typography for premium feel. Every element serves a purpose, breathing room is intentional, and sophistication comes from restraint rather than embellishment.
+
+**Color Palette:** Warm beige-gold (#f5f1e8 to #faf7f0) with golden accents (hsl(40, 75%, 55%)) replacing the previous amber/orange scheme for a more luxurious, refined aesthetic.
 
 **Hierarchy:** Clear visual flow from hero impact → service showcases → portfolio credibility → conversion points.
 
@@ -50,10 +52,11 @@ Drawing inspiration from interiorcompany.com (elegant spacing and structure), th
 - Mobile: hamburger with full-screen overlay menu
 
 ### Hero Section
-- Full viewport height (min-h-screen) with large hero image
-- Overlay with soft gradient (dark to transparent)
-- Centered headline with CTA buttons on blurred background
-- Scroll indicator at bottom
+- Full viewport height (min-h-screen) with warm beige gradient background
+- Left-aligned layout with headline, subtext, and CTA
+- Serif typography (Playfair Display) for main headline
+- Hero image subtly positioned on right side with low opacity
+- Horizontal statistics pill at bottom with golden dividers
 
 ### Service Cards
 - Clean white cards with subtle shadow and rounded corners (rounded-lg)
