@@ -112,12 +112,16 @@ export default function Home() {
                 From foundation to furnishings, we style your home like our own.
               </p>
               <div className="flex items-center gap-4">
-                <Link href="/book" data-testid="button-hero-consultation">
-                  <Button className="bg-[#D7A144] hover:bg-[#D7A144] text-white font-semibold rounded-full px-14 py-6 text-base h-auto">
+                <Button 
+                  asChild 
+                  className="bg-[#D7A144] hover:bg-[#D7A144] text-white font-semibold rounded-full px-14 py-6 text-base h-auto no-default-active-elevate"
+                  data-testid="button-hero-consultation"
+                >
+                  <Link href="/book">
                     Book Free Consultation
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
                 <div className="flex items-center gap-2 bg-[#faf7f0] border border-[#D7A144] rounded-full px-6 py-3 h-10" data-testid="badge-emi">
                   <svg className="w-5 h-5 text-[#D7A144]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -141,10 +145,7 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#D7A144]/40">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
-                  const displayLabel = stat.label === "2 Countries" ? "10 Cities | 2 Countries" : stat.label;
-                  const shouldHide = stat.label === "10 Cities";
-                  
-                  if (shouldHide) return null;
+                  const isLocationStat = stat.label === "2 Countries";
                   
                   return (
                     <motion.div
@@ -156,12 +157,20 @@ export default function Home() {
                       data-testid={`stat-${index}`}
                     >
                       <Icon className="w-5 h-5 mx-auto mb-2 text-[#D7A144]" />
-                      <div className="text-[32px] leading-tight font-bold text-[#D7A144] mb-1 font-sans">
-                        {stat.label === "2 Countries" ? "10 Cities" : stat.value}
-                      </div>
-                      <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
-                        {displayLabel}
-                      </div>
+                      {isLocationStat ? (
+                        <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium whitespace-nowrap">
+                          10 CITIES | 2 COUNTRIES
+                        </div>
+                      ) : (
+                        <>
+                          <div className="text-[32px] leading-tight font-bold text-[#D7A144] mb-1 font-sans">
+                            {stat.value}
+                          </div>
+                          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+                            {stat.label}
+                          </div>
+                        </>
+                      )}
                     </motion.div>
                   );
                 })}
