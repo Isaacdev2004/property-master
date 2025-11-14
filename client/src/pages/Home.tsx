@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles, CheckCircle2, Clock, TrendingUp, Heart, Star, Quote, BadgeCheck, Zap, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import type { Service, Product, PortfolioProject } from "@shared/schema";
 import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
@@ -63,6 +64,96 @@ const designCategories = [
   "Tiles",
   "Staircase",
   "Door",
+];
+
+const whyChooseUs = [
+  {
+    icon: BadgeCheck,
+    title: "10-Year Warranty",
+    description: "Industry-leading warranty on all our work, ensuring long-lasting quality and your peace of mind.",
+  },
+  {
+    icon: Clock,
+    title: "On-Time Delivery",
+    description: "We value your time. 95% of our projects are delivered on or before the promised date.",
+  },
+  {
+    icon: Award,
+    title: "Award-Winning Designs",
+    description: "Our design team has won multiple international awards for innovation and excellence.",
+  },
+  {
+    icon: Users,
+    title: "200+ Design Experts",
+    description: "Experienced team of architects, interior designers, and craftsmen at your service.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Quality Assurance",
+    description: "Rigorous 150+ point quality checks at every stage of your project.",
+  },
+  {
+    icon: Heart,
+    title: "Post-Service Support",
+    description: "Dedicated support team available even after project completion for your satisfaction.",
+  },
+];
+
+const ourProcess = [
+  {
+    step: "01",
+    title: "Free Consultation",
+    description: "Meet with our design experts to discuss your vision, budget, and requirements. We listen to understand your unique needs.",
+    icon: Target,
+  },
+  {
+    step: "02",
+    title: "Design & 3D Visualization",
+    description: "Our designers create detailed plans and photorealistic 3D renders so you can see your space before we build.",
+    icon: Palette,
+  },
+  {
+    step: "03",
+    title: "Material Selection",
+    description: "Choose from our curated collection of premium materials, finishes, and furnishings that match your style and budget.",
+    icon: Sparkles,
+  },
+  {
+    step: "04",
+    title: "Expert Execution",
+    description: "Our skilled craftsmen bring the design to life with meticulous attention to detail and quality workmanship.",
+    icon: Hammer,
+  },
+  {
+    step: "05",
+    title: "Quality Check & Handover",
+    description: "Comprehensive quality inspection followed by a smooth handover with detailed documentation and warranty.",
+    icon: CheckCircle2,
+  },
+];
+
+const testimonials = [
+  {
+    name: "Sarah Al-Mansouri",
+    initials: "SA",
+    role: "Homeowner, Dubai Marina",
+    content: "The Property Masters transformed our apartment into a stunning modern sanctuary. Their attention to detail and professionalism exceeded all expectations. Worth every dirham!",
+    rating: 5,
+  },
+  {
+    name: "Mohammed Hassan",
+    initials: "MH",
+    role: "Villa Owner, Arabian Ranches",
+    content: "From consultation to completion, the entire process was seamless. The team delivered our dream villa interior on time and within budget. Highly recommend!",
+    rating: 5,
+  },
+  {
+    name: "Jessica Williams",
+    initials: "JW",
+    role: "Business Owner, Business Bay",
+    content: "They designed our office space to be both functional and beautiful. Our productivity has increased, and clients are always impressed when they visit.",
+    rating: 5,
+  },
 ];
 
 export default function Home() {
@@ -225,8 +316,106 @@ export default function Home() {
 
           <div className="text-center">
             <Link href="/services">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" data-testid="button-know-more">
                 Know More
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
+              Why Choose The Property Masters?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Dubai's most trusted interior design company with a proven track record of excellence
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  {...fadeInUp}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  data-testid={`why-choose-${index}`}
+                >
+                  <Card className="h-full hover-elevate">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#D7A144]/10 flex items-center justify-center" data-testid={`why-choose-icon-${index}`}>
+                          <Icon className="w-6 h-6 text-[#D7A144]" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-2" data-testid={`why-choose-title-${index}`}>{item.title}</h3>
+                          <p className="text-muted-foreground leading-relaxed" data-testid={`why-choose-description-${index}`}>
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Process */}
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
+              Our Proven 5-Step Process
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              From initial consultation to final handover, we ensure a seamless and stress-free experience
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {ourProcess.map((process, index) => {
+              const Icon = process.icon;
+              return (
+                <motion.div
+                  key={process.step}
+                  {...fadeInUp}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="relative"
+                  data-testid={`process-${index}`}
+                >
+                  <Card className="h-full hover-elevate">
+                    <CardContent className="p-6 text-center">
+                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] text-white font-bold text-xl mb-4" data-testid={`process-step-${index}`}>
+                        {process.step}
+                      </div>
+                      <Icon className="w-8 h-8 mx-auto mb-4 text-[#D7A144]" data-testid={`process-icon-${index}`} />
+                      <h3 className="font-bold mb-3 text-lg" data-testid={`process-title-${index}`}>{process.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`process-description-${index}`}>
+                        {process.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                  {index < ourProcess.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#D7A144]/30" />
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/contact">
+              <Button size="lg" data-testid="button-start-journey">
+                Start Your Design Journey
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -278,20 +467,21 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 data-testid={`product-${index}`}
               >
-                <Link href="/shop">
+                <Link href="/shop" data-testid={`link-product-${index}`}>
                   <Card className="group hover-elevate active-elevate-2 cursor-pointer overflow-hidden border-primary/10">
                     <div className="relative aspect-square overflow-hidden">
                       <img
                         src={product.image}
                         alt={product.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        data-testid={`img-product-${index}`}
                       />
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="font-bold mb-2 font-sans">{product.name}</h3>
+                      <h3 className="font-bold mb-2 font-sans" data-testid={`text-product-name-${index}`}>{product.name}</h3>
                       {product.discount && (
                         <div className="flex items-center justify-between">
-                          <p className="text-sm text-primary font-semibold">
+                          <p className="text-sm text-primary font-semibold" data-testid={`text-product-discount-${index}`}>
                             Upto {product.discount}% Discount
                           </p>
                           <ArrowRight className="w-4 h-4 text-primary" />
@@ -305,7 +495,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/shop">
+            <Link href="/shop" data-testid="link-explore-shop">
               <Button size="lg">
                 Explore More Deals - Shop Now
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -347,7 +537,7 @@ export default function Home() {
             {designCategories.map((category) => {
               const categoryProjects = getProjectsByCategory(category);
               return (
-                <TabsContent key={category} value={category} className="mt-8">
+                <TabsContent key={category} value={category} className="mt-8" data-testid={`tab-content-${category.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {categoryProjects.map((project, index) => (
                     <motion.div
@@ -362,11 +552,12 @@ export default function Home() {
                             src={project.afterImage}
                             alt={project.title}
                             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            data-testid={`img-project-${index}`}
                           />
                         </div>
                         <CardContent className="p-4">
-                          <h3 className="font-semibold mb-1 line-clamp-2">{project.title}</h3>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
+                          <h3 className="font-semibold mb-1 line-clamp-2" data-testid={`text-project-title-${index}`}>{project.title}</h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2" data-testid={`text-project-description-${index}`}>
                             {project.description}
                           </p>
                         </CardContent>
@@ -376,7 +567,7 @@ export default function Home() {
                   </div>
 
                   <div className="text-center mt-12">
-                    <Link href="/portfolio">
+                    <Link href="/portfolio" data-testid={`link-explore-${category.toLowerCase().replace(/\s+/g, '-')}`}>
                       <Button variant="outline" size="lg">
                         Explore More {category} Designs
                         <ArrowRight className="ml-2 w-4 h-4" />
@@ -387,6 +578,64 @@ export default function Home() {
               );
             })}
           </Tabs>
+        </div>
+      </section>
+
+      {/* Client Testimonials */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Don't just take our word for it - hear from our satisfied clients
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                {...fadeInUp}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                data-testid={`testimonial-${index}`}
+              >
+                <Card className="h-full hover-elevate">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <Avatar className="w-16 h-16" data-testid={`avatar-${index}`}>
+                        <AvatarFallback className="bg-[#D7A144] text-white text-lg font-semibold">
+                          {testimonial.initials}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-bold text-foreground" data-testid={`testimonial-name-${index}`}>{testimonial.name}</p>
+                        <p className="text-sm text-muted-foreground" data-testid={`testimonial-role-${index}`}>{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-4" data-testid={`testimonial-rating-${index}`}>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-[#D7A144] text-[#D7A144]" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed" data-testid={`testimonial-content-${index}`}>
+                      "{testimonial.content}"
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/portfolio">
+              <Button variant="outline" size="lg" data-testid="button-view-portfolio">
+                View Our Complete Portfolio
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -404,18 +653,18 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-serif">
               Ready to Transform Your Space?
             </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto" data-testid="text-cta-description">
               Let our expert designers bring your vision to life with personalized solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/book" data-testid="button-cta-booking">
-                <Button size="lg">
+              <Link href="/contact" data-testid="link-cta-booking">
+                <Button size="lg" data-testid="button-cta-booking">
                   Schedule Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Link href="/contact" data-testid="button-cta-contact">
-                <Button size="lg" variant="outline" className="border-white text-white backdrop-blur-sm">
+              <Link href="/contact" data-testid="link-cta-contact">
+                <Button size="lg" variant="outline" className="border-white text-white backdrop-blur-sm" data-testid="button-cta-contact">
                   Contact Us
                 </Button>
               </Link>
