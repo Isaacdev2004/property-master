@@ -79,7 +79,7 @@ export function Navigation() {
           <Link href="/" data-testid="link-home">
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="flex items-center gap-2 cursor-pointer"
+              className="cursor-pointer"
             >
               <div className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${
                 isScrolled || !isHomePage 
@@ -90,11 +90,6 @@ export function Navigation() {
                   isScrolled || !isHomePage ? "text-white" : "text-[#D7A144]"
                 }`}>PM</span>
               </div>
-              <span className={`text-xl font-bold font-[Montserrat] transition-colors ${
-                isScrolled || !isHomePage ? "text-gray-900" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-              }`}>
-                The Property Masters
-              </span>
             </motion.div>
           </Link>
 
