@@ -90,34 +90,41 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-[#f5f1e8] via-[#faf7f0] to-[#f5f1e8]">
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 opacity-30">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-r from-[#f5f1e8] to-[#faf7f0]">
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full">
-          <div className="max-w-2xl">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 py-32 w-full">
+          <div className="max-w-[560px]">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 font-serif tracking-tight leading-tight">
-                Interior Design that
-                <span className="block text-primary mt-2">Speaks of You</span>
+              <h1 className="text-[64px] leading-[74px] font-bold text-foreground mb-6 font-serif tracking-tight">
+                Interior Design that Speaks of You
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed">
+              <p className="text-2xl leading-[34px] font-light text-muted-foreground mb-10">
                 From foundation to furnishings, we style your home like our own.
               </p>
-              <Link href="/book" data-testid="button-hero-consultation">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
-                  Book Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
+              <div className="flex items-center gap-4">
+                <Link href="/book" data-testid="button-hero-consultation">
+                  <Button className="bg-[#D7A144] hover:bg-[#D7A144] text-white font-semibold rounded-full px-14 py-6 text-base h-auto">
+                    Book Free Consultation
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <div className="flex items-center gap-2 bg-[#faf7f0] border border-[#D7A144] rounded-full px-6 py-3 h-10" data-testid="badge-emi">
+                  <svg className="w-5 h-5 text-[#D7A144]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-sm font-medium text-foreground">Low Cost EMI</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -127,28 +134,33 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="absolute bottom-12 left-0 right-0 z-20"
+          className="absolute bottom-16 left-0 right-0 z-20"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-lg py-6 px-8 max-w-5xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary/20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-24">
+            <div className="bg-[#fefdfb] border border-[#D7A144]/30 rounded-full shadow-lg py-4 px-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#D7A144]/40">
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
+                  const displayLabel = stat.label === "2 Countries" ? "10 Cities | 2 Countries" : stat.label;
+                  const shouldHide = stat.label === "10 Cities";
+                  
+                  if (shouldHide) return null;
+                  
                   return (
                     <motion.div
                       key={stat.label}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                      className="text-center px-4"
+                      className="text-center px-6"
                       data-testid={`stat-${index}`}
                     >
-                      <Icon className="w-6 h-6 mx-auto mb-2 text-primary" />
-                      <div className="text-2xl md:text-3xl font-bold text-primary mb-1 font-sans">
-                        {stat.value}
+                      <Icon className="w-5 h-5 mx-auto mb-2 text-[#D7A144]" />
+                      <div className="text-[32px] leading-tight font-bold text-[#D7A144] mb-1 font-sans">
+                        {stat.label === "2 Countries" ? "10 Cities" : stat.value}
                       </div>
-                      <div className="text-xs md:text-sm text-muted-foreground font-medium">
-                        {stat.label}
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
+                        {displayLabel}
                       </div>
                     </motion.div>
                   );
