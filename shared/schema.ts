@@ -42,6 +42,7 @@ export const productSchema = z.object({
   image: z.string(),
   inStock: z.boolean(),
   featured: z.boolean(),
+  discount: z.number().optional(),
 });
 
 export const insertProductSchema = productSchema.omit({ id: true });
