@@ -70,8 +70,8 @@ export function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHomePage
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+          : "bg-black/20 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -81,16 +81,24 @@ export function Navigation() {
               whileHover={{ scale: 1.02 }}
               className="flex items-center gap-2 cursor-pointer"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/70 rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg font-[Montserrat]">PM</span>
+              <div className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${
+                isScrolled || !isHomePage 
+                  ? "bg-[#D7A144]" 
+                  : "bg-white/90"
+              }`}>
+                <span className={`font-bold text-lg font-[Montserrat] ${
+                  isScrolled || !isHomePage ? "text-white" : "text-[#D7A144]"
+                }`}>PM</span>
               </div>
-              <span className={`text-xl font-bold font-[Montserrat] transition-colors ${isScrolled || !isHomePage ? "text-foreground" : "text-white drop-shadow-lg"}`}>
+              <span className={`text-xl font-bold font-[Montserrat] transition-colors ${
+                isScrolled || !isHomePage ? "text-gray-900" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+              }`}>
                 The Property Masters
               </span>
             </motion.div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-8">
             {megaMenuItems.map((item) => (
               <div
                 key={item.category}
@@ -99,8 +107,10 @@ export function Navigation() {
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  className={`text-sm font-medium transition-colors flex items-center gap-1 ${
-                    (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                  className={`text-base font-semibold transition-all flex items-center gap-1 ${
+                    (isScrolled || !isHomePage) 
+                      ? "text-gray-900 hover:text-[#D7A144]" 
+                      : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
                   }`}
                   data-testid={`menu-${item.category}`}
                 >
@@ -115,21 +125,21 @@ export function Navigation() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-background border border-border rounded-lg shadow-xl p-6"
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-2xl p-6"
                     >
-                      <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide">
+                      <h3 className="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide">
                         {item.label}
                       </h3>
                       <div className="space-y-2">
                         {getServicesByCategory(item.category!).map((service) => (
                           <Link key={service.id} href={`/services/${service.slug}`}>
                             <div
-                              className="p-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer"
+                              className="p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
                               onClick={() => setActiveMegaMenu(null)}
                               data-testid={`megamenu-service-${service.slug}`}
                             >
-                              <h4 className="font-semibold text-sm mb-1">{service.title}</h4>
-                              <p className="text-xs text-muted-foreground line-clamp-2">
+                              <h4 className="font-semibold text-sm mb-1 text-gray-900">{service.title}</h4>
+                              <p className="text-xs text-gray-600 line-clamp-2">
                                 {service.description}
                               </p>
                             </div>
@@ -148,8 +158,10 @@ export function Navigation() {
               onMouseLeave={handleMouseLeave}
             >
               <button
-                className={`text-sm font-medium transition-colors flex items-center gap-1 ${
-                  (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                className={`text-base font-semibold transition-all flex items-center gap-1 ${
+                  (isScrolled || !isHomePage) 
+                    ? "text-gray-900 hover:text-[#D7A144]" 
+                    : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
                 }`}
                 data-testid="menu-about"
               >
@@ -164,17 +176,17 @@ export function Navigation() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-background border border-border rounded-lg shadow-xl p-4"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-2xl p-4"
                   >
                     <div className="space-y-1">
                       {aboutDropdownItems.map((item) => (
                         <Link key={item.href} href={item.href}>
                           <div
-                            className="p-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer"
+                            className="p-3 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
                             onClick={() => setActiveMegaMenu(null)}
                             data-testid={`about-dropdown-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                           >
-                            <span className="font-medium text-sm">{item.label}</span>
+                            <span className="font-medium text-sm text-gray-900">{item.label}</span>
                           </div>
                         </Link>
                       ))}
@@ -187,10 +199,14 @@ export function Navigation() {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase()}`}>
                 <span
-                  className={`text-sm font-medium transition-colors cursor-pointer ${
+                  className={`text-base font-semibold transition-all cursor-pointer ${
                     location === link.href
-                      ? (isScrolled || !isHomePage) ? "text-primary" : "text-white font-semibold"
-                      : (isScrolled || !isHomePage) ? "text-foreground hover:text-primary" : "text-white/90 hover:text-white"
+                      ? (isScrolled || !isHomePage) 
+                        ? "text-[#D7A144]" 
+                        : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+                      : (isScrolled || !isHomePage) 
+                        ? "text-gray-900 hover:text-[#D7A144]" 
+                        : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
                   }`}
                 >
                   {link.label}
