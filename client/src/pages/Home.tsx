@@ -90,20 +90,15 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-r from-[#f5f1e8] to-[#faf7f0]">
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 py-32 w-full">
-          <div className="max-w-[560px]">
+      <section className="relative min-h-[85vh] bg-gradient-to-r from-[#f5f1e8] to-[#faf7f0]">
+        <div className="grid lg:grid-cols-2 min-h-[85vh]">
+          {/* Left Content */}
+          <div className="flex items-center px-6 lg:px-24 py-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="max-w-[560px]"
             >
               <h1 className="text-[64px] leading-[74px] font-bold text-foreground mb-6 font-serif tracking-tight">
                 Interior Design that Speaks of You
@@ -111,7 +106,7 @@ export default function Home() {
               <p className="text-2xl leading-[34px] font-light text-muted-foreground mb-10">
                 From foundation to furnishings, we style your home like our own.
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <Button 
                   asChild 
                   className="bg-[#D7A144] hover:bg-[#D7A144] text-white font-semibold rounded-full px-14 py-6 text-base h-auto no-default-active-elevate"
@@ -131,14 +126,29 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
-        </div>
 
-        {/* Statistics Horizontal Pill */}
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden lg:flex items-center justify-center"
+          >
+            <img 
+              src={heroImage} 
+              alt="Luxury living room interior" 
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Statistics Horizontal Pill - Below Hero */}
+      <section className="relative -mt-12 z-20 pb-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="absolute bottom-16 left-0 right-0 z-20"
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-24">
             <div className="bg-[#fefdfb] border border-[#D7A144]/30 rounded-full shadow-lg py-4 px-8 max-w-5xl mx-auto">
@@ -153,7 +163,7 @@ export default function Home() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                      className="text-center px-6"
+                      className="text-center px-6 py-2"
                       data-testid={`stat-${index}`}
                     >
                       <Icon className="w-5 h-5 mx-auto mb-2 text-[#D7A144]" />
