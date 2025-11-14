@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Building2, Users, Award, Target } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import aboutHeroImage from "@assets/stock_images/professional_design__a5c51df4.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -36,17 +37,27 @@ const values = [
 
 export default function About() {
   return (
-    <div className="min-h-screen">
-      <section className="relative h-[50vh] flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/60" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <motion.h1 {...fadeInUp} className="text-5xl lg:text-6xl font-bold mb-6 font-[Montserrat]">
+    <div className="min-h-screen pt-20">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={aboutHeroImage}
+            alt="About The Property Masters"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <motion.h1 
+            {...fadeInUp} 
+            className="text-5xl lg:text-6xl font-bold mb-6 font-serif text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+          >
             About The Property Masters
           </motion.h1>
           <motion.p
             {...fadeInUp}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            className="text-xl text-white/90 max-w-3xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
             Transforming spaces and enriching lives through exceptional design and dedicated service since 2009
           </motion.p>

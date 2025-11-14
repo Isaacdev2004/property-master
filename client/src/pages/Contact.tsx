@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { insertContactInquirySchema, type InsertContactInquiry } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import contactHeroImage from "@assets/stock_images/modern_luxury_office_a24abf7a.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -82,16 +83,26 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-24 bg-gradient-to-b from-primary/10 to-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={contactHeroImage}
+            alt="Contact The Property Masters"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">Get In Touch</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-serif text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Get In Touch
+            </h1>
+            <p className="text-xl text-white/90 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               Have a question or ready to start your project? We'd love to hear from you.
             </p>
           </motion.div>

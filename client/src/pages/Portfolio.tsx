@@ -8,6 +8,7 @@ import kitchenAfter from "@assets/generated_images/kitchen_after_renovation_cecd
 import officeImage from "@assets/generated_images/commercial_office_design_d5324a05.png";
 import bedroomImage from "@assets/generated_images/bedroom_interior_design_d3372076.png";
 import bathroomImage from "@assets/generated_images/bathroom_renovation_f7c2a685.png";
+import portfolioHeroImage from "@assets/stock_images/luxury_interior_desi_7c187bff.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -85,16 +86,26 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="py-24 bg-gradient-to-b from-primary/10 to-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={portfolioHeroImage}
+            alt="The Property Masters Portfolio"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">Our Portfolio</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-serif text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              Our Portfolio
+            </h1>
+            <p className="text-xl text-white/90 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               Explore our collection of stunning transformations and design projects
             </p>
           </motion.div>
