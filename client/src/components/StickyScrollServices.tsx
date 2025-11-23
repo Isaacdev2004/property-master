@@ -95,28 +95,27 @@ export default function StickyScrollServices() {
                     key={service.title}
                     initial={{ opacity: 0, scale: 0.8, y: 100 }}
                     animate={{
-                      opacity: isActive ? 1 : isPast ? 0 : 0.3,
-                      scale: isActive ? 1 : isPast ? 0.8 : 0.9,
-                      y: isActive ? 0 : isPast ? -100 : 100,
-                      rotateX: isActive ? 0 : isPast ? -10 : 10,
+                      opacity: isActive ? 1 : 0,
+                      scale: isActive ? 1 : 0.85,
+                      y: isActive ? 0 : isPast ? -50 : 50,
                     }}
                     transition={{
-                      duration: 0.6,
+                      duration: 0.5,
                       ease: [0.32, 0.72, 0, 1]
                     }}
                     className="absolute inset-0"
                     style={{
-                      transformStyle: "preserve-3d",
-                      perspective: "1000px"
+                      zIndex: isActive ? 10 : 0,
+                      pointerEvents: isActive ? 'auto' : 'none'
                     }}
                     data-testid={`sticky-service-${index}`}
                   >
                     <div 
-                      className={`h-full rounded-3xl bg-gradient-to-br ${service.gradient} backdrop-blur-sm border border-white/20 shadow-2xl overflow-hidden`}
+                      className={`h-full rounded-3xl bg-gradient-to-br ${service.gradient} border border-white/20 shadow-2xl overflow-hidden`}
                       style={{
                         boxShadow: isActive 
                           ? `0 25px 50px -12px ${service.accentColor}40` 
-                          : "0 10px 25px -5px rgba(0,0,0,0.1)"
+                          : "none"
                       }}
                     >
                       <div className="h-full p-8 lg:p-12 flex flex-col justify-between">
