@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import type { Service, Product, PortfolioProject } from "@shared/schema";
 import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
+import StickyScrollServices from "@/components/StickyScrollServices";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -23,24 +24,6 @@ const stats = [
   { value: "200+", label: "Property Experts", icon: Users },
   { value: "10 Cities", label: "2 Countries", icon: MapPin },
   { value: "3 Services", label: "All Property Needs", icon: Sparkles },
-];
-
-const turnkeyServices = [
-  {
-    icon: Palette,
-    title: "Interior Design & Fit-Out",
-    description: "From complete home interiors to modular kitchens, wardrobes, and custom furniture - our award-winning designers bring your vision to life.",
-  },
-  {
-    icon: Heart,
-    title: "Wellness Services",
-    description: "Create rejuvenating spaces with our spa design, wellness center fit-outs, gym facilities, and relaxation areas for ultimate well-being.",
-  },
-  {
-    icon: Shield,
-    title: "Maintenance Services",
-    description: "Keep your property in pristine condition with our comprehensive maintenance solutions - from regular upkeep to emergency repairs.",
-  },
 ];
 
 const designCategories = [
@@ -276,54 +259,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Complete Turnkey Services */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-              All Your Property Needs, One Trusted Partner
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From stunning interiors to wellness spaces and ongoing maintenance - we master every aspect of your property with exceptional quality and service.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {turnkeyServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  {...fadeInUp}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  data-testid={`service-${index}`}
-                >
-                  <Card className="h-full hover-elevate border-primary/10">
-                    <CardContent className="p-8 text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-                        <Icon className="w-8 h-8 text-primary" />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-4 font-serif">{service.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {service.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <Link href="/services">
-              <Button variant="outline" size="lg" data-testid="button-know-more">
-                Know More
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Sticky Scroll Services Section */}
+      <StickyScrollServices />
 
       {/* Why Choose Us */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
