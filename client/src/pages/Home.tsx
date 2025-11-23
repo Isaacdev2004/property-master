@@ -12,11 +12,29 @@ import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
 import StickyScrollServices from "@/components/StickyScrollServices";
 
+// Enhanced animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 }
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const fadeInScale = {
+  initial: { opacity: 0, scale: 0.9 },
+  whileInView: { opacity: 1, scale: 1 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true, amount: 0.2 }
 };
 
 const stats = [
@@ -179,18 +197,37 @@ export default function Home() {
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 py-32 w-full text-center lg:text-left">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 1, 
+              ease: [0.25, 0.46, 0.45, 0.94],
+              staggerChildren: 0.2
+            }}
             className="max-w-3xl mx-auto lg:mx-0"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl leading-tight font-bold text-white mb-6 font-serif tracking-tight">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-6xl lg:text-7xl leading-tight font-bold text-white mb-6 font-serif tracking-tight"
+            >
               Your Complete Property Solutions Partner
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed font-light text-white/90 mb-10 max-w-2xl">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl leading-relaxed font-light text-white/90 mb-10 max-w-2xl"
+            >
               From interior design to wellness facilities and maintenance - we master every aspect of your property needs.
-            </p>
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
+            >
               <Button 
                 asChild 
                 className="bg-[#D7A144] hover:bg-[#C69136] text-white font-semibold rounded-full px-12 py-6 text-base h-auto shadow-xl"
@@ -207,7 +244,7 @@ export default function Home() {
                 </svg>
                 <span className="text-sm font-medium text-white">Low Cost EMI</span>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -274,22 +311,33 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={item.title}
-                  {...fadeInUp}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  variants={fadeInScale}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   data-testid={`why-choose-${index}`}
                 >
-                  <Card className="h-full hover-elevate">
+                  <Card className="h-full hover-elevate border-primary/5 shadow-lg">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#D7A144]/10 flex items-center justify-center" data-testid={`why-choose-icon-${index}`}>
+                        <motion.div 
+                          className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#D7A144]/10 flex items-center justify-center" 
+                          data-testid={`why-choose-icon-${index}`}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        >
                           <Icon className="w-6 h-6 text-[#D7A144]" />
-                        </div>
+                        </motion.div>
                         <div>
                           <h3 className="text-xl font-bold mb-2" data-testid={`why-choose-title-${index}`}>{item.title}</h3>
                           <p className="text-muted-foreground leading-relaxed" data-testid={`why-choose-description-${index}`}>
@@ -302,7 +350,7 @@ export default function Home() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -318,22 +366,33 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-5 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.1 }}
+          >
             {ourProcess.map((process, index) => {
               const Icon = process.icon;
               return (
                 <motion.div
                   key={process.step}
-                  {...fadeInUp}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  variants={fadeInScale}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
                   className="relative"
                   data-testid={`process-${index}`}
                 >
-                  <Card className="h-full hover-elevate">
+                  <Card className="h-full hover-elevate border-primary/5 shadow-md">
                     <CardContent className="p-6 text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] text-white font-bold text-xl mb-4" data-testid={`process-step-${index}`}>
+                      <motion.div 
+                        className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] text-white font-bold text-xl mb-4" 
+                        data-testid={`process-step-${index}`}
+                        whileHover={{ scale: 1.08, rotate: 3 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         {process.step}
-                      </div>
+                      </motion.div>
                       <Icon className="w-8 h-8 mx-auto mb-4 text-[#D7A144]" data-testid={`process-icon-${index}`} />
                       <h3 className="font-bold mb-3 text-lg" data-testid={`process-title-${index}`}>{process.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`process-description-${index}`}>
@@ -342,12 +401,18 @@ export default function Home() {
                     </CardContent>
                   </Card>
                   {index < ourProcess.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#D7A144]/30" />
+                    <motion.div 
+                      className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#D7A144]/30"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.2 }}
+                      viewport={{ once: true }}
+                    />
                   )}
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           <div className="text-center mt-12">
             <Link href="/contact">
@@ -396,21 +461,30 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.1 }}
+          >
             {products.map((product, index) => (
               <motion.div
                 key={product.id}
-                {...fadeInUp}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={fadeInScale}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
                 data-testid={`product-${index}`}
               >
                 <Link href="/shop" data-testid={`link-product-${index}`}>
-                  <Card className="group hover-elevate active-elevate-2 cursor-pointer overflow-hidden border-primary/10">
+                  <Card className="group hover-elevate active-elevate-2 cursor-pointer overflow-hidden border-primary/10 shadow-md">
                     <div className="relative aspect-square overflow-hidden">
-                      <img
+                      <motion.img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
                         data-testid={`img-product-${index}`}
                       />
                     </div>
@@ -429,7 +503,7 @@ export default function Home() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <div className="text-center mt-12">
             <Link href="/shop" data-testid="link-explore-shop">
