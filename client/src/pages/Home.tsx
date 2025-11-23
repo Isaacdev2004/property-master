@@ -19,27 +19,27 @@ const fadeInUp = {
 };
 
 const stats = [
-  { value: "5000+", label: "Interior Projects", icon: Award },
-  { value: "200+", label: "Design Experts", icon: Users },
+  { value: "5000+", label: "Projects Completed", icon: Award },
+  { value: "200+", label: "Property Experts", icon: Users },
   { value: "10 Cities", label: "2 Countries", icon: MapPin },
-  { value: "2 lac+", label: "Design Options", icon: Sparkles },
+  { value: "3 Services", label: "All Property Needs", icon: Sparkles },
 ];
 
 const turnkeyServices = [
   {
     icon: Palette,
-    title: "We Design",
-    description: "From completed homes to modular kitchens, and storage to decor, our top interior designers create spaces that match your vision.",
+    title: "Interior Design & Fit-Out",
+    description: "From complete home interiors to modular kitchens, wardrobes, and custom furniture - our award-winning designers bring your vision to life.",
   },
   {
-    icon: Hammer,
-    title: "We Execute",
-    description: "We follow a meticulous planning approach with detail-driven designs for interiors of your homes.",
+    icon: Heart,
+    title: "Wellness Services",
+    description: "Create rejuvenating spaces with our spa design, wellness center fit-outs, gym facilities, and relaxation areas for ultimate well-being.",
   },
   {
     icon: Shield,
-    title: "We Manage",
-    description: "Our top interior designers spearhead quality assurance by extending support after the execution of home projects.",
+    title: "Maintenance Services",
+    description: "Keep your property in pristine condition with our comprehensive maintenance solutions - from regular upkeep to emergency repairs.",
   },
 ];
 
@@ -137,21 +137,21 @@ const testimonials = [
     name: "Sarah Al-Mansouri",
     initials: "SA",
     role: "Homeowner, Dubai Marina",
-    content: "The Property Masters transformed our apartment into a stunning modern sanctuary. Their attention to detail and professionalism exceeded all expectations. Worth every dirham!",
+    content: "The Property Masters transformed our apartment into a stunning modern sanctuary. Their interior design expertise exceeded all expectations. Worth every dirham!",
     rating: 5,
   },
   {
-    name: "Mohammed Hassan",
-    initials: "MH",
-    role: "Villa Owner, Arabian Ranches",
-    content: "From consultation to completion, the entire process was seamless. The team delivered our dream villa interior on time and within budget. Highly recommend!",
+    name: "Dr. Ahmed Khalid",
+    initials: "AK",
+    role: "Wellness Center Owner, JLT",
+    content: "They designed and built our spa facility from concept to completion. The wellness spaces they created are serene and functional. Our clients love it!",
     rating: 5,
   },
   {
-    name: "Jessica Williams",
-    initials: "JW",
-    role: "Business Owner, Business Bay",
-    content: "They designed our office space to be both functional and beautiful. Our productivity has increased, and clients are always impressed when they visit.",
+    name: "Robert Chen",
+    initials: "RC",
+    role: "Property Manager, Downtown",
+    content: "Their maintenance services keep all our properties in perfect condition. Quick response time, professional team, and excellent quality of work every time.",
     rating: 5,
   },
 ];
@@ -202,10 +202,10 @@ export default function Home() {
             className="max-w-3xl mx-auto lg:mx-0"
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl leading-tight font-bold text-white mb-6 font-serif tracking-tight">
-              Interior Design that Speaks of You
+              Your Complete Property Solutions Partner
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed font-light text-white/90 mb-10 max-w-2xl">
-              From foundation to furnishings, we style your home like our own.
+              From interior design to wellness facilities and maintenance - we master every aspect of your property needs.
             </p>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
               <Button 
@@ -281,10 +281,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-              Complete Turnkey Services
+              All Your Property Needs, One Trusted Partner
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              With an emphasis on details, extraordinary designs and exceptional customer service, we bring your dreams to life.
+              From stunning interiors to wellness spaces and ongoing maintenance - we master every aspect of your property with exceptional quality and service.
             </p>
           </motion.div>
 
@@ -333,7 +333,7 @@ export default function Home() {
               Why Choose The Property Masters?
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Dubai's most trusted interior design company with a proven track record of excellence
+              Dubai's most trusted property solutions provider with comprehensive services across design, wellness, and maintenance
             </p>
           </motion.div>
 
