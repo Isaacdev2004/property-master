@@ -11,6 +11,7 @@ import type { Service, Product, PortfolioProject } from "@shared/schema";
 import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
 import StickyScrollServices from "@/components/StickyScrollServices";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 
 // Enhanced animation variants
 const fadeInUp = {
@@ -36,13 +37,6 @@ const staggerContainer = {
   },
   viewport: { once: true, amount: 0.2 }
 };
-
-const stats = [
-  { value: "5000+", label: "Projects Completed", icon: Award },
-  { value: "200+", label: "Property Experts", icon: Users },
-  { value: "10 Cities", label: "2 Countries", icon: MapPin },
-  { value: "3 Services", label: "All Property Needs", icon: Sparkles },
-];
 
 const designCategories = [
   "Wall Colour Combination",
@@ -249,52 +243,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Horizontal Pill - Below Hero */}
-      <section className="relative -mt-12 z-20 pb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <div className="max-w-7xl mx-auto px-6 lg:px-24">
-            <div className="bg-[#fefdfb] border border-[#D7A144]/30 rounded-full shadow-lg py-4 px-8 max-w-5xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#D7A144]/40">
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
-                  const isLocationStat = stat.label === "2 Countries";
-                  
-                  return (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                      className="text-center px-6 py-2"
-                      data-testid={`stat-${index}`}
-                    >
-                      <Icon className="w-5 h-5 mx-auto mb-2 text-[#D7A144]" />
-                      {isLocationStat ? (
-                        <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium whitespace-nowrap">
-                          10 CITIES | 2 COUNTRIES
-                        </div>
-                      ) : (
-                        <>
-                          <div className="text-[32px] leading-tight font-bold text-[#D7A144] mb-1 font-sans">
-                            {stat.value}
-                          </div>
-                          <div className="text-xs uppercase tracking-wide text-muted-foreground font-medium">
-                            {stat.label}
-                          </div>
-                        </>
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
+      {/* Real Stories, Real Results - Testimonials Marquee */}
+      <TestimonialsMarquee />
 
       {/* Sticky Scroll Services Section */}
       <StickyScrollServices />
