@@ -92,7 +92,7 @@ export default function TestimonialsMarquee() {
         <motion.div
           className="flex gap-6"
           animate={{
-            x: [0, -1920],
+            x: [0, -(400 + 24) * testimonialsData.length],
           }}
           transition={{
             x: {
@@ -140,7 +140,7 @@ export default function TestimonialsMarquee() {
         <motion.div
           className="flex gap-6"
           animate={{
-            x: [-1920, 0],
+            x: [-(400 + 24) * testimonialsData.length, 0],
           }}
           transition={{
             x: {
