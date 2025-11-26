@@ -14,6 +14,7 @@ import StickyScrollServices from "@/components/StickyScrollServices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
 import ListenToCustomers from "@/components/ListenToCustomers";
+import BlogSection from "@/components/BlogSection";
 
 // Enhanced animation variants
 const fadeInUp = {
@@ -279,32 +280,8 @@ export default function Home() {
       {/* Listen to Our Customers */}
       <ListenToCustomers />
 
-      {/* From Concept to Creation Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-              From Concept to Creation: Your Furniture's Journey
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Step Inside Our Factory: See Your Kitchen or Wardrobe Come to Life
-            </p>
-          </motion.div>
-
-          <motion.div {...fadeInUp} className="relative max-w-4xl mx-auto">
-            <div className="relative aspect-video bg-muted rounded-lg overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/20 backdrop-blur-sm mb-4 hover-elevate active-elevate-2 cursor-pointer">
-                    <Play className="w-10 h-10 text-primary fill-primary" />
-                  </div>
-                  <p className="text-muted-foreground">Factory Tour Video</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Blog Section */}
+      <BlogSection />
 
       {/* Product Collection */}
       <section className="py-24 bg-background">
