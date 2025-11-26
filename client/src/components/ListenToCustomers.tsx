@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const customerStories = [
   {
+    id: "featured-1",
     name: "Sarah Al-Mansouri",
     role: "Homeowner",
     company: "Dubai Marina Villa",
@@ -13,6 +14,7 @@ const customerStories = [
     featured: true
   },
   {
+    id: "story-2",
     name: "Dr. Ahmed Khalid",
     role: "Wellness Center Owner",
     company: "Serenity Spa, JLT",
@@ -22,6 +24,7 @@ const customerStories = [
     featured: false
   },
   {
+    id: "story-3",
     name: "Michael Thompson",
     role: "CEO",
     company: "Thompson Holdings",
@@ -31,6 +34,7 @@ const customerStories = [
     featured: false
   },
   {
+    id: "story-4",
     name: "Fatima Hassan",
     role: "Property Manager",
     company: "Elite Properties Dubai",
@@ -40,6 +44,7 @@ const customerStories = [
     featured: false
   },
   {
+    id: "story-5",
     name: "James Wilson",
     role: "Hotel General Manager",
     company: "Azure Beach Resort",
@@ -49,6 +54,7 @@ const customerStories = [
     featured: false
   },
   {
+    id: "story-6",
     name: "Aisha Rahman",
     role: "Homeowner",
     company: "Palm Jumeirah",
@@ -66,7 +72,10 @@ export default function ListenToCustomers() {
   const otherStories = customerStories.filter(s => !s.featured);
 
   return (
-    <section className="py-24 px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30">
+    <section 
+      className="py-24 px-6 lg:px-8 bg-gradient-to-b from-background to-muted/30"
+      data-testid="section-listen-to-customers"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -76,13 +85,22 @@ export default function ListenToCustomers() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: luxuryEasing }}
         >
-          <p className="text-sm font-semibold tracking-widest text-[#D7A144] uppercase mb-4">
+          <p 
+            className="text-sm font-semibold tracking-widest text-[#D7A144] uppercase mb-4"
+            data-testid="text-section-label"
+          >
             Success Stories
           </p>
-          <h2 className="text-4xl lg:text-5xl font-bold font-serif mb-4">
+          <h2 
+            className="text-4xl lg:text-5xl font-bold font-serif mb-4"
+            data-testid="text-section-title"
+          >
             Listen to Our Customers
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p 
+            className="text-xl text-muted-foreground"
+            data-testid="text-section-subtitle"
+          >
             Real experiences from clients who trusted us with their vision
           </p>
         </motion.div>
@@ -95,6 +113,7 @@ export default function ListenToCustomers() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: luxuryEasing }}
+            data-testid="card-featured-testimonial"
           >
             <Card className="relative overflow-hidden border-[#D7A144]/20 shadow-xl bg-gradient-to-br from-[#D7A144]/5 to-transparent">
               <CardContent className="p-8 lg:p-12">
@@ -108,16 +127,30 @@ export default function ListenToCustomers() {
                           <Star key={i} className="w-5 h-5 fill-[#D7A144] text-[#D7A144]" />
                         ))}
                       </div>
-                      <p className="text-xl lg:text-2xl leading-relaxed mb-8 font-serif italic">
+                      <p 
+                        className="text-xl lg:text-2xl leading-relaxed mb-8 font-serif italic"
+                        data-testid="text-featured-quote"
+                      >
                         "{featuredStory.content}"
                       </p>
-                      <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold text-xl">
+                      <div className="flex items-center gap-4" data-testid="featured-author">
+                        <div 
+                          className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold text-xl"
+                          data-testid="avatar-featured-author"
+                        >
                           {featuredStory.name.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div>
-                          <p className="font-bold text-lg">{featuredStory.name}</p>
-                          <p className="text-muted-foreground">
+                          <p 
+                            className="font-bold text-lg"
+                            data-testid="text-featured-author-name"
+                          >
+                            {featuredStory.name}
+                          </p>
+                          <p 
+                            className="text-muted-foreground"
+                            data-testid="text-featured-author-role"
+                          >
                             {featuredStory.role} • {featuredStory.company}
                           </p>
                         </div>
@@ -126,7 +159,10 @@ export default function ListenToCustomers() {
                   </div>
 
                   {/* Video/Visual Section */}
-                  <div className="relative aspect-video bg-muted rounded-2xl overflow-hidden group cursor-pointer">
+                  <div 
+                    className="relative aspect-video bg-muted rounded-2xl overflow-hidden group cursor-pointer"
+                    data-testid="button-watch-video"
+                  >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#D7A144]/20 to-black/60 flex items-center justify-center">
                       <motion.div
                         className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl"
@@ -137,8 +173,8 @@ export default function ListenToCustomers() {
                       </motion.div>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <p className="text-sm font-semibold">Watch Customer Story</p>
-                      <p className="text-xs text-white/70">2:34 min</p>
+                      <p className="text-sm font-semibold" data-testid="text-video-label">Watch Customer Story</p>
+                      <p className="text-xs text-white/70" data-testid="text-video-duration">2:34 min</p>
                     </div>
                   </div>
                 </div>
@@ -148,38 +184,44 @@ export default function ListenToCustomers() {
         )}
 
         {/* Other Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="grid-testimonials">
           {otherStories.slice(0, 5).map((story, index) => (
             <motion.div
-              key={story.name}
+              key={story.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1, ease: luxuryEasing }}
-              data-testid={`customer-story-${index}`}
+              data-testid={`card-testimonial-${story.id}`}
             >
               <Card className="h-full hover-elevate border-primary/10 shadow-lg">
                 <CardContent className="p-6">
                   {/* Rating */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-4" data-testid={`rating-${story.id}`}>
                     {[...Array(story.rating)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#D7A144] text-[#D7A144]" />
                     ))}
                   </div>
 
                   {/* Quote */}
-                  <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-4">
+                  <p 
+                    className="text-muted-foreground leading-relaxed mb-6 line-clamp-4"
+                    data-testid={`text-quote-${story.id}`}
+                  >
                     "{story.content}"
                   </p>
 
                   {/* Author */}
-                  <div className="flex items-center gap-3 mt-auto">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold">
+                  <div className="flex items-center gap-3 mt-auto" data-testid={`author-${story.id}`}>
+                    <div 
+                      className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold"
+                      data-testid={`avatar-${story.id}`}
+                    >
                       {story.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <p className="font-semibold">{story.name}</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-semibold" data-testid={`text-name-${story.id}`}>{story.name}</p>
+                      <p className="text-sm text-muted-foreground" data-testid={`text-role-${story.id}`}>
                         {story.role} • {story.company}
                       </p>
                     </div>
@@ -197,9 +239,10 @@ export default function ListenToCustomers() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: luxuryEasing }}
+          data-testid="trust-indicators"
         >
           <div className="inline-flex items-center gap-8 px-8 py-4 rounded-full bg-muted/50 border border-primary/10">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" data-testid="indicator-clients">
               <div className="flex -space-x-2">
                 {[...Array(4)].map((_, i) => (
                   <div
@@ -210,16 +253,16 @@ export default function ListenToCustomers() {
                   </div>
                 ))}
               </div>
-              <span className="text-sm font-medium ml-2">500+ Happy Clients</span>
+              <span className="text-sm font-medium ml-2" data-testid="text-clients-count">500+ Happy Clients</span>
             </div>
             <div className="h-6 w-px bg-border" />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" data-testid="indicator-rating">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-[#D7A144] text-[#D7A144]" />
                 ))}
               </div>
-              <span className="text-sm font-medium">4.9/5 Average Rating</span>
+              <span className="text-sm font-medium" data-testid="text-average-rating">4.9/5 Average Rating</span>
             </div>
           </div>
         </motion.div>
