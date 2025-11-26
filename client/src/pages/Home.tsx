@@ -13,6 +13,7 @@ import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd
 import StickyScrollServices from "@/components/StickyScrollServices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
+import ListenToCustomers from "@/components/ListenToCustomers";
 
 // Enhanced animation variants
 const fadeInUp = {
@@ -274,6 +275,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Listen to Our Customers */}
+      <ListenToCustomers />
 
       {/* From Concept to Creation Section */}
       <section className="py-24 bg-muted/30">
