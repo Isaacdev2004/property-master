@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles, CheckCircle2, Clock, TrendingUp, Heart, Star, Quote, BadgeCheck, Zap, Target } from "lucide-react";
+import { ArrowRight, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles, CheckCircle2, Clock, TrendingUp, Heart, Star, Quote, BadgeCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -92,39 +92,6 @@ const whyChooseUs = [
     icon: Heart,
     title: "Post-Service Support",
     description: "Dedicated support team available even after project completion for your satisfaction.",
-  },
-];
-
-const ourProcess = [
-  {
-    step: "01",
-    title: "Free Consultation",
-    description: "Meet with our design experts to discuss your vision, budget, and requirements. We listen to understand your unique needs.",
-    icon: Target,
-  },
-  {
-    step: "02",
-    title: "Design & 3D Visualization",
-    description: "Our designers create detailed plans and photorealistic 3D renders so you can see your space before we build.",
-    icon: Palette,
-  },
-  {
-    step: "03",
-    title: "Material Selection",
-    description: "Choose from our curated collection of premium materials, finishes, and furnishings that match your style and budget.",
-    icon: Sparkles,
-  },
-  {
-    step: "04",
-    title: "Expert Execution",
-    description: "Our skilled craftsmen bring the design to life with meticulous attention to detail and quality workmanship.",
-    icon: Hammer,
-  },
-  {
-    step: "05",
-    title: "Quality Check & Handover",
-    description: "Comprehensive quality inspection followed by a smooth handover with detailed documentation and warranty.",
-    icon: CheckCircle2,
   },
 ];
 
@@ -305,77 +272,6 @@ export default function Home() {
               );
             })}
           </motion.div>
-        </div>
-      </section>
-
-      {/* Our Process */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-              Our Proven 5-Step Process
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From initial consultation to final handover, we ensure a seamless and stress-free experience
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-5 gap-6"
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            {ourProcess.map((process, index) => {
-              const Icon = process.icon;
-              return (
-                <motion.div
-                  key={process.step}
-                  variants={fadeInScale}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                  className="relative"
-                  data-testid={`process-${index}`}
-                >
-                  <Card className="h-full hover-elevate border-primary/5 shadow-md">
-                    <CardContent className="p-6 text-center">
-                      <motion.div 
-                        className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] text-white font-bold text-xl mb-4" 
-                        data-testid={`process-step-${index}`}
-                        whileHover={{ scale: 1.08, rotate: 3 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {process.step}
-                      </motion.div>
-                      <Icon className="w-8 h-8 mx-auto mb-4 text-[#D7A144]" data-testid={`process-icon-${index}`} />
-                      <h3 className="font-bold mb-3 text-lg" data-testid={`process-title-${index}`}>{process.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`process-description-${index}`}>
-                        {process.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                  {index < ourProcess.length - 1 && (
-                    <motion.div 
-                      className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-[#D7A144]/30"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      transition={{ duration: 0.5, delay: index * 0.2 }}
-                      viewport={{ once: true }}
-                    />
-                  )}
-                </motion.div>
-              );
-            })}
-          </motion.div>
-
-          <div className="text-center mt-12">
-            <Link href="/contact">
-              <Button size="lg" data-testid="button-start-journey">
-                Start Your Design Journey
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 

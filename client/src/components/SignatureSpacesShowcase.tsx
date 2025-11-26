@@ -172,16 +172,18 @@ export default function SignatureSpacesShowcase() {
                 </h3>
 
                 <p className={`mb-3 ${
-                  item.isHero ? "text-xl" : "text-lg"
+                  item.isHero ? "text-xl" : "text-base"
                 }`} style={{ color: "#D7A144" }}>
                   {item.tagline}
                 </p>
 
-                {item.isHero && (
-                  <p className="text-base lg:text-lg text-white/90 mb-4 max-w-lg">
-                    {item.description}
-                  </p>
-                )}
+                <p className={`text-white/90 mb-4 ${
+                  item.isHero 
+                    ? "text-base lg:text-lg max-w-lg" 
+                    : "text-sm line-clamp-2"
+                }`}>
+                  {item.description}
+                </p>
 
                 <div className="flex items-center justify-between mt-auto pt-4">
                   <span className="text-sm font-semibold text-white/80">
