@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Palette, Hammer, Shield, Play, Award, Users, MapPin, Sparkles, CheckCircle2, Clock, TrendingUp, Heart, Star, Quote, BadgeCheck, Zap } from "lucide-react";
+import { ArrowRight, Palette, Hammer, Shield, Award, Users, MapPin, Sparkles, CheckCircle2, Clock, TrendingUp, Heart, Star, Quote, BadgeCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
