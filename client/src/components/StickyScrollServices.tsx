@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Palette, Heart, Shield, ArrowRight } from "lucide-react";
+import { Palette, Heart, Shield, ShoppingBag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -18,7 +18,8 @@ const services = [
       "3D Visualization & Planning"
     ],
     gradient: "from-[#D7A144]/20 via-amber-500/10 to-orange-500/5",
-    accentColor: "#D7A144"
+    accentColor: "#D7A144",
+    ctaLink: "/services"
   },
   {
     icon: Heart,
@@ -33,7 +34,8 @@ const services = [
       "Holistic Environment Planning"
     ],
     gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
-    accentColor: "#10b981"
+    accentColor: "#10b981",
+    ctaLink: "/services"
   },
   {
     icon: Shield,
@@ -48,7 +50,24 @@ const services = [
       "24/7 Support Available"
     ],
     gradient: "from-blue-500/20 via-indigo-500/10 to-violet-500/5",
-    accentColor: "#3b82f6"
+    accentColor: "#3b82f6",
+    ctaLink: "/services"
+  },
+  {
+    icon: ShoppingBag,
+    title: "Premium Furniture Store",
+    subtitle: "Shop Exclusive Decor & Furniture",
+    description: "Explore our curated collection of premium furniture, decor items, and home accessories. From elegant sofas to stunning wallpapers - find everything to complete your dream space.",
+    features: [
+      "Designer Furniture Collection",
+      "Premium Wallpapers & Wall Art",
+      "Luxury Home Accessories",
+      "Custom Upholstery Options",
+      "Exclusive Discounts & Deals"
+    ],
+    gradient: "from-purple-500/20 via-pink-500/10 to-rose-500/5",
+    accentColor: "#a855f7",
+    ctaLink: "/shop"
   }
 ];
 
@@ -201,8 +220,8 @@ export default function StickyScrollServices() {
                   }}
                   data-testid="button-explore-service"
                 >
-                  <Link href="/services">
-                    Explore This Service
+                  <Link href={services[activeIndex].ctaLink}>
+                    {activeIndex === 3 ? "Shop Now" : "Explore This Service"}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
