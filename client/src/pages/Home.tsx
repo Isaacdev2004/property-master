@@ -12,6 +12,7 @@ import { useState } from "react";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
 import StickyScrollServices from "@/components/StickyScrollServices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
+import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
 
 // Enhanced animation variants
 const fadeInUp = {
@@ -248,6 +249,9 @@ export default function Home() {
 
       {/* Sticky Scroll Services Section */}
       <StickyScrollServices />
+
+      {/* Signature Spaces Showcase */}
+      <SignatureSpacesShowcase />
 
       {/* Why Choose Us */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
