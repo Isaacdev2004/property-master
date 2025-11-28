@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-visible pb-16">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -144,7 +144,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute -bottom-8 inset-x-0 z-20 flex justify-center px-4"
+          className="absolute bottom-0 inset-x-0 z-20 flex justify-center px-4"
         >
           <div 
             className="bg-white rounded-full shadow-2xl py-3 px-6 md:px-8 inline-flex items-center gap-4 md:gap-6"
