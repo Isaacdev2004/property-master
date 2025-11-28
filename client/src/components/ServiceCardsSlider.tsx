@@ -11,7 +11,7 @@ const fitoutServices = [
     description: "Transform your space with bespoke interior designs that reflect your unique style and personality.",
     icon: Paintbrush,
     link: "/services/interior-design",
-    gradient: "from-amber-600/80 to-orange-700/80",
+    gradient: "from-[#970A44]/90 to-[#720632]/90",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const fitoutServices = [
     description: "Complete fit-out solutions from concept to completion for residential and commercial spaces.",
     icon: Building2,
     link: "/services/fit-out",
-    gradient: "from-stone-600/80 to-stone-800/80",
+    gradient: "from-[#1C4668]/90 to-[#09263D]/90",
   },
 ];
 
@@ -30,7 +30,7 @@ const maintenanceServices = [
     description: "Comprehensive maintenance services to keep your property in pristine condition year-round.",
     icon: Wrench,
     link: "/services/maintenance",
-    gradient: "from-slate-600/80 to-slate-800/80",
+    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const maintenanceServices = [
     description: "Expert mechanical, electrical, and plumbing services for all your property needs.",
     icon: Zap,
     link: "/services/mep",
-    gradient: "from-zinc-600/80 to-zinc-800/80",
+    gradient: "from-[#720632]/90 to-[#970A44]/90",
   },
 ];
 
@@ -156,8 +156,8 @@ export default function ServiceCardsSlider() {
             className="flex items-center gap-2 mb-4"
             data-testid="label-fitout-services"
           >
-            <Hammer className="w-5 h-5 text-[#D7A144]" />
-            <h3 className="text-lg font-semibold text-[#D7A144]">Fit-Out & Design</h3>
+            <Hammer className="w-5 h-5 text-[#970A44]" />
+            <h3 className="text-lg font-semibold text-[#970A44]">Fit-Out & Design</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {fitoutServices.map((service, index) => (
@@ -177,8 +177,8 @@ export default function ServiceCardsSlider() {
             className="flex items-center gap-2 mb-4"
             data-testid="label-maintenance-services"
           >
-            <ShieldCheck className="w-5 h-5 text-[#D7A144]" />
-            <h3 className="text-lg font-semibold text-[#D7A144]">Maintenance Services</h3>
+            <ShieldCheck className="w-5 h-5 text-[#970A44]" />
+            <h3 className="text-lg font-semibold text-[#970A44]">Maintenance Services</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {maintenanceServices.map((service, index) => (
@@ -198,7 +198,7 @@ export default function ServiceCardsSlider() {
           <Button 
             asChild
             variant="outline"
-            className="rounded-full px-8 py-6 h-auto border-[#D7A144] text-[#D7A144] hover:bg-[#D7A144] hover:text-white"
+            className="rounded-full px-8 py-6 h-auto border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
             data-testid="button-view-all-services"
           >
             <Link href="/services">

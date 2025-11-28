@@ -83,11 +83,11 @@ export function Navigation() {
             >
               <div className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${
                 isScrolled || !isHomePage 
-                  ? "bg-[#D7A144]" 
+                  ? "bg-[#970A44]" 
                   : "bg-white/90"
               }`}>
                 <span className={`font-bold text-lg font-[Montserrat] ${
-                  isScrolled || !isHomePage ? "text-white" : "text-[#D7A144]"
+                  isScrolled || !isHomePage ? "text-white" : "text-[#970A44]"
                 }`}>PM</span>
               </div>
             </motion.div>
@@ -104,8 +104,8 @@ export function Navigation() {
                 <button
                   className={`text-base font-semibold transition-all flex items-center gap-1 ${
                     (isScrolled || !isHomePage) 
-                      ? "text-gray-900 hover:text-[#D7A144]" 
-                      : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
+                      ? "text-gray-900 hover:text-[#970A44]" 
+                      : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#970A44]"
                   }`}
                   data-testid={`menu-${item.category}`}
                 >
@@ -155,8 +155,8 @@ export function Navigation() {
               <button
                 className={`text-base font-semibold transition-all flex items-center gap-1 ${
                   (isScrolled || !isHomePage) 
-                    ? "text-gray-900 hover:text-[#D7A144]" 
-                    : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
+                    ? "text-gray-900 hover:text-[#970A44]" 
+                    : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#970A44]"
                 }`}
                 data-testid="menu-about"
               >
@@ -197,11 +197,11 @@ export function Navigation() {
                   className={`text-base font-semibold transition-all cursor-pointer ${
                     location === link.href
                       ? (isScrolled || !isHomePage) 
-                        ? "text-[#D7A144]" 
+                        ? "text-[#970A44]" 
                         : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                       : (isScrolled || !isHomePage) 
-                        ? "text-gray-900 hover:text-[#D7A144]" 
-                        : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#D7A144]"
+                        ? "text-gray-900 hover:text-[#970A44]" 
+                        : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#970A44]"
                   }`}
                 >
                   {link.label}
@@ -218,7 +218,7 @@ export function Navigation() {
             </Link>
             <Link href="/contact" data-testid="link-consultation">
               <Button 
-                className="bg-[#D7A144] hover:bg-[#C69136] text-white font-semibold rounded-full px-6"
+                className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-6"
               >
                 Get Free Consultation
               </Button>

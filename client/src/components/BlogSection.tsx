@@ -60,7 +60,7 @@ const blogPosts = [
 const luxuryEasing = [0.25, 0.46, 0.45, 0.94] as const;
 
 const categoryColors: Record<string, string> = {
-  "Interior Design": "bg-[#D7A144]/10 text-[#D7A144] border-[#D7A144]/20",
+  "Interior Design": "bg-[#970A44]/10 text-[#970A44] border-[#970A44]/20",
   "Wellness": "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
   "Maintenance": "bg-blue-500/10 text-blue-600 border-blue-500/20",
   "Furniture": "bg-purple-500/10 text-purple-600 border-purple-500/20"
@@ -86,7 +86,7 @@ export default function BlogSection() {
         >
           <div>
             <p 
-              className="text-sm font-semibold tracking-widest text-[#D7A144] uppercase mb-4"
+              className="text-sm font-semibold tracking-widest text-[#970A44] uppercase mb-4"
               data-testid="text-blog-label"
             >
               Insights & Inspiration
@@ -151,7 +151,7 @@ export default function BlogSection() {
                       </span>
                     </div>
                     <h3 
-                      className="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-[#D7A144] transition-colors"
+                      className="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-[#970A44] transition-colors"
                       data-testid={`text-title-${featuredPost.id}`}
                     >
                       {featuredPost.title}
@@ -163,7 +163,7 @@ export default function BlogSection() {
                       {featuredPost.excerpt}
                     </p>
                     <div className="flex items-center gap-3" data-testid={`author-${featuredPost.id}`}>
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold text-sm">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-sm">
                         {featuredPost.author.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
@@ -217,7 +217,7 @@ export default function BlogSection() {
                           </span>
                         </div>
                         <h3 
-                          className="text-lg font-bold mb-2 group-hover:text-[#D7A144] transition-colors line-clamp-2"
+                          className="text-lg font-bold mb-2 group-hover:text-[#970A44] transition-colors line-clamp-2"
                           data-testid={`text-title-${post.id}`}
                         >
                           {post.title}
@@ -229,7 +229,7 @@ export default function BlogSection() {
                           {post.excerpt}
                         </p>
                         <div className="flex items-center gap-2 mt-4" data-testid={`author-${post.id}`}>
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold text-xs">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-xs">
                             {post.author.split(' ').map(n => n[0]).join('')}
                           </div>
                           <p className="text-xs font-medium">{post.author}</p>
@@ -259,11 +259,11 @@ export default function BlogSection() {
             <input 
               type="email" 
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg border border-primary/20 bg-background focus:outline-none focus:ring-2 focus:ring-[#D7A144]/50"
+              className="flex-1 px-4 py-3 rounded-lg border border-primary/20 bg-background focus:outline-none focus:ring-2 focus:ring-[#970A44]/50"
               data-testid="input-newsletter-email"
             />
             <Button 
-              className="bg-[#D7A144] hover:bg-[#C69136] text-white"
+              className="bg-[#970A44] hover:bg-[#720632] text-white"
               data-testid="button-subscribe-newsletter"
             >
               Subscribe

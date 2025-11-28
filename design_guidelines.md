@@ -8,9 +8,16 @@ Drawing inspiration from interiorcompany.com (elegant spacing and structure), th
 
 ## Core Design Principles
 
-**Visual Language:** Warm luxury minimalism - sophisticated beige-gold palette with serif typography for premium feel. Every element serves a purpose, breathing room is intentional, and sophistication comes from restraint rather than embellishment.
+**Visual Language:** Warm luxury minimalism - sophisticated maroon and navy palette with cream backgrounds and serif typography for premium feel. Every element serves a purpose, breathing room is intentional, and sophistication comes from restraint rather than embellishment.
 
-**Color Palette:** Warm beige-gold (#f5f1e8 to #faf7f0) with golden accents (hsl(40, 75%, 55%)) replacing the previous amber/orange scheme for a more luxurious, refined aesthetic.
+**Color Palette:** 
+- Primary Maroon: #970A44 (Bright Maroon) - CTAs, buttons, accents, hover states
+- Dark Maroon: #720632 - Darker accents, hover states, gradients
+- Cream: #F6F4EB - Light backgrounds, cards
+- Steel Blue: #1C4668 - Secondary accent, service cards
+- Dark Navy: #09263D - Dark backgrounds, text, footer accents
+
+This palette creates a sophisticated, premium aesthetic with warm maroon tones contrasted by cool navy blues, all on a soft cream canvas.
 
 **Hierarchy:** Clear visual flow from hero impact → service showcases → portfolio credibility → conversion points.
 

@@ -158,7 +158,7 @@ export default function SignatureSpacesShowcase() {
                 {/* Gold Accent Line */}
                 <motion.div
                   className="w-16 h-1 mb-4"
-                  style={{ backgroundColor: "#D7A144" }}
+                  style={{ backgroundColor: "#970A44" }}
                   initial={{ width: 0 }}
                   whileInView={{ width: 64 }}
                   viewport={{ once: true }}
@@ -173,7 +173,7 @@ export default function SignatureSpacesShowcase() {
 
                 <p className={`mb-3 ${
                   item.isHero ? "text-xl" : "text-base"
-                }`} style={{ color: "#D7A144" }}>
+                }`} style={{ color: "#970A44" }}>
                   {item.tagline}
                 </p>
 
@@ -194,7 +194,7 @@ export default function SignatureSpacesShowcase() {
                     asChild
                     variant="ghost"
                     size="sm"
-                    className="text-white hover:text-[#D7A144] transition-colors"
+                    className="text-white hover:text-[#970A44] transition-colors"
                     data-testid={`button-cta-${index}`}
                   >
                     <Link href={item.cta.link}>

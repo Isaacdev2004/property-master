@@ -85,7 +85,7 @@ export default function ListenToCustomers() {
           transition={{ duration: 0.6, ease: luxuryEasing }}
         >
           <p 
-            className="text-sm font-semibold tracking-widest text-[#D7A144] uppercase mb-4"
+            className="text-sm font-semibold tracking-widest text-[#970A44] uppercase mb-4"
             data-testid="text-section-label"
           >
             Success Stories
@@ -114,16 +114,16 @@ export default function ListenToCustomers() {
             transition={{ duration: 0.6, ease: luxuryEasing }}
             data-testid="card-featured-testimonial"
           >
-            <Card className="relative overflow-hidden border-[#D7A144]/20 shadow-xl bg-gradient-to-br from-[#D7A144]/5 to-transparent">
+            <Card className="relative overflow-hidden border-[#970A44]/20 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-transparent">
               <CardContent className="p-8 lg:p-12">
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   {/* Quote Section */}
                   <div className="relative">
-                    <Quote className="absolute -top-2 -left-2 w-16 h-16 text-[#D7A144]/20" />
+                    <Quote className="absolute -top-2 -left-2 w-16 h-16 text-[#970A44]/20" />
                     <div className="relative z-10">
                       <div className="flex gap-1 mb-6" data-testid="featured-rating">
                         {[...Array(featuredStory.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-[#D7A144] text-[#D7A144]" />
+                          <Star key={i} className="w-5 h-5 fill-[#970A44] text-[#970A44]" />
                         ))}
                       </div>
                       <p 
@@ -134,7 +134,7 @@ export default function ListenToCustomers() {
                       </p>
                       <div className="flex items-center gap-4" data-testid="featured-author">
                         <div 
-                          className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold text-xl"
+                          className="w-16 h-16 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-xl"
                           data-testid="avatar-featured-author"
                         >
                           {featuredStory.name.split(' ').map(n => n[0]).join('')}
@@ -162,13 +162,13 @@ export default function ListenToCustomers() {
                     className="relative aspect-video bg-muted rounded-2xl overflow-hidden group cursor-pointer"
                     data-testid="button-watch-video"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#D7A144]/20 to-black/60 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#970A44]/20 to-black/60 flex items-center justify-center">
                       <motion.div
                         className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl"
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Play className="w-8 h-8 text-[#D7A144] fill-[#D7A144] ml-1" />
+                        <Play className="w-8 h-8 text-[#970A44] fill-[#970A44] ml-1" />
                       </motion.div>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
