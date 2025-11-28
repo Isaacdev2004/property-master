@@ -111,21 +111,21 @@ export default function DesignDetail() {
       {/* Breadcrumb */}
       <div className="bg-muted/30 py-4">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/">
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="breadcrumb-nav">
+            <Link href="/" data-testid="link-breadcrumb-home">
               <span className="hover:text-foreground cursor-pointer">Home</span>
             </Link>
             <span>/</span>
-            <Link href="/interior-design">
+            <Link href="/interior-design" data-testid="link-breadcrumb-interior">
               <span className="hover:text-foreground cursor-pointer">Interior Design</span>
             </Link>
             <span>/</span>
-            <Link href={`/interior-design/${category}`}>
+            <Link href={`/interior-design/${category}`} data-testid="link-breadcrumb-category">
               <span className="hover:text-foreground cursor-pointer">{design.categoryLabel}</span>
             </Link>
             <span>/</span>
             <span className="text-foreground">{design.title}</span>
-          </div>
+          </nav>
         </div>
       </div>
 
@@ -145,10 +145,10 @@ export default function DesignDetail() {
                 className="w-full aspect-[4/3] object-cover"
               />
               <div className="absolute top-4 right-4 flex gap-2">
-                <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white">
+                <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white" data-testid="button-favorite">
                   <Heart className="w-5 h-5 text-[#970A44]" />
                 </Button>
-                <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white">
+                <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white" data-testid="button-share">
                   <Share2 className="w-5 h-5 text-[#970A44]" />
                 </Button>
               </div>
@@ -160,6 +160,7 @@ export default function DesignDetail() {
                   className={`relative rounded-lg overflow-hidden aspect-square ${
                     index === 0 ? "ring-2 ring-[#970A44]" : ""
                   }`}
+                  data-testid={`button-gallery-${index}`}
                 >
                   <img 
                     src={img}
@@ -219,6 +220,7 @@ export default function DesignDetail() {
                 asChild
                 size="lg"
                 className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8 flex-1 sm:flex-none"
+                data-testid="button-book-consultation"
               >
                 <Link href="/contact">
                   <Calendar className="mr-2 w-5 h-5" />
@@ -230,6 +232,7 @@ export default function DesignDetail() {
                 variant="outline"
                 size="lg"
                 className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full px-8 flex-1 sm:flex-none"
+                data-testid="button-call-now"
               >
                 <a href="tel:+97125500888">
                   <Phone className="mr-2 w-5 h-5" />
@@ -240,6 +243,7 @@ export default function DesignDetail() {
                 variant="outline"
                 size="icon"
                 className="rounded-full"
+                data-testid="button-download"
               >
                 <Download className="w-5 h-5" />
               </Button>
@@ -255,6 +259,7 @@ export default function DesignDetail() {
               asChild
               variant="outline"
               className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-related"
             >
               <Link href={`/interior-design/${category}`}>
                 View All
@@ -271,8 +276,8 @@ export default function DesignDetail() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
               >
-                <Link href={`/interior-design/${category}/${related.slug}`}>
-                  <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer">
+                <Link href={`/interior-design/${category}/${related.slug}`} data-testid={`link-related-${related.id}`}>
+                  <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-related-${related.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <img 
                         src={related.image}
@@ -313,6 +318,7 @@ export default function DesignDetail() {
               asChild
               size="lg"
               className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+              data-testid="button-get-quote"
             >
               <Link href="/contact">
                 Get a Free Quote
@@ -324,6 +330,7 @@ export default function DesignDetail() {
               variant="outline"
               size="lg"
               className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
+              data-testid="button-browse-more"
             >
               <Link href={`/interior-design/${category}`}>
                 <ArrowLeft className="mr-2 w-5 h-5" />

@@ -242,17 +242,17 @@ export default function DesignCategory() {
             transition={{ duration: 0.8 }}
           >
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-white/70 text-sm mb-6">
-              <Link href="/">
+            <nav className="flex items-center gap-2 text-white/70 text-sm mb-6" data-testid="breadcrumb-nav">
+              <Link href="/" data-testid="link-breadcrumb-home">
                 <span className="hover:text-white cursor-pointer">Home</span>
               </Link>
               <span>/</span>
-              <Link href="/interior-design">
+              <Link href="/interior-design" data-testid="link-breadcrumb-interior">
                 <span className="hover:text-white cursor-pointer">Interior Design</span>
               </Link>
               <span>/</span>
               <span className="text-white">{data.title.replace(" Designs", "")}</span>
-            </div>
+            </nav>
 
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 bg-[#970A44] rounded-xl flex items-center justify-center">
@@ -303,6 +303,7 @@ export default function DesignCategory() {
                   size="icon"
                   onClick={() => setViewMode("grid")}
                   className={viewMode === "grid" ? "bg-muted" : ""}
+                  data-testid="button-view-grid"
                 >
                   <Grid3X3 className="w-4 h-4" />
                 </Button>
@@ -311,6 +312,7 @@ export default function DesignCategory() {
                   size="icon"
                   onClick={() => setViewMode("large")}
                   className={viewMode === "large" ? "bg-muted" : ""}
+                  data-testid="button-view-large"
                 >
                   <LayoutGrid className="w-4 h-4" />
                 </Button>
@@ -336,8 +338,8 @@ export default function DesignCategory() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Link href={`/interior-design/${category}/${design.slug}`}>
-                  <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer">
+                <Link href={`/interior-design/${category}/${design.slug}`} data-testid={`link-design-${design.id}`}>
+                  <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-design-${design.id}`}>
                     <div className={`relative overflow-hidden ${viewMode === "large" ? "aspect-[4/3]" : "aspect-square"}`}>
                       <img 
                         src={design.image}
@@ -372,7 +374,7 @@ export default function DesignCategory() {
             <Button 
               variant="outline"
               className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
-              data-testid="button-load-more"
+              data-testid={`button-load-more-${category}`}
             >
               Load More Designs
               <ArrowRight className="ml-2 w-4 h-4" />
@@ -389,7 +391,7 @@ export default function DesignCategory() {
             {Object.entries(categoryData).map(([key, cat]) => {
               const CatIcon = cat.icon;
               return (
-                <Link key={key} href={`/interior-design/${key}`}>
+                <Link key={key} href={`/interior-design/${key}`} data-testid={`link-category-${key}`}>
                   <div className={`p-4 rounded-xl text-center hover-elevate cursor-pointer transition-all ${
                     key === category ? "bg-[#970A44] text-white" : "bg-background border hover:border-[#970A44]"
                   }`}>
@@ -417,6 +419,7 @@ export default function DesignCategory() {
               asChild
               size="lg"
               className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+              data-testid="button-category-consultation"
             >
               <Link href="/contact">
                 Book Free Consultation
@@ -428,6 +431,7 @@ export default function DesignCategory() {
               variant="outline"
               size="lg"
               className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
+              data-testid="button-back-categories"
             >
               <Link href="/interior-design">
                 <ArrowLeft className="mr-2 w-5 h-5" />

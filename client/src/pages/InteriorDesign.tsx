@@ -360,7 +360,7 @@ export default function InteriorDesign() {
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="text-center">
+                  <div key={index} className="text-center" data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}>
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-[#970A44]/10 rounded-xl mb-3">
                       <Icon className="w-6 h-6 text-[#970A44]" />
                     </div>
@@ -477,7 +477,10 @@ export default function InteriorDesign() {
                   className="w-full h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                  <button className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg">
+                  <button 
+                    className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg"
+                    data-testid="button-play-video"
+                  >
                     <Play className="w-8 h-8 text-[#970A44] ml-1" />
                   </button>
                 </div>
@@ -539,7 +542,10 @@ export default function InteriorDesign() {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                       >
                         <Link href={`/interior-design/${category.id}/${idea.slug}`}>
-                          <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer">
+                          <Card 
+                            className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer"
+                            data-testid={`card-design-${category.id}-${idea.id}`}
+                          >
                             <div className="relative aspect-[4/3] overflow-hidden">
                               <img 
                                 src={idea.image}
@@ -656,7 +662,7 @@ export default function InteriorDesign() {
                 asChild
                 size="lg"
                 className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
-                data-testid="button-cta-consultation"
+                data-testid="button-cta-book-consultation"
               >
                 <Link href="/contact">
                   Book Free Consultation
@@ -668,7 +674,7 @@ export default function InteriorDesign() {
                 variant="outline"
                 size="lg"
                 className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
-                data-testid="button-cta-call"
+                data-testid="button-cta-call-now"
               >
                 <a href="tel:+97125500888">
                   Call +971 2550 0888
