@@ -69,7 +69,6 @@ const luxuryEasing = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function ListenToCustomers() {
   const featuredStory = customerStories.find(s => s.featured);
-  const otherStories = customerStories.filter(s => !s.featured);
 
   return (
     <section 
@@ -183,89 +182,6 @@ export default function ListenToCustomers() {
           </motion.div>
         )}
 
-        {/* Other Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="grid-testimonials">
-          {otherStories.slice(0, 5).map((story, index) => (
-            <motion.div
-              key={story.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: luxuryEasing }}
-              data-testid={`card-testimonial-${story.id}`}
-            >
-              <Card className="h-full hover-elevate border-primary/10 shadow-lg">
-                <CardContent className="p-6">
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4" data-testid={`rating-${story.id}`}>
-                    {[...Array(story.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#D7A144] text-[#D7A144]" />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <p 
-                    className="text-muted-foreground leading-relaxed mb-6 line-clamp-4"
-                    data-testid={`text-quote-${story.id}`}
-                  >
-                    "{story.content}"
-                  </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-3 mt-auto" data-testid={`author-${story.id}`}>
-                    <div 
-                      className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] flex items-center justify-center text-white font-bold"
-                      data-testid={`avatar-${story.id}`}
-                    >
-                      {story.name.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <div>
-                      <p className="font-semibold" data-testid={`text-name-${story.id}`}>{story.name}</p>
-                      <p className="text-sm text-muted-foreground" data-testid={`text-role-${story.id}`}>
-                        {story.role} • {story.company}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: luxuryEasing }}
-          data-testid="trust-indicators"
-        >
-          <div className="inline-flex items-center gap-8 px-8 py-4 rounded-full bg-muted/50 border border-primary/10">
-            <div className="flex items-center gap-2" data-testid="indicator-clients">
-              <div className="flex -space-x-2">
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-[#D7A144] to-[#C69136] border-2 border-background flex items-center justify-center text-white text-xs font-bold"
-                  >
-                    {String.fromCharCode(65 + i)}
-                  </div>
-                ))}
-              </div>
-              <span className="text-sm font-medium ml-2" data-testid="text-clients-count">500+ Happy Clients</span>
-            </div>
-            <div className="h-6 w-px bg-border" />
-            <div className="flex items-center gap-2" data-testid="indicator-rating">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#D7A144] text-[#D7A144]" />
-                ))}
-              </div>
-              <span className="text-sm font-medium" data-testid="text-average-rating">4.9/5 Average Rating</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
