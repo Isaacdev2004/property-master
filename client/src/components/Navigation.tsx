@@ -216,6 +216,13 @@ export function Navigation() {
                 <ShoppingCart className="w-5 h-5" />
               </Button>
             </Link>
+            <Link href="/contact" data-testid="link-consultation">
+              <Button 
+                className="bg-[#D7A144] hover:bg-[#C69136] text-white font-semibold rounded-full px-6"
+              >
+                Get Free Consultation
+              </Button>
+            </Link>
           </div>
 
           <Button
