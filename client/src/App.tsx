@@ -15,6 +15,9 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import InteriorDesign from "@/pages/InteriorDesign";
+import DesignCategory from "@/pages/DesignCategory";
+import DesignDetail from "@/pages/DesignDetail";
 import NotFound from "@/pages/NotFound";
 
 function Router() {
@@ -26,6 +29,9 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/services" component={Services} />
           <Route path="/services/:slug" component={Services} />
+          <Route path="/interior-design" component={InteriorDesign} />
+          <Route path="/interior-design/:category" component={DesignCategory} />
+          <Route path="/interior-design/:category/:slug" component={DesignDetail} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/shop" component={Shop} />
           <Route path="/cart" component={Cart} />
