@@ -7,6 +7,7 @@ import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd
 import StickyScrollServices from "@/components/StickyScrollServices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
+import ServiceCardsSlider from "@/components/ServiceCardsSlider";
 import ListenToCustomers from "@/components/ListenToCustomers";
 import BlogSection from "@/components/BlogSection";
 
@@ -207,6 +208,9 @@ export default function Home() {
 
       {/* Sticky Scroll Services Section */}
       <StickyScrollServices />
+
+      {/* Service Cards Slider - 2x2 Grid */}
+      <ServiceCardsSlider />
 
       {/* Signature Spaces Showcase */}
       <SignatureSpacesShowcase />
