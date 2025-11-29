@@ -118,7 +118,7 @@ export default function Home() {
       {/* Hero + Reviews Section - 100vh combined for instant trust */}
       <div className="h-screen flex flex-col">
         {/* Hero Section - Takes ~60% of viewport */}
-        <section className="relative flex-[6] flex items-center justify-center overflow-hidden">
+        <section className="relative flex-[6] flex items-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -127,95 +127,102 @@ export default function Home() {
               className="w-full h-full object-cover"
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
           </div>
 
-          {/* Hero Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.8, 
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
-              className="max-w-3xl mx-auto lg:mx-0"
-            >
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-white mb-4 font-serif tracking-tight"
-              >
-                Your Complete Property Solutions Partner
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-lg md:text-xl leading-relaxed font-light text-white/90 mb-6 max-w-2xl"
-              >
-                From interior design to wellness facilities and maintenance - we master every aspect of your property needs.
-              </motion.p>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
-              >
-                <Button 
-                  asChild 
-                  className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-8 py-5 text-sm h-auto shadow-xl"
-                  data-testid="button-hero-consultation"
+          {/* Hero Content - Two Column Layout */}
+          <div className="relative z-10 w-full">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+              <div className="grid lg:grid-cols-2 gap-6 items-center">
+                {/* Left Column - Text Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  <Link href="/contact">
-                    Book Free Consultation
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 rounded-full px-5 py-2.5" data-testid="badge-emi">
-                  <svg className="w-4 h-4 text-[#970A44]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm font-medium text-white">Low Cost EMI</span>
-                </div>
-              </motion.div>
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-3 font-serif"
+                  >
+                    Your Complete Property Solutions Partner
+                  </motion.h1>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-base md:text-lg leading-relaxed text-white/90 mb-4"
+                  >
+                    Interior Design • Wellness Facilities • Property Maintenance
+                  </motion.p>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="flex flex-wrap items-center gap-3"
+                  >
+                    <Button 
+                      asChild 
+                      size="lg"
+                      className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                      data-testid="button-hero-consultation"
+                    >
+                      <Link href="/contact">
+                        Book Free Consultation
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    </Button>
+                    <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-emi">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm font-medium text-white">Low Cost EMI</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
 
-              {/* Statistics Inline */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8"
-                data-testid="stats-inline"
-              >
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl md:text-3xl font-bold text-white">5000+</p>
-                  <p className="text-xs text-white/70 uppercase tracking-wide">Projects</p>
-                </div>
-                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl md:text-3xl font-bold text-white">200+</p>
-                  <p className="text-xs text-white/70 uppercase tracking-wide">Experts</p>
-                </div>
-                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl md:text-3xl font-bold text-white">10 Cities</p>
-                  <p className="text-xs text-white/70 uppercase tracking-wide">2 Countries</p>
-                </div>
-                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
-                <div className="text-center lg:text-left">
-                  <p className="text-2xl md:text-3xl font-bold text-white">15+ Years</p>
-                  <p className="text-xs text-white/70 uppercase tracking-wide">Experience</p>
-                </div>
-              </motion.div>
-            </motion.div>
+                {/* Right Column - Statistics Grid */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="grid grid-cols-2 gap-3"
+                  data-testid="stats-grid"
+                >
+                  {[
+                    { value: "5000+", label: "Projects Completed", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
+                    { value: "200+", label: "Property Experts", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+                    { value: "15+", label: "Years Experience", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                    { value: "10", label: "Cities Served", icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" },
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    >
+                      <div className="flex justify-center mb-2">
+                        <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
+                          </svg>
+                        </div>
+                      </div>
+                      <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                      <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Compact Testimonials Section - Takes ~40% of viewport */}
-        <section className="flex-[4] bg-gradient-to-b from-muted/50 to-background overflow-hidden flex flex-col justify-center py-6">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-4">
+        <section className="flex-[4] bg-gradient-to-b from-muted/50 to-background overflow-hidden flex flex-col justify-center py-4">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-3">
             <motion.div 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -225,7 +232,7 @@ export default function Home() {
               <p className="text-xs uppercase tracking-wider text-[#970A44] font-semibold mb-1">
                 Trusted by 5000+ Happy Clients
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold font-serif">
+              <h2 className="text-xl md:text-2xl font-bold font-serif">
                 Real Stories. Real Results.
               </h2>
             </motion.div>
@@ -241,13 +248,13 @@ export default function Home() {
             <motion.div
               className="flex gap-4"
               animate={{
-                x: [0, -(320 + 16) * 8],
+                x: [0, -(300 + 16) * 8],
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 35,
+                  duration: 30,
                   ease: "linear",
                 },
               }}
@@ -255,24 +262,24 @@ export default function Home() {
               {[...testimonialsCompact, ...testimonialsCompact].map((testimonial, index) => (
                 <div
                   key={`compact-${index}`}
-                  className="flex-shrink-0 w-[320px] bg-white rounded-xl shadow-md border border-primary/5 p-4"
+                  className="flex-shrink-0 w-[300px] bg-white rounded-xl shadow-md border border-primary/5 p-3"
                   data-testid={`testimonial-compact-${index}`}
                 >
-                  <div className="flex gap-0.5 mb-2">
+                  <div className="flex gap-0.5 mb-1.5">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 fill-[#970A44] text-[#970A44]" />
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3 line-clamp-2">
+                  <p className="text-sm text-muted-foreground leading-snug mb-2 line-clamp-2">
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-xs">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-[10px]">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                      <p className="text-xs font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-[10px] text-muted-foreground">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
