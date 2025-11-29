@@ -131,7 +131,7 @@ export default function Home() {
           </div>
 
           {/* Hero Content - Two Column Layout */}
-          <div className="relative z-10 w-full">
+          <div className="relative z-10 w-full pt-16 md:pt-20">
             <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
               <div className="grid lg:grid-cols-2 gap-6 items-center">
                 {/* Left Column - Text Content */}
