@@ -303,9 +303,23 @@ export function Navigation() {
                   </div>
                 </div>
 
-                {/* Right Section - CTA Button */}
-                <div className="w-40 flex-shrink-0 flex items-end">
-                  <Link href="/services" onClick={() => setIsServicesOpen(false)} className="w-full">
+                {/* Right Section - Promo + CTA Button */}
+                <div className="w-48 flex-shrink-0 flex flex-col justify-between">
+                  {/* Promo Box */}
+                  <div className="bg-gradient-to-br from-[#970A44] to-[#720632] rounded-xl p-4 text-white">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">
+                      Limited Offer
+                    </p>
+                    <p className="text-lg font-bold mb-2">
+                      Free Design Consultation
+                    </p>
+                    <p className="text-xs opacity-90 leading-relaxed">
+                      Book now and get a complimentary 3D visualization for your project
+                    </p>
+                  </div>
+                  
+                  {/* CTA Button */}
+                  <Link href="/services" onClick={() => setIsServicesOpen(false)} className="w-full mt-4">
                     <Button 
                       className="w-full bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-md py-5"
                       data-testid="button-view-all-services"
