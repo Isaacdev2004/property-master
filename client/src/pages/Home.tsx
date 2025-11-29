@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Award, Users, CheckCircle2, Clock, Heart, BadgeCheck } from "lucide-react";
+import { ArrowRight, Award, Users, CheckCircle2, Clock, Heart, BadgeCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
 import StickyScrollServices from "@/components/StickyScrollServices";
-import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
 import ServiceCardsSlider from "@/components/ServiceCardsSlider";
 import ListenToCustomers from "@/components/ListenToCustomers";
@@ -35,6 +34,50 @@ const staggerContainer = {
   },
   viewport: { once: true, amount: 0.2 }
 };
+
+// Compact testimonials for hero section
+const testimonialsCompact = [
+  {
+    name: "Sarah Al-Mansouri",
+    role: "Homeowner, Dubai Marina",
+    content: "The Property Masters transformed our apartment into a stunning modern sanctuary. Their attention to detail exceeded all expectations!",
+  },
+  {
+    name: "Dr. Ahmed Khalid",
+    role: "Wellness Center Owner",
+    content: "They designed and built our spa facility from concept to completion. The wellness spaces are serene and our clients love the ambiance!",
+  },
+  {
+    name: "Robert Chen",
+    role: "Property Manager",
+    content: "Outstanding maintenance services! Their team keeps all our properties in perfect condition with quick response times.",
+  },
+  {
+    name: "Fatima Al-Hashimi",
+    role: "Restaurant Owner",
+    content: "From complete interior fit-out to ongoing maintenance, they handle everything seamlessly. Our restaurant looks stunning!",
+  },
+  {
+    name: "James Wilson",
+    role: "Villa Owner, Palm Jumeirah",
+    content: "Their wellness consultation helped us create a home gym and yoga studio that's both beautiful and functional.",
+  },
+  {
+    name: "Layla Mohammed",
+    role: "Office Manager, DIFC",
+    content: "Professional office fit-out with modern design. They completed our 10,000 sq ft space ahead of schedule!",
+  },
+  {
+    name: "Marco Rossi",
+    role: "Hotel Manager",
+    content: "Their team handles all our property maintenance needs efficiently. From HVAC to plumbing, they're our trusted partner.",
+  },
+  {
+    name: "Aisha Rahman",
+    role: "Homeowner, Arabian Ranches",
+    content: "We hired them for a complete home renovation. The result is breathtaking! Our home is now a perfect sanctuary.",
+  },
+];
 
 const whyChooseUs = [
   {
@@ -72,139 +115,172 @@ const whyChooseUs = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-visible pb-16">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="Luxury interior design" 
-            className="w-full h-full object-cover"
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
-        </div>
+      {/* Hero + Reviews Section - 100vh combined for instant trust */}
+      <div className="h-screen flex flex-col">
+        {/* Hero Section - Takes ~60% of viewport */}
+        <section className="relative flex-[6] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={heroImage} 
+              alt="Luxury interior design" 
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+          </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-24 py-32 w-full text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ 
-              duration: 1, 
-              ease: [0.25, 0.46, 0.45, 0.94],
-              staggerChildren: 0.2
-            }}
-            className="max-w-3xl mx-auto lg:mx-0"
-          >
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl leading-tight font-bold text-white mb-6 font-serif tracking-tight"
+          {/* Hero Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+              className="max-w-3xl mx-auto lg:mx-0"
             >
-              Your Complete Property Solutions Partner
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl leading-relaxed font-light text-white/90 mb-10 max-w-2xl"
-            >
-              From interior design to wellness facilities and maintenance - we master every aspect of your property needs.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
-            >
-              <Button 
-                asChild 
-                className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-12 py-6 text-base h-auto shadow-xl"
-                data-testid="button-hero-consultation"
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-4xl md:text-5xl lg:text-6xl leading-tight font-bold text-white mb-4 font-serif tracking-tight"
               >
-                <Link href="/contact">
-                  Book Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 h-12" data-testid="badge-emi">
-                <svg className="w-5 h-5 text-[#970A44]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="text-sm font-medium text-white">Low Cost EMI</span>
-              </div>
+                Your Complete Property Solutions Partner
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg md:text-xl leading-relaxed font-light text-white/90 mb-6 max-w-2xl"
+              >
+                From interior design to wellness facilities and maintenance - we master every aspect of your property needs.
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+              >
+                <Button 
+                  asChild 
+                  className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-8 py-5 text-sm h-auto shadow-xl"
+                  data-testid="button-hero-consultation"
+                >
+                  <Link href="/contact">
+                    Book Free Consultation
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 rounded-full px-5 py-2.5" data-testid="badge-emi">
+                  <svg className="w-4 h-4 text-[#970A44]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-sm font-medium text-white">Low Cost EMI</span>
+                </div>
+              </motion.div>
+
+              {/* Statistics Inline */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8"
+                data-testid="stats-inline"
+              >
+                <div className="text-center lg:text-left">
+                  <p className="text-2xl md:text-3xl font-bold text-white">5000+</p>
+                  <p className="text-xs text-white/70 uppercase tracking-wide">Projects</p>
+                </div>
+                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
+                <div className="text-center lg:text-left">
+                  <p className="text-2xl md:text-3xl font-bold text-white">200+</p>
+                  <p className="text-xs text-white/70 uppercase tracking-wide">Experts</p>
+                </div>
+                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
+                <div className="text-center lg:text-left">
+                  <p className="text-2xl md:text-3xl font-bold text-white">10 Cities</p>
+                  <p className="text-xs text-white/70 uppercase tracking-wide">2 Countries</p>
+                </div>
+                <div className="w-px h-10 bg-white/30 hidden md:block"></div>
+                <div className="text-center lg:text-left">
+                  <p className="text-2xl md:text-3xl font-bold text-white">15+ Years</p>
+                  <p className="text-xs text-white/70 uppercase tracking-wide">Experience</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Compact Testimonials Section - Takes ~40% of viewport */}
+        <section className="flex-[4] bg-gradient-to-b from-muted/50 to-background overflow-hidden flex flex-col justify-center py-6">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="text-center"
+            >
+              <p className="text-xs uppercase tracking-wider text-[#970A44] font-semibold mb-1">
+                Trusted by 5000+ Happy Clients
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold font-serif">
+                Real Stories. Real Results.
+              </h2>
+            </motion.div>
+          </div>
+
+          {/* Single Row Marquee */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            className="relative"
+          >
+            <motion.div
+              className="flex gap-4"
+              animate={{
+                x: [0, -(320 + 16) * 8],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 35,
+                  ease: "linear",
+                },
+              }}
+            >
+              {[...testimonialsCompact, ...testimonialsCompact].map((testimonial, index) => (
+                <div
+                  key={`compact-${index}`}
+                  className="flex-shrink-0 w-[320px] bg-white rounded-xl shadow-md border border-primary/5 p-4"
+                  data-testid={`testimonial-compact-${index}`}
+                >
+                  <div className="flex gap-0.5 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-[#970A44] text-[#970A44]" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3 line-clamp-2">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-xs">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
-        </div>
-
-        {/* Statistics Pill - Centered at bottom of hero */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute bottom-0 inset-x-0 z-20 flex justify-center px-4"
-        >
-          <div 
-            className="bg-white rounded-full shadow-2xl py-3 px-6 md:px-8 inline-flex items-center gap-4 md:gap-6"
-            data-testid="stats-pill"
-          >
-            {/* Stat 1: Projects */}
-            <div className="flex items-center gap-2 px-2">
-              <svg className="w-5 h-5 text-[#970A44] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              <div>
-                <p className="text-lg font-bold text-[#970A44] leading-tight">5000+</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wide">Projects Completed</p>
-              </div>
-            </div>
-            
-            <div className="w-px h-10 bg-[#970A44]/30"></div>
-            
-            {/* Stat 2: Experts */}
-            <div className="flex items-center gap-2 px-2">
-              <svg className="w-5 h-5 text-[#970A44] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <div>
-                <p className="text-lg font-bold text-[#970A44] leading-tight">200+</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wide">Property Experts</p>
-              </div>
-            </div>
-            
-            <div className="w-px h-10 bg-[#970A44]/30"></div>
-            
-            {/* Stat 3: Cities */}
-            <div className="flex items-center gap-2 px-2">
-              <svg className="w-5 h-5 text-[#970A44] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <div>
-                <p className="text-lg font-bold text-[#970A44] leading-tight">10 Cities</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wide">2 Countries</p>
-              </div>
-            </div>
-            
-            <div className="w-px h-10 bg-[#970A44]/30"></div>
-            
-            {/* Stat 4: Services */}
-            <div className="flex items-center gap-2 px-2">
-              <svg className="w-5 h-5 text-[#970A44] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-              </svg>
-              <div>
-                <p className="text-lg font-bold text-[#970A44] leading-tight">3 Services</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wide">All Property Needs</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Real Stories, Real Results - Testimonials Marquee */}
-      <TestimonialsMarquee />
+        </section>
+      </div>
 
       {/* Sticky Scroll Services Section */}
       <StickyScrollServices />
