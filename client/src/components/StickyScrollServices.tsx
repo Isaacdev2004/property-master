@@ -99,29 +99,8 @@ export default function StickyScrollServices() {
 
   return (
     <div ref={containerRef} className="relative" style={{ height: `${services.length * 100}vh` }}>
-      <div className="sticky top-0 h-screen flex flex-col overflow-hidden">
-        {/* Section Header - Always visible */}
-        <div className="pt-20 pb-6 text-center bg-gradient-to-b from-background to-transparent">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm uppercase tracking-wider text-[#970A44] font-semibold mb-2">
-              What We Offer
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold font-serif mb-2">
-              Complete Property Solutions
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base px-4">
-              Scroll to explore our four core service offerings
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Main Content Area */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Service cards that transition */}
             <div className="relative h-[600px] lg:h-[700px]">
@@ -285,7 +264,6 @@ export default function StickyScrollServices() {
                 ))}
               </div>
             </motion.div>
-          </div>
           </div>
         </div>
       </div>
