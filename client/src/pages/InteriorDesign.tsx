@@ -89,6 +89,42 @@ const whyPartnerWithUs = [
   { icon: ShieldCheck, title: "11-Year Warranty" },
 ];
 
+const projectSnapshots = [
+  { id: 1, title: "Mirdif Hills", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80", size: "large" },
+  { id: 2, title: "Ajman Uptown By Sweet Homes", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", size: "large" },
+  { id: 3, title: "Park Gate Residency", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", size: "small" },
+  { id: 4, title: "Dubai Creek Harbour", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80", size: "small" },
+  { id: 5, title: "Jumeirah Golf Estate", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", size: "small" },
+];
+
+const howWeWork = [
+  {
+    step: 1,
+    title: "Let's Meet Over Coffee",
+    description: "A brief chat with us over coffee or even a digital meet-up will help us understand your requirements and your objective.",
+  },
+  {
+    step: 2,
+    title: "Defining the Scope of Work",
+    description: "As the first step, we create a basic outline of the work to be done and discuss the important details with you, from materials and finishes to everything in between.",
+  },
+  {
+    step: 3,
+    title: "Finalisation of Agreement",
+    description: "With the discussions in place, we will finalise the deal. You will need to pay 10% of the total fee as an initial amount. Then, pay 50% of the order value to start the project.",
+  },
+  {
+    step: 4,
+    title: "Implementing the Ideas",
+    description: "As soon as the deal is finalised, our team of interior designers spring into action to finalise the deliverables. We keep you updated at every junction of the process.",
+  },
+  {
+    step: 5,
+    title: "Finishing Up",
+    description: "Welcome to your dream home! Now, all you need to do is move in and celebrate.",
+  },
+];
+
 const turnkeyServices = [
   {
     icon: Paintbrush,
@@ -600,6 +636,140 @@ export default function InteriorDesign() {
                 Book Free Consultation
               </Link>
             </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 360-Degree Project Snapshots Section */}
+      <section className="py-24 bg-muted/30" data-testid="section-project-snapshots">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              A <span className="text-[#970A44]">360-Degree</span> Snapshot of Our Interior Projects in Dubai
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Check here how we make dreams into reality.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {/* Large images row */}
+            {projectSnapshots.filter(p => p.size === "large").map((project, index) => (
+              <motion.div 
+                key={project.id} 
+                variants={fadeInUp}
+                className="relative rounded-2xl overflow-hidden group cursor-pointer"
+                data-testid={`project-snapshot-${project.id}`}
+              >
+                <img 
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <Play className="w-4 h-4 text-white" />
+                    </div>
+                    <h3 className="text-white font-semibold">{project.title}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"
+          >
+            {/* Small images row */}
+            {projectSnapshots.filter(p => p.size === "small").map((project, index) => (
+              <motion.div 
+                key={project.id} 
+                variants={fadeInUp}
+                className="relative rounded-2xl overflow-hidden group cursor-pointer"
+                data-testid={`project-snapshot-${project.id}`}
+              >
+                <img 
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <Play className="w-3 h-3 text-white" />
+                    </div>
+                    <h3 className="text-white font-semibold text-sm">{project.title}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How We Work Section */}
+      <section className="py-24 bg-background" data-testid="section-how-we-work">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              How We <span className="text-[#970A44]">Work?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our expert interior designers in Dubai curate original concepts with exquisite craftsmanship to deliver unique design solutions that match your vision.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-8"
+          >
+            {howWeWork.map((step, index) => (
+              <motion.div 
+                key={step.step} 
+                variants={fadeInUp}
+                className="text-center relative"
+                data-testid={`how-we-work-step-${step.step}`}
+              >
+                {/* Step number badge */}
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#970A44]/10 to-[#970A44]/5 rounded-2xl flex items-center justify-center border border-[#970A44]/20">
+                  <span className="text-2xl font-bold text-[#970A44]">{step.step}</span>
+                </div>
+                
+                {/* Connector line (except last item) */}
+                {index < howWeWork.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-gradient-to-r from-[#970A44]/30 to-transparent"></div>
+                )}
+                
+                <h3 className="font-bold text-lg mb-3">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
