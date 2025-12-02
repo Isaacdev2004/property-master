@@ -38,6 +38,7 @@ export function Navigation() {
     { href: "/interior-design", label: "Interior Design" },
     { href: "/wellness", label: "Wellness" },
     { href: "/maintenance", label: "Maintenance Services" },
+    { href: "/portfolio", label: "Portfolio" },
     { href: null, label: "About", hasDropdown: true },
     { href: "/blog", label: "Blogs" },
   ];
