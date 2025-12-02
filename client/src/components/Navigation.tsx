@@ -3,20 +3,13 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, ShoppingCart, ChevronDown, Phone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
-import type { Service } from "@shared/schema";
-import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
 
 export function Navigation() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout>();
-
-  const { data: services = [] } = useQuery<Service[]>({
-    queryKey: ["/api/services"],
-  });
 
   const isHomePage = location === "/";
 
@@ -28,46 +21,31 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMouseEnter = () => {
+  const handleAboutMouseEnter = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    setIsServicesOpen(true);
+    setIsAboutOpen(true);
   };
 
-  const handleMouseLeave = () => {
+  const handleAboutMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setIsServicesOpen(false);
+      setIsAboutOpen(false);
     }, 150);
   };
 
-  const serviceCategories = [
-    { 
-      id: "interior-design-fitout", 
-      label: "Interior Design & Fit-Out",
-    },
-    { 
-      id: "wellness-services", 
-      label: "Wellness Services",
-    },
-    { 
-      id: "maintenance-services", 
-      label: "Maintenance Services",
-    },
-  ];
-
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: null, label: "Services", hasDropdown: true },
-    { href: "/portfolio", label: "Projects" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/contact", label: "Appointments" },
-    { href: "/blog", label: "Blog" },
+    { href: "/services/interior-design", label: "Interior Design" },
+    { href: "/services/wellness", label: "Wellness" },
+    { href: "/services/maintenance", label: "Maintenance Services" },
+    { href: null, label: "About", hasDropdown: true },
+    { href: "/blog", label: "Blogs" },
   ];
 
-  const getServicesByCategory = (category: string) => {
-    return services.filter(s => s.category === category);
-  };
+  const aboutDropdownItems = [
+    { href: "/about", label: "About Us" },
+    { href: "/about#journey", label: "Our Journey" },
+  ];
 
   const navTextClass = (isScrolled || !isHomePage) 
     ? "text-gray-900 hover:text-[#970A44]" 
@@ -132,21 +110,51 @@ export function Navigation() {
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={handleAboutMouseEnter}
+                  onMouseLeave={handleAboutMouseLeave}
                 >
                   <button
                     className={`text-sm font-semibold transition-all flex items-center gap-1 py-2 ${navTextClass} ${
-                      isServicesOpen ? "text-[#970A44]" : ""
+                      isAboutOpen ? "text-[#970A44]" : ""
                     }`}
-                    data-testid="menu-services"
+                    data-testid="menu-about"
                   >
                     {item.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isAboutOpen ? "rotate-180" : ""}`} />
                   </button>
+
+                  {/* About Dropdown */}
+                  <AnimatePresence>
+                    {isAboutOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
+                        onMouseEnter={handleAboutMouseEnter}
+                        onMouseLeave={handleAboutMouseLeave}
+                      >
+                        {aboutDropdownItems.map((dropdownItem) => (
+                          <Link 
+                            key={dropdownItem.label} 
+                            href={dropdownItem.href}
+                            onClick={() => setIsAboutOpen(false)}
+                          >
+                            <span 
+                              className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#970A44] hover:text-white transition-colors cursor-pointer"
+                              data-testid={`menu-${dropdownItem.label.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {dropdownItem.label}
+                            </span>
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ) : (
-                <Link key={`${item.href}-${index}`} href={item.href!} data-testid={`link-${item.label.toLowerCase()}`}>
+                <Link key={`${item.href}-${index}`} href={item.href!} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
                   <span
                     className={`text-sm font-semibold transition-all cursor-pointer ${
                       location === item.href
@@ -202,138 +210,6 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mega Menu Dropdown */}
-      <AnimatePresence>
-        {isServicesOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className="max-w-7xl mx-auto px-6 py-6">
-              <div className="flex gap-6">
-                {/* Left Section - Essential with Image */}
-                <div className="w-64 flex-shrink-0">
-                  <div className="bg-gray-50 rounded-xl p-4 h-full">
-                    <div className="relative w-full h-32 mb-4 rounded-lg overflow-hidden">
-                      <img 
-                        src={heroImage} 
-                        alt="Our Services" 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="text-base font-bold text-gray-900 mb-2">Essential</h3>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      Real fit interiors to your own life of, ut enim ad minim et cique magna aliqua. Eno autem veniam quis nostrud.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Middle Section - Service Categories in 4 Columns */}
-                <div className="flex-1 grid grid-cols-4 gap-6">
-                  {serviceCategories.map((category) => (
-                    <div key={category.id}>
-                      <h4 className="text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                        {category.label}
-                      </h4>
-                      <ul className="space-y-2">
-                        {getServicesByCategory(category.id).slice(0, 8).map((service) => (
-                          <li key={service.id}>
-                            <Link href={`/services/${service.slug}`}>
-                              <span
-                                className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5"
-                                onClick={() => setIsServicesOpen(false)}
-                                data-testid={`megamenu-service-${service.slug}`}
-                              >
-                                {service.title}
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-
-                  {/* Additional Column for Training/Other */}
-                  <div>
-                    <h4 className="text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                      Training & Support
-                    </h4>
-                    <ul className="space-y-2">
-                      <li>
-                        <Link href="/services">
-                          <span className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5">
-                            Social Media Management
-                          </span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/services">
-                          <span className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5">
-                            Delivery Apps Management
-                          </span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/services">
-                          <span className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5">
-                            Food Safety Training
-                          </span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/services">
-                          <span className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5">
-                            Fire Safety Training
-                          </span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/services">
-                          <span className="text-sm text-gray-700 hover:text-[#970A44] transition-colors cursor-pointer block py-0.5">
-                            PIC Training
-                          </span>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Right Section - Promo + CTA Button */}
-                <div className="w-48 flex-shrink-0 flex flex-col justify-between">
-                  {/* Promo Box */}
-                  <div className="bg-gradient-to-br from-[#970A44] to-[#720632] rounded-xl p-4 text-white">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">
-                      Limited Offer
-                    </p>
-                    <p className="text-lg font-bold mb-2">
-                      Free Design Consultation
-                    </p>
-                    <p className="text-xs opacity-90 leading-relaxed">
-                      Book now and get a complimentary 3D visualization for your project
-                    </p>
-                  </div>
-                  
-                  {/* CTA Button */}
-                  <Link href="/services" onClick={() => setIsServicesOpen(false)} className="w-full mt-4">
-                    <Button 
-                      className="w-full bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-md py-5"
-                      data-testid="button-view-all-services"
-                    >
-                      View All Services
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -343,81 +219,80 @@ export function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-background border-b border-border"
           >
-            <nav className="flex flex-col px-6 py-4 gap-4 max-h-[80vh] overflow-y-auto">
-              {/* Home Link */}
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-home">
-                <span className={`text-base font-medium transition-colors cursor-pointer block py-2 ${
-                  location === "/" ? "text-primary font-semibold" : "text-foreground hover:text-primary"
+            <nav className="flex flex-col px-6 py-4 gap-2 max-h-[80vh] overflow-y-auto">
+              {/* Interior Design */}
+              <Link href="/services/interior-design" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-interior-design">
+                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
+                  location === "/services/interior-design" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
-                  Home
+                  Interior Design
                 </span>
               </Link>
 
-              {/* Services Overview Link */}
-              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-services">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 text-[#970A44] font-semibold">
-                  All Services
+              {/* Wellness */}
+              <Link href="/services/wellness" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-wellness">
+                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
+                  location === "/services/wellness" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                }`}>
+                  Wellness
                 </span>
               </Link>
 
-              {/* Service Categories */}
-              {serviceCategories.map((category) => (
-                <div key={category.id} className="border-b border-border pb-4">
-                  <h3 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
-                    {category.label}
-                  </h3>
-                  <div className="space-y-2 pl-4">
-                    {getServicesByCategory(category.id).map((service) => (
-                      <Link key={service.id} href={`/services/${service.slug}`} onClick={() => setIsMobileMenuOpen(false)}>
-                        <div className="py-2 cursor-pointer">
-                          <h4 className="font-medium text-sm hover:text-primary transition-colors">
-                            {service.title}
-                          </h4>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
+              {/* Maintenance Services */}
+              <Link href="/services/maintenance" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-maintenance">
+                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
+                  location === "/services/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                }`}>
+                  Maintenance Services
+                </span>
+              </Link>
+
+              {/* About Section */}
+              <div className="py-3 border-b border-border">
+                <span className="text-base font-semibold text-[#970A44] block mb-2">About</span>
+                <div className="pl-4 space-y-2">
+                  <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-about-us">
+                    <span className="text-sm text-foreground hover:text-[#970A44] block py-1">
+                      About Us
+                    </span>
+                  </Link>
+                  <Link href="/about#journey" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-our-journey">
+                    <span className="text-sm text-foreground hover:text-[#970A44] block py-1">
+                      Our Journey
+                    </span>
+                  </Link>
                 </div>
-              ))}
+              </div>
 
-              {/* Other Links */}
-              <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-projects">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Projects
+              {/* Blogs */}
+              <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-blogs">
+                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
+                  location === "/blog" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                }`}>
+                  Blogs
                 </span>
               </Link>
-              <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-portfolio">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Portfolio
-                </span>
-              </Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-appointments">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Appointments
-                </span>
-              </Link>
-              <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-blog">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Blog
-                </span>
-              </Link>
-              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-about">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  About
-                </span>
-              </Link>
-              <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Shop
-                </span>
-              </Link>
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-contact">
-                <span className="text-base font-medium transition-colors cursor-pointer block py-2 hover:text-primary">
-                  Contact
-                </span>
-              </Link>
+
+              {/* Quick Links */}
+              <div className="pt-4 space-y-2">
+                <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-portfolio">
+                  <span className="text-sm text-muted-foreground hover:text-[#970A44] block py-2">
+                    Portfolio
+                  </span>
+                </Link>
+                <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
+                  <span className="text-sm text-muted-foreground hover:text-[#970A44] block py-2">
+                    Shop
+                  </span>
+                </Link>
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-contact">
+                  <span className="text-sm text-muted-foreground hover:text-[#970A44] block py-2">
+                    Contact
+                  </span>
+                </Link>
+              </div>
               
-              <div className="pt-2 border-t border-border space-y-2">
+              <div className="pt-4 border-t border-border space-y-2">
                 <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-cart">
                   <Button variant="outline" className="w-full">
                     <ShoppingCart className="w-4 h-4 mr-2" />
