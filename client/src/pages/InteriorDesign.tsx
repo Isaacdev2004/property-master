@@ -57,6 +57,30 @@ const stats = [
   { icon: Palette, value: "2 Lac+", label: "Design Options" },
 ];
 
+const aboutStats = [
+  { value: "775+", label: "Homes Delivered" },
+  { value: "120+", label: "Projects In Execution Phase" },
+  { value: "98+", label: "Homes Under Design Phase" },
+];
+
+const readyToUseServices = [
+  {
+    icon: Ruler,
+    title: "Seamless Execution",
+    description: "A subtle architectural design is the heart of any home. Our architectural design services give meaning to your space while enhancing its overall aesthetic appeal.",
+  },
+  {
+    icon: Paintbrush,
+    title: "Innovative Designs",
+    description: "Regarding interior design services, we offer superior interior designs backed by an innovative approach that fits your budget.",
+  },
+  {
+    icon: Building2,
+    title: "Bespoke Luxury Homes",
+    description: "Every nook and cranny has a tale to tell. Hence, we assist you with bespoke luxury homes while providing the ideal balance of elegance & excellence.",
+  },
+];
+
 const turnkeyServices = [
   {
     icon: Paintbrush,
@@ -397,6 +421,118 @@ export default function InteriorDesign() {
             </div>
           </div>
         </motion.div>
+      </section>
+
+      {/* About Property Masters Section */}
+      <section className="py-24 bg-background" data-testid="section-about-company">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+                About <span className="text-[#970A44]">Property Masters</span>
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                From conception to bringing the ideal balance of functionality and style, we breathe life into your dream homes with our interior design services in Dubai.
+              </p>
+              
+              <div className="flex flex-wrap gap-6">
+                {aboutStats.map((stat, index) => (
+                  <div 
+                    key={index} 
+                    className="flex items-center gap-3 border-r border-border pr-6 last:border-0"
+                    data-testid={`about-stat-${index}`}
+                  >
+                    <div className="w-10 h-10 bg-[#970A44]/10 rounded-lg flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-[#970A44]" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-[#970A44]">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="space-y-4">
+                <img 
+                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500&q=80"
+                  alt="Luxury Living Room"
+                  className="w-full h-48 object-cover rounded-xl"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80"
+                  alt="Modern Interior"
+                  className="w-full h-32 object-cover rounded-xl"
+                />
+              </div>
+              <div className="pt-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80"
+                  alt="Contemporary Design"
+                  className="w-full h-64 object-cover rounded-xl"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ready To Use Interior Design Services */}
+      <section className="py-24 bg-muted/30" data-testid="section-ready-to-use">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Ready To Use Interior Design <span className="text-[#970A44]">Services</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our team of experts works closely on every detail so that you get the best interior design services in Dubai.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {readyToUseServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div key={index} variants={fadeInUp}>
+                  <Card className="h-full border-0 shadow-md hover-elevate bg-background" data-testid={`card-ready-service-${index}`}>
+                    <CardContent className="p-8">
+                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-6">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </section>
 
       {/* Turnkey Services Section */}
