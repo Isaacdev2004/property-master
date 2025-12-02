@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { 
@@ -10,555 +9,342 @@ import {
   Sun,
   Moon,
   Sparkles,
-  Users,
-  Award,
-  Building2,
-  Star,
-  Phone,
-  Check,
-  Quote,
-  Clock,
+  Play,
+  CheckCircle2,
   ShieldCheck,
-  Play
+  Award,
+  Building2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const stats = [
-  { icon: Building2, value: "500+", label: "Wellness Projects" },
-  { icon: Users, value: "50+", label: "Wellness Experts" },
-  { icon: Award, value: "10+", label: "Years Experience" },
-  { icon: Heart, value: "1000+", label: "Happy Clients" },
-];
 
 const wellnessServices = [
   {
-    icon: Dumbbell,
-    title: "Home Gym Design",
-    description: "Transform any space into a fully-equipped personal fitness sanctuary with premium equipment and motivating aesthetics.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80",
-    features: ["Custom Equipment Layout", "Ventilation Design", "Flooring Solutions", "Mirror Installations"],
-  },
-  {
-    icon: Waves,
-    title: "Spa & Sauna Installation",
-    description: "Create your private retreat with luxury spa facilities, steam rooms, and Finnish saunas for ultimate relaxation.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",
-    features: ["Steam Room Setup", "Sauna Installation", "Jacuzzi Integration", "Aromatherapy Systems"],
-  },
-  {
-    icon: Leaf,
-    title: "Yoga & Meditation Rooms",
-    description: "Design tranquil spaces dedicated to mindfulness, yoga practice, and spiritual well-being with calming aesthetics.",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80",
-    features: ["Natural Lighting Design", "Acoustic Treatment", "Bamboo Flooring", "Zen Gardens"],
-  },
-  {
-    icon: Sun,
-    title: "Pool & Outdoor Wellness",
-    description: "Design stunning pool areas and outdoor wellness spaces that blend luxury with natural elements.",
-    image: "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?w=600&q=80",
-    features: ["Infinity Pools", "Outdoor Showers", "Lounging Areas", "Landscaping"],
-  },
-  {
-    icon: Moon,
-    title: "Sleep Wellness Rooms",
-    description: "Optimize your bedroom environment for restorative sleep with specialized lighting, acoustics, and climate control.",
-    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80",
-    features: ["Blackout Systems", "Sound Insulation", "Air Purification", "Smart Climate Control"],
-  },
-  {
-    icon: Sparkles,
-    title: "Wellness Consulting",
-    description: "Comprehensive wellness space planning and consultation to create holistic health environments in your property.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
-    features: ["Space Assessment", "Wellness Planning", "Equipment Selection", "Lifestyle Integration"],
-  },
-];
-
-const completedProjects = [
-  { id: 1, title: "Private Wellness Retreat", location: "Palm Jumeirah", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80", type: "Complete Wellness Suite" },
-  { id: 2, title: "Executive Home Gym", location: "Emirates Hills", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80", type: "Fitness Center" },
-  { id: 3, title: "Luxury Spa Residence", location: "Dubai Marina", image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80", type: "Spa & Sauna" },
-  { id: 4, title: "Zen Meditation Garden", location: "Arabian Ranches", image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80", type: "Yoga Studio" },
-  { id: 5, title: "Rooftop Pool Oasis", location: "Downtown Dubai", image: "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?w=600&q=80", type: "Pool & Outdoor" },
-  { id: 6, title: "Corporate Wellness Center", location: "Business Bay", image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80", type: "Commercial Wellness" },
-];
-
-const testimonials = [
-  {
     id: 1,
-    name: "Sarah Al-Maktoum",
-    role: "Villa Owner, Palm Jumeirah",
-    content: "Property Masters transformed our basement into a stunning home spa. The attention to detail and quality of work exceeded our expectations. It's now our favorite space in the house.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
-    rating: 5,
-    hasVideo: true,
+    title: "Home Gym Design",
+    subtitle: "Your personal fitness sanctuary",
+    description: "Transform any space into a fully-equipped personal fitness sanctuary with premium equipment and motivating aesthetics.",
+    longDescription: "Our expert designers create custom home gym layouts that maximize your space while providing a professional training environment. From cardio zones to strength training areas, we design spaces that inspire you to achieve your fitness goals.",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    icon: Dumbbell,
   },
   {
     id: 2,
-    name: "Ahmed Hassan",
-    role: "CEO, Hassan Holdings",
-    content: "The home gym they designed is world-class. Professional equipment layout, perfect lighting, and motivating atmosphere. Best investment I've made for my health.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
-    rating: 5,
-    hasVideo: true,
+    title: "Spa & Sauna Installation",
+    subtitle: "Your private wellness retreat",
+    description: "Create your private retreat with luxury spa facilities, steam rooms, and Finnish saunas for ultimate relaxation.",
+    longDescription: "Experience the pinnacle of relaxation with our bespoke spa installations. We design and install premium saunas, steam rooms, and jacuzzis that transform your home into a five-star wellness destination.",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
+    icon: Waves,
   },
   {
     id: 3,
-    name: "Dr. Fatima Rashid",
-    role: "Wellness Coach",
-    content: "As a wellness professional, I'm very particular about space design. Property Masters created a yoga studio that perfectly balances functionality with tranquility.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",
-    rating: 5,
-    hasVideo: false,
+    title: "Yoga & Meditation Rooms",
+    subtitle: "Spaces for mindful living",
+    description: "Design tranquil spaces dedicated to mindfulness, yoga practice, and spiritual well-being with calming aesthetics.",
+    longDescription: "Our yoga and meditation room designs incorporate natural elements, proper acoustics, and serene lighting to create the perfect environment for your mindfulness practice. Every detail is considered to promote peace and tranquility.",
+    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80",
+    icon: Leaf,
+  },
+  {
+    id: 4,
+    title: "Pool & Outdoor Wellness",
+    subtitle: "Luxury outdoor living",
+    description: "Design stunning pool areas and outdoor wellness spaces that blend luxury with natural elements.",
+    longDescription: "From infinity pools to outdoor spas, we create breathtaking outdoor wellness spaces that seamlessly integrate with your property's landscape. Experience resort-style living in your own backyard.",
+    image: "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?w=800&q=80",
+    icon: Sun,
+  },
+  {
+    id: 5,
+    title: "Sleep Wellness Rooms",
+    subtitle: "Optimized rest & recovery",
+    description: "Optimize your bedroom environment for restorative sleep with specialized lighting, acoustics, and climate control.",
+    longDescription: "Quality sleep is essential for overall wellness. Our sleep wellness rooms feature advanced blackout systems, sound insulation, air purification, and smart climate control to ensure you wake up refreshed and rejuvenated.",
+    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+    icon: Moon,
+  },
+  {
+    id: 6,
+    title: "Wellness Consulting",
+    subtitle: "Holistic wellness planning",
+    description: "Comprehensive wellness space planning and consultation to create holistic health environments in your property.",
+    longDescription: "Our certified wellness consultants work with you to assess your lifestyle, health goals, and available space to create a comprehensive wellness plan tailored to your unique needs.",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    icon: Sparkles,
   },
 ];
 
-const benefits = [
-  { icon: Heart, title: "Health-Focused Design", description: "Every element designed to enhance your physical and mental well-being" },
-  { icon: ShieldCheck, title: "Premium Materials", description: "Only the finest, health-safe materials used in all installations" },
-  { icon: Users, title: "Expert Team", description: "Certified wellness designers and installation specialists" },
-  { icon: Clock, title: "Timely Delivery", description: "Projects completed on schedule without compromising quality" },
-  { icon: Award, title: "5-Year Warranty", description: "Comprehensive warranty on all wellness installations" },
-  { icon: Sparkles, title: "Aftercare Support", description: "Ongoing maintenance and support for your wellness spaces" },
+const qualityCertifications = [
+  { 
+    title: "ISO Certified", 
+    description: "International quality standards",
+    icon: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&q=80"
+  },
+  { 
+    title: "Health Approved", 
+    description: "Dubai Health Authority compliant",
+    icon: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&q=80"
+  },
+  { 
+    title: "Made in UAE", 
+    description: "Premium local craftsmanship",
+    icon: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&q=80"
+  },
 ];
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
 };
 
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 export default function WellnessServices() {
-  const [activeService, setActiveService] = useState(0);
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80"
-            alt="Wellness Space"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="max-w-2xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-6">
-              <Heart className="w-4 h-4 text-[#970A44]" />
-              <span className="text-white/90 text-sm font-medium">Wellness Services</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
-              Transform Your Home Into a 
-              <span className="text-[#970A44]"> Wellness Sanctuary</span>
-            </h1>
-            
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Create spaces that nurture your body, mind, and soul. From home gyms and spas to yoga studios and meditation rooms, we design wellness environments that inspire healthier living.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                asChild
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8 py-6 text-lg"
-                data-testid="button-hero-consultation"
-              >
-                <Link href="/contact">
-                  Book Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button 
-                asChild
-                variant="outline" 
-                className="border-white/50 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg backdrop-blur-sm"
-                data-testid="button-hero-portfolio"
-              >
-                <Link href="/portfolio">View Our Work</Link>
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Stats Bar */}
+    <div className="min-h-screen bg-[#F6F4EB]">
+      {/* Hero Section - Matching HealthyHome Style */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#F6F4EB] to-white" data-testid="section-hero">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-12"
           >
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4" data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                <stat.icon className="w-8 h-8 text-[#970A44] mx-auto mb-2" />
-                <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-                <p className="text-white/70 text-sm">{stat.label}</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-serif text-[#09263D]">
+              Welcome to <span className="text-[#970A44]">Wellness by Property Masters,</span>
+              <br />
+              <span className="text-3xl md:text-4xl lg:text-5xl">and a healthier, happier you.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Make your home the center of your health with professionally designed wellness spaces that make you feel your best.
+            </p>
+          </motion.div>
+
+          {/* Video Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-4xl mx-auto"
+          >
+            <p className="text-center text-[#970A44] font-semibold mb-6 text-lg">
+              Watch Now to Learn More!
+            </p>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer" data-testid="video-thumbnail">
+              <img 
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80"
+                alt="Wellness Video Thumbnail"
+                className="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-all group-hover:bg-black/40">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex items-center justify-center shadow-xl"
+                  data-testid="button-play-video"
+                >
+                  <Play className="w-8 h-8 md:w-10 md:h-10 text-[#970A44] ml-1" />
+                </motion.button>
               </div>
-            ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 bg-gradient-to-b from-background to-muted/30" data-testid="section-wellness-services">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+      {/* Services Sections - Alternating Layout Like HealthyHome */}
+      {wellnessServices.map((service, index) => {
+        const Icon = service.icon;
+        const isReversed = index % 2 === 1;
+        
+        return (
+          <section 
+            key={service.id}
+            className={`py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F6F4EB]'}`}
+            data-testid={`section-service-${service.id}`}
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Our Wellness Services
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive wellness space solutions designed to enhance your lifestyle and well-being.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {wellnessServices.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card 
-                  className="h-full overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group"
-                  onClick={() => setActiveService(index)}
-                  data-testid={`card-service-${index}`}
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
+                {/* Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: isReversed ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className={`${isReversed ? 'lg:order-2' : 'lg:order-1'}`}
                 >
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative">
                     <img 
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-[350px] md:h-[450px] object-cover rounded-2xl shadow-xl"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center">
-                        <service.icon className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
+                    <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-[#970A44]/10 rounded-2xl -z-10"></div>
+                    <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#1C4668]/10 rounded-xl -z-10"></div>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-[#970A44] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className="w-4 h-4 text-[#970A44]" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                </motion.div>
 
-      {/* Completed Projects */}
-      <section className="py-24 bg-background" data-testid="section-completed-projects">
+                {/* Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: isReversed ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className={`${isReversed ? 'lg:order-1' : 'lg:order-2'}`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-[#970A44]/10 rounded-xl flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-[#970A44]" />
+                    </div>
+                    <span className="text-sm font-medium text-[#970A44] uppercase tracking-wider">
+                      {service.subtitle}
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+                    {service.title}
+                  </h2>
+                  
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  
+                  <p className="text-muted-foreground leading-relaxed mb-8">
+                    <strong className="text-[#09263D]">{service.title}</strong> {service.longDescription}
+                  </p>
+                  
+                  <Button 
+                    asChild
+                    className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                    data-testid={`button-learn-more-${service.id}`}
+                  >
+                    <Link href="/contact">
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* Quality Counts Section */}
+      <section className="py-24 bg-[#09263D]" data-testid="section-quality">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Wellness Spaces We've Created
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our portfolio of stunning wellness installations across Dubai's most prestigious properties.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {completedProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate group" data-testid={`card-project-${project.id}`}>
-                  <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-[#970A44] text-white text-xs font-semibold rounded-full mb-2">
-                        {project.type}
-                      </span>
-                      <h3 className="text-white font-bold text-lg">{project.title}</h3>
-                      <p className="text-white/80 text-sm">{project.location}</p>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <Button 
-              asChild
-              className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
-              data-testid="button-view-portfolio"
-            >
-              <Link href="/portfolio">
-                View Full Portfolio
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">
+              Quality Counts
+            </h2>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              We maintain the highest standards in every wellness space we create
+            </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Get Quote Section */}
-      <section className="py-24 bg-[#970A44]" data-testid="section-get-quote">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full mb-6">
-                <Sparkles className="w-5 h-5 text-white" />
-                <span className="text-white font-medium">Free Consultation</span>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            <motion.div variants={fadeInUp} className="text-center" data-testid="quality-iso">
+              <div className="w-24 h-24 mx-auto mb-6 bg-white/10 rounded-2xl flex items-center justify-center">
+                <ShieldCheck className="w-12 h-12 text-white" />
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-                Ready to Create Your Wellness Space?
-              </h2>
-              <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                Share your wellness goals and get a personalized consultation with our experts. We'll help you design the perfect wellness environment for your lifestyle.
-              </p>
-              <ul className="space-y-4 text-white">
-                {[
-                  "Free space assessment",
-                  "Customized wellness plan",
-                  "3D visualization",
-                  "Transparent pricing"
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-white" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <h3 className="text-white font-bold text-lg mb-2">ISO Certified</h3>
+              <p className="text-white/60">International quality standards</p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Card className="border-0 shadow-2xl">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Tell Us Your Requirements</h3>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Name</Label>
-                        <Input id="name" placeholder="Your name" data-testid="input-quote-name" />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone">Phone</Label>
-                        <Input id="phone" placeholder="+971" data-testid="input-quote-phone" />
-                      </div>
-                    </div>
-                    <div>
-                      <Label htmlFor="wellness-type">Wellness Space Type</Label>
-                      <Select>
-                        <SelectTrigger data-testid="select-wellness-type">
-                          <SelectValue placeholder="Select type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="home-gym">Home Gym</SelectItem>
-                          <SelectItem value="spa-sauna">Spa & Sauna</SelectItem>
-                          <SelectItem value="yoga-room">Yoga & Meditation Room</SelectItem>
-                          <SelectItem value="pool">Pool & Outdoor</SelectItem>
-                          <SelectItem value="complete">Complete Wellness Suite</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="property-type">Property Type</Label>
-                      <Select>
-                        <SelectTrigger data-testid="select-property-type">
-                          <SelectValue placeholder="Select property" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="villa">Villa</SelectItem>
-                          <SelectItem value="apartment">Apartment</SelectItem>
-                          <SelectItem value="penthouse">Penthouse</SelectItem>
-                          <SelectItem value="commercial">Commercial</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <Button className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" data-testid="button-get-quote">
-                      Get Free Quote
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+            <motion.div variants={fadeInUp} className="text-center" data-testid="quality-health">
+              <div className="w-24 h-24 mx-auto mb-6 bg-white/10 rounded-2xl flex items-center justify-center">
+                <Heart className="w-12 h-12 text-white" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Health Approved</h3>
+              <p className="text-white/60">Dubai Health Authority compliant</p>
             </motion.div>
-          </div>
+
+            <motion.div variants={fadeInUp} className="text-center" data-testid="quality-uae">
+              <div className="w-24 h-24 mx-auto mb-6 bg-white/10 rounded-2xl flex items-center justify-center">
+                <Award className="w-12 h-12 text-white" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Made in UAE</h3>
+              <p className="text-white/60">Premium local craftsmanship</p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-background" data-testid="section-testimonials">
+      {/* Benefits Section */}
+      <section className="py-24 bg-white" data-testid="section-benefits">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              What Our Clients Say
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Why Choose <span className="text-[#970A44]">Our Wellness Services?</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear from property owners who transformed their spaces with our wellness solutions.
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Experience the difference with our dedicated wellness design experts
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-testimonial-${testimonial.id}`}>
-                  <CardContent className="p-6">
-                    {testimonial.hasVideo && (
-                      <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-muted">
-                        <img 
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                          <button 
-                            className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110"
-                            data-testid={`button-play-testimonial-${testimonial.id}`}
-                          >
-                            <Play className="w-6 h-6 text-[#970A44] ml-1" />
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
-                      ))}
-                    </div>
-                    <Quote className="w-8 h-8 text-[#970A44]/20 mb-2" />
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {testimonial.content}
-                    </p>
-                    <div className="flex items-center gap-3 pt-4 border-t">
-                      <img 
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-24 bg-muted/30" data-testid="section-why-choose">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
-            {...fadeInUp}
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Why Choose Property Masters?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We bring expertise, quality, and dedication to every wellness project.
-            </p>
+            {[
+              { icon: Heart, title: "Health-Focused Design", description: "Every element designed to enhance your physical and mental well-being" },
+              { icon: ShieldCheck, title: "Premium Materials", description: "Only the finest, health-safe materials used in all installations" },
+              { icon: Building2, title: "Expert Team", description: "Certified wellness designers and installation specialists" },
+              { icon: CheckCircle2, title: "Timely Delivery", description: "Projects completed on schedule without compromising quality" },
+              { icon: Award, title: "5-Year Warranty", description: "Comprehensive warranty on all wellness installations" },
+              { icon: Sparkles, title: "Aftercare Support", description: "Ongoing maintenance and support for your wellness spaces" },
+            ].map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <motion.div key={index} variants={fadeInUp}>
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`benefit-card-${index}`}>
+                    <CardContent className="p-8">
+                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-6">
+                        <Icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-3 text-[#09263D]">{benefit.title}</h3>
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 shadow-md hover-elevate" data-testid={`card-benefit-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-[#970A44]/10 rounded-xl flex items-center justify-center mb-4">
-                      <benefit.icon className="w-6 h-6 text-[#970A44]" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                    <p className="text-muted-foreground text-sm">{benefit.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#09263D]" data-testid="section-cta">
+      <section className="py-24 bg-[#970A44]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -566,17 +352,18 @@ export default function WellnessServices() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-              Start Your Wellness Journey Today
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-6">
+              Ready to Transform Your Home?
             </h2>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Let us help you create the perfect wellness space. Contact us for a free consultation and discover how we can transform your property.
+              Start your journey to a healthier lifestyle with our expert wellness space design team. Book your free consultation today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 asChild
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8 py-6 text-lg"
-                data-testid="button-cta-book"
+                size="lg"
+                className="bg-white text-[#970A44] hover:bg-gray-100 rounded-full px-8"
+                data-testid="button-cta-consultation"
               >
                 <Link href="/contact">
                   Book Free Consultation
@@ -585,16 +372,168 @@ export default function WellnessServices() {
               </Button>
               <Button 
                 asChild
-                variant="outline" 
-                className="border-white/50 text-white hover:bg-white/10 rounded-full px-8 py-6 text-lg"
-                data-testid="button-cta-call"
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-cta-portfolio"
               >
-                <a href="tel:+97125500888">
-                  <Phone className="mr-2 w-5 h-5" />
-                  Call +971 2550 0888
-                </a>
+                <Link href="/portfolio">
+                  View Our Work
+                </Link>
               </Button>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-[#F6F4EB]" data-testid="section-testimonials">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              What Our Clients <span className="text-[#970A44]">Say</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Hear from homeowners who transformed their spaces with our wellness solutions
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                name: "Sarah Al-Maktoum",
+                role: "Villa Owner, Palm Jumeirah",
+                content: "Property Masters transformed our basement into a stunning home spa. The attention to detail and quality of work exceeded our expectations. It's now our favorite space in the house.",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
+              },
+              {
+                name: "Ahmed Hassan",
+                role: "CEO, Hassan Holdings",
+                content: "The home gym they designed is world-class. Professional equipment layout, perfect lighting, and motivating atmosphere. Best investment I've made for my health.",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
+              },
+              {
+                name: "Dr. Fatima Rashid",
+                role: "Wellness Coach",
+                content: "As a wellness professional, I'm very particular about space design. Property Masters created a yoga studio that perfectly balances functionality with tranquility.",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&q=80",
+              },
+            ].map((testimonial, index) => (
+              <motion.div key={index} variants={fadeInUp}>
+                <Card className="h-full border-0 shadow-lg bg-white" data-testid={`testimonial-card-${index}`}>
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <img 
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-14 h-14 rounded-full object-cover"
+                      />
+                      <div>
+                        <h4 className="font-bold text-[#09263D]">{testimonial.name}</h4>
+                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground italic">"{testimonial.content}"</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-24 bg-white" data-testid="section-contact">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-6">
+              Start Your Wellness Journey
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Contact us today to discuss your wellness space requirements
+            </p>
+            
+            <Card className="border-0 shadow-xl">
+              <CardContent className="p-8 md:p-12">
+                <form className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <input 
+                        type="text" 
+                        placeholder="Your Name"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#970A44] focus:border-transparent"
+                        data-testid="input-name"
+                      />
+                    </div>
+                    <div>
+                      <input 
+                        type="email" 
+                        placeholder="Your Email"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#970A44] focus:border-transparent"
+                        data-testid="input-email"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <input 
+                      type="tel" 
+                      placeholder="Phone Number"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#970A44] focus:border-transparent"
+                      data-testid="input-phone"
+                    />
+                  </div>
+                  <div>
+                    <select 
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#970A44] focus:border-transparent text-muted-foreground"
+                      data-testid="select-service"
+                    >
+                      <option value="">Select Wellness Service</option>
+                      <option value="gym">Home Gym Design</option>
+                      <option value="spa">Spa & Sauna Installation</option>
+                      <option value="yoga">Yoga & Meditation Rooms</option>
+                      <option value="pool">Pool & Outdoor Wellness</option>
+                      <option value="sleep">Sleep Wellness Rooms</option>
+                      <option value="consulting">Wellness Consulting</option>
+                    </select>
+                  </div>
+                  <div>
+                    <textarea 
+                      placeholder="Tell us about your wellness goals..."
+                      rows={4}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#970A44] focus:border-transparent resize-none"
+                      data-testid="textarea-message"
+                    />
+                  </div>
+                  <Button 
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+                    data-testid="button-submit-form"
+                  >
+                    Get Free Consultation
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>
