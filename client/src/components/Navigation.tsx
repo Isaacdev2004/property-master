@@ -300,8 +300,8 @@ export function Navigation() {
                   </Button>
                 </Link>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-[#970A44] hover:bg-[#720632]">
-                    Book Consultation
+                  <Button className="w-full bg-[#970A44] hover:bg-[#720632]" data-testid="button-mobile-estimate">
+                    Get Free Estimate
                   </Button>
                 </Link>
               </div>
