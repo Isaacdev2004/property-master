@@ -771,7 +771,7 @@ export default function Shop() {
                         {/* Add to Cart - Slides up on hover */}
                         <div 
                           className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent transition-all duration-300 ${
-                            hoveredProduct === product.id ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+                            hoveredProduct === product.id ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-full opacity-0 pointer-events-none'
                           }`}
                         >
                           <Button
