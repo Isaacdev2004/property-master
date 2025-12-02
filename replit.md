@@ -42,6 +42,16 @@ All animations use professional easing curves `[0.25, 0.46, 0.45, 0.94]` with Fr
 - **Real Stories, Real Results Section:** Marquee-style testimonials section inspired by Heffl.com with two rows of continuously scrolling testimonial cards (one left-to-right, one right-to-left). Features 8 authentic testimonials covering all service areas with 5-star ratings, customer quotes, names, and company information. Replaces the previous statistics pill section to build trust through social proof.
 - **Listen to Our Customers Section:** Featured testimonials section after "Why Choose Us", inspired by Heffl.com. Includes a featured testimonial with large quote, video CTA placeholder, and author details. Uses maroon accent colors and luxury-grade animations.
 - **Blog Section:** "Stay Ahead with Expert Tips" section inspired by Heffl.com. Features a large featured article card with full excerpt, and 3 smaller horizontal blog post cards. Includes color-coded category badges (Interior Design, Wellness, Maintenance, Furniture), author avatars, read times, and dates. Newsletter subscription form at bottom. Links to /blog page.
+- **Maintenance Services Page (hitchesglitches.com inspired):** Complete redesign matching the reference site with all sections:
+  - Hero: Parallax effect with "Quality Repairs & Maintenance, Hassle-Free" tagline, "Best Home Maintenance Company in UAE" headline, 4 feature badges (Guaranteed Satisfaction, Online Booking, Emergency Response, 24/7 Working days)
+  - Services Grid: 16 service cards with brand-colored icons including Disinfection, Kitchen Equipment, Civil Work, Smart Products, Pest Control, Swimming Pool, Plumbing, Electrical, AC, Cleaning, Security, and Maintenance Packages
+  - Free Consultation CTA: Full-width maroon banner with patterned background
+  - How It Works: Split layout with video placeholder on left, 3-step process (Select service, Book time, Relax) on right with company description
+  - Maintenance Packages: 4 pricing cards (Basic AED 1458/year, Standard AED 2508/year, Executive AED 3768/year, Custom)
+  - Statistics: 40+ Years Expertise, 3000+ Customers, 2,500+ Properties, 8000+ Staff
+  - Client Feedback: Testimonials carousel with navigation arrows and dots
+  - Latest News & Blogs: 4 blog post cards with hover effects
+  - Final CTA with two action buttons
 - **Comprehensive Page Set:** Includes Homepage, dynamic Services pages, About (with quality hero image), Portfolio with custom before/after comparison slider and quality hero image, Shop with cart functionality, multi-step Book Service form, Blog, and Contact page (with quality hero image). All hero sections feature professional stock photography with dark gradient overlays for text readability.
 - **Form Validation:** Client-side and server-side validation using Zod.
 - **Responsive Design:** Mobile-first approach ensuring functionality across all devices.
