@@ -38,6 +38,7 @@ export function Navigation() {
     { href: "/interior-design", label: "Interior Design" },
     { href: "/wellness", label: "Wellness" },
     { href: "/maintenance", label: "Maintenance Services" },
+    { href: "/shop", label: "Shop" },
     { href: "/portfolio", label: "Portfolio" },
     { href: null, label: "About", hasDropdown: true },
     { href: "/blog", label: "Blogs" },
@@ -189,11 +190,11 @@ export function Navigation() {
                 <ShoppingCart className="w-5 h-5" />
               </Button>
             </Link>
-            <Link href="/contact" data-testid="link-consultation">
+            <Link href="/book" data-testid="link-consultation">
               <Button 
                 className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-6"
               >
-                Book Consult
+                Get Free Estimate
               </Button>
             </Link>
           </div>
@@ -245,6 +246,15 @@ export function Navigation() {
                   location === "/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
                   Maintenance Services
+                </span>
+              </Link>
+
+              {/* Shop */}
+              <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
+                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
+                  location === "/shop" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                }`}>
+                  Shop
                 </span>
               </Link>
 
