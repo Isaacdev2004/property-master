@@ -52,6 +52,16 @@ All animations use professional easing curves `[0.25, 0.46, 0.45, 0.94]` with Fr
   - Client Feedback: Testimonials carousel with navigation arrows and dots
   - Latest News & Blogs: 4 blog post cards with hover effects
   - Final CTA with two action buttons
+- **Ecommerce Shop Page (interiorcompany.com & thehealthyhome.me inspired):** Complete redesign matching both reference sites with rich features:
+  - Hero: Parallax effect with stats (10,000+ Happy Customers, 4.9/5 Google Rating, 5,000+ Products Delivered, 15+ Years of Excellence), EMI badge with frosted glass effect
+  - Quick Category Icons: 9 category icons with hover animations (Sofas, Beds, Tables, Chairs, Lighting, Clocks, Kitchen, Decor, All Products)
+  - Featured Collections: Horizontal scrolling cards with discount badges (Up to X% Off), arrow navigation, product category images
+  - Factory Tour Section: "From Concept to Creation" split layout with video placeholder and manufacturing stats
+  - Design Ideas Section: Tabbed gallery (Living Room, Bedroom, Kitchen, Dining Room, Office, Outdoor) with hover effects
+  - Benefits Bar: Free Delivery, Quality Guarantee, 24/7 Support, Easy Returns
+  - Product Grid: Category filters, hover quick actions (wishlist, quick view, add to cart), discount badges, ratings
+  - Final CTA: "Ready to Transform Your Space?" with consultation booking
+  - Product Detail Page: Image gallery with thumbnails, quantity selector, wishlist/share buttons, product features, related products
 - **Comprehensive Page Set:** Includes Homepage, dynamic Services pages, About (with quality hero image), Portfolio with custom before/after comparison slider and quality hero image, Shop with cart functionality, multi-step Book Service form, Blog, and Contact page (with quality hero image). All hero sections feature professional stock photography with dark gradient overlays for text readability.
 - **Form Validation:** Client-side and server-side validation using Zod.
 - **Responsive Design:** Mobile-first approach ensuring functionality across all devices.

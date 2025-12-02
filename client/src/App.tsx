@@ -21,6 +21,7 @@ import MaintenanceServices from "@/pages/MaintenanceServices";
 import MaintenanceServiceDetail from "@/pages/MaintenanceServiceDetail";
 import DesignCategory from "@/pages/DesignCategory";
 import DesignDetail from "@/pages/DesignDetail";
+import ProductDetail from "@/pages/ProductDetail";
 import NotFound from "@/pages/NotFound";
 
 function Router() {
@@ -40,6 +41,7 @@ function Router() {
           <Route path="/maintenance/:serviceSlug" component={MaintenanceServiceDetail} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/shop" component={Shop} />
+          <Route path="/shop/:productId" component={ProductDetail} />
           <Route path="/cart" component={Cart} />
           <Route path="/book" component={BookService} />
           <Route path="/blog/:slug" component={BlogPost} />
