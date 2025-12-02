@@ -81,6 +81,14 @@ const readyToUseServices = [
   },
 ];
 
+const whyPartnerWithUs = [
+  { icon: Palette, title: "Made to Order" },
+  { icon: Percent, title: "Lowest Prices Guaranteed" },
+  { icon: CheckCircle2, title: "QC At Every Step" },
+  { icon: Truck, title: "Timely Delivery Assurance" },
+  { icon: ShieldCheck, title: "11-Year Warranty" },
+];
+
 const turnkeyServices = [
   {
     icon: Paintbrush,
@@ -531,6 +539,67 @@ export default function InteriorDesign() {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Partner With Us Section */}
+      <section className="py-20 bg-background" data-testid="section-why-partner">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              Why Partner With <span className="text-[#970A44]">Us?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Experience distinguished designs and transparent pricing with the best interior design company in Dubai.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12"
+          >
+            {whyPartnerWithUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div 
+                  key={index} 
+                  variants={fadeInUp}
+                  className="flex flex-col items-center text-center"
+                  data-testid={`partner-feature-${index}`}
+                >
+                  <div className="w-20 h-20 rounded-full border-2 border-[#970A44]/20 flex items-center justify-center mb-4 bg-white shadow-sm">
+                    <Icon className="w-8 h-8 text-[#970A44]" />
+                  </div>
+                  <h3 className="font-semibold text-sm md:text-base">{item.title}</h3>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center"
+          >
+            <Button 
+              asChild
+              className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+              data-testid="button-partner-consultation"
+            >
+              <Link href="/contact">
+                Book Free Consultation
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
