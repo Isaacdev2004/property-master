@@ -444,72 +444,80 @@ export default function InteriorDesign() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="max-w-2xl"
-          >
-            <span className="inline-block px-4 py-2 bg-[#970A44]/20 backdrop-blur-sm border border-[#970A44]/30 rounded-full text-white text-sm font-medium mb-6">
-              Interior Design & Fit-Out
-            </span>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
-              Interior Design that Speaks of <span className="text-[#970A44]">You</span>
-            </h1>
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              From foundation to furnishings, we style your home like our own. Transform your vision into reality with Dubai's premier interior design experts.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                asChild
-                size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
-                data-testid="button-hero-consultation"
-              >
-                <Link href="/contact">
-                  Book Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button 
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
-                data-testid="button-hero-portfolio"
-              >
-                <Link href="/portfolio">
-                  View Our Work
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Hero Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <span className="inline-block px-4 py-2 bg-[#970A44]/20 backdrop-blur-sm border border-[#970A44]/30 rounded-full text-white text-sm font-medium mb-6">
+                Interior Design & Fit-Out
+              </span>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
+                Interior Design that Speaks of <span className="text-[#970A44]">You</span>
+              </h1>
+              <p className="text-lg text-white/80 mb-8 leading-relaxed">
+                From foundation to furnishings, we style your home like our own. Transform your vision into reality with Dubai's premier interior design experts.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                  data-testid="button-hero-consultation"
+                >
+                  <Link href="/contact">
+                    Book Free Consultation
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button 
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
+                  data-testid="button-hero-portfolio"
+                >
+                  <Link href="/portfolio">
+                    View Our Work
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
 
-        {/* Stats Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6"
-        >
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Right Column - Statistics Grid */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="grid grid-cols-2 gap-3"
+              data-testid="stats-grid"
+            >
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="text-center" data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}>
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-[#970A44]/10 rounded-xl mb-3">
-                      <Icon className="w-6 h-6 text-[#970A44]" />
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    <div className="flex justify-center mb-2">
+                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-[#09263D]">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
+                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* About Property Masters Section */}
