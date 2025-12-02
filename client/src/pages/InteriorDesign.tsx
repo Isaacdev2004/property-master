@@ -125,6 +125,51 @@ const howWeWork = [
   },
 ];
 
+const expertTeam = [
+  { id: 1, name: "Sarah Krishnan Andapally", projects: "100+ Projects", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" },
+  { id: 2, name: "Ayush Goyal", projects: "25+ Projects", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" },
+  { id: 3, name: "Ankita Satyashilani Menon", projects: "50+ Projects", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" },
+  { id: 4, name: "Aparna Vinod", projects: "45+ Projects", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" },
+  { id: 5, name: "Ravi Kishan", projects: "35+ Projects", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" },
+  { id: 6, name: "Ayushi Rajendra Haldar", projects: "60+ Projects", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" },
+  { id: 7, name: "Mohd Jam", projects: "25+ Projects", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" },
+  { id: 8, name: "Mahitha Lalu Abraham", projects: "55+ Projects", image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&q=80" },
+];
+
+const googleReviews = [
+  {
+    id: 1,
+    name: "Sajeel Zaman",
+    rating: 5,
+    date: "2 weeks ago",
+    content: "We came across Interior Company through the search engine, and the entire experience has been good and also budget friendly, especially with project manager 'Zaki' and Business Manager 'Ashish'. They went out of the way to ensure all our expectations were well met. Keep walking and keep growing...",
+    featured: true,
+  },
+  {
+    id: 2,
+    name: "Rafiq Adams",
+    rating: 5,
+    date: "2 weeks ago",
+    content: "The team was competent and professional. Saad, Ajmal and Rashmi along with rest of team worked to finish the job and took feedback into consideration patiently and productively. Finished job was well done.",
+  },
+  {
+    id: 3,
+    name: "Maya AlEssawi",
+    rating: 4,
+    date: "a month ago",
+    content: "Great experience working with the team. Professional service and quality workmanship throughout the project.",
+  },
+];
+
+const whatSetsApart = [
+  { icon: Building2, title: "One-Stop Solution For Interior Design", description: "Meet all your home interior design needs under one roof." },
+  { icon: Users, title: "Best Designing Experts", description: "We craft bespoke design solutions that reflect your personality." },
+  { icon: Palette, title: "Immersive 3D Walkthroughs", description: "Experience home interiors with interactive 3D visual walkthroughs." },
+  { icon: Percent, title: "Honest Pricing", description: "Transparent pricing with no hidden charges for interior fit-out services." },
+  { icon: Headphones, title: "Customer Support", description: "We ensure that all your queries are resolved at the earliest." },
+  { icon: CheckCircle2, title: "Consistent Quality Checks", description: "Strict quality inspections are carried out at various stages of the project." },
+];
+
 const turnkeyServices = [
   {
     icon: Paintbrush,
@@ -770,6 +815,187 @@ export default function InteriorDesign() {
                 </p>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Experts Behind Property Masters Section */}
+      <section className="py-24 bg-muted/30" data-testid="section-expert-team">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              Experts Behind Property Masters's <span className="text-[#970A44]">Saga</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our team of interior decorators in Dubai helps you discover fresh design ideas that celebrate you.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+              {expertTeam.map((expert, index) => (
+                <motion.div
+                  key={expert.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 text-center"
+                  data-testid={`expert-${expert.id}`}
+                >
+                  <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-3 border-[#970A44]/20">
+                    <img 
+                      src={expert.image}
+                      alt={expert.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h4 className="font-semibold text-sm mb-1 max-w-[120px]">{expert.name}</h4>
+                  <p className="text-xs text-muted-foreground">{expert.projects}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Clients Love Our Work - Google Reviews Section */}
+      <section className="py-24 bg-background" data-testid="section-google-reviews">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              Our Clients Simply <span className="text-[#970A44]">Love</span> Our Work
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Because for us, your satisfaction is always our priority!
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Google Rating Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-1"
+            >
+              <Card className="h-full border-0 shadow-lg">
+                <CardContent className="p-8 flex flex-col items-center justify-center h-full">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-2xl font-bold text-blue-600">G</span>
+                    <span className="text-2xl font-bold text-red-500">o</span>
+                    <span className="text-2xl font-bold text-yellow-500">o</span>
+                    <span className="text-2xl font-bold text-blue-600">g</span>
+                    <span className="text-2xl font-bold text-green-500">l</span>
+                    <span className="text-2xl font-bold text-red-500">e</span>
+                    <span className="text-muted-foreground ml-2">Reviews</span>
+                  </div>
+                  <div className="text-5xl font-bold mb-2">4.4</div>
+                  <div className="flex gap-1 mb-3">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star key={star} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                    ))}
+                    <Star className="w-6 h-6 fill-yellow-400/50 text-yellow-400" />
+                  </div>
+                  <p className="text-muted-foreground text-sm">Based on 66 Reviews</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Reviews List */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-2 space-y-4"
+            >
+              {googleReviews.map((review, index) => (
+                <Card key={review.id} className="border-0 shadow-md" data-testid={`google-review-${review.id}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold">{review.name}</h4>
+                          {review.featured && (
+                            <span className="px-2 py-0.5 bg-[#970A44] text-white text-xs rounded-full">Detail</span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-0.5">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                          <span className="text-sm text-muted-foreground">{review.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{review.content}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* What Sets Apart Section */}
+      <section className="py-24 bg-muted/30" data-testid="section-what-sets-apart">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">
+              What Sets <span className="text-[#970A44]">Apart?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Elevate beyond the ordinary. Choose excellence with Property Masters.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {whatSetsApart.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div key={index} variants={fadeInUp}>
+                  <Card className="h-full border-0 shadow-md hover-elevate bg-background" data-testid={`what-sets-apart-${index}`}>
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <div className="w-12 h-12 flex-shrink-0 bg-[#970A44]/10 rounded-xl flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-[#970A44]" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold mb-2">{item.title}</h3>
+                        <p className="text-muted-foreground text-sm">{item.description}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
