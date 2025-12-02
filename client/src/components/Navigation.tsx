@@ -35,9 +35,9 @@ export function Navigation() {
   };
 
   const navItems = [
-    { href: "/services/interior-design", label: "Interior Design" },
-    { href: "/services/wellness", label: "Wellness" },
-    { href: "/services/maintenance", label: "Maintenance Services" },
+    { href: "/interior-design", label: "Interior Design" },
+    { href: "/wellness", label: "Wellness" },
+    { href: "/maintenance", label: "Maintenance Services" },
     { href: null, label: "About", hasDropdown: true },
     { href: "/blog", label: "Blogs" },
   ];
@@ -221,27 +221,27 @@ export function Navigation() {
           >
             <nav className="flex flex-col px-6 py-4 gap-2 max-h-[80vh] overflow-y-auto">
               {/* Interior Design */}
-              <Link href="/services/interior-design" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-interior-design">
+              <Link href="/interior-design" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-interior-design">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/services/interior-design" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/interior-design" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
                   Interior Design
                 </span>
               </Link>
 
               {/* Wellness */}
-              <Link href="/services/wellness" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-wellness">
+              <Link href="/wellness" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-wellness">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/services/wellness" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/wellness" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
                   Wellness
                 </span>
               </Link>
 
               {/* Maintenance Services */}
-              <Link href="/services/maintenance" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-maintenance">
+              <Link href="/maintenance" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-maintenance">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/services/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
                   Maintenance Services
                 </span>
