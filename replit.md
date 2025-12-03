@@ -42,6 +42,25 @@ All animations use professional easing curves `[0.25, 0.46, 0.45, 0.94]` with Fr
 - **Real Stories, Real Results Section:** Marquee-style testimonials section inspired by Heffl.com with two rows of continuously scrolling testimonial cards (one left-to-right, one right-to-left). Features 8 authentic testimonials covering all service areas with 5-star ratings, customer quotes, names, and company information. Replaces the previous statistics pill section to build trust through social proof.
 - **Listen to Our Customers Section:** Featured testimonials section after "Why Choose Us", inspired by Heffl.com. Includes a featured testimonial with large quote, video CTA placeholder, and author details. Uses maroon accent colors and luxury-grade animations.
 - **Blog Section:** "Stay Ahead with Expert Tips" section inspired by Heffl.com. Features a large featured article card with full excerpt, and 3 smaller horizontal blog post cards. Includes color-coded category badges (Interior Design, Wellness, Maintenance, Furniture), author avatars, read times, and dates. Newsletter subscription form at bottom. Links to /blog page.
+- **Wellness Services Page (thehealthyhome.me inspired):** Complete redesign matching the reference site with 17 comprehensive sections plus individual service detail pages:
+  - Hero: "A world of wellness for your family" with stats (61,000+ Happy Customers, 4.9/5 Google Rating, 7,000+ Customer Reviews, 12+ Years)
+  - Air Quality & Trees Planted Widgets: Real-time air quality indicator and environmental impact counter
+  - Quick Service Icons Grid: 9 quick access buttons (AC Cleaning, Carpet, Mattress, Furniture, Deep Cleaning, Painting, Water Tank, Packages, More)
+  - Discover New Services Carousel: IV Drip, Movers & Packers, Painting, Furniture Packages with horizontal scroll
+  - Top Categories: Home Wellness Services & Personal Wellness Services cards with descriptions
+  - AC Services Section: 6 services (AC Cleaning, Coil Cleaning, Repair, Mold Removal, Duct Cleaning, Installation)
+  - Furniture Cleaning Section: 6 services (Mattress, Sofa, Carpet, Curtain, Upholstery, Nano Coating)
+  - Water & Pipeline Section: 4 services (Tank Cleaning, Pipeline Disinfection, Water Filters, Whole House Filtration)
+  - Home Deep Cleaning Section: 3 services (Move-In/Out, Premium Deep Cleaning, Furniture Cleaning)
+  - Pest Control Section: 6 services (Bed Bugs, Rodent, Cockroach, Mosquito, Termite, Drainage)
+  - Indoor Environmental Testing: 4 services (Air Quality, Water Quality, Mold Testing, Surface Testing)
+  - Personal Wellness Section: 6 services (Healthcare at Home, Spa & Beauty, Health & Nutrition, Mom & Baby, Laundry, Fitness Training)
+  - Home Improvement Section: 8 services (Painting, Movers, Waterproofing, Kitchen Wrapping, Smart Home, Flooring, Curtains, Renovation)
+  - Why Choose Us: 6 benefits (Satisfaction Guarantee, Same Day Service, Certified Professionals, Eco-Friendly, Advanced Technology, Insured)
+  - Google Reviews Testimonials: Carousel with customer reviews (4.9 rating, 7,000+ reviews)
+  - Book Now CTA: "Ready to Create a Healthier Home?"
+  - Contact Info: Phone, Location (AL Saqr Business Tower), Working Hours
+  - Individual Service Detail Pages: 15+ service detail pages (AC Cleaning, Carpet Cleaning, Mattress Cleaning, Furniture Cleaning, Deep Cleaning, Painting, Water Tank, Packages, Pest Control, IV Drip, Movers, Healthcare, Mold Removal, Air Quality Testing, Water Services, AC Services) each with hero, features, benefits, process, pricing plans, FAQs, and related services
 - **Maintenance Services Page (hitchesglitches.com inspired):** Complete redesign matching the reference site with all sections, plus individual service detail pages for all 16 maintenance services:
   - Hero: Parallax effect with "Quality Repairs & Maintenance, Hassle-Free" tagline, "Best Home Maintenance Company in UAE" headline, 4 feature badges (Guaranteed Satisfaction, Online Booking, Emergency Response, 24/7 Working days)
   - Services Grid: 16 service cards with brand-colored icons including Disinfection, Kitchen Equipment, Civil Work, Smart Products, Pest Control, Swimming Pool, Plumbing, Electrical, AC, Cleaning, Security, and Maintenance Packages
