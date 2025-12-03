@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { 
@@ -11,9 +11,7 @@ import {
   UtensilsCrossed, 
   Bed, 
   Bath, 
-  Grid3X3, 
   DoorOpen,
-  Lamp,
   Table2,
   Play,
   Award,
@@ -25,11 +23,31 @@ import {
   PaintBucket,
   LayoutGrid,
   Square,
-  Baby
+  Baby,
+  Star,
+  Quote,
+  Shield,
+  Clock,
+  Headphones,
+  ThumbsUp,
+  Calculator,
+  Check,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
+  Eye,
+  Sparkles,
+  Zap,
+  Target,
+  Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 // Hero stats matching interiorcompany.com
 const stats = [
@@ -39,7 +57,7 @@ const stats = [
   { icon: Palette, value: "2 Lac+", label: "DESIGN OPTIONS" },
 ];
 
-// Turnkey Services - matching interiorcompany.com
+// Turnkey Services
 const turnkeyServices = [
   {
     icon: Paintbrush,
@@ -61,7 +79,7 @@ const turnkeyServices = [
   },
 ];
 
-// Furniture Collection - matching interiorcompany.com
+// Furniture Collection
 const furnitureCollection = [
   { id: 1, name: "Wallpapers", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80", discount: "27%" },
   { id: 2, name: "Sofas", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80", discount: "55%" },
@@ -75,7 +93,7 @@ const furnitureCollection = [
   { id: 10, name: "Bedside Tables", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400&q=80", discount: "48%" },
 ];
 
-// Design categories matching interiorcompany.com tabs
+// Design categories
 const designCategories = [
   { id: "wall-colour", label: "Wall Colour Combination", icon: PaintBucket },
   { id: "living-room", label: "Living Room", icon: Sofa },
@@ -202,6 +220,86 @@ const designIdeas: Record<string, Array<{ id: number; title: string; image: stri
   ],
 };
 
+// 360 Tour Projects
+const tourProjects = [
+  { id: 1, title: "Luxury Villa in Palm Jumeirah", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", location: "Palm Jumeirah, Dubai", sqft: "4,500 sq.ft" },
+  { id: 2, title: "Modern Apartment in Downtown", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", location: "Downtown Dubai", sqft: "2,200 sq.ft" },
+  { id: 3, title: "Contemporary Penthouse", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80", location: "Dubai Marina", sqft: "3,800 sq.ft" },
+  { id: 4, title: "Classic Villa Interior", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", location: "Emirates Hills", sqft: "5,200 sq.ft" },
+  { id: 5, title: "Minimalist Studio", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", location: "Business Bay", sqft: "1,100 sq.ft" },
+  { id: 6, title: "Family Home Makeover", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", location: "Arabian Ranches", sqft: "3,500 sq.ft" },
+];
+
+// How We Work Steps
+const processSteps = [
+  { step: 1, title: "Meet Our Designer", description: "Schedule a free consultation with our expert designers to discuss your vision and requirements.", icon: Users },
+  { step: 2, title: "Get Your Design", description: "Receive detailed 3D designs and floor plans tailored to your space and preferences.", icon: Palette },
+  { step: 3, title: "Approve & Modify", description: "Review the designs, suggest modifications, and approve the final layout.", icon: CheckCircle2 },
+  { step: 4, title: "Execution Begins", description: "Our skilled craftsmen bring your design to life with precision and quality materials.", icon: Ruler },
+  { step: 5, title: "Quality Check", description: "Rigorous quality checks ensure every detail meets our premium standards.", icon: Shield },
+  { step: 6, title: "Move In", description: "Your dream space is ready! Enjoy your beautifully designed interior.", icon: Heart },
+];
+
+// Expert Team
+const expertTeam = [
+  { id: 1, name: "Sarah Al-Rashid", role: "Lead Interior Designer", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80", experience: "12+ Years" },
+  { id: 2, name: "Ahmed Hassan", role: "Senior Architect", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80", experience: "15+ Years" },
+  { id: 3, name: "Priya Sharma", role: "Kitchen Specialist", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80", experience: "8+ Years" },
+  { id: 4, name: "Michael Chen", role: "Project Manager", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", experience: "10+ Years" },
+];
+
+// Google Reviews
+const googleReviews = [
+  { id: 1, name: "Fatima Al-Maktoum", rating: 5, review: "Exceptional service! The team transformed our villa into a dream home. Every detail was perfect.", date: "2 weeks ago", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" },
+  { id: 2, name: "Rajesh Patel", rating: 5, review: "Professional team with great attention to detail. Highly recommend for any interior project.", date: "1 month ago", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" },
+  { id: 3, name: "Emma Thompson", rating: 5, review: "From design to execution, everything was seamless. Love my new kitchen!", date: "3 weeks ago", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" },
+  { id: 4, name: "Mohammed Ali", rating: 5, review: "Best interior design company in Dubai. Quality work at reasonable prices.", date: "1 week ago", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" },
+];
+
+// Why Choose Us
+const whyChooseUs = [
+  { icon: Shield, title: "10-Year Warranty", description: "All our work comes with a comprehensive 10-year warranty for peace of mind." },
+  { icon: Clock, title: "45-Day Delivery", description: "We guarantee project completion within 45 days from approval." },
+  { icon: Headphones, title: "24/7 Support", description: "Round-the-clock customer support for all your queries and concerns." },
+  { icon: ThumbsUp, title: "Quality Assured", description: "Premium materials and expert craftsmanship in every project." },
+  { icon: Sparkles, title: "Customized Designs", description: "Every design is tailored to your unique taste and lifestyle." },
+  { icon: Zap, title: "Quick Installation", description: "Efficient installation process with minimal disruption." },
+];
+
+// Partner Brands
+const partnerBrands = [
+  { name: "Kohler", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Bosch", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Hafele", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Asian Paints", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Hettich", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Philips", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+];
+
+// Happy Homes
+const happyHomes = [
+  { id: 1, name: "Al Rashid Residence", location: "Palm Jumeirah", type: "Villa", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" },
+  { id: 2, name: "Marina Heights Apt", location: "Dubai Marina", type: "Apartment", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" },
+  { id: 3, name: "Downtown Penthouse", location: "Downtown Dubai", type: "Penthouse", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" },
+  { id: 4, name: "Arabian Villa", location: "Arabian Ranches", type: "Villa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" },
+  { id: 5, name: "JBR Apartment", location: "JBR", type: "Apartment", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" },
+  { id: 6, name: "Hills Estate", location: "Emirates Hills", type: "Villa", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" },
+];
+
+// Video Testimonials
+const videoTestimonials = [
+  { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
+  { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
+  { id: 3, name: "Priya Verma", role: "Interior Enthusiast", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80", rating: 5, hasVideo: true },
+];
+
+// Blog Posts
+const blogPosts = [
+  { id: 1, title: "Top 10 Interior Design Trends for 2024", category: "Trends", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", date: "Dec 1, 2024", readTime: "5 min read" },
+  { id: 2, title: "How to Choose the Perfect Color Palette", category: "Tips", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", date: "Nov 28, 2024", readTime: "4 min read" },
+  { id: 3, title: "Maximizing Small Spaces: A Complete Guide", category: "Guide", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", date: "Nov 25, 2024", readTime: "6 min read" },
+];
+
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -236,9 +334,7 @@ export default function InteriorDesign() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* ========================================
-          SECTION 1: HERO (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 1: HERO */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
@@ -310,9 +406,7 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* ========================================
-          SECTION 2: COMPLETE TURNKEY SERVICES (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 2: COMPLETE TURNKEY SERVICES */}
       <section className="py-24 bg-background" data-testid="section-turnkey">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -368,9 +462,7 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* ========================================
-          SECTION 3: FACTORY VIDEO (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 3: FACTORY VIDEO */}
       <section className="py-24 bg-muted/30" data-testid="section-factory">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -429,9 +521,7 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* ========================================
-          SECTION 4: FURNITURE COLLECTION (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 4: FURNITURE COLLECTION */}
       <section className="py-24 bg-background" data-testid="section-furniture">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -525,9 +615,7 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* ========================================
-          SECTION 5: DESIGN IDEAS (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 5: DESIGN IDEAS */}
       <section className="py-24 bg-muted/30" data-testid="section-design-ideas">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -628,9 +716,618 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* ========================================
-          SECTION 6: FINAL CTA (matches interiorcompany.com)
-          ======================================== */}
+      {/* SECTION 6: 360-DEGREE TOUR OF EXECUTED PROJECTS */}
+      <section className="py-24 bg-background" data-testid="section-360-tour">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              A 360-Degree Tour Of Our Executed Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Like our designs? Explore them from a different perspective!
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tourProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-tour-${project.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute top-4 right-4">
+                      <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                        <Eye className="w-6 h-6 text-[#970A44]" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
+                      <div className="flex items-center gap-4 text-white/80 text-sm">
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-4 h-4" />
+                          {project.location}
+                        </span>
+                        <span>{project.sqft}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-tours"
+            >
+              <Link href="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 7: HOW WE WORK */}
+      <section className="py-24 bg-muted/30" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              How We Work
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our streamlined process ensures a seamless journey from concept to completion.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-process-${step.step}`}>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
+                          {step.step}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                          <p className="text-muted-foreground">{step.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: EXPERT TEAM */}
+      <section className="py-24 bg-background" data-testid="section-team">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              The Experts Behind Property Masters
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Meet our talented team of designers and architects who bring your vision to life.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {expertTeam.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-team-${member.id}`}>
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="font-bold text-lg">{member.name}</h3>
+                      <p className="text-white/80 text-sm">{member.role}</p>
+                      <span className="inline-block mt-2 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                        {member.experience}
+                      </span>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: GOOGLE REVIEWS */}
+      <section className="py-24 bg-muted/30" data-testid="section-reviews">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
+              <span className="text-lg font-semibold">Google Reviews</span>
+            </div>
+            <div className="flex items-center justify-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+              ))}
+              <span className="ml-2 text-xl font-bold">4.9</span>
+              <span className="text-muted-foreground">(500+ reviews)</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif">
+              What Our Customers Say
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {googleReviews.map((review, index) => (
+              <motion.div
+                key={review.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-review-${review.id}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <img 
+                        src={review.image}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <h4 className="font-semibold">{review.name}</h4>
+                        <p className="text-xs text-muted-foreground">{review.date}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      "{review.review}"
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: WHY CHOOSE US */}
+      <section className="py-24 bg-background" data-testid="section-why-choose">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Why Choose Property Masters?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We're committed to delivering excellence in every project we undertake.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-why-${index}`}>
+                    <CardContent className="p-6 text-center">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 11: PARTNER BRANDS */}
+      <section className="py-16 bg-muted/30" data-testid="section-brands">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-serif">
+              Our Trusted Partner Brands
+            </h2>
+            <p className="text-muted-foreground">
+              We work with world-class brands to deliver premium quality
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            {partnerBrands.map((brand, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="grayscale hover:grayscale-0 transition-all"
+              >
+                <div className="w-24 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center p-2">
+                  <span className="text-sm font-bold text-muted-foreground">{brand.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 12: HAPPY HOMES */}
+      <section className="py-24 bg-background" data-testid="section-happy-homes">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Happy Homes, Happy Families
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Take a tour of homes we've transformed across Dubai and beyond. Real projects, real satisfaction.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {happyHomes.map((home, index) => (
+              <motion.div
+                key={home.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="group overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-home-${home.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={home.image}
+                      alt={home.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-1">{home.name}</h3>
+                      <p className="text-white/80 text-sm">{home.location}</p>
+                    </div>
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                      {home.type}
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-projects"
+            >
+              <Link href="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 13: FREE ESTIMATE */}
+      <section className="py-24 bg-[#970A44]" data-testid="section-free-estimate">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full mb-6">
+                <Calculator className="w-5 h-5 text-white" />
+                <span className="text-white font-medium">Free Estimate</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
+                Get Your Free Estimate in 30 Seconds
+              </h2>
+              <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                Simply share your requirements and get an instant estimate for your dream interior. No obligations, no hidden costs.
+              </p>
+              <ul className="space-y-4 text-white">
+                {[
+                  "Instant price estimate",
+                  "Personalized design consultation",
+                  "3D visualization of your space",
+                  "Flexible payment options"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <Check className="w-5 h-5 text-white" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border-0 shadow-2xl">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Tell Us About Your Project</h3>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name">Name</Label>
+                        <Input id="name" placeholder="Your name" data-testid="input-estimate-name" />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone</Label>
+                        <Input id="phone" placeholder="+971" data-testid="input-estimate-phone" />
+                      </div>
+                    </div>
+                    <div>
+                      <Label htmlFor="property-type">Property Type</Label>
+                      <Select>
+                        <SelectTrigger data-testid="select-property-type">
+                          <SelectValue placeholder="Select property type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="apartment">Apartment</SelectItem>
+                          <SelectItem value="villa">Villa</SelectItem>
+                          <SelectItem value="office">Office</SelectItem>
+                          <SelectItem value="retail">Retail Space</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="bhk">Configuration</Label>
+                      <Select>
+                        <SelectTrigger data-testid="select-bhk">
+                          <SelectValue placeholder="Select BHK" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1bhk">1 BHK</SelectItem>
+                          <SelectItem value="2bhk">2 BHK</SelectItem>
+                          <SelectItem value="3bhk">3 BHK</SelectItem>
+                          <SelectItem value="4bhk">4 BHK</SelectItem>
+                          <SelectItem value="5bhk+">5+ BHK</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <Button className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" data-testid="button-get-estimate">
+                      Get Free Estimate
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 14: VIDEO TESTIMONIALS */}
+      <section className="py-24 bg-background" data-testid="section-testimonials">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Hear From Our Happy Customers
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Real stories from real customers who trusted us with their dream interiors.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {videoTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-testimonial-${testimonial.id}`}>
+                  <CardContent className="p-6">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-muted">
+                      <img 
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <button 
+                          className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110"
+                          data-testid={`button-play-testimonial-${testimonial.id}`}
+                        >
+                          <Play className="w-6 h-6 text-[#970A44] ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                      ))}
+                    </div>
+                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                    <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 15: LATEST BLOG */}
+      <section className="py-24 bg-muted/30" data-testid="section-blog">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Latest From Our Blog
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Stay updated with the latest trends, tips, and insights in interior design.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/blog/${post.id}`}>
+                  <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-blog-${post.id}`}>
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img 
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {post.date}
+                        </span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <h3 className="font-bold text-lg group-hover:text-[#970A44] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-blogs"
+            >
+              <Link href="/blog">
+                Read More Articles
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 16: FINAL CTA */}
       <section className="py-24 bg-[#09263D]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
