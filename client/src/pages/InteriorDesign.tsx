@@ -401,14 +401,14 @@ const whyChooseUs = [
 ];
 
 const partnerBrands = [
-  { id: 1, name: "Hafele", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 2, name: "Hettich", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 3, name: "Blum", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 4, name: "Bosch", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 5, name: "Samsung", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 6, name: "LG", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 7, name: "Siemens", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
-  { id: 8, name: "Faber", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 1, name: "Hafele", logo: "https://logo.clearbit.com/hafele.com" },
+  { id: 2, name: "Hettich", logo: "https://logo.clearbit.com/hettich.com" },
+  { id: 3, name: "Blum", logo: "https://logo.clearbit.com/blum.com" },
+  { id: 4, name: "Bosch", logo: "https://logo.clearbit.com/bosch.com" },
+  { id: 5, name: "Samsung", logo: "https://logo.clearbit.com/samsung.com" },
+  { id: 6, name: "LG", logo: "https://logo.clearbit.com/lg.com" },
+  { id: 7, name: "Siemens", logo: "https://logo.clearbit.com/siemens.com" },
+  { id: 8, name: "Faber", logo: "https://logo.clearbit.com/faber.com" },
 ];
 
 const uaeLocations = [
@@ -1331,8 +1331,22 @@ export default function InteriorDesign() {
                 data-testid={`brand-${brand.id}`}
               >
                 <div className="text-center">
-                  <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#970A44]/10 to-[#1C4668]/10 rounded-lg flex items-center justify-center">
-                    <span className="font-bold text-[#09263D] text-xs">{brand.name.substring(0, 2).toUpperCase()}</span>
+                  <div className="w-16 h-12 mx-auto mb-2 flex items-center justify-center">
+                    <img 
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition-all"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                      data-testid={`img-brand-${brand.id}`}
+                    />
+                    <div className="hidden w-12 h-12 bg-gradient-to-br from-[#970A44]/10 to-[#1C4668]/10 rounded-lg items-center justify-center">
+                      <span className="font-bold text-[#09263D] text-xs">{brand.name.substring(0, 2).toUpperCase()}</span>
+                    </div>
                   </div>
                   <span className="text-xs font-medium text-[#09263D]">{brand.name}</span>
                 </div>
