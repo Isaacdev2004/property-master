@@ -400,6 +400,66 @@ const whyChooseUs = [
   { icon: Award, title: "Award-Winning Design", description: "Recognized excellence in interior design and innovation" },
 ];
 
+const partnerBrands = [
+  { id: 1, name: "Hafele", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 2, name: "Hettich", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 3, name: "Blum", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 4, name: "Bosch", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 5, name: "Samsung", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 6, name: "LG", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 7, name: "Siemens", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { id: 8, name: "Faber", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+];
+
+const uaeLocations = [
+  { id: 1, city: "Dubai", address: "AL Saqr Business Tower - Office A-36", phone: "+971 2550 0888", projects: "500+" },
+  { id: 2, city: "Abu Dhabi", address: "Al Reem Island, Sky Tower", phone: "+971 2550 0889", projects: "200+" },
+  { id: 3, city: "Sharjah", address: "Al Majaz, Crystal Plaza", phone: "+971 2550 0890", projects: "150+" },
+];
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "Top 10 Modular Kitchen Designs for 2024",
+    excerpt: "Discover the latest trends in modular kitchen designs that combine functionality with stunning aesthetics.",
+    category: "Kitchen",
+    date: "Dec 1, 2024",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "How to Choose the Perfect Wardrobe Design",
+    excerpt: "Expert tips on selecting wardrobe designs that maximize storage and complement your bedroom.",
+    category: "Wardrobe",
+    date: "Nov 28, 2024",
+    readTime: "4 min read",
+    image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&q=80",
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Living Room Color Trends for Dubai Homes",
+    excerpt: "Explore the most popular color combinations that are transforming living spaces across Dubai.",
+    category: "Living Room",
+    date: "Nov 25, 2024",
+    readTime: "3 min read",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80",
+    featured: false,
+  },
+  {
+    id: 4,
+    title: "Luxury Bathroom Design Ideas",
+    excerpt: "Transform your bathroom into a spa-like retreat with these luxury design ideas.",
+    category: "Bathroom",
+    date: "Nov 20, 2024",
+    readTime: "4 min read",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80",
+    featured: false,
+  },
+];
+
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -1237,6 +1297,51 @@ export default function InteriorDesign() {
         </div>
       </section>
 
+      {/* Partner Brands Section */}
+      <section className="py-16 bg-muted/30" data-testid="section-partner-brands">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 font-serif">
+              Trusted by <span className="text-[#970A44]">Premium Brands</span>
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              We partner with world-renowned brands to bring you the finest quality materials and fittings.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-4 md:grid-cols-8 gap-6"
+          >
+            {partnerBrands.map((brand, index) => (
+              <motion.div
+                key={brand.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex items-center justify-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                data-testid={`brand-${brand.id}`}
+              >
+                <div className="text-center">
+                  <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#970A44]/10 to-[#1C4668]/10 rounded-lg flex items-center justify-center">
+                    <span className="font-bold text-[#09263D] text-xs">{brand.name.substring(0, 2).toUpperCase()}</span>
+                  </div>
+                  <span className="text-xs font-medium text-[#09263D]">{brand.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Design Ideas Section */}
       <section className="py-24 bg-background" data-testid="section-design-ideas">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -1667,6 +1772,208 @@ export default function InteriorDesign() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* UAE Locations Map Section */}
+      <section className="py-24 bg-muted/30" data-testid="section-uae-locations">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">
+                We're Across <span className="text-[#970A44]">UAE</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                With offices across the UAE, we bring exceptional interior design services closer to you. Visit our experience centers to explore our work firsthand.
+              </p>
+
+              <div className="space-y-6">
+                {uaeLocations.map((location, index) => (
+                  <motion.div
+                    key={location.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                    data-testid={`location-${location.id}`}
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-[#970A44] rounded-full flex items-center justify-center">
+                      <Building2 className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex items-center justify-between mb-1">
+                        <h3 className="font-bold text-lg">{location.city}</h3>
+                        <span className="text-sm text-[#970A44] font-medium">{location.projects} Projects</span>
+                      </div>
+                      <p className="text-muted-foreground text-sm mb-1">{location.address}</p>
+                      <a href={`tel:${location.phone}`} className="text-[#970A44] text-sm font-medium hover:underline">
+                        {location.phone}
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-square bg-gradient-to-br from-[#F6F4EB] to-white rounded-3xl overflow-hidden shadow-xl relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-32 h-32 mx-auto mb-6 bg-[#970A44]/10 rounded-full flex items-center justify-center">
+                      <Building2 className="w-16 h-16 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-[#09263D] mb-2">3 Cities</h3>
+                    <p className="text-muted-foreground">Across UAE</p>
+                  </div>
+                </div>
+                
+                <div className="absolute top-1/4 left-1/3 w-4 h-4 bg-[#970A44] rounded-full animate-pulse" />
+                <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-[#1C4668] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-[#09263D] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+
+                <div className="absolute top-6 right-6 px-4 py-2 bg-white rounded-full shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold text-[#970A44]">850+</span>
+                    <span className="text-sm text-muted-foreground">Total Projects</span>
+                  </div>
+                </div>
+
+                <div className="absolute bottom-6 left-6 px-4 py-2 bg-white rounded-full shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-[#970A44] fill-[#970A44]" />
+                    <span className="text-lg font-bold text-[#09263D]">4.8</span>
+                    <span className="text-sm text-muted-foreground">Rating</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Section */}
+      <section className="py-24 bg-background" data-testid="section-blog">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Latest News & <span className="text-[#970A44]">Insights</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Stay updated with the latest trends, tips, and inspiration in interior design and home improvement.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {blogPosts.filter(post => post.featured).map((post) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Link href={`/blog/${post.id}`}>
+                  <Card className="group overflow-hidden border-0 shadow-lg hover-elevate h-full cursor-pointer" data-testid={`card-blog-featured-${post.id}`}>
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img 
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                        {post.category}
+                      </div>
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <h3 className="text-2xl font-bold text-white mb-2 line-clamp-2">{post.title}</h3>
+                        <p className="text-white/80 text-sm line-clamp-2">{post.excerpt}</p>
+                        <div className="flex items-center gap-4 mt-4 text-white/60 text-sm">
+                          <span>{post.date}</span>
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
+
+            <div className="grid gap-6">
+              {blogPosts.filter(post => !post.featured).map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <Link href={`/blog/${post.id}`}>
+                    <Card className="group overflow-hidden border-0 shadow-sm hover-elevate cursor-pointer" data-testid={`card-blog-${post.id}`}>
+                      <div className="flex gap-4 p-4">
+                        <div className="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+                          <img 
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        <div className="flex-grow">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="px-2 py-1 bg-[#970A44]/10 text-[#970A44] text-xs font-medium rounded-full">
+                              {post.category}
+                            </span>
+                          </div>
+                          <h3 className="font-bold text-sm line-clamp-2 group-hover:text-[#970A44] transition-colors">
+                            {post.title}
+                          </h3>
+                          <div className="flex items-center gap-3 mt-2 text-muted-foreground text-xs">
+                            <span>{post.date}</span>
+                            <span>{post.readTime}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-blogs"
+            >
+              <Link href="/blog">
+                View All Articles
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
