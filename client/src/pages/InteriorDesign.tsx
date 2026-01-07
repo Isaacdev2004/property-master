@@ -62,19 +62,19 @@ const turnkeyServices = [
   {
     icon: Paintbrush,
     title: "We Design",
-    description: "From completed homes to modular kitchens, and storage to decor, our top interior designers create spaces that match your vision.",
+    description: "From luxurious villa design to stunning apartment decor, our expert designers create custom interior solutions that transform your vision into reality with elegant, functional spaces.",
     gradient: "from-[#970A44] to-[#720632]",
   },
   {
     icon: Ruler,
     title: "We Execute",
-    description: "We follow a meticulous planning approach with detail-driven designs for interiors of your homes.",
+    description: "We bring your designs to life with meticulous precision, using premium materials and expert craftsmanship to ensure every detail meets our exacting standards.",
     gradient: "from-[#1C4668] to-[#09263D]",
   },
   {
     icon: CheckCircle2,
     title: "We Manage",
-    description: "Our top interior designers spearhead quality assurance by extending support after the execution of home projects.",
+    description: "From concept to completion, we manage every aspect of your project with dedicated support, quality assurance, and seamless coordination throughout your interior journey.",
     gradient: "from-[#09263D] to-[#1C4668]",
   },
 ];
@@ -232,12 +232,12 @@ const tourProjects = [
 
 // How We Work Steps
 const processSteps = [
-  { step: 1, title: "Meet Our Designer", description: "Schedule a free consultation with our expert designers to discuss your vision and requirements.", icon: Users },
-  { step: 2, title: "Get Your Design", description: "Receive detailed 3D designs and floor plans tailored to your space and preferences.", icon: Palette },
-  { step: 3, title: "Approve & Modify", description: "Review the designs, suggest modifications, and approve the final layout.", icon: CheckCircle2 },
-  { step: 4, title: "Execution Begins", description: "Our skilled craftsmen bring your design to life with precision and quality materials.", icon: Ruler },
-  { step: 5, title: "Quality Check", description: "Rigorous quality checks ensure every detail meets our premium standards.", icon: Shield },
-  { step: 6, title: "Move In", description: "Your dream space is ready! Enjoy your beautifully designed interior.", icon: Heart },
+  { step: 1, title: "Design Consultation", description: "Schedule a free consultation where our expert designers learn about your vision, lifestyle, and requirements for the perfect space.", icon: Users },
+  { step: 2, title: "Personalized Design", description: "Receive detailed 3D designs, floor plans, and material selections tailored specifically to your space and aesthetic preferences.", icon: Palette },
+  { step: 3, title: "Review & Refine", description: "Review the designs with our team, suggest modifications, and approve the final layout that perfectly captures your vision.", icon: CheckCircle2 },
+  { step: 4, title: "Expert Execution", description: "Our skilled craftsmen bring your design to life with meticulous precision using premium materials and quality workmanship.", icon: Ruler },
+  { step: 5, title: "Quality Assurance", description: "Rigorous quality checks at every stage ensure every detail meets our exacting standards and your expectations.", icon: Shield },
+  { step: 6, title: "Dream Home Ready", description: "Your transformed space is ready! Enjoy your beautifully designed interior that reflects your unique style and personality.", icon: Heart },
 ];
 
 // Expert Team
@@ -258,12 +258,12 @@ const googleReviews = [
 
 // Why Choose Us
 const whyChooseUs = [
-  { icon: Shield, title: "10-Year Warranty", description: "All our work comes with a comprehensive 10-year warranty for peace of mind." },
-  { icon: Clock, title: "45-Day Delivery", description: "We guarantee project completion within 45 days from approval." },
-  { icon: Headphones, title: "24/7 Support", description: "Round-the-clock customer support for all your queries and concerns." },
-  { icon: ThumbsUp, title: "Quality Assured", description: "Premium materials and expert craftsmanship in every project." },
-  { icon: Sparkles, title: "Customized Designs", description: "Every design is tailored to your unique taste and lifestyle." },
-  { icon: Zap, title: "Quick Installation", description: "Efficient installation process with minimal disruption." },
+  { icon: Shield, title: "10-Year Warranty", description: "All our work comes with a comprehensive 10-year warranty, ensuring lasting quality and peace of mind for your investment." },
+  { icon: Clock, title: "45-Day Delivery", description: "We guarantee project completion within 45 days from approval, keeping your timeline on track without compromising quality." },
+  { icon: Headphones, title: "24/7 Support", description: "Round-the-clock customer support for all your queries and concerns throughout your interior design journey." },
+  { icon: ThumbsUp, title: "Premium Materials", description: "We use only the finest materials and finishes to ensure durability, elegance, and lasting beauty in every project." },
+  { icon: Sparkles, title: "Custom Design Solutions", description: "Every design is tailored to your unique lifestyle, preferences, and spatial requirements for a truly personalized home." },
+  { icon: Zap, title: "Seamless Execution", description: "Efficient installation process with minimal disruption to your daily life, ensuring a smooth transformation experience." },
 ];
 
 // Partner Brands
@@ -353,13 +353,13 @@ export default function InteriorDesign() {
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <span className="inline-block px-4 py-2 bg-[#970A44]/20 backdrop-blur-sm border border-[#970A44]/30 rounded-full text-white text-sm font-medium mb-6">
-                Interior Design & Fit-Out
+                Interior Design & Fit-Out Works
               </span>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
-                Interior Design that Speaks of <span className="text-[#970A44]">You</span>
+                Premium Home Interior Design: Turn Your Space into a <span className="text-[#970A44]">Dream Home</span>
               </h1>
               <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                From foundation to furnishings, we style your home like our own.
+                Affordable & Sustainable Modern Design Solutions for Apartments, Villas & Offices. Concept to Completion.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
@@ -369,7 +369,7 @@ export default function InteriorDesign() {
                   data-testid="button-hero-consultation"
                 >
                   <Link href="/contact">
-                    Book Free Consultation
+                    Get Your Design Consultation
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
@@ -415,10 +415,10 @@ export default function InteriorDesign() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Complete Turnkey Services
+              Residential Interior Design & Renovation
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              With an emphasis on details, extraordinary designs and exceptional customer service, we bring your dreams to life.
+              Elegant & Custom Interior Design for Luxurious Villa Design & Stunning Apartment & House Decor. From concept to completion.
             </p>
             <Button 
               asChild
@@ -476,12 +476,12 @@ export default function InteriorDesign() {
                 From Concept to Creation
               </h3>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
-                Your Furniture's Journey
+                Your Interior Journey
               </h2>
               <div className="bg-[#970A44]/5 border border-[#970A44]/20 rounded-xl p-6 mb-6">
-                <h4 className="font-semibold text-lg mb-2">Step Inside Our Factory:</h4>
+                <h4 className="font-semibold text-lg mb-2">Step Inside Our Workshop:</h4>
                 <p className="text-muted-foreground">
-                  See Your Kitchen or Wardrobe Come to Life
+                  See your custom kitchen, wardrobe, or living space come to life with expert craftsmanship
                 </p>
               </div>
               <Button 
@@ -533,7 +533,7 @@ export default function InteriorDesign() {
               Discover Your Dream Home
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Dive into Our Decor & Furniture Collection!
+              Explore our premium decor and furniture collection to complete your interior design vision.
             </p>
           </motion.div>
 
@@ -624,10 +624,10 @@ export default function InteriorDesign() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Design Ideas for Every Space
+              Indoor Renovation Design Ideas
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Because every corner holds a unique design potential.
+              From kitchens to bedrooms, wardrobes to living rooms - explore design ideas that transform every corner of your home.
             </p>
           </motion.div>
 
@@ -801,10 +801,10 @@ export default function InteriorDesign() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              How We Work
+              Our Design Process
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our streamlined process ensures a seamless journey from concept to completion.
+              From initial consultation to final handover, our streamlined process ensures a seamless journey to your dream interior.
             </p>
           </motion.div>
 
@@ -961,7 +961,7 @@ export default function InteriorDesign() {
               Why Choose Property Masters?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're committed to delivering excellence in every project we undertake.
+              Experience the Property Masters difference - where quality craftsmanship meets personalized design excellence.
             </p>
           </motion.div>
 
@@ -1036,10 +1036,10 @@ export default function InteriorDesign() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Happy Homes, Happy Families
+              Transformed Spaces, Delighted Clients
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Take a tour of homes we've transformed across Dubai and beyond. Real projects, real satisfaction.
+              Explore homes we've transformed across Dubai and beyond - from villas to apartments, each project reflects our commitment to excellence.
             </p>
           </motion.div>
 
@@ -1110,14 +1110,14 @@ export default function InteriorDesign() {
                 <span className="text-white font-medium">Free Estimate</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-                Get Your Free Estimate in 30 Seconds
+                Get Your Free Design Consultation
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                Simply share your requirements and get an instant estimate for your dream interior. No obligations, no hidden costs.
+                Share your requirements and receive a personalized design consultation with transparent pricing. No obligations, no hidden costs.
               </p>
               <ul className="space-y-4 text-white">
                 {[
-                  "Instant price estimate",
+                  "Transparent pricing estimate",
                   "Personalized design consultation",
                   "3D visualization of your space",
                   "Flexible payment options"
@@ -1200,10 +1200,10 @@ export default function InteriorDesign() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
-              Hear From Our Happy Customers
+              Hear From Our Satisfied Clients
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real stories from real customers who trusted us with their dream interiors.
+              Real stories from clients who trusted Property Masters with their dream interiors.
             </p>
           </motion.div>
 
