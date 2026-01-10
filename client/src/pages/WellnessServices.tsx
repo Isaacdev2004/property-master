@@ -23,10 +23,48 @@ import {
   Bug,
   TestTube,
   Sofa,
-  UserCheck
+  UserCheck,
+  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    question: "What do Wellness Services include?",
+    answer: "Wellness Services focus on improving indoor air quality, hygiene, water safety, cleanliness, and overall comfort within residential and commercial properties across Dubai."
+  },
+  {
+    question: "Why are wellness services important in Dubai?",
+    answer: "Dubai's climate, constant air conditioning, sealed indoor spaces, and high dust levels make professional wellness services essential for maintaining healthy indoor environments."
+  },
+  {
+    question: "Are wellness services suitable for both homes and commercial properties?",
+    answer: "Yes. Our wellness solutions are designed for apartments, villas, offices, retail spaces, and other commercial properties."
+  },
+  {
+    question: "Do wellness services require major disruption?",
+    answer: "Most wellness services are non-invasive and can be carried out with minimal disruption to daily activities, depending on the service type."
+  },
+  {
+    question: "How often should wellness services be performed?",
+    answer: "Service frequency depends on property usage, occupancy, and environmental conditions. After assessment, suitable schedules can be recommended."
+  },
+  {
+    question: "Can wellness services be combined with other Property Masters services?",
+    answer: "Yes. Wellness Services integrate seamlessly with Interior Design and Maintenance Services for a complete property care solution."
+  },
+  {
+    question: "Are the methods and products safe for occupants?",
+    answer: "Yes. All methods and products are selected to be safe for residents, staff, and visitors."
+  }
+];
 
 const heroStats = [
   { value: "15+", label: "Years Experience", icon: Shield },
@@ -540,6 +578,48 @@ export default function WellnessServices() {
                 )
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-faq">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
+            <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <HelpCircle className="w-8 h-8 text-[#970A44]" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-[#09263D]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Common questions about our wellness services in Dubai
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-3">
+              {faqItems.map((item, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="bg-white rounded-xl border-0 shadow-sm px-6"
+                  data-testid={`faq-item-${index}`}
+                >
+                  <AccordionTrigger className="text-left font-semibold text-[#09263D] hover:text-[#970A44] hover:no-underline py-5">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </motion.div>
         </div>
       </section>
