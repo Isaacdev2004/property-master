@@ -1,14 +1,23 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { 
+  ArrowRight, 
+  Heart,
+  CheckCircle2,
+  ShieldCheck,
   Home,
-  UtensilsCrossed,
-  Layers,
+  Building2,
+  Users,
   Paintbrush,
+  Layers,
   Square,
   Waves,
-  ArrowRight,
-  CheckCircle2
+  UtensilsCrossed,
+  Shield,
+  Target,
+  Lightbulb,
+  Eye,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,55 +28,100 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
-};
+const heroStats = [
+  { value: "15+", label: "Years Experience", icon: Shield },
+  { value: "2000+", label: "Projects Completed", icon: CheckCircle2 },
+  { value: "98%", label: "Client Satisfaction", icon: Heart },
+  { value: "10yr", label: "Warranty", icon: ShieldCheck },
+];
 
-const services = [
+const approachPoints = [
   {
-    icon: Home,
-    title: "Residential Interior Design & Renovation",
-    description: "Apartments, villas, and townhouses planned around daily living, comfort, and long-term use.",
-    link: "/services/interior-design/residential"
+    icon: Eye,
+    title: "Practical Layouts",
+    description: "Spaces designed around how people actually live and work, not just how they look"
   },
   {
-    icon: UtensilsCrossed,
-    title: "Commercial Interior Design",
-    description: "Restaurants, hospitality, and retail interiors designed to balance brand identity and operational flow.",
-    link: "/services/interior-design/commercial"
+    icon: Target,
+    title: "Climate-Appropriate Materials",
+    description: "Materials selected to perform well in Dubai's heat, humidity, and AC-heavy environments"
   },
   {
-    icon: Layers,
-    title: "Kitchen Remodeling & Wardrobe Solutions",
-    description: "High-use spaces designed for workflow, storage efficiency, and durability.",
-    link: "/services/interior-design/kitchen"
+    icon: Shield,
+    title: "Integrated Execution",
+    description: "Design and construction handled together to ensure consistency and quality control"
   },
   {
-    icon: Square,
-    title: "Flooring & Surface Finishes",
-    description: "Flooring and finishes selected based on usage, maintenance, and environmental conditions.",
-    link: "/services/interior-design/countertops"
-  },
-  {
-    icon: Paintbrush,
-    title: "Painting, Gypsum & False Ceilings",
-    description: "Integrated finishes that define the final look and feel of the space.",
-    link: "/services/interior-design/painting"
-  },
-  {
-    icon: Waves,
-    title: "Outdoor Renovation & Swimming Pools",
-    description: "Outdoor areas designed as functional extensions of the interior.",
-    link: "/services/interior-design/outdoor"
+    icon: Lightbulb,
+    title: "Long-Term Durability",
+    description: "Solutions that maintain their quality long after handover, reducing future repairs"
   }
 ];
 
-const philosophyPoints = [
-  "Practical layouts",
-  "Climate-appropriate materials",
-  "Integrated design and execution"
+const interiorServices = [
+  {
+    id: 1,
+    icon: Home,
+    title: "Residential Interior Design & Renovation",
+    description: "Apartments, villas, and townhouses planned around daily living, comfort, and long-term use.",
+    href: "/services/interior-design/residential"
+  },
+  {
+    id: 2,
+    icon: UtensilsCrossed,
+    title: "Commercial Interior Design",
+    description: "Restaurants, hospitality, and retail interiors designed to balance brand identity and operational flow.",
+    href: "/services/interior-design/commercial"
+  },
+  {
+    id: 3,
+    icon: Layers,
+    title: "Kitchen Remodeling & Wardrobe Solutions",
+    description: "High-use spaces designed for workflow, storage efficiency, and durability.",
+    href: "/services/interior-design/kitchen"
+  },
+  {
+    id: 4,
+    icon: Square,
+    title: "Flooring & Surface Finishes",
+    description: "Flooring and finishes selected based on usage, maintenance, and environmental conditions.",
+    href: "/services/interior-design/countertops"
+  },
+  {
+    id: 5,
+    icon: Paintbrush,
+    title: "Painting, Gypsum & False Ceilings",
+    description: "Integrated finishes that define the final look and feel of the space.",
+    href: "/services/interior-design/painting"
+  },
+  {
+    id: 6,
+    icon: Waves,
+    title: "Outdoor Renovation & Swimming Pools",
+    description: "Outdoor areas designed as functional extensions of the interior.",
+    href: "/services/interior-design/outdoor"
+  }
+];
+
+const whyItMatters = [
+  { icon: Sparkles, title: "Constant air conditioning affects materials" },
+  { icon: Home, title: "Humidity impacts finishes over time" },
+  { icon: Shield, title: "Strong sunlight causes wear and fading" },
+  { icon: Building2, title: "Daily use requires durable solutions" }
+];
+
+const targetAudiences = [
+  { icon: Home, title: "Homeowners", description: "seeking quality renovations" },
+  { icon: Users, title: "Families", description: "planning long-term living spaces" },
+  { icon: Building2, title: "Property Investors", description: "improving asset value" },
+  { icon: Sparkles, title: "Commercial Clients", description: "needing functional workspaces" }
+];
+
+const processSteps = [
+  { step: 1, title: "Consult", description: "Understanding your vision, requirements, and budget" },
+  { step: 2, title: "Design", description: "Creating detailed plans and material selections" },
+  { step: 3, title: "Execute", description: "Professional construction with quality control" },
+  { step: 4, title: "Handover", description: "Final inspection and warranty documentation" }
 ];
 
 const faqs = [
@@ -90,46 +144,29 @@ const faqs = [
   {
     question: "How long does an interior design or renovation project usually take?",
     answer: "Timelines vary depending on scope, approvals, and materials. After an initial assessment, we provide a realistic schedule aligned with Dubai regulations and project requirements."
-  },
-  {
-    question: "Do you assist with material and finish selection?",
-    answer: "Yes. We guide clients on materials, finishes, and fixtures that balance aesthetics, durability, and maintenance needs, ensuring they perform well in Dubai conditions."
-  },
-  {
-    question: "Are your services suitable for both new properties and older spaces?",
-    answer: "Absolutely. We design for new developments as well as existing properties that require refurbishment, upgrades, or functional improvements."
-  },
-  {
-    question: "How do you ensure quality and long-term results?",
-    answer: "Every project follows a structured process, from planning and material assessment to controlled execution and final inspection, ensuring the interior maintains its quality long after completion."
-  },
-  {
-    question: "Can services be customized based on budget and requirements?",
-    answer: "Yes. Each project is planned around the client's objectives, functional needs, and budget, without compromising on essential quality standards."
-  },
-  {
-    question: "Do you handle approvals and coordination where required?",
-    answer: "We assist with coordination and necessary approvals as part of the project workflow, helping ensure compliance with local building and community guidelines."
   }
 ];
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+};
+
 export default function InteriorDesign() {
   return (
-    <div className="min-h-screen bg-background" data-testid="page-interior-design">
+    <div className="min-h-screen bg-[#F6F4EB]" data-testid="page-interior-design">
       {/* HERO SECTION */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Luxury interior design" 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
+            alt="Interior Design Services Dubai"
             className="w-full h-full object-cover"
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
         </div>
-
-        {/* Hero Content - Two Column Layout */}
+        
         <div className="relative z-10 w-full py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -139,33 +176,33 @@ export default function InteriorDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <motion.h1 
+                <motion.p 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                >
+                  Property Masters Dubai
+                </motion.p>
+                <motion.h1 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
                   data-testid="text-hero-title"
                 >
                   Interior Design Services in Dubai
                 </motion.h1>
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-4"
-                  data-testid="text-hero-paragraph-1"
-                >
-                  Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.
-                </motion.p>
-                <motion.p 
+                <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
-                  data-testid="text-hero-paragraph-2"
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6 space-y-4"
+                  data-testid="text-hero-description"
                 >
-                  Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.
-                </motion.p>
+                  <p>Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.</p>
+                  <p>Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.</p>
+                </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -176,16 +213,16 @@ export default function InteriorDesign() {
                     asChild 
                     size="lg"
                     className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
-                    data-testid="button-hero-consultation"
+                    data-testid="button-hero-cta"
                   >
                     <Link href="/contact">
-                      Book Free Consultation
+                      Get Free Consultation
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </Button>
-                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-quality">
-                    <CheckCircle2 className="w-4 h-4 text-white" />
-                    <span className="text-sm font-medium text-white">10 Year Warranty</span>
+                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-certified">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">Certified Professionals</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -198,24 +235,18 @@ export default function InteriorDesign() {
                 className="grid grid-cols-2 gap-3"
                 data-testid="stats-grid"
               >
-                {[
-                  { value: "2000+", label: "Projects Completed", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
-                  { value: "150+", label: "Design Experts", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
-                  { value: "15+", label: "Years Experience", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-                  { value: "98%", label: "Client Satisfaction", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
-                ].map((stat, index) => (
+                {heroStats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                     className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    data-testid={`stat-${index}`}
                   >
                     <div className="flex justify-center mb-2">
                       <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
-                        </svg>
+                        {stat.icon && <stat.icon className="w-5 h-5 text-white" />}
                       </div>
                     </div>
                     <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
@@ -228,166 +259,238 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* WHAT OUR INTERIOR DESIGN SERVICES COVER */}
-      <section className="py-24 bg-background" data-testid="section-services">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-              What Our Interior Design Services Cover
+      {/* INTRO SECTION */}
+      <section className="py-16 bg-white" data-testid="section-intro">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              Designing Spaces That Work for Dubai Living
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Our services span residential and commercial interiors, covering planning, design, and execution.
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              Good interior design should feel natural to live in. That happens when design decisions are practical, materials are chosen thoughtfully, and execution follows a clear plan.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              This page provides an overview of our interior design and renovation services and how they help create lasting, functional spaces across Dubai.
             </p>
           </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                >
-                  <Link href={service.link}>
-                    <Card 
-                      className="h-full border-0 shadow-lg hover-elevate group cursor-pointer"
-                      data-testid={`card-service-${index}`}
-                    >
-                      <CardContent className="p-6">
-                        <div className="w-14 h-14 bg-[#970A44]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#970A44] transition-colors duration-300">
-                          <Icon className="w-7 h-7 text-[#970A44] group-hover:text-white transition-colors duration-300" />
-                        </div>
-                        <h3 className="text-lg font-bold mb-3">{service.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                          {service.description}
-                        </p>
-                        <span className="inline-flex items-center text-[#970A44] font-medium text-sm group-hover:underline">
-                          Learn More
-                          <ArrowRight className="ml-1 w-4 h-4" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
-      {/* OUR DESIGN PHILOSOPHY */}
-      <section className="py-24 bg-muted/30" data-testid="section-philosophy">
+      {/* OUR APPROACH TO INTERIOR DESIGN */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-approach">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
               Our Design Philosophy
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-              Good interior design should feel natural to live in. That happens when design decisions are practical, materials are chosen thoughtfully, and execution follows a clear plan.
-            </p>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-              We focus on:
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We focus on creating interiors that are visually balanced, practical to live in, and durable enough to maintain their quality over time.
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {philosophyPoints.map((point, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {approachPoints.map((point, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
+                key={point.title}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="border-0 shadow-lg" data-testid={`card-philosophy-${index}`}>
-                  <CardContent className="p-6 flex items-center gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-[#970A44] flex-shrink-0" />
-                    <span className="font-medium">{point}</span>
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-approach-${index}`}>
+                  <CardContent className="p-6 text-center">
+                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <point.icon className="w-7 h-7 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{point.title}</h3>
+                    <p className="text-sm text-muted-foreground">{point.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+          >
+            Each interior design project is planned to integrate seamlessly with your lifestyle and property requirements.
+          </motion.p>
         </div>
       </section>
 
-      {/* WHY CLIENTS CHOOSE US */}
-      <section className="py-24 bg-background" data-testid="section-why-choose-us">
+      {/* WHAT OUR INTERIOR DESIGN SERVICES COVER */}
+      <section className="py-20 bg-white" data-testid="section-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-              Why Clients Choose Us
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              What Our Interior Design Services Cover
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Clients work with us because they want clarity and reliability. We provide realistic timelines, guide material decisions carefully, and stay involved throughout the project to maintain quality and consistency.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* EXPLORE ALL SERVICES */}
-      <section className="py-24 bg-muted/30" data-testid="section-all-services">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-              Explore All Services
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Each of our interior design services is explained in detail on its dedicated page.
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our services span residential and commercial interiors, covering planning, design, and execution. Each service is explained in detail on its own dedicated page.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { title: "Residential Interior Design & Renovation", link: "/services/interior-design/residential" },
-              { title: "Kitchen Remodeling & Modular Kitchens", link: "/services/interior-design/kitchen" },
-              { title: "Living Room Interior Design", link: "/services/interior-design/living-room" },
-              { title: "Master Bedroom Interior Design", link: "/services/interior-design/master-bedroom" },
-              { title: "Kids Room Interior Design", link: "/services/interior-design/kids-room" },
-              { title: "Wardrobe & Storage Solutions", link: "/services/interior-design/wardrobe" },
-              { title: "Bathroom Interior Design & Renovation", link: "/services/interior-design/bathroom" },
-              { title: "Interior Painting Services", link: "/services/interior-design/painting" },
-              { title: "Gypsum Partitions & False Ceilings", link: "/services/interior-design/gypsum" },
-              { title: "Quartz & Natural Stone Countertops", link: "/services/interior-design/countertops" },
-              { title: "Outdoor Renovation & Landscaping", link: "/services/interior-design/outdoor" },
-              { title: "Swimming Pool Design & Build", link: "/services/interior-design/swimming-pool" },
-              { title: "Glass & Aluminum Works", link: "/services/interior-design/glass-aluminum" },
-              { title: "Commercial Interior Design", link: "/services/interior-design/commercial" }
-            ].map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {interiorServices.map((service, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Link href={item.link}>
-                  <Card className="border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-all-service-${index}`}>
-                    <CardContent className="p-4 flex items-center justify-between">
-                      <span className="font-medium text-sm">{item.title}</span>
-                      <ArrowRight className="w-4 h-4 text-[#970A44]" />
+                <Link href={service.href}>
+                  <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-service-${index}`}>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
+                        <service.icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                        {service.description}
+                      </p>
+                      <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
+                        Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                      </span>
                     </CardContent>
                   </Card>
                 </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+          >
+            Each service is structured to address specific interior design needs found in Dubai properties.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* WHY INTERIOR DESIGN MATTERS IN DUBAI */}
+      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
+              Why Interior Design Matters in Dubai
+            </h2>
+            <p className="text-lg text-white/80 max-w-3xl mx-auto">
+              Dubai's unique environment presents specific challenges that professional interior design can address effectively.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyItMatters.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center"
+                data-testid={`card-why-${index}`}
+              >
+                <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+                <p className="text-white font-medium">{item.title}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-white/80 mt-10 max-w-3xl mx-auto"
+          >
+            Professional interior design helps create spaces that look great and perform well under Dubai's demanding conditions.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* WHO THESE SERVICES ARE FOR */}
+      <section className="py-20 bg-white" data-testid="section-target-audience">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Who These Services Are For
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our interior design services are suitable for a variety of clients and property types across Dubai.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {targetAudiences.map((audience, index) => (
+              <motion.div
+                key={audience.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-audience-${index}`}>
+                  <CardContent className="p-6">
+                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <audience.icon className="w-7 h-7 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{audience.title}</h3>
+                    <p className="text-sm text-muted-foreground">{audience.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+          >
+            Each project is approached with attention to specific needs, usage patterns, and budget considerations.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* HOW INTERIOR DESIGN PROJECTS ARE HANDLED */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              How Interior Design Projects Are Handled
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our process is structured to ensure interior design projects deliver meaningful and lasting results.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative"
+                data-testid={`step-${index}`}
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#970A44] rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                    {step.step}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-[#09263D]">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm">{step.description}</p>
+                </div>
+                {index < processSteps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-[#970A44]/20" />
+                )}
               </motion.div>
             ))}
           </div>
@@ -395,17 +498,13 @@ export default function InteriorDesign() {
       </section>
 
       {/* FAQs SECTION */}
-      <section className="py-24 bg-background" data-testid="section-faqs">
+      <section className="py-20 bg-white" data-testid="section-faqs">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-              Interior Design & Renovation in Dubai – FAQs
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Interior Design & Renovation – FAQs
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Find answers to common questions about our interior design and renovation services.
             </p>
           </motion.div>
@@ -421,10 +520,10 @@ export default function InteriorDesign() {
                 <AccordionItem 
                   key={index} 
                   value={`faq-${index}`}
-                  className="border border-border rounded-xl px-6 shadow-sm"
+                  className="border border-border rounded-xl px-6 shadow-sm bg-[#F6F4EB]"
                   data-testid={`faq-item-${index}`}
                 >
-                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-5 text-[#09263D]">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
@@ -437,30 +536,75 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* CTA SECTION */}
-      <section className="py-24 bg-[#970A44]" data-testid="section-cta">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white font-serif">
-              Planning an interior design or renovation project in Dubai?
+      {/* EXPLORE OUR INTERIOR DESIGN SERVICES */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-explore">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              Explore Our Interior Design Services
             </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Get in touch with our team to discuss your requirements and next steps.
+            <p className="text-lg text-muted-foreground mb-8">
+              Each interior design service is explained in detail on its dedicated page, allowing you to explore solutions that are relevant to your property.
             </p>
-            <Link href="/contact">
+            <div className="flex flex-wrap justify-center gap-3">
+              {interiorServices.map((service) => (
+                <Button 
+                  key={service.id} 
+                  variant="outline" 
+                  asChild 
+                  className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
+                  data-testid={`button-explore-${service.id}`}
+                >
+                  <Link href={service.href}>
+                    <service.icon className="w-4 h-4 mr-2 text-[#970A44]" />
+                    {service.title}
+                  </Link>
+                </Button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FINAL CTA SECTION */}
+      <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
+              Planning an Interior Design Project in Dubai?
+            </h2>
+            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+              Get in touch with our team to discuss your requirements and explore suitable design solutions.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
               <Button 
-                size="lg" 
-                className="bg-white text-[#970A44] hover:bg-white/90 font-semibold px-8"
-                data-testid="button-cta-contact"
+                asChild 
+                size="lg"
+                className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                data-testid="button-cta-consultation"
               >
-                Contact Us
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <Link href="/contact">
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
               </Button>
-            </Link>
+              <Button 
+                asChild 
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 rounded-full"
+                data-testid="button-cta-portfolio"
+              >
+                <Link href="/portfolio">
+                  View Our Portfolio
+                </Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
