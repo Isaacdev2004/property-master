@@ -19,7 +19,11 @@ import {
   Lightbulb,
   ClipboardCheck,
   Eye,
-  Sparkles
+  Sparkles,
+  Bug,
+  TestTube,
+  Sofa,
+  UserCheck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -58,37 +62,59 @@ const wellnessServices = [
   {
     id: 1,
     icon: Wind,
-    title: "Indoor Air Quality Solutions",
-    description: "Services aimed at improving air circulation, reducing airborne pollutants, and creating cleaner indoor environments.",
-    href: "/wellness/air-quality"
+    title: "AC Cleaning Services in Dubai",
+    description: "Professional AC cleaning and maintenance services to improve air quality and system efficiency.",
+    href: "/wellness/ac-cleaning"
   },
   {
     id: 2,
-    icon: SprayCan,
-    title: "Hygiene & Sanitization Services",
-    description: "Professional cleaning and sanitization services designed to maintain high hygiene standards in residential and commercial spaces.",
-    href: "/wellness/hygiene"
+    icon: Sofa,
+    title: "Furniture Cleaning Services in Dubai",
+    description: "Expert cleaning for sofas, mattresses, carpets, and upholstery to maintain hygiene and extend furniture life.",
+    href: "/wellness/furniture-cleaning"
   },
   {
     id: 3,
     icon: Droplets,
-    title: "Mold & Moisture Control",
-    description: "Solutions that address moisture buildup, mold growth, and related indoor health concerns common in humid environments.",
-    href: "/wellness/mold-control"
+    title: "Water & Pipeline Services in Dubai",
+    description: "Comprehensive water tank cleaning, pipeline disinfection, and filtration solutions for clean water supply.",
+    href: "/wellness/water-pipeline"
   },
   {
     id: 4,
-    icon: Thermometer,
-    title: "Water Quality & Filtration Solutions",
-    description: "Services focused on improving water quality for daily use through filtration and treatment systems.",
-    href: "/wellness/water-quality"
+    icon: Home,
+    title: "Home Deep Cleaning Services in Dubai",
+    description: "Thorough deep cleaning services for move-in/move-out, furnished and unfurnished properties.",
+    href: "/wellness/deep-cleaning"
   },
   {
     id: 5,
-    icon: Leaf,
-    title: "Allergy & Dust Reduction Solutions",
-    description: "Measures designed to reduce allergens, dust accumulation, and irritants within indoor spaces.",
-    href: "/wellness/allergy-solutions"
+    icon: Bug,
+    title: "Pest Control Services in Dubai",
+    description: "Effective pest control solutions for bed bugs, rodents, cockroaches, mosquitoes, and termites.",
+    href: "/wellness/pest-control"
+  },
+  {
+    id: 6,
+    icon: SprayCan,
+    title: "Mold Removal Services in Dubai",
+    description: "Professional mold remediation and moisture control to address indoor health concerns in humid environments.",
+    href: "/wellness/mold-removal"
+  },
+  {
+    id: 7,
+    icon: TestTube,
+    title: "Indoor Environmental Testing Services in Dubai",
+    description: "Comprehensive air quality, water quality, mold inspection, and surface testing services.",
+    href: "/wellness/environmental-testing"
+  },
+  {
+    id: 8,
+    icon: UserCheck,
+    title: "Maid Services in Dubai",
+    description: "Professional housekeeping and maid services for residential and commercial properties.",
+    href: "/wellness/maid-services",
+    comingSoon: true
   }
 ];
 
@@ -298,33 +324,52 @@ export default function WellnessServices() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {wellnessServices.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Link href={service.href}>
-                  <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-service-${index}`}>
-                    <CardContent className="p-8">
-                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#970A44]/20 transition-colors">
-                        <service.icon className="w-8 h-8 text-[#970A44]" />
+                {service.comingSoon ? (
+                  <Card className="h-full border-0 shadow-lg opacity-75 relative" data-testid={`card-service-${index}`}>
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="text-xs bg-[#970A44] text-white px-3 py-1 rounded-full font-medium">Coming Soon</span>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <service.icon className="w-7 h-7 text-[#970A44]" />
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                      <h3 className="text-lg font-bold mb-2 text-[#09263D]">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
+                      <p className="text-muted-foreground text-sm leading-relaxed">
                         {service.description}
                       </p>
-                      <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
-                        Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                      </span>
                     </CardContent>
                   </Card>
-                </Link>
+                ) : (
+                  <Link href={service.href}>
+                    <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-service-${index}`}>
+                      <CardContent className="p-6">
+                        <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
+                          <service.icon className="w-7 h-7 text-[#970A44]" />
+                        </div>
+                        <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                          {service.description}
+                        </p>
+                        <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
+                          Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>
@@ -473,13 +518,26 @@ export default function WellnessServices() {
             <p className="text-lg text-muted-foreground mb-8">
               Each wellness service is explained in detail on its dedicated page, allowing you to explore solutions that are relevant to your property.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {wellnessServices.map((service) => (
-                <Link key={service.id} href={service.href}>
-                  <Button variant="outline" className="rounded-full" data-testid={`button-explore-${service.id}`}>
+                service.comingSoon ? (
+                  <Button 
+                    key={service.id} 
+                    variant="outline" 
+                    className="rounded-full opacity-70 cursor-not-allowed" 
+                    disabled
+                    data-testid={`button-explore-${service.id}`}
+                  >
                     {service.title}
+                    <span className="ml-2 text-xs bg-[#970A44] text-white px-2 py-0.5 rounded-full">Coming Soon</span>
                   </Button>
-                </Link>
+                ) : (
+                  <Link key={service.id} href={service.href}>
+                    <Button variant="outline" className="rounded-full" data-testid={`button-explore-${service.id}`}>
+                      {service.title}
+                    </Button>
+                  </Link>
+                )
               ))}
             </div>
           </motion.div>
