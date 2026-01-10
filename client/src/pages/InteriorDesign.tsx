@@ -83,7 +83,7 @@ export default function InteriorDesign() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 font-serif"
             data-testid="text-hero-title"
           >
-            Interior Design & Renovation Services in Dubai
+            Interior Design Services in Dubai
           </motion.h1>
           
           <motion.p
@@ -93,7 +93,7 @@ export default function InteriorDesign() {
             className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 max-w-4xl mx-auto"
             data-testid="text-hero-paragraph-1"
           >
-            Interior design in Dubai is shaped by conditions that go beyond aesthetics. Constant air conditioning, high humidity, strong sunlight, and daily use all influence how interiors age and perform over time.
+            Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.
           </motion.p>
 
           <motion.p
@@ -103,7 +103,7 @@ export default function InteriorDesign() {
             className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 max-w-4xl mx-auto"
             data-testid="text-hero-paragraph-2"
           >
-            Our Interior Design & Renovation services are developed with these realities in mind. We design and execute interiors that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover. Every project is approached with careful planning, material awareness, and controlled execution.
+            Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.
           </motion.p>
 
           <motion.p
@@ -113,7 +113,7 @@ export default function InteriorDesign() {
             className="text-lg md:text-xl text-white/90 leading-relaxed max-w-4xl mx-auto"
             data-testid="text-hero-paragraph-3"
           >
-            Whether the requirement is a full renovation or a targeted interior upgrade, the same level of attention is applied to ensure the space works comfortably and consistently.
+            Whether it's a full renovation or a targeted upgrade, every project is approached with careful planning, material awareness, and controlled execution to ensure long-term comfort and consistency.
           </motion.p>
         </div>
       </section>
