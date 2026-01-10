@@ -19,10 +19,48 @@ import {
   Lightbulb,
   Eye,
   ClipboardCheck,
-  Settings
+  Settings,
+  HelpCircle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    question: "What types of maintenance services do you provide?",
+    answer: "We provide preventive, corrective, and routine maintenance services for residential and commercial properties across Dubai."
+  },
+  {
+    question: "Do you offer ongoing maintenance contracts?",
+    answer: "Yes. Maintenance contracts are available to ensure properties are regularly inspected, maintained, and repaired."
+  },
+  {
+    question: "Are your maintenance services suitable for occupied properties?",
+    answer: "Yes. Work is planned and scheduled to minimize disruption for residents, tenants, and businesses."
+  },
+  {
+    question: "How quickly can maintenance issues be addressed?",
+    answer: "Response times depend on the nature of the issue, but priority is given to urgent and safety-related concerns."
+  },
+  {
+    question: "Do you handle both minor repairs and larger maintenance works?",
+    answer: "Yes. Services range from small fixes to more extensive maintenance requirements."
+  },
+  {
+    question: "Are your maintenance services compliant with Dubai regulations?",
+    answer: "Yes. All work is carried out in line with local regulations, building standards, and community guidelines."
+  },
+  {
+    question: "Can maintenance services be customized based on property needs?",
+    answer: "Absolutely. Maintenance plans are tailored based on property type, usage, and specific requirements."
+  }
+];
 
 const heroStats = [
   { value: "15+", label: "Years Experience", icon: Shield },
@@ -496,6 +534,48 @@ export default function MaintenanceServices() {
                 </Button>
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-faq">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
+            <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <HelpCircle className="w-8 h-8 text-[#970A44]" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-[#09263D]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Common questions about our maintenance services in Dubai
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-3">
+              {faqItems.map((item, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="bg-white rounded-xl border-0 shadow-sm px-6"
+                  data-testid={`faq-item-${index}`}
+                >
+                  <AccordionTrigger className="text-left font-semibold text-[#09263D] hover:text-[#970A44] hover:no-underline py-5">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </motion.div>
         </div>
       </section>
