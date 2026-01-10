@@ -464,7 +464,7 @@ export default function WellnessServiceDetail() {
                   className="text-base md:text-lg leading-relaxed text-white/90 mb-8"
                   data-testid="text-hero-description"
                 >
-                  {service.description}
+                  {service.introText}
                 </motion.p>
                 
                 <motion.div 
@@ -547,15 +547,6 @@ export default function WellnessServiceDetail() {
               </motion.div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Intro Section */}
-      <section className="py-16 bg-white" data-testid="section-intro">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.p {...fadeInUp} viewport={{ once: true }} className="text-lg text-muted-foreground leading-relaxed">
-            {service.introText}
-          </motion.p>
         </div>
       </section>
 
