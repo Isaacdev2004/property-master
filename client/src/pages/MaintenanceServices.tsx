@@ -675,6 +675,48 @@ export default function MaintenanceServices() {
         </div>
       </section>
 
+      {/* Explore Our Maintenance Services Section */}
+      <section className="py-20 bg-white" data-testid="section-explore">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Explore Our Maintenance Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+              Each maintenance service is explained in detail on its own dedicated page, allowing you to explore solutions relevant to your property needs.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                variants={staggerItem}
+                whileHover={{ scale: 1.02 }}
+              >
+                <Link href={service.href}>
+                  <div className="flex items-center gap-4 p-4 bg-[#F6F4EB] rounded-xl hover:bg-[#970A44]/10 transition-colors group cursor-pointer">
+                    <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors">{service.title}</h3>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-[#970A44] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
