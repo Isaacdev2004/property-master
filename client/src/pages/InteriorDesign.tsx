@@ -124,6 +124,23 @@ const processSteps = [
   { step: 4, title: "Handover", description: "Final inspection and warranty documentation" }
 ];
 
+const exploreServices = [
+  { id: 1, title: "Residential Interior Design", href: "/services/interior-design/residential", icon: Home },
+  { id: 2, title: "Commercial Interior Design", href: "/services/interior-design/commercial", icon: Building2 },
+  { id: 3, title: "Kitchen Remodeling", href: "/services/interior-design/kitchen", icon: Layers },
+  { id: 4, title: "Living Room Design", href: "/services/interior-design/living-room", icon: Home },
+  { id: 5, title: "Master Bedroom Design", href: "/services/interior-design/master-bedroom", icon: Home },
+  { id: 6, title: "Kids Room Design", href: "/services/interior-design/kids-room", icon: Users },
+  { id: 7, title: "Wardrobe & Storage", href: "/services/interior-design/wardrobe", icon: Layers },
+  { id: 8, title: "Bathroom Renovation", href: "/services/interior-design/bathroom", icon: Home },
+  { id: 9, title: "Interior Painting", href: "/services/interior-design/painting", icon: Paintbrush },
+  { id: 10, title: "Gypsum & False Ceilings", href: "/services/interior-design/gypsum", icon: Layers },
+  { id: 11, title: "Countertops & Surfaces", href: "/services/interior-design/countertops", icon: Square },
+  { id: 12, title: "Outdoor Renovation", href: "/services/interior-design/outdoor", icon: Waves },
+  { id: 13, title: "Swimming Pool Design", href: "/services/interior-design/swimming-pool", icon: Waves },
+  { id: 14, title: "Glass & Aluminum Works", href: "/services/interior-design/glass-aluminum", icon: Square }
+];
+
 const faqs = [
   {
     question: "What types of interior design projects do you handle in Dubai?",
@@ -537,7 +554,7 @@ export default function InteriorDesign() {
       </section>
 
       {/* EXPLORE OUR INTERIOR DESIGN SERVICES */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-explore">
+      <section className="py-16 bg-white" data-testid="section-explore">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp} viewport={{ once: true }}>
             <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
@@ -547,19 +564,16 @@ export default function InteriorDesign() {
               Each interior design service is explained in detail on its dedicated page, allowing you to explore solutions that are relevant to your property.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {interiorServices.map((service) => (
-                <Button 
-                  key={service.id} 
-                  variant="outline" 
-                  asChild 
-                  className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
-                  data-testid={`button-explore-${service.id}`}
-                >
-                  <Link href={service.href}>
-                    <service.icon className="w-4 h-4 mr-2 text-[#970A44]" />
+              {exploreServices.map((service) => (
+                <Link key={service.id} href={service.href}>
+                  <Button 
+                    variant="outline" 
+                    className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
+                    data-testid={`button-explore-${service.id}`}
+                  >
                     {service.title}
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               ))}
             </div>
           </motion.div>
