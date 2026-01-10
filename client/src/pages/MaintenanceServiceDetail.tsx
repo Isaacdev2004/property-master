@@ -11,970 +11,766 @@ import {
   Hammer,
   Settings,
   Check,
-  Phone,
-  Clock,
   ShieldCheck,
-  Calendar,
-  ThumbsUp,
-  Sparkles,
-  Bug,
-  Waves,
-  Home,
-  Truck,
-  Smartphone,
-  Flame,
-  Package,
-  Star,
+  Clock,
   Award,
   Users,
-  Building2
+  Home,
+  Building2,
+  Eye,
+  Target,
+  Lightbulb,
+  Heart,
+  CheckCircle2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Service data for all 16 maintenance services
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+};
+
+const heroStats = [
+  { value: "15+", label: "Years Experience", icon: Shield },
+  { value: "500+", label: "Projects Completed", icon: CheckCircle2 },
+  { value: "100%", label: "Client Satisfaction", icon: Heart },
+  { value: "24/7", label: "Support Available", icon: ShieldCheck },
+];
+
 const serviceData: Record<string, {
   title: string;
   tagline: string;
   description: string;
+  introText: string;
   icon: any;
-  color: string;
   heroImage: string;
-  features: string[];
-  benefits: { icon: any; title: string; description: string }[];
+  services: { title: string; description: string }[];
+  approach: { title: string; description: string }[];
+  whyMatters: { title: string; points: string[] };
+  targetAudience: { icon: any; title: string; description: string }[];
   process: { step: number; title: string; description: string }[];
-  pricing: { name: string; price: string; features: string[] }[];
-  faqs: { question: string; answer: string }[];
+  ctaText: string;
+  relatedServices: { name: string; slug: string }[];
 }> = {
-  disinfection: {
-    title: "Disinfection Service",
-    tagline: "Professional Sanitization for a Healthier Environment",
-    description: "Our comprehensive disinfection services ensure your home or office is thoroughly sanitized using hospital-grade disinfectants and advanced techniques. We eliminate 99.9% of harmful bacteria, viruses, and pathogens.",
-    icon: Sparkles,
-    color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1600&q=80",
-    features: [
-      "Hospital-grade disinfectants",
-      "Electrostatic spraying technology",
-      "Surface and air sanitization",
-      "COVID-19 deep cleaning protocols",
-      "Regular sanitization schedules",
-      "Certified technicians"
+  general: {
+    title: "General Property Maintenance in Dubai",
+    tagline: "Reliable Property Care for Long-Term Performance",
+    description: "General property maintenance is essential for keeping homes and commercial spaces functional, safe, and presentable.",
+    introText: "In Dubai, properties experience continuous usage, constant air conditioning, and environmental stress from heat and humidity. Over time, even well-built spaces develop minor issues that can escalate if left unattended. General maintenance focuses on identifying and addressing these issues early. Rather than waiting for systems or fixtures to fail, regular maintenance helps preserve property condition, reduce repair costs, and maintain comfort for occupants.",
+    icon: Wrench,
+    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80",
+    services: [
+      { title: "Routine Property Inspections", description: "Regular inspections help identify wear, damage, or potential problems before they become major repairs. This includes checking common fixtures, fittings, and functional elements." },
+      { title: "Minor Repairs & Adjustments", description: "Small issues such as loose fittings, misaligned doors, minor surface damage, or basic fixes are handled promptly to maintain usability and appearance." },
+      { title: "Preventive Maintenance Support", description: "Preventive actions are taken to reduce the likelihood of future breakdowns, helping extend the lifespan of property components." },
+      { title: "Coordination of Maintenance Tasks", description: "General maintenance often involves coordinating multiple small tasks efficiently rather than handling them individually over time." },
+      { title: "Residential & Commercial Maintenance", description: "Services are suitable for apartments, villas, offices, and shared commercial spaces, adjusted based on property type and usage." }
     ],
-    benefits: [
-      { icon: ShieldCheck, title: "99.9% Germ Kill Rate", description: "Our EPA-approved disinfectants eliminate virtually all harmful pathogens" },
-      { icon: Clock, title: "Quick Service", description: "Most spaces can be fully disinfected within 2-4 hours" },
-      { icon: Award, title: "Certified Team", description: "All technicians are trained and certified in sanitization protocols" }
+    approach: [
+      { title: "Proactive", description: "Proactive rather than reactive maintenance approach" },
+      { title: "Efficient", description: "Efficient and practical execution of all tasks" },
+      { title: "Minimal Disruption", description: "Carried out with minimal disruption to daily life" },
+      { title: "Long-Term Focus", description: "Aligned with long-term property care goals" }
     ],
-    process: [
-      { step: 1, title: "Assessment", description: "We evaluate your space and identify high-touch surfaces and problem areas" },
-      { step: 2, title: "Preparation", description: "Areas are prepared and sensitive items are protected" },
-      { step: 3, title: "Disinfection", description: "Thorough application using electrostatic sprayers and foggers" },
-      { step: 4, title: "Verification", description: "Quality check and certification of sanitized areas" }
-    ],
-    pricing: [
-      { name: "Residential", price: "From AED 350", features: ["Up to 2000 sq ft", "All rooms covered", "Same-day service"] },
-      { name: "Commercial", price: "From AED 750", features: ["Up to 5000 sq ft", "After-hours available", "Certificate provided"] },
-      { name: "Deep Clean", price: "From AED 1200", features: ["Comprehensive coverage", "Air purification", "Monthly plans available"] }
-    ],
-    faqs: [
-      { question: "How long does the disinfection last?", answer: "The disinfection is effective immediately and provides protection for 7-14 days under normal conditions." },
-      { question: "Is it safe for pets and children?", answer: "Yes, once the solution dries (usually 30-60 minutes), the area is completely safe for everyone." },
-      { question: "Do we need to leave the premises?", answer: "We recommend vacating the area during treatment and for 30 minutes after completion." }
-    ]
-  },
-  kitchen: {
-    title: "Kitchen Equipment Maintenance",
-    tagline: "Keep Your Kitchen Running at Peak Performance",
-    description: "Professional maintenance and repair services for all kitchen equipment including ovens, refrigerators, dishwashers, exhaust systems, and commercial kitchen appliances. Extend the life of your equipment and ensure food safety compliance.",
-    icon: Flame,
-    color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80",
-    features: [
-      "Commercial & residential equipment",
-      "Oven & stove repairs",
-      "Refrigerator maintenance",
-      "Exhaust hood cleaning",
-      "Dishwasher servicing",
-      "Preventive maintenance contracts"
-    ],
-    benefits: [
-      { icon: Wrench, title: "Expert Technicians", description: "Specialized in all major kitchen equipment brands" },
-      { icon: Clock, title: "Minimal Downtime", description: "Quick diagnostics and repairs to keep your kitchen running" },
-      { icon: Shield, title: "Warranty Protected", description: "All repairs come with a service warranty" }
+    whyMatters: {
+      title: "Why General Property Maintenance Matters in Dubai",
+      points: [
+        "Continuous use of air-conditioned environments",
+        "Wear and tear from daily occupancy",
+        "Environmental stress from heat and humidity",
+        "Higher maintenance demands in shared or rental properties"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Homeowners", description: "maintaining their properties" },
+      { icon: Building2, title: "Landlords & Investors", description: "protecting property value" },
+      { icon: Users, title: "Property Managers", description: "commercial properties" },
+      { icon: Shield, title: "Tenants", description: "requiring ongoing support" }
     ],
     process: [
-      { step: 1, title: "Inspection", description: "Thorough check of all kitchen equipment and systems" },
-      { step: 2, title: "Diagnosis", description: "Identify issues and provide detailed repair estimates" },
-      { step: 3, title: "Repair/Service", description: "Professional repairs using genuine parts" },
-      { step: 4, title: "Testing", description: "Ensure all equipment operates at optimal performance" }
+      { step: 1, title: "Review", description: "Reviewing the property and identifying maintenance needs" },
+      { step: 2, title: "Prioritize", description: "Prioritizing tasks based on urgency and impact" },
+      { step: 3, title: "Execute", description: "Carrying out maintenance work efficiently" },
+      { step: 4, title: "Review", description: "Reviewing outcomes to ensure issues are resolved" }
     ],
-    pricing: [
-      { name: "Basic Service", price: "From AED 200", features: ["Single appliance", "Diagnosis included", "Parts extra"] },
-      { name: "Full Kitchen", price: "From AED 500", features: ["All appliances", "Priority scheduling", "Discount on parts"] },
-      { name: "AMC Plan", price: "From AED 1800/yr", features: ["Quarterly visits", "All appliances covered", "Free emergency calls"] }
-    ],
-    faqs: [
-      { question: "What brands do you service?", answer: "We service all major brands including Bosch, Siemens, Miele, Sub-Zero, Viking, and more." },
-      { question: "Do you provide emergency repairs?", answer: "Yes, we offer 24/7 emergency repair services for commercial kitchens." },
-      { question: "Can you service commercial kitchen equipment?", answer: "Absolutely, we specialize in both residential and commercial kitchen equipment." }
-    ]
-  },
-  civil: {
-    title: "Civil Minor Works",
-    tagline: "Quality Construction & Repair Solutions",
-    description: "From minor repairs to small construction projects, our civil works team handles painting, plastering, tiling, waterproofing, and structural repairs with precision and attention to detail.",
-    icon: Hammer,
-    color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
-    features: [
-      "Wall repairs & plastering",
-      "Painting services",
-      "Tiling & flooring",
-      "Waterproofing",
-      "Ceiling repairs",
-      "Masonry work"
-    ],
-    benefits: [
-      { icon: Award, title: "Skilled Craftsmen", description: "Experienced workers for quality finishes" },
-      { icon: Clock, title: "On-Time Delivery", description: "Projects completed within agreed timelines" },
-      { icon: Shield, title: "Quality Materials", description: "Only premium materials used" }
-    ],
-    process: [
-      { step: 1, title: "Site Visit", description: "Assess the scope of work required" },
-      { step: 2, title: "Quotation", description: "Detailed cost breakdown provided" },
-      { step: 3, title: "Execution", description: "Work carried out by skilled team" },
-      { step: 4, title: "Handover", description: "Final inspection and cleanup" }
-    ],
-    pricing: [
-      { name: "Minor Repairs", price: "From AED 150", features: ["Small fixes", "Same-day service", "Immediate quotation"] },
-      { name: "Room Works", price: "From AED 800", features: ["Single room", "Paint or tile", "Material included"] },
-      { name: "Full Project", price: "Custom Quote", features: ["Multiple rooms", "Complete renovation", "Project management"] }
-    ],
-    faqs: [
-      { question: "Do you handle permits?", answer: "For works requiring permits, we can guide you through the process or handle it on your behalf." },
-      { question: "What is the warranty period?", answer: "All civil works come with a 6-month warranty on workmanship." },
-      { question: "Can you match existing finishes?", answer: "Yes, we take great care to match existing paint colors and tile patterns." }
-    ]
-  },
-  "cleaning-special": {
-    title: "Special Cleaning Services",
-    tagline: "Deep Cleaning Beyond the Ordinary",
-    description: "Specialized cleaning services for those hard-to-reach places and challenging cleaning tasks. From post-construction cleanup to marble polishing, we handle the tough jobs with expertise.",
-    icon: Sparkles,
-    color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1600&q=80",
-    features: [
-      "Post-construction cleaning",
-      "Marble & stone polishing",
-      "Carpet deep cleaning",
-      "Upholstery cleaning",
-      "High-rise window cleaning",
-      "Grout & tile restoration"
-    ],
-    benefits: [
-      { icon: Sparkles, title: "Specialized Equipment", description: "Industrial-grade cleaning machines" },
-      { icon: Users, title: "Trained Specialists", description: "Experts in each cleaning category" },
-      { icon: Award, title: "Guaranteed Results", description: "Satisfaction guaranteed or re-clean free" }
-    ],
-    process: [
-      { step: 1, title: "Consultation", description: "Understand your specific cleaning needs" },
-      { step: 2, title: "Assessment", description: "On-site evaluation and quotation" },
-      { step: 3, title: "Deep Clean", description: "Thorough specialized cleaning" },
-      { step: 4, title: "Inspection", description: "Quality check with client" }
-    ],
-    pricing: [
-      { name: "Single Service", price: "From AED 300", features: ["One specialty area", "Professional grade", "Same-week booking"] },
-      { name: "Full Property", price: "From AED 1500", features: ["Complete deep clean", "All special services", "Priority scheduling"] },
-      { name: "Maintenance Plan", price: "From AED 400/mo", features: ["Monthly deep clean", "Rotating services", "Preferred pricing"] }
-    ],
-    faqs: [
-      { question: "How often should I do a deep clean?", answer: "We recommend special deep cleaning every 3-6 months depending on usage." },
-      { question: "Do you clean high-rise windows?", answer: "Yes, we have certified teams for high-rise window cleaning up to 50 floors." },
-      { question: "Is marble polishing worth it?", answer: "Absolutely, professional polishing restores shine and extends marble life significantly." }
-    ]
-  },
-  "smart-home": {
-    title: "Smart Product Installation",
-    tagline: "Transform Your Home with Smart Technology",
-    description: "Complete smart home installation and integration services. From smart locks and lighting to full home automation systems, we make your home intelligent and connected.",
-    icon: Smartphone,
-    color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1600&q=80",
-    features: [
-      "Smart lighting systems",
-      "Smart locks & security",
-      "Voice assistant integration",
-      "Smart thermostats",
-      "Home theater setup",
-      "Full home automation"
-    ],
-    benefits: [
-      { icon: Smartphone, title: "Latest Technology", description: "We work with all major smart home platforms" },
-      { icon: Settings, title: "Custom Programming", description: "Personalized automation scenes" },
-      { icon: Wrench, title: "Full Support", description: "Installation, training, and ongoing support" }
-    ],
-    process: [
-      { step: 1, title: "Consultation", description: "Understand your automation goals" },
-      { step: 2, title: "Design", description: "Create your smart home plan" },
-      { step: 3, title: "Installation", description: "Professional device installation" },
-      { step: 4, title: "Training", description: "Learn to use your smart home" }
-    ],
-    pricing: [
-      { name: "Starter Pack", price: "From AED 1500", features: ["Smart lighting", "1 smart lock", "Basic setup"] },
-      { name: "Connected Home", price: "From AED 5000", features: ["Full lighting", "Security system", "Voice control"] },
-      { name: "Ultimate Smart Home", price: "From AED 15000", features: ["Complete automation", "Custom scenes", "Dedicated support"] }
-    ],
-    faqs: [
-      { question: "Which smart home systems do you support?", answer: "We support Google Home, Amazon Alexa, Apple HomeKit, and Control4." },
-      { question: "Can I add more devices later?", answer: "Yes, all our systems are designed to be expandable." },
-      { question: "Do you provide training?", answer: "Comprehensive training is included with every installation." }
-    ]
-  },
-  moving: {
-    title: "Move In / Move Out Services",
-    tagline: "Seamless Transitions for Your Property",
-    description: "Complete move-in and move-out services including deep cleaning, minor repairs, painting touch-ups, and property inspections. Perfect for tenants, landlords, and property managers.",
-    icon: Truck,
-    color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
-    features: [
-      "Deep cleaning services",
-      "Wall painting & touch-ups",
-      "AC servicing",
-      "Fixture repairs",
-      "Property inspection",
-      "Handover documentation"
-    ],
-    benefits: [
-      { icon: Clock, title: "Quick Turnaround", description: "Get your property ready in 24-48 hours" },
-      { icon: Check, title: "Inspection Ready", description: "Pass landlord/agent inspections" },
-      { icon: Award, title: "One-Stop Service", description: "All services under one provider" }
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Walk-through to identify all requirements" },
-      { step: 2, title: "Quote", description: "Comprehensive package pricing" },
-      { step: 3, title: "Execution", description: "All services completed on schedule" },
-      { step: 4, title: "Handover", description: "Final inspection and sign-off" }
-    ],
-    pricing: [
-      { name: "Studio/1BR", price: "From AED 800", features: ["Deep clean", "Basic repairs", "AC service"] },
-      { name: "2-3BR", price: "From AED 1500", features: ["Complete clean", "Paint touch-ups", "All AC units"] },
-      { name: "Villa", price: "From AED 3000", features: ["Full property", "Garden cleaning", "Pool service"] }
-    ],
-    faqs: [
-      { question: "How much notice do you need?", answer: "We recommend 3-5 days notice, but we can accommodate urgent requests." },
-      { question: "Do you guarantee deposit return?", answer: "While we can't guarantee decisions, our services are designed to meet inspection standards." },
-      { question: "Can you coordinate with the real estate agent?", answer: "Yes, we regularly work with agents and can schedule around viewings." }
-    ]
-  },
-  "pest-control": {
-    title: "Pest Control Services",
-    tagline: "Protect Your Property from Unwanted Guests",
-    description: "Comprehensive pest control solutions for residential and commercial properties. We eliminate cockroaches, bed bugs, termites, rodents, and other pests safely and effectively.",
-    icon: Bug,
-    color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1632935191452-6f7c4dc7e6f8?w=1600&q=80",
-    features: [
-      "General pest control",
-      "Termite treatment",
-      "Bed bug elimination",
-      "Rodent control",
-      "Bird proofing",
-      "Fumigation services"
-    ],
-    benefits: [
-      { icon: Shield, title: "Safe Products", description: "WHO-approved, family & pet safe solutions" },
-      { icon: Award, title: "Guaranteed Results", description: "Free re-treatment if pests return" },
-      { icon: Calendar, title: "Preventive Plans", description: "Regular treatments to prevent infestations" }
-    ],
-    process: [
-      { step: 1, title: "Inspection", description: "Identify pest type and infestation level" },
-      { step: 2, title: "Treatment Plan", description: "Customized solution for your property" },
-      { step: 3, title: "Treatment", description: "Safe and effective pest elimination" },
-      { step: 4, title: "Follow-up", description: "Monitor and prevent re-infestation" }
-    ],
-    pricing: [
-      { name: "One-Time", price: "From AED 250", features: ["Single treatment", "General pests", "30-day warranty"] },
-      { name: "Quarterly", price: "From AED 600/yr", features: ["4 treatments", "All pests covered", "Guaranteed protection"] },
-      { name: "Monthly", price: "From AED 150/mo", features: ["Commercial grade", "All pests", "Emergency visits"] }
-    ],
-    faqs: [
-      { question: "Are your products safe for children and pets?", answer: "Yes, we use only WHO-approved products that are safe once dried." },
-      { question: "How long before I can enter after treatment?", answer: "Typically 2-4 hours depending on the treatment type." },
-      { question: "Do you provide termite warranties?", answer: "Yes, our termite treatments come with up to 5-year warranties." }
-    ]
-  },
-  "water-tank": {
-    title: "Water Tank Cleaning",
-    tagline: "Clean Water for a Healthy Home",
-    description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. Municipality approved methods and certified technicians.",
-    icon: Droplets,
-    color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1585687433063-e6ab9bb75c04?w=1600&q=80",
-    features: [
-      "Tank draining & cleaning",
-      "Pressure washing",
-      "Sanitization treatment",
-      "Water quality testing",
-      "Anti-bacterial coating",
-      "Municipality compliance"
-    ],
-    benefits: [
-      { icon: Droplets, title: "Pure Water", description: "Remove sediment, algae, and bacteria" },
-      { icon: Award, title: "Certified Process", description: "Municipality-approved cleaning methods" },
-      { icon: Shield, title: "Health Protection", description: "Prevent waterborne diseases" }
-    ],
-    process: [
-      { step: 1, title: "Drain", description: "Complete draining of water tank" },
-      { step: 2, title: "Scrub", description: "Manual and pressure washing" },
-      { step: 3, title: "Sanitize", description: "Anti-bacterial treatment" },
-      { step: 4, title: "Test", description: "Water quality verification" }
-    ],
-    pricing: [
-      { name: "Up to 5000L", price: "From AED 400", features: ["Standard cleaning", "Sanitization", "Report provided"] },
-      { name: "Up to 15000L", price: "From AED 700", features: ["Commercial tanks", "Full treatment", "Certificate"] },
-      { name: "Annual Plan", price: "From AED 700/yr", features: ["2 cleanings/year", "Priority booking", "Discount rate"] }
-    ],
-    faqs: [
-      { question: "How often should I clean my water tank?", answer: "We recommend cleaning every 6 months as per Dubai Municipality guidelines." },
-      { question: "Do you provide a cleaning certificate?", answer: "Yes, we provide a municipality-compliant cleaning certificate." },
-      { question: "Can you test water quality?", answer: "Yes, we offer water quality testing services for an additional fee." }
-    ]
-  },
-  pool: {
-    title: "Swimming Pool Services",
-    tagline: "Crystal Clear Pools All Year Round",
-    description: "Complete swimming pool maintenance, repair, and renovation services. From regular cleaning to equipment repair and pool resurfacing, we keep your pool in perfect condition.",
-    icon: Waves,
-    color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1600&q=80",
-    features: [
-      "Regular pool cleaning",
-      "Chemical balancing",
-      "Equipment maintenance",
-      "Pump & filter repairs",
-      "Pool resurfacing",
-      "Heating system service"
-    ],
-    benefits: [
-      { icon: Waves, title: "Crystal Clear Water", description: "Perfect chemical balance for safe swimming" },
-      { icon: Wrench, title: "Equipment Experts", description: "All major pool equipment brands serviced" },
-      { icon: Calendar, title: "Flexible Plans", description: "Weekly, bi-weekly, or monthly service" }
-    ],
-    process: [
-      { step: 1, title: "Assessment", description: "Evaluate pool condition and equipment" },
-      { step: 2, title: "Cleaning", description: "Thorough vacuuming and skimming" },
-      { step: 3, title: "Treatment", description: "Chemical balancing and sanitization" },
-      { step: 4, title: "Report", description: "Service log and recommendations" }
-    ],
-    pricing: [
-      { name: "One-Time", price: "From AED 300", features: ["Full clean", "Chemical check", "Equipment inspection"] },
-      { name: "Weekly", price: "From AED 800/mo", features: ["4 visits/month", "All chemicals", "Equipment checks"] },
-      { name: "Premium", price: "From AED 1500/mo", features: ["8 visits/month", "All inclusive", "Emergency service"] }
-    ],
-    faqs: [
-      { question: "Do you provide pool chemicals?", answer: "Yes, all chemicals are included in our maintenance packages." },
-      { question: "Can you service saltwater pools?", answer: "Yes, we service both chlorine and saltwater pool systems." },
-      { question: "What if my pump breaks down?", answer: "We offer 24-hour emergency repair services for equipment failures." }
-    ]
-  },
-  plumbing: {
-    title: "Plumbing Services",
-    tagline: "Expert Plumbing Solutions You Can Trust",
-    description: "Professional plumbing services for all your needs - from emergency repairs to complete bathroom renovations. Licensed plumbers available 24/7 for residential and commercial properties.",
-    icon: Droplets,
-    color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80",
-    features: [
-      "Leak detection & repair",
-      "Drain cleaning",
-      "Water heater service",
-      "Bathroom renovations",
-      "Pipe installations",
-      "Emergency repairs"
-    ],
-    benefits: [
-      { icon: Clock, title: "24/7 Emergency", description: "Round-the-clock service for urgent issues" },
-      { icon: Award, title: "Licensed Plumbers", description: "Certified and experienced professionals" },
-      { icon: Shield, title: "Guaranteed Work", description: "All repairs come with warranty" }
-    ],
-    process: [
-      { step: 1, title: "Call", description: "Describe your plumbing issue" },
-      { step: 2, title: "Dispatch", description: "Technician sent to your location" },
-      { step: 3, title: "Diagnose", description: "Identify problem and provide quote" },
-      { step: 4, title: "Fix", description: "Complete repair with quality parts" }
-    ],
-    pricing: [
-      { name: "Service Call", price: "From AED 150", features: ["Diagnosis", "Minor repairs", "Same-day service"] },
-      { name: "Major Repair", price: "From AED 400", features: ["Complex issues", "Parts included", "Warranty"] },
-      { name: "Emergency", price: "From AED 300", features: ["24/7 service", "Immediate response", "Holiday service"] }
-    ],
-    faqs: [
-      { question: "Do you work on weekends?", answer: "Yes, we offer 7-day service including public holidays." },
-      { question: "How quickly can you respond to emergencies?", answer: "We aim to arrive within 1-2 hours for emergencies." },
-      { question: "Do you provide quotes before work?", answer: "Yes, we always provide a clear quote before starting any work." }
-    ]
-  },
-  "home-improvement": {
-    title: "Home Improvement",
-    tagline: "Transform Your Living Space",
-    description: "Comprehensive home improvement services to enhance your property's value and comfort. From small upgrades to complete renovations, we bring your vision to life.",
-    icon: Home,
-    color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600&q=80",
-    features: [
-      "Kitchen remodeling",
-      "Bathroom upgrades",
-      "Flooring installation",
-      "Built-in wardrobes",
-      "Partition walls",
-      "Lighting upgrades"
-    ],
-    benefits: [
-      { icon: Home, title: "Complete Solutions", description: "Design to completion under one roof" },
-      { icon: Award, title: "Quality Craftsmanship", description: "Skilled workers and premium materials" },
-      { icon: Building2, title: "Value Addition", description: "Improvements that increase property value" }
-    ],
-    process: [
-      { step: 1, title: "Consultation", description: "Discuss your improvement goals" },
-      { step: 2, title: "Design", description: "Create detailed plans and 3D visuals" },
-      { step: 3, title: "Execution", description: "Professional implementation" },
-      { step: 4, title: "Handover", description: "Final touches and walkthrough" }
-    ],
-    pricing: [
-      { name: "Small Projects", price: "From AED 2000", features: ["Minor updates", "Quick turnaround", "Material options"] },
-      { name: "Room Renovation", price: "From AED 8000", features: ["Single room", "Design included", "Premium finish"] },
-      { name: "Full Renovation", price: "Custom Quote", features: ["Multiple rooms", "Project management", "Full warranty"] }
-    ],
-    faqs: [
-      { question: "Do you handle permits?", answer: "Yes, we manage all necessary permits and approvals." },
-      { question: "Can I stay in the property during renovation?", answer: "Depending on scope, we can phase work to minimize disruption." },
-      { question: "Do you provide design services?", answer: "Yes, our in-house design team can create custom solutions." }
+    ctaText: "Need reliable general property maintenance in Dubai? Property Masters can help keep your property in good condition through professional maintenance services.",
+    relatedServices: [
+      { name: "Electrical Maintenance", slug: "electrical" },
+      { name: "Plumbing Maintenance", slug: "plumbing" },
+      { name: "HVAC Maintenance", slug: "hvac" }
     ]
   },
   electrical: {
-    title: "Electrical Services",
+    title: "Electrical Maintenance Services in Dubai",
     tagline: "Safe & Reliable Electrical Solutions",
-    description: "Licensed electricians for all your electrical needs. From simple repairs to complete rewiring, we ensure your property's electrical systems are safe and efficient.",
+    description: "Inspection, repair, and maintenance of electrical systems to ensure safety and reliable operation.",
+    introText: "Electrical systems are critical to property safety and daily functionality. In Dubai, where properties rely heavily on lighting, appliances, and climate control systems, electrical issues can disrupt comfort and pose safety risks. Electrical maintenance focuses on identifying and resolving issues early. Regular inspection and care helps prevent hazards, reduce energy waste, and ensure reliable electrical performance.",
     icon: Zap,
-    color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80",
-    features: [
-      "Electrical repairs",
-      "Wiring & rewiring",
-      "Panel upgrades",
-      "Lighting installation",
-      "EV charger installation",
-      "Safety inspections"
+    heroImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80",
+    services: [
+      { title: "Electrical Safety Inspections", description: "Comprehensive inspection of wiring, connections, and electrical panels to identify potential hazards or inefficiencies." },
+      { title: "Lighting Repairs & Upgrades", description: "Repair, replacement, and upgrade of lighting fixtures, switches, and dimmers for improved functionality and energy efficiency." },
+      { title: "Socket & Switch Maintenance", description: "Inspection and repair of power sockets, switches, and outlets to ensure safe and reliable operation." },
+      { title: "Circuit Breaker & Panel Maintenance", description: "Maintenance of electrical panels and circuit breakers to prevent overloads and ensure proper power distribution." },
+      { title: "Electrical Fault Finding", description: "Professional diagnosis and resolution of electrical faults, short circuits, and power fluctuations." }
     ],
-    benefits: [
-      { icon: Zap, title: "Licensed Electricians", description: "Certified professionals for safe work" },
-      { icon: Clock, title: "Quick Response", description: "Same-day service for most issues" },
-      { icon: Shield, title: "Safety First", description: "All work meets Dubai regulations" }
+    approach: [
+      { title: "Safety-First", description: "All work follows strict safety protocols and standards" },
+      { title: "Certified Professionals", description: "Work performed by qualified electrical technicians" },
+      { title: "Code Compliant", description: "Services meet Dubai electrical codes and regulations" },
+      { title: "Preventive Focus", description: "Regular maintenance to prevent major failures" }
     ],
-    process: [
-      { step: 1, title: "Assessment", description: "Evaluate your electrical needs" },
-      { step: 2, title: "Quote", description: "Detailed pricing provided" },
-      { step: 3, title: "Work", description: "Professional installation/repair" },
-      { step: 4, title: "Testing", description: "Safety verification and sign-off" }
-    ],
-    pricing: [
-      { name: "Minor Repair", price: "From AED 150", features: ["Switches & outlets", "Same-day service", "Parts included"] },
-      { name: "Installation", price: "From AED 300", features: ["New fixtures", "Circuit additions", "Safety check"] },
-      { name: "Full Rewiring", price: "From AED 5000", features: ["Complete property", "Panel upgrade", "Certification"] }
-    ],
-    faqs: [
-      { question: "Are your electricians licensed?", answer: "Yes, all our electricians are DEWA licensed and certified." },
-      { question: "Can you install EV chargers?", answer: "Yes, we specialize in EV charger installations for homes and offices." },
-      { question: "Do you provide electrical certificates?", answer: "Yes, we provide all necessary electrical compliance certificates." }
-    ]
-  },
-  cleaning: {
-    title: "Cleaning Services",
-    tagline: "Professional Cleaning for Every Space",
-    description: "Comprehensive cleaning services for homes, offices, and commercial spaces. From regular maid service to deep cleaning, we keep your space spotless and healthy.",
-    icon: Sparkles,
-    color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
-    features: [
-      "Regular house cleaning",
-      "Deep cleaning",
-      "Office cleaning",
-      "Post-party cleanup",
-      "Laundry & ironing",
-      "Window cleaning"
-    ],
-    benefits: [
-      { icon: Users, title: "Trained Staff", description: "Background-checked and professionally trained" },
-      { icon: Sparkles, title: "Quality Products", description: "Eco-friendly cleaning supplies" },
-      { icon: Calendar, title: "Flexible Scheduling", description: "One-time or regular bookings" }
+    whyMatters: {
+      title: "Why Electrical Maintenance Matters in Dubai",
+      points: [
+        "High electrical loads from constant AC usage",
+        "Aging wiring in older properties",
+        "Safety risks from faulty connections",
+        "Energy waste from inefficient systems"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Homeowners", description: "ensuring electrical safety" },
+      { icon: Building2, title: "Commercial Properties", description: "maintaining operations" },
+      { icon: Users, title: "Property Managers", description: "managing multiple units" },
+      { icon: Shield, title: "Landlords", description: "protecting investments" }
     ],
     process: [
-      { step: 1, title: "Book", description: "Choose service and schedule" },
-      { step: 2, title: "Confirm", description: "Receive booking confirmation" },
-      { step: 3, title: "Clean", description: "Professional cleaning service" },
-      { step: 4, title: "Review", description: "Share feedback for quality assurance" }
+      { step: 1, title: "Inspect", description: "Comprehensive inspection of electrical systems" },
+      { step: 2, title: "Diagnose", description: "Identifying issues and recommending solutions" },
+      { step: 3, title: "Repair", description: "Professional repair and maintenance work" },
+      { step: 4, title: "Verify", description: "Testing and verification of proper operation" }
     ],
-    pricing: [
-      { name: "Basic Clean", price: "From AED 120", features: ["3-hour session", "Standard cleaning", "Own supplies"] },
-      { name: "Deep Clean", price: "From AED 350", features: ["Full property", "All areas", "Supplies included"] },
-      { name: "Regular Plan", price: "From AED 1200/mo", features: ["Weekly visits", "Same cleaner", "Priority booking"] }
-    ],
-    faqs: [
-      { question: "Do I need to provide cleaning supplies?", answer: "We can bring supplies or use yours - your choice." },
-      { question: "Can I request the same cleaner each time?", answer: "Yes, regular clients can request their preferred cleaner." },
-      { question: "How do I book a last-minute cleaning?", answer: "We can often accommodate same-day bookings based on availability." }
+    ctaText: "Need professional electrical maintenance in Dubai? Property Masters can help ensure your property's electrical systems are safe, efficient, and reliable.",
+    relatedServices: [
+      { name: "General Maintenance", slug: "general" },
+      { name: "HVAC Maintenance", slug: "hvac" },
+      { name: "Handyman Services", slug: "handyman" }
     ]
   },
-  ac: {
-    title: "Air Conditioning Services",
-    tagline: "Stay Cool All Year Round",
-    description: "Complete AC solutions from installation to maintenance and repair. Keep your cooling systems running efficiently with our expert technicians and genuine spare parts.",
+  plumbing: {
+    title: "Plumbing Maintenance Services in Dubai",
+    tagline: "Reliable Water Systems for Daily Comfort",
+    description: "Services focused on identifying leaks, blockages, and plumbing inefficiencies before they escalate.",
+    introText: "Plumbing systems are essential to daily comfort and functionality in any property. In Dubai, constant water usage, pressure variations, and aging pipework can lead to leaks, blockages, or inefficiencies if not maintained properly. Many plumbing issues begin small and go unnoticed until they cause visible damage or disruption. Plumbing maintenance focuses on identifying and resolving these issues early. Regular maintenance helps prevent water damage, reduce repair costs, and ensure reliable water flow throughout the property.",
+    icon: Droplets,
+    heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1920&q=80",
+    services: [
+      { title: "Leak Detection & Repair", description: "Leaks in pipes, fittings, or fixtures are identified and repaired before they cause damage to walls, floors, or ceilings." },
+      { title: "Drain & Blockage Clearing", description: "Blocked drains and slow water flow are addressed to restore proper drainage and prevent overflow or odor issues." },
+      { title: "Fixture & Fitting Maintenance", description: "Maintenance and repair of taps, mixers, toilets, and other fixtures help ensure smooth operation and reduce water wastage." },
+      { title: "Water Pressure Assessment", description: "Water pressure is checked to identify issues that may affect fixtures, appliances, or overall system performance." },
+      { title: "Preventive Plumbing Maintenance", description: "Preventive measures are applied to reduce recurring plumbing issues and extend the lifespan of the system." }
+    ],
+    approach: [
+      { title: "Preventive", description: "Preventive rather than reactive approach to plumbing care" },
+      { title: "Clearly Assessed", description: "Issues are clearly assessed before repair" },
+      { title: "Minimal Disruption", description: "Executed with minimal disruption to occupants" },
+      { title: "Long-Term Reliability", description: "Designed for long-term reliability and performance" }
+    ],
+    whyMatters: {
+      title: "Why Plumbing Maintenance Matters in Dubai",
+      points: [
+        "High daily water usage",
+        "Pressure fluctuations affecting fixtures",
+        "Hidden leaks causing structural damage",
+        "Increased maintenance needs in shared buildings"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Residential Homes", description: "apartments and villas" },
+      { icon: Building2, title: "Villas & Townhouses", description: "larger residential properties" },
+      { icon: Users, title: "Commercial Properties", description: "offices and retail spaces" },
+      { icon: Shield, title: "Property Managers", description: "managing multiple properties" }
+    ],
+    process: [
+      { step: 1, title: "Inspect", description: "Inspecting plumbing systems and identifying issues" },
+      { step: 2, title: "Recommend", description: "Recommending suitable maintenance or repair actions" },
+      { step: 3, title: "Execute", description: "Carrying out work efficiently and safely" },
+      { step: 4, title: "Review", description: "Reviewing system performance before completion" }
+    ],
+    ctaText: "Experiencing plumbing issues or need routine maintenance in Dubai? Property Masters can help maintain efficient and reliable plumbing systems through professional maintenance services.",
+    relatedServices: [
+      { name: "General Maintenance", slug: "general" },
+      { name: "HVAC Maintenance", slug: "hvac" },
+      { name: "Preventive Maintenance", slug: "preventive" }
+    ]
+  },
+  hvac: {
+    title: "HVAC & Air Conditioning Maintenance in Dubai",
+    tagline: "Consistent Indoor Comfort Year-Round",
+    description: "Maintenance services designed to support efficient cooling performance and indoor comfort.",
+    introText: "Air conditioning systems are among the most heavily used systems in Dubai properties. With cooling systems running for most of the year, even minor inefficiencies or maintenance gaps can lead to discomfort, higher energy consumption, or unexpected breakdowns. HVAC and air conditioning maintenance focuses on keeping systems running efficiently, safely, and reliably. Regular maintenance helps prevent system failure, improve cooling performance, and extend the lifespan of equipment.",
     icon: Wind,
-    color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1625961332771-3f40b0e2bdcf?w=1600&q=80",
-    features: [
-      "AC installation",
-      "Regular servicing",
-      "Repair & troubleshooting",
-      "Duct cleaning",
-      "Gas refilling",
-      "Thermostat installation"
+    heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1920&q=80",
+    services: [
+      { title: "AC System Inspection", description: "We inspect indoor and outdoor units, connections, and system components to identify wear, blockage, or performance issues." },
+      { title: "Filter Cleaning & Replacement", description: "Dirty filters reduce airflow and system efficiency. Cleaning or replacing filters helps maintain air quality and cooling performance." },
+      { title: "Cooling Performance Checks", description: "Cooling output is assessed to ensure the system is operating effectively and distributing air evenly." },
+      { title: "Basic System Servicing", description: "Routine servicing helps reduce strain on system components and supports stable operation." },
+      { title: "Preventive HVAC Maintenance", description: "Preventive measures are applied to reduce the risk of breakdowns during peak usage periods." }
     ],
-    benefits: [
-      { icon: Wind, title: "Expert Technicians", description: "Certified AC specialists" },
-      { icon: Wrench, title: "All Brands", description: "Service all AC brands and types" },
-      { icon: Clock, title: "Quick Service", description: "Same-day service available" }
+    approach: [
+      { title: "Preventive", description: "Preventive and efficiency-driven maintenance approach" },
+      { title: "Clearly Assessed", description: "Systems clearly assessed before servicing" },
+      { title: "Minimal Disruption", description: "Performed with minimal disruption to occupants" },
+      { title: "Long-Term Health", description: "Focused on long-term system health and efficiency" }
+    ],
+    whyMatters: {
+      title: "Why HVAC Maintenance Matters in Dubai",
+      points: [
+        "High outdoor temperatures requiring constant cooling",
+        "Limited natural ventilation in most properties",
+        "Continuous indoor occupancy throughout the day",
+        "Increased strain on systems during summer months"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Residential Homes", description: "apartments and villas" },
+      { icon: Building2, title: "Villas & Townhouses", description: "larger residential properties" },
+      { icon: Users, title: "Offices & Commercial", description: "commercial spaces" },
+      { icon: Shield, title: "Property Managers", description: "and landlords" }
     ],
     process: [
-      { step: 1, title: "Book", description: "Schedule your AC service" },
-      { step: 2, title: "Inspect", description: "Thorough system check" },
-      { step: 3, title: "Service", description: "Cleaning, repair, or installation" },
-      { step: 4, title: "Test", description: "Ensure optimal performance" }
+      { step: 1, title: "Review", description: "Reviewing system condition and usage patterns" },
+      { step: 2, title: "Identify", description: "Identifying maintenance or servicing needs" },
+      { step: 3, title: "Service", description: "Carrying out cleaning and servicing tasks" },
+      { step: 4, title: "Verify", description: "Reviewing performance after maintenance" }
     ],
-    pricing: [
-      { name: "Basic Service", price: "From AED 100", features: ["Filter cleaning", "Performance check", "Quick service"] },
-      { name: "Full Service", price: "From AED 180", features: ["Deep cleaning", "Gas check", "All components"] },
-      { name: "AMC Package", price: "From AED 500/yr", features: ["3 services/year", "Priority calls", "Discount on repairs"] }
-    ],
-    faqs: [
-      { question: "How often should I service my AC?", answer: "We recommend servicing every 3-4 months in Dubai's climate." },
-      { question: "Why is my AC not cooling properly?", answer: "Common causes include dirty filters, low gas, or compressor issues - we can diagnose and fix." },
-      { question: "Do you work on all AC brands?", answer: "Yes, we service all major brands including Carrier, Daikin, LG, Samsung, and more." }
+    ctaText: "Need reliable HVAC or air conditioning maintenance in Dubai? Property Masters can help maintain comfortable indoor environments through professional HVAC maintenance services.",
+    relatedServices: [
+      { name: "General Maintenance", slug: "general" },
+      { name: "Electrical Maintenance", slug: "electrical" },
+      { name: "Preventive Maintenance", slug: "preventive" }
     ]
   },
-  security: {
-    title: "Security Systems",
-    tagline: "Protect What Matters Most",
-    description: "Complete security solutions for residential and commercial properties. From CCTV installation to access control and smart security systems, we keep you safe.",
-    icon: Shield,
-    color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1600&q=80",
-    features: [
-      "CCTV installation",
-      "Access control systems",
-      "Intercom systems",
-      "Alarm systems",
-      "Smart locks",
-      "24/7 monitoring"
+  handyman: {
+    title: "Handyman & Repair Services in Dubai",
+    tagline: "Quick Fixes for Daily Functionality",
+    description: "Support for small repairs and fixes that help maintain daily functionality.",
+    introText: "Every property experiences minor issues that can affect daily comfort and functionality. From loose door handles to squeaky hinges, picture hanging to furniture assembly, small tasks can accumulate and become frustrating if left unattended. Our Handyman & Repair Services provide reliable support for these everyday needs. Rather than managing multiple contractors for small jobs, our service offers a single point of contact for general repairs and fixes.",
+    icon: Hammer,
+    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80",
+    services: [
+      { title: "Door & Window Repairs", description: "Fixing misaligned doors, stuck windows, broken handles, and hinges to restore proper function." },
+      { title: "Furniture Assembly & Repairs", description: "Assembly of flat-pack furniture and repair of damaged or loose furniture components." },
+      { title: "Wall Mounting & Fixtures", description: "Secure mounting of TVs, shelves, mirrors, pictures, and other wall-mounted items." },
+      { title: "Minor Carpentry Work", description: "Small carpentry repairs including shelving adjustments, cabinet fixes, and trim repairs." },
+      { title: "General Fixes & Adjustments", description: "Miscellaneous repairs and adjustments to maintain property functionality and appearance." }
     ],
-    benefits: [
-      { icon: Shield, title: "Total Protection", description: "Comprehensive security coverage" },
-      { icon: Smartphone, title: "Remote Access", description: "Monitor from anywhere" },
-      { icon: Award, title: "Licensed Installers", description: "Government-approved technicians" }
+    approach: [
+      { title: "Responsive", description: "Quick response for urgent small repairs" },
+      { title: "Multi-Skilled", description: "Technicians capable of handling various tasks" },
+      { title: "Efficient", description: "Multiple small jobs completed in single visits" },
+      { title: "Quality-Focused", description: "Attention to detail in every repair" }
+    ],
+    whyMatters: {
+      title: "Why Handyman Services Matter in Dubai",
+      points: [
+        "Accumulation of minor issues affects comfort",
+        "Difficulty finding reliable help for small jobs",
+        "Time constraints for busy property owners",
+        "Need for quick fixes without major contractor involvement"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Homeowners", description: "needing quick repairs" },
+      { icon: Building2, title: "Tenants", description: "with landlord approval" },
+      { icon: Users, title: "Offices", description: "maintaining workspaces" },
+      { icon: Shield, title: "Property Managers", description: "handling multiple units" }
     ],
     process: [
-      { step: 1, title: "Survey", description: "Security assessment of property" },
-      { step: 2, title: "Design", description: "Custom security solution" },
-      { step: 3, title: "Install", description: "Professional installation" },
-      { step: 4, title: "Train", description: "Learn to use your system" }
+      { step: 1, title: "Request", description: "Describe the repairs or tasks needed" },
+      { step: 2, title: "Schedule", description: "Book a convenient time for the visit" },
+      { step: 3, title: "Complete", description: "Handyman completes all listed tasks" },
+      { step: 4, title: "Review", description: "Verify all work meets expectations" }
     ],
-    pricing: [
-      { name: "Basic CCTV", price: "From AED 2500", features: ["4 cameras", "1TB storage", "Mobile viewing"] },
-      { name: "Smart Security", price: "From AED 5000", features: ["CCTV + smart locks", "Access control", "App integration"] },
-      { name: "Enterprise", price: "Custom Quote", features: ["Full property", "Multiple locations", "24/7 monitoring"] }
-    ],
-    faqs: [
-      { question: "Do I need Dubai Police approval?", answer: "For some systems yes, and we handle all approval processes." },
-      { question: "Can I view cameras on my phone?", answer: "Yes, all our CCTV systems include mobile app access." },
-      { question: "What happens if my system goes down?", answer: "We offer 24/7 support and can respond to technical issues quickly." }
+    ctaText: "Need reliable handyman services in Dubai? Property Masters can help with quick repairs and fixes to keep your property functioning smoothly.",
+    relatedServices: [
+      { name: "General Maintenance", slug: "general" },
+      { name: "Electrical Maintenance", slug: "electrical" },
+      { name: "Plumbing Maintenance", slug: "plumbing" }
     ]
   },
-  packages: {
-    title: "Maintenance Packages",
-    tagline: "Comprehensive Care for Your Property",
-    description: "Annual maintenance contracts that cover all your property needs. Choose from our range of packages or customize your own for complete peace of mind.",
-    icon: Package,
-    color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
-    features: [
-      "AC maintenance",
-      "Plumbing services",
-      "Electrical services",
-      "Cleaning services",
-      "Pest control",
-      "Emergency support"
+  preventive: {
+    title: "Preventive Maintenance Solutions in Dubai",
+    tagline: "Planned Care for Lasting Performance",
+    description: "Scheduled maintenance programs aimed at reducing long-term repair costs and unexpected issues.",
+    introText: "Preventive maintenance is about addressing potential issues before they become costly problems. Rather than waiting for systems to fail or fixtures to break, preventive maintenance schedules regular inspections and care to maintain property condition over time. In Dubai, where properties experience constant use and environmental stress, preventive maintenance is especially valuable. It helps reduce emergency repairs, extend equipment lifespan, and maintain consistent comfort for occupants.",
+    icon: Settings,
+    heroImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1920&q=80",
+    services: [
+      { title: "Scheduled Property Inspections", description: "Regular inspections to identify wear, potential issues, and maintenance needs across all property systems." },
+      { title: "AC & HVAC Preventive Care", description: "Scheduled cleaning, filter replacement, and system checks to maintain cooling efficiency and prevent breakdowns." },
+      { title: "Plumbing System Checks", description: "Periodic inspection of pipes, fixtures, and drainage to catch leaks and blockages early." },
+      { title: "Electrical System Reviews", description: "Regular assessment of wiring, connections, and panels to ensure safety and efficiency." },
+      { title: "Annual Maintenance Contracts (AMC)", description: "Comprehensive maintenance packages covering multiple systems with scheduled visits throughout the year." }
     ],
-    benefits: [
-      { icon: Package, title: "All-In-One", description: "Multiple services under one contract" },
-      { icon: Clock, title: "Priority Service", description: "Fast response for contract holders" },
-      { icon: Award, title: "Cost Savings", description: "Save up to 30% vs. individual services" }
+    approach: [
+      { title: "Scheduled", description: "Regular maintenance at planned intervals" },
+      { title: "Comprehensive", description: "Covering all major property systems" },
+      { title: "Cost-Effective", description: "Reducing long-term repair expenses" },
+      { title: "Documentation", description: "Detailed records of all maintenance activities" }
+    ],
+    whyMatters: {
+      title: "Why Preventive Maintenance Matters in Dubai",
+      points: [
+        "Reduces unexpected breakdowns and emergencies",
+        "Extends lifespan of property systems and equipment",
+        "Maintains property value over time",
+        "Provides peace of mind for property owners"
+      ]
+    },
+    targetAudience: [
+      { icon: Home, title: "Homeowners", description: "protecting their investment" },
+      { icon: Building2, title: "Landlords", description: "maintaining rental properties" },
+      { icon: Users, title: "Property Managers", description: "managing portfolios" },
+      { icon: Shield, title: "Commercial Properties", description: "ensuring operations" }
     ],
     process: [
-      { step: 1, title: "Consult", description: "Discuss your property needs" },
-      { step: 2, title: "Customize", description: "Select services for your package" },
-      { step: 3, title: "Activate", description: "Start your maintenance plan" },
-      { step: 4, title: "Relax", description: "We handle all maintenance" }
+      { step: 1, title: "Assessment", description: "Evaluate property and determine maintenance needs" },
+      { step: 2, title: "Plan", description: "Create customized maintenance schedule" },
+      { step: 3, title: "Execute", description: "Perform scheduled maintenance visits" },
+      { step: 4, title: "Report", description: "Document findings and recommendations" }
     ],
-    pricing: [
-      { name: "Basic", price: "AED 1458/yr", features: ["AC servicing", "Basic plumbing", "Electrical checks", "Emergency support"] },
-      { name: "Standard", price: "AED 2508/yr", features: ["Everything in Basic", "Deep cleaning", "Priority response", "Preventive checks"] },
-      { name: "Executive", price: "AED 3768/yr", features: ["Everything in Standard", "Dedicated manager", "Smart home support", "Pool maintenance"] }
-    ],
-    faqs: [
-      { question: "Can I upgrade my package mid-year?", answer: "Yes, you can upgrade anytime and pay the difference." },
-      { question: "What is not covered in the packages?", answer: "Major repairs and spare parts are not included but offered at discounted rates." },
-      { question: "Is there a contract lock-in period?", answer: "Packages are annual, but we offer monthly payment options." }
+    ctaText: "Looking for preventive maintenance solutions in Dubai? Property Masters can help protect your property with scheduled, professional maintenance programs.",
+    relatedServices: [
+      { name: "General Maintenance", slug: "general" },
+      { name: "HVAC Maintenance", slug: "hvac" },
+      { name: "Plumbing Maintenance", slug: "plumbing" }
     ]
   }
 };
 
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.1 } }
-};
-
-const staggerItem = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }
-};
-
 export default function MaintenanceServiceDetail() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
-  
-  const service = serviceSlug ? serviceData[serviceSlug] : null;
+  const service = serviceData[serviceSlug || ""];
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+      <div className="min-h-screen bg-[#F6F4EB] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-[#09263D] mb-4">Service Not Found</h1>
-          <p className="text-muted-foreground mb-8">The service you're looking for doesn't exist.</p>
-          <Button asChild className="bg-[#970A44] hover:bg-[#720632]">
-            <Link href="/maintenance">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Maintenance Services
-            </Link>
+          <h1 className="text-2xl font-bold mb-4 text-[#09263D]">Service Not Found</h1>
+          <p className="text-muted-foreground mb-6">The maintenance service you're looking for doesn't exist.</p>
+          <Button asChild className="bg-[#970A44] hover:bg-[#720632] rounded-full">
+            <Link href="/maintenance">Back to Maintenance Services</Link>
           </Button>
         </div>
       </div>
     );
   }
 
-  const ServiceIcon = service.icon;
+  const Icon = service.icon;
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${service.heroImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 to-[#09263D]/70" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <Link href="/maintenance">
-              <Button variant="ghost" className="text-white/80 hover:text-white mb-6" data-testid="button-back">
-                <ArrowLeft className="mr-2 w-4 h-4" />
-                Back to All Services
-              </Button>
-            </Link>
-            
-            <div className="flex items-center gap-4 mb-6">
-              <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center`}>
-                <ServiceIcon className="w-8 h-8 text-white" />
-              </div>
-              <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest">
-                Maintenance Service
-              </p>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-serif" data-testid="text-service-title">
-              {service.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-2xl">
-              {service.tagline}
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                asChild
-                size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
-                data-testid="button-book-service"
-              >
-                <Link href="/book">
-                  Book This Service
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button 
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
-                data-testid="button-call"
-              >
-                <a href="tel:+97125500888">
-                  <Phone className="mr-2 w-5 h-5" />
-                  Call Now
-                </a>
-              </Button>
-            </div>
-          </motion.div>
+    <div className="min-h-screen bg-[#F6F4EB]" data-testid="page-maintenance-detail">
+      {/* HERO SECTION */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
+        <div className="absolute inset-0">
+          <img 
+            src={service.heroImage}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
         </div>
-      </section>
-
-      {/* Description & Features */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <motion.div {...fadeInUp}>
-              <h2 className="text-3xl font-bold text-[#09263D] mb-6 font-serif">
-                About This Service
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                {service.description}
-              </p>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
-                {service.features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#970A44]/10 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#970A44]" />
-                    </div>
-                    <span className="text-[#09263D]">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              {service.benefits.map((benefit, index) => (
-                <motion.div key={index} variants={staggerItem}>
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow" data-testid={`card-benefit-${index}`}>
-                    <CardContent className="p-6 flex items-start gap-4">
-                      <div className={`w-12 h-12 ${service.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                        <benefit.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-[#09263D] mb-1">{benefit.title}</h3>
-                        <p className="text-muted-foreground text-sm">{benefit.description}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+        
+        <div className="relative z-10 w-full py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="mb-4"
+                >
+                  <Link href="/maintenance" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+                    <ArrowLeft className="w-4 h-4" />
+                    <span className="text-sm">Back to Maintenance Services</span>
+                  </Link>
                 </motion.div>
-              ))}
-            </motion.div>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                >
+                  Property Masters Dubai
+                </motion.p>
+                <motion.h1 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
+                  data-testid="text-hero-title"
+                >
+                  {service.title}
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  className="text-xl text-[#970A44] font-medium mb-4"
+                >
+                  {service.tagline}
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                  data-testid="text-hero-description"
+                >
+                  {service.description}
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <Button 
+                    asChild 
+                    size="lg"
+                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                    data-testid="button-hero-cta"
+                  >
+                    <Link href="/contact">
+                      Get Free Consultation
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-certified">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">Certified Professionals</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column - Statistics Grid */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="grid grid-cols-2 gap-3"
+                data-testid="stats-grid"
+              >
+                {heroStats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    data-testid={`stat-${index}`}
+                  >
+                    <div className="flex justify-center mb-2">
+                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                        {stat.icon && <stat.icon className="w-5 h-5 text-white" />}
+                      </div>
+                    </div>
+                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-24 bg-[#F6F4EB]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              How It Works
+      {/* INTRO SECTION */}
+      <section className="py-16 bg-white" data-testid="section-intro">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
+            <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Icon className="w-8 h-8 text-[#970A44]" />
+            </div>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {service.introText}
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#09263D] font-serif">
-              Our Process
+          </motion.div>
+        </div>
+      </section>
+
+      {/* WHAT THIS SERVICE COVERS */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-services">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              What This Service Covers
             </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our {service.title.toLowerCase().replace(" in dubai", "")} addresses a range of needs to keep your property functioning properly.
+            </p>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.services.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-service-${index}`}>
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                      <Check className="w-6 h-6 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR APPROACH */}
+      <section className="py-20 bg-white" data-testid="section-approach">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Our Approach
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We focus on maintenance solutions that are structured, professional, and designed for long-term results.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {service.approach.map((point, index) => (
+              <motion.div
+                key={point.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-approach-${index}`}>
+                  <CardContent className="p-6">
+                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 className="w-7 h-7 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{point.title}</h3>
+                    <p className="text-sm text-muted-foreground">{point.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY IT MATTERS */}
+      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
+              {service.whyMatters.title}
+            </h2>
+            <p className="text-lg text-white/80 max-w-3xl mx-auto">
+              Dubai properties commonly experience challenges that make this service essential.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {service.whyMatters.points.map((point, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center"
+                data-testid={`card-why-${index}`}
+              >
+                <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-6 h-6 text-white" />
+                </div>
+                <p className="text-white font-medium">{point}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
             viewport={{ once: true }}
-            className="grid md:grid-cols-4 gap-8"
+            className="text-center text-white/80 mt-10 max-w-3xl mx-auto"
           >
+            Regular maintenance helps prevent deterioration and supports long-term property value.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* WHO THIS SERVICE IS FOR */}
+      <section className="py-20 bg-white" data-testid="section-target-audience">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Who This Service Is For
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              This service is suitable for a variety of clients and property types across Dubai.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {service.targetAudience.map((audience, index) => (
+              <motion.div
+                key={audience.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-audience-${index}`}>
+                  <CardContent className="p-6">
+                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <audience.icon className="w-7 h-7 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{audience.title}</h3>
+                    <p className="text-sm text-muted-foreground">{audience.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+          >
+            Each property is assessed to determine appropriate maintenance needs.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* HOW THIS SERVICE IS HANDLED */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              How This Service Is Handled
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our process follows a clear structure to ensure consistent and dependable results.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {service.process.map((step, index) => (
-              <motion.div key={step.step} variants={staggerItem} className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 mx-auto bg-[#970A44] text-white rounded-full flex items-center justify-center text-2xl font-bold">
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative"
+                data-testid={`step-${index}`}
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-[#970A44] rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
                     {step.step}
                   </div>
-                  {index < service.process.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-[#970A44]/20" />
-                  )}
+                  <h3 className="text-xl font-bold mb-2 text-[#09263D]">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm">{step.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-[#09263D] mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                {index < service.process.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-[#970A44]/20" />
+                )}
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              Pricing
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#09263D] font-serif">
-              Service Packages
+      {/* EXPLORE RELATED SERVICES */}
+      <section className="py-16 bg-white" data-testid="section-explore">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              Explore Related Services
             </h2>
-          </motion.div>
-
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8"
-          >
-            {service.pricing.map((pkg, index) => (
-              <motion.div key={pkg.name} variants={staggerItem} whileHover={{ y: -8 }}>
-                <Card 
-                  className={`h-full border-0 shadow-xl transition-all ${
-                    index === 1 ? 'ring-2 ring-[#970A44] bg-[#970A44] text-white' : 'bg-white'
-                  }`}
-                  data-testid={`card-pricing-${index}`}
+            <p className="text-lg text-muted-foreground mb-8">
+              Discover other maintenance services that may complement your property care needs.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {service.relatedServices.map((related) => (
+                <Link key={related.slug} href={`/maintenance/${related.slug}`}>
+                  <Button 
+                    variant="outline" 
+                    className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
+                    data-testid={`button-related-${related.slug}`}
+                  >
+                    {related.name}
+                  </Button>
+                </Link>
+              ))}
+              <Link href="/maintenance">
+                <Button 
+                  variant="outline" 
+                  className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
+                  data-testid="button-all-services"
                 >
-                  <CardContent className="p-8">
-                    <h3 className={`text-xl font-bold mb-2 ${index === 1 ? 'text-white' : 'text-[#09263D]'}`}>
-                      {pkg.name}
-                    </h3>
-                    <p className={`text-3xl font-bold mb-6 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`}>
-                      {pkg.price}
-                    </p>
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className={`w-4 h-4 flex-shrink-0 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`} />
-                          <span className={index === 1 ? 'text-white/90' : ''}>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button 
-                      asChild
-                      className={`w-full rounded-full ${
-                        index === 1 
-                          ? 'bg-white text-[#970A44] hover:bg-white/90' 
-                          : 'bg-[#970A44] hover:bg-[#720632] text-white'
-                      }`}
-                      data-testid={`button-select-${pkg.name.toLowerCase()}`}
-                    >
-                      <Link href="/book">Get Started</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                  View All Maintenance Services
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-[#09263D]">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              FAQ
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white font-serif">
-              Common Questions
-            </h2>
-          </motion.div>
-
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            {service.faqs.map((faq, index) => (
-              <motion.div key={index} variants={staggerItem}>
-                <Card className="border-0 bg-white/5 backdrop-blur" data-testid={`card-faq-${index}`}>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
-                    <p className="text-white/70">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#970A44] to-[#720632]">
+      {/* FINAL CTA SECTION */}
+      <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
               Ready to Get Started?
             </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Book your {service.title.toLowerCase()} today and experience the Property Masters difference.
+            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+              {service.ctaText}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  asChild
-                  size="lg"
-                  className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-10 py-7 text-lg shadow-2xl"
-                  data-testid="button-cta-book"
-                >
-                  <Link href="/book">
-                    Book Now
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  asChild
-                  variant="outline" 
-                  size="lg"
-                  className="border-white/50 text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg"
-                  data-testid="button-cta-call"
-                >
-                  <a href="tel:+97125500888">
-                    <Phone className="mr-2 w-5 h-5" />
-                    +971 2550 0888
-                  </a>
-                </Button>
-              </motion.div>
+              <Button 
+                asChild 
+                size="lg"
+                className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                data-testid="button-cta-consultation"
+              >
+                <Link href="/contact">
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </Button>
+              <Button 
+                asChild 
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 rounded-full"
+                data-testid="button-cta-book"
+              >
+                <Link href="/book">
+                  Book a Service
+                </Link>
+              </Button>
             </div>
           </motion.div>
         </div>
