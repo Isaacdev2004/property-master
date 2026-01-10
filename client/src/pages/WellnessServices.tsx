@@ -159,15 +159,17 @@ export default function WellnessServices() {
                 >
                   Wellness Services in Dubai
                 </motion.h1>
-                <motion.p 
+                <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6 space-y-4"
                   data-testid="text-hero-description"
                 >
-                  Creating healthier environments by improving air quality, hygiene, comfort, and overall living conditions. Our wellness services are designed to support healthier living and working spaces across Dubai.
-                </motion.p>
+                  <p>Wellness within a home or commercial space goes beyond appearance. It focuses on creating healthier environments by improving air quality, hygiene, comfort, and overall living conditions. In Dubai, wellness services are especially important due to climate conditions, sealed indoor environments, and long hours spent indoors.</p>
+                  <p>Property Masters provides Wellness Services designed to support healthier living and working spaces. These services focus on reducing indoor pollutants, improving cleanliness standards, and creating environments that are safer and more comfortable for daily use.</p>
+                  <p>This page provides an overview of our wellness-focused services and how they contribute to healthier properties across Dubai.</p>
+                </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -224,19 +226,6 @@ export default function WellnessServices() {
         </div>
       </section>
 
-      {/* INTRO SECTION */}
-      <section className="py-16 bg-white" data-testid="section-intro">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Wellness within a home or commercial space goes beyond appearance. It focuses on creating healthier environments by improving air quality, hygiene, comfort, and overall living conditions. In Dubai, wellness services are especially important due to climate conditions, sealed indoor environments, and long hours spent indoors.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed mt-6">
-              Property Masters provides Wellness Services designed to support healthier living and working spaces. These services focus on reducing indoor pollutants, improving cleanliness standards, and creating environments that are safer and more comfortable for daily use.
-            </p>
-          </motion.div>
-        </div>
-      </section>
 
       {/* OUR APPROACH TO WELLNESS */}
       <section className="py-20 bg-[#F6F4EB]" data-testid="section-approach">
