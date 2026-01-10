@@ -682,38 +682,49 @@ export default function MaintenanceServices() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
               Explore Our Maintenance Services
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Each maintenance service is explained in detail on its own dedicated page, allowing you to explore solutions relevant to your property needs.
             </p>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                variants={staggerItem}
-                whileHover={{ scale: 1.02 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <Link href={service.href}>
-                  <div className="flex items-center gap-4 p-4 bg-[#F6F4EB] rounded-xl hover:bg-[#970A44]/10 transition-colors group cursor-pointer">
-                    <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors">{service.title}</h3>
-                    </div>
-                    <ArrowRight className="w-5 h-5 text-[#970A44] opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
+                  <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-explore-${index}`}>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
+                        <service.icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                        {service.description}
+                      </p>
+                      <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
+                        Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                      </span>
+                    </CardContent>
+                  </Card>
                 </Link>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+
+          <motion.p 
+            {...fadeInUp} 
+            viewport={{ once: true }}
+            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+          >
+            Each service is structured to address common maintenance needs found in Dubai properties.
+          </motion.p>
         </div>
       </section>
 
