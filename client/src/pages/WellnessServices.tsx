@@ -166,9 +166,8 @@ export default function WellnessServices() {
                   className="text-base md:text-lg leading-relaxed text-white/90 mb-6 space-y-4"
                   data-testid="text-hero-description"
                 >
-                  <p>Wellness within a home or commercial space goes beyond appearance. It focuses on creating healthier environments by improving air quality, hygiene, comfort, and overall living conditions. In Dubai, wellness services are especially important due to climate conditions, sealed indoor environments, and long hours spent indoors.</p>
-                  <p>Property Masters provides Wellness Services designed to support healthier living and working spaces. These services focus on reducing indoor pollutants, improving cleanliness standards, and creating environments that are safer and more comfortable for daily use.</p>
-                  <p>This page provides an overview of our wellness-focused services and how they contribute to healthier properties across Dubai.</p>
+                  <p>Wellness goes beyond appearance. It's about healthier air, cleaner spaces, and environments that support daily living and working comfort.</p>
+                  <p>Property Masters provides professional Wellness Services designed to improve indoor air quality, hygiene, and overall comfort for residential and commercial properties across Dubai.</p>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
@@ -226,6 +225,22 @@ export default function WellnessServices() {
         </div>
       </section>
 
+      {/* INTRO SECTION */}
+      <section className="py-16 bg-white" data-testid="section-intro">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div {...fadeInUp} viewport={{ once: true }}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              Supporting Healthier Indoor Environments
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              Dubai's climate, sealed indoor spaces, and extended indoor lifestyles make wellness services essential. Our solutions focus on reducing indoor pollutants, improving cleanliness standards, and creating safer, more comfortable environments for everyday use.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              This page provides an overview of our wellness-focused services and how they support healthier properties across Dubai.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* OUR APPROACH TO WELLNESS */}
       <section className="py-20 bg-[#F6F4EB]" data-testid="section-approach">
