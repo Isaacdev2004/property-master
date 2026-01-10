@@ -599,7 +599,7 @@ export default function WellnessServiceDetail() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {service.approach.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -607,6 +607,7 @@ export default function WellnessServiceDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
               >
                 <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-approach-${index}`}>
                   <CardContent className="p-6">
