@@ -68,53 +68,114 @@ export default function InteriorDesign() {
   return (
     <div className="min-h-screen bg-background" data-testid="page-interior-design">
       {/* HERO SECTION */}
-      <section 
-        className="relative min-h-[70vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`
-        }}
-        data-testid="section-hero"
-      >
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 font-serif"
-            data-testid="text-hero-title"
-          >
-            Interior Design Services in Dubai
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 max-w-4xl mx-auto"
-            data-testid="text-hero-paragraph-1"
-          >
-            Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.
-          </motion.p>
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+            alt="Luxury interior design" 
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 max-w-4xl mx-auto"
-            data-testid="text-hero-paragraph-2"
-          >
-            Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.
-          </motion.p>
+        {/* Hero Content - Two Column Layout */}
+        <div className="relative z-10 w-full py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <motion.h1 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
+                  data-testid="text-hero-title"
+                >
+                  Interior Design Services in Dubai
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-4"
+                  data-testid="text-hero-paragraph-1"
+                >
+                  Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                  data-testid="text-hero-paragraph-2"
+                >
+                  Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <Button 
+                    asChild 
+                    size="lg"
+                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                    data-testid="button-hero-consultation"
+                  >
+                    <Link href="/contact">
+                      Book Free Consultation
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-quality">
+                    <CheckCircle2 className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">10 Year Warranty</span>
+                  </div>
+                </motion.div>
+              </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-lg md:text-xl text-white/90 leading-relaxed max-w-4xl mx-auto"
-            data-testid="text-hero-paragraph-3"
-          >
-            Whether it's a full renovation or a targeted upgrade, every project is approached with careful planning, material awareness, and controlled execution to ensure long-term comfort and consistency.
-          </motion.p>
+              {/* Right Column - Statistics Grid */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="grid grid-cols-2 gap-3"
+                data-testid="stats-grid"
+              >
+                {[
+                  { value: "2000+", label: "Projects Completed", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
+                  { value: "150+", label: "Design Experts", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+                  { value: "15+", label: "Years Experience", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                  { value: "98%", label: "Client Satisfaction", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                  >
+                    <div className="flex justify-center mb-2">
+                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
