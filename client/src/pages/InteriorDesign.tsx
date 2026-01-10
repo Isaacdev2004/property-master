@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -62,6 +68,49 @@ const philosophyPoints = [
   "Practical layouts",
   "Climate-appropriate materials",
   "Integrated design and execution"
+];
+
+const faqs = [
+  {
+    question: "What types of interior design projects do you handle in Dubai?",
+    answer: "We handle full interior renovations, partial upgrades, and space-specific design solutions for residential and commercial properties. Projects range from apartments and villas to offices and retail spaces, all planned with Dubai's climate and usage patterns in mind."
+  },
+  {
+    question: "How do Dubai's climate and building conditions affect interior design?",
+    answer: "Constant air conditioning, humidity, and strong sunlight can impact materials, finishes, and long-term durability. Our designs account for these factors by selecting suitable materials and planning layouts that maintain comfort and performance over time."
+  },
+  {
+    question: "Do you manage both design and execution?",
+    answer: "Yes. We provide end-to-end interior design and renovation services, covering planning, material selection, execution, and final handover. This ensures consistency, quality control, and smoother project delivery."
+  },
+  {
+    question: "Can you work with occupied properties?",
+    answer: "Yes. Where required, we plan work phases carefully to minimize disruption, especially for residential homes and active commercial spaces."
+  },
+  {
+    question: "How long does an interior design or renovation project usually take?",
+    answer: "Timelines vary depending on scope, approvals, and materials. After an initial assessment, we provide a realistic schedule aligned with Dubai regulations and project requirements."
+  },
+  {
+    question: "Do you assist with material and finish selection?",
+    answer: "Yes. We guide clients on materials, finishes, and fixtures that balance aesthetics, durability, and maintenance needs, ensuring they perform well in Dubai conditions."
+  },
+  {
+    question: "Are your services suitable for both new properties and older spaces?",
+    answer: "Absolutely. We design for new developments as well as existing properties that require refurbishment, upgrades, or functional improvements."
+  },
+  {
+    question: "How do you ensure quality and long-term results?",
+    answer: "Every project follows a structured process, from planning and material assessment to controlled execution and final inspection, ensuring the interior maintains its quality long after completion."
+  },
+  {
+    question: "Can services be customized based on budget and requirements?",
+    answer: "Yes. Each project is planned around the client's objectives, functional needs, and budget, without compromising on essential quality standards."
+  },
+  {
+    question: "Do you handle approvals and coordination where required?",
+    answer: "We assist with coordination and necessary approvals as part of the project workflow, helping ensure compliance with local building and community guidelines."
+  }
 ];
 
 export default function InteriorDesign() {
@@ -342,6 +391,49 @@ export default function InteriorDesign() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQs SECTION */}
+      <section className="py-24 bg-background" data-testid="section-faqs">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
+              Interior Design & Renovation in Dubai – FAQs
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Find answers to common questions about our interior design and renovation services.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`faq-${index}`}
+                  className="border border-border rounded-xl px-6 shadow-sm"
+                  data-testid={`faq-item-${index}`}
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
         </div>
       </section>
 
