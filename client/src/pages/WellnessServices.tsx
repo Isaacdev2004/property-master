@@ -251,47 +251,103 @@ export default function WellnessServices() {
 
   return (
     <div className="min-h-screen bg-[#F6F4EB]">
-      {/* SECTION 1: HERO - matching thehealthyhome.me */}
-      <section className="relative pt-24 pb-16 overflow-hidden" data-testid="section-hero">
+      {/* SECTION 1: HERO - Professional Two-Column Layout */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
             alt="Wellness Home"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="max-w-2xl"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-serif leading-tight">
-              A world of wellness for your family
-            </h1>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-              {heroStats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
+        <div className="relative z-10 w-full py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4"
-                  data-testid={`stat-${index}`}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
                 >
-                  <div className="flex items-center justify-center gap-1 mb-1">
-                    <span className="text-2xl md:text-3xl font-bold text-white">{stat.value}</span>
-                    {stat.icon && <stat.icon className="w-5 h-5 text-yellow-400 fill-yellow-400" />}
+                  Professional Home & Personal Wellness
+                </motion.p>
+                <motion.h1 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
+                >
+                  A World of Wellness for Your Family
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                >
+                  Transform your living space with expert deep cleaning, AC maintenance, water tank sanitization, and personalized wellness services designed for a healthier home.
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <Button 
+                    asChild 
+                    size="lg"
+                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                    data-testid="button-hero-book"
+                  >
+                    <Link href="/contact">
+                      Book Service
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-certified">
+                    <ShieldCheck className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">DHA Certified Team</span>
                   </div>
-                  <span className="text-white/80 text-sm">{stat.label}</span>
                 </motion.div>
-              ))}
+              </motion.div>
+
+              {/* Right Column - Statistics Grid */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="grid grid-cols-2 gap-3"
+                data-testid="stats-grid"
+              >
+                {heroStats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    data-testid={`stat-${index}`}
+                  >
+                    <div className="flex justify-center mb-2">
+                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                        {stat.icon ? <stat.icon className="w-5 h-5 text-white" /> : <Heart className="w-5 h-5 text-white" />}
+                      </div>
+                    </div>
+                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
@@ -76,6 +78,13 @@ const projects = [
 
 const categories = ["All", "Kitchen", "Bedroom", "Bathroom", "Office"];
 
+const portfolioStats = [
+  { value: "120+", label: "Completed Fit-Outs" },
+  { value: "250K", label: "Sq Ft Delivered" },
+  { value: "70%", label: "Repeat Clients" },
+  { value: "15+", label: "Industries Served" },
+];
+
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [compareProject, setCompareProject] = useState<number | null>(null);
@@ -86,29 +95,91 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen pt-20">
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      {/* Professional Two-Column Hero */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={portfolioHeroImage}
             alt="The Property Masters Portfolio"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-serif text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              Our Portfolio
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              Explore our collection of stunning transformations and design projects
-            </p>
-          </motion.div>
+        <div className="relative z-10 w-full py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                >
+                  See Our Work in Action
+                </motion.p>
+                <motion.h1
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
+                >
+                  Our Portfolio
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                >
+                  Explore our collection of stunning transformations and design projects across residential and commercial spaces.
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <Button 
+                    asChild 
+                    size="lg"
+                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                    data-testid="button-hero-cta"
+                  >
+                    <Link href="/contact">
+                      Start Your Project
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column - Statistics Grid */}
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="grid grid-cols-2 gap-3"
+              >
+                {portfolioStats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                  >
+                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

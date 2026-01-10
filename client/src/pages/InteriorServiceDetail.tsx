@@ -592,44 +592,116 @@ export default function InteriorServiceDetail() {
 
   return (
     <div className="min-h-screen bg-background" data-testid={`page-interior-${serviceId}`}>
-      {/* HERO SECTION */}
+      {/* HERO SECTION - Professional Two-Column Layout */}
       <section 
-        className="relative min-h-[60vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('${service.heroImage}')`
-        }}
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
         data-testid="section-hero"
       >
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
-          <Link href="/services/interior-design">
-            <Button variant="ghost" className="text-white mb-6 hover:bg-white/20" data-testid="button-back">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Interior Design
-            </Button>
-          </Link>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 font-serif"
-            data-testid="text-hero-title"
-          >
-            {service.title}
-          </motion.h1>
-          
-          {service.introParagraphs.map((paragraph, index) => (
-            <motion.p
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-lg md:text-xl text-white/90 leading-relaxed mb-6 max-w-4xl mx-auto"
-              data-testid={`text-hero-paragraph-${index}`}
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+        <div className="absolute inset-0">
+          <img
+            src={service.heroImage}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45" />
+        </div>
+        
+        <div className="relative z-10 w-full py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+            <Link href="/services/interior-design">
+              <Button variant="ghost" className="text-white mb-6 hover:bg-white/20" data-testid="button-back">
+                <ArrowLeft className="mr-2 w-4 h-4" />
+                Back to Interior Design
+              </Button>
+            </Link>
+            
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Left Column - Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                >
+                  Interior Design & Fit-Out Services
+                </motion.p>
+                <motion.h1 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
+                  data-testid="text-hero-title"
+                >
+                  {service.title}
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6"
+                  data-testid="text-hero-paragraph-0"
+                >
+                  {service.introParagraphs[0]}
+                </motion.p>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <Button 
+                    asChild 
+                    size="lg"
+                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                    data-testid="button-hero-cta"
+                  >
+                    <Link href="/contact">
+                      Get Free Consultation
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2">
+                    <CheckCircle2 className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">15+ Years Experience</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column - Key Features */}
+              {service.scopeItems && service.scopeItems.length > 0 && (
+                <motion.div 
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="grid grid-cols-2 gap-3"
+                  data-testid="hero-features-grid"
+                >
+                  {service.scopeItems.slice(0, Math.min(4, service.scopeItems.length)).map((item, index) => (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                      data-testid={`hero-feature-${index}`}
+                    >
+                      <div className="flex justify-center mb-2">
+                        <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                          <CheckCircle2 className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
+                      <p className="text-sm font-medium text-white leading-tight">{item.title}</p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
