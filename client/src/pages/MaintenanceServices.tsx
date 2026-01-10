@@ -8,7 +8,6 @@ import {
   Droplets,
   Wind,
   Shield,
-  PaintBucket,
   Hammer,
   Settings,
   Users,
@@ -25,96 +24,115 @@ import {
   ThumbsUp,
   Headphones,
   Sparkles,
-  Bug,
-  Waves,
   Home,
-  Truck,
-  Smartphone,
-  Flame,
   Package,
   ChevronLeft,
   ChevronRight,
   CalendarDays,
-  X
+  ClipboardCheck,
+  Search,
+  CheckCircle2,
+  ArrowLeft
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-// Hero badges - matching hitchesglitches.com
-const heroBadges = [
-  { icon: ThumbsUp, title: "Guaranteed", subtitle: "Satisfaction" },
-  { icon: Calendar, title: "Online", subtitle: "Booking" },
-  { icon: Clock, title: "Emergency", subtitle: "Response" },
-  { icon: Headphones, title: "24/7", subtitle: "Working days" },
+// Hero feature cards - matching wellness page pattern
+const heroFeatures = [
+  { icon: ShieldCheck, title: "Professional Team", description: "Experienced technicians" },
+  { icon: Clock, title: "Reliable Service", description: "On-time, every time" },
+  { icon: Award, title: "Quality Guaranteed", description: "100% satisfaction promise" },
+  { icon: Settings, title: "Preventive Care", description: "Structured maintenance" },
 ];
 
-// 16 Services matching hitchesglitches.com - using brand colors only
+// 6 Main Services from document
 const services = [
-  { icon: Sparkles, title: "Disinfection Service", href: "/maintenance/disinfection", color: "bg-[#970A44]" },
-  { icon: Flame, title: "Kitchen Equipment Maintenance", href: "/maintenance/kitchen", color: "bg-[#1C4668]" },
-  { icon: Hammer, title: "Civil Minor Work", href: "/maintenance/civil", color: "bg-[#09263D]" },
-  { icon: Sparkles, title: "Special Cleaning", href: "/maintenance/cleaning-special", color: "bg-[#720632]" },
-  { icon: Smartphone, title: "Smart Product Installation", href: "/maintenance/smart-home", color: "bg-[#1C4668]" },
-  { icon: Truck, title: "Move In / Move Out", href: "/maintenance/moving", color: "bg-[#970A44]" },
-  { icon: Bug, title: "Pest Control", href: "/maintenance/pest-control", color: "bg-[#09263D]" },
-  { icon: Droplets, title: "Water Tank Cleaning", href: "/maintenance/water-tank", color: "bg-[#1C4668]" },
-  { icon: Waves, title: "Swimming Pool Service", href: "/maintenance/pool", color: "bg-[#720632]" },
-  { icon: Droplets, title: "Plumbing Service", href: "/maintenance/plumbing", color: "bg-[#09263D]" },
-  { icon: Home, title: "Home Improvement", href: "/maintenance/home-improvement", color: "bg-[#970A44]" },
-  { icon: Zap, title: "Electrical Services", href: "/maintenance/electrical", color: "bg-[#1C4668]" },
-  { icon: Sparkles, title: "Cleaning Services", href: "/maintenance/cleaning", color: "bg-[#720632]" },
-  { icon: Wind, title: "Air Conditioning", href: "/maintenance/ac", color: "bg-[#09263D]" },
-  { icon: Shield, title: "Security Systems", href: "/maintenance/security", color: "bg-[#1C4668]" },
-  { icon: Package, title: "Maintenance Packages", href: "/maintenance/packages", color: "bg-[#970A44]" },
-];
-
-// How it works steps
-const howItWorks = [
-  { step: 1, title: "Select the service(s)", subtitle: "you need", icon: Settings },
-  { step: 2, title: "Book a date and time", subtitle: "that suits you", icon: Calendar },
-  { step: 3, title: "Sit back and relax", subtitle: "while we get to work", icon: ThumbsUp },
-];
-
-// Maintenance Packages matching hitchesglitches.com
-const maintenancePackages = [
-  {
-    title: "Basic",
-    price: "AED 1458",
-    period: "/YEAR",
-    features: ["AC Servicing", "Basic Plumbing", "Electrical Checks", "Emergency Support"],
-    popular: false,
+  { 
+    icon: Wrench, 
+    title: "General Property Maintenance", 
+    description: "Routine maintenance services that support the overall condition and functionality of residential and commercial properties.",
+    href: "/maintenance/general", 
+    color: "bg-[#970A44]" 
   },
-  {
-    title: "Standard",
-    price: "AED 2508",
-    period: "/YEAR",
-    features: ["Everything in Basic", "Deep Cleaning", "Priority Response", "Preventive Checks"],
-    popular: true,
+  { 
+    icon: Zap, 
+    title: "Electrical Maintenance Services", 
+    description: "Inspection, repair, and maintenance of electrical systems to ensure safety and reliable operation.",
+    href: "/maintenance/electrical", 
+    color: "bg-[#1C4668]" 
   },
-  {
-    title: "Executive",
-    price: "AED 3768",
-    period: "/YEAR",
-    features: ["Everything in Standard", "Dedicated Manager", "Smart Home Support", "Pool Maintenance"],
-    popular: false,
+  { 
+    icon: Droplets, 
+    title: "Plumbing Maintenance Services", 
+    description: "Services focused on identifying leaks, blockages, and plumbing inefficiencies before they escalate.",
+    href: "/maintenance/plumbing", 
+    color: "bg-[#09263D]" 
   },
-  {
-    title: "Custom",
-    price: "Custom",
-    period: "",
-    subtitle: "Customize your package",
-    features: ["Tailored Services", "Flexible Scheduling", "Custom Pricing", "Enterprise Support"],
-    popular: false,
-    isCustom: true,
+  { 
+    icon: Wind, 
+    title: "HVAC & Air Conditioning Maintenance", 
+    description: "Maintenance services designed to support efficient cooling performance and indoor comfort.",
+    href: "/maintenance/hvac", 
+    color: "bg-[#720632]" 
+  },
+  { 
+    icon: Hammer, 
+    title: "Handyman & Repair Services", 
+    description: "Support for small repairs and fixes that help maintain daily functionality.",
+    href: "/maintenance/handyman", 
+    color: "bg-[#1C4668]" 
+  },
+  { 
+    icon: Shield, 
+    title: "Preventive Maintenance Solutions", 
+    description: "Scheduled maintenance programs aimed at reducing long-term repair costs and unexpected issues.",
+    href: "/maintenance/preventive", 
+    color: "bg-[#970A44]" 
   },
 ];
 
-// Statistics
-const statistics = [
-  { value: "40+", label: "Years of Expertise in UAE" },
-  { value: "3000+", label: "Customers" },
-  { value: "2,500+", label: "Properties Managed" },
-  { value: "8000+", label: "Staff" },
+// Our Approach points from document
+const approachPoints = [
+  { 
+    title: "Preventive Focus", 
+    description: "Preventive maintenance rather than reactive fixes to avoid costly repairs and disruptions." 
+  },
+  { 
+    title: "Clear Assessment", 
+    description: "Thorough assessment of issues before repair to ensure the right solution is applied." 
+  },
+  { 
+    title: "Quality Materials", 
+    description: "Use of appropriate materials and methods that meet Dubai's building standards." 
+  },
+  { 
+    title: "Minimal Disruption", 
+    description: "Reliable execution with minimal disruption to your daily operations and comfort." 
+  },
+];
+
+// Why Maintenance Matters - from document
+const whyMattersPoints = [
+  "Continuous use of cooling systems",
+  "Wear and tear from daily occupancy",
+  "Environmental strain from heat and humidity",
+  "Increased maintenance needs in shared spaces"
+];
+
+// Who Services Are For - from document
+const targetAudiences = [
+  { icon: Home, title: "Homeowners & Tenants", description: "Complete property care for your home" },
+  { icon: Building2, title: "Property Owners & Landlords", description: "Protect your investment value" },
+  { icon: Users, title: "Commercial Property Managers", description: "Maintain business operations" },
+  { icon: Sparkles, title: "Offices & Shared Facilities", description: "Keep workspaces running smoothly" },
+];
+
+// Process steps from document
+const processSteps = [
+  { step: 1, title: "Assess", description: "Assessing the issue or maintenance requirement", icon: Search },
+  { step: 2, title: "Recommend", description: "Recommending suitable repair or maintenance solutions", icon: ClipboardCheck },
+  { step: 3, title: "Execute", description: "Carrying out work efficiently and safely", icon: Settings },
+  { step: 4, title: "Review", description: "Reviewing outcomes to ensure proper resolution", icon: CheckCircle2 },
 ];
 
 // Testimonials
@@ -142,34 +160,6 @@ const testimonials = [
     content: "The annual maintenance contract has been a game-changer. No more worrying about AC breakdowns in summer or plumbing issues. They handle everything professionally.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80",
     rating: 5,
-  },
-];
-
-// Blog posts
-const blogPosts = [
-  {
-    id: 1,
-    title: "Demand for elite maintenance in luxury branded residences...",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
-    date: "2025-08-15",
-  },
-  {
-    id: 2,
-    title: "Swimming pool maintenance – how professional care saves money",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=600&q=80",
-    date: "2025-07-23",
-  },
-  {
-    id: 3,
-    title: "Preventative Drain Line Cleaning in Dubai Saves Money",
-    image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80",
-    date: "2024-11-08",
-  },
-  {
-    id: 4,
-    title: "How Much Does a Home Maintenance Contract Cost?",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80",
-    date: "2024-11-08",
   },
 ];
 
@@ -216,7 +206,7 @@ export default function MaintenanceServices() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
-      {/* Hero Section - Matching hitchesglitches.com */}
+      {/* Hero Section - Two Column Layout */}
       <section ref={heroRef} className="relative min-h-screen flex items-center" data-testid="section-hero">
         <motion.div 
           style={{ y: heroY }}
@@ -227,7 +217,7 @@ export default function MaintenanceServices() {
             alt="Professional Maintenance Services"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         </motion.div>
         
         <motion.div 
@@ -242,29 +232,65 @@ export default function MaintenanceServices() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                  transition={{ delay: 0.1 }}
+                  className="mb-6"
                 >
-                  Quality Repairs & Maintenance, Hassle-Free
-                </motion.p>
+                  <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+                    <ArrowLeft className="w-4 h-4" />
+                    <span className="text-sm">Back to Home</span>
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+                >
+                  <div className="w-10 h-10 bg-[#970A44] rounded-full flex items-center justify-center">
+                    <Wrench className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-white font-medium">Maintenance Services</span>
+                </motion.div>
                 
                 <motion.h1 
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-serif leading-tight"
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-serif leading-tight"
+                  style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}
                 >
-                  Best Home Maintenance{" "}
-                  <span className="text-[#970A44]">Company in UAE</span>
+                  Maintenance Services{" "}
+                  <span className="text-[#970A44]">in Dubai</span>
                 </motion.h1>
+                
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="text-xl text-[#970A44] font-medium mb-4"
+                >
+                  Reliable Property Care for Long-Term Performance
+                </motion.p>
+
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-base md:text-lg leading-relaxed text-white/90 mb-8"
+                  data-testid="text-hero-description"
+                >
+                  Property maintenance plays a critical role in preserving the value, safety, and functionality of homes and commercial spaces. In Dubai, properties are exposed to constant air conditioning, heavy usage, heat, and humidity, all of which place ongoing strain on building systems and finishes. Property Masters provides Maintenance Services designed to keep properties in good working condition, reduce unexpected breakdowns, and support long-term reliability.
+                </motion.p>
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
+                  className="flex flex-wrap gap-4"
                 >
                   <Button 
                     asChild
@@ -272,36 +298,46 @@ export default function MaintenanceServices() {
                     className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-[#970A44]/30"
                     data-testid="button-hero-enquiry"
                   >
-                    <Link href="/contact">
-                      Make An Enquiry
+                    <Link href="/book">
+                      Book a Service
                       <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <Button 
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg backdrop-blur-sm"
+                    data-testid="button-hero-contact"
+                  >
+                    <Link href="/contact">
+                      Contact Us
                     </Link>
                   </Button>
                 </motion.div>
               </motion.div>
 
-              {/* Right - Feature Badges */}
+              {/* Right - Feature Cards */}
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="grid grid-cols-2 gap-4"
+                data-testid="hero-features"
               >
-                {heroBadges.map((badge, index) => (
+                {heroFeatures.map((feature, index) => (
                   <motion.div
-                    key={badge.title}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center cursor-pointer transition-all"
-                    data-testid={`badge-${badge.title.toLowerCase()}`}
+                    key={feature.title}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5"
                   >
-                    <div className="w-16 h-16 mx-auto mb-3 bg-[#970A44] rounded-2xl flex items-center justify-center">
-                      <badge.icon className="w-8 h-8 text-white" />
+                    <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center mb-3">
+                      <feature.icon className="w-5 h-5 text-white" />
                     </div>
-                    <p className="text-white font-bold text-lg">{badge.title}</p>
-                    <p className="text-white/70 text-sm">{badge.subtitle}</p>
+                    <h3 className="text-white font-semibold mb-1">{feature.title}</h3>
+                    <p className="text-white/70 text-sm">{feature.description}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -326,312 +362,225 @@ export default function MaintenanceServices() {
         </motion.div>
       </section>
 
-      {/* Services Grid Section - "How can we help you today?" */}
-      <section className="py-24 bg-gradient-to-b from-[#F6F4EB] to-white" data-testid="section-services">
+      {/* What Our Maintenance Services Cover */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="text-center mb-16"
-          >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              CHOOSE YOUR SERVICE
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D]">
-              How can we help you today?
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              What Our Maintenance Services Cover
             </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Property Masters offers a comprehensive range of maintenance services, each addressing specific aspects of property upkeep.
+            </p>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6"
-          >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                variants={staggerItem}
-                whileHover={{ y: -8, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ y: -8 }}
               >
                 <Link href={service.href}>
-                  <Card 
-                    className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group bg-white"
-                    data-testid={`card-service-${index}`}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <motion.div 
-                        className={`w-16 h-16 mx-auto mb-4 ${service.color} rounded-2xl flex items-center justify-center shadow-lg`}
-                        whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <service.icon className="w-8 h-8 text-white" />
-                      </motion.div>
-                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors text-sm md:text-base">
-                        {service.title}
-                      </h3>
+                  <Card className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group" data-testid={`card-service-${index}`}>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                          <service.icon className="w-7 h-7 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">{service.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Free Consultation CTA Section */}
-      <section className="py-20 bg-[#970A44] relative overflow-hidden" data-testid="section-consultation-cta">
-        <motion.div 
-          className="absolute inset-0 opacity-10"
-          animate={{ 
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          }}
-        />
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-              Want a Free Consultation?
-            </h2>
-            <p className="text-white/80 text-lg mb-8">
-              We are always Ready To Help You
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
-                asChild
-                size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-10 py-7 text-lg font-bold shadow-2xl"
-                data-testid="button-consultation"
-              >
-                <Link href="/contact">
-                  Contact Us
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="relative py-0" data-testid="section-how-it-works">
-        <div className="grid lg:grid-cols-2">
-          {/* Left - Image with Video Play Button */}
-          <div className="relative min-h-[500px] lg:min-h-[700px]">
-            <img 
-              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80"
-              alt="Relax while we work"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/30" />
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl"
-              data-testid="button-play-video"
-            >
-              <Play className="w-8 h-8 text-[#970A44] ml-1" />
-            </motion.button>
-          </div>
-
-          {/* Right - Steps and Description */}
-          <div className="bg-[#09263D] p-8 lg:p-16 flex flex-col justify-center">
-            {/* Steps */}
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
-              viewport={{ once: true }}
-              className="grid grid-cols-3 gap-6 mb-12"
-            >
-              {howItWorks.map((step, index) => (
-                <motion.div
-                  key={step.step}
-                  variants={staggerItem}
-                  className="text-center"
-                  data-testid={`step-${step.step}`}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="w-16 h-16 mx-auto mb-4 bg-[#970A44] rounded-2xl flex items-center justify-center"
-                  >
-                    <step.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <p className="text-white font-semibold text-sm md:text-base">{step.title}</p>
-                  <p className="text-white/60 text-xs md:text-sm">{step.subtitle}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Company Description */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <p className="text-white/80 text-lg leading-relaxed mb-8">
-                Welcome to Property Masters Maintenance, part of The Property Masters Group, and Dubai's most trusted home maintenance company. With a reputation based on quality, reliability and value for money we work hard to keep our customers happy.
-              </p>
-              <motion.div
-                whileHover={{ x: 10 }}
-              >
-                <Button 
-                  asChild
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
-                  data-testid="button-about-us"
-                >
-                  <Link href="/about">
-                    About Us
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-              </motion.div>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Maintenance Packages Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-[#F6F4EB]" data-testid="section-packages">
+      {/* Our Approach Section */}
+      <section className="py-20 bg-white" data-testid="section-approach">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="text-center mb-16"
-          >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              Choose
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D] mb-4">
-              Maintenance Packages
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Our Approach to Property Maintenance
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We have variety of different packages according to customer needs, as well as customer can customize their packages.
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Maintenance works best when it is planned, consistent, and handled by experienced professionals. Our approach focuses on structured, professional care.
             </p>
           </motion.div>
 
-          <div className="flex justify-center mb-12">
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Button 
-                asChild
-                variant="outline"
-                className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
-                data-testid="button-view-packages"
-              >
-                <Link href="/maintenance/packages">
-                  View Packages
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
-
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {maintenancePackages.map((pkg, index) => (
+          <div className="flex flex-wrap justify-center gap-6">
+            {approachPoints.map((item, index) => (
               <motion.div
-                key={pkg.title}
-                variants={staggerItem}
-                whileHover={{ y: -10, scale: 1.02 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
               >
-                <Card 
-                  className={`h-full border-0 shadow-xl transition-all duration-300 overflow-hidden ${
-                    pkg.popular ? 'ring-2 ring-[#970A44] bg-[#970A44] text-white' : 'bg-white'
-                  }`}
-                  data-testid={`card-package-${pkg.title.toLowerCase()}`}
-                >
-                  <CardContent className="p-8">
-                    <h3 className={`text-2xl font-bold mb-2 ${pkg.popular ? 'text-white' : 'text-[#09263D]'}`}>
-                      {pkg.title}
-                    </h3>
-                    {pkg.isCustom ? (
-                      <p className={`text-sm mb-6 ${pkg.popular ? 'text-white/80' : 'text-muted-foreground'}`}>
-                        {pkg.subtitle}
-                      </p>
-                    ) : (
-                      <>
-                        <p className={`text-sm mb-2 ${pkg.popular ? 'text-white/80' : 'text-muted-foreground'}`}>
-                          Starting at
-                        </p>
-                        <p className={`text-3xl font-bold mb-6 ${pkg.popular ? 'text-white' : 'text-[#970A44]'}`}>
-                          {pkg.price}<span className="text-base font-normal">{pkg.period}</span>
-                        </p>
-                      </>
-                    )}
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className={`w-4 h-4 flex-shrink-0 ${pkg.popular ? 'text-white' : 'text-[#970A44]'}`} />
-                          <span className={pkg.popular ? 'text-white/90' : ''}>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button 
-                      className={`w-full rounded-full ${
-                        pkg.popular 
-                          ? 'bg-white text-[#970A44] hover:bg-white/90' 
-                          : 'bg-[#970A44] hover:bg-[#720632] text-white'
-                      }`}
-                      data-testid={`button-select-${pkg.title.toLowerCase()}`}
-                    >
-                      {pkg.isCustom ? 'Request Now' : 'Select Plan'}
-                    </Button>
+                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-approach-${index}`}>
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 className="w-6 h-6 text-[#970A44]" />
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-statistics">
+      {/* Why Maintenance Matters Section */}
+      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {statistics.map((stat, index) => (
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
+                Why Maintenance Services Matter in Dubai
+              </h2>
+              <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                Without proper maintenance, small issues can quickly turn into costly repairs or disruptions. Effective maintenance is not about reacting to problems when they appear, but about identifying and addressing issues early through structured, professional care.
+              </p>
+              <p className="text-white/80 mb-6">Dubai properties often experience:</p>
+              <ul className="space-y-4 mb-8">
+                {whyMattersPoints.map((point, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-3 text-white/90"
+                  >
+                    <div className="w-6 h-6 bg-[#970A44] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                    {point}
+                  </motion.li>
+                ))}
+              </ul>
+              <p className="text-[#970A44] font-semibold text-lg">
+                Professional maintenance helps extend system lifespan, maintain safety, and preserve property value.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"
+                alt="Dubai Property Maintenance"
+                className="rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-[#970A44] text-white p-6 rounded-xl shadow-xl">
+                <p className="text-3xl font-bold">40+</p>
+                <p className="text-white/80 text-sm">Years in UAE</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who These Services Are For */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-audiences">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              Who These Services Are For
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Each property is assessed individually to determine the most appropriate maintenance support.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {targetAudiences.map((audience, index) => (
               <motion.div
-                key={stat.label}
-                variants={staggerItem}
-                className="text-center"
-                data-testid={`stat-${index}`}
+                key={audience.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
               >
-                <motion.p 
-                  className="text-5xl md:text-6xl font-bold text-[#970A44] mb-2"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 100, delay: index * 0.1 }}
-                >
-                  {stat.value}
-                </motion.p>
-                <p className="text-white/80 text-sm md:text-base">{stat.label}</p>
+                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-audience-${index}`}>
+                  <CardContent className="p-6">
+                    <motion.div 
+                      className="w-16 h-16 mx-auto mb-4 bg-[#970A44] rounded-2xl flex items-center justify-center"
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                    >
+                      <audience.icon className="w-8 h-8 text-white" />
+                    </motion.div>
+                    <h3 className="font-bold text-[#09263D] mb-2">{audience.title}</h3>
+                    <p className="text-muted-foreground text-sm">{audience.description}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How Maintenance Projects Are Handled */}
+      <section className="py-20 bg-white" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
+              How Maintenance Projects Are Handled
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Our maintenance process is structured and transparent, helping maintain consistency and reliability across services.
+            </p>
           </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg relative overflow-hidden" data-testid={`card-process-${step.step}`}>
+                  <CardContent className="p-6 text-center">
+                    <div className="absolute top-4 right-4 text-6xl font-bold text-[#970A44]/10">
+                      {step.step}
+                    </div>
+                    <motion.div 
+                      className="w-14 h-14 mx-auto mb-4 bg-[#970A44] rounded-xl flex items-center justify-center relative z-10"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <step.icon className="w-7 h-7 text-white" />
+                    </motion.div>
+                    <h3 className="font-bold text-[#09263D] text-lg mb-2">{step.title}</h3>
+                    <p className="text-muted-foreground text-sm">{step.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -726,70 +675,6 @@ export default function MaintenanceServices() {
         </div>
       </section>
 
-      {/* Latest News & Blogs Section */}
-      <section className="py-24 bg-white" data-testid="section-blogs">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="text-center mb-16"
-          >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
-              Resources
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D]">
-              Latest News & Blogs
-            </h2>
-          </motion.div>
-
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {blogPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                variants={staggerItem}
-                whileHover={{ y: -8 }}
-              >
-                <Link href={`/blog/${post.id}`}>
-                  <Card 
-                    className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
-                    data-testid={`card-blog-${post.id}`}
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <CardContent className="p-5">
-                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors line-clamp-2 mb-3">
-                        {post.title}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                        <CalendarDays className="w-4 h-4" />
-                        <span>{post.date}</span>
-                      </div>
-                      <motion.p 
-                        className="text-[#970A44] font-semibold text-sm mt-4 flex items-center gap-1"
-                        whileHover={{ x: 5 }}
-                      >
-                        Read more <ArrowRight className="w-4 h-4" />
-                      </motion.p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Final CTA Section */}
       <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -800,10 +685,10 @@ export default function MaintenanceServices() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
-              Ready to Experience Hassle-Free Maintenance?
+              Looking for Reliable Maintenance Services in Dubai?
             </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied property owners in UAE. Get started with a free consultation today.
+            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              Property Masters can help keep your property running smoothly through professional maintenance solutions.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -811,10 +696,10 @@ export default function MaintenanceServices() {
                   asChild
                   size="lg"
                   className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-10 py-7 text-lg shadow-2xl"
-                  data-testid="button-cta-quote"
+                  data-testid="button-cta-book"
                 >
-                  <Link href="/contact">
-                    Get Free Quote
+                  <Link href="/book">
+                    Book a Service
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
@@ -822,15 +707,14 @@ export default function MaintenanceServices() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   asChild
-                  variant="outline" 
                   size="lg"
-                  className="border-white/50 text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg"
-                  data-testid="button-cta-call"
+                  variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg"
+                  data-testid="button-cta-contact"
                 >
-                  <a href="tel:+97125500888">
-                    <Phone className="mr-2 w-5 h-5" />
-                    Call +971 2550 0888
-                  </a>
+                  <Link href="/contact">
+                    Contact Us
+                  </Link>
                 </Button>
               </motion.div>
             </div>
