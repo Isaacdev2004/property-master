@@ -1,631 +1,1032 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { 
   ArrowRight, 
+  ArrowLeft,
   Heart,
   Leaf,
+  Sparkles,
+  Play,
   CheckCircle2,
   ShieldCheck,
+  Award,
+  Star,
+  Phone,
   Wind,
   Droplets,
+  Sofa,
   SprayCan,
   Home,
-  Building2,
+  Bug,
+  Paintbrush,
+  Truck,
+  TestTube,
   Users,
   Baby,
+  Stethoscope,
+  Dumbbell,
+  Apple,
+  Shirt,
   Thermometer,
+  Waves,
+  Wrench,
+  Zap,
+  Clock,
   Shield,
-  Target,
-  Lightbulb,
-  ClipboardCheck,
-  Eye,
-  Sparkles,
-  Bug,
-  TestTube,
-  Sofa,
-  UserCheck,
-  HelpCircle
+  TreePine,
+  MapPin,
+  Calendar,
+  Quote,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
-const faqItems = [
-  {
-    question: "What do Wellness Services include?",
-    answer: "Wellness Services focus on improving indoor air quality, hygiene, water safety, cleanliness, and overall comfort within residential and commercial properties across Dubai."
-  },
-  {
-    question: "Why are wellness services important in Dubai?",
-    answer: "Dubai's climate, constant air conditioning, sealed indoor spaces, and high dust levels make professional wellness services essential for maintaining healthy indoor environments."
-  },
-  {
-    question: "Are wellness services suitable for both homes and commercial properties?",
-    answer: "Yes. Our wellness solutions are designed for apartments, villas, offices, retail spaces, and other commercial properties."
-  },
-  {
-    question: "Do wellness services require major disruption?",
-    answer: "Most wellness services are non-invasive and can be carried out with minimal disruption to daily activities, depending on the service type."
-  },
-  {
-    question: "How often should wellness services be performed?",
-    answer: "Service frequency depends on property usage, occupancy, and environmental conditions. After assessment, suitable schedules can be recommended."
-  },
-  {
-    question: "Can wellness services be combined with other Property Masters services?",
-    answer: "Yes. Wellness Services integrate seamlessly with Interior Design and Maintenance Services for a complete property care solution."
-  },
-  {
-    question: "Are the methods and products safe for occupants?",
-    answer: "Yes. All methods and products are selected to be safe for residents, staff, and visitors."
-  }
-];
-
+// Hero Stats - matching thehealthyhome.me
 const heroStats = [
-  { value: "15+", label: "Years Experience", icon: Shield },
-  { value: "500+", label: "Projects Completed", icon: CheckCircle2 },
-  { value: "100%", label: "Client Satisfaction", icon: Heart },
-  { value: "24/7", label: "Support Available", icon: ShieldCheck },
+  { value: "61,000+", label: "Happy Customers" },
+  { value: "4.9/5", label: "Google Rating", icon: Star },
+  { value: "7,000+", label: "Customer Reviews" },
+  { value: "12+", label: "Years of Healthy Living" },
 ];
 
-const approachPoints = [
-  {
-    icon: Eye,
-    title: "Identify Health Factors",
-    description: "Identifying factors that affect indoor health and comfort"
-  },
-  {
-    icon: Target,
-    title: "Climate-Suited Solutions",
-    description: "Using solutions suited to Dubai's climate and building conditions"
-  },
-  {
-    icon: Shield,
-    title: "Safe & Practical Methods",
-    description: "Applying methods that are safe, practical, and easy to maintain"
-  },
-  {
-    icon: Lightbulb,
-    title: "Long-Term Improvement",
-    description: "Supporting long-term improvement rather than temporary fixes"
-  }
+// Quick Service Icons - matching thehealthyhome.me
+const quickServices = [
+  { id: 1, name: "AC Cleaning", icon: Wind, href: "/wellness/ac-cleaning" },
+  { id: 2, name: "Carpet Cleaning", icon: Sofa, href: "/wellness/carpet-cleaning" },
+  { id: 3, name: "Mattress Cleaning", icon: Sofa, href: "/wellness/mattress-cleaning" },
+  { id: 4, name: "Furniture Cleaning", icon: Sofa, href: "/wellness/furniture-cleaning" },
+  { id: 5, name: "Home Deep Cleaning", icon: Home, href: "/wellness/deep-cleaning" },
+  { id: 6, name: "Painting", icon: Paintbrush, href: "/wellness/painting" },
+  { id: 7, name: "Water Tank Cleaning", icon: Droplets, href: "/wellness/water-tank" },
+  { id: 8, name: "Contracts & Packages", icon: CheckCircle2, href: "/wellness/packages" },
+  { id: 9, name: "More Services", icon: Sparkles, href: "/wellness" },
 ];
 
-const wellnessServices = [
+// New Services Carousel - matching thehealthyhome.me
+const newServices = [
+  { id: 1, name: "IV Drip at Home", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80", href: "/wellness/iv-drip" },
+  { id: 2, name: "Movers & Packers", image: "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=600&q=80", href: "/wellness/movers" },
+  { id: 3, name: "Painting Services", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80", href: "/wellness/painting" },
+  { id: 4, name: "Furniture Cleaning Packages", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", href: "/wellness/packages" },
+];
+
+// Top Categories - matching thehealthyhome.me
+const topCategories = [
   {
     id: 1,
-    icon: Wind,
-    title: "AC Cleaning Services in Dubai",
-    description: "Professional AC cleaning and maintenance services to improve air quality and system efficiency.",
-    href: "/wellness/ac-cleaning"
+    title: "Home Wellness Services",
+    description: "Transform your living space with our expert deep cleaning, AC maintenance, water tank sanitization, and mold remediation services designed for a healthier home.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    icon: Home,
+    href: "/wellness#home-services"
   },
   {
     id: 2,
-    icon: Sofa,
-    title: "Furniture Cleaning Services in Dubai",
-    description: "Expert cleaning for sofas, mattresses, carpets, and upholstery to maintain hygiene and extend furniture life.",
-    href: "/wellness/furniture-cleaning"
+    title: "Personal Wellness Services",
+    description: "Enhance your well-being with tailored wellness solutions, including IV therapy, blood tests, massage services, and personalized nutrition plans.",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80",
+    icon: Heart,
+    href: "/wellness#personal-services"
+  },
+];
+
+// AC Services - matching thehealthyhome.me
+const acServices = [
+  { id: 1, name: "AC Cleaning", description: "Professional deep cleaning for all AC types", image: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=400&q=80" },
+  { id: 2, name: "AC Coil Cleaning", description: "Thorough coil cleaning for better efficiency", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" },
+  { id: 3, name: "AC Repair & Maintenance", description: "Expert repair and preventive maintenance", image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80" },
+  { id: 4, name: "Mold Removal", description: "Complete mold remediation from AC systems", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" },
+  { id: 5, name: "AC Duct Cleaning", description: "Professional duct cleaning and sanitization", image: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=400&q=80" },
+  { id: 6, name: "AC Installation", description: "Expert AC installation and replacement", image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80" },
+];
+
+// Furniture Cleaning Services - matching thehealthyhome.me
+const furnitureServices = [
+  { id: 1, name: "Mattress Cleaning", description: "Deep cleaning and sanitization for healthier sleep", image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" },
+  { id: 2, name: "Sofa Cleaning", description: "Professional upholstery cleaning and stain removal", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" },
+  { id: 3, name: "Carpet Cleaning", description: "Deep extraction and sanitization for carpets", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" },
+  { id: 4, name: "Curtain Cleaning", description: "On-site and off-site curtain cleaning", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80" },
+  { id: 5, name: "Upholstery Shampooing", description: "Complete fabric care and restoration", image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&q=80" },
+  { id: 6, name: "Nano Coating Protection", description: "Advanced stain protection for fabrics", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" },
+];
+
+// Water & Pipeline Services - matching thehealthyhome.me
+const waterServices = [
+  { id: 1, name: "Water Tank Cleaning", description: "Complete tank cleaning and sanitization", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" },
+  { id: 2, name: "Pipeline Disinfection", description: "Full pipeline cleaning and treatment", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" },
+  { id: 3, name: "Water Filters & Purifiers", description: "Premium filtration solutions", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&q=80" },
+  { id: 4, name: "Whole House Filtration", description: "Complete home water treatment systems", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" },
+];
+
+// Pest Control Services - matching thehealthyhome.me
+const pestServices = [
+  { id: 1, name: "Bed Bugs Control", description: "Complete bed bug elimination", icon: Bug },
+  { id: 2, name: "Rodent Control", description: "Effective rat and mice removal", icon: Bug },
+  { id: 3, name: "Cockroach Control", description: "Professional cockroach treatment", icon: Bug },
+  { id: 4, name: "Mosquito Control", description: "Indoor and outdoor mosquito solutions", icon: Bug },
+  { id: 5, name: "Termite Control", description: "Pre and post-construction treatment", icon: Bug },
+  { id: 6, name: "Drainage Cleaning", description: "Thorough drain cleaning services", icon: Droplets },
+];
+
+// Home Deep Cleaning Services - matching thehealthyhome.me
+const deepCleaningServices = [
+  { id: 1, name: "Move-In/Move-Out Cleaning", description: "Complete unfurnished property cleaning", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80" },
+  { id: 2, name: "Premium Deep Cleaning", description: "Thorough furnished home cleaning", image: "https://images.unsplash.com/photo-1527515545081-5db817172677?w=400&q=80" },
+  { id: 3, name: "Furniture Cleaning", description: "Complete furniture sanitization", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" },
+];
+
+// Indoor Testing Services - matching thehealthyhome.me
+const testingServices = [
+  { id: 1, name: "Indoor Air Quality Testing", description: "Comprehensive air analysis", icon: Wind },
+  { id: 2, name: "Water Quality Testing", description: "Complete water safety analysis", icon: Droplets },
+  { id: 3, name: "Mold Inspection & Testing", description: "Professional mold assessment", icon: TestTube },
+  { id: 4, name: "Surface Testing", description: "Hygiene and contamination testing", icon: TestTube },
+];
+
+// Personal Wellness Services - matching thehealthyhome.me
+const personalServices = [
+  { id: 1, name: "Healthcare at Home", description: "Doctor consultations, blood tests, IV therapy", icon: Stethoscope, image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" },
+  { id: 2, name: "Spa & Beauty at Home", description: "Premium massage and beauty services", icon: Sparkles, image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" },
+  { id: 3, name: "Health & Nutrition", description: "Personal trainers, meal plans, supplements", icon: Apple, image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80" },
+  { id: 4, name: "Mom & Baby Services", description: "Nanny services and baby products", icon: Baby, image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&q=80" },
+  { id: 5, name: "Laundry Services", description: "Professional laundry and dry cleaning", icon: Shirt, image: "https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=400&q=80" },
+  { id: 6, name: "Fitness Training", description: "Personal fitness trainers at home", icon: Dumbbell, image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
+];
+
+// Home Improvement Services - matching thehealthyhome.me
+const homeImprovementServices = [
+  { id: 1, name: "Painting Services", description: "Professional interior & exterior painting" },
+  { id: 2, name: "Movers & Packers", description: "Complete moving and packing solutions" },
+  { id: 3, name: "Roof Waterproofing", description: "Premium waterproofing solutions" },
+  { id: 4, name: "Kitchen Wrapping", description: "Transform your kitchen affordably" },
+  { id: 5, name: "Smart Home Solutions", description: "Automated home technology" },
+  { id: 6, name: "Parquet Flooring", description: "Quality flooring installation" },
+  { id: 7, name: "Custom Curtains", description: "Made-to-measure curtain solutions" },
+  { id: 8, name: "Home Renovation", description: "Complete fit-out and renovation" },
+];
+
+// Testimonials - matching thehealthyhome.me style
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Al-Rashid",
+    rating: 5,
+    content: "Exceptional service! The AC cleaning team was professional and thorough. My home feels so much fresher now.",
+    service: "AC Cleaning",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+  },
+  {
+    id: 2,
+    name: "Mohammed Hassan",
+    rating: 5,
+    content: "The mattress cleaning service exceeded my expectations. Great attention to detail and very friendly staff.",
+    service: "Mattress Cleaning",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
   },
   {
     id: 3,
-    icon: Droplets,
-    title: "Water & Pipeline Services in Dubai",
-    description: "Comprehensive water tank cleaning, pipeline disinfection, and filtration solutions for clean water supply.",
-    href: "/wellness/water-pipeline"
+    name: "Emma Thompson",
+    rating: 5,
+    content: "Best water tank cleaning service in Dubai. Punctual, professional, and thorough. Highly recommend!",
+    service: "Water Tank Cleaning",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
   },
   {
     id: 4,
-    icon: Home,
-    title: "Home Deep Cleaning Services in Dubai",
-    description: "Thorough deep cleaning services for move-in/move-out, furnished and unfurnished properties.",
-    href: "/wellness/deep-cleaning"
+    name: "Ahmed Khalifa",
+    rating: 5,
+    content: "The deep cleaning service was amazing. My apartment looks brand new. Will definitely use again!",
+    service: "Deep Cleaning",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80"
   },
-  {
-    id: 5,
-    icon: Bug,
-    title: "Pest Control Services in Dubai",
-    description: "Effective pest control solutions for bed bugs, rodents, cockroaches, mosquitoes, and termites.",
-    href: "/wellness/pest-control"
-  },
-  {
-    id: 6,
-    icon: SprayCan,
-    title: "Mold Removal Services in Dubai",
-    description: "Professional mold remediation and moisture control to address indoor health concerns in humid environments.",
-    href: "/wellness/mold-removal"
-  },
-  {
-    id: 7,
-    icon: TestTube,
-    title: "Indoor Environmental Testing Services in Dubai",
-    description: "Comprehensive air quality, water quality, mold inspection, and surface testing services.",
-    href: "/wellness/environmental-testing"
-  },
-  {
-    id: 8,
-    icon: UserCheck,
-    title: "Maid Services in Dubai",
-    description: "Professional housekeeping and maid services for residential and commercial properties.",
-    href: "/wellness/maid-services",
-    comingSoon: true
-  }
 ];
 
-const whyItMatters = [
-  { icon: Wind, title: "Limited natural ventilation" },
-  { icon: Droplets, title: "Higher indoor humidity" },
-  { icon: Sparkles, title: "Accumulation of dust and pollutants" },
-  { icon: Thermometer, title: "Increased reliance on air conditioning" }
+// Why Choose Us
+const whyChooseUs = [
+  { icon: Shield, title: "100% Satisfaction Guarantee", description: "We're not happy until you are" },
+  { icon: Clock, title: "Same Day Service", description: "Quick response when you need it" },
+  { icon: Award, title: "Certified Professionals", description: "Trained and experienced technicians" },
+  { icon: Leaf, title: "Eco-Friendly Products", description: "Safe for your family and pets" },
+  { icon: Zap, title: "Advanced Technology", description: "State-of-the-art equipment" },
+  { icon: ShieldCheck, title: "Insured Services", description: "Full coverage for peace of mind" },
 ];
 
-const targetAudiences = [
-  { icon: Home, title: "Homeowners", description: "seeking healthier living environments" },
-  { icon: Users, title: "Families", description: "with children or elderly residents" },
-  { icon: Building2, title: "Property Owners", description: "and landlords managing properties" },
-  { icon: Baby, title: "Commercial Spaces", description: "prioritizing hygiene and comfort" }
-];
-
-const processSteps = [
-  { step: 1, title: "Assessment", description: "Assessing the space and identifying wellness concerns" },
-  { step: 2, title: "Recommendation", description: "Recommending suitable services and solutions" },
-  { step: 3, title: "Execution", description: "Executing services using safe and effective methods" },
-  { step: 4, title: "Review", description: "Reviewing outcomes to ensure improvement" }
-];
-
+// Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
 };
 
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 export default function WellnessServices() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const newServicesRef = useRef<HTMLDivElement>(null);
+
+  const scrollNewServices = (direction: 'left' | 'right') => {
+    if (newServicesRef.current) {
+      const scrollAmount = direction === 'left' ? -400 : 400;
+      newServicesRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <div className="min-h-screen bg-[#F6F4EB]">
-      {/* HERO SECTION */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
+      {/* SECTION 1: HERO - matching thehealthyhome.me */}
+      <section className="relative pt-24 pb-16 overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-            alt="Wellness Services Dubai"
+            alt="Wellness Home"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-transparent" />
         </div>
         
-        <div className="relative z-10 w-full py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
-                >
-                  Property Masters Dubai
-                </motion.p>
-                <motion.h1 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
-                  data-testid="text-hero-title"
-                >
-                  Wellness Services in Dubai
-                </motion.h1>
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6 space-y-4"
-                  data-testid="text-hero-description"
-                >
-                  <p>Wellness goes beyond appearance. It's about healthier air, cleaner spaces, and environments that support daily living and working comfort.</p>
-                  <p>Property Masters provides professional Wellness Services designed to improve indoor air quality, hygiene, and overall comfort for residential and commercial properties across Dubai.</p>
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex flex-wrap items-center gap-3"
-                >
-                  <Button 
-                    asChild 
-                    size="lg"
-                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
-                    data-testid="button-hero-cta"
-                  >
-                    <Link href="/contact">
-                      Get Free Consultation
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </Button>
-                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-certified">
-                    <ShieldCheck className="w-4 h-4 text-white" />
-                    <span className="text-sm font-medium text-white">Certified Professionals</span>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* Right Column - Statistics Grid */}
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="grid grid-cols-2 gap-3"
-                data-testid="stats-grid"
-              >
-                {heroStats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
-                    data-testid={`stat-${index}`}
-                  >
-                    <div className="flex justify-center mb-2">
-                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
-                        {stat.icon && <stat.icon className="w-5 h-5 text-white" />}
-                      </div>
-                    </div>
-                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* INTRO SECTION */}
-      <section className="py-16 bg-white" data-testid="section-intro">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
-              Supporting Healthier Indoor Environments
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              Dubai's climate, sealed indoor spaces, and extended indoor lifestyles make wellness services essential. Our solutions focus on reducing indoor pollutants, improving cleanliness standards, and creating safer, more comfortable environments for everyday use.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This page provides an overview of our wellness-focused services and how they support healthier properties across Dubai.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* OUR APPROACH TO WELLNESS */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-approach">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Our Approach to Wellness
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Wellness services are most effective when they are preventive, structured, and based on real environmental needs rather than trends.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {approachPoints.map((point, index) => (
-              <motion.div
-                key={point.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-approach-${index}`}>
-                  <CardContent className="p-6 text-center">
-                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <point.icon className="w-7 h-7 text-[#970A44]" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{point.title}</h3>
-                    <p className="text-sm text-muted-foreground">{point.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="max-w-2xl"
           >
-            Each wellness service is designed to integrate seamlessly into existing homes and properties without unnecessary disruption.
-          </motion.p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-serif leading-tight">
+              A world of wellness for your family
+            </h1>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              {heroStats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4"
+                  data-testid={`stat-${index}`}
+                >
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <span className="text-2xl md:text-3xl font-bold text-white">{stat.value}</span>
+                    {stat.icon && <stat.icon className="w-5 h-5 text-yellow-400 fill-yellow-400" />}
+                  </div>
+                  <span className="text-white/80 text-sm">{stat.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* WHAT OUR WELLNESS SERVICES COVER */}
-      <section className="py-20 bg-white" data-testid="section-services">
+      {/* SECTION 2: AIR QUALITY & TREES PLANTED WIDGETS - matching thehealthyhome.me */}
+      <section className="py-6 bg-white" data-testid="section-widgets">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              What Our Wellness Services Cover
+          <div className="flex flex-wrap justify-center gap-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 bg-[#F6F4EB] rounded-full px-6 py-3"
+            >
+              <Wind className="w-8 h-8 text-[#970A44]" />
+              <div>
+                <span className="text-sm text-muted-foreground">Air Quality Today</span>
+                <div className="font-bold text-[#09263D]">Good - 85 AQI</div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex items-center gap-4 bg-green-50 rounded-full px-6 py-3"
+            >
+              <TreePine className="w-8 h-8 text-green-600" />
+              <div>
+                <span className="text-sm text-muted-foreground">Trees Planted</span>
+                <div className="font-bold text-green-700">11,780+ Trees</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: QUICK SERVICE ICONS - matching thehealthyhome.me */}
+      <section className="py-12 bg-white" data-testid="section-quick-services">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4">
+            {quickServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <Link href={service.href}>
+                    <div className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-[#F6F4EB] transition-colors cursor-pointer group" data-testid={`quick-service-${service.id}`}>
+                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-3 group-hover:bg-[#970A44]/20 transition-colors">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <span className="text-sm font-medium text-[#09263D]">{service.name}</span>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: DISCOVER NEW SERVICES - matching thehealthyhome.me */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-new-services">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Discover Our New Services!
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Property Masters offers a range of wellness services that address different aspects of indoor and environmental health. Each service is explained in detail on its own dedicated page.
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              At Property Masters Wellness, we're expanding our offerings to bring you more ways to create a cleaner, safer, and healthier living space.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {wellnessServices.map((service, index) => (
+          <div className="relative">
+            <button
+              onClick={() => scrollNewServices('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-4"
+              data-testid="button-new-services-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={newServicesRef}
+              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {newServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-80"
+                >
+                  <Link href={service.href}>
+                    <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`new-service-${service.id}`}>
+                      <div className="relative aspect-[3/1] overflow-hidden">
+                        <img 
+                          src={service.image}
+                          alt={service.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#970A44]/80 to-transparent flex items-center">
+                          <h3 className="text-white font-bold text-lg px-6">{service.name}</h3>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollNewServices('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-4"
+              data-testid="button-new-services-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: TOP CATEGORIES - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-top-categories">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-[#970A44] font-medium uppercase tracking-wider text-sm">Our Top Category</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mt-2 mb-4">
+              Your Partner in Healthier Living
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Creating healthier homes with expert wellness services and holistic products for enhanced well-being.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {topCategories.map((category, index) => {
+              const Icon = category.icon;
+              return (
+                <motion.div
+                  key={category.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <Link href={category.href}>
+                    <Card className="overflow-hidden border-0 shadow-xl hover-elevate cursor-pointer group h-full" data-testid={`category-${category.id}`}>
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <img 
+                          src={category.image}
+                          alt={category.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#09263D] via-[#09263D]/50 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-8">
+                          <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-4">
+                            <Icon className="w-7 h-7 text-[#970A44]" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-white mb-3">{category.title}</h3>
+                          <p className="text-white/80 text-sm">{category.description}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: AC SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#F6F4EB]" id="home-services" data-testid="section-ac-services">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="flex items-center justify-between mb-12"
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Wind className="w-8 h-8 text-[#970A44]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                  AC Services
+                </h2>
+              </div>
+              <p className="text-muted-foreground">Breathe cleaner, healthier air with our professional AC services</p>
+            </div>
+            <Button 
+              asChild
+              variant="outline"
+              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-ac"
+            >
+              <Link href="/wellness/ac-services">
+                View All
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {acServices.map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
-                {service.comingSoon ? (
-                  <Card className="h-full border-0 shadow-lg opacity-75 relative" data-testid={`card-service-${index}`}>
-                    <div className="absolute top-4 right-4 z-10">
-                      <span className="text-xs bg-[#970A44] text-white px-3 py-1 rounded-full font-medium">Coming Soon</span>
-                    </div>
-                    <CardContent className="p-6">
-                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
-                        <service.icon className="w-7 h-7 text-[#970A44]" />
-                      </div>
-                      <h3 className="text-lg font-bold mb-2 text-[#09263D]">
-                        {service.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {service.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ) : (
-                  <Link href={service.href}>
-                    <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-service-${index}`}>
-                      <CardContent className="p-6">
-                        <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
-                          <service.icon className="w-7 h-7 text-[#970A44]" />
-                        </div>
-                        <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">
-                          {service.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                          {service.description}
-                        </p>
-                        <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
-                          Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                        </span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
-          >
-            Each service is structured to address a specific wellness concern while contributing to overall environmental comfort.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* WHY WELLNESS SERVICES MATTER IN DUBAI */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
-              Why Wellness Services Matter in Dubai
-            </h2>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Dubai's climate, combined with modern building designs, often leads to unique challenges that require specialized wellness solutions.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyItMatters.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center"
-                data-testid={`card-why-${index}`}
-              >
-                <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <p className="text-white font-medium">{item.title}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-white/80 mt-10 max-w-3xl mx-auto"
-          >
-            Wellness services help counter these challenges by improving indoor conditions and supporting healthier daily living.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* WHO THESE SERVICES ARE FOR */}
-      <section className="py-20 bg-white" data-testid="section-target-audience">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Who These Services Are For
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our wellness services are suitable for a variety of clients and property types across Dubai.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {targetAudiences.map((audience, index) => (
-              <motion.div
-                key={audience.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-audience-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <audience.icon className="w-7 h-7 text-[#970A44]" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{audience.title}</h3>
-                    <p className="text-sm text-muted-foreground">{audience.description}</p>
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`ac-service-${service.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
-          >
-            Each project is approached with attention to specific needs and usage patterns.
-          </motion.p>
         </div>
       </section>
 
-      {/* HOW WELLNESS PROJECTS ARE HANDLED */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-process">
+      {/* SECTION 7: FURNITURE CLEANING SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-furniture-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              How Wellness Projects Are Handled
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our process is simple and structured to ensure wellness services deliver meaningful and lasting results.
-            </p>
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="flex items-center justify-between mb-12"
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Sofa className="w-8 h-8 text-[#970A44]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                  Furniture Cleaning Services
+                </h2>
+              </div>
+              <p className="text-muted-foreground">Deep cleaning and sanitization for all your furniture</p>
+            </div>
+            <Button 
+              asChild
+              variant="outline"
+              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-furniture"
+            >
+              <Link href="/wellness/furniture-cleaning">
+                View All
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {furnitureServices.map((service, index) => (
               <motion.div
-                key={step.step}
+                key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-                data-testid={`step-${index}`}
               >
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#970A44] rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
-                    {step.step}
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`furniture-service-${service.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-[#09263D]">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm">{step.description}</p>
-                </div>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-[#970A44]/20" />
-                )}
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* EXPLORE OUR WELLNESS SERVICES */}
-      <section className="py-16 bg-white" data-testid="section-explore">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
-              Explore Our Wellness Services
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Each wellness service is explained in detail on its dedicated page, allowing you to explore solutions that are relevant to your property.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {wellnessServices.map((service) => (
-                service.comingSoon ? (
-                  <Button 
-                    key={service.id} 
-                    variant="outline" 
-                    className="rounded-full opacity-70 cursor-not-allowed" 
-                    disabled
-                    data-testid={`button-explore-${service.id}`}
-                  >
-                    {service.title}
-                    <span className="ml-2 text-xs bg-[#970A44] text-white px-2 py-0.5 rounded-full">Coming Soon</span>
-                  </Button>
-                ) : (
-                  <Link key={service.id} href={service.href}>
-                    <Button variant="outline" className="rounded-full" data-testid={`button-explore-${service.id}`}>
-                      {service.title}
-                    </Button>
-                  </Link>
-                )
-              ))}
+      {/* SECTION 8: WATER & PIPELINE SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-water-services">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="flex items-center justify-between mb-12"
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Droplets className="w-8 h-8 text-[#970A44]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                  Water & Pipeline Services
+                </h2>
+              </div>
+              <p className="text-muted-foreground">Ensure clean, safe water throughout your home</p>
             </div>
+            <Button 
+              asChild
+              variant="outline"
+              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-water"
+            >
+              <Link href="/wellness/water-services">
+                View All
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
           </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {waterServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`water-service-${service.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-faq">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
-            <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <HelpCircle className="w-8 h-8 text-[#970A44]" />
+      {/* SECTION 9: HOME DEEP CLEANING - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-deep-cleaning">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="flex items-center justify-between mb-12"
+          >
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Home className="w-8 h-8 text-[#970A44]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                  Home Deep Cleaning Services
+                </h2>
+              </div>
+              <p className="text-muted-foreground">Complete home cleaning for a fresh, healthy environment</p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-[#09263D]">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Common questions about our wellness services in Dubai
-            </p>
           </motion.div>
 
+          <div className="grid md:grid-cols-3 gap-6">
+            {deepCleaningServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`deep-cleaning-${service.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: PEST CONTROL SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-pest-control">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...fadeInUp}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            className="flex items-center justify-between mb-12"
           >
-            <Accordion type="single" collapsible className="w-full space-y-3">
-              {faqItems.map((item, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="bg-white rounded-xl border-0 shadow-sm px-6"
-                  data-testid={`faq-item-${index}`}
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <Bug className="w-8 h-8 text-[#970A44]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                  Pest Control Services
+                </h2>
+              </div>
+              <p className="text-muted-foreground">Protect your home from unwanted pests</p>
+            </div>
+            <Button 
+              asChild
+              variant="outline"
+              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-pest"
+            >
+              <Link href="/wellness/pest-control">
+                View All
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pestServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <AccordionTrigger className="text-left font-semibold text-[#09263D] hover:text-[#970A44] hover:no-underline py-5">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
+                  <Card className="border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`pest-service-${service.id}`}>
+                    <CardContent className="p-6 flex items-center gap-4">
+                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg text-[#09263D] mb-1">{service.name}</h3>
+                        <p className="text-muted-foreground text-sm">{service.description}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="py-20 bg-[#970A44]" data-testid="section-cta">
+      {/* SECTION 11: INDOOR TESTING SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-testing">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <TestTube className="w-8 h-8 text-[#970A44]" />
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                Indoor Environmental Testing
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Professional testing services to ensure your indoor environment is safe and healthy
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testingServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="border-0 shadow-lg hover-elevate cursor-pointer text-center" data-testid={`testing-service-${service.id}`}>
+                    <CardContent className="p-6">
+                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 12: PERSONAL WELLNESS SERVICES - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#09263D]" id="personal-services" data-testid="section-personal-wellness">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-[#970A44] font-medium uppercase tracking-wider text-sm">Personal Services</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-white mt-2 mb-4">
+              Personal Wellness Services
+            </h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Enhance your well-being with our premium personal wellness offerings delivered to your doorstep
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {personalServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="overflow-hidden border-0 shadow-xl hover-elevate cursor-pointer group" data-testid={`personal-service-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+                            <Icon className="w-5 h-5 text-[#970A44]" />
+                          </div>
+                          <h3 className="font-bold text-lg text-white">{service.name}</h3>
+                        </div>
+                        <p className="text-white/80 text-sm">{service.description}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 13: HOME IMPROVEMENT - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-home-improvement">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <Wrench className="w-8 h-8 text-[#970A44]" />
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                Home Improvement Services
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Transform your home with our professional improvement and renovation services
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {homeImprovementServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <Card className="border-0 shadow-md hover-elevate cursor-pointer" data-testid={`improvement-service-${service.id}`}>
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-[#09263D] mb-1">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 14: WHY CHOOSE US - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-why-choose">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Why Choose Property Masters Wellness?
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              We're committed to providing the highest quality wellness services for your home and family
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="border-0 shadow-lg hover-elevate" data-testid={`why-choose-${index}`}>
+                    <CardContent className="p-6 text-center">
+                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 15: TESTIMONIALS - matching thehealthyhome.me */}
+      <section className="py-20 bg-white" data-testid="section-testimonials">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
+              <span className="font-semibold text-lg">Google Reviews</span>
+            </div>
+            <div className="flex items-center justify-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+              ))}
+              <span className="ml-2 text-xl font-bold">4.9</span>
+              <span className="text-muted-foreground">(7,000+ reviews)</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+              What Our Customers Say
+            </h2>
+          </motion.div>
+
+          <div className="relative max-w-4xl mx-auto">
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-6"
+              data-testid="button-prev-testimonial"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <Card className="border-0 shadow-xl" data-testid="testimonial-card">
+              <CardContent className="p-8 md:p-12 text-center">
+                <div className="flex justify-center gap-1 mb-6">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="w-12 h-12 mx-auto text-[#970A44]/20 mb-4" />
+                <p className="text-xl text-[#09263D] italic mb-8 leading-relaxed">
+                  "{testimonials[currentTestimonial].content}"
+                </p>
+                <div className="flex items-center justify-center gap-4">
+                  <img 
+                    src={testimonials[currentTestimonial].image}
+                    alt={testimonials[currentTestimonial].name}
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
+                  <div className="text-left">
+                    <h4 className="font-bold text-[#09263D]">{testimonials[currentTestimonial].name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonials[currentTestimonial].service}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-6"
+              data-testid="button-next-testimonial"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            <div className="flex justify-center gap-2 mt-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentTestimonial ? 'bg-[#970A44]' : 'bg-gray-300'
+                  }`}
+                  data-testid={`testimonial-dot-${index}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 16: BOOK NOW CTA - matching thehealthyhome.me */}
+      <section className="py-20 bg-[#970A44]" data-testid="section-book-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -633,38 +1034,86 @@ export default function WellnessServices() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
-              Looking to Improve Wellness and Comfort in Your Property?
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-6">
+              Ready to Create a Healthier Home?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Property Masters can help you create a healthier indoor environment through practical, well-planned wellness services.
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              Book your wellness service today and experience the difference. Our team of certified professionals is ready to transform your living space.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 font-semibold rounded-full shadow-xl"
-                data-testid="button-cta-consult"
+                className="bg-white text-[#970A44] hover:bg-gray-100 rounded-full px-8"
+                data-testid="button-book-now"
               >
-                <Link href="/contact">
-                  Request Free Consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                <Link href="/book">
+                  Book Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
               <Button 
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 rounded-full"
-                data-testid="button-cta-call"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-call-us"
               >
-                <Link href="/contact">
-                  <ClipboardCheck className="mr-2 w-4 h-4" />
-                  Schedule Assessment
-                </Link>
+                <a href="tel:+97143456789">
+                  <Phone className="mr-2 w-5 h-5" />
+                  Call Us
+                </a>
               </Button>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 17: CONTACT INFO - matching thehealthyhome.me */}
+      <section className="py-16 bg-[#09263D]" data-testid="section-contact-info">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center"
+            >
+              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+                <Phone className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Call Us</h3>
+              <p className="text-white/70">+971 4 345 6789</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col items-center"
+            >
+              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+                <MapPin className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Visit Us</h3>
+              <p className="text-white/70">AL Saqr Business Tower - Office A-36, Dubai, UAE</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col items-center"
+            >
+              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+                <Calendar className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-white font-bold text-lg mb-2">Working Hours</h3>
+              <p className="text-white/70">7 Days a Week, 8AM - 8PM</p>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>

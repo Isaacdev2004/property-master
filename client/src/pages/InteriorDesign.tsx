@@ -1,378 +1,1303 @@
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { 
   ArrowRight, 
-  Heart,
-  CheckCircle2,
-  ShieldCheck,
-  Home,
-  Building2,
+  ArrowLeft,
+  Paintbrush, 
+  Ruler, 
+  CheckCircle2, 
+  Sofa, 
+  UtensilsCrossed, 
+  Bed, 
+  Bath, 
+  DoorOpen,
+  Table2,
+  Play,
+  Award,
   Users,
-  Paintbrush,
-  Layers,
+  Building2,
+  Palette,
+  Tv,
+  Flower2,
+  PaintBucket,
+  LayoutGrid,
   Square,
-  Waves,
-  UtensilsCrossed,
+  Baby,
+  Star,
+  Quote,
   Shield,
-  Target,
-  Lightbulb,
+  Clock,
+  Headphones,
+  ThumbsUp,
+  Calculator,
+  Check,
+  MapPin,
+  Phone,
+  Mail,
+  Calendar,
   Eye,
-  Sparkles
+  Sparkles,
+  Zap,
+  Target,
+  Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-const heroStats = [
-  { value: "15+", label: "Years Experience", icon: Shield },
-  { value: "2000+", label: "Projects Completed", icon: CheckCircle2 },
-  { value: "98%", label: "Client Satisfaction", icon: Heart },
-  { value: "10yr", label: "Warranty", icon: ShieldCheck },
+// Hero stats matching interiorcompany.com
+const stats = [
+  { icon: Building2, value: "5000+", label: "INTERIOR PROJECTS" },
+  { icon: Users, value: "200+", label: "DESIGN EXPERTS" },
+  { icon: Award, value: "15+", label: "YEARS EXPERIENCE" },
+  { icon: Palette, value: "2 Lac+", label: "DESIGN OPTIONS" },
 ];
 
-const approachPoints = [
+// Turnkey Services
+const turnkeyServices = [
   {
-    icon: Eye,
-    title: "Practical Layouts",
-    description: "Spaces designed around how people actually live and work, not just how they look"
-  },
-  {
-    icon: Target,
-    title: "Climate-Appropriate Materials",
-    description: "Materials selected to perform well in Dubai's heat, humidity, and AC-heavy environments"
-  },
-  {
-    icon: Shield,
-    title: "Integrated Execution",
-    description: "Design and construction handled together to ensure consistency and quality control"
-  },
-  {
-    icon: Lightbulb,
-    title: "Long-Term Durability",
-    description: "Solutions that maintain their quality long after handover, reducing future repairs"
-  }
-];
-
-const interiorServices = [
-  {
-    id: 1,
-    icon: Home,
-    title: "Residential Interior Design & Renovation",
-    description: "Apartments, villas, and townhouses planned around daily living, comfort, and long-term use.",
-    href: "/services/interior-design/residential"
-  },
-  {
-    id: 2,
-    icon: UtensilsCrossed,
-    title: "Commercial Interior Design",
-    description: "Restaurants, hospitality, and retail interiors designed to balance brand identity and operational flow.",
-    href: "/services/interior-design/commercial"
-  },
-  {
-    id: 3,
-    icon: Layers,
-    title: "Kitchen Remodeling & Wardrobe Solutions",
-    description: "High-use spaces designed for workflow, storage efficiency, and durability.",
-    href: "/services/interior-design/kitchen"
-  },
-  {
-    id: 4,
-    icon: Square,
-    title: "Flooring & Surface Finishes",
-    description: "Flooring and finishes selected based on usage, maintenance, and environmental conditions.",
-    href: "/services/interior-design/countertops"
-  },
-  {
-    id: 5,
     icon: Paintbrush,
-    title: "Painting, Gypsum & False Ceilings",
-    description: "Integrated finishes that define the final look and feel of the space.",
-    href: "/services/interior-design/painting"
+    title: "We Design",
+    description: "From completed homes to modular kitchens, and storage to decor, our top interior designers create spaces that match your vision.",
+    gradient: "from-[#970A44] to-[#720632]",
   },
   {
-    id: 6,
-    icon: Waves,
-    title: "Outdoor Renovation & Swimming Pools",
-    description: "Outdoor areas designed as functional extensions of the interior.",
-    href: "/services/interior-design/outdoor"
-  }
+    icon: Ruler,
+    title: "We Execute",
+    description: "We follow a meticulous planning approach with detail-driven designs for interiors of your homes.",
+    gradient: "from-[#1C4668] to-[#09263D]",
+  },
+  {
+    icon: CheckCircle2,
+    title: "We Manage",
+    description: "Our top interior designers spearhead quality assurance by extending support after the execution of home projects.",
+    gradient: "from-[#09263D] to-[#1C4668]",
+  },
 ];
 
-const whyItMatters = [
-  { icon: Sparkles, title: "Constant air conditioning affects materials" },
-  { icon: Home, title: "Humidity impacts finishes over time" },
-  { icon: Shield, title: "Strong sunlight causes wear and fading" },
-  { icon: Building2, title: "Daily use requires durable solutions" }
+// Furniture Collection
+const furnitureCollection = [
+  { id: 1, name: "Wallpapers", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80", discount: "27%" },
+  { id: 2, name: "Sofas", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80", discount: "55%" },
+  { id: 3, name: "Beds", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80", discount: "48%" },
+  { id: 4, name: "Coffee Tables", image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=400&q=80", discount: "50%" },
+  { id: 5, name: "Side Tables", image: "https://images.unsplash.com/photo-1499933374294-4584851497cc?w=400&q=80", discount: "50%" },
+  { id: 6, name: "Clocks", image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=400&q=80", discount: "50%" },
+  { id: 7, name: "Hobs", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80", discount: "29%" },
+  { id: 8, name: "Chimneys", image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=400&q=80", discount: "60%" },
+  { id: 9, name: "Chairs", image: "https://images.unsplash.com/photo-1503602642458-232111445657?w=400&q=80", discount: "45%" },
+  { id: 10, name: "Bedside Tables", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=400&q=80", discount: "48%" },
 ];
 
-const targetAudiences = [
-  { icon: Home, title: "Homeowners", description: "seeking quality renovations" },
-  { icon: Users, title: "Families", description: "planning long-term living spaces" },
-  { icon: Building2, title: "Property Investors", description: "improving asset value" },
-  { icon: Sparkles, title: "Commercial Clients", description: "needing functional workspaces" }
+// Design categories
+const designCategories = [
+  { id: "wall-colour", label: "Wall Colour Combination", icon: PaintBucket },
+  { id: "living-room", label: "Living Room", icon: Sofa },
+  { id: "kitchen", label: "Modular Kitchen", icon: UtensilsCrossed },
+  { id: "wardrobe", label: "Wardrobe", icon: DoorOpen },
+  { id: "bedroom", label: "Master Bedroom", icon: Bed },
+  { id: "kids-room", label: "Kids Room", icon: Baby },
+  { id: "tv-unit", label: "TV Units", icon: Tv },
+  { id: "bathroom", label: "Bathroom", icon: Bath },
+  { id: "pooja-room", label: "Pooja Mandir", icon: Flower2 },
+  { id: "dining", label: "Dining Room", icon: Table2 },
+  { id: "false-ceiling", label: "False Ceiling", icon: LayoutGrid },
+  { id: "balcony", label: "Balcony", icon: Square },
 ];
 
+const designIdeas: Record<string, Array<{ id: number; title: string; image: string; slug: string }>> = {
+  "wall-colour": [
+    { id: 1, title: "Bold Terracotta and White Wall Colour for Dining Room", image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=600&q=80", slug: "terracotta-white-dining" },
+    { id: 2, title: "Artistic Olive and Beige Wall Colour for Living Room", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", slug: "olive-beige-living" },
+    { id: 3, title: "Timeless Blue and White Wall Colour for Bedroom", image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80", slug: "blue-white-bedroom" },
+    { id: 4, title: "Unique Grey and Cream Wall Colour for Kitchen", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80", slug: "grey-cream-kitchen" },
+    { id: 5, title: "Sophisticated Beige and Brown for Dining Room", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80", slug: "beige-brown-dining" },
+    { id: 6, title: "Graceful Grey and Blue for Living Room", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80", slug: "grey-blue-living" },
+    { id: 7, title: "Natural Mustard and Olive for Living Room", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "mustard-olive-living" },
+  ],
+  "living-room": [
+    { id: 1, title: "Industrial Living Room Design with Textured Sofa", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", slug: "industrial-living-room" },
+    { id: 2, title: "Modern Living Room with Dark Blue L-Shaped Sofa", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80", slug: "modern-blue-sofa" },
+    { id: 3, title: "Modern Living Room with Green Velvet Sofa", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", slug: "green-velvet-living" },
+    { id: 4, title: "Contemporary Living Room with Grey Sofa", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "contemporary-grey" },
+    { id: 5, title: "Modern Yellow-Themed Living Room Design", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "yellow-themed-living" },
+    { id: 6, title: "Transitional Living Room with Regal Wooden Sofa", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80", slug: "transitional-wooden" },
+    { id: 7, title: "Contemporary Living Room with Beige Sofa", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&q=80", slug: "contemporary-beige" },
+  ],
+  "kitchen": [
+    { id: 1, title: "Contemporary Walnut Island Kitchen Design", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80", slug: "walnut-island-kitchen" },
+    { id: 2, title: "Contemporary L-Shaped Kitchen with Blue Cabinets", image: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=600&q=80", slug: "l-shaped-blue" },
+    { id: 3, title: "Gloss Finish Grey Contemporary Island Kitchen", image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=80", slug: "gloss-grey-island" },
+    { id: 4, title: "Modern White Kitchen with Quartz Counter", image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80", slug: "white-quartz-kitchen" },
+    { id: 5, title: "U-Shaped Kitchen with Maximum Storage", image: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600&q=80", slug: "u-shaped-storage" },
+    { id: 6, title: "Parallel Kitchen with Breakfast Counter", image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80", slug: "parallel-breakfast" },
+    { id: 7, title: "Open Kitchen with Living Room Integration", image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80", slug: "open-kitchen-living" },
+  ],
+  "wardrobe": [
+    { id: 1, title: "Walk-in Wardrobe with Custom Shelving", image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&q=80", slug: "walk-in-custom" },
+    { id: 2, title: "Sliding Door Wardrobe with Mirror Finish", image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80", slug: "sliding-mirror" },
+    { id: 3, title: "Built-in Wardrobe with LED Lighting", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", slug: "built-in-led" },
+    { id: 4, title: "Luxury Dressing Room Design", image: "https://images.unsplash.com/photo-1583845112203-29329902332e?w=600&q=80", slug: "luxury-dressing" },
+    { id: 5, title: "Open Wardrobe with Industrial Style", image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80", slug: "open-industrial" },
+    { id: 6, title: "Minimalist Wardrobe with Hidden Handles", image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600&q=80", slug: "minimalist-hidden" },
+    { id: 7, title: "L-Shaped Wardrobe for Corner Space", image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&q=80", slug: "l-shaped-corner" },
+  ],
+  "bedroom": [
+    { id: 1, title: "Luxurious Master Bedroom with Upholstered Headboard", image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80", slug: "luxury-master" },
+    { id: 2, title: "Minimalist Bedroom with Platform Bed", image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80", slug: "minimalist-platform" },
+    { id: 3, title: "Cozy Bedroom with Warm Tones", image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80", slug: "cozy-warm" },
+    { id: 4, title: "Modern Bedroom with Walk-in Closet", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80", slug: "modern-walk-in" },
+    { id: 5, title: "Contemporary Bedroom with Bay Window", image: "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?w=600&q=80", slug: "contemporary-bay" },
+    { id: 6, title: "Rustic Bedroom with Wooden Accents", image: "https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600&q=80", slug: "rustic-wooden" },
+    { id: 7, title: "Elegant Bedroom with Chandelier", image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80", slug: "elegant-chandelier" },
+  ],
+  "kids-room": [
+    { id: 1, title: "Colorful Kids Room with Bunk Beds", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "colorful-bunk" },
+    { id: 2, title: "Playful Room with Study Corner", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "playful-study" },
+    { id: 3, title: "Themed Kids Room with Wall Murals", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "themed-murals" },
+    { id: 4, title: "Twin Kids Room with Shared Space", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "twin-shared" },
+    { id: 5, title: "Gender Neutral Kids Room Design", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "gender-neutral" },
+    { id: 6, title: "Teen Room with Modern Design", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "teen-modern" },
+    { id: 7, title: "Nursery Room with Soft Colors", image: "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7f8?w=600&q=80", slug: "nursery-soft" },
+  ],
+  "tv-unit": [
+    { id: 1, title: "Modern TV Unit with Floating Shelves", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "modern-floating" },
+    { id: 2, title: "Wall-Mounted TV Unit with LED Backlight", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "wall-mounted-led" },
+    { id: 3, title: "TV Unit with Hidden Storage", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "hidden-storage" },
+    { id: 4, title: "Rustic TV Unit with Wooden Finish", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "rustic-wooden-tv" },
+    { id: 5, title: "Minimalist TV Panel Design", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "minimalist-panel" },
+    { id: 6, title: "Entertainment Center with Bookshelf", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "entertainment-bookshelf" },
+    { id: 7, title: "Corner TV Unit Design", image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&q=80", slug: "corner-tv" },
+  ],
+  "bathroom": [
+    { id: 1, title: "Spa-like Bathroom with Freestanding Tub", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80", slug: "spa-freestanding" },
+    { id: 2, title: "Modern Bathroom with Rainfall Shower", image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80", slug: "modern-rainfall" },
+    { id: 3, title: "Minimalist Bathroom with Floating Vanity", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80", slug: "minimalist-floating" },
+    { id: 4, title: "Luxury Master Bathroom Suite", image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=80", slug: "luxury-master-bath" },
+    { id: 5, title: "Contemporary Bathroom with Marble Tiles", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80", slug: "contemporary-marble" },
+    { id: 6, title: "Small Bathroom with Smart Storage", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80", slug: "small-smart" },
+    { id: 7, title: "Vintage Bathroom with Brass Fixtures", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80", slug: "vintage-brass" },
+  ],
+  "pooja-room": [
+    { id: 1, title: "Traditional Pooja Room with Wooden Mandir", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "traditional-wooden" },
+    { id: 2, title: "Modern Pooja Unit with LED Lights", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "modern-led-pooja" },
+    { id: 3, title: "Wall-Mounted Pooja Unit", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "wall-mounted-pooja" },
+    { id: 4, title: "Marble Pooja Room Design", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "marble-pooja" },
+    { id: 5, title: "Compact Pooja Corner Design", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "compact-corner" },
+    { id: 6, title: "Glass Door Pooja Room", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "glass-door-pooja" },
+    { id: 7, title: "Brass Accented Pooja Mandir", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", slug: "brass-accented" },
+  ],
+  "dining": [
+    { id: 1, title: "Elegant Dining Room with Crystal Chandelier", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80", slug: "elegant-crystal" },
+    { id: 2, title: "Modern Dining with Marble Table", image: "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=600&q=80", slug: "modern-marble-dining" },
+    { id: 3, title: "Rustic Dining Room with Wood Accents", image: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=600&q=80", slug: "rustic-wood-dining" },
+    { id: 4, title: "Contemporary Open-Plan Dining", image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600&q=80", slug: "contemporary-open" },
+    { id: 5, title: "Compact Dining Area Design", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80", slug: "compact-dining" },
+    { id: 6, title: "Dining Room with Built-in Storage", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80", slug: "dining-storage" },
+    { id: 7, title: "Round Dining Table Setup", image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=600&q=80", slug: "round-dining" },
+  ],
+  "false-ceiling": [
+    { id: 1, title: "Coffered False Ceiling Design", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "coffered-ceiling" },
+    { id: 2, title: "Tray Ceiling with LED Lighting", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "tray-led" },
+    { id: 3, title: "Wooden False Ceiling Design", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "wooden-ceiling" },
+    { id: 4, title: "Modern POP Ceiling Design", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "modern-pop" },
+    { id: 5, title: "Minimalist Ceiling with Recessed Lights", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "minimalist-recessed" },
+    { id: 6, title: "Artistic Ceiling Design for Hall", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "artistic-hall" },
+    { id: 7, title: "Gypsum Ceiling with Cove Lighting", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "gypsum-cove" },
+  ],
+  "balcony": [
+    { id: 1, title: "Cozy Balcony with Seating Area", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "cozy-seating" },
+    { id: 2, title: "Garden Balcony with Planters", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "garden-planters" },
+    { id: 3, title: "Modern Balcony with Glass Railing", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "modern-glass" },
+    { id: 4, title: "Small Balcony Makeover Ideas", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "small-makeover" },
+    { id: 5, title: "Balcony with Swing Seating", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "swing-seating" },
+    { id: 6, title: "Enclosed Balcony Design", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "enclosed-balcony" },
+    { id: 7, title: "Bohemian Balcony Decor", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", slug: "bohemian-decor" },
+  ],
+};
+
+// 360 Tour Projects
+const tourProjects = [
+  { id: 1, title: "Luxury Villa in Palm Jumeirah", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", location: "Palm Jumeirah, Dubai", sqft: "4,500 sq.ft" },
+  { id: 2, title: "Modern Apartment in Downtown", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", location: "Downtown Dubai", sqft: "2,200 sq.ft" },
+  { id: 3, title: "Contemporary Penthouse", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80", location: "Dubai Marina", sqft: "3,800 sq.ft" },
+  { id: 4, title: "Classic Villa Interior", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", location: "Emirates Hills", sqft: "5,200 sq.ft" },
+  { id: 5, title: "Minimalist Studio", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", location: "Business Bay", sqft: "1,100 sq.ft" },
+  { id: 6, title: "Family Home Makeover", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", location: "Arabian Ranches", sqft: "3,500 sq.ft" },
+];
+
+// How We Work Steps
 const processSteps = [
-  { step: 1, title: "Consult", description: "Understanding your vision, requirements, and budget" },
-  { step: 2, title: "Design", description: "Creating detailed plans and material selections" },
-  { step: 3, title: "Execute", description: "Professional construction with quality control" },
-  { step: 4, title: "Handover", description: "Final inspection and warranty documentation" }
+  { step: 1, title: "Meet Our Designer", description: "Schedule a free consultation with our expert designers to discuss your vision and requirements.", icon: Users },
+  { step: 2, title: "Get Your Design", description: "Receive detailed 3D designs and floor plans tailored to your space and preferences.", icon: Palette },
+  { step: 3, title: "Approve & Modify", description: "Review the designs, suggest modifications, and approve the final layout.", icon: CheckCircle2 },
+  { step: 4, title: "Execution Begins", description: "Our skilled craftsmen bring your design to life with precision and quality materials.", icon: Ruler },
+  { step: 5, title: "Quality Check", description: "Rigorous quality checks ensure every detail meets our premium standards.", icon: Shield },
+  { step: 6, title: "Move In", description: "Your dream space is ready! Enjoy your beautifully designed interior.", icon: Heart },
 ];
 
-const exploreServices = [
-  { id: 1, title: "Residential Interior Design", href: "/services/interior-design/residential", icon: Home },
-  { id: 2, title: "Commercial Interior Design", href: "/services/interior-design/commercial", icon: Building2 },
-  { id: 3, title: "Kitchen Remodeling", href: "/services/interior-design/kitchen", icon: Layers },
-  { id: 4, title: "Living Room Design", href: "/services/interior-design/living-room", icon: Home },
-  { id: 5, title: "Master Bedroom Design", href: "/services/interior-design/master-bedroom", icon: Home },
-  { id: 6, title: "Kids Room Design", href: "/services/interior-design/kids-room", icon: Users },
-  { id: 7, title: "Wardrobe & Storage", href: "/services/interior-design/wardrobe", icon: Layers },
-  { id: 8, title: "Bathroom Renovation", href: "/services/interior-design/bathroom", icon: Home },
-  { id: 9, title: "Interior Painting", href: "/services/interior-design/painting", icon: Paintbrush },
-  { id: 10, title: "Gypsum & False Ceilings", href: "/services/interior-design/gypsum", icon: Layers },
-  { id: 11, title: "Countertops & Surfaces", href: "/services/interior-design/countertops", icon: Square },
-  { id: 12, title: "Outdoor Renovation", href: "/services/interior-design/outdoor", icon: Waves },
-  { id: 13, title: "Swimming Pool Design", href: "/services/interior-design/swimming-pool", icon: Waves },
-  { id: 14, title: "Glass & Aluminum Works", href: "/services/interior-design/glass-aluminum", icon: Square }
+// Expert Team
+const expertTeam = [
+  { id: 1, name: "Sarah Al-Rashid", role: "Lead Interior Designer", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80", experience: "12+ Years" },
+  { id: 2, name: "Ahmed Hassan", role: "Senior Architect", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80", experience: "15+ Years" },
+  { id: 3, name: "Priya Sharma", role: "Kitchen Specialist", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80", experience: "8+ Years" },
+  { id: 4, name: "Michael Chen", role: "Project Manager", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", experience: "10+ Years" },
 ];
 
-const faqs = [
-  {
-    question: "What types of interior design projects do you handle in Dubai?",
-    answer: "We handle full interior renovations, partial upgrades, and space-specific design solutions for residential and commercial properties. Projects range from apartments and villas to offices and retail spaces, all planned with Dubai's climate and usage patterns in mind."
-  },
-  {
-    question: "How do Dubai's climate and building conditions affect interior design?",
-    answer: "Constant air conditioning, humidity, and strong sunlight can impact materials, finishes, and long-term durability. Our designs account for these factors by selecting suitable materials and planning layouts that maintain comfort and performance over time."
-  },
-  {
-    question: "Do you manage both design and execution?",
-    answer: "Yes. We provide end-to-end interior design and renovation services, covering planning, material selection, execution, and final handover. This ensures consistency, quality control, and smoother project delivery."
-  },
-  {
-    question: "Can you work with occupied properties?",
-    answer: "Yes. Where required, we plan work phases carefully to minimize disruption, especially for residential homes and active commercial spaces."
-  },
-  {
-    question: "How long does an interior design or renovation project usually take?",
-    answer: "Timelines vary depending on scope, approvals, and materials. After an initial assessment, we provide a realistic schedule aligned with Dubai regulations and project requirements."
-  }
+// Google Reviews
+const googleReviews = [
+  { id: 1, name: "Fatima Al-Maktoum", rating: 5, review: "Exceptional service! The team transformed our villa into a dream home. Every detail was perfect.", date: "2 weeks ago", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" },
+  { id: 2, name: "Rajesh Patel", rating: 5, review: "Professional team with great attention to detail. Highly recommend for any interior project.", date: "1 month ago", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" },
+  { id: 3, name: "Emma Thompson", rating: 5, review: "From design to execution, everything was seamless. Love my new kitchen!", date: "3 weeks ago", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" },
+  { id: 4, name: "Mohammed Ali", rating: 5, review: "Best interior design company in Dubai. Quality work at reasonable prices.", date: "1 week ago", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" },
 ];
 
+// Why Choose Us
+const whyChooseUs = [
+  { icon: Shield, title: "10-Year Warranty", description: "All our work comes with a comprehensive 10-year warranty for peace of mind." },
+  { icon: Clock, title: "45-Day Delivery", description: "We guarantee project completion within 45 days from approval." },
+  { icon: Headphones, title: "24/7 Support", description: "Round-the-clock customer support for all your queries and concerns." },
+  { icon: ThumbsUp, title: "Quality Assured", description: "Premium materials and expert craftsmanship in every project." },
+  { icon: Sparkles, title: "Customized Designs", description: "Every design is tailored to your unique taste and lifestyle." },
+  { icon: Zap, title: "Quick Installation", description: "Efficient installation process with minimal disruption." },
+];
+
+// Partner Brands
+const partnerBrands = [
+  { name: "Kohler", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Bosch", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Hafele", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Asian Paints", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Hettich", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+  { name: "Philips", logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" },
+];
+
+// Happy Homes
+const happyHomes = [
+  { id: 1, name: "Al Rashid Residence", location: "Palm Jumeirah", type: "Villa", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" },
+  { id: 2, name: "Marina Heights Apt", location: "Dubai Marina", type: "Apartment", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" },
+  { id: 3, name: "Downtown Penthouse", location: "Downtown Dubai", type: "Penthouse", image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" },
+  { id: 4, name: "Arabian Villa", location: "Arabian Ranches", type: "Villa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" },
+  { id: 5, name: "JBR Apartment", location: "JBR", type: "Apartment", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" },
+  { id: 6, name: "Hills Estate", location: "Emirates Hills", type: "Villa", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" },
+];
+
+// Video Testimonials
+const videoTestimonials = [
+  { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
+  { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
+  { id: 3, name: "Priya Verma", role: "Interior Enthusiast", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80", rating: 5, hasVideo: true },
+];
+
+// Blog Posts
+const blogPosts = [
+  { id: 1, title: "Top 10 Interior Design Trends for 2024", category: "Trends", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", date: "Dec 1, 2024", readTime: "5 min read" },
+  { id: 2, title: "How to Choose the Perfect Color Palette", category: "Tips", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", date: "Nov 28, 2024", readTime: "4 min read" },
+  { id: 3, title: "Maximizing Small Spaces: A Complete Guide", category: "Guide", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", date: "Nov 25, 2024", readTime: "6 min read" },
+];
+
+// Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
 };
 
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 export default function InteriorDesign() {
+  const [activeTab, setActiveTab] = useState("wall-colour");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#F6F4EB]" data-testid="page-interior-design">
-      {/* HERO SECTION */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="section-hero">
+    <div className="min-h-screen bg-background">
+      {/* SECTION 1: HERO */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
-            alt="Interior Design Services Dubai"
+            alt="Luxury Interior Design"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         </div>
         
-        <div className="relative z-10 w-full py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <span className="inline-block px-4 py-2 bg-[#970A44]/20 backdrop-blur-sm border border-[#970A44]/30 rounded-full text-white text-sm font-medium mb-6">
+                Interior Design & Fit-Out
+              </span>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
+                Interior Design that Speaks of <span className="text-[#970A44]">You</span>
+              </h1>
+              <p className="text-lg text-white/80 mb-8 leading-relaxed">
+                From foundation to furnishings, we style your home like our own.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                  data-testid="button-hero-consultation"
                 >
-                  Property Masters Dubai
-                </motion.p>
-                <motion.h1 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
-                  data-testid="text-hero-title"
-                >
-                  Interior Design Services in Dubai
-                </motion.h1>
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-6 space-y-4"
-                  data-testid="text-hero-description"
-                >
-                  <p>Interior design in Dubai is shaped by more than aesthetics. Constant air conditioning, humidity, strong sunlight, and daily use all affect how interiors perform over time.</p>
-                  <p>Our Interior Design & Renovation services are developed with these realities in mind. We create spaces that are visually balanced, practical to live in, and durable enough to maintain their quality long after handover.</p>
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex flex-wrap items-center gap-3"
-                >
-                  <Button 
-                    asChild 
-                    size="lg"
-                    className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
-                    data-testid="button-hero-cta"
-                  >
-                    <Link href="/contact">
-                      Get Free Consultation
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </Button>
-                  <div className="flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2" data-testid="badge-certified">
-                    <ShieldCheck className="w-4 h-4 text-white" />
-                    <span className="text-sm font-medium text-white">Certified Professionals</span>
-                  </div>
-                </motion.div>
-              </motion.div>
+                  <Link href="/contact">
+                    Book Free Consultation
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
 
-              {/* Right Column - Statistics Grid */}
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="grid grid-cols-2 gap-3"
-                data-testid="stats-grid"
-              >
-                {heroStats.map((stat, index) => (
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:grid grid-cols-2 gap-4"
+            >
+              {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
                   <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 text-center"
                     data-testid={`stat-${index}`}
                   >
-                    <div className="flex justify-center mb-2">
-                      <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
-                        {stat.icon && <stat.icon className="w-5 h-5 text-white" />}
-                      </div>
+                    <div className="w-12 h-12 mx-auto mb-3 bg-[#970A44]/20 rounded-xl flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-[#970A44]" />
                     </div>
-                    <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-                    <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                    <div className="text-2xl font-bold text-white">{stat.value}</div>
+                    <div className="text-xs text-white/70 mt-1">{stat.label}</div>
                   </motion.div>
-                ))}
-              </motion.div>
-            </div>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* INTRO SECTION */}
-      <section className="py-16 bg-white" data-testid="section-intro">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
-              Designing Spaces That Work for Dubai Living
+      {/* SECTION 2: COMPLETE TURNKEY SERVICES */}
+      <section className="py-24 bg-background" data-testid="section-turnkey">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Complete Turnkey Services
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              Good interior design should feel natural to live in. That happens when design decisions are practical, materials are chosen thoughtfully, and execution follows a clear plan.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              With an emphasis on details, extraordinary designs and exceptional customer service, we bring your dreams to life.
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              This page provides an overview of our interior design and renovation services and how they help create lasting, functional spaces across Dubai.
-            </p>
+            <Button 
+              asChild
+              variant="outline"
+              className="mt-6 rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-know-more"
+            >
+              <Link href="/about">
+                Know More
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {turnkeyServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div key={index} variants={fadeInUp}>
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-turnkey-${index}`}>
+                    <CardContent className="p-8 text-center">
+                      <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl mb-6`}>
+                        <Icon className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
-      {/* OUR APPROACH TO INTERIOR DESIGN */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-approach">
+      {/* SECTION 3: FACTORY VIDEO */}
+      <section className="py-24 bg-muted/30" data-testid="section-factory">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Our Design Philosophy
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-sm font-semibold text-[#970A44] uppercase tracking-wider mb-4">
+                From Concept to Creation
+              </h3>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+                Your Furniture's Journey
+              </h2>
+              <div className="bg-[#970A44]/5 border border-[#970A44]/20 rounded-xl p-6 mb-6">
+                <h4 className="font-semibold text-lg mb-2">Step Inside Our Factory:</h4>
+                <p className="text-muted-foreground">
+                  See Your Kitchen or Wardrobe Come to Life
+                </p>
+              </div>
+              <Button 
+                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                data-testid="button-watch-video"
+              >
+                <Play className="w-5 h-5 mr-2" />
+                Play Video
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80"
+                  alt="Factory Tour"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <button 
+                  className="absolute inset-0 flex items-center justify-center"
+                  data-testid="button-play-factory-video"
+                >
+                  <div className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-xl">
+                    <Play className="w-8 h-8 text-[#970A44] ml-1" />
+                  </div>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: FURNITURE COLLECTION */}
+      <section className="py-24 bg-background" data-testid="section-furniture">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Discover Your Dream Home
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We focus on creating interiors that are visually balanced, practical to live in, and durable enough to maintain their quality over time.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Dive into Our Decor & Furniture Collection!
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {approachPoints.map((point, index) => (
+          <div className="relative">
+            <button 
+              onClick={scrollLeft}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-4"
+              data-testid="button-scroll-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {furnitureCollection.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="flex-shrink-0 w-64"
+                >
+                  <Link href="/shop">
+                    <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-furniture-${item.id}`}>
+                      <div className="relative aspect-square overflow-hidden">
+                        <img 
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute top-3 left-3 px-3 py-1 bg-[#970A44] text-white text-xs font-bold rounded-full">
+                          Upto {item.discount} Off
+                        </div>
+                      </div>
+                      <CardContent className="p-4">
+                        <div className="flex items-center justify-between">
+                          <h3 className="font-semibold">{item.name}</h3>
+                          <ArrowRight className="w-4 h-4 text-[#970A44]" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+
               <motion.div
-                key={point.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="flex-shrink-0 w-64"
+              >
+                <Link href="/shop">
+                  <Card className="group h-full overflow-hidden border-2 border-dashed border-[#970A44]/30 hover:border-[#970A44] cursor-pointer transition-colors" data-testid="card-explore-more">
+                    <CardContent className="p-4 h-full flex flex-col items-center justify-center text-center aspect-square">
+                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
+                        <ArrowRight className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="font-bold text-lg mb-2">Explore More Deals</h3>
+                      <span className="text-[#970A44] font-medium">Shop Now</span>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
+            </div>
+
+            <button 
+              onClick={scrollRight}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-4"
+              data-testid="button-scroll-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: DESIGN IDEAS */}
+      <section className="py-24 bg-muted/30" data-testid="section-design-ideas">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Design Ideas for Every Space
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Because every corner holds a unique design potential.
+            </p>
+          </motion.div>
+
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent h-auto p-0 mb-10">
+              {designCategories.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <TabsTrigger
+                    key={category.id}
+                    value={category.id}
+                    className="data-[state=active]:bg-[#970A44] data-[state=active]:text-white px-3 py-2 rounded-full border border-border data-[state=active]:border-[#970A44] transition-all flex items-center gap-1.5 text-xs md:text-sm"
+                    data-testid={`tab-${category.id}`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    {category.label}
+                  </TabsTrigger>
+                );
+              })}
+            </TabsList>
+
+            <AnimatePresence mode="wait">
+              {designCategories.map((category) => (
+                <TabsContent key={category.id} value={category.id} className="mt-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4"
+                  >
+                    {(designIdeas[category.id] || []).map((idea, index) => (
+                      <motion.div
+                        key={idea.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                      >
+                        <Link href={`/interior-design/${category.id}/${idea.slug}`}>
+                          <Card className="group overflow-hidden border-0 shadow-sm hover-elevate cursor-pointer" data-testid={`card-idea-${idea.id}`}>
+                            <div className="relative aspect-[3/4] overflow-hidden">
+                              <img 
+                                src={idea.image}
+                                alt={idea.title}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="absolute bottom-3 left-3 right-3">
+                                  <span className="text-white text-xs font-medium">View Design</span>
+                                </div>
+                              </div>
+                            </div>
+                            <CardContent className="p-3">
+                              <h3 className="font-medium text-xs line-clamp-2 group-hover:text-[#970A44] transition-colors">
+                                {idea.title}
+                              </h3>
+                            </CardContent>
+                          </Card>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-center mt-10"
+                  >
+                    <Button 
+                      asChild
+                      variant="outline"
+                      className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                      data-testid={`button-explore-${category.id}`}
+                    >
+                      <Link href={`/interior-design/${category.id}`}>
+                        Explore More {category.label} Designs
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    </Button>
+                  </motion.div>
+                </TabsContent>
+              ))}
+            </AnimatePresence>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* SECTION 6: 360-DEGREE TOUR OF EXECUTED PROJECTS */}
+      <section className="py-24 bg-background" data-testid="section-360-tour">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              A 360-Degree Tour Of Our Executed Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Like our designs? Explore them from a different perspective!
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tourProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-approach-${index}`}>
-                  <CardContent className="p-6 text-center">
-                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <point.icon className="w-7 h-7 text-[#970A44]" />
+                <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-tour-${project.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute top-4 right-4">
+                      <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                        <Eye className="w-6 h-6 text-[#970A44]" />
+                      </div>
                     </div>
-                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{point.title}</h3>
-                    <p className="text-sm text-muted-foreground">{point.description}</p>
-                  </CardContent>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
+                      <div className="flex items-center gap-4 text-white/80 text-sm">
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-4 h-4" />
+                          {project.location}
+                        </span>
+                        <span>{project.sqft}</span>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
               </motion.div>
             ))}
           </div>
 
-          <motion.p 
-            {...fadeInUp} 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
           >
-            Each interior design project is planned to integrate seamlessly with your lifestyle and property requirements.
-          </motion.p>
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-tours"
+            >
+              <Link href="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* WHAT OUR INTERIOR DESIGN SERVICES COVER */}
-      <section className="py-20 bg-white" data-testid="section-services">
+      {/* SECTION 7: HOW WE WORK */}
+      <section className="py-24 bg-muted/30" data-testid="section-process">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              What Our Interior Design Services Cover
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              How We Work
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our services span residential and commercial interiors, covering planning, design, and execution. Each service is explained in detail on its own dedicated page.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our streamlined process ensures a seamless journey from concept to completion.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {interiorServices.map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {processSteps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-process-${step.step}`}>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
+                          {step.step}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                          <p className="text-muted-foreground">{step.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: EXPERT TEAM */}
+      <section className="py-24 bg-background" data-testid="section-team">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              The Experts Behind Property Masters
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Meet our talented team of designers and architects who bring your vision to life.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {expertTeam.map((member, index) => (
               <motion.div
-                key={service.id}
+                key={member.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link href={service.href}>
-                  <Card className="h-full border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`card-service-${index}`}>
-                    <CardContent className="p-6">
-                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
-                        <service.icon className="w-7 h-7 text-[#970A44]" />
-                      </div>
-                      <h3 className="text-lg font-bold mb-2 text-[#09263D] group-hover:text-[#970A44] transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                        {service.description}
-                      </p>
-                      <span className="inline-flex items-center text-[#970A44] font-medium text-sm">
-                        Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-team-${member.id}`}>
+                  <div className="relative aspect-[3/4] overflow-hidden">
+                    <img 
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h3 className="font-bold text-lg">{member.name}</h3>
+                      <p className="text-white/80 text-sm">{member.role}</p>
+                      <span className="inline-block mt-2 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                        {member.experience}
                       </span>
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: GOOGLE REVIEWS */}
+      <section className="py-24 bg-muted/30" data-testid="section-reviews">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
+              <span className="text-lg font-semibold">Google Reviews</span>
+            </div>
+            <div className="flex items-center justify-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+              ))}
+              <span className="ml-2 text-xl font-bold">4.9</span>
+              <span className="text-muted-foreground">(500+ reviews)</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif">
+              What Our Customers Say
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {googleReviews.map((review, index) => (
+              <motion.div
+                key={review.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-review-${review.id}`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <img 
+                        src={review.image}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <h4 className="font-semibold">{review.name}</h4>
+                        <p className="text-xs text-muted-foreground">{review.date}</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-3">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      "{review.review}"
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: WHY CHOOSE US */}
+      <section className="py-24 bg-background" data-testid="section-why-choose">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Why Choose Property Masters?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We're committed to delivering excellence in every project we undertake.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-why-${index}`}>
+                    <CardContent className="p-6 text-center">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 11: PARTNER BRANDS */}
+      <section className="py-16 bg-muted/30" data-testid="section-brands">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-serif">
+              Our Trusted Partner Brands
+            </h2>
+            <p className="text-muted-foreground">
+              We work with world-class brands to deliver premium quality
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            {partnerBrands.map((brand, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="grayscale hover:grayscale-0 transition-all"
+              >
+                <div className="w-24 h-16 bg-white rounded-lg shadow-sm flex items-center justify-center p-2">
+                  <span className="text-sm font-bold text-muted-foreground">{brand.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 12: HAPPY HOMES */}
+      <section className="py-24 bg-background" data-testid="section-happy-homes">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Happy Homes, Happy Families
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Take a tour of homes we've transformed across Dubai and beyond. Real projects, real satisfaction.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {happyHomes.map((home, index) => (
+              <motion.div
+                key={home.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="group overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-home-${home.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={home.image}
+                      alt={home.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-lg font-bold text-white mb-1">{home.name}</h3>
+                      <p className="text-white/80 text-sm">{home.location}</p>
+                    </div>
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                      {home.type}
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-projects"
+            >
+              <Link href="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 13: FREE ESTIMATE */}
+      <section className="py-24 bg-[#970A44]" data-testid="section-free-estimate">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full mb-6">
+                <Calculator className="w-5 h-5 text-white" />
+                <span className="text-white font-medium">Free Estimate</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
+                Get Your Free Estimate in 30 Seconds
+              </h2>
+              <p className="text-white/80 text-lg mb-8 leading-relaxed">
+                Simply share your requirements and get an instant estimate for your dream interior. No obligations, no hidden costs.
+              </p>
+              <ul className="space-y-4 text-white">
+                {[
+                  "Instant price estimate",
+                  "Personalized design consultation",
+                  "3D visualization of your space",
+                  "Flexible payment options"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <Check className="w-5 h-5 text-white" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="border-0 shadow-2xl">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Tell Us About Your Project</h3>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name">Name</Label>
+                        <Input id="name" placeholder="Your name" data-testid="input-estimate-name" />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone</Label>
+                        <Input id="phone" placeholder="+971" data-testid="input-estimate-phone" />
+                      </div>
+                    </div>
+                    <div>
+                      <Label htmlFor="property-type">Property Type</Label>
+                      <Select>
+                        <SelectTrigger data-testid="select-property-type">
+                          <SelectValue placeholder="Select property type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="apartment">Apartment</SelectItem>
+                          <SelectItem value="villa">Villa</SelectItem>
+                          <SelectItem value="office">Office</SelectItem>
+                          <SelectItem value="retail">Retail Space</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="bhk">Configuration</Label>
+                      <Select>
+                        <SelectTrigger data-testid="select-bhk">
+                          <SelectValue placeholder="Select BHK" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1bhk">1 BHK</SelectItem>
+                          <SelectItem value="2bhk">2 BHK</SelectItem>
+                          <SelectItem value="3bhk">3 BHK</SelectItem>
+                          <SelectItem value="4bhk">4 BHK</SelectItem>
+                          <SelectItem value="5bhk+">5+ BHK</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <Button className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" data-testid="button-get-estimate">
+                      Get Free Estimate
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 14: VIDEO TESTIMONIALS */}
+      <section className="py-24 bg-background" data-testid="section-testimonials">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Hear From Our Happy Customers
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Real stories from real customers who trusted us with their dream interiors.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {videoTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-testimonial-${testimonial.id}`}>
+                  <CardContent className="p-6">
+                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-muted">
+                      <img 
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <button 
+                          className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110"
+                          data-testid={`button-play-testimonial-${testimonial.id}`}
+                        >
+                          <Play className="w-6 h-6 text-[#970A44] ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                      ))}
+                    </div>
+                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                    <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 15: LATEST BLOG */}
+      <section className="py-24 bg-muted/30" data-testid="section-blog">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Latest From Our Blog
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Stay updated with the latest trends, tips, and insights in interior design.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Link href={`/blog/${post.id}`}>
+                  <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-blog-${post.id}`}>
+                    <div className="relative aspect-[16/10] overflow-hidden">
+                      <img 
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                          {post.category}
+                        </span>
+                      </div>
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          {post.date}
+                        </span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <h3 className="font-bold text-lg group-hover:text-[#970A44] transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
                     </CardContent>
                   </Card>
                 </Link>
@@ -380,208 +1305,30 @@ export default function InteriorDesign() {
             ))}
           </div>
 
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
-          >
-            Each service is structured to address specific interior design needs found in Dubai properties.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* WHY INTERIOR DESIGN MATTERS IN DUBAI */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
-              Why Interior Design Matters in Dubai
-            </h2>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Dubai's unique environment presents specific challenges that professional interior design can address effectively.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyItMatters.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center"
-                data-testid={`card-why-${index}`}
-              >
-                <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <p className="text-white font-medium">{item.title}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-white/80 mt-10 max-w-3xl mx-auto"
-          >
-            Professional interior design helps create spaces that look great and perform well under Dubai's demanding conditions.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* WHO THESE SERVICES ARE FOR */}
-      <section className="py-20 bg-white" data-testid="section-target-audience">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Who These Services Are For
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our interior design services are suitable for a variety of clients and property types across Dubai.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {targetAudiences.map((audience, index) => (
-              <motion.div
-                key={audience.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-audience-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <audience.icon className="w-7 h-7 text-[#970A44]" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{audience.title}</h3>
-                    <p className="text-sm text-muted-foreground">{audience.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p 
-            {...fadeInUp} 
-            viewport={{ once: true }}
-            className="text-center text-muted-foreground mt-10 max-w-3xl mx-auto"
-          >
-            Each project is approached with attention to specific needs, usage patterns, and budget considerations.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* HOW INTERIOR DESIGN PROJECTS ARE HANDLED */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-process">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              How Interior Design Projects Are Handled
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our process is structured to ensure interior design projects deliver meaningful and lasting results.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
-                data-testid={`step-${index}`}
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-[#970A44] rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
-                    {step.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-[#09263D]">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm">{step.description}</p>
-                </div>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-[#970A44]/20" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs SECTION */}
-      <section className="py-20 bg-white" data-testid="section-faqs">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Interior Design & Renovation – FAQs
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Find answers to common questions about our interior design and renovation services.
-            </p>
-          </motion.div>
-
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
           >
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`faq-${index}`}
-                  className="border border-border rounded-xl px-6 shadow-sm bg-[#F6F4EB]"
-                  data-testid={`faq-item-${index}`}
-                >
-                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-5 text-[#09263D]">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <Button 
+              asChild
+              variant="outline"
+              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              data-testid="button-view-all-blogs"
+            >
+              <Link href="/blog">
+                Read More Articles
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* EXPLORE OUR INTERIOR DESIGN SERVICES */}
-      <section className="py-16 bg-white" data-testid="section-explore">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
-              Explore Our Interior Design Services
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Each interior design service is explained in detail on its dedicated page, allowing you to explore solutions that are relevant to your property.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {exploreServices.map((service) => (
-                <Link key={service.id} href={service.href}>
-                  <Button 
-                    variant="outline" 
-                    className="border-[#970A44]/30 text-[#09263D] hover:bg-[#970A44]/10 hover:border-[#970A44] rounded-full"
-                    data-testid={`button-explore-${service.id}`}
-                  >
-                    {service.title}
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FINAL CTA SECTION */}
-      <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
+      {/* SECTION 16: FINAL CTA */}
+      <section className="py-24 bg-[#09263D]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -589,29 +1336,29 @@ export default function InteriorDesign() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
-              Planning an Interior Design Project in Dubai?
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-serif">
+              Ready to Transform Your Space?
             </h2>
             <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-              Get in touch with our team to discuss your requirements and explore suitable design solutions.
+              Let our expert designers bring your vision to life. Book a free consultation today and take the first step towards your dream interior.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Button 
-                asChild 
+                asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
                 data-testid="button-cta-consultation"
               >
                 <Link href="/contact">
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
               <Button 
-                asChild 
-                size="lg"
+                asChild
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 rounded-full"
+                size="lg"
+                className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
                 data-testid="button-cta-portfolio"
               >
                 <Link href="/portfolio">

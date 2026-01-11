@@ -16,7 +16,6 @@ import BlogPost from "@/pages/BlogPost";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import InteriorDesign from "@/pages/InteriorDesign";
-import InteriorServiceDetail from "@/pages/InteriorServiceDetail";
 import WellnessServices from "@/pages/WellnessServices";
 import WellnessServiceDetail from "@/pages/WellnessServiceDetail";
 import MaintenanceServices from "@/pages/MaintenanceServices";
@@ -36,8 +35,6 @@ function Router() {
           <Route path="/services" component={Services} />
           <Route path="/services/:slug" component={Services} />
           <Route path="/interior-design" component={InteriorDesign} />
-          <Route path="/services/interior-design" component={InteriorDesign} />
-          <Route path="/services/interior-design/:serviceId" component={InteriorServiceDetail} />
           <Route path="/interior-design/:category" component={DesignCategory} />
           <Route path="/interior-design/:category/:slug" component={DesignDetail} />
           <Route path="/wellness" component={WellnessServices} />

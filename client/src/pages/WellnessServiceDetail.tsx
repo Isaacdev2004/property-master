@@ -8,9 +8,14 @@ import {
   Sofa,
   Home,
   Bug,
+  Paintbrush,
   TestTube,
-  SprayCan,
-  UserCheck,
+  Stethoscope,
+  Baby,
+  Dumbbell,
+  Apple,
+  Shirt,
+  Sparkles,
   Check,
   Phone,
   Clock,
@@ -23,342 +28,724 @@ import {
   Leaf,
   Zap,
   Shield,
+  Truck,
+  Package,
   Heart,
-  Wrench,
-  Thermometer,
-  Eye,
-  Target,
-  FileCheck,
-  Sparkles,
-  CheckCircle2
+  Waves
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+// Comprehensive service data for all wellness services
 const serviceData: Record<string, {
   title: string;
   tagline: string;
   description: string;
-  introText: string;
   icon: any;
+  color: string;
   heroImage: string;
-  services: { title: string; description: string }[];
-  approach: { title: string; description: string }[];
-  whyMatters: { title: string; points: string[] };
+  features: string[];
+  benefits: { icon: any; title: string; description: string }[];
   process: { step: number; title: string; description: string }[];
-  ctaText: string;
+  pricing: { name: string; price: string; features: string[] }[];
+  faqs: { question: string; answer: string }[];
   relatedServices: { name: string; slug: string }[];
-  comingSoon?: boolean;
 }> = {
   "ac-cleaning": {
-    title: "AC Cleaning Services in Dubai",
-    tagline: "Breathe Cleaner, Live Healthier",
-    description: "Professional AC cleaning and maintenance to improve performance, extend system life, and create healthier indoor environments.",
-    introText: "Air conditioning systems are essential in Dubai's climate, but without proper cleaning and maintenance, AC units can accumulate dust, mold, and debris. Dirty systems reduce cooling efficiency, affect indoor air quality, and can lead to higher energy bills or unexpected breakdowns.",
+    title: "AC Cleaning Services",
+    tagline: "Breathe Cleaner, Healthier Air",
+    description: "Professional AC cleaning and sanitization services to improve indoor air quality, reduce energy consumption, and extend the life of your air conditioning system. Our certified technicians use hospital-grade disinfectants and advanced cleaning techniques.",
     icon: Wind,
-    heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1920&q=80",
-    services: [
-      { title: "AC Coil Cleaning", description: "Removes accumulated dust, dirt, and debris from AC coils to restore cooling efficiency and improve airflow. Regular coil cleaning helps reduce energy consumption and prolongs system life." },
-      { title: "AC Repair & Maintenance", description: "Covers minor repairs, component checks, and routine maintenance to prevent breakdowns. This ensures the AC operates reliably throughout Dubai's hot months." },
-      { title: "Mold Removal", description: "Eliminates mold that can develop inside AC units due to moisture and dust. Mold removal improves indoor air quality and reduces health risks." },
-      { title: "AC Duct Liner Services", description: "Cleans and maintains AC duct liners to prevent dust accumulation and odors. This supports better airflow and healthier indoor air." },
-      { title: "AC Installation & Replacement", description: "Professional installation or replacement of AC units, ensuring optimal performance and proper integration with existing systems." },
-      { title: "Annual AC Maintenance Contract (AMC)", description: "Scheduled maintenance visits throughout the year to keep AC units running efficiently and prevent unexpected issues." },
-      { title: "Annual AC Aftercare Cleaning Contract", description: "Follow-up cleaning and inspection after installation or maintenance to ensure the system continues performing at peak efficiency." }
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1600&q=80",
+    features: [
+      "Deep coil cleaning",
+      "Filter replacement & cleaning",
+      "Drain line treatment",
+      "Mold & bacteria removal",
+      "Anti-bacterial treatment",
+      "Energy efficiency optimization"
     ],
-    approach: [
-      { title: "Safe and effective", description: "All cleaning and maintenance is performed using approved methods suitable for occupied properties." },
-      { title: "Dubai-appropriate", description: "AC systems are treated with consideration for heat, humidity, and extended daily use." },
-      { title: "Preventive", description: "Regular cleaning and maintenance reduces long-term repair costs and improves efficiency." }
+    benefits: [
+      { icon: Wind, title: "Improved Air Quality", description: "Remove 99.9% of dust, allergens, and harmful particles" },
+      { icon: Zap, title: "Energy Savings", description: "Clean ACs use up to 25% less energy" },
+      { icon: Shield, title: "Extended Lifespan", description: "Regular cleaning extends AC life by years" }
     ],
-    whyMatters: {
-      title: "Why AC Cleaning Matters in Dubai",
-      points: ["Poor air quality", "Reduced cooling efficiency", "Higher energy bills", "System breakdowns during peak summer"]
-    },
     process: [
-      { step: 1, title: "Assessment", description: "Inspect the AC system and ducts for dirt, mold, or component issues." },
-      { step: 2, title: "Cleaning & Maintenance", description: "Remove dust, clean coils, ducts, and liners, and perform preventive checks." },
-      { step: 3, title: "Repairs & Adjustments", description: "Fix minor issues and ensure optimal system operation." },
-      { step: 4, title: "Follow-Up", description: "Review results and schedule any additional preventive maintenance if needed." }
+      { step: 1, title: "Inspection", description: "Thorough assessment of your AC system" },
+      { step: 2, title: "Protection", description: "Cover surrounding areas to prevent mess" },
+      { step: 3, title: "Deep Cleaning", description: "High-pressure wash and sanitization" },
+      { step: 4, title: "Testing", description: "Performance check and quality assurance" }
     ],
-    ctaText: "Looking to improve your AC performance and indoor air quality in Dubai? Property Masters can help with professional AC cleaning, maintenance, and preventive solutions for your home or business.",
+    pricing: [
+      { name: "Single Split AC", price: "From AED 150", features: ["Deep cleaning", "Filter cleaning", "Sanitization"] },
+      { name: "Ducted AC", price: "From AED 350", features: ["Full duct cleaning", "Coil treatment", "Deodorization"] },
+      { name: "Annual Contract", price: "From AED 800/yr", features: ["4 services/year", "Priority booking", "10% discount"] }
+    ],
+    faqs: [
+      { question: "How often should I clean my AC?", answer: "We recommend professional AC cleaning every 3-4 months for optimal performance and air quality." },
+      { question: "How long does the service take?", answer: "A single split AC takes about 45-60 minutes. Ducted systems may take 2-3 hours." },
+      { question: "Is the cleaning solution safe?", answer: "Yes, we use eco-friendly, non-toxic cleaning agents safe for your family and pets." }
+    ],
     relatedServices: [
+      { name: "AC Repair", slug: "ac-repair" },
       { name: "Mold Removal", slug: "mold-removal" },
-      { name: "Environmental Testing", slug: "environmental-testing" },
-      { name: "Deep Cleaning", slug: "deep-cleaning" }
+      { name: "Air Quality Testing", slug: "air-quality-testing" }
+    ]
+  },
+  "carpet-cleaning": {
+    title: "Carpet Cleaning Services",
+    tagline: "Deep Clean for Fresh, Healthy Carpets",
+    description: "Professional carpet cleaning using hot water extraction and steam cleaning methods. We remove deep-seated dirt, stains, allergens, and bacteria, leaving your carpets fresh, sanitized, and looking like new.",
+    icon: Sofa,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+    features: [
+      "Hot water extraction",
+      "Steam cleaning",
+      "Stain removal treatment",
+      "Deodorization",
+      "Anti-allergen treatment",
+      "Quick dry technology"
+    ],
+    benefits: [
+      { icon: Sparkles, title: "Deep Extraction", description: "Removes dirt from deep within carpet fibers" },
+      { icon: Leaf, title: "Allergen Removal", description: "Eliminates dust mites and allergens" },
+      { icon: Shield, title: "Stain Protection", description: "Optional nano-coating for future protection" }
+    ],
+    process: [
+      { step: 1, title: "Pre-Inspection", description: "Assess carpet condition and identify stains" },
+      { step: 2, title: "Pre-Treatment", description: "Apply stain remover to problem areas" },
+      { step: 3, title: "Deep Cleaning", description: "Hot water extraction or steam cleaning" },
+      { step: 4, title: "Drying", description: "Speed drying for quick use" }
+    ],
+    pricing: [
+      { name: "Per Room", price: "From AED 100", features: ["Up to 15 sqm", "Deep extraction", "Deodorization"] },
+      { name: "Full Villa", price: "From AED 600", features: ["All carpeted areas", "Stain treatment", "Same-day service"] },
+      { name: "Commercial", price: "Custom Quote", features: ["Large areas", "After-hours service", "Regular contracts"] }
+    ],
+    faqs: [
+      { question: "How long until I can walk on the carpet?", answer: "With our quick-dry technology, carpets are ready to walk on within 2-4 hours." },
+      { question: "Can you remove all stains?", answer: "We can remove most stains. Some permanent stains may be significantly reduced but not fully removed." },
+      { question: "Is it safe for pets?", answer: "Yes, our cleaning solutions are pet-friendly and non-toxic." }
+    ],
+    relatedServices: [
+      { name: "Sofa Cleaning", slug: "furniture-cleaning" },
+      { name: "Upholstery Cleaning", slug: "upholstery-cleaning" },
+      { name: "Curtain Cleaning", slug: "curtain-cleaning" }
+    ]
+  },
+  "mattress-cleaning": {
+    title: "Mattress Cleaning Services",
+    tagline: "Sleep Better on a Clean, Sanitized Mattress",
+    description: "Professional mattress cleaning and sanitization to eliminate dust mites, allergens, bacteria, and odors. Our UV treatment and steam cleaning ensures a hygienic sleeping environment for better health and rest.",
+    icon: Sofa,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80",
+    features: [
+      "UV-C light sanitization",
+      "Steam cleaning",
+      "Dust mite elimination",
+      "Stain removal",
+      "Deodorization",
+      "Anti-bacterial treatment"
+    ],
+    benefits: [
+      { icon: Heart, title: "Better Sleep", description: "Clean mattresses improve sleep quality" },
+      { icon: Shield, title: "Allergy Relief", description: "Remove 99% of dust mites and allergens" },
+      { icon: Sparkles, title: "Fresh & Clean", description: "Eliminate odors and bacteria" }
+    ],
+    process: [
+      { step: 1, title: "Vacuuming", description: "Remove surface dust and debris" },
+      { step: 2, title: "Stain Treatment", description: "Pre-treat visible stains" },
+      { step: 3, title: "Deep Clean", description: "Steam and UV sanitization" },
+      { step: 4, title: "Drying", description: "Quick dry for same-day use" }
+    ],
+    pricing: [
+      { name: "Single Mattress", price: "From AED 120", features: ["Full cleaning", "UV treatment", "Deodorization"] },
+      { name: "King Size", price: "From AED 180", features: ["Deep extraction", "Stain removal", "Anti-allergen"] },
+      { name: "Full Home", price: "From AED 400", features: ["All mattresses", "Pillows included", "Bulk discount"] }
+    ],
+    faqs: [
+      { question: "How often should I clean my mattress?", answer: "We recommend professional mattress cleaning every 6 months for optimal hygiene." },
+      { question: "Will my mattress be dry tonight?", answer: "Yes, our cleaning method leaves mattresses dry within 2-3 hours." },
+      { question: "Can you remove urine stains?", answer: "Yes, we have specialized treatments for organic stains including urine." }
+    ],
+    relatedServices: [
+      { name: "Pillow Cleaning", slug: "pillow-cleaning" },
+      { name: "Sofa Cleaning", slug: "furniture-cleaning" },
+      { name: "Carpet Cleaning", slug: "carpet-cleaning" }
     ]
   },
   "furniture-cleaning": {
-    title: "Furniture Cleaning Services in Dubai",
-    tagline: "Refresh, Restore, Protect",
-    description: "Expert cleaning for sofas, mattresses, carpets, and upholstery to maintain hygiene and extend furniture life.",
-    introText: "Maintaining clean furniture is essential for hygiene, comfort, and the longevity of household items. In Dubai, dust, heat, and frequent use can cause sofas, mattresses, carpets, and curtains to accumulate dirt, allergens, and stains. Regular professional cleaning ensures healthier indoor spaces and extends the life of furniture.",
+    title: "Furniture Cleaning Services",
+    tagline: "Revitalize Your Sofas and Upholstery",
+    description: "Complete furniture cleaning and sanitization for sofas, chairs, ottomans, and all upholstered items. Our professional deep cleaning removes stains, odors, and allergens while preserving fabric quality.",
     icon: Sofa,
-    heroImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=80",
-    services: [
-      { title: "Mattress Cleaning", description: "Deep cleaning of mattresses to remove dust, allergens, and bacteria, improving hygiene and sleep quality." },
-      { title: "Sofa Cleaning", description: "Professional cleaning for sofas, including fabric, leather, and mixed materials, removing stains and accumulated dust." },
-      { title: "Carpet Cleaning", description: "Thorough cleaning for all types of carpets, restoring appearance, removing dirt, and reducing allergens." },
-      { title: "Curtains Cleaning", description: "Careful cleaning of curtains and drapes, preserving fabrics while eliminating dust, odors, and pollutants." },
-      { title: "Upholstery Shampooing", description: "Deep shampooing for upholstered furniture, targeting dirt, grime, and bacteria embedded in fabrics." },
-      { title: "Nano Coating & Stain Protection", description: "Application of protective coatings that repel stains and dust, extending the life of furniture and reducing cleaning frequency." },
-      { title: "Full Home Furniture Deep Cleaning Package", description: "Comprehensive cleaning of all furniture items in a property, combining mattress, sofa, carpet, and upholstery cleaning for a complete refresh." }
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80",
+    features: [
+      "Deep steam cleaning",
+      "Fabric-safe solutions",
+      "Stain extraction",
+      "Leather conditioning",
+      "Deodorization",
+      "Fabric protection coating"
     ],
-    approach: [
-      { title: "Safe and effective", description: "Suitable for fabrics, leather, and mixed materials." },
-      { title: "Dubai-appropriate", description: "Techniques account for high dust levels and daily usage in local homes." },
-      { title: "Hygiene-focused", description: "Removes allergens and bacteria for healthier living spaces." },
-      { title: "Protective", description: "Options like nano-coating help prevent future staining and damage." }
+    benefits: [
+      { icon: Sparkles, title: "Like-New Appearance", description: "Restore your furniture's original beauty" },
+      { icon: Leaf, title: "Healthier Home", description: "Remove allergens and bacteria" },
+      { icon: Shield, title: "Fabric Protection", description: "Optional nano-coating extends furniture life" }
     ],
-    whyMatters: {
-      title: "Why Furniture Cleaning Matters in Dubai",
-      points: ["High levels of indoor dust", "Frequent air-conditioned environments", "Heat and humidity that affect fabrics", "Daily wear and accidental spills"]
-    },
     process: [
-      { step: 1, title: "Assessment", description: "Inspect furniture for material type, stains, and condition." },
-      { step: 2, title: "Cleaning Execution", description: "Apply appropriate cleaning methods, deep shampooing, or protective coatings." },
-      { step: 3, title: "Drying & Inspection", description: "Ensure furniture is dry, clean, and restored." },
-      { step: 4, title: "Preventive Advice", description: "Recommend care practices to maintain cleanliness and longevity." }
+      { step: 1, title: "Assessment", description: "Identify fabric type and cleaning method" },
+      { step: 2, title: "Pre-Treatment", description: "Apply appropriate cleaning agents" },
+      { step: 3, title: "Deep Clean", description: "Steam or extraction cleaning" },
+      { step: 4, title: "Protection", description: "Optional stain guard application" }
     ],
-    ctaText: "Looking to refresh and protect your furniture in Dubai? Property Masters can help with professional furniture cleaning, upholstery care, and long-term protection for your home or office.",
+    pricing: [
+      { name: "3-Seater Sofa", price: "From AED 200", features: ["Deep cleaning", "Stain removal", "Deodorization"] },
+      { name: "L-Shape Sofa", price: "From AED 350", features: ["Complete cleaning", "All cushions", "Sanitization"] },
+      { name: "Full Living Room", price: "From AED 600", features: ["Sofa set", "Armchairs", "Ottoman"] }
+    ],
+    faqs: [
+      { question: "How long until furniture is dry?", answer: "Most furniture dries within 4-6 hours depending on fabric type." },
+      { question: "Do you clean leather sofas?", answer: "Yes, we have specialized leather cleaning and conditioning services." },
+      { question: "Is the cleaning pet-safe?", answer: "Absolutely, all our cleaning agents are non-toxic and pet-friendly." }
+    ],
     relatedServices: [
-      { name: "Deep Cleaning", slug: "deep-cleaning" },
-      { name: "Mold Removal", slug: "mold-removal" },
-      { name: "AC Cleaning", slug: "ac-cleaning" }
-    ]
-  },
-  "water-pipeline": {
-    title: "Water & Pipeline Services in Dubai",
-    tagline: "Pure Water, Healthy Living",
-    description: "Comprehensive water tank cleaning, pipeline disinfection, and filtration solutions for clean water supply.",
-    introText: "Clean, safe water is essential for daily living, hygiene, and comfort. In Dubai properties, water quality can be affected by mineral content, pipeline conditions, and environmental factors. Poor water quality can impact drinking water, bathing, and household appliances, leading to scaling, odors, or health concerns.",
-    icon: Droplets,
-    heroImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80",
-    services: [
-      { title: "Water Tank Cleaning", description: "Thorough cleaning and disinfection of water storage tanks to remove sediment, bacteria, and contaminants." },
-      { title: "Pipeline Disinfection", description: "Sanitization of pipelines to reduce biofilm, microbial growth, and ensure clean water flow throughout the property." },
-      { title: "Premium Water Filters & Purifiers", description: "Installation and maintenance of high-quality water filters and purifiers to improve drinking water quality." },
-      { title: "Whole House Water Filtration System", description: "Comprehensive filtration systems for entire properties, ensuring clean, filtered water at all taps." },
-      { title: "blu® Shower Filters", description: "Specialized shower filtration systems to reduce chlorine, odors, and contaminants, improving bathing comfort and skin health." }
-    ],
-    approach: [
-      { title: "Safe and reliable", description: "Products and methods suitable for Dubai's water conditions." },
-      { title: "Comprehensive", description: "Solutions cover storage tanks, pipelines, and point-of-use filtration." },
-      { title: "Preventive", description: "Regular maintenance prevents future issues like scaling or contamination." },
-      { title: "User-focused", description: "Systems are designed for convenience, easy maintenance, and long-term reliability." }
-    ],
-    whyMatters: {
-      title: "Why Water & Pipeline Services Matter in Dubai",
-      points: ["High mineral content in water", "Sediment accumulation in tanks and pipes", "Reduced water quality in older pipelines", "Health and hygiene concerns if untreated"]
-    },
-    process: [
-      { step: 1, title: "Assessment", description: "Inspect water tanks, pipelines, and existing filtration." },
-      { step: 2, title: "Cleaning & Installation", description: "Clean tanks, disinfect pipelines, install or service filtration systems." },
-      { step: 3, title: "Quality Verification", description: "Test water to ensure safety and clarity." },
-      { step: 4, title: "Ongoing Maintenance", description: "Recommend preventive measures and regular maintenance schedules." }
-    ],
-    ctaText: "Concerned about water quality or pipeline hygiene in your Dubai property? Property Masters can provide professional water cleaning, filtration, and disinfection services for homes and commercial spaces.",
-    relatedServices: [
-      { name: "Environmental Testing", slug: "environmental-testing" },
-      { name: "Deep Cleaning", slug: "deep-cleaning" },
-      { name: "Mold Removal", slug: "mold-removal" }
+      { name: "Carpet Cleaning", slug: "carpet-cleaning" },
+      { name: "Mattress Cleaning", slug: "mattress-cleaning" },
+      { name: "Curtain Cleaning", slug: "curtain-cleaning" }
     ]
   },
   "deep-cleaning": {
-    title: "Home Deep Cleaning Services in Dubai",
-    tagline: "Every Corner, Thoroughly Clean",
-    description: "Thorough deep cleaning services for move-in/move-out, furnished and unfurnished properties.",
-    introText: "Deep cleaning ensures that every corner of a property is hygienic, dust-free, and comfortable for daily living. In Dubai, where dust accumulation and high usage are common, routine cleaning often isn't enough to maintain long-term hygiene and comfort.",
+    title: "Home Deep Cleaning Services",
+    tagline: "Complete Home Transformation",
+    description: "Comprehensive deep cleaning services for your entire home. From move-in/move-out cleaning to regular deep cleaning, we cover every corner of your property with meticulous attention to detail.",
     icon: Home,
-    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80",
-    services: [
-      { title: "Move-In / Move-Out Deep Cleaning (Unfurnished)", description: "A complete cleaning of unfurnished properties before moving in or after vacating, including floors, walls, windows, and high-touch areas." },
-      { title: "Premium Deep Cleaning (Furnished)", description: "Detailed cleaning of furnished homes, ensuring all surfaces, furniture, and fixtures are hygienic and free of dust and allergens." },
-      { title: "Furniture Cleaning", description: "Professional cleaning of mattresses, sofas, carpets, and upholstery, restoring hygiene and freshness." }
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
+    features: [
+      "Kitchen deep clean",
+      "Bathroom sanitization",
+      "Window cleaning",
+      "Floor scrubbing",
+      "Appliance cleaning",
+      "Cabinet interior cleaning"
     ],
-    approach: [
-      { title: "Thorough and systematic", description: "Every area is addressed to ensure a complete refresh." },
-      { title: "Safe for residents and materials", description: "Cleaning methods are chosen to protect surfaces and fabrics." },
-      { title: "Dubai-appropriate", description: "High dust levels and climate conditions are taken into account." },
-      { title: "Preventive", description: "Reduces allergens, dirt buildup, and long-term maintenance issues." }
+    benefits: [
+      { icon: Home, title: "Complete Coverage", description: "Every room, every corner, spotlessly clean" },
+      { icon: Clock, title: "Time Saving", description: "Professional team completes faster" },
+      { icon: Award, title: "Guaranteed Quality", description: "Satisfaction guaranteed or re-clean free" }
     ],
-    whyMatters: {
-      title: "Why Home Deep Cleaning Matters in Dubai",
-      points: ["Frequent dust accumulation", "Residue from air-conditioned environments", "High-traffic areas in residential and commercial spaces", "Allergens and bacteria that routine cleaning cannot fully address"]
-    },
     process: [
-      { step: 1, title: "Assessment", description: "Inspect the property to identify cleaning needs and challenges." },
-      { step: 2, title: "Deep Cleaning Execution", description: "Clean floors, walls, high-touch areas, and furniture thoroughly." },
-      { step: 3, title: "Inspection & Quality Check", description: "Ensure all areas are cleaned to a high standard." },
-      { step: 4, title: "Preventive Guidance", description: "Recommend ongoing practices to maintain cleanliness and hygiene." }
+      { step: 1, title: "Walkthrough", description: "Assess the scope of cleaning needed" },
+      { step: 2, title: "Top to Bottom", description: "Clean from ceilings to floors" },
+      { step: 3, title: "Detail Work", description: "Focus on overlooked areas" },
+      { step: 4, title: "Final Check", description: "Quality inspection before handover" }
     ],
-    ctaText: "Need professional home deep cleaning in Dubai? Property Masters can help make your home fully hygienic, fresh, and comfortable with expert deep cleaning services.",
+    pricing: [
+      { name: "Studio/1BR", price: "From AED 400", features: ["Full deep clean", "4-5 hours", "All areas"] },
+      { name: "2-3 BR Apartment", price: "From AED 700", features: ["Complete service", "6-8 hours", "All inclusive"] },
+      { name: "Villa", price: "From AED 1200", features: ["Full property", "Team of 3-4", "One-day service"] }
+    ],
+    faqs: [
+      { question: "What's included in deep cleaning?", answer: "Everything from ceiling fans to baseboards, inside appliances, and detailed bathroom/kitchen cleaning." },
+      { question: "How long does it take?", answer: "Depending on size, 4-8 hours for apartments, full day for villas." },
+      { question: "Do I need to provide supplies?", answer: "No, we bring all professional-grade cleaning supplies and equipment." }
+    ],
     relatedServices: [
-      { name: "Furniture Cleaning", slug: "furniture-cleaning" },
-      { name: "AC Cleaning", slug: "ac-cleaning" },
-      { name: "Pest Control", slug: "pest-control" }
+      { name: "Move-In Cleaning", slug: "move-in-cleaning" },
+      { name: "Regular Cleaning", slug: "regular-cleaning" },
+      { name: "Post-Construction", slug: "post-construction" }
+    ]
+  },
+  "painting": {
+    title: "Painting Services",
+    tagline: "Transform Your Space with Color",
+    description: "Professional interior and exterior painting services with premium quality paints and expert workmanship. From single room touch-ups to complete property repainting, we deliver flawless finishes.",
+    icon: Paintbrush,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=80",
+    features: [
+      "Interior painting",
+      "Exterior painting",
+      "Wall preparation",
+      "Color consultation",
+      "Textured finishes",
+      "Eco-friendly paints"
+    ],
+    benefits: [
+      { icon: Paintbrush, title: "Expert Finish", description: "Smooth, professional-grade results" },
+      { icon: Leaf, title: "Low VOC Paints", description: "Safe, eco-friendly paint options" },
+      { icon: Clock, title: "Quick Turnaround", description: "Minimal disruption to your routine" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Color selection and scope assessment" },
+      { step: 2, title: "Preparation", description: "Surface prep, patching, and priming" },
+      { step: 3, title: "Painting", description: "Professional application techniques" },
+      { step: 4, title: "Touch-up", description: "Final inspection and cleanup" }
+    ],
+    pricing: [
+      { name: "Single Room", price: "From AED 500", features: ["Walls & ceiling", "Prep included", "Premium paint"] },
+      { name: "Apartment", price: "From AED 2500", features: ["All rooms", "Color consultation", "2-year warranty"] },
+      { name: "Villa", price: "Custom Quote", features: ["Interior/exterior", "Project management", "Premium finishes"] }
+    ],
+    faqs: [
+      { question: "How long does painting take?", answer: "A single room takes 1-2 days. Full apartment 3-5 days. Villas 1-2 weeks." },
+      { question: "Do you move furniture?", answer: "Yes, we carefully move and cover furniture as part of our service." },
+      { question: "What paint brands do you use?", answer: "We use premium brands like Jotun, Dulux, and Benjamin Moore." }
+    ],
+    relatedServices: [
+      { name: "Wall Repairs", slug: "wall-repairs" },
+      { name: "Wallpaper Installation", slug: "wallpaper" },
+      { name: "Textured Walls", slug: "textured-walls" }
+    ]
+  },
+  "water-tank": {
+    title: "Water Tank Cleaning",
+    tagline: "Pure Water for a Healthy Family",
+    description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. We remove sediment, bacteria, algae, and contaminants from all tank types.",
+    icon: Droplets,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80",
+    features: [
+      "Complete tank drainage",
+      "High-pressure cleaning",
+      "Disinfection treatment",
+      "Sediment removal",
+      "Anti-bacterial coating",
+      "Water quality testing"
+    ],
+    benefits: [
+      { icon: Droplets, title: "Pure Water", description: "Remove 99.9% of contaminants" },
+      { icon: Shield, title: "Health Protection", description: "Prevent waterborne diseases" },
+      { icon: ShieldCheck, title: "Certified Process", description: "Meets Dubai Municipality standards" }
+    ],
+    process: [
+      { step: 1, title: "Drainage", description: "Empty tank completely" },
+      { step: 2, title: "Scrubbing", description: "Remove all sediment and buildup" },
+      { step: 3, title: "Sanitization", description: "Apply food-grade disinfectant" },
+      { step: 4, title: "Testing", description: "Verify water quality" }
+    ],
+    pricing: [
+      { name: "Small Tank", price: "From AED 200", features: ["Up to 1000L", "Full cleaning", "Certificate"] },
+      { name: "Medium Tank", price: "From AED 350", features: ["1000-5000L", "Sanitization", "Water test"] },
+      { name: "Large/Villa", price: "From AED 500", features: ["5000L+", "Multiple tanks", "Annual plan available"] }
+    ],
+    faqs: [
+      { question: "How often should I clean my water tank?", answer: "Dubai Municipality recommends cleaning every 6 months." },
+      { question: "Is the disinfectant safe?", answer: "Yes, we use food-grade, WHO-approved disinfectants." },
+      { question: "Do you provide a certificate?", answer: "Yes, we provide a cleaning certificate for all services." }
+    ],
+    relatedServices: [
+      { name: "Pipeline Disinfection", slug: "pipeline-disinfection" },
+      { name: "Water Filters", slug: "water-filters" },
+      { name: "Water Testing", slug: "water-testing" }
+    ]
+  },
+  "packages": {
+    title: "Wellness Packages & Contracts",
+    tagline: "Complete Care at Better Value",
+    description: "Comprehensive wellness service packages and annual maintenance contracts designed to keep your home healthy year-round. Save money while ensuring regular professional care for all your wellness needs.",
+    icon: Package,
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    features: [
+      "Bundled services",
+      "Priority scheduling",
+      "Discounted rates",
+      "Flexible plans",
+      "Dedicated support",
+      "No hidden fees"
+    ],
+    benefits: [
+      { icon: Award, title: "Best Value", description: "Save up to 30% with packages" },
+      { icon: Clock, title: "Priority Service", description: "Same-day booking available" },
+      { icon: Users, title: "Dedicated Team", description: "Familiar technicians every visit" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Assess your property needs" },
+      { step: 2, title: "Custom Plan", description: "Design your ideal package" },
+      { step: 3, title: "Scheduling", description: "Set up your service calendar" },
+      { step: 4, title: "Enjoy", description: "Hassle-free wellness care" }
+    ],
+    pricing: [
+      { name: "Essential", price: "AED 1,500/yr", features: ["AC cleaning x4", "Water tank x2", "10% discount"] },
+      { name: "Premium", price: "AED 3,000/yr", features: ["All Essential", "Furniture cleaning x2", "Deep clean x1"] },
+      { name: "Ultimate", price: "AED 5,000/yr", features: ["All Premium", "Pest control x4", "Priority support"] }
+    ],
+    faqs: [
+      { question: "Can I customize my package?", answer: "Absolutely! We'll create a package tailored to your specific needs." },
+      { question: "Are there cancellation fees?", answer: "Annual contracts can be cancelled with 30 days notice, pro-rated refund applies." },
+      { question: "Can I add services later?", answer: "Yes, you can add services anytime at preferential contract rates." }
+    ],
+    relatedServices: [
+      { name: "AC Services", slug: "ac-cleaning" },
+      { name: "Water Tank", slug: "water-tank" },
+      { name: "Furniture Cleaning", slug: "furniture-cleaning" }
     ]
   },
   "pest-control": {
-    title: "Pest Control Services in Dubai",
-    tagline: "Protect Your Property, Ensure Your Comfort",
-    description: "Effective pest control solutions for bed bugs, rodents, cockroaches, mosquitoes, and termites.",
-    introText: "Pests are a common concern in Dubai homes and commercial properties due to climate conditions, high occupancy, and urban density. Uncontrolled infestations can affect hygiene, property safety, and comfort.",
+    title: "Pest Control Services",
+    tagline: "Protect Your Home from Unwanted Guests",
+    description: "Comprehensive pest control solutions for residential and commercial properties. We safely eliminate cockroaches, bed bugs, rodents, termites, mosquitoes, and other pests using eco-friendly methods.",
     icon: Bug,
-    heroImage: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=1920&q=80",
-    services: [
-      { title: "Drainage Cleaning", description: "Removes blockages and prevents pest breeding in drainage systems." },
-      { title: "Pest Control Contracts", description: "Scheduled pest control visits to prevent recurring infestations in homes and offices." },
-      { title: "Bed Bugs Pest Control", description: "Targeted treatment for bed bug infestations, ensuring a safe and hygienic sleeping environment." },
-      { title: "Rodent Pest Control", description: "Safe and effective removal and prevention of rodents in residential and commercial properties." },
-      { title: "Cockroach Pest Control", description: "Elimination of cockroach infestations, including preventive treatment to reduce recurrence." },
-      { title: "Mosquito Pest Control", description: "Targeted control to reduce mosquito presence, especially in outdoor areas." },
-      { title: "Termite Control Services", description: "Prevention and treatment of termite infestations to protect woodwork and property structure." },
-      { title: "Biogents™ Mosquito Trap Solutions", description: "Advanced mosquito traps designed to reduce mosquito populations using environmentally safe methods." }
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1632935190767-4be97c0a228b?w=1600&q=80",
+    features: [
+      "Cockroach control",
+      "Bed bug treatment",
+      "Rodent elimination",
+      "Termite protection",
+      "Mosquito control",
+      "Preventive treatments"
     ],
-    approach: [
-      { title: "Safe", description: "Effective for homes and commercial spaces without harming occupants." },
-      { title: "Dubai-specific", description: "Methods account for local climate, pests, and seasonal challenges." },
-      { title: "Preventive", description: "Scheduled treatments reduce the likelihood of recurring infestations." },
-      { title: "Comprehensive", description: "Solutions target all major pest types common in Dubai properties." }
+    benefits: [
+      { icon: Shield, title: "Safe Methods", description: "Family and pet-friendly treatments" },
+      { icon: ShieldCheck, title: "Guaranteed Results", description: "Warranty on all treatments" },
+      { icon: Leaf, title: "Eco-Friendly", description: "Environmentally responsible solutions" }
     ],
-    whyMatters: {
-      title: "Why Pest Control Services Matter in Dubai",
-      points: ["High temperature and humidity", "Dust accumulation and urban density", "Poorly maintained drainage systems", "High human activity in shared spaces"]
-    },
     process: [
-      { step: 1, title: "Assessment", description: "Identify pest type, location, and risk factors." },
-      { step: 2, title: "Targeted Treatment", description: "Apply safe and effective control methods." },
-      { step: 3, title: "Follow-Up & Monitoring", description: "Ensure pests are eliminated and recurrence is minimized." },
-      { step: 4, title: "Preventive Advice", description: "Recommend ongoing practices to maintain a pest-free environment." }
+      { step: 1, title: "Inspection", description: "Identify pest type and infestation level" },
+      { step: 2, title: "Treatment Plan", description: "Customize the best approach" },
+      { step: 3, title: "Elimination", description: "Apply targeted treatments" },
+      { step: 4, title: "Prevention", description: "Seal entry points and prevent return" }
     ],
-    ctaText: "Looking to protect your property from pests in Dubai? Property Masters can help with expert pest control services tailored to your home or commercial space.",
+    pricing: [
+      { name: "Single Treatment", price: "From AED 200", features: ["One pest type", "Full property", "30-day warranty"] },
+      { name: "Complete Home", price: "From AED 450", features: ["All common pests", "Interior/exterior", "60-day warranty"] },
+      { name: "Annual Contract", price: "From AED 1,200/yr", features: ["Quarterly visits", "All pests covered", "24/7 emergency"] }
+    ],
+    faqs: [
+      { question: "Is pest control safe for children?", answer: "Yes, we use child-safe and pet-safe treatments. We recommend staying out for 2-4 hours after treatment." },
+      { question: "How long does treatment last?", answer: "Depending on the pest and treatment, protection lasts 30-90 days." },
+      { question: "Do you offer guarantees?", answer: "Yes, all treatments come with a satisfaction guarantee and free re-treatment if needed." }
+    ],
     relatedServices: [
+      { name: "Termite Control", slug: "termite-control" },
+      { name: "Bed Bug Treatment", slug: "bed-bug-treatment" },
+      { name: "Rodent Control", slug: "rodent-control" }
+    ]
+  },
+  "iv-drip": {
+    title: "IV Drip Therapy at Home",
+    tagline: "Wellness & Rejuvenation Delivered to You",
+    description: "Professional IV therapy services in the comfort of your home. Our certified nurses administer vitamin infusions, hydration therapy, and wellness drips for energy, immunity, and recovery.",
+    icon: Stethoscope,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80",
+    features: [
+      "Vitamin infusions",
+      "Hydration therapy",
+      "Immunity boosters",
+      "Energy drips",
+      "Recovery formulas",
+      "Beauty & anti-aging"
+    ],
+    benefits: [
+      { icon: Zap, title: "Fast Results", description: "100% absorption directly into bloodstream" },
+      { icon: Home, title: "Home Comfort", description: "No clinic visits needed" },
+      { icon: Heart, title: "Personalized", description: "Customized formulas for your needs" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Discuss your health goals" },
+      { step: 2, title: "Assessment", description: "Brief health check by nurse" },
+      { step: 3, title: "Treatment", description: "Comfortable 30-45 min session" },
+      { step: 4, title: "Follow-up", description: "Post-treatment care advice" }
+    ],
+    pricing: [
+      { name: "Hydration", price: "From AED 399", features: ["Basic hydration", "Vitamin C boost", "45-min session"] },
+      { name: "Immunity", price: "From AED 599", features: ["Immune boost", "High-dose vitamins", "Zinc & selenium"] },
+      { name: "Executive", price: "From AED 899", features: ["Energy & focus", "B-complex", "Anti-fatigue"] }
+    ],
+    faqs: [
+      { question: "Is IV therapy safe?", answer: "Yes, administered by licensed nurses using sterile equipment and quality formulations." },
+      { question: "How often can I do IV therapy?", answer: "Most drips can be done weekly or bi-weekly depending on your goals." },
+      { question: "Do you require a doctor's prescription?", answer: "Our protocols are reviewed by physicians. Some treatments may require brief consultation." }
+    ],
+    relatedServices: [
+      { name: "Blood Tests", slug: "blood-tests" },
+      { name: "Health Checkup", slug: "health-checkup" },
+      { name: "Vitamin Shots", slug: "vitamin-shots" }
+    ]
+  },
+  "movers": {
+    title: "Movers & Packers Services",
+    tagline: "Stress-Free Moving Experience",
+    description: "Professional moving and packing services for residential and commercial relocations. Our trained team handles your belongings with care, ensuring safe and efficient transport to your new location.",
+    icon: Truck,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1600&q=80",
+    features: [
+      "Professional packing",
+      "Furniture disassembly",
+      "Secure transport",
+      "Unpacking service",
+      "Storage solutions",
+      "Insurance coverage"
+    ],
+    benefits: [
+      { icon: Shield, title: "Fully Insured", description: "Complete coverage for peace of mind" },
+      { icon: Users, title: "Trained Team", description: "Professional, uniformed movers" },
+      { icon: Clock, title: "On-Time", description: "Punctual service guaranteed" }
+    ],
+    process: [
+      { step: 1, title: "Survey", description: "Free home assessment and quote" },
+      { step: 2, title: "Packing", description: "Professional packing of all items" },
+      { step: 3, title: "Moving", description: "Careful loading and transport" },
+      { step: 4, title: "Setup", description: "Unpack and arrange at new location" }
+    ],
+    pricing: [
+      { name: "Studio/1BR", price: "From AED 1,200", features: ["Packing materials", "2 movers", "Local move"] },
+      { name: "2-3 BR", price: "From AED 2,500", features: ["Full packing", "3-4 movers", "Assembly included"] },
+      { name: "Villa", price: "From AED 5,000", features: ["Complete service", "5+ movers", "Premium care"] }
+    ],
+    faqs: [
+      { question: "How far in advance should I book?", answer: "We recommend booking 1-2 weeks ahead, though we do accommodate last-minute moves." },
+      { question: "Do you move fragile/valuable items?", answer: "Yes, we have specialized packing for antiques, artwork, and valuable items." },
+      { question: "What about storage?", answer: "We offer short and long-term storage solutions in climate-controlled facilities." }
+    ],
+    relatedServices: [
+      { name: "Storage Solutions", slug: "storage" },
       { name: "Deep Cleaning", slug: "deep-cleaning" },
-      { name: "Mold Removal", slug: "mold-removal" },
-      { name: "AC Cleaning", slug: "ac-cleaning" }
+      { name: "Furniture Assembly", slug: "furniture-assembly" }
+    ]
+  },
+  "healthcare": {
+    title: "Healthcare at Home",
+    tagline: "Medical Care in Your Comfort Zone",
+    description: "Comprehensive home healthcare services including doctor visits, blood tests, vaccinations, and health consultations. Our licensed healthcare professionals bring quality medical care to your doorstep.",
+    icon: Stethoscope,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
+    features: [
+      "Doctor consultations",
+      "Blood tests & lab work",
+      "Vaccinations",
+      "Health checkups",
+      "Nursing care",
+      "Physiotherapy"
+    ],
+    benefits: [
+      { icon: Home, title: "Home Comfort", description: "No waiting rooms or clinic visits" },
+      { icon: Clock, title: "Flexible Timing", description: "Appointments at your convenience" },
+      { icon: ShieldCheck, title: "Licensed Staff", description: "DHA-certified healthcare professionals" }
+    ],
+    process: [
+      { step: 1, title: "Book", description: "Schedule your appointment online" },
+      { step: 2, title: "Confirm", description: "Receive confirmation and prepare" },
+      { step: 3, title: "Visit", description: "Professional arrives at your home" },
+      { step: 4, title: "Results", description: "Receive reports digitally" }
+    ],
+    pricing: [
+      { name: "Doctor Visit", price: "From AED 350", features: ["GP consultation", "Prescription", "30-min session"] },
+      { name: "Blood Test", price: "From AED 199", features: ["Sample collection", "Lab processing", "Digital results"] },
+      { name: "Health Package", price: "From AED 799", features: ["Full checkup", "Blood work", "Doctor review"] }
+    ],
+    faqs: [
+      { question: "Are results sent to my doctor?", answer: "Yes, we can share results with your physician upon request." },
+      { question: "What if I need medication?", answer: "Our doctors can prescribe medication which can be delivered to you." },
+      { question: "Do you accept insurance?", answer: "Yes, we work with most major insurance providers in UAE." }
+    ],
+    relatedServices: [
+      { name: "IV Therapy", slug: "iv-drip" },
+      { name: "Physiotherapy", slug: "physiotherapy" },
+      { name: "Nursing Care", slug: "nursing-care" }
     ]
   },
   "mold-removal": {
-    title: "Mold Removal Services in Dubai",
-    tagline: "Eliminate Mold, Restore Health",
-    description: "Professional mold remediation and moisture control to address indoor health concerns in humid environments.",
-    introText: "Mold is a common issue in properties with moisture or humidity, and it can affect indoor air quality, health, and structural integrity. In Dubai, sealed air-conditioned spaces, bathrooms, and water-affected areas are especially prone to mold growth.",
-    icon: SprayCan,
-    heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1920&q=80",
-    services: [
-      { title: "Mold Inspection & Testing", description: "Professional inspection and testing to identify mold presence, severity, and sources. Determines whether remediation or preventive measures are needed." },
-      { title: "Mold Cleaning & Remediation", description: "Targeted cleaning and removal of mold from affected surfaces, combined with moisture control and preventive measures to reduce recurrence." }
-    ],
-    approach: [
-      { title: "Thorough", description: "Address both visible and hidden mold growth." },
-      { title: "Safe", description: "Methods are safe for residents and property finishes." },
-      { title: "Dubai-appropriate", description: "Techniques consider air-conditioned spaces and local humidity." },
-      { title: "Preventive", description: "Steps are included to minimize future mold development." }
-    ],
-    whyMatters: {
-      title: "Why Mold Removal Matters in Dubai",
-      points: ["Poor indoor air quality", "Respiratory or allergy issues", "Surface and structural damage"]
-    },
-    process: [
-      { step: 1, title: "Assessment & Testing", description: "Identify mold type, location, and severity." },
-      { step: 2, title: "Cleaning & Remediation", description: "Remove mold safely and effectively." },
-      { step: 3, title: "Moisture Control", description: "Address underlying causes to prevent recurrence." },
-      { step: 4, title: "Follow-Up Recommendations", description: "Advise on maintenance and preventive measures." }
-    ],
-    ctaText: "Concerned about mold in your Dubai property? Property Masters can help inspect, clean, and remediate mold for a healthier indoor environment.",
-    relatedServices: [
-      { name: "Environmental Testing", slug: "environmental-testing" },
-      { name: "AC Cleaning", slug: "ac-cleaning" },
-      { name: "Water & Pipeline", slug: "water-pipeline" }
-    ]
-  },
-  "environmental-testing": {
-    title: "Indoor Environmental Testing Services in Dubai",
-    tagline: "Know Your Environment, Protect Your Health",
-    description: "Comprehensive air quality, water quality, mold inspection, and surface testing services.",
-    introText: "Maintaining a healthy indoor environment requires accurate assessment of air, water, surfaces, and mold presence. In Dubai, sealed buildings, air conditioning, and high occupancy levels can lead to hidden issues that affect comfort, hygiene, and safety.",
+    title: "Mold Removal & Remediation",
+    tagline: "Eliminate Mold, Protect Your Health",
+    description: "Professional mold inspection, testing, and complete remediation services. We identify the source, remove mold safely, and implement prevention measures to keep your home mold-free.",
     icon: TestTube,
-    heroImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80",
-    services: [
-      { title: "Indoor Air Quality Testing", description: "Measures pollutants, allergens, humidity, and ventilation effectiveness to assess the quality of air inside residential or commercial properties." },
-      { title: "Water Quality Testing", description: "Tests water for contaminants, sediment, and minerals to ensure safe and clean water for daily use." },
-      { title: "Mold Inspection & Testing", description: "Identifies mold presence and severity, including hidden mold that may affect air quality and health." },
-      { title: "Surface Testing", description: "Analyzes surfaces for bacteria, allergens, and other contaminants to evaluate hygiene levels and identify areas needing cleaning or remediation." }
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
+    features: [
+      "Mold inspection",
+      "Air quality testing",
+      "Safe removal",
+      "HVAC cleaning",
+      "Surface treatment",
+      "Prevention measures"
     ],
-    approach: [
-      { title: "Accurate", description: "Using professional testing methods for reliable results." },
-      { title: "Dubai-specific", description: "Taking into account local climate, AC use, and environmental factors." },
-      { title: "Practical", description: "Providing clear recommendations based on results." },
-      { title: "Preventive", description: "Helping prevent health or hygiene issues before they escalate." }
+    benefits: [
+      { icon: Shield, title: "Health Protection", description: "Remove harmful mold spores" },
+      { icon: TestTube, title: "Lab Testing", description: "Identify mold type accurately" },
+      { icon: ShieldCheck, title: "Certified Process", description: "Industry-standard remediation" }
     ],
-    whyMatters: {
-      title: "Why Indoor Environmental Testing Matters in Dubai",
-      points: ["Continuous air conditioning circulation", "High dust or allergen accumulation", "Water and surface contamination", "Humidity leading to mold growth"]
-    },
     process: [
-      { step: 1, title: "Property Assessment", description: "Identify areas to test based on occupancy, system use, and potential risks." },
-      { step: 2, title: "Testing Execution", description: "Conduct air, water, mold, and surface tests using professional methods." },
-      { step: 3, title: "Analysis & Reporting", description: "Provide clear results with actionable recommendations." },
-      { step: 4, title: "Follow-Up Advice", description: "Recommend corrective or preventive actions to improve environmental quality." }
+      { step: 1, title: "Inspection", description: "Thorough property assessment" },
+      { step: 2, title: "Testing", description: "Air and surface sampling" },
+      { step: 3, title: "Remediation", description: "Safe mold removal" },
+      { step: 4, title: "Prevention", description: "Moisture control measures" }
     ],
-    ctaText: "Want to ensure your indoor environment is safe and healthy in Dubai? Property Masters can provide professional environmental testing services and actionable recommendations for homes or offices.",
+    pricing: [
+      { name: "Inspection", price: "From AED 350", features: ["Visual inspection", "Moisture testing", "Report provided"] },
+      { name: "Small Area", price: "From AED 800", features: ["Up to 10 sqm", "Full removal", "Treatment"] },
+      { name: "Full Property", price: "Custom Quote", features: ["Complete remediation", "HVAC cleaning", "Warranty"] }
+    ],
+    faqs: [
+      { question: "Is mold dangerous?", answer: "Some molds produce toxins that can cause respiratory issues and allergies. Professional removal is recommended." },
+      { question: "How long does remediation take?", answer: "Small areas 1-2 days, larger areas may take a week." },
+      { question: "Will mold come back?", answer: "With proper moisture control and our prevention measures, recurrence is unlikely." }
+    ],
     relatedServices: [
-      { name: "Mold Removal", slug: "mold-removal" },
       { name: "AC Cleaning", slug: "ac-cleaning" },
-      { name: "Water & Pipeline", slug: "water-pipeline" }
+      { name: "Air Quality Testing", slug: "air-quality-testing" },
+      { name: "Water Damage", slug: "water-damage" }
     ]
   },
-  "maid-services": {
-    title: "Maid Services in Dubai",
-    tagline: "Professional Housekeeping, Coming Soon",
-    description: "Professional housekeeping and maid services for residential and commercial properties.",
-    introText: "Maintaining a clean and organized home can be time-consuming, especially in busy Dubai households. Professional maid services help ensure that every area of the home is hygienic, well-maintained, and ready for daily living.",
-    icon: UserCheck,
-    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80",
-    services: [
-      { title: "Routine Home Cleaning", description: "Regular cleaning and upkeep to maintain a fresh and hygienic living space." },
-      { title: "Laundry & Linen Management", description: "Assistance with laundry, ironing, and linen organization." },
-      { title: "Kitchen & Bathroom Maintenance", description: "Thorough hygiene maintenance for kitchens and bathrooms." },
-      { title: "Dusting & Vacuuming", description: "Comprehensive dusting, vacuuming, and furniture care." },
-      { title: "Customized Cleaning Schedules", description: "Special requests and flexible cleaning schedules tailored to your needs." }
+  "air-quality-testing": {
+    title: "Indoor Air Quality Testing",
+    tagline: "Breathe Easy with Confidence",
+    description: "Comprehensive indoor air quality assessment using advanced testing equipment. We measure pollutants, allergens, VOCs, and other contaminants to help you understand and improve your indoor air.",
+    icon: Wind,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    features: [
+      "Particulate matter testing",
+      "VOC measurement",
+      "CO2 levels",
+      "Humidity assessment",
+      "Mold spore count",
+      "Allergen detection"
     ],
-    approach: [
-      { title: "Safety", description: "Using approved cleaning products and methods safe for all household members." },
-      { title: "Consistency", description: "Scheduled cleaning visits to maintain hygiene standards." },
-      { title: "Customization", description: "Flexible service plans tailored to household needs." },
-      { title: "Dubai-Specific", description: "Designed to handle local dust levels, climate conditions, and lifestyle requirements." }
+    benefits: [
+      { icon: TestTube, title: "Accurate Data", description: "Lab-grade testing equipment" },
+      { icon: Heart, title: "Health Insights", description: "Understand what you're breathing" },
+      { icon: Sparkles, title: "Solutions", description: "Recommendations for improvement" }
     ],
-    whyMatters: {
-      title: "Why Maid Services Matter in Dubai",
-      points: ["Dust accumulation from desert winds", "High reliance on air-conditioned indoor environments", "Busy family or work schedules", "Need for professional hygiene standards"]
-    },
     process: [
-      { step: 1, title: "Consultation", description: "Discuss your household needs and preferences." },
-      { step: 2, title: "Service Planning", description: "Create a customized cleaning schedule." },
-      { step: 3, title: "Regular Service", description: "Professional cleaning visits as scheduled." },
-      { step: 4, title: "Quality Assurance", description: "Ongoing feedback and service adjustments." }
+      { step: 1, title: "Setup", description: "Install testing equipment" },
+      { step: 2, title: "Sampling", description: "Collect air samples" },
+      { step: 3, title: "Analysis", description: "Lab analysis of samples" },
+      { step: 4, title: "Report", description: "Detailed findings and solutions" }
     ],
-    ctaText: "Maid Services coming soon! Stay tuned or contact Property Masters to discuss upcoming household support services and schedule priority access once the service launches.",
+    pricing: [
+      { name: "Basic Test", price: "From AED 450", features: ["PM2.5, PM10", "CO2, humidity", "Same-day results"] },
+      { name: "Comprehensive", price: "From AED 850", features: ["All parameters", "VOC testing", "Mold spores"] },
+      { name: "Full Assessment", price: "From AED 1,500", features: ["Multiple rooms", "Lab analysis", "Consultation"] }
+    ],
+    faqs: [
+      { question: "How long does testing take?", answer: "Basic testing takes 1-2 hours. Comprehensive testing may need 24-48 hours." },
+      { question: "When should I test?", answer: "If you experience allergies, odors, or have concerns about air quality." },
+      { question: "What do you test for?", answer: "Particulates, gases, VOCs, humidity, mold spores, and allergens." }
+    ],
     relatedServices: [
-      { name: "Deep Cleaning", slug: "deep-cleaning" },
-      { name: "Furniture Cleaning", slug: "furniture-cleaning" },
-      { name: "AC Cleaning", slug: "ac-cleaning" }
+      { name: "Mold Testing", slug: "mold-removal" },
+      { name: "AC Cleaning", slug: "ac-cleaning" },
+      { name: "Air Purifiers", slug: "air-purifiers" }
+    ]
+  },
+  "water-services": {
+    title: "Water & Pipeline Services",
+    tagline: "Clean Water, Healthy Life",
+    description: "Complete water system care including tank cleaning, pipeline disinfection, water filtration, and quality testing. Ensure your family has access to safe, clean water throughout your home.",
+    icon: Droplets,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80",
+    features: [
+      "Water tank cleaning",
+      "Pipeline disinfection",
+      "Water filtration systems",
+      "Quality testing",
+      "Purifier installation",
+      "Maintenance contracts"
     ],
-    comingSoon: true
+    benefits: [
+      { icon: Droplets, title: "Pure Water", description: "Clean water throughout your home" },
+      { icon: Shield, title: "Health Safety", description: "Remove harmful contaminants" },
+      { icon: ShieldCheck, title: "Compliance", description: "Meet Dubai Municipality standards" }
+    ],
+    process: [
+      { step: 1, title: "Assessment", description: "Evaluate your water system" },
+      { step: 2, title: "Treatment", description: "Clean tanks and pipelines" },
+      { step: 3, title: "Filtration", description: "Install purification if needed" },
+      { step: 4, title: "Testing", description: "Verify water quality" }
+    ],
+    pricing: [
+      { name: "Tank Cleaning", price: "From AED 200", features: ["Complete cleaning", "Sanitization", "Certificate"] },
+      { name: "Full System", price: "From AED 500", features: ["Tank + pipeline", "Disinfection", "Quality test"] },
+      { name: "Annual Plan", price: "From AED 800/yr", features: ["2 cleanings/year", "Priority service", "Free testing"] }
+    ],
+    faqs: [
+      { question: "How often should I clean my water tank?", answer: "Every 6 months as recommended by Dubai Municipality." },
+      { question: "Do you test water quality?", answer: "Yes, we offer comprehensive water quality testing services." },
+      { question: "What water filters do you recommend?", answer: "We recommend filters based on your specific water quality test results." }
+    ],
+    relatedServices: [
+      { name: "Water Tank Cleaning", slug: "water-tank" },
+      { name: "Water Testing", slug: "water-testing" },
+      { name: "Water Filters", slug: "water-filters" }
+    ]
+  },
+  "ac-services": {
+    title: "Complete AC Services",
+    tagline: "Your AC Care Specialists",
+    description: "Full range of AC services from cleaning and maintenance to repair and installation. Keep your home cool and comfortable year-round with our expert technicians and quality service.",
+    icon: Wind,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1600&q=80",
+    features: [
+      "AC cleaning",
+      "Coil treatment",
+      "Repair & maintenance",
+      "Installation",
+      "Duct cleaning",
+      "Annual contracts"
+    ],
+    benefits: [
+      { icon: Wind, title: "Better Cooling", description: "Optimal AC performance" },
+      { icon: Zap, title: "Energy Efficient", description: "Reduce electricity bills" },
+      { icon: Clock, title: "24/7 Support", description: "Emergency repairs available" }
+    ],
+    process: [
+      { step: 1, title: "Diagnosis", description: "Identify issues and needs" },
+      { step: 2, title: "Service", description: "Professional treatment" },
+      { step: 3, title: "Testing", description: "Performance verification" },
+      { step: 4, title: "Maintenance", description: "Ongoing care plan" }
+    ],
+    pricing: [
+      { name: "Split AC Service", price: "From AED 150", features: ["Deep cleaning", "Filter service", "Gas check"] },
+      { name: "Ducted AC", price: "From AED 400", features: ["Complete service", "Duct inspection", "Coil cleaning"] },
+      { name: "AMC", price: "From AED 800/yr", features: ["4 services/year", "Priority response", "Parts discount"] }
+    ],
+    faqs: [
+      { question: "How often should I service my AC?", answer: "Every 3 months for optimal performance." },
+      { question: "Do you handle all AC brands?", answer: "Yes, our technicians are trained on all major brands." },
+      { question: "What if my AC needs repair?", answer: "We provide repair services with genuine parts and warranty." }
+    ],
+    relatedServices: [
+      { name: "AC Cleaning", slug: "ac-cleaning" },
+      { name: "AC Repair", slug: "ac-repair" },
+      { name: "AC Installation", slug: "ac-installation" }
+    ]
   }
 };
 
+// Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
 };
 
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 export default function WellnessServiceDetail() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
+  
   const service = serviceSlug ? serviceData[serviceSlug] : null;
-
+  
   if (!service) {
     return (
       <div className="min-h-screen bg-[#F6F4EB] flex items-center justify-center">
@@ -380,311 +767,313 @@ export default function WellnessServiceDetail() {
 
   return (
     <div className="min-h-screen bg-[#F6F4EB]">
-      {/* Hero Section - Professional Two-Column Layout */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden" data-testid="section-hero">
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-20" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
             src={service.heroImage}
             alt={service.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
         </div>
         
-        <div className="relative z-10 w-full py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
-              {/* Left Column - Text Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <Link href="/wellness">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 cursor-pointer"
-                    data-testid="link-back"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>Back to Wellness Services</span>
-                  </motion.div>
-                </Link>
-                
-                {service.comingSoon && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.15 }}
-                    className="inline-block mb-4"
-                  >
-                    <span className="bg-[#970A44] text-white px-4 py-1.5 rounded-full text-sm font-semibold">
-                      Coming Soon
-                    </span>
-                  </motion.div>
-                )}
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="flex items-center gap-3 mb-4"
-                >
-                  <div className="w-12 h-12 bg-[#970A44] rounded-xl flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-[#970A44] font-semibold text-lg tracking-wide">Property Masters</span>
-                </motion.div>
-                
-                <motion.h1 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-4 font-serif"
-                  data-testid="text-hero-title"
-                >
-                  {service.title}
-                </motion.h1>
-                
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.35 }}
-                  className="text-xl md:text-2xl text-[#970A44] font-medium mb-4"
-                >
-                  {service.tagline}
-                </motion.p>
-                
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="text-base md:text-lg leading-relaxed text-white/90 mb-8"
-                  data-testid="text-hero-description"
-                >
-                  {service.introText}
-                </motion.p>
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="flex flex-wrap items-center gap-4"
-                >
-                  {!service.comingSoon ? (
-                    <>
-                      <Button 
-                        asChild 
-                        size="lg"
-                        className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
-                        data-testid="button-hero-cta"
-                      >
-                        <Link href="/contact">
-                          Get Free Consultation
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                      </Button>
-                      <Button 
-                        asChild 
-                        size="lg"
-                        variant="outline"
-                        className="border-white text-white hover:bg-white/10 rounded-full"
-                        data-testid="button-hero-call"
-                      >
-                        <Link href="/contact">
-                          <Phone className="mr-2 w-4 h-4" />
-                          Call Us Now
-                        </Link>
-                      </Button>
-                    </>
-                  ) : (
-                    <Button 
-                      asChild 
-                      size="lg"
-                      variant="outline"
-                      className="border-white text-white hover:bg-white/10 rounded-full"
-                      data-testid="button-hero-notify"
-                    >
-                      <Link href="/contact">
-                        Get Notified When Available
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Link>
-                    </Button>
-                  )}
-                </motion.div>
-              </motion.div>
-
-              {/* Right Column - Feature Highlights */}
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="hidden lg:grid grid-cols-2 gap-4"
-                data-testid="hero-features"
-              >
-                {[
-                  { icon: ShieldCheck, title: "Certified Professionals", description: "Trained and experienced technicians" },
-                  { icon: Clock, title: "Flexible Scheduling", description: "Appointments that fit your schedule" },
-                  { icon: Award, title: "Quality Guaranteed", description: "100% satisfaction promise" },
-                  { icon: Leaf, title: "Eco-Friendly", description: "Safe for family and environment" }
-                ].map((feature, index) => (
-                  <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-5"
-                  >
-                    <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center mb-3">
-                      <feature.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="text-white font-semibold mb-1">{feature.title}</h3>
-                    <p className="text-white/70 text-sm">{feature.description}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Link href="/wellness">
+              <Button variant="ghost" className="text-white hover:bg-white/10 mb-6" data-testid="button-back">
+                <ArrowLeft className="mr-2 w-4 h-4" />
+                Back to Wellness
+              </Button>
+            </Link>
+            
+            <div className="flex items-center gap-4 mb-4">
+              <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center`}>
+                <Icon className="w-8 h-8 text-white" />
+              </div>
+              <span className="text-white/80 text-lg">{service.tagline}</span>
             </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-serif">
+              {service.title}
+            </h1>
+            
+            <p className="text-white/80 text-lg max-w-2xl mb-8">
+              {service.description}
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+                data-testid="button-book-now"
+              >
+                <Link href="/book">
+                  Book Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-call"
+              >
+                <a href="tel:+97143456789">
+                  <Phone className="mr-2 w-5 h-5" />
+                  Call Us
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white" data-testid="section-features">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              What's Included
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our comprehensive service covers everything you need
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex items-center gap-3 p-4 bg-[#F6F4EB] rounded-xl"
+                data-testid={`feature-${index}`}
+              >
+                <div className="w-8 h-8 bg-[#970A44]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-[#970A44]" />
+                </div>
+                <span className="text-[#09263D] font-medium">{feature}</span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* What This Service Covers */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-services">
+      {/* Benefits Section */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-benefits">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              What This Service Covers
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Why Choose This Service
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {service.services.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
-                <Card className="h-full border-0 shadow-lg" data-testid={`card-service-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-[#970A44] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-white font-bold text-sm">{index + 1}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.benefits.map((benefit, index) => {
+              const BenefitIcon = benefit.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="border-0 shadow-lg text-center h-full" data-testid={`benefit-${index}`}>
+                    <CardContent className="p-8">
+                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <BenefitIcon className="w-8 h-8 text-[#970A44]" />
                       </div>
-                      <div>
-                        <h3 className="text-lg font-bold mb-2 text-[#09263D]">{item.title}</h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{benefit.title}</h3>
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Our Approach */}
-      <section className="py-20 bg-white" data-testid="section-approach">
+      {/* Process Section */}
+      <section className="py-20 bg-white" data-testid="section-process">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              Our {service.title.split(' ')[0]} Approach
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Our Process
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We focus on solutions that deliver lasting results for your property.
-            </p>
+            <p className="text-muted-foreground">Simple, efficient, and professional</p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-6">
-            {service.approach.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-              >
-                <Card className="h-full border-0 shadow-lg text-center" data-testid={`card-approach-${index}`}>
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle2 className="w-6 h-6 text-[#970A44]" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 text-[#09263D]">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why It Matters */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-why-matters">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
-              {service.whyMatters.title}
-            </h2>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Properties in Dubai often face unique challenges that require specialized solutions.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {service.whyMatters.points.map((point, index) => (
-              <motion.div
-                key={point}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center"
-                data-testid={`card-why-${index}`}
-              >
-                <p className="text-white font-medium">{point}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-process">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-[#09263D]">
-              How Projects Are Handled
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Our structured approach ensures consistent, professional results.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             {service.process.map((step, index) => (
               <motion.div
-                key={step.step}
+                key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative text-center"
-                data-testid={`step-${index}`}
+                className="text-center relative"
+                data-testid={`process-${index}`}
               >
-                <div className="w-16 h-16 bg-[#970A44] rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                <div className="w-16 h-16 mx-auto bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-[#09263D]">{step.title}</h3>
+                <h3 className="font-bold text-lg text-[#09263D] mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm">{step.description}</p>
                 {index < service.process.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-[#970A44]/20" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#970A44]/20" />
                 )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 bg-[#09263D]" data-testid="section-pricing">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-white mb-4">
+              Pricing Plans
+            </h2>
+            <p className="text-white/70">Transparent pricing with no hidden fees</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.pricing.map((plan, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className={`border-0 shadow-xl h-full ${index === 1 ? 'ring-2 ring-[#970A44]' : ''}`} data-testid={`pricing-${index}`}>
+                  <CardContent className="p-8">
+                    {index === 1 && (
+                      <span className="inline-block bg-[#970A44] text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
+                        Most Popular
+                      </span>
+                    )}
+                    <h3 className="font-bold text-xl text-[#09263D] mb-2">{plan.name}</h3>
+                    <div className="text-3xl font-bold text-[#970A44] mb-6">{plan.price}</div>
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-muted-foreground">
+                          <Check className="w-5 h-5 text-[#970A44]" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      asChild
+                      className={`w-full rounded-full ${index === 1 ? 'bg-[#970A44] hover:bg-[#720632]' : 'bg-[#09263D] hover:bg-[#09263D]/90'}`}
+                      data-testid={`button-select-${index}`}
+                    >
+                      <Link href="/book">
+                        Select Plan
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white" data-testid="section-faq">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {service.faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Card className="border-0 shadow-md" data-testid={`faq-${index}`}>
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-[#09263D] mb-2">{faq.question}</h3>
+                    <p className="text-muted-foreground">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-20 bg-[#F6F4EB]" data-testid="section-related">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Related Services
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {service.relatedServices.map((related, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Link href={`/wellness/${related.slug}`}>
+                  <Button 
+                    variant="outline" 
+                    className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                    data-testid={`related-${index}`}
+                  >
+                    {related.name}
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -694,61 +1083,43 @@ export default function WellnessServiceDetail() {
       {/* CTA Section */}
       <section className="py-20 bg-[#970A44]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div {...fadeInUp} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              {service.ctaText}
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              Book your {service.title.toLowerCase()} today and experience the Property Masters difference.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 font-semibold rounded-full shadow-xl"
-                data-testid="button-cta-consult"
+                className="bg-white text-[#970A44] hover:bg-gray-100 rounded-full px-8"
+                data-testid="button-cta-book"
               >
-                <Link href="/contact">
-                  Request Free Consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                <Link href="/book">
+                  Book Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
               <Button 
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 rounded-full"
-                data-testid="button-cta-call"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-cta-contact"
               >
                 <Link href="/contact">
-                  <Phone className="mr-2 w-4 h-4" />
-                  Call Us Now
+                  Contact Us
                 </Link>
               </Button>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Related Services */}
-      <section className="py-16 bg-white" data-testid="section-related">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-serif text-[#09263D]">
-              Related Services
-            </h2>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {service.relatedServices.map((related) => (
-              <Link key={related.slug} href={`/wellness/${related.slug}`}>
-                <Button variant="outline" className="rounded-full" data-testid={`button-related-${related.slug}`}>
-                  {related.name}
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
     </div>
