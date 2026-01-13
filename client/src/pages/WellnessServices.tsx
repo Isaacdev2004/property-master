@@ -370,10 +370,10 @@ export default function WellnessServices() {
             </p>
           </motion.div>
 
-          <div className="relative">
+          <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollNewServices('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-4"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
               data-testid="button-new-services-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -381,7 +381,7 @@ export default function WellnessServices() {
 
             <div 
               ref={newServicesRef}
-              className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth"
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {newServices.map((service, index) => (
@@ -391,11 +391,11 @@ export default function WellnessServices() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex-shrink-0 w-80"
+                  className="flex-shrink-0 w-72 md:w-80"
                 >
                   <Link href={service.href}>
                     <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`new-service-${service.id}`}>
-                      <div className="relative aspect-[3/1] overflow-hidden">
+                      <div className="relative aspect-[2.5/1] overflow-hidden">
                         <img 
                           src={service.image}
                           alt={service.name}
@@ -413,7 +413,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollNewServices('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-4"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
               data-testid="button-new-services-right"
             >
               <ArrowRight className="w-5 h-5" />
