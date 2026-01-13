@@ -39,30 +39,33 @@ const interiorDesignMenu = {
 
 const wellnessMenu = {
   title: "Wellness Services",
-  description: "Create healthier indoor environments for your family",
+  description: "A world of wellness for your family - healthier indoor environments",
   categories: [
     {
-      title: "Air Quality",
+      title: "AC & Air Quality",
       items: [
-        { label: "AC Cleaning & Sanitization", href: "/wellness" },
-        { label: "Duct Cleaning", href: "/wellness" },
+        { label: "AC Cleaning", href: "/wellness" },
+        { label: "AC Duct Cleaning", href: "/wellness" },
+        { label: "Mold Removal", href: "/wellness" },
         { label: "Air Quality Testing", href: "/wellness" },
       ]
     },
     {
-      title: "Hygiene & Cleaning",
+      title: "Furniture Cleaning",
       items: [
-        { label: "Deep Cleaning", href: "/wellness" },
-        { label: "Mattress & Sofa Cleaning", href: "/wellness" },
         { label: "Carpet Cleaning", href: "/wellness" },
+        { label: "Mattress Cleaning", href: "/wellness" },
+        { label: "Sofa Cleaning", href: "/wellness" },
+        { label: "Curtain Cleaning", href: "/wellness" },
       ]
     },
     {
-      title: "Health Services",
+      title: "Home & Health",
       items: [
-        { label: "Mold Removal", href: "/wellness" },
+        { label: "Deep Cleaning", href: "/wellness" },
         { label: "Water Tank Cleaning", href: "/wellness" },
         { label: "Pest Control", href: "/wellness" },
+        { label: "Painting Services", href: "/wellness" },
       ]
     }
   ],
