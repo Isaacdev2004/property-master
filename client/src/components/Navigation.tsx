@@ -1,14 +1,111 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, ChevronDown, Phone, Search } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown, Phone, Search, Home, Paintbrush, Building2, Sparkles, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Leaf, Activity, Dumbbell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Mega menu data for services
+const interiorDesignMenu = {
+  title: "Interior Design & Fit-Out Works",
+  description: "Transform your spaces with our premium interior design solutions",
+  categories: [
+    {
+      title: "Residential",
+      items: [
+        { label: "Luxury Villa Design", href: "/interior-design" },
+        { label: "Apartment Interiors", href: "/interior-design" },
+        { label: "Penthouse Design", href: "/interior-design" },
+      ]
+    },
+    {
+      title: "Commercial",
+      items: [
+        { label: "Office Fit-Out", href: "/interior-design" },
+        { label: "Retail Spaces", href: "/interior-design" },
+        { label: "Hospitality Design", href: "/interior-design" },
+      ]
+    },
+    {
+      title: "Specialized",
+      items: [
+        { label: "Kitchen Design", href: "/interior-design" },
+        { label: "Bathroom Renovation", href: "/interior-design" },
+        { label: "Custom Furniture", href: "/interior-design" },
+      ]
+    }
+  ],
+  featuredLink: { label: "View All Interior Services", href: "/interior-design" }
+};
+
+const wellnessMenu = {
+  title: "Wellness Services",
+  description: "Create healthier indoor environments for your family",
+  categories: [
+    {
+      title: "Air Quality",
+      items: [
+        { label: "AC Cleaning & Sanitization", href: "/wellness" },
+        { label: "Duct Cleaning", href: "/wellness" },
+        { label: "Air Quality Testing", href: "/wellness" },
+      ]
+    },
+    {
+      title: "Hygiene & Cleaning",
+      items: [
+        { label: "Deep Cleaning", href: "/wellness" },
+        { label: "Mattress & Sofa Cleaning", href: "/wellness" },
+        { label: "Carpet Cleaning", href: "/wellness" },
+      ]
+    },
+    {
+      title: "Health Services",
+      items: [
+        { label: "Mold Removal", href: "/wellness" },
+        { label: "Water Tank Cleaning", href: "/wellness" },
+        { label: "Pest Control", href: "/wellness" },
+      ]
+    }
+  ],
+  featuredLink: { label: "View All Wellness Services", href: "/wellness" }
+};
+
+const maintenanceMenu = {
+  title: "Maintenance Services",
+  description: "Keep your property running smoothly with our professional maintenance",
+  categories: [
+    {
+      title: "Essential",
+      items: [
+        { label: "Electrical Services", href: "/maintenance" },
+        { label: "Plumbing Services", href: "/maintenance" },
+        { label: "AC Maintenance", href: "/maintenance" },
+      ]
+    },
+    {
+      title: "Property Care",
+      items: [
+        { label: "General Maintenance", href: "/maintenance" },
+        { label: "Handyman Services", href: "/maintenance" },
+        { label: "Painting Services", href: "/maintenance" },
+      ]
+    },
+    {
+      title: "Programs",
+      items: [
+        { label: "Annual Maintenance Contract", href: "/maintenance" },
+        { label: "Emergency Repairs", href: "/maintenance" },
+        { label: "Property Inspection", href: "/maintenance" },
+      ]
+    }
+  ],
+  featuredLink: { label: "View All Maintenance Services", href: "/maintenance" }
+};
 
 export function Navigation() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const isHomePage = location === "/";
@@ -21,24 +118,23 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleAboutMouseEnter = () => {
+  const handleMenuEnter = (menuName: string) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    setIsAboutOpen(true);
+    setActiveMenu(menuName);
   };
 
-  const handleAboutMouseLeave = () => {
+  const handleMenuLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setIsAboutOpen(false);
+      setActiveMenu(null);
     }, 150);
   };
 
   const navItems = [
-    { href: "/interior-design", label: "Interior Design" },
-    { href: "/wellness", label: "Wellness" },
-    { href: "/maintenance", label: "Maintenance Services" },
-    { href: "/shop", label: "Shop" },
+    { href: "/interior-design", label: "Interior Design", hasMegaMenu: true, menuKey: "interior" },
+    { href: "/wellness", label: "Wellness", hasMegaMenu: true, menuKey: "wellness" },
+    { href: "/maintenance", label: "Maintenance Services", hasMegaMenu: true, menuKey: "maintenance" },
     { href: "/portfolio", label: "Portfolio" },
     { href: null, label: "About", hasDropdown: true },
     { href: "/blog", label: "Blogs" },
@@ -52,6 +148,25 @@ export function Navigation() {
   const navTextClass = (isScrolled || !isHomePage) 
     ? "text-gray-900 hover:text-[#970A44]" 
     : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#970A44]";
+
+  const getMegaMenuData = (menuKey: string) => {
+    switch (menuKey) {
+      case "interior": return interiorDesignMenu;
+      case "wellness": return wellnessMenu;
+      case "maintenance": return maintenanceMenu;
+      default: return null;
+    }
+  };
+
+  const getCategoryIcon = (menuKey: string, categoryIndex: number) => {
+    const icons = {
+      interior: [Home, Building2, Paintbrush],
+      wellness: [Wind, Sparkles, Heart],
+      maintenance: [Zap, Wrench, Shield],
+    };
+    const IconComponent = icons[menuKey as keyof typeof icons]?.[categoryIndex] || Home;
+    return <IconComponent className="w-5 h-5 text-[#970A44]" />;
+  };
 
   return (
     <header
@@ -108,40 +223,126 @@ export function Navigation() {
           {/* Center: Main Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item, index) => (
-              item.hasDropdown ? (
+              item.hasMegaMenu ? (
                 <div
                   key={item.label}
                   className="relative"
-                  onMouseEnter={handleAboutMouseEnter}
-                  onMouseLeave={handleAboutMouseLeave}
+                  onMouseEnter={() => handleMenuEnter(item.menuKey!)}
+                  onMouseLeave={handleMenuLeave}
+                >
+                  <Link href={item.href!} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <span
+                      className={`text-sm font-semibold transition-all flex items-center gap-1 py-2 cursor-pointer ${
+                        location === item.href ? "text-[#970A44]" : navTextClass
+                      } ${activeMenu === item.menuKey ? "text-[#970A44]" : ""}`}
+                    >
+                      {item.label}
+                      <ChevronDown className={`w-4 h-4 transition-transform ${activeMenu === item.menuKey ? "rotate-180" : ""}`} />
+                    </span>
+                  </Link>
+
+                  {/* Mega Menu */}
+                  <AnimatePresence>
+                    {activeMenu === item.menuKey && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden"
+                        onMouseEnter={() => handleMenuEnter(item.menuKey!)}
+                        onMouseLeave={handleMenuLeave}
+                      >
+                        {(() => {
+                          const menuData = getMegaMenuData(item.menuKey!);
+                          if (!menuData) return null;
+                          return (
+                            <div className="p-6">
+                              {/* Header */}
+                              <div className="mb-6 pb-4 border-b border-gray-100">
+                                <h3 className="text-lg font-bold text-[#09263D]">{menuData.title}</h3>
+                                <p className="text-sm text-muted-foreground mt-1">{menuData.description}</p>
+                              </div>
+
+                              {/* Categories Grid */}
+                              <div className="grid grid-cols-3 gap-6">
+                                {menuData.categories.map((category, catIndex) => (
+                                  <div key={category.title}>
+                                    <div className="flex items-center gap-2 mb-3">
+                                      {getCategoryIcon(item.menuKey!, catIndex)}
+                                      <h4 className="font-semibold text-[#09263D]">{category.title}</h4>
+                                    </div>
+                                    <ul className="space-y-2">
+                                      {category.items.map((subItem) => (
+                                        <li key={subItem.label}>
+                                          <Link 
+                                            href={subItem.href}
+                                            onClick={() => setActiveMenu(null)}
+                                          >
+                                            <span className="text-sm text-gray-600 hover:text-[#970A44] transition-colors cursor-pointer block py-1">
+                                              {subItem.label}
+                                            </span>
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Featured Link */}
+                              <div className="mt-6 pt-4 border-t border-gray-100">
+                                <Link 
+                                  href={menuData.featuredLink.href}
+                                  onClick={() => setActiveMenu(null)}
+                                >
+                                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#970A44] hover:text-[#720632] transition-colors cursor-pointer">
+                                    {menuData.featuredLink.label}
+                                    <ChevronDown className="w-4 h-4 rotate-[-90deg]" />
+                                  </span>
+                                </Link>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : item.hasDropdown ? (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => handleMenuEnter("about")}
+                  onMouseLeave={handleMenuLeave}
                 >
                   <button
                     className={`text-sm font-semibold transition-all flex items-center gap-1 py-2 ${navTextClass} ${
-                      isAboutOpen ? "text-[#970A44]" : ""
+                      activeMenu === "about" ? "text-[#970A44]" : ""
                     }`}
                     data-testid="menu-about"
                   >
                     {item.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isAboutOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform ${activeMenu === "about" ? "rotate-180" : ""}`} />
                   </button>
 
                   {/* About Dropdown */}
                   <AnimatePresence>
-                    {isAboutOpen && (
+                    {activeMenu === "about" && (
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
                         className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden"
-                        onMouseEnter={handleAboutMouseEnter}
-                        onMouseLeave={handleAboutMouseLeave}
+                        onMouseEnter={() => handleMenuEnter("about")}
+                        onMouseLeave={handleMenuLeave}
                       >
                         {aboutDropdownItems.map((dropdownItem) => (
                           <Link 
                             key={dropdownItem.label} 
                             href={dropdownItem.href}
-                            onClick={() => setIsAboutOpen(false)}
+                            onClick={() => setActiveMenu(null)}
                           >
                             <span 
                               className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#970A44] hover:text-white transition-colors cursor-pointer"
@@ -246,15 +447,6 @@ export function Navigation() {
                   location === "/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
                   Maintenance Services
-                </span>
-              </Link>
-
-              {/* Shop */}
-              <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
-                <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/shop" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
-                }`}>
-                  Shop
                 </span>
               </Link>
 
