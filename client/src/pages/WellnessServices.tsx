@@ -126,14 +126,14 @@ const waterServices = [
   { id: 4, name: "Whole House Filtration", description: "Complete home water treatment systems", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" },
 ];
 
-// Pest Control Services - matching thehealthyhome.me
+// Pest Control Services - matching thehealthyhome.me (with images like deep cleaning)
 const pestServices = [
-  { id: 1, name: "Bed Bugs Control", description: "Complete bed bug elimination", icon: Bug },
-  { id: 2, name: "Rodent Control", description: "Effective rat and mice removal", icon: Bug },
-  { id: 3, name: "Cockroach Control", description: "Professional cockroach treatment", icon: Bug },
-  { id: 4, name: "Mosquito Control", description: "Indoor and outdoor mosquito solutions", icon: Bug },
-  { id: 5, name: "Termite Control", description: "Pre and post-construction treatment", icon: Bug },
-  { id: 6, name: "Drainage Cleaning", description: "Thorough drain cleaning services", icon: Droplets },
+  { id: 1, name: "Bed Bugs Control", description: "Complete bed bug elimination", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" },
+  { id: 2, name: "Rodent Control", description: "Effective rat and mice removal", image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=400&q=80" },
+  { id: 3, name: "Cockroach Control", description: "Professional cockroach treatment", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&q=80" },
+  { id: 4, name: "Mosquito Control", description: "Indoor and outdoor mosquito solutions", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" },
+  { id: 5, name: "Termite Control", description: "Pre and post-construction treatment", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&q=80" },
+  { id: 6, name: "Drainage Cleaning", description: "Thorough drain cleaning services", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" },
 ];
 
 // Home Deep Cleaning Services - matching thehealthyhome.me
@@ -728,30 +728,29 @@ export default function WellnessServices() {
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pestServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Card className="border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`pest-service-${service.id}`}>
-                    <CardContent className="p-6 flex items-center gap-4">
-                      <div className="w-14 h-14 bg-[#970A44]/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-7 h-7 text-[#970A44]" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg text-[#09263D] mb-1">{service.name}</h3>
-                        <p className="text-muted-foreground text-sm">{service.description}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
+            {pestServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`pest-service-${service.id}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image}
+                      alt={service.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <CardContent className="p-5">
+                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                    <p className="text-muted-foreground text-sm">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
