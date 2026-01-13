@@ -1,119 +1,249 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Search, Home, Paintbrush, Building2, Sparkles, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Leaf, Activity, Dumbbell, ArrowRight } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Search, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Mega menu data for services with images
+// Comprehensive mega menu data with ALL services
 const interiorDesignMenu = {
-  title: "Interior Design & Fit-Out Works",
-  description: "Transform your spaces with our premium interior design solutions",
-  image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
+  title: "Interior Design & Fit-Out",
+  subtitle: "Transform Your Space",
+  stats: { projects: "500+", clients: "1000+", years: "15+" },
   categories: [
     {
-      title: "Residential",
+      title: "Residential Design",
       icon: Home,
-      items: [
-        { label: "Luxury Villa Design", href: "/interior-design", image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80" },
-        { label: "Apartment Interiors", href: "/interior-design", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=200&q=80" },
-        { label: "Penthouse Design", href: "/interior-design", image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&q=80" },
+      color: "#970A44",
+      services: [
+        { label: "Luxury Villa Design", href: "/interior-design/villa", desc: "Complete villa transformation" },
+        { label: "Apartment Interiors", href: "/interior-design/apartment", desc: "Modern living spaces" },
+        { label: "Penthouse Design", href: "/interior-design/penthouse", desc: "Sky-high luxury" },
+        { label: "Townhouse Renovation", href: "/interior-design/townhouse", desc: "Urban elegance" },
+        { label: "Studio Apartments", href: "/interior-design/studio", desc: "Smart space solutions" },
       ]
     },
     {
-      title: "Commercial",
+      title: "Commercial Spaces",
       icon: Building2,
-      items: [
-        { label: "Office Fit-Out", href: "/interior-design", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&q=80" },
-        { label: "Retail Spaces", href: "/interior-design", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=200&q=80" },
-        { label: "Hospitality Design", href: "/interior-design", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&q=80" },
+      color: "#1C4668",
+      services: [
+        { label: "Office Fit-Out", href: "/interior-design/office", desc: "Productive workspaces" },
+        { label: "Retail Store Design", href: "/interior-design/retail", desc: "Customer experience" },
+        { label: "Restaurant & Café", href: "/interior-design/restaurant", desc: "Dining ambiance" },
+        { label: "Hotel & Hospitality", href: "/interior-design/hotel", desc: "Guest experience" },
+        { label: "Showroom Design", href: "/interior-design/showroom", desc: "Display excellence" },
       ]
     },
     {
-      title: "Specialized",
+      title: "Room Specific",
       icon: Paintbrush,
-      items: [
-        { label: "Kitchen Design", href: "/interior-design", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&q=80" },
-        { label: "Bathroom Renovation", href: "/interior-design", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=200&q=80" },
-        { label: "Custom Furniture", href: "/interior-design", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80" },
+      color: "#09263D",
+      services: [
+        { label: "Kitchen Design", href: "/interior-design/kitchen", desc: "Culinary spaces" },
+        { label: "Bathroom Renovation", href: "/interior-design/bathroom", desc: "Spa-like retreats" },
+        { label: "Bedroom Interiors", href: "/interior-design/bedroom", desc: "Restful sanctuaries" },
+        { label: "Living Room Design", href: "/interior-design/living-room", desc: "Entertainment hubs" },
+        { label: "Home Office", href: "/interior-design/home-office", desc: "Work from home" },
+      ]
+    },
+    {
+      title: "Specialized Services",
+      icon: Sparkles,
+      color: "#720632",
+      services: [
+        { label: "Custom Furniture", href: "/interior-design/custom-furniture", desc: "Bespoke pieces" },
+        { label: "Lighting Design", href: "/interior-design/lighting", desc: "Ambiance creation" },
+        { label: "False Ceiling", href: "/interior-design/ceiling", desc: "Architectural detail" },
+        { label: "Flooring Solutions", href: "/interior-design/flooring", desc: "Foundation beauty" },
+        { label: "Wall Treatments", href: "/interior-design/walls", desc: "Texture & color" },
       ]
     }
   ],
-  featuredLink: { label: "View All Interior Services", href: "/interior-design" }
+  featured: {
+    title: "Free Design Consultation",
+    desc: "Get expert advice on your project",
+    cta: "Book Now",
+    href: "/book"
+  }
 };
 
 const wellnessMenu = {
   title: "Wellness Services",
-  description: "A world of wellness for your family - healthier indoor environments",
-  image: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=600&q=80",
+  subtitle: "Healthier Living Spaces",
+  stats: { customers: "61,000+", rating: "4.9/5", reviews: "7,000+" },
   categories: [
     {
       title: "AC & Air Quality",
       icon: Wind,
-      items: [
-        { label: "AC Cleaning", href: "/wellness/ac-cleaning", image: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=200&q=80" },
-        { label: "AC Duct Cleaning", href: "/wellness/ac-duct-cleaning", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=200&q=80" },
-        { label: "Mold Removal", href: "/wellness/mold-removal", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=200&q=80" },
-        { label: "Air Quality Testing", href: "/wellness/air-quality-testing", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" },
+      color: "#970A44",
+      services: [
+        { label: "AC Cleaning", href: "/wellness/ac-cleaning", desc: "Deep cleaning service" },
+        { label: "AC Coil Cleaning", href: "/wellness/ac-coil-cleaning", desc: "Efficiency boost" },
+        { label: "AC Duct Cleaning", href: "/wellness/ac-duct-cleaning", desc: "Ductwork sanitization" },
+        { label: "AC Mold Removal", href: "/wellness/mold-removal", desc: "Mold elimination" },
+        { label: "AC Repair & Service", href: "/wellness/ac-repair", desc: "Expert repairs" },
+        { label: "AC Installation", href: "/wellness/ac-installation", desc: "New unit setup" },
+        { label: "Air Quality Testing", href: "/wellness/air-quality-testing", desc: "Indoor air analysis" },
       ]
     },
     {
-      title: "Furniture Cleaning",
+      title: "Furniture & Fabric",
       icon: Sofa,
-      items: [
-        { label: "Carpet Cleaning", href: "/wellness/carpet-cleaning", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" },
-        { label: "Mattress Cleaning", href: "/wellness/mattress-cleaning", image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80" },
-        { label: "Sofa Cleaning", href: "/wellness/furniture-cleaning", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80" },
-        { label: "Curtain Cleaning", href: "/wellness/curtain-cleaning", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=200&q=80" },
+      color: "#1C4668",
+      services: [
+        { label: "Carpet Cleaning", href: "/wellness/carpet-cleaning", desc: "Deep extraction" },
+        { label: "Mattress Cleaning", href: "/wellness/mattress-cleaning", desc: "Allergen removal" },
+        { label: "Sofa & Upholstery", href: "/wellness/furniture-cleaning", desc: "Fabric revival" },
+        { label: "Curtain Cleaning", href: "/wellness/curtain-cleaning", desc: "Drape restoration" },
+        { label: "Leather Care", href: "/wellness/leather-cleaning", desc: "Premium leather" },
+        { label: "Rug Cleaning", href: "/wellness/rug-cleaning", desc: "Oriental & area rugs" },
+        { label: "Nano Coating", href: "/wellness/nano-coating", desc: "Stain protection" },
       ]
     },
     {
-      title: "Home & Health",
+      title: "Home Deep Cleaning",
+      icon: Sparkles,
+      color: "#09263D",
+      services: [
+        { label: "Move-In/Out Cleaning", href: "/wellness/deep-cleaning", desc: "Complete refresh" },
+        { label: "Premium Deep Clean", href: "/wellness/premium-cleaning", desc: "Intensive cleaning" },
+        { label: "Kitchen Deep Clean", href: "/wellness/kitchen-cleaning", desc: "Grease & grime" },
+        { label: "Bathroom Sanitization", href: "/wellness/bathroom-cleaning", desc: "Hygiene focus" },
+        { label: "Post-Construction", href: "/wellness/post-construction", desc: "Debris removal" },
+        { label: "Party Clean-Up", href: "/wellness/party-cleanup", desc: "Event aftermath" },
+      ]
+    },
+    {
+      title: "Water & Tanks",
+      icon: Droplets,
+      color: "#720632",
+      services: [
+        { label: "Water Tank Cleaning", href: "/wellness/water-tank", desc: "Tank sanitization" },
+        { label: "Pipeline Disinfection", href: "/wellness/pipeline", desc: "Pipe cleaning" },
+        { label: "Water Filter Install", href: "/wellness/water-filter", desc: "Filtration systems" },
+        { label: "Whole House Filtration", href: "/wellness/whole-house-filter", desc: "Complete solution" },
+        { label: "Water Quality Test", href: "/wellness/water-testing", desc: "Quality analysis" },
+      ]
+    },
+    {
+      title: "Pest Control",
+      icon: Bug,
+      color: "#970A44",
+      services: [
+        { label: "Bed Bug Treatment", href: "/wellness/pest-control", desc: "Complete elimination" },
+        { label: "Cockroach Control", href: "/wellness/cockroach-control", desc: "Roach removal" },
+        { label: "Rodent Control", href: "/wellness/rodent-control", desc: "Mouse & rat" },
+        { label: "Termite Treatment", href: "/wellness/termite-control", desc: "Wood protection" },
+        { label: "Mosquito Control", href: "/wellness/mosquito-control", desc: "Outdoor comfort" },
+        { label: "General Pest Control", href: "/wellness/general-pest", desc: "All-in-one" },
+      ]
+    },
+    {
+      title: "Personal Wellness",
       icon: Heart,
-      items: [
-        { label: "Deep Cleaning", href: "/wellness/deep-cleaning", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=200&q=80" },
-        { label: "Water Tank Cleaning", href: "/wellness/water-tank", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&q=80" },
-        { label: "Pest Control", href: "/wellness/pest-control", image: "https://images.unsplash.com/photo-1632935190508-f9ea39e9bf4e?w=200&q=80" },
-        { label: "Painting Services", href: "/wellness/painting", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=200&q=80" },
+      color: "#1C4668",
+      services: [
+        { label: "Healthcare at Home", href: "/wellness/healthcare", desc: "Medical services" },
+        { label: "IV Drip Therapy", href: "/wellness/iv-drip", desc: "Vitamin infusion" },
+        { label: "Spa & Beauty", href: "/wellness/spa-beauty", desc: "Home pampering" },
+        { label: "Physiotherapy", href: "/wellness/physiotherapy", desc: "Physical therapy" },
+        { label: "Nutrition Consult", href: "/wellness/nutrition", desc: "Diet planning" },
+        { label: "Fitness Training", href: "/wellness/fitness", desc: "Personal trainer" },
       ]
     }
   ],
-  featuredLink: { label: "View All Wellness Services", href: "/wellness" }
+  featured: {
+    title: "Same Day Service",
+    desc: "Book before 12 PM for same-day service",
+    cta: "Book Today",
+    href: "/book"
+  }
 };
 
 const maintenanceMenu = {
   title: "Maintenance Services",
-  description: "Keep your property running smoothly with our professional maintenance",
-  image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80",
+  subtitle: "Hassle-Free Property Care",
+  stats: { years: "40+", customers: "3,000+", properties: "2,500+" },
   categories: [
     {
-      title: "Essential",
+      title: "Electrical",
       icon: Zap,
-      items: [
-        { label: "Electrical Services", href: "/maintenance/electrical", image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=200&q=80" },
-        { label: "Plumbing Services", href: "/maintenance/plumbing", image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=200&q=80" },
-        { label: "AC Maintenance", href: "/maintenance/ac-maintenance", image: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=200&q=80" },
+      color: "#970A44",
+      services: [
+        { label: "Electrical Repairs", href: "/maintenance/electrical", desc: "Wiring & fixtures" },
+        { label: "Light Installation", href: "/maintenance/lighting", desc: "Indoor & outdoor" },
+        { label: "Socket & Switch", href: "/maintenance/sockets", desc: "Outlets & switches" },
+        { label: "Circuit Breaker", href: "/maintenance/circuit", desc: "Panel services" },
+        { label: "Smart Home Wiring", href: "/maintenance/smart-wiring", desc: "Automation ready" },
       ]
     },
     {
-      title: "Property Care",
+      title: "Plumbing",
+      icon: Droplets,
+      color: "#1C4668",
+      services: [
+        { label: "Leak Repair", href: "/maintenance/plumbing", desc: "Stop water damage" },
+        { label: "Drain Cleaning", href: "/maintenance/drain", desc: "Unclog drains" },
+        { label: "Pipe Installation", href: "/maintenance/pipes", desc: "New plumbing" },
+        { label: "Water Heater", href: "/maintenance/water-heater", desc: "Hot water systems" },
+        { label: "Toilet & Fixtures", href: "/maintenance/fixtures", desc: "Bathroom repairs" },
+      ]
+    },
+    {
+      title: "AC & HVAC",
+      icon: Wind,
+      color: "#09263D",
+      services: [
+        { label: "AC Maintenance", href: "/maintenance/ac-maintenance", desc: "Regular servicing" },
+        { label: "AC Repair", href: "/maintenance/ac-repair", desc: "Fix breakdowns" },
+        { label: "AC Installation", href: "/maintenance/ac-install", desc: "New unit setup" },
+        { label: "Duct Work", href: "/maintenance/ductwork", desc: "Duct repair" },
+        { label: "Thermostat Setup", href: "/maintenance/thermostat", desc: "Temperature control" },
+      ]
+    },
+    {
+      title: "General Repairs",
       icon: Wrench,
-      items: [
-        { label: "General Maintenance", href: "/maintenance/general", image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=200&q=80" },
-        { label: "Handyman Services", href: "/maintenance/handyman", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" },
-        { label: "Painting Services", href: "/maintenance/painting", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=200&q=80" },
+      color: "#720632",
+      services: [
+        { label: "Handyman Services", href: "/maintenance/handyman", desc: "All-around repairs" },
+        { label: "Door & Lock Repair", href: "/maintenance/doors", desc: "Security fixes" },
+        { label: "Furniture Assembly", href: "/maintenance/assembly", desc: "Build & install" },
+        { label: "Wall Mounting", href: "/maintenance/mounting", desc: "TV & shelves" },
+        { label: "Minor Carpentry", href: "/maintenance/carpentry", desc: "Wood repairs" },
       ]
     },
     {
-      title: "Programs",
+      title: "Painting & Walls",
+      icon: PaintBucket,
+      color: "#970A44",
+      services: [
+        { label: "Interior Painting", href: "/maintenance/painting", desc: "Room makeover" },
+        { label: "Exterior Painting", href: "/maintenance/exterior-paint", desc: "Facade refresh" },
+        { label: "Wall Repair", href: "/maintenance/wall-repair", desc: "Patch & fix" },
+        { label: "Wallpaper Install", href: "/maintenance/wallpaper", desc: "Design accent" },
+        { label: "Waterproofing", href: "/maintenance/waterproofing", desc: "Moisture barrier" },
+      ]
+    },
+    {
+      title: "Property Programs",
       icon: Shield,
-      items: [
-        { label: "Annual Maintenance Contract", href: "/maintenance/amc", image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=200&q=80" },
-        { label: "Emergency Repairs", href: "/maintenance/emergency", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&q=80" },
-        { label: "Property Inspection", href: "/maintenance/inspection", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&q=80" },
+      color: "#1C4668",
+      services: [
+        { label: "Annual Contract (AMC)", href: "/maintenance/amc", desc: "Year-round care" },
+        { label: "Emergency Repairs", href: "/maintenance/emergency", desc: "24/7 response" },
+        { label: "Property Inspection", href: "/maintenance/inspection", desc: "Full assessment" },
+        { label: "Preventive Maintenance", href: "/maintenance/preventive", desc: "Avoid breakdowns" },
+        { label: "Seasonal Service", href: "/maintenance/seasonal", desc: "Summer/winter prep" },
       ]
     }
   ],
-  featuredLink: { label: "View All Maintenance Services", href: "/maintenance" }
+  featured: {
+    title: "Emergency Response",
+    desc: "24/7 emergency repair services",
+    cta: "Call Now",
+    href: "/contact"
+  }
 };
 
 export function Navigation() {
@@ -121,7 +251,6 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [hoveredCategory, setHoveredCategory] = useState<number>(0);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
   const isHomePage = location === "/";
@@ -139,13 +268,11 @@ export function Navigation() {
       clearTimeout(timeoutRef.current);
     }
     setActiveMenu(menuName);
-    setHoveredCategory(0);
   };
 
   const handleMenuLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-      setHoveredCategory(0);
     }, 150);
   };
 
@@ -360,10 +487,10 @@ export function Navigation() {
       <AnimatePresence>
         {activeMenu && activeMenu !== "about" && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed top-16 left-0 right-0 z-[9998] bg-white shadow-2xl border-b border-gray-200"
             onMouseEnter={() => {
               if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -375,118 +502,88 @@ export function Navigation() {
               if (!menuData) return null;
               
               return (
-                <div className="max-w-7xl mx-auto">
-                  <div className="grid grid-cols-12 min-h-[400px]">
-                    {/* Left Column - Categories List */}
-                    <div className="col-span-3 bg-[#F6F4EB] p-6">
-                      <div className="mb-6">
-                        <h3 className="text-xl font-bold text-[#09263D] font-serif">{menuData.title}</h3>
-                        <p className="text-sm text-gray-600 mt-2">{menuData.description}</p>
+                <div className="w-full">
+                  {/* Header Bar */}
+                  <div className="bg-gradient-to-r from-[#09263D] to-[#1C4668] text-white py-4 px-8">
+                    <div className="max-w-7xl mx-auto flex items-center justify-between">
+                      <div>
+                        <h2 className="text-2xl font-bold font-serif">{menuData.title}</h2>
+                        <p className="text-white/80 text-sm">{menuData.subtitle}</p>
                       </div>
-                      
-                      <div className="space-y-1">
-                        {menuData.categories.map((category, catIndex) => {
-                          const Icon = category.icon;
-                          return (
-                            <div
-                              key={category.title}
-                              className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 ${
-                                hoveredCategory === catIndex 
-                                  ? "bg-[#970A44] text-white" 
-                                  : "hover:bg-white/80 text-gray-700"
-                              }`}
-                              onMouseEnter={() => setHoveredCategory(catIndex)}
-                            >
-                              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                                hoveredCategory === catIndex ? "bg-white/20" : "bg-[#970A44]/10"
-                              }`}>
-                                <Icon className={`w-5 h-5 ${hoveredCategory === catIndex ? "text-white" : "text-[#970A44]"}`} />
-                              </div>
-                              <span className="font-semibold">{category.title}</span>
-                              <ChevronRight className={`w-4 h-4 ml-auto ${hoveredCategory === catIndex ? "text-white" : "text-gray-400"}`} />
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      <div className="mt-8 pt-6 border-t border-gray-300">
-                        <Link 
-                          href={menuData.featuredLink.href}
-                          onClick={() => setActiveMenu(null)}
-                        >
-                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#970A44] hover:text-[#720632] transition-colors cursor-pointer">
-                            {menuData.featuredLink.label}
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Middle Column - Service Items Grid */}
-                    <div className="col-span-6 p-6 bg-white">
-                      <div className="flex items-center gap-2 mb-6">
-                        {(() => {
-                          const Icon = menuData.categories[hoveredCategory].icon;
-                          return <Icon className="w-5 h-5 text-[#970A44]" />;
-                        })()}
-                        <h4 className="text-lg font-bold text-[#09263D]">
-                          {menuData.categories[hoveredCategory].title}
-                        </h4>
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        {menuData.categories[hoveredCategory].items.map((item) => (
-                          <Link 
-                            key={item.label} 
-                            href={item.href}
-                            onClick={() => setActiveMenu(null)}
-                          >
-                            <motion.div 
-                              className="group flex items-center gap-4 p-3 rounded-xl hover:bg-[#F6F4EB] transition-all cursor-pointer"
-                              whileHover={{ x: 4 }}
-                            >
-                              <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img 
-                                  src={item.image} 
-                                  alt={item.label}
-                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                />
-                              </div>
-                              <div className="flex-1">
-                                <span className="font-medium text-gray-900 group-hover:text-[#970A44] transition-colors block">
-                                  {item.label}
-                                </span>
-                                <span className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                                  Learn more <ArrowRight className="w-3 h-3" />
-                                </span>
-                              </div>
-                            </motion.div>
-                          </Link>
+                      <div className="flex items-center gap-8">
+                        {Object.entries(menuData.stats).map(([key, value]) => (
+                          <div key={key} className="text-center">
+                            <div className="text-xl font-bold text-[#F6F4EB]">{value}</div>
+                            <div className="text-xs text-white/70 capitalize">{key}</div>
+                          </div>
                         ))}
                       </div>
                     </div>
+                  </div>
 
-                    {/* Right Column - Featured Image */}
-                    <div className="col-span-3 relative overflow-hidden">
-                      <div className="absolute inset-0">
-                        <img 
-                          src={menuData.image}
-                          alt={menuData.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#09263D]/90 via-[#09263D]/40 to-transparent" />
+                  {/* Services Grid */}
+                  <div className="max-w-7xl mx-auto px-8 py-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                      {menuData.categories.map((category, catIndex) => {
+                        const Icon = category.icon;
+                        return (
+                          <div key={category.title} className="space-y-3">
+                            {/* Category Header */}
+                            <div className="flex items-center gap-2 pb-2 border-b-2" style={{ borderColor: category.color }}>
+                              <div 
+                                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                                style={{ backgroundColor: `${category.color}15` }}
+                              >
+                                <Icon className="w-4 h-4" style={{ color: category.color }} />
+                              </div>
+                              <h3 className="font-bold text-sm text-[#09263D]">{category.title}</h3>
+                            </div>
+                            
+                            {/* Service Links */}
+                            <ul className="space-y-1">
+                              {category.services.map((service) => (
+                                <li key={service.label}>
+                                  <Link 
+                                    href={service.href}
+                                    onClick={() => setActiveMenu(null)}
+                                  >
+                                    <span className="group flex items-start gap-1 py-1.5 cursor-pointer">
+                                      <ChevronRight className="w-3 h-3 mt-0.5 text-gray-400 group-hover:text-[#970A44] transition-colors flex-shrink-0" />
+                                      <span className="text-xs text-gray-700 group-hover:text-[#970A44] transition-colors leading-tight">
+                                        {service.label}
+                                      </span>
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Footer CTA */}
+                    <div className="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
+                      <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          <span>Satisfaction Guaranteed</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <Star className="w-4 h-4 text-yellow-500" />
+                          <span>5-Star Rated Services</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <Users className="w-4 h-4 text-[#970A44]" />
+                          <span>Certified Professionals</span>
+                        </div>
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                        <h4 className="text-lg font-bold mb-2">Need Expert Advice?</h4>
-                        <p className="text-sm text-white/80 mb-4">
-                          Our consultants are ready to help you choose the perfect solution.
-                        </p>
-                        <Link href="/book" onClick={() => setActiveMenu(null)}>
-                          <Button className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-6">
-                            Book Free Consultation
-                          </Button>
-                        </Link>
-                      </div>
+                      <Link href={menuData.featured.href} onClick={() => setActiveMenu(null)}>
+                        <Button className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-6">
+                          {menuData.featured.cta}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
