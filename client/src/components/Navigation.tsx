@@ -578,12 +578,20 @@ export function Navigation() {
                           <span>Certified Professionals</span>
                         </div>
                       </div>
-                      <Link href={menuData.featured.href} onClick={() => setActiveMenu(null)}>
-                        <Button className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-6">
-                          {menuData.featured.cta}
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </Link>
+                      <div className="flex items-center gap-3">
+                        <Link href={activeMenu === "interior" ? "/interior-design" : activeMenu === "wellness" ? "/wellness" : "/maintenance"} onClick={() => setActiveMenu(null)}>
+                          <Button variant="outline" className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full px-6">
+                            View All Services
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
+                        <Link href={menuData.featured.href} onClick={() => setActiveMenu(null)}>
+                          <Button className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-6">
+                            {menuData.featured.cta}
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
