@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, ArrowLeft, Paintbrush, Building2, Wrench, Zap, Sparkles, Home, Lightbulb, Shield, Hammer, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowLeft, Paintbrush, Building2, Wrench, Zap, Sparkles, Home, Lightbulb, Shield, Hammer, ShieldCheck, Heart, Wind, Droplets, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -40,37 +40,72 @@ const fitoutServices = [
   },
 ];
 
-const maintenanceServices = [
+const wellnessServices = [
   {
     id: 5,
-    title: "Property Maintenance",
-    description: "Comprehensive maintenance services to keep your property in pristine condition year-round.",
-    icon: Wrench,
-    link: "/services/maintenance",
-    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+    title: "AC & Air Quality",
+    description: "Professional AC cleaning and air quality testing to ensure healthy indoor environments.",
+    icon: Wind,
+    link: "/wellness",
+    gradient: "from-[#1C4668]/90 to-[#09263D]/90",
   },
   {
     id: 6,
-    title: "MEP Services",
-    description: "Expert mechanical, electrical, and plumbing services for all your property needs.",
-    icon: Zap,
-    link: "/services/mep",
-    gradient: "from-[#720632]/90 to-[#970A44]/90",
-  },
-  {
-    id: 7,
     title: "Deep Cleaning",
-    description: "Professional deep cleaning services to maintain hygiene and freshness in your space.",
+    description: "Comprehensive deep cleaning services for mattresses, carpets, sofas and entire homes.",
     icon: Sparkles,
-    link: "/services/cleaning",
+    link: "/wellness",
     gradient: "from-[#970A44]/90 to-[#720632]/90",
   },
   {
+    id: 7,
+    title: "Water Services",
+    description: "Water tank cleaning and water quality testing for safe and clean water supply.",
+    icon: Droplets,
+    link: "/wellness",
+    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+  },
+  {
     id: 8,
+    title: "Healthy Living",
+    description: "Mold removal, pest control, and allergen reduction for a healthier home environment.",
+    icon: Leaf,
+    link: "/wellness",
+    gradient: "from-[#720632]/90 to-[#970A44]/90",
+  },
+];
+
+const maintenanceServices = [
+  {
+    id: 9,
+    title: "Property Maintenance",
+    description: "Comprehensive maintenance services to keep your property in pristine condition year-round.",
+    icon: Wrench,
+    link: "/maintenance",
+    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+  },
+  {
+    id: 10,
+    title: "MEP Services",
+    description: "Expert mechanical, electrical, and plumbing services for all your property needs.",
+    icon: Zap,
+    link: "/maintenance",
+    gradient: "from-[#720632]/90 to-[#970A44]/90",
+  },
+  {
+    id: 11,
+    title: "Handyman Services",
+    description: "Professional handyman services for repairs, installations, and general property upkeep.",
+    icon: Hammer,
+    link: "/maintenance",
+    gradient: "from-[#970A44]/90 to-[#720632]/90",
+  },
+  {
+    id: 12,
     title: "Security Systems",
     description: "Advanced security solutions to protect your property with modern surveillance technology.",
     icon: Shield,
-    link: "/services/security",
+    link: "/maintenance",
     gradient: "from-[#1C4668]/90 to-[#09263D]/90",
   },
 ];
@@ -281,6 +316,14 @@ export default function ServiceCardsSlider() {
           icon={Hammer} 
           services={fitoutServices}
           testIdPrefix="fitout"
+        />
+
+        {/* Wellness Services Row */}
+        <ServiceRow 
+          title="Wellness Services" 
+          icon={Heart} 
+          services={wellnessServices}
+          testIdPrefix="wellness"
         />
 
         {/* Maintenance Services Row */}
