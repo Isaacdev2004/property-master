@@ -1327,7 +1327,470 @@ export default function InteriorDesign() {
         </div>
       </section>
 
-      {/* SECTION 16: FINAL CTA */}
+      {/* SECTION 17: ABOUT PROPERTY MASTERS - COMPREHENSIVE OVERVIEW */}
+      <section className="py-24 bg-background" data-testid="section-about-overview">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Main Intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">
+              Interior Design & Property Services in Dubai
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              Property Masters is a Dubai-based interior design and property services company focused on creating well-planned, practical, and durable spaces. Our work spans residential and commercial interiors, renovation, and specialized property services, all delivered with a clear understanding of local conditions, usage patterns, and long-term performance.
+            </p>
+          </motion.div>
+
+          {/* Dubai Context */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-20"
+          >
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-[#970A44]" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4">Designed for Dubai's Unique Environment</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      In Dubai, properties are exposed to constant air conditioning, heat, humidity, and heavy daily use. Design decisions that ignore these factors often lead to early wear, discomfort, or high maintenance costs. Our approach is built around designing and executing spaces that not only look balanced, but continue to function well over time.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Who We Are */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
+                <Users className="w-5 h-5 text-[#970A44]" />
+                <span className="text-[#970A44] font-medium">Who We Are</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif">
+                Planning Over Excess
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Property Masters is built around the idea that good interiors come from planning, not excess. We focus on understanding how spaces are actually used and translating that understanding into layouts, materials, and finishes that make sense in real life.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Our team works across apartments, villas, and commercial properties, coordinating design and execution to ensure consistency from concept to completion. Rather than treating services as separate tasks, we approach projects as connected systems, where each decision affects the final outcome.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#1C4668]" />
+                <span className="text-[#1C4668] font-medium">Our Mission & Philosophy</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif">
+                Practical, Reliable, Comfortable
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Our mission is to create interiors and property solutions that are practical, reliable, and comfortable to live or work in.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Design should support daily routines, not complicate them",
+                  "Materials should be chosen for performance, not just appearance",
+                  "Execution should match the approved design without shortcuts",
+                  "Interiors should age well, not demand constant correction"
+                ].map((belief, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{belief}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* What We Do - Complete Services Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-20"
+          >
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-4xl font-bold mb-4 font-serif">
+                What We Do
+              </h3>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Property Masters provides a complete range of interior design and property services in Dubai. Each service is structured to address specific needs while remaining part of a cohesive whole.
+              </p>
+            </div>
+
+            {/* Interior Design & Renovation Services */}
+            <div className="mb-12">
+              <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#970A44]/10 rounded-lg flex items-center justify-center">
+                  <Paintbrush className="w-5 h-5 text-[#970A44]" />
+                </div>
+                Interior Design & Renovation Services
+              </h4>
+              <p className="text-muted-foreground mb-6">
+                We design and renovate residential and commercial interiors with a focus on layout planning, material suitability, and long-term usability. This includes apartments, villas, and business spaces.
+              </p>
+              
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { title: "Residential Interior Design", desc: "Homes designed around comfort, storage, and ease of movement. Full renovations and room-specific upgrades." },
+                  { title: "Kitchen Remodeling & Modular Kitchens", desc: "Planned around workflow, storage efficiency, and materials that handle heat and daily use reliably." },
+                  { title: "Living Room, Bedroom & Kids Room", desc: "Individual spaces designed to support their specific purpose, whether shared living, rest, or growth." },
+                  { title: "Wardrobe & Storage Solutions", desc: "Storage systems designed around real usage habits, reducing clutter and improving daily routines." },
+                  { title: "Bathroom Interior Design & Renovation", desc: "Planned with attention to moisture management, safety, and durability for comfort and ease of maintenance." },
+                  { title: "Flooring Services", desc: "Guidance and installation for a wide range of flooring options, selected based on usage and maintenance needs." },
+                  { title: "Interior Painting, Gypsum & False Ceilings", desc: "Finishing works treated as part of the overall design, supporting lighting, proportions, and clean detailing." },
+                  { title: "Quartz & Natural Stone Countertops", desc: "Countertop solutions selected and installed with attention to durability, usage, and visual consistency." },
+                  { title: "Outdoor Renovation & Landscaping", desc: "Outdoor spaces designed as functional extensions of the interior, using materials suited to sun exposure and heat." },
+                  { title: "Swimming Pool Design & Build", desc: "Pools planned and constructed as complete systems, balancing design, safety, and long-term performance." },
+                  { title: "Glass & Aluminum Works", desc: "Glass and aluminum elements designed and installed with precision to support modern interiors and exterior structures." },
+                  { title: "Marble Restoration Services", desc: "Professional restoration services help revive marble surfaces and extend their lifespan without replacement." },
+                ].map((service, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-service-overview-${idx}`}>
+                      <CardContent className="p-5">
+                        <h5 className="font-bold mb-2 text-[#09263D]">{service.title}</h5>
+                        <p className="text-sm text-muted-foreground">{service.desc}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Commercial Interior Design */}
+            <div className="mb-12">
+              <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#1C4668]/10 rounded-lg flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-[#1C4668]" />
+                </div>
+                Commercial Interior Design
+              </h4>
+              <Card className="border-0 shadow-lg">
+                <CardContent className="p-8">
+                  <p className="text-muted-foreground leading-relaxed">
+                    We design commercial interiors for restaurants, hospitality, and retail spaces, focusing on operational efficiency and brand alignment. Each service is explained in detail on its own dedicated page, allowing clients to explore only what is relevant to their needs.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.div>
+
+          {/* How We Work */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-20"
+          >
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                    <Ruler className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-serif">How We Work</h3>
+                </div>
+                <p className="text-white/80 leading-relaxed mb-6">
+                  Our process is structured to reduce uncertainty and maintain quality throughout the project.
+                </p>
+                <p className="text-white/80 leading-relaxed mb-6">
+                  We begin by understanding the property, usage requirements, and client priorities. Design decisions are developed with practical constraints in mind, and all materials and finishes are finalized before execution begins. During execution, coordination and quality control ensure the finished space reflects the approved plan.
+                </p>
+                <p className="text-white/90 font-medium">
+                  This approach helps avoid unnecessary changes, delays, and mismatched outcomes.
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Who We Work With */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-4xl font-bold mb-4 font-serif">
+                Who We Work With
+              </h3>
+              <p className="text-lg text-muted-foreground">
+                Each project is approached with the same attention to detail and accountability.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: Building2, title: "Homeowners", desc: "Renovating or upgrading their properties" },
+                { icon: Award, title: "Property Investors", desc: "And landlords seeking value enhancement" },
+                { icon: Users, title: "Business Owners", desc: "And commercial operators" },
+                { icon: Target, title: "Long-term Clients", desc: "Seeking well-planned interior solutions" },
+              ].map((client, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`card-client-${idx}`}>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
+                        <client.icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h4 className="font-bold mb-2">{client.title}</h4>
+                      <p className="text-sm text-muted-foreground">{client.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 18: COMPREHENSIVE FAQ */}
+      <section className="py-24 bg-muted/30" data-testid="section-faq">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Find answers to common questions about our interior design and renovation services.
+            </p>
+          </motion.div>
+
+          <Tabs defaultValue="general" className="w-full">
+            <TabsList className="w-full max-w-4xl mx-auto mb-8 flex flex-wrap h-auto gap-2 bg-transparent justify-center">
+              {[
+                { value: "general", label: "General" },
+                { value: "residential", label: "Residential" },
+                { value: "kitchen", label: "Kitchen" },
+                { value: "bedroom", label: "Bedroom" },
+                { value: "bathroom", label: "Bathroom" },
+                { value: "commercial", label: "Commercial" },
+              ].map((tab) => (
+                <TabsTrigger 
+                  key={tab.value} 
+                  value={tab.value}
+                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  data-testid={`tab-faq-${tab.value}`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent value="general" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you provide both interior design and renovation services?", a: "Yes. We manage both design and execution to ensure consistency from planning to completion." },
+                  { q: "Do you work across Dubai?", a: "Yes. We provide interior and renovation services across Dubai for residential and commercial properties." },
+                  { q: "Can I choose only specific services instead of a full project?", a: "Yes. Clients can select individual services or combine multiple services as needed." },
+                  { q: "Do you handle apartments, villas, and commercial spaces?", a: "Yes. Our services cover all property types." },
+                  { q: "How do I get started with Property Masters?", a: "You can begin with an initial consultation to discuss your requirements and scope." },
+                  { q: "How long does a typical project take?", a: "Timelines vary depending on scope, but are discussed clearly before work begins. We guarantee project completion within agreed timelines." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-general-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="residential" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you handle full home renovations?", a: "Yes. We manage complete residential renovations from planning to execution." },
+                  { q: "Can you renovate only certain rooms?", a: "Yes. Partial renovations and room-specific upgrades are available." },
+                  { q: "Can renovation be done while the home is occupied?", a: "In some cases, yes. This depends on the scope and is assessed beforehand." },
+                  { q: "Do you assist with approvals if required?", a: "We guide clients on any approvals required based on the property." },
+                  { q: "Do you provide flooring services?", a: "Yes. We provide guidance and installation for a wide range of flooring options, selected based on usage, maintenance needs, and environmental conditions." },
+                  { q: "Do you handle subfloor preparation?", a: "Yes. Proper preparation is part of the process for all flooring installations." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-residential-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="kitchen" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you offer both modular and custom kitchens?", a: "Yes. The option depends on layout, usage, and budget." },
+                  { q: "Can I keep my existing kitchen layout?", a: "Where possible, yes. We assess whether layout changes are necessary." },
+                  { q: "Do you help with material and finish selection?", a: "Yes. We guide clients through cabinets, countertops, and finishes." },
+                  { q: "How long does a kitchen renovation take?", a: "Most kitchen projects take a few weeks, depending on complexity." },
+                  { q: "Can kitchen work be coordinated with other interior services?", a: "Yes. Kitchen remodeling can be integrated into larger renovation projects." },
+                  { q: "Which is easier to maintain, quartz or natural stone?", a: "Quartz generally requires less maintenance. We provide guidance based on your specific needs." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-kitchen-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="bedroom" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you design wardrobes for master bedrooms?", a: "Yes. Wardrobe and storage planning is included in our bedroom design service." },
+                  { q: "Can the bedroom design be kept minimal and calm?", a: "Absolutely. Designs are tailored to personal comfort preferences." },
+                  { q: "Do you help with lighting selection?", a: "Yes. Lighting is planned to support rest and daily routines." },
+                  { q: "Can a dressing area be included?", a: "Yes, where space allows." },
+                  { q: "Can the design adapt as the child grows?", a: "Yes. Flexibility is a key part of our kids' room designs." },
+                  { q: "Do you offer custom wardrobe designs?", a: "Yes. Storage solutions are customized to the space and usage habits." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-bedroom-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="bathroom" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you handle complete bathroom renovations?", a: "Yes. From layout to finishes and fixtures." },
+                  { q: "Are materials chosen for moisture resistance?", a: "Yes. All materials are selected for humid conditions." },
+                  { q: "Can existing plumbing layouts be retained?", a: "Where possible, yes. We assess and advise accordingly." },
+                  { q: "Do you design vanity storage solutions?", a: "Yes. Vanity and storage planning is included." },
+                  { q: "Can bathroom renovation be part of a larger project?", a: "Yes. It can be integrated with full renovations." },
+                  { q: "Do you handle gypsum partitions and false ceilings in bathrooms?", a: "Yes. These are designed with proper moisture considerations." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-bathroom-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="commercial" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you design restaurant and retail interiors?", a: "Yes. Restaurants, retail, and hospitality are included." },
+                  { q: "Can layouts be designed around business operations?", a: "Yes. Workflow is a key consideration in commercial design." },
+                  { q: "Do you handle execution as well as design?", a: "Yes. Projects are managed end-to-end." },
+                  { q: "Can materials handle heavy foot traffic?", a: "Yes. Materials are selected for durability and commercial use." },
+                  { q: "Do you offer glass and aluminum works?", a: "Yes. Glass and aluminum elements are designed and installed with precision to support modern interiors and exterior structures." },
+                  { q: "Is marble restoration available for commercial spaces?", a: "Yes. Both residential and commercial properties are covered for restoration services." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`card-faq-commercial-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* SECTION 19: FINAL CTA */}
       <section className="py-24 bg-[#09263D]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
