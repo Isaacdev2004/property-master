@@ -19,7 +19,7 @@ const services = [
     ],
     gradient: "from-[#970A44]/20 via-[#970A44]/10 to-[#720632]/5",
     accentColor: "#970A44",
-    ctaLink: "/services"
+    ctaLink: "/interior-design"
   },
   {
     icon: Heart,
@@ -35,7 +35,7 @@ const services = [
     ],
     gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
     accentColor: "#10b981",
-    ctaLink: "/services"
+    ctaLink: "/wellness"
   },
   {
     icon: Shield,
@@ -51,7 +51,7 @@ const services = [
     ],
     gradient: "from-blue-500/20 via-indigo-500/10 to-violet-500/5",
     accentColor: "#3b82f6",
-    ctaLink: "/services"
+    ctaLink: "/maintenance"
   },
   {
     icon: ShoppingBag,
