@@ -238,11 +238,23 @@ const staggerContainer = {
 export default function WellnessServices() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const newServicesRef = useRef<HTMLDivElement>(null);
+  const acServicesRef = useRef<HTMLDivElement>(null);
+  const furnitureServicesRef = useRef<HTMLDivElement>(null);
+  const waterServicesRef = useRef<HTMLDivElement>(null);
+  const pestServicesRef = useRef<HTMLDivElement>(null);
+  const deepCleaningRef = useRef<HTMLDivElement>(null);
 
   const scrollNewServices = (direction: 'left' | 'right') => {
     if (newServicesRef.current) {
       const scrollAmount = direction === 'left' ? -400 : 400;
       newServicesRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const scrollServices = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = direction === 'left' ? -350 : 350;
+      ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -506,30 +518,53 @@ export default function WellnessServices() {
             </Button>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {acServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`ac-service-${service.id}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative -mx-6 lg:-mx-8">
+            <button
+              onClick={() => scrollServices(acServicesRef, 'left')}
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-ac-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={acServicesRef}
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {acServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-72 md:w-80"
+                >
+                  <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`ac-service-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollServices(acServicesRef, 'right')}
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-ac-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -564,30 +599,53 @@ export default function WellnessServices() {
             </Button>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {furnitureServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`furniture-service-${service.id}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative -mx-6 lg:-mx-8">
+            <button
+              onClick={() => scrollServices(furnitureServicesRef, 'left')}
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-furniture-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={furnitureServicesRef}
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {furnitureServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-72 md:w-80"
+                >
+                  <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`furniture-service-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollServices(furnitureServicesRef, 'right')}
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-furniture-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -622,30 +680,53 @@ export default function WellnessServices() {
             </Button>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {waterServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`water-service-${service.id}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative -mx-6 lg:-mx-8">
+            <button
+              onClick={() => scrollServices(waterServicesRef, 'left')}
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-water-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={waterServicesRef}
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {waterServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-72 md:w-80"
+                >
+                  <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`water-service-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollServices(waterServicesRef, 'right')}
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-water-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -669,30 +750,53 @@ export default function WellnessServices() {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {deepCleaningServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`deep-cleaning-${service.id}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative -mx-6 lg:-mx-8">
+            <button
+              onClick={() => scrollServices(deepCleaningRef, 'left')}
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-deep-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={deepCleaningRef}
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {deepCleaningServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-72 md:w-80"
+                >
+                  <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`deep-cleaning-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollServices(deepCleaningRef, 'right')}
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-deep-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -727,30 +831,53 @@ export default function WellnessServices() {
             </Button>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pestServices.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`pest-service-${service.id}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
-                    <p className="text-muted-foreground text-sm">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="relative -mx-6 lg:-mx-8">
+            <button
+              onClick={() => scrollServices(pestServicesRef, 'left')}
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-pest-left"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            <div 
+              ref={pestServicesRef}
+              className="flex gap-6 overflow-x-auto px-6 lg:px-8 py-2 scrollbar-hide scroll-smooth"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {pestServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex-shrink-0 w-72 md:w-80"
+                >
+                  <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`pest-service-${service.id}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollServices(pestServicesRef, 'right')}
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              data-testid="button-pest-right"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
