@@ -35,10 +35,15 @@ import {
   ChevronLeft,
   ChevronRight,
   CalendarDays,
-  X
+  X,
+  Target,
+  CheckCircle2,
+  MapPin,
+  Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Hero badges - matching hitchesglitches.com
 const heroBadges = [
@@ -787,6 +792,443 @@ export default function MaintenanceServices() {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* MAINTENANCE SERVICES OVERVIEW SECTION */}
+      <section className="py-24 bg-background" data-testid="section-maintenance-overview">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Main Intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#09263D]">
+              Maintenance Services in Dubai
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              Property maintenance plays a critical role in preserving the value, safety, and functionality of homes and commercial spaces. In Dubai, properties are exposed to constant air conditioning, heavy usage, heat, and humidity, all of which place ongoing strain on building systems and finishes.
+            </p>
+          </motion.div>
+
+          {/* Dubai Context Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-16"
+          >
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-7 h-7 text-[#970A44]" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#09263D]">Why Maintenance Services Matter in Dubai</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Without proper maintenance, small issues can quickly turn into costly repairs or disruptions. Effective maintenance is not about reacting to problems when they appear, but about identifying and addressing issues early through structured, professional care.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {[
+                        "Continuous use of cooling systems",
+                        "Wear and tear from daily occupancy",
+                        "Environmental strain from heat and humidity",
+                        "Increased maintenance needs in shared spaces"
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                          <span className="text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Our Approach */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#970A44]" />
+                <span className="text-[#970A44] font-medium">Our Approach to Property Maintenance</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+                Planned, Consistent & Professional
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Maintenance works best when it is planned, consistent, and handled by experienced professionals. Our approach focuses on:
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Preventive maintenance rather than reactive fixes",
+                  "Clear assessment of issues before repair",
+                  "Use of appropriate materials and methods",
+                  "Reliable execution with minimal disruption"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
+                <Eye className="w-5 h-5 text-[#1C4668]" />
+                <span className="text-[#1C4668] font-medium">What Our Maintenance Services Cover</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+                Comprehensive Property Care
+              </h3>
+              <div className="space-y-4">
+                {[
+                  { title: "General Property Maintenance", desc: "Routine maintenance services that support the overall condition and functionality of properties." },
+                  { title: "Electrical Maintenance Services", desc: "Inspection, repair, and maintenance of electrical systems to ensure safety and reliable operation." },
+                  { title: "Plumbing Maintenance Services", desc: "Services focused on identifying leaks, blockages, and plumbing inefficiencies before they escalate." },
+                  { title: "HVAC & Air Conditioning", desc: "Maintenance services designed to support efficient cooling performance and indoor comfort." },
+                  { title: "Handyman & Repair Services", desc: "Support for small repairs and fixes that help maintain daily functionality." },
+                  { title: "Preventive Maintenance Solutions", desc: "Scheduled maintenance programs aimed at reducing long-term repair costs." },
+                ].map((item, idx) => (
+                  <Card key={idx} className="border hover-elevate" data-testid={`maintenance-cover-${idx}`}>
+                    <CardContent className="p-4">
+                      <h4 className="font-bold text-[#09263D] mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Who These Services Are For */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-16"
+          >
+            <div className="text-center mb-10">
+              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+                Who These Services Are For
+              </h3>
+              <p className="text-muted-foreground">Each property is assessed individually to determine the most appropriate maintenance support.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: Home, title: "Homeowners & Tenants", desc: "Regular maintenance for daily comfort" },
+                { icon: Building2, title: "Property Owners", desc: "And landlords protecting investments" },
+                { icon: Users, title: "Commercial Managers", desc: "Maintaining business facilities" },
+                { icon: Award, title: "Offices & Shared Spaces", desc: "Professional upkeep for shared areas" },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`maintenance-for-${idx}`}>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
+                        <item.icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h4 className="font-bold mb-2 text-[#09263D]">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* How Maintenance Projects Are Handled */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-serif">How Maintenance Projects Are Handled</h3>
+                </div>
+                <p className="text-white/80 leading-relaxed mb-8">
+                  Our maintenance process is structured and transparent, helping maintain consistency and reliability across services.
+                </p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    { step: "1", title: "Assessment", desc: "Assessing the issue or maintenance requirement" },
+                    { step: "2", title: "Recommendation", desc: "Recommending suitable repair or solutions" },
+                    { step: "3", title: "Execution", desc: "Carrying out work efficiently and safely" },
+                    { step: "4", title: "Review", desc: "Reviewing outcomes to ensure resolution" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="text-center">
+                      <div className="w-12 h-12 mx-auto mb-4 bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        {item.step}
+                      </div>
+                      <h4 className="font-bold text-white mb-2">{item.title}</h4>
+                      <p className="text-white/70 text-sm">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* COMPREHENSIVE FAQ SECTION */}
+      <section className="py-24 bg-[#F6F4EB]" data-testid="section-maintenance-faq">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#09263D]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Find answers to common questions about our maintenance services.
+            </p>
+          </motion.div>
+
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="w-full max-w-5xl mx-auto mb-8 flex flex-wrap h-auto gap-2 bg-transparent justify-center">
+              {[
+                { value: "overview", label: "Overview" },
+                { value: "general", label: "General" },
+                { value: "electrical", label: "Electrical" },
+                { value: "plumbing", label: "Plumbing" },
+                { value: "hvac", label: "HVAC" },
+                { value: "handyman", label: "Handyman" },
+                { value: "amc", label: "AMC" },
+              ].map((tab) => (
+                <TabsTrigger 
+                  key={tab.value} 
+                  value={tab.value}
+                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  data-testid={`tab-maintenance-faq-${tab.value}`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent value="overview" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What do maintenance services cover?", a: "All aspects of property upkeep, including routine checks, repairs, and preventive solutions." },
+                  { q: "Are these services suitable for both homes and commercial properties?", a: "Yes. Services are tailored for residential, commercial, and shared spaces." },
+                  { q: "Do I need to schedule all services at once?", a: "No. Services can be scheduled individually or through ongoing programs like AMC." },
+                  { q: "Can maintenance help prevent costly repairs?", a: "Yes. Regular maintenance reduces unexpected breakdowns and long-term repair costs." },
+                  { q: "Do you operate throughout Dubai?", a: "Yes. Maintenance services are available across all areas of Dubai." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-overview-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="general" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What is included in general property maintenance?", a: "Routine inspections, minor repairs, preventive checks, and coordination of small tasks." },
+                  { q: "Can general maintenance be done without disruption?", a: "Yes. Services are planned to minimize interference with daily property use." },
+                  { q: "Do you offer both residential and commercial general maintenance?", a: "Yes. Services are tailored to different property types." },
+                  { q: "How often should general maintenance be carried out?", a: "Frequency depends on property size, usage, and client requirements." },
+                  { q: "Do you provide a record of completed maintenance tasks?", a: "Yes. Each visit is documented for transparency and future reference." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-general-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="electrical" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you handle both residential and commercial electrical systems?", a: "Yes. All systems are supported with inspection and repair." },
+                  { q: "Can you identify potential electrical issues before they become serious?", a: "Yes. Routine inspection helps prevent safety risks and downtime." },
+                  { q: "Are electrical repairs performed safely in occupied properties?", a: "Yes. All work follows safety protocols to protect residents and occupants." },
+                  { q: "Do you replace faulty switches, sockets, or fixtures?", a: "Yes. Replacement and repairs are part of the service." },
+                  { q: "Is electrical maintenance included in preventive maintenance programs?", a: "Yes. Electrical checks are included in scheduled AMC plans." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-electrical-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="plumbing" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What plumbing issues are covered?", a: "Leaks, blockages, low water pressure, faulty fixtures, and preventive checks." },
+                  { q: "Do you work in occupied properties?", a: "Yes. Services are planned to minimize disruption." },
+                  { q: "Can minor plumbing issues be fixed before they escalate?", a: "Yes. Preventive maintenance helps avoid major problems." },
+                  { q: "Do you provide maintenance for both residential and commercial plumbing?", a: "Yes. Solutions are tailored for each property type." },
+                  { q: "Are emergency plumbing repairs available?", a: "Yes. Priority support can be provided depending on the issue." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-plumbing-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="hvac" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Do you maintain all types of AC and HVAC systems?", a: "Yes. Both residential and commercial systems are supported." },
+                  { q: "Does HVAC maintenance improve cooling efficiency?", a: "Yes. Routine servicing helps maintain performance and reduce energy consumption." },
+                  { q: "Are filter cleaning and replacement included?", a: "Yes. Proper maintenance of filters is part of all service visits." },
+                  { q: "Can HVAC maintenance prevent system breakdowns during peak summer?", a: "Yes. Preventive maintenance reduces the risk of failure in high-demand periods." },
+                  { q: "Is this service safe for occupied homes or offices?", a: "Yes. All work is carried out safely and efficiently." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-hvac-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="handyman" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What types of repairs are handled?", a: "Minor repairs, furniture and fixture adjustments, door and window hardware, and wall touch-ups." },
+                  { q: "Can multiple small tasks be done in a single visit?", a: "Yes. Handyman services are coordinated to address multiple issues efficiently." },
+                  { q: "Are services suitable for both homes and offices?", a: "Yes. Services are tailored for residential and commercial spaces." },
+                  { q: "Can repairs be scheduled flexibly?", a: "Yes. Visits are arranged according to client needs and availability." },
+                  { q: "Do you provide maintenance documentation?", a: "Yes. All completed tasks are recorded for reference." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-handyman-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="amc" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What is included in preventive maintenance and AMC?", a: "Scheduled inspections, system checks, minor repairs, and preventive actions across the property." },
+                  { q: "Do preventive maintenance plans reduce repair costs?", a: "Yes. Early detection of issues helps minimize long-term costs." },
+                  { q: "Can AMC contracts be customized?", a: "Yes. Contracts are tailored based on property type, size, and requirements." },
+                  { q: "Are residential and commercial properties covered under AMC?", a: "Yes. AMC services are available for all property types." },
+                  { q: "Do you provide reports for maintenance activities?", a: "Yes. Documentation is provided to track completed tasks and recommendations." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-amc-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
