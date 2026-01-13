@@ -39,10 +39,15 @@ import {
   Calendar,
   Quote,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Target,
+  Building2,
+  Sparkle,
+  Eye
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Hero Stats - matching thehealthyhome.me
 const heroStats = [
@@ -1025,7 +1030,415 @@ export default function WellnessServices() {
         </div>
       </section>
 
-      {/* SECTION 16: BOOK NOW CTA - matching thehealthyhome.me */}
+      {/* SECTION 18: WELLNESS SERVICES OVERVIEW */}
+      <section className="py-24 bg-background" data-testid="section-wellness-overview">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Main Intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#09263D]">
+              Wellness Services in Dubai
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              Wellness within a home or commercial space goes beyond appearance. It focuses on creating healthier environments by improving air quality, hygiene, comfort, and overall living conditions. In Dubai, wellness services are especially important due to climate conditions, sealed indoor environments, and long hours spent indoors.
+            </p>
+          </motion.div>
+
+          {/* Dubai Context Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-16"
+          >
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-7 h-7 text-[#970A44]" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#09263D]">Why Wellness Services Matter in Dubai</h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Dubai's climate, combined with modern building designs, often leads to unique indoor environment challenges that require professional attention.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {[
+                        "Limited natural ventilation",
+                        "Higher indoor humidity",
+                        "Accumulation of dust and pollutants",
+                        "Increased reliance on air conditioning"
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                          <span className="text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Our Approach */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#970A44]" />
+                <span className="text-[#970A44] font-medium">Our Approach to Wellness</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+                Preventive, Structured & Practical
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Wellness services are most effective when they are preventive, structured, and based on real environmental needs rather than trends. Our approach focuses on:
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Identifying factors that affect indoor health and comfort",
+                  "Using solutions suited to Dubai's climate and building conditions",
+                  "Applying methods that are safe, practical, and easy to maintain",
+                  "Supporting long-term improvement rather than temporary fixes"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
+                <Eye className="w-5 h-5 text-[#1C4668]" />
+                <span className="text-[#1C4668] font-medium">What Our Wellness Services Cover</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+                Comprehensive Indoor Health
+              </h3>
+              <div className="space-y-4">
+                {[
+                  { title: "Indoor Air Quality Solutions", desc: "Services aimed at improving air circulation, reducing airborne pollutants, and creating cleaner indoor environments." },
+                  { title: "Hygiene & Sanitization Services", desc: "Professional cleaning and sanitization designed to maintain high hygiene standards." },
+                  { title: "Mold & Moisture Control", desc: "Solutions that address moisture buildup, mold growth, and related indoor health concerns." },
+                  { title: "Water Quality & Filtration", desc: "Services focused on improving water quality through filtration and treatment systems." },
+                  { title: "Allergy & Dust Reduction", desc: "Measures designed to reduce allergens, dust accumulation, and irritants within indoor spaces." },
+                ].map((item, idx) => (
+                  <Card key={idx} className="border hover-elevate" data-testid={`wellness-cover-${idx}`}>
+                    <CardContent className="p-4">
+                      <h4 className="font-bold text-[#09263D] mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Who These Services Are For */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="mb-16"
+          >
+            <div className="text-center mb-10">
+              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+                Who These Services Are For
+              </h3>
+              <p className="text-muted-foreground">Each project is approached with attention to specific needs and usage patterns.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { icon: Home, title: "Homeowners", desc: "Seeking healthier living environments" },
+                { icon: Users, title: "Families", desc: "With children or elderly residents" },
+                { icon: Building2, title: "Property Owners", desc: "And landlords investing in wellness" },
+                { icon: Award, title: "Commercial Spaces", desc: "Prioritizing hygiene and comfort" },
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                >
+                  <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`wellness-for-${idx}`}>
+                    <CardContent className="p-6">
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
+                        <item.icon className="w-7 h-7 text-[#970A44]" />
+                      </div>
+                      <h4 className="font-bold mb-2 text-[#09263D]">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* How Wellness Projects Are Handled */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+              <CardContent className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white font-serif">How Wellness Projects Are Handled</h3>
+                </div>
+                <p className="text-white/80 leading-relaxed mb-8">
+                  Our process is simple and structured to ensure wellness services deliver meaningful and lasting results.
+                </p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    { step: "1", title: "Assessment", desc: "Assessing the space and identifying wellness concerns" },
+                    { step: "2", title: "Recommendation", desc: "Recommending suitable services and solutions" },
+                    { step: "3", title: "Execution", desc: "Executing services using safe and effective methods" },
+                    { step: "4", title: "Review", desc: "Reviewing outcomes to ensure improvement" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="text-center">
+                      <div className="w-12 h-12 mx-auto mb-4 bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        {item.step}
+                      </div>
+                      <h4 className="font-bold text-white mb-2">{item.title}</h4>
+                      <p className="text-white/70 text-sm">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 19: COMPREHENSIVE FAQ */}
+      <section className="py-24 bg-[#F6F4EB]" data-testid="section-wellness-faq">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#09263D]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Find answers to common questions about our wellness services.
+            </p>
+          </motion.div>
+
+          <Tabs defaultValue="overview" className="w-full">
+            <TabsList className="w-full max-w-5xl mx-auto mb-8 flex flex-wrap h-auto gap-2 bg-transparent justify-center">
+              {[
+                { value: "overview", label: "Overview" },
+                { value: "air-quality", label: "Air Quality" },
+                { value: "hygiene", label: "Hygiene" },
+                { value: "mold", label: "Mold Control" },
+                { value: "water", label: "Water Quality" },
+                { value: "allergy", label: "Allergy & Dust" },
+              ].map((tab) => (
+                <TabsTrigger 
+                  key={tab.value} 
+                  value={tab.value}
+                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  data-testid={`tab-wellness-faq-${tab.value}`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent value="overview" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What do wellness services focus on?", a: "Wellness services focus on improving indoor comfort, hygiene, air quality, and overall living conditions." },
+                  { q: "Are wellness services suitable for existing homes?", a: "Yes. All services are designed to integrate into existing residential and commercial properties." },
+                  { q: "Do wellness services require major renovation work?", a: "No. Most solutions are non-invasive and can be implemented without major disruption." },
+                  { q: "Are these services relevant for Dubai properties?", a: "Yes. They are designed specifically around Dubai's climate, indoor environments, and usage patterns." },
+                  { q: "Can wellness services be combined with other property services?", a: "Yes. Wellness services can be integrated with interior or maintenance services if required." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-overview-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="air-quality" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Why is indoor air quality a concern in Dubai?", a: "Heavy air conditioning use and limited natural ventilation can reduce indoor air quality." },
+                  { q: "Do you assess air quality before recommending solutions?", a: "Yes. Each space is reviewed to identify air quality concerns." },
+                  { q: "Can air quality be improved without changing AC systems?", a: "In many cases, yes. Improvements can be made through circulation and control measures." },
+                  { q: "Are solutions safe for daily living?", a: "Yes. All methods are safe for occupied spaces." },
+                  { q: "Is this service suitable for offices as well?", a: "Yes. Both residential and commercial spaces are supported." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-air-quality-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="hygiene" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "How is sanitization different from regular cleaning?", a: "Sanitization targets bacteria and germs, not just visible dirt." },
+                  { q: "Are sanitization methods safe for homes with children or pets?", a: "Yes. Safe and approved methods are used." },
+                  { q: "Do you sanitize high-contact areas specifically?", a: "Yes. High-touch surfaces are a key focus." },
+                  { q: "Can sanitization be done in commercial spaces?", a: "Yes. Offices and shared spaces are commonly serviced." },
+                  { q: "How often should sanitization be done?", a: "Frequency depends on usage and occupancy levels." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-hygiene-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="mold" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What causes mold growth indoors?", a: "Mold develops due to excess moisture, humidity, or poor ventilation." },
+                  { q: "Do you treat only visible mold?", a: "No. The focus is on identifying and addressing the moisture source." },
+                  { q: "Is mold treatment safe for occupied homes?", a: "Yes. Treatments are applied carefully and safely." },
+                  { q: "Can mold return after treatment?", a: "Preventive measures are recommended to reduce recurrence." },
+                  { q: "Is this service suitable for bathrooms and kitchens?", a: "Yes. These areas are commonly treated." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-mold-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="water" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "What water issues are common in Dubai homes?", a: "Mineral content, scaling, and sediment are common concerns." },
+                  { q: "Do you test water before recommending filtration?", a: "Yes. Water conditions are reviewed before suggesting solutions." },
+                  { q: "Are filtration systems installed for the entire home?", a: "Both whole-property and point-of-use options are available." },
+                  { q: "Do filtration systems require maintenance?", a: "Yes. Basic maintenance is required for consistent performance." },
+                  { q: "Can filtration improve water comfort for bathing?", a: "Yes. Improved water quality enhances daily usability." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-water-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="allergy" className="mt-0">
+              <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                {[
+                  { q: "Why does dust build up quickly in Dubai homes?", a: "Outdoor dust and constant air circulation contribute to buildup." },
+                  { q: "Can dust reduction help allergy discomfort?", a: "Yes. Reducing dust and allergens improves indoor comfort." },
+                  { q: "Is this service a replacement for regular cleaning?", a: "No. It supports cleaner environments alongside routine cleaning." },
+                  { q: "Are solutions suitable for occupied spaces?", a: "Yes. Methods are non-disruptive and safe." },
+                  { q: "Can this service be used in offices?", a: "Yes. Offices and shared spaces benefit from dust reduction solutions." },
+                ].map((faq, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  >
+                    <Card className="h-full border hover-elevate" data-testid={`faq-allergy-${idx}`}>
+                      <CardContent className="p-6">
+                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* SECTION 20: BOOK NOW CTA - matching thehealthyhome.me */}
       <section className="py-20 bg-[#970A44]" data-testid="section-book-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
