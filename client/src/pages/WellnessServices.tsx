@@ -296,41 +296,32 @@ export default function WellnessServices() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* SECTION 2: AIR QUALITY & TREES PLANTED WIDGETS - matching thehealthyhome.me */}
-      <section className="py-6 bg-white" data-testid="section-widgets">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-6">
+            {/* Air Quality & Trees Planted Widgets - inside hero */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-4 bg-[#F6F4EB] rounded-full px-6 py-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="flex flex-wrap justify-center gap-4 mt-8"
+              data-testid="section-widgets"
             >
-              <Wind className="w-8 h-8 text-[#970A44]" />
-              <div>
-                <span className="text-sm text-muted-foreground">Air Quality Today</span>
-                <div className="font-bold text-[#09263D]">Good - 85 AQI</div>
+              <div className="flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-full px-5 py-2.5 shadow-lg">
+                <Wind className="w-6 h-6 text-[#970A44]" />
+                <div>
+                  <span className="text-xs text-muted-foreground block">Air Quality Today</span>
+                  <div className="font-bold text-[#09263D] text-sm">Good - 85 AQI</div>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-3 bg-green-50/95 backdrop-blur-sm rounded-full px-5 py-2.5 shadow-lg">
+                <TreePine className="w-6 h-6 text-green-600" />
+                <div>
+                  <span className="text-xs text-muted-foreground block">Trees Planted</span>
+                  <div className="font-bold text-green-700 text-sm">11,780+ Trees</div>
+                </div>
               </div>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="flex items-center gap-4 bg-green-50 rounded-full px-6 py-3"
-            >
-              <TreePine className="w-8 h-8 text-green-600" />
-              <div>
-                <span className="text-sm text-muted-foreground">Trees Planted</span>
-                <div className="font-bold text-green-700">11,780+ Trees</div>
-              </div>
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
