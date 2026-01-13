@@ -20,8 +20,6 @@ import WellnessServices from "@/pages/WellnessServices";
 import WellnessServiceDetail from "@/pages/WellnessServiceDetail";
 import MaintenanceServices from "@/pages/MaintenanceServices";
 import MaintenanceServiceDetail from "@/pages/MaintenanceServiceDetail";
-import DesignCategory from "@/pages/DesignCategory";
-import DesignDetail from "@/pages/DesignDetail";
 import InteriorServiceDetail from "@/pages/InteriorServiceDetail";
 import ProductDetail from "@/pages/ProductDetail";
 import NotFound from "@/pages/NotFound";
