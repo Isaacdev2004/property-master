@@ -120,7 +120,7 @@ export default function DesignDetail() {
               <span className="hover:text-foreground cursor-pointer">Interior Design</span>
             </Link>
             <span>/</span>
-            <Link href={`/interior-design/${category}`} data-testid="link-breadcrumb-category">
+            <Link href="/interior-design" data-testid="link-breadcrumb-category">
               <span className="hover:text-foreground cursor-pointer">{design.categoryLabel}</span>
             </Link>
             <span>/</span>
@@ -261,7 +261,7 @@ export default function DesignDetail() {
               className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
               data-testid="button-view-all-related"
             >
-              <Link href={`/interior-design/${category}`}>
+              <Link href="/interior-design">
                 View All
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
@@ -276,7 +276,7 @@ export default function DesignDetail() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
               >
-                <Link href={`/interior-design/${category}/${related.slug}`} data-testid={`link-related-${related.id}`}>
+                <Link href={`/interior-design/${related.slug}`} data-testid={`link-related-${related.id}`}>
                   <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-related-${related.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <img 
@@ -332,7 +332,7 @@ export default function DesignDetail() {
               className="border-white/50 text-white hover:bg-white/10 rounded-full px-8"
               data-testid="button-browse-more"
             >
-              <Link href={`/interior-design/${category}`}>
+              <Link href="/interior-design">
                 <ArrowLeft className="mr-2 w-5 h-5" />
                 Browse More Designs
               </Link>

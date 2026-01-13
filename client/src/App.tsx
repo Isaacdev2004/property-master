@@ -22,6 +22,7 @@ import MaintenanceServices from "@/pages/MaintenanceServices";
 import MaintenanceServiceDetail from "@/pages/MaintenanceServiceDetail";
 import DesignCategory from "@/pages/DesignCategory";
 import DesignDetail from "@/pages/DesignDetail";
+import InteriorServiceDetail from "@/pages/InteriorServiceDetail";
 import ProductDetail from "@/pages/ProductDetail";
 import NotFound from "@/pages/NotFound";
 
@@ -35,8 +36,7 @@ function Router() {
           <Route path="/services" component={Services} />
           <Route path="/services/:slug" component={Services} />
           <Route path="/interior-design" component={InteriorDesign} />
-          <Route path="/interior-design/:category" component={DesignCategory} />
-          <Route path="/interior-design/:category/:slug" component={DesignDetail} />
+          <Route path="/interior-design/:serviceSlug" component={InteriorServiceDetail} />
           <Route path="/wellness" component={WellnessServices} />
           <Route path="/wellness/:serviceSlug" component={WellnessServiceDetail} />
           <Route path="/maintenance" component={MaintenanceServices} />

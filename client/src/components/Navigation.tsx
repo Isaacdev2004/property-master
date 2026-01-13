@@ -1,61 +1,101 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Search, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Search, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle, Layers, Grid3X3, TreePine, Fence, GlassWater, Gem, Store, Hotel, ShoppingBag, Shirt, Scissors, Pipette, Thermometer, FlaskConical, Lightbulb, Plug, Cable, MonitorSpeaker, DoorOpen, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Comprehensive mega menu data with ALL services
+// Comprehensive mega menu data with ALL services from the provided list
 const interiorDesignMenu = {
   title: "Interior Design & Fit-Out",
   subtitle: "Transform Your Space",
   stats: { projects: "500+", clients: "1000+", years: "15+" },
   categories: [
     {
-      title: "Residential Design",
+      title: "Residential Renovation",
       icon: Home,
       color: "#970A44",
       services: [
-        { label: "Luxury Villa Design", href: "/interior-design/villa", desc: "Complete villa transformation" },
-        { label: "Apartment Interiors", href: "/interior-design/apartment", desc: "Modern living spaces" },
-        { label: "Penthouse Design", href: "/interior-design/penthouse", desc: "Sky-high luxury" },
-        { label: "Townhouse Renovation", href: "/interior-design/townhouse", desc: "Urban elegance" },
-        { label: "Studio Apartments", href: "/interior-design/studio", desc: "Smart space solutions" },
+        { label: "Kitchen Remodeling", href: "/interior-design/kitchen-remodeling" },
+        { label: "Wardrobe Design", href: "/interior-design/wardrobe" },
+        { label: "Modular Kitchen", href: "/interior-design/modular-kitchen" },
+        { label: "Living Room Design", href: "/interior-design/living-room" },
+        { label: "Master Bedroom", href: "/interior-design/master-bedroom" },
+        { label: "Kids Room", href: "/interior-design/kids-room" },
+        { label: "Bathroom Design", href: "/interior-design/bathroom" },
+        { label: "Dining Room", href: "/interior-design/dining-room" },
+        { label: "Balcony Design", href: "/interior-design/balcony" },
+        { label: "Pooja Mandir", href: "/interior-design/pooja-mandir" },
       ]
     },
     {
-      title: "Commercial Spaces",
-      icon: Building2,
+      title: "Flooring Solutions",
+      icon: Layers,
       color: "#1C4668",
       services: [
-        { label: "Office Fit-Out", href: "/interior-design/office", desc: "Productive workspaces" },
-        { label: "Retail Store Design", href: "/interior-design/retail", desc: "Customer experience" },
-        { label: "Restaurant & Café", href: "/interior-design/restaurant", desc: "Dining ambiance" },
-        { label: "Hotel & Hospitality", href: "/interior-design/hotel", desc: "Guest experience" },
-        { label: "Showroom Design", href: "/interior-design/showroom", desc: "Display excellence" },
+        { label: "LVT Flooring", href: "/interior-design/lvt-flooring" },
+        { label: "SPC Flooring", href: "/interior-design/spc-flooring" },
+        { label: "Vinyl Flooring", href: "/interior-design/vinyl-flooring" },
+        { label: "Bamboo Flooring", href: "/interior-design/bamboo-flooring" },
+        { label: "Parquet Flooring", href: "/interior-design/parquet-flooring" },
+        { label: "Wooden Flooring", href: "/interior-design/wooden-flooring" },
+        { label: "Gym Flooring", href: "/interior-design/gym-flooring" },
+        { label: "Laminate Flooring", href: "/interior-design/laminate-flooring" },
+        { label: "Outdoor Flooring", href: "/interior-design/outdoor-flooring" },
       ]
     },
     {
-      title: "Room Specific",
+      title: "Interior Elements",
       icon: Paintbrush,
       color: "#09263D",
       services: [
-        { label: "Kitchen Design", href: "/interior-design/kitchen", desc: "Culinary spaces" },
-        { label: "Bathroom Renovation", href: "/interior-design/bathroom", desc: "Spa-like retreats" },
-        { label: "Bedroom Interiors", href: "/interior-design/bedroom", desc: "Restful sanctuaries" },
-        { label: "Living Room Design", href: "/interior-design/living-room", desc: "Entertainment hubs" },
-        { label: "Home Office", href: "/interior-design/home-office", desc: "Work from home" },
+        { label: "TV Unit Design", href: "/interior-design/tv-unit" },
+        { label: "False Ceiling", href: "/interior-design/false-ceiling" },
+        { label: "Wall Treatments", href: "/interior-design/wall" },
+        { label: "Window Design", href: "/interior-design/window" },
+        { label: "Kitchen Wall Tiles", href: "/interior-design/kitchen-tiles" },
+        { label: "Staircase Design", href: "/interior-design/staircase" },
+        { label: "Door Design", href: "/interior-design/door" },
+        { label: "Gypsum Partition", href: "/interior-design/gypsum-partition" },
+        { label: "Quartz Counter Tops", href: "/interior-design/countertops" },
       ]
     },
     {
-      title: "Specialized Services",
-      icon: Sparkles,
+      title: "Swimming Pool Services",
+      icon: Waves,
       color: "#720632",
       services: [
-        { label: "Custom Furniture", href: "/interior-design/custom-furniture", desc: "Bespoke pieces" },
-        { label: "Lighting Design", href: "/interior-design/lighting", desc: "Ambiance creation" },
-        { label: "False Ceiling", href: "/interior-design/ceiling", desc: "Architectural detail" },
-        { label: "Flooring Solutions", href: "/interior-design/flooring", desc: "Foundation beauty" },
-        { label: "Wall Treatments", href: "/interior-design/walls", desc: "Texture & color" },
+        { label: "Pool Design & Build", href: "/interior-design/pool-design" },
+        { label: "Infinity Pool", href: "/interior-design/infinity-pool" },
+        { label: "Lap Pool", href: "/interior-design/lap-pool" },
+        { label: "Plunge Pool", href: "/interior-design/plunge-pool" },
+        { label: "Concrete Pool", href: "/interior-design/concrete-pool" },
+        { label: "Fiberglass Pool", href: "/interior-design/fiberglass-pool" },
+        { label: "Pool Lighting", href: "/interior-design/pool-lighting" },
+        { label: "Fountain & Water Features", href: "/interior-design/fountains" },
+      ]
+    },
+    {
+      title: "Outdoor & Landscape",
+      icon: TreePine,
+      color: "#970A44",
+      services: [
+        { label: "Gardens & Landscape", href: "/interior-design/landscape" },
+        { label: "Pergola & Gazebo", href: "/interior-design/pergola" },
+        { label: "Outdoor Kitchen BBQ", href: "/interior-design/outdoor-kitchen" },
+        { label: "Glass & Aluminum Works", href: "/interior-design/glass-aluminum" },
+      ]
+    },
+    {
+      title: "Restoring & Commercial",
+      icon: Gem,
+      color: "#1C4668",
+      services: [
+        { label: "Marble Polishing", href: "/interior-design/marble-polishing" },
+        { label: "Marble Stain Removal", href: "/interior-design/marble-stain" },
+        { label: "Marble Floor Sealing", href: "/interior-design/marble-sealing" },
+        { label: "Restaurant Design", href: "/interior-design/restaurant" },
+        { label: "Hospitality Design", href: "/interior-design/hospitality" },
+        { label: "Retail Store Design", href: "/interior-design/retail" },
       ]
     }
   ],
@@ -73,56 +113,54 @@ const wellnessMenu = {
   stats: { customers: "61,000+", rating: "4.9/5", reviews: "7,000+" },
   categories: [
     {
-      title: "AC & Air Quality",
+      title: "AC Services",
       icon: Wind,
       color: "#970A44",
       services: [
-        { label: "AC Cleaning", href: "/wellness/ac-cleaning", desc: "Deep cleaning service" },
-        { label: "AC Coil Cleaning", href: "/wellness/ac-coil-cleaning", desc: "Efficiency boost" },
-        { label: "AC Duct Cleaning", href: "/wellness/ac-duct-cleaning", desc: "Ductwork sanitization" },
-        { label: "AC Mold Removal", href: "/wellness/mold-removal", desc: "Mold elimination" },
-        { label: "AC Repair & Service", href: "/wellness/ac-repair", desc: "Expert repairs" },
-        { label: "AC Installation", href: "/wellness/ac-installation", desc: "New unit setup" },
-        { label: "Air Quality Testing", href: "/wellness/air-quality-testing", desc: "Indoor air analysis" },
+        { label: "AC Cleaning", href: "/wellness/ac-cleaning" },
+        { label: "AC Coil Cleaning", href: "/wellness/ac-coil-cleaning" },
+        { label: "AC Repair & Maintenance", href: "/wellness/ac-repair" },
+        { label: "Mold Removal", href: "/wellness/mold-removal" },
+        { label: "AC Duct Liner Services", href: "/wellness/ac-duct-liner" },
+        { label: "AC Installation", href: "/wellness/ac-installation" },
+        { label: "Annual AC Maintenance (AMC)", href: "/wellness/ac-amc" },
+        { label: "AC Aftercare Contract", href: "/wellness/ac-aftercare" },
       ]
     },
     {
-      title: "Furniture & Fabric",
+      title: "Furniture Cleaning",
       icon: Sofa,
       color: "#1C4668",
       services: [
-        { label: "Carpet Cleaning", href: "/wellness/carpet-cleaning", desc: "Deep extraction" },
-        { label: "Mattress Cleaning", href: "/wellness/mattress-cleaning", desc: "Allergen removal" },
-        { label: "Sofa & Upholstery", href: "/wellness/furniture-cleaning", desc: "Fabric revival" },
-        { label: "Curtain Cleaning", href: "/wellness/curtain-cleaning", desc: "Drape restoration" },
-        { label: "Leather Care", href: "/wellness/leather-cleaning", desc: "Premium leather" },
-        { label: "Rug Cleaning", href: "/wellness/rug-cleaning", desc: "Oriental & area rugs" },
-        { label: "Nano Coating", href: "/wellness/nano-coating", desc: "Stain protection" },
+        { label: "Mattress Cleaning", href: "/wellness/mattress-cleaning" },
+        { label: "Sofa Cleaning", href: "/wellness/furniture-cleaning" },
+        { label: "Carpet Cleaning", href: "/wellness/carpet-cleaning" },
+        { label: "Curtains Cleaning", href: "/wellness/curtain-cleaning" },
+        { label: "Upholstery Shampooing", href: "/wellness/upholstery-cleaning" },
+        { label: "Nano Coating Protection", href: "/wellness/nano-coating" },
+        { label: "Full Home Furniture Package", href: "/wellness/furniture-package" },
+      ]
+    },
+    {
+      title: "Water & Pipeline",
+      icon: Droplets,
+      color: "#09263D",
+      services: [
+        { label: "Water Tank Cleaning", href: "/wellness/water-tank" },
+        { label: "Pipeline Disinfection", href: "/wellness/pipeline" },
+        { label: "Water Filters & Purifiers", href: "/wellness/water-filter" },
+        { label: "Whole House Filtration", href: "/wellness/whole-house-filter" },
+        { label: "Shower Filters", href: "/wellness/shower-filter" },
       ]
     },
     {
       title: "Home Deep Cleaning",
       icon: Sparkles,
-      color: "#09263D",
-      services: [
-        { label: "Move-In/Out Cleaning", href: "/wellness/deep-cleaning", desc: "Complete refresh" },
-        { label: "Premium Deep Clean", href: "/wellness/premium-cleaning", desc: "Intensive cleaning" },
-        { label: "Kitchen Deep Clean", href: "/wellness/kitchen-cleaning", desc: "Grease & grime" },
-        { label: "Bathroom Sanitization", href: "/wellness/bathroom-cleaning", desc: "Hygiene focus" },
-        { label: "Post-Construction", href: "/wellness/post-construction", desc: "Debris removal" },
-        { label: "Party Clean-Up", href: "/wellness/party-cleanup", desc: "Event aftermath" },
-      ]
-    },
-    {
-      title: "Water & Tanks",
-      icon: Droplets,
       color: "#720632",
       services: [
-        { label: "Water Tank Cleaning", href: "/wellness/water-tank", desc: "Tank sanitization" },
-        { label: "Pipeline Disinfection", href: "/wellness/pipeline", desc: "Pipe cleaning" },
-        { label: "Water Filter Install", href: "/wellness/water-filter", desc: "Filtration systems" },
-        { label: "Whole House Filtration", href: "/wellness/whole-house-filter", desc: "Complete solution" },
-        { label: "Water Quality Test", href: "/wellness/water-testing", desc: "Quality analysis" },
+        { label: "Move-In/Out Cleaning", href: "/wellness/deep-cleaning" },
+        { label: "Premium Deep Cleaning", href: "/wellness/premium-cleaning" },
+        { label: "Furniture Deep Cleaning", href: "/wellness/furniture-deep-clean" },
       ]
     },
     {
@@ -130,25 +168,27 @@ const wellnessMenu = {
       icon: Bug,
       color: "#970A44",
       services: [
-        { label: "Bed Bug Treatment", href: "/wellness/pest-control", desc: "Complete elimination" },
-        { label: "Cockroach Control", href: "/wellness/cockroach-control", desc: "Roach removal" },
-        { label: "Rodent Control", href: "/wellness/rodent-control", desc: "Mouse & rat" },
-        { label: "Termite Treatment", href: "/wellness/termite-control", desc: "Wood protection" },
-        { label: "Mosquito Control", href: "/wellness/mosquito-control", desc: "Outdoor comfort" },
-        { label: "General Pest Control", href: "/wellness/general-pest", desc: "All-in-one" },
+        { label: "Drainage Cleaning", href: "/wellness/drainage-cleaning" },
+        { label: "Pest Control Contracts", href: "/wellness/pest-contracts" },
+        { label: "Bed Bugs Control", href: "/wellness/bed-bugs" },
+        { label: "Rodent Control", href: "/wellness/rodent-control" },
+        { label: "Cockroach Control", href: "/wellness/cockroach-control" },
+        { label: "Mosquito Control", href: "/wellness/mosquito-control" },
+        { label: "Termite Control", href: "/wellness/termite-control" },
+        { label: "Mosquito Trap Solutions", href: "/wellness/mosquito-trap" },
       ]
     },
     {
-      title: "Personal Wellness",
-      icon: Heart,
+      title: "Testing & Mold",
+      icon: TestTube,
       color: "#1C4668",
       services: [
-        { label: "Healthcare at Home", href: "/wellness/healthcare", desc: "Medical services" },
-        { label: "IV Drip Therapy", href: "/wellness/iv-drip", desc: "Vitamin infusion" },
-        { label: "Spa & Beauty", href: "/wellness/spa-beauty", desc: "Home pampering" },
-        { label: "Physiotherapy", href: "/wellness/physiotherapy", desc: "Physical therapy" },
-        { label: "Nutrition Consult", href: "/wellness/nutrition", desc: "Diet planning" },
-        { label: "Fitness Training", href: "/wellness/fitness", desc: "Personal trainer" },
+        { label: "Mold Inspection & Testing", href: "/wellness/mold-inspection" },
+        { label: "Mold Remediation", href: "/wellness/mold-remediation" },
+        { label: "Indoor Air Quality Testing", href: "/wellness/air-quality-testing" },
+        { label: "Water Quality Testing", href: "/wellness/water-testing" },
+        { label: "Surface Testing", href: "/wellness/surface-testing" },
+        { label: "Maid Services (Coming Soon)", href: "/wellness/maid-services" },
       ]
     }
   ],
@@ -166,75 +206,80 @@ const maintenanceMenu = {
   stats: { years: "40+", customers: "3,000+", properties: "2,500+" },
   categories: [
     {
-      title: "Electrical",
-      icon: Zap,
-      color: "#970A44",
-      services: [
-        { label: "Electrical Repairs", href: "/maintenance/electrical", desc: "Wiring & fixtures" },
-        { label: "Light Installation", href: "/maintenance/lighting", desc: "Indoor & outdoor" },
-        { label: "Socket & Switch", href: "/maintenance/sockets", desc: "Outlets & switches" },
-        { label: "Circuit Breaker", href: "/maintenance/circuit", desc: "Panel services" },
-        { label: "Smart Home Wiring", href: "/maintenance/smart-wiring", desc: "Automation ready" },
-      ]
-    },
-    {
-      title: "Plumbing",
-      icon: Droplets,
-      color: "#1C4668",
-      services: [
-        { label: "Leak Repair", href: "/maintenance/plumbing", desc: "Stop water damage" },
-        { label: "Drain Cleaning", href: "/maintenance/drain", desc: "Unclog drains" },
-        { label: "Pipe Installation", href: "/maintenance/pipes", desc: "New plumbing" },
-        { label: "Water Heater", href: "/maintenance/water-heater", desc: "Hot water systems" },
-        { label: "Toilet & Fixtures", href: "/maintenance/fixtures", desc: "Bathroom repairs" },
-      ]
-    },
-    {
-      title: "AC & HVAC",
-      icon: Wind,
-      color: "#09263D",
-      services: [
-        { label: "AC Maintenance", href: "/maintenance/ac-maintenance", desc: "Regular servicing" },
-        { label: "AC Repair", href: "/maintenance/ac-repair", desc: "Fix breakdowns" },
-        { label: "AC Installation", href: "/maintenance/ac-install", desc: "New unit setup" },
-        { label: "Duct Work", href: "/maintenance/ductwork", desc: "Duct repair" },
-        { label: "Thermostat Setup", href: "/maintenance/thermostat", desc: "Temperature control" },
-      ]
-    },
-    {
-      title: "General Repairs",
-      icon: Wrench,
-      color: "#720632",
-      services: [
-        { label: "Handyman Services", href: "/maintenance/handyman", desc: "All-around repairs" },
-        { label: "Door & Lock Repair", href: "/maintenance/doors", desc: "Security fixes" },
-        { label: "Furniture Assembly", href: "/maintenance/assembly", desc: "Build & install" },
-        { label: "Wall Mounting", href: "/maintenance/mounting", desc: "TV & shelves" },
-        { label: "Minor Carpentry", href: "/maintenance/carpentry", desc: "Wood repairs" },
-      ]
-    },
-    {
-      title: "Painting & Walls",
+      title: "Painting Services",
       icon: PaintBucket,
       color: "#970A44",
       services: [
-        { label: "Interior Painting", href: "/maintenance/painting", desc: "Room makeover" },
-        { label: "Exterior Painting", href: "/maintenance/exterior-paint", desc: "Facade refresh" },
-        { label: "Wall Repair", href: "/maintenance/wall-repair", desc: "Patch & fix" },
-        { label: "Wallpaper Install", href: "/maintenance/wallpaper", desc: "Design accent" },
-        { label: "Waterproofing", href: "/maintenance/waterproofing", desc: "Moisture barrier" },
+        { label: "Wall Painting", href: "/maintenance/wall-painting" },
+        { label: "Interior Painting", href: "/maintenance/interior-painting" },
+        { label: "Exterior Painting", href: "/maintenance/exterior-painting" },
       ]
     },
     {
-      title: "Property Programs",
-      icon: Shield,
+      title: "Moving Services",
+      icon: Truck,
       color: "#1C4668",
       services: [
-        { label: "Annual Contract (AMC)", href: "/maintenance/amc", desc: "Year-round care" },
-        { label: "Emergency Repairs", href: "/maintenance/emergency", desc: "24/7 response" },
-        { label: "Property Inspection", href: "/maintenance/inspection", desc: "Full assessment" },
-        { label: "Preventive Maintenance", href: "/maintenance/preventive", desc: "Avoid breakdowns" },
-        { label: "Seasonal Service", href: "/maintenance/seasonal", desc: "Summer/winter prep" },
+        { label: "Move In/Out Cleaning", href: "/maintenance/move-cleaning" },
+        { label: "Home Moving Services", href: "/maintenance/home-moving" },
+        { label: "Move In/Out Painting", href: "/maintenance/move-painting" },
+      ]
+    },
+    {
+      title: "AC Maintenance",
+      icon: Wind,
+      color: "#09263D",
+      services: [
+        { label: "Emergency AC Repair", href: "/maintenance/emergency-ac" },
+        { label: "New AC Installation", href: "/maintenance/ac-installation" },
+        { label: "AC Ducting", href: "/maintenance/ac-ducting" },
+        { label: "Duct Type AC Install", href: "/maintenance/duct-ac" },
+        { label: "Chilled Water AC Install", href: "/maintenance/chilled-water-ac" },
+        { label: "AC Annual Contracts", href: "/maintenance/ac-contracts" },
+      ]
+    },
+    {
+      title: "Plumbing Services",
+      icon: Droplets,
+      color: "#720632",
+      services: [
+        { label: "Sanitary Services", href: "/maintenance/sanitary" },
+        { label: "Drainage Cleaning", href: "/maintenance/drainage" },
+        { label: "Leakage Repair", href: "/maintenance/leakage" },
+        { label: "Water Heaters", href: "/maintenance/water-heaters" },
+        { label: "Bathroom Plumbing", href: "/maintenance/bathroom-plumbing" },
+        { label: "Kitchen Plumbing", href: "/maintenance/kitchen-plumbing" },
+      ]
+    },
+    {
+      title: "Electrical Services",
+      icon: Zap,
+      color: "#970A44",
+      services: [
+        { label: "Electrical Contracting", href: "/maintenance/electrical-contracting" },
+        { label: "Interior/Exterior Lighting", href: "/maintenance/lighting" },
+        { label: "Home Wiring & Rewiring", href: "/maintenance/wiring" },
+        { label: "Circuit Breaker Upgrades", href: "/maintenance/circuit-breaker" },
+        { label: "Smart Home Solutions", href: "/maintenance/smart-home" },
+        { label: "Office Electrical Fit-out", href: "/maintenance/office-electrical" },
+        { label: "DEWA Approvals", href: "/maintenance/dewa-approvals" },
+        { label: "Chandelier Installation", href: "/maintenance/chandelier" },
+      ]
+    },
+    {
+      title: "Handyman & More",
+      icon: Hammer,
+      color: "#1C4668",
+      services: [
+        { label: "Furniture Installation", href: "/maintenance/furniture-install" },
+        { label: "TV Installation", href: "/maintenance/tv-installation" },
+        { label: "Drilling & Hanging", href: "/maintenance/drilling" },
+        { label: "Curtains & Blinds Install", href: "/maintenance/curtains-install" },
+        { label: "Door Lock Repair", href: "/maintenance/door-lock" },
+        { label: "Kitchen Hood Services", href: "/maintenance/kitchen-hood" },
+        { label: "Drain Line Unblocking", href: "/maintenance/drain-unblocking" },
+        { label: "CCTV Drain Inspection", href: "/maintenance/cctv-drain" },
+        { label: "Grease Trap Maintenance", href: "/maintenance/grease-trap" },
       ]
     }
   ],

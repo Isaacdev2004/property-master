@@ -1,0 +1,1010 @@
+import { useParams, Link } from "wouter";
+import { motion } from "framer-motion";
+import { 
+  ArrowRight, 
+  ArrowLeft,
+  Home,
+  Paintbrush,
+  Layers,
+  Waves,
+  TreePine,
+  Gem,
+  Building2,
+  UtensilsCrossed,
+  Bed,
+  Bath,
+  Sofa,
+  Baby,
+  Lamp,
+  LayoutGrid,
+  Check,
+  Phone,
+  Clock,
+  ShieldCheck,
+  Calendar,
+  ThumbsUp,
+  Star,
+  Award,
+  Users,
+  Sparkles,
+  Zap,
+  Shield,
+  Ruler,
+  Palette,
+  Eye,
+  Settings
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+// Comprehensive service data for all interior design services
+const serviceData: Record<string, {
+  title: string;
+  tagline: string;
+  description: string;
+  icon: any;
+  color: string;
+  heroImage: string;
+  features: string[];
+  benefits: { icon: any; title: string; description: string }[];
+  process: { step: number; title: string; description: string }[];
+  pricing: { name: string; price: string; features: string[] }[];
+  faqs: { question: string; answer: string }[];
+  relatedServices: { name: string; slug: string }[];
+}> = {
+  // Residential Renovation Services
+  "kitchen-remodeling": {
+    title: "Kitchen Remodeling",
+    tagline: "Transform Your Culinary Space",
+    description: "Complete kitchen renovation services including layout redesign, cabinet installation, countertop fitting, and modern appliance integration. Create your dream kitchen with our expert designers and craftsmen.",
+    icon: UtensilsCrossed,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80",
+    features: [
+      "Custom cabinet design & installation",
+      "Countertop selection & fitting",
+      "Modern appliance integration",
+      "Lighting design & installation",
+      "Flooring & backsplash tiling",
+      "Plumbing & electrical upgrades"
+    ],
+    benefits: [
+      { icon: Palette, title: "Custom Design", description: "Tailored to your cooking style and preferences" },
+      { icon: Zap, title: "Modern Efficiency", description: "Energy-efficient appliances and smart solutions" },
+      { icon: Shield, title: "Quality Materials", description: "Premium materials with long-lasting durability" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Discuss your vision, needs, and budget" },
+      { step: 2, title: "Design", description: "3D visualization and material selection" },
+      { step: 3, title: "Construction", description: "Professional installation by certified team" },
+      { step: 4, title: "Handover", description: "Final inspection and quality assurance" }
+    ],
+    pricing: [
+      { name: "Basic Refresh", price: "From AED 25,000", features: ["Cabinet refacing", "New countertops", "Lighting upgrade"] },
+      { name: "Full Remodel", price: "From AED 60,000", features: ["Complete redesign", "New cabinets", "All appliances"] },
+      { name: "Luxury Kitchen", price: "From AED 150,000", features: ["Premium materials", "Smart appliances", "Custom everything"] }
+    ],
+    faqs: [
+      { question: "How long does a kitchen remodel take?", answer: "A typical kitchen remodel takes 4-8 weeks depending on scope and complexity." },
+      { question: "Do you handle permits?", answer: "Yes, we manage all necessary permits and approvals for your renovation." },
+      { question: "Can I use my kitchen during renovation?", answer: "We can set up a temporary kitchen area to minimize disruption." }
+    ],
+    relatedServices: [
+      { name: "Modular Kitchen", slug: "modular-kitchen" },
+      { name: "Kitchen Wall Tiles", slug: "kitchen-tiles" },
+      { name: "Countertops", slug: "countertops" }
+    ]
+  },
+  "wardrobe": {
+    title: "Wardrobe Design",
+    tagline: "Organize Your Life in Style",
+    description: "Custom wardrobe solutions designed to maximize storage and complement your bedroom aesthetics. From walk-in closets to built-in wardrobes, we create functional and beautiful storage spaces.",
+    icon: LayoutGrid,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1600&q=80",
+    features: [
+      "Custom dimensions & layouts",
+      "Premium materials & finishes",
+      "Internal organization systems",
+      "Soft-close mechanisms",
+      "LED lighting integration",
+      "Mirror & accessory options"
+    ],
+    benefits: [
+      { icon: Ruler, title: "Perfect Fit", description: "Designed to your exact specifications" },
+      { icon: Eye, title: "Aesthetic Appeal", description: "Enhances your bedroom décor" },
+      { icon: Settings, title: "Smart Storage", description: "Maximizes every inch of space" }
+    ],
+    process: [
+      { step: 1, title: "Measure", description: "Precise measurements of your space" },
+      { step: 2, title: "Design", description: "Custom design with 3D visualization" },
+      { step: 3, title: "Manufacture", description: "Factory-crafted to specifications" },
+      { step: 4, title: "Install", description: "Professional installation & setup" }
+    ],
+    pricing: [
+      { name: "Sliding Wardrobe", price: "From AED 8,000", features: ["2-door sliding", "Basic interior", "Standard finish"] },
+      { name: "Walk-in Closet", price: "From AED 25,000", features: ["Full room design", "Custom shelving", "Lighting included"] },
+      { name: "Premium Suite", price: "From AED 50,000", features: ["Italian materials", "Smart lighting", "Accessories included"] }
+    ],
+    faqs: [
+      { question: "What materials do you use?", answer: "We use MDF, HDF, solid wood, and premium laminates depending on your preference and budget." },
+      { question: "How long does installation take?", answer: "Standard wardrobes take 2-3 days, walk-in closets may take up to a week." },
+      { question: "Do you offer a warranty?", answer: "Yes, all our wardrobes come with a 5-year warranty on structure and 2 years on hardware." }
+    ],
+    relatedServices: [
+      { name: "Master Bedroom", slug: "master-bedroom" },
+      { name: "Kids Room", slug: "kids-room" },
+      { name: "TV Unit", slug: "tv-unit" }
+    ]
+  },
+  "modular-kitchen": {
+    title: "Modular Kitchen",
+    tagline: "Smart, Stylish & Functional",
+    description: "Pre-fabricated modular kitchen solutions that combine style with functionality. Quick installation, easy maintenance, and endless customization options for the modern home.",
+    icon: UtensilsCrossed,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    features: [
+      "Ready-to-install modules",
+      "Wide range of finishes",
+      "Soft-close cabinets",
+      "Built-in appliance spaces",
+      "Easy maintenance surfaces",
+      "Customizable layouts"
+    ],
+    benefits: [
+      { icon: Clock, title: "Quick Installation", description: "Ready in 2-3 weeks vs months for traditional" },
+      { icon: Sparkles, title: "Easy Maintenance", description: "Stain-resistant and easy-clean surfaces" },
+      { icon: Palette, title: "Design Flexibility", description: "Mix and match modules as needed" }
+    ],
+    process: [
+      { step: 1, title: "Select", description: "Choose modules and finishes" },
+      { step: 2, title: "Configure", description: "Plan your kitchen layout" },
+      { step: 3, title: "Order", description: "Factory production begins" },
+      { step: 4, title: "Install", description: "Quick professional installation" }
+    ],
+    pricing: [
+      { name: "Compact Kitchen", price: "From AED 15,000", features: ["Up to 8 ft", "Standard modules", "Laminate finish"] },
+      { name: "L-Shape Kitchen", price: "From AED 35,000", features: ["Up to 12 ft", "Premium modules", "Acrylic finish"] },
+      { name: "U-Shape Kitchen", price: "From AED 55,000", features: ["Full modular", "Soft-close all", "Quartz countertop"] }
+    ],
+    faqs: [
+      { question: "What's the difference from regular kitchen?", answer: "Modular kitchens use pre-made units that fit together, allowing faster installation and easier upgrades." },
+      { question: "Can I add modules later?", answer: "Yes, modular systems are designed for easy expansion and reconfiguration." },
+      { question: "What countertop options are available?", answer: "We offer granite, quartz, solid surface, and laminate countertops." }
+    ],
+    relatedServices: [
+      { name: "Kitchen Remodeling", slug: "kitchen-remodeling" },
+      { name: "Kitchen Wall Tiles", slug: "kitchen-tiles" },
+      { name: "False Ceiling", slug: "false-ceiling" }
+    ]
+  },
+  "living-room": {
+    title: "Living Room Design",
+    tagline: "Where Life Happens",
+    description: "Create the perfect living space that reflects your personality and lifestyle. From minimalist modern to classic elegance, our designers bring your vision to life.",
+    icon: Sofa,
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80",
+    features: [
+      "Space planning & layout",
+      "Furniture selection & placement",
+      "Color scheme design",
+      "Lighting design",
+      "Entertainment unit design",
+      "Décor & accessory styling"
+    ],
+    benefits: [
+      { icon: Eye, title: "Visual Harmony", description: "Cohesive design that flows beautifully" },
+      { icon: Sofa, title: "Comfort First", description: "Ergonomic furniture arrangement" },
+      { icon: Zap, title: "Smart Features", description: "Integrated technology solutions" }
+    ],
+    process: [
+      { step: 1, title: "Discover", description: "Understand your lifestyle and preferences" },
+      { step: 2, title: "Design", description: "Create mood boards and 3D renders" },
+      { step: 3, title: "Source", description: "Procure furniture and materials" },
+      { step: 4, title: "Execute", description: "Install and style your space" }
+    ],
+    pricing: [
+      { name: "Refresh", price: "From AED 15,000", features: ["New color scheme", "Furniture rearrangement", "Styling"] },
+      { name: "Redesign", price: "From AED 45,000", features: ["New furniture", "Wall treatments", "Lighting upgrade"] },
+      { name: "Complete Transform", price: "From AED 100,000", features: ["Full renovation", "Custom furniture", "Smart home"] }
+    ],
+    faqs: [
+      { question: "Can you work with my existing furniture?", answer: "Absolutely! We can incorporate your favorite pieces into the new design." },
+      { question: "How do you handle the furniture shopping?", answer: "We source furniture from trusted suppliers and manage all purchases and deliveries." },
+      { question: "Do you offer virtual design services?", answer: "Yes, we offer e-design packages with detailed plans and shopping lists." }
+    ],
+    relatedServices: [
+      { name: "TV Unit", slug: "tv-unit" },
+      { name: "False Ceiling", slug: "false-ceiling" },
+      { name: "Flooring", slug: "lvt-flooring" }
+    ]
+  },
+  "master-bedroom": {
+    title: "Master Bedroom Design",
+    tagline: "Your Personal Sanctuary",
+    description: "Design your dream master bedroom - a personal retreat that combines comfort, style, and functionality. From bed placement to wardrobe integration, we create restful havens.",
+    icon: Bed,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=80",
+    features: [
+      "Bed & headboard design",
+      "Walk-in closet integration",
+      "En-suite bathroom coordination",
+      "Ambient lighting design",
+      "Window treatments",
+      "Seating area design"
+    ],
+    benefits: [
+      { icon: Bed, title: "Restful Design", description: "Optimized for quality sleep" },
+      { icon: Palette, title: "Personal Style", description: "Reflects your unique taste" },
+      { icon: Settings, title: "Smart Storage", description: "Clutter-free living" }
+    ],
+    process: [
+      { step: 1, title: "Assess", description: "Evaluate space and requirements" },
+      { step: 2, title: "Design", description: "Create detailed design plans" },
+      { step: 3, title: "Build", description: "Custom furniture & installation" },
+      { step: 4, title: "Style", description: "Finishing touches & accessories" }
+    ],
+    pricing: [
+      { name: "Essential", price: "From AED 20,000", features: ["Bed design", "Basic wardrobe", "Lighting"] },
+      { name: "Premium", price: "From AED 50,000", features: ["Full design", "Walk-in closet", "Custom furniture"] },
+      { name: "Luxury Suite", price: "From AED 120,000", features: ["Complete renovation", "Smart features", "Premium materials"] }
+    ],
+    faqs: [
+      { question: "Can you design the en-suite bathroom too?", answer: "Yes, we offer coordinated design packages for bedroom and bathroom." },
+      { question: "What bed sizes do you work with?", answer: "We design for all bed sizes from single to super king." },
+      { question: "Do you provide bedding and linens?", answer: "We can source premium bedding as part of our styling service." }
+    ],
+    relatedServices: [
+      { name: "Wardrobe Design", slug: "wardrobe" },
+      { name: "Bathroom Design", slug: "bathroom" },
+      { name: "False Ceiling", slug: "false-ceiling" }
+    ]
+  },
+  "kids-room": {
+    title: "Kids Room Design",
+    tagline: "Spaces That Grow With Them",
+    description: "Fun, functional, and safe children's room designs that inspire creativity and support development. From nurseries to teen spaces, we create rooms kids love.",
+    icon: Baby,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1600&q=80",
+    features: [
+      "Age-appropriate design",
+      "Safe materials & furniture",
+      "Study area integration",
+      "Play zone design",
+      "Storage solutions",
+      "Growth-adaptable layouts"
+    ],
+    benefits: [
+      { icon: Shield, title: "Child Safety", description: "Non-toxic materials and safe design" },
+      { icon: Sparkles, title: "Creativity", description: "Inspiring environments for growth" },
+      { icon: Settings, title: "Adaptable", description: "Grows with your child" }
+    ],
+    process: [
+      { step: 1, title: "Consult", description: "Discuss child's needs and interests" },
+      { step: 2, title: "Design", description: "Create themed or neutral design" },
+      { step: 3, title: "Build", description: "Safe installation process" },
+      { step: 4, title: "Reveal", description: "Surprise the little ones!" }
+    ],
+    pricing: [
+      { name: "Starter Room", price: "From AED 15,000", features: ["Basic furniture", "Wall paint", "Storage"] },
+      { name: "Dream Room", price: "From AED 35,000", features: ["Themed design", "Custom furniture", "Play area"] },
+      { name: "Fantasy Suite", price: "From AED 70,000", features: ["Bespoke design", "Built-in features", "Smart elements"] }
+    ],
+    faqs: [
+      { question: "Are the materials safe for children?", answer: "Yes, we only use non-toxic, child-safe materials and finishes." },
+      { question: "Can you design shared rooms for siblings?", answer: "Absolutely! We specialize in creating functional shared spaces." },
+      { question: "How do you make rooms adaptable for growth?", answer: "We use modular furniture and neutral base designs that can be updated easily." }
+    ],
+    relatedServices: [
+      { name: "Wardrobe Design", slug: "wardrobe" },
+      { name: "False Ceiling", slug: "false-ceiling" },
+      { name: "Flooring", slug: "vinyl-flooring" }
+    ]
+  },
+  "bathroom": {
+    title: "Bathroom Design",
+    tagline: "Your Personal Spa",
+    description: "Transform your bathroom into a luxurious retreat with our comprehensive bathroom design and renovation services. From powder rooms to master bathrooms, we create stunning wet spaces.",
+    icon: Bath,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&q=80",
+    features: [
+      "Complete bathroom renovation",
+      "Tile selection & installation",
+      "Vanity & storage design",
+      "Shower & bathtub installation",
+      "Lighting & ventilation",
+      "Waterproofing solutions"
+    ],
+    benefits: [
+      { icon: Sparkles, title: "Spa Experience", description: "Luxury finishes and fixtures" },
+      { icon: Shield, title: "Waterproof", description: "Professional waterproofing" },
+      { icon: Zap, title: "Efficient", description: "Water-saving fixtures" }
+    ],
+    process: [
+      { step: 1, title: "Plan", description: "Layout and fixture selection" },
+      { step: 2, title: "Prepare", description: "Demolition and waterproofing" },
+      { step: 3, title: "Install", description: "Tiling, plumbing, fixtures" },
+      { step: 4, title: "Finish", description: "Final touches and cleaning" }
+    ],
+    pricing: [
+      { name: "Powder Room", price: "From AED 15,000", features: ["Small bathroom", "Basic fixtures", "Standard tiles"] },
+      { name: "Full Bathroom", price: "From AED 40,000", features: ["Complete renovation", "Quality fixtures", "Designer tiles"] },
+      { name: "Master Bathroom", price: "From AED 80,000", features: ["Large space", "Premium fixtures", "Custom design"] }
+    ],
+    faqs: [
+      { question: "How long does a bathroom renovation take?", answer: "A typical bathroom takes 2-4 weeks depending on scope." },
+      { question: "Do you handle plumbing work?", answer: "Yes, we have licensed plumbers as part of our team." },
+      { question: "Can you relocate bathroom fixtures?", answer: "Yes, we can move fixtures though this may affect timeline and cost." }
+    ],
+    relatedServices: [
+      { name: "Master Bedroom", slug: "master-bedroom" },
+      { name: "Kitchen Wall Tiles", slug: "kitchen-tiles" },
+      { name: "Flooring", slug: "vinyl-flooring" }
+    ]
+  },
+  // Flooring Services
+  "lvt-flooring": {
+    title: "LVT Flooring",
+    tagline: "Luxury Vinyl Tile Excellence",
+    description: "Premium Luxury Vinyl Tile flooring that combines the beauty of natural materials with exceptional durability and easy maintenance. Perfect for residential and commercial spaces.",
+    icon: Layers,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1600&q=80",
+    features: [
+      "Realistic wood & stone looks",
+      "100% waterproof",
+      "Scratch & stain resistant",
+      "Easy click installation",
+      "Underfloor heating compatible",
+      "Low maintenance"
+    ],
+    benefits: [
+      { icon: Shield, title: "Durable", description: "Commercial-grade wear layer" },
+      { icon: Sparkles, title: "Beautiful", description: "Realistic textures and patterns" },
+      { icon: Clock, title: "Quick Install", description: "Floating click system" }
+    ],
+    process: [
+      { step: 1, title: "Measure", description: "Accurate room measurements" },
+      { step: 2, title: "Select", description: "Choose design and finish" },
+      { step: 3, title: "Prepare", description: "Subfloor preparation" },
+      { step: 4, title: "Install", description: "Professional installation" }
+    ],
+    pricing: [
+      { name: "Standard LVT", price: "From AED 45/sqm", features: ["2mm thickness", "0.3mm wear layer", "Basic patterns"] },
+      { name: "Premium LVT", price: "From AED 85/sqm", features: ["4mm thickness", "0.5mm wear layer", "Wood grain textures"] },
+      { name: "Luxury LVT", price: "From AED 150/sqm", features: ["5mm+ thickness", "0.7mm wear layer", "Stone/marble effects"] }
+    ],
+    faqs: [
+      { question: "Is LVT suitable for wet areas?", answer: "Yes, LVT is 100% waterproof and perfect for bathrooms and kitchens." },
+      { question: "How long does LVT flooring last?", answer: "Quality LVT can last 15-20 years with proper care." },
+      { question: "Can LVT be installed over existing flooring?", answer: "In many cases yes, over flat, stable surfaces. We'll assess during consultation." }
+    ],
+    relatedServices: [
+      { name: "SPC Flooring", slug: "spc-flooring" },
+      { name: "Vinyl Flooring", slug: "vinyl-flooring" },
+      { name: "Wooden Flooring", slug: "wooden-flooring" }
+    ]
+  },
+  "spc-flooring": {
+    title: "SPC Flooring",
+    tagline: "Stone Polymer Composite Strength",
+    description: "SPC (Stone Polymer Composite) flooring offers the ultimate combination of durability, waterproof performance, and aesthetic appeal. Ideal for high-traffic areas and commercial spaces.",
+    icon: Layers,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    features: [
+      "Rigid core construction",
+      "100% waterproof",
+      "Dent & impact resistant",
+      "Temperature stable",
+      "Easy installation",
+      "Commercial grade durability"
+    ],
+    benefits: [
+      { icon: Shield, title: "Ultra Durable", description: "Handles heavy foot traffic" },
+      { icon: Zap, title: "Temperature Stable", description: "No expansion or contraction" },
+      { icon: Sparkles, title: "Easy Care", description: "Simple cleaning routine" }
+    ],
+    process: [
+      { step: 1, title: "Assess", description: "Evaluate subfloor condition" },
+      { step: 2, title: "Select", description: "Choose from our range" },
+      { step: 3, title: "Prep", description: "Level and prepare surface" },
+      { step: 4, title: "Install", description: "Click-lock installation" }
+    ],
+    pricing: [
+      { name: "Commercial SPC", price: "From AED 55/sqm", features: ["4mm core", "0.3mm wear", "Basic designs"] },
+      { name: "Premium SPC", price: "From AED 95/sqm", features: ["5mm core", "0.5mm wear", "Wood textures"] },
+      { name: "Elite SPC", price: "From AED 140/sqm", features: ["6mm+ core", "0.7mm wear", "Premium finishes"] }
+    ],
+    faqs: [
+      { question: "What's the difference between SPC and LVT?", answer: "SPC has a rigid stone composite core making it more stable and dent-resistant than flexible LVT." },
+      { question: "Is SPC good for underfloor heating?", answer: "Yes, SPC is excellent with underfloor heating systems." },
+      { question: "Can SPC be used in commercial spaces?", answer: "Absolutely, SPC is ideal for retail, offices, and high-traffic areas." }
+    ],
+    relatedServices: [
+      { name: "LVT Flooring", slug: "lvt-flooring" },
+      { name: "Laminate Flooring", slug: "laminate-flooring" },
+      { name: "Gym Flooring", slug: "gym-flooring" }
+    ]
+  },
+  "false-ceiling": {
+    title: "False Ceiling Design",
+    tagline: "Elevate Your Interiors",
+    description: "Transform your space with stunning false ceiling designs. From modern minimalist to elaborate decorative ceilings, we create architectural features that define your space.",
+    icon: Layers,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80",
+    features: [
+      "Gypsum board ceilings",
+      "POP (Plaster of Paris)",
+      "Stretch ceilings",
+      "Integrated lighting",
+      "AC duct concealment",
+      "Acoustic solutions"
+    ],
+    benefits: [
+      { icon: Eye, title: "Visual Appeal", description: "Dramatic design statement" },
+      { icon: Lamp, title: "Lighting", description: "Integrated lighting options" },
+      { icon: Shield, title: "Hide Utilities", description: "Conceal wires and ducts" }
+    ],
+    process: [
+      { step: 1, title: "Design", description: "Create ceiling layout and lighting plan" },
+      { step: 2, title: "Frame", description: "Install metal framework" },
+      { step: 3, title: "Board", description: "Fix ceiling boards" },
+      { step: 4, title: "Finish", description: "Paint and install lighting" }
+    ],
+    pricing: [
+      { name: "Basic Flat", price: "From AED 65/sqm", features: ["Flat gypsum", "Simple design", "Basic lighting"] },
+      { name: "Designer", price: "From AED 120/sqm", features: ["Multi-level", "Cove lighting", "Custom shapes"] },
+      { name: "Premium", price: "From AED 200/sqm", features: ["Complex design", "Stretch ceiling", "Smart lighting"] }
+    ],
+    faqs: [
+      { question: "What's the minimum ceiling height needed?", answer: "We recommend at least 9 feet (2.7m) original height for a single-level false ceiling." },
+      { question: "How long does installation take?", answer: "A typical room takes 2-4 days, larger projects may take 1-2 weeks." },
+      { question: "Can you integrate speakers into the ceiling?", answer: "Yes, we can incorporate speakers, smoke detectors, and other fixtures." }
+    ],
+    relatedServices: [
+      { name: "Wall Treatments", slug: "wall" },
+      { name: "Living Room Design", slug: "living-room" },
+      { name: "Gypsum Partition", slug: "gypsum-partition" }
+    ]
+  },
+  "tv-unit": {
+    title: "TV Unit Design",
+    tagline: "Entertainment Center Excellence",
+    description: "Custom TV unit and entertainment center designs that combine style with functionality. From floating units to full wall installations, we create the perfect focal point for your living space.",
+    icon: Lamp,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1600&q=80",
+    features: [
+      "Custom sizing",
+      "Cable management",
+      "Storage solutions",
+      "Ambient lighting",
+      "Sound system integration",
+      "Display shelving"
+    ],
+    benefits: [
+      { icon: Eye, title: "Focal Point", description: "Stunning visual centerpiece" },
+      { icon: Settings, title: "Organized", description: "Hidden cables and clutter" },
+      { icon: Palette, title: "Custom", description: "Tailored to your space" }
+    ],
+    process: [
+      { step: 1, title: "Measure", description: "Wall dimensions and TV size" },
+      { step: 2, title: "Design", description: "Create custom design" },
+      { step: 3, title: "Build", description: "Factory manufacturing" },
+      { step: 4, title: "Install", description: "Professional fitting" }
+    ],
+    pricing: [
+      { name: "Floating Unit", price: "From AED 5,000", features: ["Up to 55\" TV", "Basic storage", "Standard finish"] },
+      { name: "Wall Unit", price: "From AED 15,000", features: ["Up to 75\" TV", "Display shelves", "LED lighting"] },
+      { name: "Full Wall", price: "From AED 35,000", features: ["Any TV size", "Complete wall coverage", "Premium materials"] }
+    ],
+    faqs: [
+      { question: "Can you hide all the cables?", answer: "Yes, we include comprehensive cable management in all our designs." },
+      { question: "Do you install the TV as well?", answer: "Yes, TV mounting is included in our service." },
+      { question: "What about soundbar integration?", answer: "We can design dedicated space for soundbars and speakers." }
+    ],
+    relatedServices: [
+      { name: "Living Room Design", slug: "living-room" },
+      { name: "False Ceiling", slug: "false-ceiling" },
+      { name: "Wall Treatments", slug: "wall" }
+    ]
+  },
+  // Pool Services
+  "pool-design": {
+    title: "Swimming Pool Design & Build",
+    tagline: "Your Private Oasis Awaits",
+    description: "Complete swimming pool design and construction services. From concept to completion, we create stunning pools that transform your outdoor space into a private resort.",
+    icon: Waves,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&q=80",
+    features: [
+      "Custom pool design",
+      "All pool types available",
+      "Premium materials",
+      "Filtration systems",
+      "Heating options",
+      "Lighting & automation"
+    ],
+    benefits: [
+      { icon: Eye, title: "Stunning Design", description: "Custom shapes and features" },
+      { icon: Shield, title: "Quality Build", description: "Built to last generations" },
+      { icon: Settings, title: "Smart Systems", description: "Automated maintenance" }
+    ],
+    process: [
+      { step: 1, title: "Consult", description: "Discuss vision and budget" },
+      { step: 2, title: "Design", description: "3D visualization and engineering" },
+      { step: 3, title: "Build", description: "Expert construction" },
+      { step: 4, title: "Commission", description: "System setup and handover" }
+    ],
+    pricing: [
+      { name: "Plunge Pool", price: "From AED 80,000", features: ["Up to 4m x 2m", "Basic filtration", "LED lighting"] },
+      { name: "Family Pool", price: "From AED 180,000", features: ["Up to 8m x 4m", "Advanced systems", "Heating option"] },
+      { name: "Luxury Pool", price: "From AED 400,000", features: ["Custom size", "Infinity edge", "Full automation"] }
+    ],
+    faqs: [
+      { question: "How long does pool construction take?", answer: "Typically 8-16 weeks depending on size and complexity." },
+      { question: "Do you handle all permits?", answer: "Yes, we manage all necessary approvals and permits." },
+      { question: "What maintenance is required?", answer: "We offer ongoing maintenance contracts to keep your pool pristine." }
+    ],
+    relatedServices: [
+      { name: "Pool Lighting", slug: "pool-lighting" },
+      { name: "Pergola & Gazebo", slug: "pergola" },
+      { name: "Outdoor Kitchen", slug: "outdoor-kitchen" }
+    ]
+  },
+  // Marble & Restoring
+  "marble-polishing": {
+    title: "Marble Polishing",
+    tagline: "Restore the Natural Beauty",
+    description: "Professional marble polishing services to restore the shine and beauty of your marble floors, countertops, and surfaces. We bring back the original luster of your natural stone.",
+    icon: Gem,
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1600&q=80",
+    features: [
+      "Diamond polishing",
+      "Scratch removal",
+      "Shine restoration",
+      "Sealing & protection",
+      "Stain treatment",
+      "Edge polishing"
+    ],
+    benefits: [
+      { icon: Sparkles, title: "Mirror Finish", description: "High-gloss shine restored" },
+      { icon: Shield, title: "Protection", description: "Sealed against stains" },
+      { icon: Clock, title: "Long Lasting", description: "Results last for years" }
+    ],
+    process: [
+      { step: 1, title: "Assess", description: "Evaluate marble condition" },
+      { step: 2, title: "Grind", description: "Remove scratches and damage" },
+      { step: 3, title: "Polish", description: "Multi-stage diamond polishing" },
+      { step: 4, title: "Seal", description: "Apply protective sealant" }
+    ],
+    pricing: [
+      { name: "Light Polish", price: "From AED 15/sqm", features: ["Surface polish", "Light cleaning", "Basic seal"] },
+      { name: "Full Restoration", price: "From AED 35/sqm", features: ["Scratch removal", "Deep polish", "Premium seal"] },
+      { name: "Complete Revival", price: "From AED 60/sqm", features: ["Heavy restoration", "Stain removal", "Crystal finish"] }
+    ],
+    faqs: [
+      { question: "How often should marble be polished?", answer: "We recommend professional polishing every 1-2 years depending on traffic." },
+      { question: "Can you remove deep scratches?", answer: "Yes, our diamond grinding process can remove most scratches and etching." },
+      { question: "Is the polishing process messy?", answer: "We use dust-free equipment and protect surrounding areas." }
+    ],
+    relatedServices: [
+      { name: "Marble Stain Removal", slug: "marble-stain" },
+      { name: "Marble Floor Sealing", slug: "marble-sealing" },
+      { name: "Deep Cleaning", slug: "deep-cleaning" }
+    ]
+  }
+};
+
+// Default fallback for any service not explicitly defined
+const defaultService = {
+  title: "Interior Design Service",
+  tagline: "Transform Your Space",
+  description: "Professional interior design and renovation services tailored to your needs. Our expert team delivers exceptional results for residential and commercial projects.",
+  icon: Paintbrush,
+  color: "bg-[#970A44]",
+  heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80",
+  features: [
+    "Custom design solutions",
+    "Premium materials",
+    "Expert craftsmanship",
+    "Project management",
+    "Quality assurance",
+    "After-sales support"
+  ],
+  benefits: [
+    { icon: Eye, title: "Expert Design", description: "Professional designers with years of experience" },
+    { icon: Shield, title: "Quality Materials", description: "Premium materials and finishes" },
+    { icon: Clock, title: "Timely Delivery", description: "Projects completed on schedule" }
+  ],
+  process: [
+    { step: 1, title: "Consultation", description: "Discuss your requirements and vision" },
+    { step: 2, title: "Design", description: "Create detailed design plans" },
+    { step: 3, title: "Execution", description: "Professional implementation" },
+    { step: 4, title: "Handover", description: "Quality check and completion" }
+  ],
+  pricing: [
+    { name: "Consultation", price: "Free", features: ["Initial meeting", "Site visit", "Basic proposal"] },
+    { name: "Standard", price: "Custom Quote", features: ["Full design", "Quality materials", "Installation"] },
+    { name: "Premium", price: "Custom Quote", features: ["Bespoke design", "Premium materials", "White glove service"] }
+  ],
+  faqs: [
+    { question: "How do I get started?", answer: "Simply contact us for a free consultation. We'll discuss your project and provide a detailed proposal." },
+    { question: "What's included in the service?", answer: "Our services include design, materials, installation, and project management." },
+    { question: "Do you offer warranties?", answer: "Yes, all our work comes with comprehensive warranties." }
+  ],
+  relatedServices: [
+    { name: "Kitchen Remodeling", slug: "kitchen-remodeling" },
+    { name: "Living Room Design", slug: "living-room" },
+    { name: "False Ceiling", slug: "false-ceiling" }
+  ]
+};
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
+};
+
+export default function InteriorServiceDetail() {
+  const { serviceSlug } = useParams<{ serviceSlug: string }>();
+  
+  // Get service data or use default
+  const service = serviceData[serviceSlug || ""] || {
+    ...defaultService,
+    title: (serviceSlug || "").split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+  };
+
+  const Icon = service.icon;
+
+  return (
+    <div className="min-h-screen bg-[#F6F4EB]">
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-20" data-testid="section-hero">
+        <div className="absolute inset-0">
+          <img 
+            src={service.heroImage}
+            alt={service.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/50" />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${service.color} mb-6`}>
+              <Icon className="w-5 h-5 text-white" />
+              <span className="text-white font-medium text-sm">{service.tagline}</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-6">
+              {service.title}
+            </h1>
+            
+            <p className="text-white/80 text-lg max-w-2xl mb-8">
+              {service.description}
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+                data-testid="button-book-now"
+              >
+                <Link href="/book">
+                  Book Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-call"
+              >
+                <a href="tel:+97125500888">
+                  <Phone className="mr-2 w-5 h-5" />
+                  Call Us
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-white" data-testid="section-features">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              What's Included
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our comprehensive service covers everything you need
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-start gap-3 p-4 rounded-xl bg-[#F6F4EB]"
+                data-testid={`feature-${index}`}
+              >
+                <Check className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                <span className="text-[#09263D] font-medium">{feature}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-benefits">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Why Choose This Service
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.benefits.map((benefit, index) => {
+              const BenefitIcon = benefit.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="border-0 shadow-lg text-center h-full" data-testid={`benefit-${index}`}>
+                    <CardContent className="p-8">
+                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <BenefitIcon className="w-8 h-8 text-[#970A44]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-[#09263D] mb-2">{benefit.title}</h3>
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-16 bg-white" data-testid="section-process">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Our Process
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Simple steps to transform your space
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {service.process.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center relative"
+                data-testid={`process-${index}`}
+              >
+                <div className="w-16 h-16 mx-auto bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                  {step.step}
+                </div>
+                <h3 className="font-bold text-lg text-[#09263D] mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+                {index < service.process.length - 1 && (
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#970A44]/20" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-pricing">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Pricing Packages
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Transparent pricing with no hidden costs
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.pricing.map((plan, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className={`border-0 shadow-lg h-full ${index === 1 ? 'ring-2 ring-[#970A44]' : ''}`} data-testid={`pricing-${index}`}>
+                  <CardContent className="p-8">
+                    {index === 1 && (
+                      <div className="bg-[#970A44] text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
+                        MOST POPULAR
+                      </div>
+                    )}
+                    <h3 className="text-xl font-bold text-[#09263D] mb-2">{plan.name}</h3>
+                    <div className="text-3xl font-bold text-[#970A44] mb-6">{plan.price}</div>
+                    <ul className="space-y-3 mb-8">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 text-muted-foreground">
+                          <Check className="w-4 h-4 text-green-600" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      asChild
+                      className={`w-full rounded-full ${index === 1 ? 'bg-[#970A44] hover:bg-[#720632]' : ''}`}
+                      variant={index === 1 ? 'default' : 'outline'}
+                    >
+                      <Link href="/book">Get Quote</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs Section */}
+      <section className="py-16 bg-white" data-testid="section-faqs">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {service.faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="border-0 shadow-md" data-testid={`faq-${index}`}>
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-[#09263D] mb-2">{faq.question}</h3>
+                    <p className="text-muted-foreground">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-related">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            {...fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              Related Services
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {service.relatedServices.map((related, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Link href={`/interior-design/${related.slug}`}>
+                  <Button 
+                    variant="outline" 
+                    className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                  >
+                    {related.name}
+                  </Button>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-[#970A44]" data-testid="section-cta">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-6">
+              Ready to Transform Your Space?
+            </h2>
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              Book your free consultation today and let's bring your vision to life.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+              >
+                <Link href="/book">
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+              >
+                <Link href="/interior-design">
+                  <ArrowLeft className="mr-2 w-5 h-5" />
+                  All Services
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}

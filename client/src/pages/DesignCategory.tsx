@@ -338,7 +338,7 @@ export default function DesignCategory() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <Link href={`/interior-design/${category}/${design.slug}`} data-testid={`link-design-${design.id}`}>
+                <Link href={`/interior-design/${design.slug}`} data-testid={`link-design-${design.id}`}>
                   <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-design-${design.id}`}>
                     <div className={`relative overflow-hidden ${viewMode === "large" ? "aspect-[4/3]" : "aspect-square"}`}>
                       <img 
@@ -391,7 +391,7 @@ export default function DesignCategory() {
             {Object.entries(categoryData).map(([key, cat]) => {
               const CatIcon = cat.icon;
               return (
-                <Link key={key} href={`/interior-design/${key}`} data-testid={`link-category-${key}`}>
+                <Link key={key} href="/interior-design" data-testid={`link-category-${key}`}>
                   <div className={`p-4 rounded-xl text-center hover-elevate cursor-pointer transition-all ${
                     key === category ? "bg-[#970A44] text-white" : "bg-background border hover:border-[#970A44]"
                   }`}>

@@ -21,26 +21,26 @@ export function Footer() {
 
   const services = [
     { name: "Complete Home Interiors", href: "/interior-design" },
-    { name: "Modular Kitchen", href: "/interior-design/kitchen" },
+    { name: "Modular Kitchen", href: "/interior-design/modular-kitchen" },
     { name: "Wardrobe Designs", href: "/interior-design/wardrobe" },
     { name: "Living Room Design", href: "/interior-design/living-room" },
-    { name: "Bedroom Design", href: "/interior-design/bedroom" },
-    { name: "Office Interiors", href: "/interior-design/office" },
+    { name: "Master Bedroom", href: "/interior-design/master-bedroom" },
+    { name: "False Ceiling", href: "/interior-design/false-ceiling" },
   ];
 
   const wellness = [
-    { name: "Spa & Wellness Design", href: "/services/spa-wellness-design" },
-    { name: "Home Gym Setup", href: "/services/home-gym" },
-    { name: "Swimming Pool Design", href: "/services/pool-design" },
-    { name: "Sauna & Steam Rooms", href: "/services/sauna-steam" },
+    { name: "AC Cleaning", href: "/wellness/ac-cleaning" },
+    { name: "Carpet Cleaning", href: "/wellness/carpet-cleaning" },
+    { name: "Deep Cleaning", href: "/wellness/deep-cleaning" },
+    { name: "Pest Control", href: "/wellness/pest-control" },
   ];
 
   const maintenance = [
-    { name: "General Maintenance", href: "/services/general-maintenance" },
-    { name: "AC Services", href: "/services/ac-services" },
-    { name: "Plumbing Services", href: "/services/plumbing" },
-    { name: "Electrical Services", href: "/services/electrical" },
-    { name: "Annual Maintenance", href: "/services/amc" },
+    { name: "AC Maintenance", href: "/maintenance/ac" },
+    { name: "Plumbing Services", href: "/maintenance/plumbing" },
+    { name: "Electrical Services", href: "/maintenance/electrical" },
+    { name: "Painting Services", href: "/maintenance/wall-painting" },
+    { name: "Maintenance Packages", href: "/maintenance/packages" },
   ];
 
   const quickLinks = [

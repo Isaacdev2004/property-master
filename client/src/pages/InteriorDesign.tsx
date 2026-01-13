@@ -666,7 +666,7 @@ export default function InteriorDesign() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
                       >
-                        <Link href={`/interior-design/${category.id}/${idea.slug}`}>
+                        <Link href={`/interior-design/${idea.slug}`}>
                           <Card className="group overflow-hidden border-0 shadow-sm hover-elevate cursor-pointer" data-testid={`card-idea-${idea.id}`}>
                             <div className="relative aspect-[3/4] overflow-hidden">
                               <img 
@@ -703,7 +703,7 @@ export default function InteriorDesign() {
                       className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
                       data-testid={`button-explore-${category.id}`}
                     >
-                      <Link href={`/interior-design/${category.id}`}>
+                      <Link href="/interior-design">
                         Explore More {category.label} Designs
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Link>

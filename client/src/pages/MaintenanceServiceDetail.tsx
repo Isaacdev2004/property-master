@@ -640,6 +640,45 @@ const serviceData: Record<string, {
   }
 };
 
+// Default fallback service for any undefined services
+const defaultService = {
+  title: "Maintenance Service",
+  tagline: "Professional Property Maintenance",
+  description: "Quality maintenance services for residential and commercial properties. Our certified technicians deliver reliable repairs and maintenance with guaranteed satisfaction.",
+  icon: Wrench,
+  color: "bg-[#970A44]",
+  heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
+  features: [
+    "Licensed professionals",
+    "Quality workmanship",
+    "Genuine spare parts",
+    "Same-day service available",
+    "Work guarantee",
+    "24/7 emergency support"
+  ],
+  benefits: [
+    { icon: Shield, title: "Guaranteed Work", description: "All services come with warranty" },
+    { icon: Clock, title: "Fast Response", description: "Same-day service available" },
+    { icon: Award, title: "Licensed Team", description: "Certified professionals" }
+  ],
+  process: [
+    { step: 1, title: "Request", description: "Book online or call us" },
+    { step: 2, title: "Diagnose", description: "Expert assessment of the issue" },
+    { step: 3, title: "Execute", description: "Professional repair/maintenance" },
+    { step: 4, title: "Verify", description: "Quality check and sign-off" }
+  ],
+  pricing: [
+    { name: "Standard", price: "Contact Us", features: ["Quality service", "Professional team", "Standard parts"] },
+    { name: "Premium", price: "Contact Us", features: ["Priority service", "Premium parts", "Extended warranty"] },
+    { name: "Emergency", price: "Contact Us", features: ["24/7 availability", "Immediate response", "After-hours service"] }
+  ],
+  faqs: [
+    { question: "How do I book a service?", answer: "You can book online through our form, call us, or WhatsApp for fastest response." },
+    { question: "Do you provide warranties?", answer: "Yes, all our work comes with service warranties for your peace of mind." },
+    { question: "What areas do you cover?", answer: "We cover all of Dubai and surrounding emirates." }
+  ]
+};
+
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -661,24 +700,15 @@ const staggerItem = {
 export default function MaintenanceServiceDetail() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   
-  const service = serviceSlug ? serviceData[serviceSlug] : null;
-
-  if (!service) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-[#09263D] mb-4">Service Not Found</h1>
-          <p className="text-muted-foreground mb-8">The service you're looking for doesn't exist.</p>
-          <Button asChild className="bg-[#970A44] hover:bg-[#720632]">
-            <Link href="/maintenance">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Maintenance Services
-            </Link>
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  // Get service data or use default with formatted title
+  const service = serviceSlug && serviceData[serviceSlug] 
+    ? serviceData[serviceSlug] 
+    : {
+        ...defaultService,
+        title: serviceSlug 
+          ? serviceSlug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+          : defaultService.title
+      };
 
   const ServiceIcon = service.icon;
 

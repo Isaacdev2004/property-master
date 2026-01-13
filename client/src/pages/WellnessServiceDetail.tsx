@@ -725,6 +725,50 @@ const serviceData: Record<string, {
   }
 };
 
+// Default fallback service for any undefined services
+const defaultService = {
+  title: "Wellness Service",
+  tagline: "Premium Home Wellness Solutions",
+  description: "Professional wellness services designed to create a healthier home environment. Our certified experts use advanced technology and eco-friendly solutions for optimal results.",
+  icon: Heart,
+  color: "bg-[#970A44]",
+  heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+  features: [
+    "Certified professionals",
+    "Eco-friendly solutions",
+    "Advanced technology",
+    "Same-day service available",
+    "Quality guarantee",
+    "After-service support"
+  ],
+  benefits: [
+    { icon: Shield, title: "Quality Assured", description: "100% satisfaction guarantee" },
+    { icon: Clock, title: "Fast Service", description: "Same-day availability" },
+    { icon: Award, title: "Certified Team", description: "Trained professionals" }
+  ],
+  process: [
+    { step: 1, title: "Book", description: "Schedule your service online or by phone" },
+    { step: 2, title: "Assess", description: "Our expert evaluates your needs" },
+    { step: 3, title: "Service", description: "Professional service delivery" },
+    { step: 4, title: "Review", description: "Quality check and feedback" }
+  ],
+  pricing: [
+    { name: "Standard", price: "Contact Us", features: ["Quality service", "Professional team", "Standard materials"] },
+    { name: "Premium", price: "Contact Us", features: ["Enhanced service", "Priority scheduling", "Premium materials"] },
+    { name: "Complete", price: "Contact Us", features: ["Full package", "Extended warranty", "VIP support"] }
+  ],
+  faqs: [
+    { question: "How do I book a service?", answer: "You can book online, call us, or use our booking form for a free quote." },
+    { question: "Do you offer warranties?", answer: "Yes, all our services come with quality guarantees and warranties." },
+    { question: "Are your products safe?", answer: "We use certified, eco-friendly products safe for families and pets." }
+  ],
+  relatedServices: [
+    { name: "AC Cleaning", slug: "ac-cleaning" },
+    { name: "Deep Cleaning", slug: "deep-cleaning" },
+    { name: "Carpet Cleaning", slug: "carpet-cleaning" }
+  ]
+};
+
 // Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -744,24 +788,15 @@ const staggerContainer = {
 export default function WellnessServiceDetail() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   
-  const service = serviceSlug ? serviceData[serviceSlug] : null;
-  
-  if (!service) {
-    return (
-      <div className="min-h-screen bg-[#F6F4EB] flex items-center justify-center">
-        <div className="text-center px-6">
-          <h1 className="text-4xl font-bold text-[#09263D] mb-4">Service Not Found</h1>
-          <p className="text-muted-foreground mb-8">The wellness service you're looking for doesn't exist.</p>
-          <Button asChild className="bg-[#970A44] hover:bg-[#720632]" data-testid="button-back-wellness">
-            <Link href="/wellness">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Wellness Services
-            </Link>
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  // Get service data or use default with formatted title
+  const service = serviceSlug && serviceData[serviceSlug] 
+    ? serviceData[serviceSlug] 
+    : {
+        ...defaultService,
+        title: serviceSlug 
+          ? serviceSlug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+          : defaultService.title
+      };
 
   const Icon = service.icon;
 
