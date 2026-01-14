@@ -944,31 +944,34 @@ export default function InteriorServiceDetail() {
 
       {/* FAQs Section */}
       <section className="py-16 bg-white" data-testid="section-faqs">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
-            className="text-center mb-12"
+            className="mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
-              Frequently Asked Questions
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+              FAQs
             </h2>
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {service.faqs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Card className="border-0 shadow-md" data-testid={`faq-${index}`}>
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-[#09263D] mb-2">{faq.question}</h3>
+                <details className="group" data-testid={`faq-${index}`}>
+                  <summary className="flex items-center justify-between p-5 bg-[#F6F4EB] rounded-lg cursor-pointer hover-elevate list-none">
+                    <span className="font-medium text-[#09263D] pr-4">{faq.question}</span>
+                    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#970A44] text-xl font-light group-open:rotate-45 transition-transform duration-200">+</span>
+                  </summary>
+                  <div className="px-5 pb-5 pt-3 bg-[#F6F4EB] rounded-b-lg -mt-2">
                     <p className="text-muted-foreground">{faq.answer}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </details>
               </motion.div>
             ))}
           </div>
