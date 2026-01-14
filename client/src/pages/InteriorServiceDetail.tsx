@@ -36,6 +36,13 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Comprehensive service data for all interior design services
 const serviceData: Record<string, {
@@ -990,25 +997,49 @@ export default function InteriorServiceDetail() {
             </h2>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            {service.relatedServices.map((related, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Link href={`/interior-design/${related.slug}`}>
-                  <Button 
-                    variant="outline" 
-                    className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
-                  >
-                    {related.name}
-                  </Button>
-                </Link>
-              </motion.div>
-            ))}
+          <div className="relative px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {service.relatedServices.map((related, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <Link href={`/interior-design/${related.slug}`}>
+                        <Card className="border-0 shadow-md hover:shadow-lg transition-shadow cursor-pointer group" data-testid={`related-service-${index}`}>
+                          <CardContent className="p-6 text-center">
+                            <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                              {related.name}
+                            </h3>
+                            <div className="mt-3 flex items-center justify-center text-[#970A44] text-sm font-medium">
+                              View Service
+                              <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious 
+                className="absolute -left-2 top-1/2 -translate-y-1/2 bg-white border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white" 
+                data-testid="carousel-prev"
+              />
+              <CarouselNext 
+                className="absolute -right-2 top-1/2 -translate-y-1/2 bg-white border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white" 
+                data-testid="carousel-next"
+              />
+            </Carousel>
           </div>
         </div>
       </section>
