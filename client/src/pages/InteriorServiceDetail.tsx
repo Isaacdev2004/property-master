@@ -48,7 +48,7 @@ const serviceData: Record<string, {
   features: string[];
   benefits: { icon: any; title: string; description: string }[];
   process: { step: number; title: string; description: string }[];
-  pricing: { name: string; price: string; features: string[] }[];
+  gallery: { image: string; title: string }[];
   faqs: { question: string; answer: string }[];
   relatedServices: { name: string; slug: string }[];
 }> = {
@@ -79,10 +79,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Construction", description: "Professional installation by certified team" },
       { step: 4, title: "Handover", description: "Final inspection and quality assurance" }
     ],
-    pricing: [
-      { name: "Basic Refresh", price: "From AED 25,000", features: ["Cabinet refacing", "New countertops", "Lighting upgrade"] },
-      { name: "Full Remodel", price: "From AED 60,000", features: ["Complete redesign", "New cabinets", "All appliances"] },
-      { name: "Luxury Kitchen", price: "From AED 150,000", features: ["Premium materials", "Smart appliances", "Custom everything"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80", title: "Modern White Kitchen" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Contemporary Open Kitchen" },
+      { image: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80", title: "Luxury Kitchen Design" },
+      { image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80", title: "Minimalist Kitchen" },
+      { image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80", title: "Classic Kitchen Style" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Elegant Kitchen Finish" }
     ],
     faqs: [
       { question: "How long does a kitchen remodel take?", answer: "A typical kitchen remodel takes 4-8 weeks depending on scope and complexity." },
@@ -121,10 +124,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Manufacture", description: "Factory-crafted to specifications" },
       { step: 4, title: "Install", description: "Professional installation & setup" }
     ],
-    pricing: [
-      { name: "Sliding Wardrobe", price: "From AED 8,000", features: ["2-door sliding", "Basic interior", "Standard finish"] },
-      { name: "Walk-in Closet", price: "From AED 25,000", features: ["Full room design", "Custom shelving", "Lighting included"] },
-      { name: "Premium Suite", price: "From AED 50,000", features: ["Italian materials", "Smart lighting", "Accessories included"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=800&q=80", title: "Walk-in Closet Design" },
+      { image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&q=80", title: "Sliding Door Wardrobe" },
+      { image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80", title: "Modern Wardrobe System" },
+      { image: "https://images.unsplash.com/photo-1598928506311-c55ez633dc0?w=800&q=80", title: "Built-in Wardrobe" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Luxury Closet" },
+      { image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80", title: "Contemporary Storage" }
     ],
     faqs: [
       { question: "What materials do you use?", answer: "We use MDF, HDF, solid wood, and premium laminates depending on your preference and budget." },
@@ -163,10 +169,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Order", description: "Factory production begins" },
       { step: 4, title: "Install", description: "Quick professional installation" }
     ],
-    pricing: [
-      { name: "Compact Kitchen", price: "From AED 15,000", features: ["Up to 8 ft", "Standard modules", "Laminate finish"] },
-      { name: "L-Shape Kitchen", price: "From AED 35,000", features: ["Up to 12 ft", "Premium modules", "Acrylic finish"] },
-      { name: "U-Shape Kitchen", price: "From AED 55,000", features: ["Full modular", "Soft-close all", "Quartz countertop"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "L-Shape Modular Kitchen" },
+      { image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80", title: "U-Shape Kitchen Design" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Island Kitchen" },
+      { image: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80", title: "Compact Kitchen" },
+      { image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80", title: "Modern Modular" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Premium Finish Kitchen" }
     ],
     faqs: [
       { question: "What's the difference from regular kitchen?", answer: "Modular kitchens use pre-made units that fit together, allowing faster installation and easier upgrades." },
@@ -205,10 +214,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Source", description: "Procure furniture and materials" },
       { step: 4, title: "Execute", description: "Install and style your space" }
     ],
-    pricing: [
-      { name: "Refresh", price: "From AED 15,000", features: ["New color scheme", "Furniture rearrangement", "Styling"] },
-      { name: "Redesign", price: "From AED 45,000", features: ["New furniture", "Wall treatments", "Lighting upgrade"] },
-      { name: "Complete Transform", price: "From AED 100,000", features: ["Full renovation", "Custom furniture", "Smart home"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Contemporary Living Room" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Modern Minimalist" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Luxury Living Space" },
+      { image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&q=80", title: "Classic Living Room" },
+      { image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80", title: "Cozy Family Room" },
+      { image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80", title: "Open Plan Living" }
     ],
     faqs: [
       { question: "Can you work with my existing furniture?", answer: "Absolutely! We can incorporate your favorite pieces into the new design." },
@@ -247,10 +259,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Build", description: "Custom furniture & installation" },
       { step: 4, title: "Style", description: "Finishing touches & accessories" }
     ],
-    pricing: [
-      { name: "Essential", price: "From AED 20,000", features: ["Bed design", "Basic wardrobe", "Lighting"] },
-      { name: "Premium", price: "From AED 50,000", features: ["Full design", "Walk-in closet", "Custom furniture"] },
-      { name: "Luxury Suite", price: "From AED 120,000", features: ["Complete renovation", "Smart features", "Premium materials"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80", title: "Luxury Master Suite" },
+      { image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80", title: "Modern Bedroom" },
+      { image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80", title: "Classic Elegance" },
+      { image: "https://images.unsplash.com/photo-1615873968403-89e068629265?w=800&q=80", title: "Contemporary Style" },
+      { image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80", title: "Minimalist Bedroom" },
+      { image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80", title: "Cozy Retreat" }
     ],
     faqs: [
       { question: "Can you design the en-suite bathroom too?", answer: "Yes, we offer coordinated design packages for bedroom and bathroom." },
@@ -289,10 +304,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Build", description: "Safe installation process" },
       { step: 4, title: "Reveal", description: "Surprise the little ones!" }
     ],
-    pricing: [
-      { name: "Starter Room", price: "From AED 15,000", features: ["Basic furniture", "Wall paint", "Storage"] },
-      { name: "Dream Room", price: "From AED 35,000", features: ["Themed design", "Custom furniture", "Play area"] },
-      { name: "Fantasy Suite", price: "From AED 70,000", features: ["Bespoke design", "Built-in features", "Smart elements"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80", title: "Playful Kids Room" },
+      { image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", title: "Study Corner" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Teen Room" },
+      { image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80", title: "Nursery Design" },
+      { image: "https://images.unsplash.com/photo-1618219740975-d40978bb7378?w=800&q=80", title: "Bunk Bed Room" },
+      { image: "https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?w=800&q=80", title: "Creative Space" }
     ],
     faqs: [
       { question: "Are the materials safe for children?", answer: "Yes, we only use non-toxic, child-safe materials and finishes." },
@@ -331,10 +349,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Install", description: "Tiling, plumbing, fixtures" },
       { step: 4, title: "Finish", description: "Final touches and cleaning" }
     ],
-    pricing: [
-      { name: "Powder Room", price: "From AED 15,000", features: ["Small bathroom", "Basic fixtures", "Standard tiles"] },
-      { name: "Full Bathroom", price: "From AED 40,000", features: ["Complete renovation", "Quality fixtures", "Designer tiles"] },
-      { name: "Master Bathroom", price: "From AED 80,000", features: ["Large space", "Premium fixtures", "Custom design"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80", title: "Modern Bathroom" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Spa-Style Bathroom" },
+      { image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80", title: "Minimalist Design" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Luxury Master Bath" },
+      { image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80", title: "Walk-in Shower" },
+      { image: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80", title: "Classic Bathroom" }
     ],
     faqs: [
       { question: "How long does a bathroom renovation take?", answer: "A typical bathroom takes 2-4 weeks depending on scope." },
@@ -374,10 +395,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Prepare", description: "Subfloor preparation" },
       { step: 4, title: "Install", description: "Professional installation" }
     ],
-    pricing: [
-      { name: "Standard LVT", price: "From AED 45/sqm", features: ["2mm thickness", "0.3mm wear layer", "Basic patterns"] },
-      { name: "Premium LVT", price: "From AED 85/sqm", features: ["4mm thickness", "0.5mm wear layer", "Wood grain textures"] },
-      { name: "Luxury LVT", price: "From AED 150/sqm", features: ["5mm+ thickness", "0.7mm wear layer", "Stone/marble effects"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Wood Look LVT" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Stone Effect LVT" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Herringbone Pattern" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Light Oak Finish" },
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Grey Wood LVT" },
+      { image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", title: "Marble Effect LVT" }
     ],
     faqs: [
       { question: "Is LVT suitable for wet areas?", answer: "Yes, LVT is 100% waterproof and perfect for bathrooms and kitchens." },
@@ -416,10 +440,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Prep", description: "Level and prepare surface" },
       { step: 4, title: "Install", description: "Click-lock installation" }
     ],
-    pricing: [
-      { name: "Commercial SPC", price: "From AED 55/sqm", features: ["4mm core", "0.3mm wear", "Basic designs"] },
-      { name: "Premium SPC", price: "From AED 95/sqm", features: ["5mm core", "0.5mm wear", "Wood textures"] },
-      { name: "Elite SPC", price: "From AED 140/sqm", features: ["6mm+ core", "0.7mm wear", "Premium finishes"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Natural Oak SPC" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Grey Stone SPC" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Walnut Finish" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Commercial Grade" },
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Light Wood SPC" },
+      { image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", title: "Dark Oak SPC" }
     ],
     faqs: [
       { question: "What's the difference between SPC and LVT?", answer: "SPC has a rigid stone composite core making it more stable and dent-resistant than flexible LVT." },
@@ -458,10 +485,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Board", description: "Fix ceiling boards" },
       { step: 4, title: "Finish", description: "Paint and install lighting" }
     ],
-    pricing: [
-      { name: "Basic Flat", price: "From AED 65/sqm", features: ["Flat gypsum", "Simple design", "Basic lighting"] },
-      { name: "Designer", price: "From AED 120/sqm", features: ["Multi-level", "Cove lighting", "Custom shapes"] },
-      { name: "Premium", price: "From AED 200/sqm", features: ["Complex design", "Stretch ceiling", "Smart lighting"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Modern False Ceiling" },
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Cove Lighting Design" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Multi-Level Ceiling" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Living Room Ceiling" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Bedroom Ceiling" },
+      { image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", title: "Decorative Ceiling" }
     ],
     faqs: [
       { question: "What's the minimum ceiling height needed?", answer: "We recommend at least 9 feet (2.7m) original height for a single-level false ceiling." },
@@ -500,10 +530,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Build", description: "Factory manufacturing" },
       { step: 4, title: "Install", description: "Professional fitting" }
     ],
-    pricing: [
-      { name: "Floating Unit", price: "From AED 5,000", features: ["Up to 55\" TV", "Basic storage", "Standard finish"] },
-      { name: "Wall Unit", price: "From AED 15,000", features: ["Up to 75\" TV", "Display shelves", "LED lighting"] },
-      { name: "Full Wall", price: "From AED 35,000", features: ["Any TV size", "Complete wall coverage", "Premium materials"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80", title: "Modern TV Wall" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Full Wall Unit" },
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Floating TV Unit" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Entertainment Center" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "LED Backlit Unit" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Minimalist Design" }
     ],
     faqs: [
       { question: "Can you hide all the cables?", answer: "Yes, we include comprehensive cable management in all our designs." },
@@ -543,10 +576,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Build", description: "Expert construction" },
       { step: 4, title: "Commission", description: "System setup and handover" }
     ],
-    pricing: [
-      { name: "Plunge Pool", price: "From AED 80,000", features: ["Up to 4m x 2m", "Basic filtration", "LED lighting"] },
-      { name: "Family Pool", price: "From AED 180,000", features: ["Up to 8m x 4m", "Advanced systems", "Heating option"] },
-      { name: "Luxury Pool", price: "From AED 400,000", features: ["Custom size", "Infinity edge", "Full automation"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80", title: "Infinity Pool" },
+      { image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", title: "Rooftop Pool" },
+      { image: "https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?w=800&q=80", title: "Garden Pool" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Modern Pool Design" },
+      { image: "https://images.unsplash.com/photo-1572331165267-854da2b021aa?w=800&q=80", title: "Luxury Pool" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Family Pool" }
     ],
     faqs: [
       { question: "How long does pool construction take?", answer: "Typically 8-16 weeks depending on size and complexity." },
@@ -586,10 +622,13 @@ const serviceData: Record<string, {
       { step: 3, title: "Polish", description: "Multi-stage diamond polishing" },
       { step: 4, title: "Seal", description: "Apply protective sealant" }
     ],
-    pricing: [
-      { name: "Light Polish", price: "From AED 15/sqm", features: ["Surface polish", "Light cleaning", "Basic seal"] },
-      { name: "Full Restoration", price: "From AED 35/sqm", features: ["Scratch removal", "Deep polish", "Premium seal"] },
-      { name: "Complete Revival", price: "From AED 60/sqm", features: ["Heavy restoration", "Stain removal", "Crystal finish"] }
+    gallery: [
+      { image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&q=80", title: "Polished Marble Floor" },
+      { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Restored Marble" },
+      { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Crystal Finish" },
+      { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "High Gloss Result" },
+      { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Marble Countertop" },
+      { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Premium Polish" }
     ],
     faqs: [
       { question: "How often should marble be polished?", answer: "We recommend professional polishing every 1-2 years depending on traffic." },
@@ -631,10 +670,13 @@ const defaultService = {
     { step: 3, title: "Execution", description: "Professional implementation" },
     { step: 4, title: "Handover", description: "Quality check and completion" }
   ],
-  pricing: [
-    { name: "Consultation", price: "Free", features: ["Initial meeting", "Site visit", "Basic proposal"] },
-    { name: "Standard", price: "Custom Quote", features: ["Full design", "Quality materials", "Installation"] },
-    { name: "Premium", price: "Custom Quote", features: ["Bespoke design", "Premium materials", "White glove service"] }
+  gallery: [
+    { image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80", title: "Contemporary Design" },
+    { image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", title: "Modern Interior" },
+    { image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", title: "Luxury Space" },
+    { image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80", title: "Classic Style" },
+    { image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80", title: "Premium Finish" },
+    { image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", title: "Expert Craftsmanship" }
   ],
   faqs: [
     { question: "How do I get started?", answer: "Simply contact us for a free consultation. We'll discuss your project and provide a detailed proposal." },
@@ -840,59 +882,63 @@ export default function InteriorServiceDetail() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-pricing">
+      {/* Design Gallery Section */}
+      <section className="py-16 bg-[#F6F4EB]" data-testid="section-gallery">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
-              Pricing Packages
+              Design Inspiration
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Transparent pricing with no hidden costs
+              Browse our portfolio for ideas and inspiration for your project
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {service.pricing.map((plan, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.gallery.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-xl cursor-pointer"
+                data-testid={`gallery-${index}`}
               >
-                <Card className={`border-0 shadow-lg h-full ${index === 1 ? 'ring-2 ring-[#970A44]' : ''}`} data-testid={`pricing-${index}`}>
-                  <CardContent className="p-8">
-                    {index === 1 && (
-                      <div className="bg-[#970A44] text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
-                        MOST POPULAR
-                      </div>
-                    )}
-                    <h3 className="text-xl font-bold text-[#09263D] mb-2">{plan.name}</h3>
-                    <div className="text-3xl font-bold text-[#970A44] mb-6">{plan.price}</div>
-                    <ul className="space-y-3 mb-8">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-muted-foreground">
-                          <Check className="w-4 h-4 text-green-600" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button 
-                      asChild
-                      className={`w-full rounded-full ${index === 1 ? 'bg-[#970A44] hover:bg-[#720632]' : ''}`}
-                      variant={index === 1 ? 'default' : 'outline'}
-                    >
-                      <Link href="/book">Get Quote</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-white font-semibold text-lg">{item.title}</h3>
+                  <p className="text-white/80 text-sm">Click to view details</p>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            {...fadeInUp}
+            className="text-center mt-12"
+          >
+            <Button 
+              asChild
+              size="lg"
+              className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+            >
+              <Link href="/book">
+                Book Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
