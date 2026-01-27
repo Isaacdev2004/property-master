@@ -235,7 +235,15 @@ const staggerContainer = {
   }
 };
 
+import { useQuery } from "@tanstack/react-query";
+import type { BlogPost } from "@shared/schema";
+
 export default function WellnessServices() {
+  const { data: posts = [] } = useQuery<BlogPost[]>({
+    queryKey: ["/api/blog"],
+  });
+
+  const filteredBlogPosts = posts.filter(p => p.category === "Wellness");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const newServicesRef = useRef<HTMLDivElement>(null);
   const acServicesRef = useRef<HTMLDivElement>(null);

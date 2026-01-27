@@ -200,7 +200,15 @@ const staggerItem = {
   transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
 };
 
+import { useQuery } from "@tanstack/react-query";
+import type { BlogPost } from "@shared/schema";
+
 export default function MaintenanceServices() {
+  const { data: posts = [] } = useQuery<BlogPost[]>({
+    queryKey: ["/api/blog"],
+  });
+
+  const filteredBlogPosts = posts.filter(p => p.category === "Maintenance");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -753,13 +761,13 @@ export default function MaintenanceServices() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {blogPosts.map((post, index) => (
+            {filteredBlogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 variants={staggerItem}
                 whileHover={{ y: -8 }}
               >
-                <Link href={`/blog/${post.id}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <Card 
                     className="h-full border-0 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
                     data-testid={`card-blog-${post.id}`}
@@ -778,7 +786,7 @@ export default function MaintenanceServices() {
                       </h3>
                       <div className="flex items-center gap-2 text-muted-foreground text-sm">
                         <CalendarDays className="w-4 h-4" />
-                        <span>{post.date}</span>
+                        <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
                       </div>
                       <motion.p 
                         className="text-[#970A44] font-semibold text-sm mt-4 flex items-center gap-1"

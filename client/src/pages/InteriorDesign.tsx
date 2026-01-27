@@ -1,6 +1,11 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import type { BlogPost } from "@shared/schema";
+import { Link } from "wouter";
+
+
 import { 
   ArrowRight, 
   ArrowLeft,
@@ -290,58 +295,14 @@ const happyHomes = [
 const videoTestimonials = [
   { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
   { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
-  { id: 3, name: "Priya Verma", role: "Interior Enthusiast", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80", rating: 5, hasVideo: true },
-];
-
-// Blog Posts
-const blogPosts = [
-  { id: 1, title: "Top 10 Interior Design Trends for 2024", category: "Trends", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80", date: "Dec 1, 2024", readTime: "5 min read" },
-  { id: 2, title: "How to Choose the Perfect Color Palette", category: "Tips", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", date: "Nov 28, 2024", readTime: "4 min read" },
-  { id: 3, title: "Maximizing Small Spaces: A Complete Guide", category: "Guide", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", date: "Nov 25, 2024", readTime: "6 min read" },
-];
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-};
-
-const staggerContainer = {
-  initial: {},
-  whileInView: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-export default function InteriorDesign() {
-  const [activeTab, setActiveTab] = useState("wall-colour");
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-background">
-      {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" data-testid="section-hero">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
-            alt="Luxury Interior Design"
-            className="w-full h-full object-cover"
-          />
+export default function InteriorDesign() {
+  const { data: posts = [] } = useQuery<BlogPost[]>({ queryKey: ["/api/blog"] });
+  const filteredBlogPosts = posts.filter(p => p.category === "Interior Design");
+  const [activeTab, setActiveTab] = useState("wall-colour");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         </div>
         
@@ -1265,7 +1226,7 @@ export default function InteriorDesign() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+            {filteredBlogPosts.map((post, index) => (
               <motion.div
                 key={post.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -1273,7 +1234,7 @@ export default function InteriorDesign() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link href={`/blog/${post.id}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-blog-${post.id}`}>
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <img 
@@ -1291,9 +1252,9 @@ export default function InteriorDesign() {
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
-                          {post.date}
+                          {new Date(post.publishedAt).toLocaleDateString()}
                         </span>
-                        <span>{post.readTime}</span>
+                        <span>{"5 min read"}</span>
                       </div>
                       <h3 className="font-bold text-lg group-hover:text-[#970A44] transition-colors line-clamp-2">
                         {post.title}

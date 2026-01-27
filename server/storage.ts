@@ -55,7 +55,7 @@ export class MemStorage implements IStorage {
   private products: Map<string, Product>;
   private cartItems: Map<string, CartItem>;
   private bookings: Map<string, Booking>;
-  private blogPosts: Map<string, BlogPost>;
+  private posts: Map<string, BlogPost>;
   private testimonials: Map<string, Testimonial>;
   private contactInquiries: Map<string, ContactInquiry>;
 
@@ -65,7 +65,7 @@ export class MemStorage implements IStorage {
     this.products = new Map();
     this.cartItems = new Map();
     this.bookings = new Map();
-    this.blogPosts = new Map();
+    this.posts = new Map();
     this.testimonials = new Map();
     this.contactInquiries = new Map();
     this.initializeMockData();
@@ -73,7 +73,7 @@ export class MemStorage implements IStorage {
 
   private initializeMockData() {
     // Initialize Blog Posts
-    const blogPosts: BlogPost[] = [
+    const initialPosts: BlogPost[] = [
       {
         id: randomUUID(),
         title: "Why Interiors in Dubai Age Faster Than Expected",
@@ -154,7 +154,7 @@ Indoor wellness in Dubai represents a continuous balancing act between external 
         featured: true,
       }
     ];
-    blogPosts.forEach(post => this.blogPosts.set(post.id, post));
+    initialPosts.forEach(post => this.posts.set(post.id, post));
 
     // Initialize Services
     const services: Service[] = [
@@ -1302,7 +1302,7 @@ Indoor wellness in Dubai represents a continuous balancing act between external 
     products.forEach(product => this.products.set(product.id, product));
 
     // Initialize Blog Posts
-    const blogPosts: BlogPost[] = [
+    const posts: BlogPost[] = [
       {
         id: randomUUID(),
         title: "10 Interior Design Trends to Watch in 2025",
@@ -1364,7 +1364,7 @@ Indoor wellness in Dubai represents a continuous balancing act between external 
         featured: false,
       },
     ];
-    blogPosts.forEach(post => this.blogPosts.set(post.id, post));
+    posts.forEach(post => this.posts.set(post.id, post));
 
     // Initialize Testimonials
     const testimonials: Testimonial[] = [
@@ -1495,17 +1495,17 @@ Indoor wellness in Dubai represents a continuous balancing act between external 
 
   // Blog Posts
   async getAllBlogPosts(): Promise<BlogPost[]> {
-    return Array.from(this.blogPosts.values());
+    return Array.from(this.posts.values());
   }
 
   async getBlogPost(id: string): Promise<BlogPost | undefined> {
-    return this.blogPosts.get(id);
+    return this.posts.get(id);
   }
 
   async createBlogPost(insertPost: InsertBlogPost): Promise<BlogPost> {
     const id = randomUUID();
     const post: BlogPost = { ...insertPost, id };
-    this.blogPosts.set(id, post);
+    this.posts.set(id, post);
     return post;
   }
 
