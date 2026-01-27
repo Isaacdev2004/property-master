@@ -72,6 +72,90 @@ export class MemStorage implements IStorage {
   }
 
   private initializeMockData() {
+    // Initialize Blog Posts
+    const blogPosts: BlogPost[] = [
+      {
+        id: randomUUID(),
+        title: "Why Interiors in Dubai Age Faster Than Expected",
+        slug: "why-interiors-dubai-age-faster",
+        excerpt: "Many homeowners in Dubai are surprised by how quickly their interiors start to feel worn. Understanding how climate, usage, and materials interact is the first step toward longevity.",
+        content: `Many homeowners in Dubai are surprised by how quickly their interiors start to feel worn. A space that looked perfect at handover can show signs of aging far sooner than expected. Faded finishes, peeling surfaces, swollen wood, and uneven wear are common complaints, even in relatively new properties.
+
+This doesn’t usually come down to poor design taste. It comes down to environmental reality.
+
+Dubai interiors operate under conditions that are very different from most parts of the world, and when those conditions aren’t properly accounted for, interiors deteriorate faster.
+
+### Constant Air Conditioning Takes a Toll
+In Dubai, air conditioning runs most of the year. While it keeps spaces comfortable, constant AC use affects materials over time.
+- Dry air can cause cracking in certain finishes
+- Temperature fluctuations stress joinery and fittings
+- Poor airflow planning leads to uneven wear in rooms
+
+### Humidity and Moisture Are Silent Contributors
+Even with AC running, humidity remains a factor, especially in bathrooms, kitchens, and poorly ventilated areas.
+- Wood swelling or warping
+- Cabinet interiors and backing panels
+- Paint adhesion and surface longevity
+
+### Sunlight Is Stronger Than It Looks
+Dubai receives intense sunlight for most of the year. Large windows, open layouts, and glass-heavy designs look great, but they also expose interiors to UV damage.
+- Fading fabrics and finishes
+- Discoloration of flooring and wall treatments
+- Reduced lifespan of surface materials
+
+### Final Thought
+Interior aging in Dubai isn’t inevitable. It’s usually the result of design decisions that don’t fully reflect the environment they’re placed in.`,
+        category: "Interior Design",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date().toISOString(),
+        featured: true,
+      },
+      {
+        id: randomUUID(),
+        title: "Understanding the True Scope of Property Maintenance in Dubai",
+        slug: "property-maintenance-scope-dubai",
+        excerpt: "Property maintenance in Dubai operates within a distinct set of environmental and usage parameters that differentiate it from other climates.",
+        content: `Property maintenance in Dubai operates within a distinct set of environmental and usage parameters that differentiate it from maintenance approaches in more temperate climates. Many property owners approach maintenance as a series of reactive tasks fixing what breaks when it breaks yet this perspective overlooks the preventive dimension that becomes particularly crucial in Dubai's challenging conditions.
+
+### What Comprehensive Maintenance Covers in Dubai Properties
+- **Routine System Inspections:** Regular assessment of electrical, plumbing, and HVAC systems.
+- **Climate-Specific Material Maintenance:** Specialized care for materials affected by heat and humidity.
+- **HVAC Performance Optimization:** Beyond filter changes to include coil cleaning and duct inspection.
+- **Electrical Load Management:** Monitoring systems to handle high cooling demands.
+
+### Final Thought
+Property maintenance in Dubai represents a continuous investment in environmental adaptation rather than merely a series of repair tasks.`,
+        category: "Maintenance",
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date().toISOString(),
+        featured: true,
+      },
+      {
+        id: randomUUID(),
+        title: "The Unseen Environmental Factors Shaping Indoor Wellness",
+        slug: "unseen-wellness-factors-dubai",
+        excerpt: "Indoor wellness in Dubai extends far beyond visible cleanliness into the realm of environmental management.",
+        content: `The concept of indoor wellness in Dubai extends far beyond visible cleanliness into the realm of environmental management a domain where unseen factors quietly influence daily comfort, health, and long-term property performance.
+
+### Common Signs Your Dubai Home Needs Professional Wellness Attention:
+- **Persistent Allergy Symptoms:** Family members experiencing ongoing congestion or respiratory irritation.
+- **Unusual Odors:** Musty or stale smells that return quickly after cleaning.
+- **Visible Dust Accumulation:** Excessive dust settling on surfaces within days.
+- **Condensation Issues:** Water beads on windows, walls, or AC vents.
+
+### Final Thought
+Indoor wellness in Dubai represents a continuous balancing act between external climate realities and internal environmental management.`,
+        category: "Wellness",
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date().toISOString(),
+        featured: true,
+      }
+    ];
+    blogPosts.forEach(post => this.blogPosts.set(post.id, post));
+
     // Initialize Services
     const services: Service[] = [
       {
