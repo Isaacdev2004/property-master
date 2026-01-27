@@ -104,12 +104,17 @@ export default function BlogPostPage() {
               </div>
             </motion.div>
 
-            <motion.div {...fadeInUp} className="prose prose-lg max-w-none mb-12" data-testid="text-post-content">
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+            <motion.div {...fadeInUp} className="prose prose-lg max-w-none mb-12 blog-content" data-testid="text-post-content">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-6 font-medium border-l-4 border-[#970A44] pl-4 italic">
                 {post.excerpt}
               </p>
-              <div className="text-foreground leading-relaxed whitespace-pre-line">
-                {post.content}
+              <div className="text-foreground leading-relaxed whitespace-pre-line space-y-4">
+                {post.content.split('\n\n').map((paragraph, i) => {
+                  if (paragraph.startsWith('###')) {
+                    return <h3 key={i} className="text-2xl font-bold text-[#09263D] mt-8 mb-4">{paragraph.replace('###', '').trim()}</h3>;
+                  }
+                  return <p key={i} className="mb-4">{paragraph}</p>;
+                })}
               </div>
             </motion.div>
 

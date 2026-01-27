@@ -15,7 +15,7 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 };
 
-const categories = ["All", "Design Tips", "Maintenance", "Commercial"];
+const categories = ["All", "Interior Design", "Wellness", "Maintenance"];
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
