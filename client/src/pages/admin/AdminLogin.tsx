@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Lock, AlertCircle } from "lucide-react";
+import { Lock, AlertCircle, User } from "lucide-react";
 
 export default function AdminLogin() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,11 +20,11 @@ export default function AdminLogin() {
     setError("");
     setIsLoading(true);
 
-    const success = await login(password);
+    const success = await login(username, password);
     if (success) {
       setLocation("/admin");
     } else {
-      setError("Invalid password. Please try again.");
+      setError("Invalid credentials. Please try again.");
     }
     setIsLoading(false);
   };
@@ -37,7 +38,7 @@ export default function AdminLogin() {
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription>
-            Enter your password to access the admin dashboard
+            Enter your credentials to access the admin dashboard
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -49,16 +50,36 @@ export default function AdminLogin() {
               </div>
             )}
             <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter username"
+                  className="pl-10"
+                  required
+                  data-testid="input-username"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter admin password"
-                required
-                data-testid="input-password"
-              />
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter password"
+                  className="pl-10"
+                  required
+                  data-testid="input-password"
+                />
+              </div>
             </div>
             <Button
               type="submit"

@@ -275,12 +275,21 @@ Message: ${validatedData.message}
 
   // ============ ADMIN ROUTES ============
 
-  // Admin Authentication
-  app.post("/api/admin/login", async (req, res) => {
+  // Admin Authentication - using obscure endpoint for security
+  const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
+  const ADMIN_PASSWORD = getAdminPassword();
+  
+  app.post("/api/cms-portal-x7k9/auth", async (req, res) => {
     try {
-      const { password } = req.body;
-      if (password !== getAdminPassword()) {
-        return res.status(401).json({ error: "Invalid password" });
+      const { username, password } = req.body;
+      
+      // Validate both username and password
+      if (!username || !password) {
+        return res.status(401).json({ error: "Invalid credentials" });
+      }
+      
+      if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+        return res.status(401).json({ error: "Invalid credentials" });
       }
       
       const sessionId = crypto.randomUUID();

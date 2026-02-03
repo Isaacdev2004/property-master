@@ -28,15 +28,18 @@ function AdminRoutes() {
     );
   }
 
-  if (!isAuthenticated && location !== "/admin/login") {
-    return <Redirect to="/admin/login" />;
+  // Use obscure login path for security
+  const loginPath = "/cms-portal-x7k9";
+  
+  if (!isAuthenticated && location !== loginPath) {
+    return <Redirect to={loginPath} />;
   }
 
-  if (isAuthenticated && location === "/admin/login") {
+  if (isAuthenticated && location === loginPath) {
     return <Redirect to="/admin" />;
   }
 
-  if (location === "/admin/login") {
+  if (location === loginPath) {
     return <AdminLogin />;
   }
 

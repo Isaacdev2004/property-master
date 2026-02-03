@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from "react
 interface AdminContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (password: string) => Promise<boolean>;
+  login: (username: string, password: string) => Promise<boolean>;
   logout: () => Promise<void>;
   sessionId: string | null;
 }
@@ -46,11 +46,11 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     verifySession();
   }, [sessionId]);
 
-  const login = async (password: string): Promise<boolean> => {
+  const login = async (username: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch("/api/admin/login", {
+      const response = await fetch("/api/cms-portal-x7k9/auth", {
         method: "POST",
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" }
       });
       

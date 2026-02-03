@@ -29,7 +29,8 @@ import Admin from "@/pages/admin";
 function Router() {
   const [location] = useLocation();
   
-  if (location.startsWith("/admin")) {
+  // Handle admin routes and secure login path
+  if (location.startsWith("/admin") || location === "/cms-portal-x7k9") {
     return <Admin />;
   }
 
