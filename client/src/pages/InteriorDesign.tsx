@@ -3,9 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import type { BlogPost } from "@shared/schema";
-import { Link } from "wouter";
-
-
 import { 
   ArrowRight, 
   ArrowLeft,
@@ -303,12 +300,6 @@ export default function InteriorDesign() {
   const filteredBlogPosts = posts.filter(p => p.category === "Interior Design");
   const [activeTab, setActiveTab] = useState("wall-colour");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
