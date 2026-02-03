@@ -115,10 +115,10 @@ const whyChooseUs = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero + Reviews Section - 100vh combined for instant trust */}
-      <div className="h-screen flex flex-col">
-        {/* Hero Section - Takes ~60% of viewport */}
-        <section className="relative flex-[6] flex items-center overflow-hidden">
+      {/* Hero + Reviews Section */}
+      <div className="min-h-screen flex flex-col">
+        {/* Hero Section */}
+        <section className="relative flex-1 lg:flex-[6] flex items-end lg:items-center overflow-hidden pb-8 lg:pb-0">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -131,9 +131,9 @@ export default function Home() {
           </div>
 
           {/* Hero Content - Two Column Layout */}
-          <div className="relative z-10 w-full pt-16 md:pt-20">
+          <div className="relative z-10 w-full pt-20 md:pt-24">
             <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-              <div className="grid lg:grid-cols-2 gap-6 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
                 {/* Left Column - Text Content */}
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
@@ -144,7 +144,8 @@ export default function Home() {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-3 font-serif"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-3"
+                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
                   >
                     Your Complete Property Solutions Partner
                   </motion.h1>
@@ -187,7 +188,7 @@ export default function Home() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="grid grid-cols-2 gap-3"
+                  className="grid grid-cols-2 gap-2 sm:gap-3"
                   data-testid="stats-grid"
                 >
                   {[
@@ -201,17 +202,17 @@ export default function Home() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center"
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 sm:p-4 text-center"
                     >
-                      <div className="flex justify-center mb-2">
-                        <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
-                          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="flex justify-center mb-1 sm:mb-2">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
                           </svg>
                         </div>
                       </div>
-                      <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
-                      <p className="text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                      <p className="text-[10px] sm:text-xs text-white/80 uppercase tracking-wide">{stat.label}</p>
                     </motion.div>
                   ))}
                 </motion.div>
