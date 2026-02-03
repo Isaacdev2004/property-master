@@ -89,7 +89,7 @@ const serviceData: Record<string, {
     description: "Professional maintenance and repair services for all kitchen equipment including ovens, refrigerators, dishwashers, exhaust systems, and commercial kitchen appliances. Extend the life of your equipment and ensure food safety compliance.",
     icon: Flame,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80",
     features: [
       "Commercial & residential equipment",
       "Oven & stove repairs",
@@ -237,7 +237,7 @@ const serviceData: Record<string, {
     description: "Complete move-in and move-out services including deep cleaning, minor repairs, painting touch-ups, and property inspections. Perfect for tenants, landlords, and property managers.",
     icon: Truck,
     color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1600&q=80",
     features: [
       "Deep cleaning services",
       "Wall painting & touch-ups",
@@ -311,7 +311,7 @@ const serviceData: Record<string, {
     description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. Municipality approved methods and certified technicians.",
     icon: Droplets,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1585687433063-e6ab9bb75c04?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=1600&q=80",
     features: [
       "Tank draining & cleaning",
       "Pressure washing",
@@ -496,7 +496,7 @@ const serviceData: Record<string, {
     description: "Comprehensive cleaning services for homes, offices, and commercial spaces. From regular maid service to deep cleaning, we keep your space spotless and healthy.",
     icon: Sparkles,
     color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1600&q=80",
     features: [
       "Regular house cleaning",
       "Deep cleaning",
@@ -570,7 +570,7 @@ const serviceData: Record<string, {
     description: "Complete security solutions for residential and commercial properties. From CCTV installation to access control and smart security systems, we keep you safe.",
     icon: Shield,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1600&q=80",
     features: [
       "CCTV installation",
       "Access control systems",
@@ -607,7 +607,7 @@ const serviceData: Record<string, {
     description: "Annual maintenance contracts that cover all your property needs. Choose from our range of packages or customize your own for complete peace of mind.",
     icon: Package,
     color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80",
     features: [
       "AC maintenance",
       "Plumbing services",
@@ -795,7 +795,7 @@ const defaultService = {
   description: "Quality maintenance services for residential and commercial properties. Our certified technicians deliver reliable repairs and maintenance with guaranteed satisfaction.",
   icon: Wrench,
   color: "bg-[#970A44]",
-  heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
+  heroImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1600&q=80",
   features: [
     "Licensed professionals",
     "Quality workmanship",
