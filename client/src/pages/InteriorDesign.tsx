@@ -292,17 +292,129 @@ const happyHomes = [
 const videoTestimonials = [
   { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
   { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
+];
 
+// Animation variants
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+};
 
-                      <Icon className="w-6 h-6 text-[#970A44]" />
-                    </div>
-                    <div className="text-2xl font-bold text-white">{stat.value}</div>
-                    <div className="text-xs text-white/70 mt-1">{stat.label}</div>
-                  </motion.div>
-                );
-              })}
+const staggerContainer = {
+  initial: {},
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+export default function InteriorDesign() {
+  const { data: posts = [] } = useQuery<BlogPost[]>({ queryKey: ["/api/blog"] });
+  const filteredBlogPosts = posts.filter(p => p.category === "Interior Design");
+  const [activeTab, setActiveTab] = useState("wall-colour");
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -400, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 400, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* SECTION 1: HERO */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" data-testid="section-hero">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
+            alt="Luxury Interior Design"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+          <div className="max-w-3xl">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight"
+            >
+              Transform Your Space Into a <span className="text-[#970A44]">Masterpiece</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl"
+            >
+              Dubai's premier interior design studio. From concept to completion, we create stunning spaces that reflect your unique style.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button 
+                asChild
+                size="lg"
+                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                data-testid="button-hero-consultation"
+              >
+                <Link href="/book">
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white/10 rounded-full px-8"
+                data-testid="button-hero-portfolio"
+              >
+                <Link href="/portfolio">View Portfolio</Link>
+              </Button>
             </motion.div>
           </div>
+          
+          {/* Stats */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+          >
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center"
+                  data-testid={`stat-${index}`}
+                >
+                  <div className="w-12 h-12 mx-auto mb-2 bg-[#970A44]/20 rounded-lg flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-[#970A44]" />
+                  </div>
+                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-xs text-white/70 mt-1">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </section>
 
