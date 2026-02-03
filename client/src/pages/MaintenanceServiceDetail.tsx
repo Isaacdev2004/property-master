@@ -637,6 +637,154 @@ const serviceData: Record<string, {
       { question: "What is not covered in the packages?", answer: "Major repairs and spare parts are not included but offered at discounted rates." },
       { question: "Is there a contract lock-in period?", answer: "Packages are annual, but we offer monthly payment options." }
     ]
+  },
+  "emergency-ac": {
+    title: "Emergency AC Repair",
+    tagline: "24/7 Fast Response AC Emergency Services",
+    description: "When your AC breaks down unexpectedly, our emergency repair team is ready to respond immediately. We provide round-the-clock service with certified technicians who can diagnose and fix most AC issues on the spot.",
+    icon: Wind,
+    color: "bg-[#970A44]",
+    heroImage: "https://images.unsplash.com/photo-1631545806609-15df2e5c252a?w=1600&q=80",
+    features: [
+      "24/7 emergency response",
+      "All AC brands serviced",
+      "On-site diagnosis & repair",
+      "Genuine spare parts",
+      "Same-day service guarantee",
+      "No extra weekend charges"
+    ],
+    benefits: [
+      { icon: Clock, title: "Rapid Response", description: "Technician at your door within 2 hours" },
+      { icon: Wrench, title: "Expert Technicians", description: "Certified AC specialists" },
+      { icon: ShieldCheck, title: "Repair Warranty", description: "90-day guarantee on all repairs" }
+    ],
+    process: [
+      { step: 1, title: "Call Us", description: "Contact our 24/7 emergency hotline" },
+      { step: 2, title: "Dispatch", description: "Nearest technician dispatched immediately" },
+      { step: 3, title: "Diagnose", description: "Quick assessment and cost estimate" },
+      { step: 4, title: "Repair", description: "Fix completed with quality parts" }
+    ],
+    pricing: [
+      { name: "Diagnosis", price: "AED 99", features: ["On-site inspection", "Problem identification", "Free if repaired"] },
+      { name: "Standard Repair", price: "From AED 250", features: ["Common AC issues", "Parts included", "Same-day service"] },
+      { name: "Major Repair", price: "From AED 500", features: ["Compressor issues", "Complex repairs", "Priority handling"] }
+    ],
+    faqs: [
+      { question: "How fast can you respond to emergencies?", answer: "Our average response time is under 2 hours for emergency calls within Dubai." },
+      { question: "Do you charge extra for weekend or night calls?", answer: "No, our emergency service rates are the same regardless of the time or day." },
+      { question: "What AC brands do you service?", answer: "We service all major brands including Carrier, Daikin, LG, Samsung, Mitsubishi, and more." }
+    ]
+  },
+  "ac-installation": {
+    title: "New AC Installation",
+    tagline: "Professional AC Installation by Certified Experts",
+    description: "Complete AC installation services for residential and commercial properties. We help you choose the right unit, handle professional installation, and ensure optimal performance from day one.",
+    icon: Wind,
+    color: "bg-[#1C4668]",
+    heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
+    features: [
+      "Free site assessment",
+      "Energy-efficient recommendations",
+      "All AC types installed",
+      "Proper drainage setup",
+      "Electrical connections",
+      "Post-installation testing"
+    ],
+    benefits: [
+      { icon: Award, title: "Expert Installation", description: "Certified installation technicians" },
+      { icon: Zap, title: "Energy Efficiency", description: "Optimal placement for efficiency" },
+      { icon: Shield, title: "Full Warranty", description: "Installation warranty included" }
+    ],
+    process: [
+      { step: 1, title: "Consultation", description: "Free site assessment" },
+      { step: 2, title: "Selection", description: "Choose the right AC unit" },
+      { step: 3, title: "Installation", description: "Professional mounting & setup" },
+      { step: 4, title: "Testing", description: "Performance verification" }
+    ],
+    pricing: [
+      { name: "Split AC", price: "From AED 350", features: ["Wall-mounted units", "Standard installation", "Testing included"] },
+      { name: "Ducted AC", price: "From AED 800", features: ["Central systems", "Ductwork connection", "Multi-zone setup"] },
+      { name: "Commercial", price: "Custom Quote", features: ["Large capacity units", "Project management", "VRF systems"] }
+    ],
+    faqs: [
+      { question: "How long does installation take?", answer: "Standard split AC installation takes 2-4 hours. Ducted systems may take 1-2 days." },
+      { question: "Do you supply the AC units?", answer: "Yes, we can supply and install, or install units you've purchased elsewhere." },
+      { question: "What about old AC disposal?", answer: "We offer removal and eco-friendly disposal of old units for an additional fee." }
+    ]
+  },
+  "ac-ducting": {
+    title: "AC Ducting Services",
+    tagline: "Expert Ductwork Installation & Repair",
+    description: "Professional AC duct installation, repair, and cleaning services. Proper ductwork ensures efficient cooling, better air quality, and lower energy bills for your property.",
+    icon: Wind,
+    color: "bg-[#09263D]",
+    heroImage: "https://images.unsplash.com/photo-1504280317859-665893143562?w=1600&q=80",
+    features: [
+      "New duct installation",
+      "Duct repair & sealing",
+      "Insulation services",
+      "Air vent installation",
+      "Ductwork cleaning",
+      "Efficiency optimization"
+    ],
+    benefits: [
+      { icon: Wind, title: "Better Airflow", description: "Optimized duct design" },
+      { icon: Zap, title: "Energy Savings", description: "Reduced cooling costs" },
+      { icon: Sparkles, title: "Clean Air", description: "Improved indoor air quality" }
+    ],
+    process: [
+      { step: 1, title: "Inspect", description: "Assess current ductwork" },
+      { step: 2, title: "Design", description: "Plan optimal layout" },
+      { step: 3, title: "Install", description: "Professional installation" },
+      { step: 4, title: "Balance", description: "Airflow optimization" }
+    ],
+    pricing: [
+      { name: "Duct Repair", price: "From AED 200", features: ["Leak sealing", "Minor repairs", "Performance check"] },
+      { name: "New Installation", price: "From AED 80/m", features: ["Quality materials", "Insulated ducts", "Proper sizing"] },
+      { name: "Full System", price: "Custom Quote", features: ["Complete design", "Installation", "Balancing"] }
+    ],
+    faqs: [
+      { question: "How often should ducts be cleaned?", answer: "We recommend professional duct cleaning every 3-5 years or if you notice dust buildup." },
+      { question: "Can you install ducts in an existing property?", answer: "Yes, we specialize in retrofitting ductwork in properties without existing systems." },
+      { question: "What's the benefit of insulated ducts?", answer: "Insulated ducts prevent energy loss and condensation, improving efficiency by up to 30%." }
+    ]
+  },
+  "wall-painting": {
+    title: "Wall Painting Services",
+    tagline: "Transform Your Walls with Professional Painting",
+    description: "Expert wall painting services for homes and offices. We use premium paints and professional techniques to deliver flawless finishes that enhance your space and last for years.",
+    icon: Hammer,
+    color: "bg-[#720632]",
+    heroImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=80",
+    features: [
+      "Interior & exterior walls",
+      "Color consultation",
+      "Surface preparation",
+      "Premium paint brands",
+      "Clean & tidy work",
+      "Furniture protection"
+    ],
+    benefits: [
+      { icon: Sparkles, title: "Flawless Finish", description: "Smooth, professional results" },
+      { icon: Shield, title: "Long Lasting", description: "Quality paints that endure" },
+      { icon: Clock, title: "Quick Turnaround", description: "Minimal disruption" }
+    ],
+    process: [
+      { step: 1, title: "Quote", description: "Free on-site estimate" },
+      { step: 2, title: "Prep", description: "Surface preparation" },
+      { step: 3, title: "Paint", description: "Professional application" },
+      { step: 4, title: "Finish", description: "Clean up & inspection" }
+    ],
+    pricing: [
+      { name: "Per Room", price: "From AED 400", features: ["Standard walls", "2 coats", "Paint included"] },
+      { name: "Full Apartment", price: "From AED 2,500", features: ["All rooms", "Ceilings included", "Color matching"] },
+      { name: "Villa", price: "Custom Quote", features: ["Interior/exterior", "Premium paints", "Project timeline"] }
+    ],
+    faqs: [
+      { question: "How long does painting take?", answer: "A standard room takes 1 day. Full apartments typically 3-5 days depending on size." },
+      { question: "Do I need to move furniture?", answer: "We handle furniture protection and moving. Large items may need to be cleared." },
+      { question: "What paint brands do you use?", answer: "We use premium brands like Jotun, Dulux, and National Paints for lasting results." }
+    ]
   }
 };
 
@@ -697,6 +845,26 @@ const staggerItem = {
   whileInView: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }
 };
 
+// Helper function to format slug into proper title with common abbreviations
+function formatServiceTitle(slug: string): string {
+  const abbreviations: Record<string, string> = {
+    'ac': 'AC',
+    'hvac': 'HVAC',
+    'tv': 'TV',
+    'cctv': 'CCTV',
+    'dewa': 'DEWA',
+    'led': 'LED',
+    'spc': 'SPC',
+    'vrf': 'VRF',
+  };
+  
+  return slug.split("-").map(word => {
+    const lower = word.toLowerCase();
+    if (abbreviations[lower]) return abbreviations[lower];
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
+
 export default function MaintenanceServiceDetail() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   
@@ -706,7 +874,7 @@ export default function MaintenanceServiceDetail() {
     : {
         ...defaultService,
         title: serviceSlug 
-          ? serviceSlug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+          ? formatServiceTitle(serviceSlug)
           : defaultService.title
       };
 
