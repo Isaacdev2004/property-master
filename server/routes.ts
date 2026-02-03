@@ -22,10 +22,10 @@ import { z } from "zod";
 // Simple admin session storage
 const adminSessions = new Map<string, { expiresAt: Date }>();
 
-// Admin password from environment - required in production
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+// Admin password from environment - uses SESSION_SECRET
+const ADMIN_PASSWORD = process.env.SESSION_SECRET;
 if (!ADMIN_PASSWORD && process.env.NODE_ENV === "production") {
-  console.error("CRITICAL: ADMIN_PASSWORD environment variable must be set in production");
+  console.error("CRITICAL: SESSION_SECRET environment variable must be set in production");
 }
 
 // For development convenience, use a default if not set
