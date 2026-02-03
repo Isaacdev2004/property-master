@@ -57,7 +57,7 @@ const serviceData: Record<string, {
     description: "Professional AC cleaning and sanitization services to improve indoor air quality, reduce energy consumption, and extend the life of your air conditioning system. Our certified technicians use hospital-grade disinfectants and advanced cleaning techniques.",
     icon: Wind,
     color: "bg-[#970A44]",
-    heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
     features: [
       "Deep coil cleaning",
       "Filter replacement & cleaning",
@@ -99,7 +99,7 @@ const serviceData: Record<string, {
     description: "Professional carpet cleaning using hot water extraction and steam cleaning methods. We remove deep-seated dirt, stains, allergens, and bacteria, leaving your carpets fresh, sanitized, and looking like new.",
     icon: Sofa,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1600&q=80",
     features: [
       "Hot water extraction",
       "Steam cleaning",
@@ -309,7 +309,7 @@ const serviceData: Record<string, {
     description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. We remove sediment, bacteria, algae, and contaminants from all tank types.",
     icon: Droplets,
     color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=1600&q=80",
     features: [
       "Complete tank drainage",
       "High-pressure cleaning",
@@ -351,7 +351,7 @@ const serviceData: Record<string, {
     description: "Comprehensive wellness service packages and annual maintenance contracts designed to keep your home healthy year-round. Save money while ensuring regular professional care for all your wellness needs.",
     icon: Package,
     color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80",
     features: [
       "Bundled services",
       "Priority scheduling",
@@ -561,7 +561,7 @@ const serviceData: Record<string, {
     description: "Professional mold inspection, testing, and complete remediation services. We identify the source, remove mold safely, and implement prevention measures to keep your home mold-free.",
     icon: TestTube,
     color: "bg-[#720632]",
-    heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1600&q=80",
     features: [
       "Mold inspection",
       "Air quality testing",
@@ -603,7 +603,7 @@ const serviceData: Record<string, {
     description: "Comprehensive indoor air quality assessment using advanced testing equipment. We measure pollutants, allergens, VOCs, and other contaminants to help you understand and improve your indoor air.",
     icon: Wind,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1530533718754-001d2668365a?w=1600&q=80",
     features: [
       "Particulate matter testing",
       "VOC measurement",
@@ -645,7 +645,7 @@ const serviceData: Record<string, {
     description: "Complete water system care including tank cleaning, pipeline disinfection, water filtration, and quality testing. Ensure your family has access to safe, clean water throughout your home.",
     icon: Droplets,
     color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80",
     features: [
       "Water tank cleaning",
       "Pipeline disinfection",
@@ -732,7 +732,7 @@ const defaultService = {
   description: "Professional wellness services designed to create a healthier home environment. Our certified experts use advanced technology and eco-friendly solutions for optimal results.",
   icon: Heart,
   color: "bg-[#970A44]",
-  heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+  heroImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=80",
   features: [
     "Certified professionals",
     "Eco-friendly solutions",
