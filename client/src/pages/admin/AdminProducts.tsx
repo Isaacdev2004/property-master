@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Plus, Edit, Trash2, Search } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import type { Product } from "@shared/schema";
 
 const categories = [
@@ -249,16 +250,12 @@ export default function AdminProducts() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="image">Image URL</Label>
-                <Input
-                  id="image"
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://..."
-                  data-testid="input-image"
-                />
-              </div>
+              <ImageUpload
+                label="Product Image"
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                placeholder="Upload or enter image URL"
+              />
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
                 <Textarea

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Plus, Edit, Trash2, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import type { Testimonial } from "@shared/schema";
 
 export default function AdminTestimonials() {
@@ -222,16 +223,12 @@ export default function AdminTestimonials() {
                   </div>
                 </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="image">Image URL (optional)</Label>
-                <Input
-                  id="image"
-                  value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://..."
-                  data-testid="input-image"
-                />
-              </div>
+              <ImageUpload
+                label="Profile Image (optional)"
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+                placeholder="Upload or enter image URL"
+              />
               <div className="space-y-2">
                 <Label htmlFor="content">Testimonial Content</Label>
                 <Textarea

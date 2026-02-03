@@ -2,6 +2,7 @@ import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { odooService } from "./odoo";
+import { registerObjectStorageRoutes } from "./replit_integrations/object_storage";
 import {
   insertServiceSchema,
   insertPortfolioProjectSchema,
@@ -48,6 +49,9 @@ function requireAdmin(req: Request, res: Response, next: NextFunction) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Register object storage routes for file uploads
+  registerObjectStorageRoutes(app);
+
   // Services
   app.get("/api/services", async (_req, res) => {
     try {
