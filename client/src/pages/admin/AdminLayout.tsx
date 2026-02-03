@@ -67,7 +67,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <p className="text-sm text-white/60">Admin Panel</p>
         </div>
 
-        <nav className="p-4 space-y-2">
+        <nav className="p-4 flex flex-col gap-1">
           {navItems.map((item) => {
             const isActive = location === item.path || 
               (item.path !== "/admin" && location.startsWith(item.path));
@@ -76,15 +76,15 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             return (
               <Link key={item.path} href={item.path}>
                 <div
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors ${
+                  className={`flex items-center gap-3 px-4 py-2.5 rounded-md cursor-pointer transition-colors ${
                     isActive
                       ? "bg-[#970A44] text-white"
                       : "text-white/70 hover:bg-white/10 hover:text-white"
                   }`}
                   data-testid={`nav-${item.label.toLowerCase().replace(' ', '-')}`}
                 >
-                  <Icon className="w-5 h-5" />
-                  {item.label}
+                  <Icon className="w-5 h-5 flex-shrink-0" />
+                  <span>{item.label}</span>
                 </div>
               </Link>
             );
