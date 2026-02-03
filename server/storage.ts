@@ -40,13 +40,33 @@ export interface IStorage {
   // Blog Posts
   getAllBlogPosts(): Promise<BlogPost[]>;
   getBlogPost(id: string): Promise<BlogPost | undefined>;
+  getBlogPostBySlug(slug: string): Promise<BlogPost | undefined>;
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
+  updateBlogPost(id: string, post: Partial<InsertBlogPost>): Promise<BlogPost | undefined>;
+  deleteBlogPost(id: string): Promise<boolean>;
 
   // Testimonials
   getAllTestimonials(): Promise<Testimonial[]>;
+  createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial>;
+  updateTestimonial(id: string, testimonial: Partial<InsertTestimonial>): Promise<Testimonial | undefined>;
+  deleteTestimonial(id: string): Promise<boolean>;
+
+  // Services - admin methods
+  updateService(id: string, service: Partial<InsertService>): Promise<Service | undefined>;
+  deleteService(id: string): Promise<boolean>;
+
+  // Products - admin methods
+  updateProduct(id: string, product: Partial<InsertProduct>): Promise<Product | undefined>;
+  deleteProduct(id: string): Promise<boolean>;
+
+  // Portfolio - admin methods
+  updatePortfolioProject(id: string, project: Partial<InsertPortfolioProject>): Promise<PortfolioProject | undefined>;
+  deletePortfolioProject(id: string): Promise<boolean>;
 
   // Contact Inquiries
+  getAllContactInquiries(): Promise<ContactInquiry[]>;
   createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry>;
+  deleteContactInquiry(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -2147,6 +2167,12 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
   }
 
   // Contact Inquiries
+  async getAllContactInquiries(): Promise<ContactInquiry[]> {
+    return Array.from(this.contactInquiries.values()).sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  }
+
   async createContactInquiry(insertInquiry: InsertContactInquiry): Promise<ContactInquiry> {
     const id = randomUUID();
     const inquiry: ContactInquiry = {
@@ -2156,6 +2182,86 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
     };
     this.contactInquiries.set(id, inquiry);
     return inquiry;
+  }
+
+  async deleteContactInquiry(id: string): Promise<boolean> {
+    return this.contactInquiries.delete(id);
+  }
+
+  // Blog Post CRUD methods
+  async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+    return Array.from(this.posts.values()).find(p => p.slug === slug);
+  }
+
+  async updateBlogPost(id: string, updates: Partial<InsertBlogPost>): Promise<BlogPost | undefined> {
+    const existing = this.posts.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.posts.set(id, updated);
+    return updated;
+  }
+
+  async deleteBlogPost(id: string): Promise<boolean> {
+    return this.posts.delete(id);
+  }
+
+  // Testimonials CRUD methods
+  async createTestimonial(insertTestimonial: InsertTestimonial): Promise<Testimonial> {
+    const id = randomUUID();
+    const testimonial: Testimonial = { ...insertTestimonial, id };
+    this.testimonials.set(id, testimonial);
+    return testimonial;
+  }
+
+  async updateTestimonial(id: string, updates: Partial<InsertTestimonial>): Promise<Testimonial | undefined> {
+    const existing = this.testimonials.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.testimonials.set(id, updated);
+    return updated;
+  }
+
+  async deleteTestimonial(id: string): Promise<boolean> {
+    return this.testimonials.delete(id);
+  }
+
+  // Services admin methods
+  async updateService(id: string, updates: Partial<InsertService>): Promise<Service | undefined> {
+    const existing = this.services.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.services.set(id, updated);
+    return updated;
+  }
+
+  async deleteService(id: string): Promise<boolean> {
+    return this.services.delete(id);
+  }
+
+  // Products admin methods
+  async updateProduct(id: string, updates: Partial<InsertProduct>): Promise<Product | undefined> {
+    const existing = this.products.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.products.set(id, updated);
+    return updated;
+  }
+
+  async deleteProduct(id: string): Promise<boolean> {
+    return this.products.delete(id);
+  }
+
+  // Portfolio admin methods
+  async updatePortfolioProject(id: string, updates: Partial<InsertPortfolioProject>): Promise<PortfolioProject | undefined> {
+    const existing = this.portfolioProjects.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.portfolioProjects.set(id, updated);
+    return updated;
+  }
+
+  async deletePortfolioProject(id: string): Promise<boolean> {
+    return this.portfolioProjects.delete(id);
   }
 }
 
