@@ -156,7 +156,7 @@ const serviceData: Record<string, {
     description: "Pre-fabricated modular kitchen solutions that combine style with functionality. Quick installation, easy maintenance, and endless customization options for the modern home.",
     icon: UtensilsCrossed,
     color: "bg-[#09263D]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1600&q=80",
     features: [
       "Ready-to-install modules",
       "Wide range of finishes",
@@ -427,7 +427,7 @@ const serviceData: Record<string, {
     description: "SPC (Stone Polymer Composite) flooring offers the ultimate combination of durability, waterproof performance, and aesthetic appeal. Ideal for high-traffic areas and commercial spaces.",
     icon: Layers,
     color: "bg-[#1C4668]",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=80",
     features: [
       "Rigid core construction",
       "100% waterproof",
@@ -657,7 +657,7 @@ const defaultService = {
   description: "Professional interior design and renovation services tailored to your needs. Our expert team delivers exceptional results for residential and commercial projects.",
   icon: Paintbrush,
   color: "bg-[#970A44]",
-  heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80",
+  heroImage: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1600&q=80",
   features: [
     "Custom design solutions",
     "Premium materials",
