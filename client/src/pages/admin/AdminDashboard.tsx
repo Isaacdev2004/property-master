@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { adminFetch } from "@/contexts/AdminContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Package, Star, Calendar, Mail, Briefcase, Layers, Globe, Palette } from "lucide-react";
+import { FileText, Package, Star, Calendar, Mail, Briefcase, Layers, Globe, MapPin, Code, Edit3 } from "lucide-react";
 import { Link } from "wouter";
 
 export default function AdminDashboard() {
@@ -69,12 +69,39 @@ export default function AdminDashboard() {
     },
   });
 
+  const { data: pageContents = [] } = useQuery({
+    queryKey: ["/api/admin/page-content"],
+    queryFn: async () => {
+      const res = await adminFetch("/api/admin/page-content");
+      return res.json();
+    },
+  });
+
+  const { data: trackingCodes = [] } = useQuery({
+    queryKey: ["/api/admin/tracking-codes"],
+    queryFn: async () => {
+      const res = await adminFetch("/api/admin/tracking-codes");
+      return res.json();
+    },
+  });
+
+  const { data: locationPages = [] } = useQuery({
+    queryKey: ["/api/admin/location-pages"],
+    queryFn: async () => {
+      const res = await adminFetch("/api/admin/location-pages");
+      return res.json();
+    },
+  });
+
   const stats = [
     { label: "Services", value: services.length, icon: Layers, color: "bg-indigo-500", path: "/admin/services" },
     { label: "Blog Posts", value: posts.length, icon: FileText, color: "bg-blue-500", path: "/admin/posts" },
     { label: "Products", value: products.length, icon: Package, color: "bg-green-500", path: "/admin/products" },
     { label: "Testimonials", value: testimonials.length, icon: Star, color: "bg-yellow-500", path: "/admin/testimonials" },
     { label: "Portfolio Projects", value: portfolio.length, icon: Briefcase, color: "bg-purple-500", path: "/admin/portfolio" },
+    { label: "Page Content", value: pageContents.length, icon: Edit3, color: "bg-pink-500", path: "/admin/page-content" },
+    { label: "Location Pages", value: locationPages.length, icon: MapPin, color: "bg-orange-500", path: "/admin/location-pages" },
+    { label: "Tracking Codes", value: trackingCodes.length, icon: Code, color: "bg-cyan-500", path: "/admin/tracking-codes" },
     { label: "SEO Pages", value: seoSettings.length, icon: Globe, color: "bg-teal-500", path: "/admin/seo" },
     { label: "Bookings", value: bookings.length, icon: Calendar, color: "bg-[#970A44]", path: "/admin/bookings" },
     { label: "Inquiries", value: inquiries.length, icon: Mail, color: "bg-[#1C4668]", path: "/admin/inquiries" },

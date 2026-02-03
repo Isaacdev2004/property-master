@@ -22,6 +22,7 @@ import MaintenanceServices from "@/pages/MaintenanceServices";
 import MaintenanceServiceDetail from "@/pages/MaintenanceServiceDetail";
 import InteriorServiceDetail from "@/pages/InteriorServiceDetail";
 import ProductDetail from "@/pages/ProductDetail";
+import LocationPage from "@/pages/LocationPage";
 import NotFound from "@/pages/NotFound";
 import Admin from "@/pages/admin";
 
@@ -55,6 +56,7 @@ function Router() {
           <Route path="/blog" component={Blog} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/location/:slug" component={LocationPage} />
           <Route component={NotFound} />
         </Switch>
       </main>

@@ -12,6 +12,9 @@ import AdminPortfolio from "./AdminPortfolio";
 import AdminServices from "./AdminServices";
 import AdminSEO from "./AdminSEO";
 import AdminSiteSettings from "./AdminSiteSettings";
+import AdminPageContent from "./AdminPageContent";
+import AdminTrackingCodes from "./AdminTrackingCodes";
+import AdminLocationPages from "./AdminLocationPages";
 
 function AdminRoutes() {
   const { isAuthenticated, isLoading } = useAdmin();
@@ -50,6 +53,9 @@ function AdminRoutes() {
         <Route path="/admin/portfolio" component={AdminPortfolio} />
         <Route path="/admin/seo" component={AdminSEO} />
         <Route path="/admin/site-settings" component={AdminSiteSettings} />
+        <Route path="/admin/page-content" component={AdminPageContent} />
+        <Route path="/admin/tracking-codes" component={AdminTrackingCodes} />
+        <Route path="/admin/location-pages" component={AdminLocationPages} />
         <Route>
           <Redirect to="/admin" />
         </Route>

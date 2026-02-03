@@ -21,7 +21,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Plus, Edit, Trash2, Search } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Plus, Edit, Trash2, Search, Link2, Image, Globe } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import type { BlogPost } from "@shared/schema";
 
@@ -49,7 +50,16 @@ export default function AdminPosts() {
     author: "The Property Masters Team",
     publishedAt: new Date().toISOString().split("T")[0],
     featured: false,
+    metaTitle: "",
+    metaDescription: "",
+    focusKeywords: "",
+    additionalImages: [] as string[],
+    internalLinks: [] as { text: string; url: string }[],
   });
+  
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [newLinkText, setNewLinkText] = useState("");
+  const [newLinkUrl, setNewLinkUrl] = useState("");
 
   const { data: posts = [], isLoading } = useQuery<BlogPost[]>({
     queryKey: ["/api/admin/posts"],
@@ -130,8 +140,51 @@ export default function AdminPosts() {
       author: "The Property Masters Team",
       publishedAt: new Date().toISOString().split("T")[0],
       featured: false,
+      metaTitle: "",
+      metaDescription: "",
+      focusKeywords: "",
+      additionalImages: [],
+      internalLinks: [],
     });
+    setNewImageUrl("");
+    setNewLinkText("");
+    setNewLinkUrl("");
     setEditingPost(null);
+  };
+  
+  const addImage = () => {
+    if (newImageUrl.trim()) {
+      setFormData({
+        ...formData,
+        additionalImages: [...formData.additionalImages, newImageUrl.trim()],
+      });
+      setNewImageUrl("");
+    }
+  };
+  
+  const removeImage = (index: number) => {
+    setFormData({
+      ...formData,
+      additionalImages: formData.additionalImages.filter((_, i) => i !== index),
+    });
+  };
+  
+  const addInternalLink = () => {
+    if (newLinkText.trim() && newLinkUrl.trim()) {
+      setFormData({
+        ...formData,
+        internalLinks: [...formData.internalLinks, { text: newLinkText.trim(), url: newLinkUrl.trim() }],
+      });
+      setNewLinkText("");
+      setNewLinkUrl("");
+    }
+  };
+  
+  const removeInternalLink = (index: number) => {
+    setFormData({
+      ...formData,
+      internalLinks: formData.internalLinks.filter((_, i) => i !== index),
+    });
   };
 
   const handleEdit = (post: BlogPost) => {
@@ -146,6 +199,11 @@ export default function AdminPosts() {
       author: post.author,
       publishedAt: post.publishedAt.split("T")[0],
       featured: post.featured,
+      metaTitle: post.metaTitle || "",
+      metaDescription: post.metaDescription || "",
+      focusKeywords: post.focusKeywords || "",
+      additionalImages: post.additionalImages || [],
+      internalLinks: post.internalLinks || [],
     });
     setIsDialogOpen(true);
   };
@@ -198,131 +256,303 @@ export default function AdminPosts() {
               Add Post
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingPost ? "Edit Post" : "Create New Post"}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="title">Title</Label>
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={(e) => {
-                      setFormData({ 
-                        ...formData, 
-                        title: e.target.value,
-                        slug: generateSlug(e.target.value)
-                      });
-                    }}
-                    required
-                    data-testid="input-title"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="slug">Slug</Label>
-                  <Input
-                    id="slug"
-                    value={formData.slug}
-                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                    required
-                    data-testid="input-slug"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="category">Category</Label>
-                  <Select
-                    value={formData.category}
-                    onValueChange={(value) => setFormData({ ...formData, category: value })}
-                  >
-                    <SelectTrigger data-testid="select-category">
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>
-                          {cat}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="author">Author</Label>
-                  <Input
-                    id="author"
-                    value={formData.author}
-                    onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    required
-                    data-testid="input-author"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="image">Image URL</Label>
-                  <Input
-                    id="image"
-                    value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    placeholder="https://..."
-                    data-testid="input-image"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="publishedAt">Publish Date</Label>
-                  <Input
-                    id="publishedAt"
-                    type="date"
-                    value={formData.publishedAt}
-                    onChange={(e) => setFormData({ ...formData, publishedAt: e.target.value })}
-                    required
-                    data-testid="input-date"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="excerpt">Excerpt</Label>
-                <Textarea
-                  id="excerpt"
-                  value={formData.excerpt}
-                  onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                  rows={2}
-                  required
-                  data-testid="input-excerpt"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="content">Content</Label>
-                <Textarea
-                  id="content"
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  rows={10}
-                  required
-                  data-testid="input-content"
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="featured"
-                  checked={formData.featured}
-                  onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  data-testid="checkbox-featured"
-                />
-                <Label htmlFor="featured">Featured post</Label>
-              </div>
-              <div className="flex justify-end gap-2">
+              <Tabs defaultValue="content" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 mb-4">
+                  <TabsTrigger value="content" data-testid="tab-content">Content</TabsTrigger>
+                  <TabsTrigger value="seo" data-testid="tab-seo">
+                    <Globe className="w-4 h-4 mr-1" />
+                    SEO
+                  </TabsTrigger>
+                  <TabsTrigger value="media" data-testid="tab-media">
+                    <Image className="w-4 h-4 mr-1" />
+                    Media & Links
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="content" className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="title">Title</Label>
+                      <Input
+                        id="title"
+                        value={formData.title}
+                        onChange={(e) => {
+                          setFormData({ 
+                            ...formData, 
+                            title: e.target.value,
+                            slug: generateSlug(e.target.value)
+                          });
+                        }}
+                        required
+                        data-testid="input-title"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="slug">Slug</Label>
+                      <Input
+                        id="slug"
+                        value={formData.slug}
+                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                        required
+                        data-testid="input-slug"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="category">Category</Label>
+                      <Select
+                        value={formData.category}
+                        onValueChange={(value) => setFormData({ ...formData, category: value })}
+                      >
+                        <SelectTrigger data-testid="select-category">
+                          <SelectValue placeholder="Select category" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((cat) => (
+                            <SelectItem key={cat} value={cat}>
+                              {cat}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="author">Author</Label>
+                      <Input
+                        id="author"
+                        value={formData.author}
+                        onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                        required
+                        data-testid="input-author"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="image">Featured Image URL</Label>
+                      <Input
+                        id="image"
+                        value={formData.image}
+                        onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                        placeholder="https://..."
+                        data-testid="input-image"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="publishedAt">Publish Date</Label>
+                      <Input
+                        id="publishedAt"
+                        type="date"
+                        value={formData.publishedAt}
+                        onChange={(e) => setFormData({ ...formData, publishedAt: e.target.value })}
+                        required
+                        data-testid="input-date"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="excerpt">Excerpt</Label>
+                    <Textarea
+                      id="excerpt"
+                      value={formData.excerpt}
+                      onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                      rows={2}
+                      required
+                      data-testid="input-excerpt"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="content">Content (HTML supported)</Label>
+                    <Textarea
+                      id="content"
+                      value={formData.content}
+                      onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                      rows={10}
+                      required
+                      data-testid="input-content"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="featured"
+                      checked={formData.featured}
+                      onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                      data-testid="checkbox-featured"
+                    />
+                    <Label htmlFor="featured">Featured post</Label>
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="seo" className="space-y-4">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <p className="text-sm text-blue-700">
+                      SEO settings help improve your blog post's visibility in search engines.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="metaTitle">Meta Title</Label>
+                    <Input
+                      id="metaTitle"
+                      value={formData.metaTitle}
+                      onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
+                      placeholder="SEO optimized title (50-60 characters)"
+                      maxLength={70}
+                      data-testid="input-meta-title"
+                    />
+                    <p className="text-xs text-gray-500">
+                      {formData.metaTitle.length}/60 characters (recommended)
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="metaDescription">Meta Description</Label>
+                    <Textarea
+                      id="metaDescription"
+                      value={formData.metaDescription}
+                      onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
+                      placeholder="Brief description for search results (150-160 characters)"
+                      rows={3}
+                      maxLength={200}
+                      data-testid="input-meta-description"
+                    />
+                    <p className="text-xs text-gray-500">
+                      {formData.metaDescription.length}/160 characters (recommended)
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="focusKeywords">Focus Keywords</Label>
+                    <Input
+                      id="focusKeywords"
+                      value={formData.focusKeywords}
+                      onChange={(e) => setFormData({ ...formData, focusKeywords: e.target.value })}
+                      placeholder="interior design dubai, luxury home decor, property maintenance"
+                      data-testid="input-focus-keywords"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Comma-separated keywords that this post should rank for
+                    </p>
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="media" className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Image className="w-5 h-5 text-[#970A44]" />
+                      <Label className="text-lg font-semibold">Additional Images</Label>
+                    </div>
+                    <div className="flex gap-2">
+                      <Input
+                        value={newImageUrl}
+                        onChange={(e) => setNewImageUrl(e.target.value)}
+                        placeholder="https://example.com/image.jpg"
+                        data-testid="input-new-image"
+                      />
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={addImage}
+                        data-testid="button-add-image"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </Button>
+                    </div>
+                    {formData.additionalImages.length > 0 && (
+                      <div className="grid grid-cols-3 gap-2">
+                        {formData.additionalImages.map((img, index) => (
+                          <div key={index} className="relative group">
+                            <img 
+                              src={img} 
+                              alt={`Additional ${index + 1}`}
+                              className="w-full h-24 object-cover rounded"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeImage(index)}
+                              className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                              data-testid={`button-remove-image-${index}`}
+                            >
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Link2 className="w-5 h-5 text-[#970A44]" />
+                      <Label className="text-lg font-semibold">Internal Links</Label>
+                    </div>
+                    <p className="text-sm text-gray-500">
+                      Add links to other pages on your site for better SEO and user navigation.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Input
+                        value={newLinkText}
+                        onChange={(e) => setNewLinkText(e.target.value)}
+                        placeholder="Link text (e.g., Our Services)"
+                        data-testid="input-link-text"
+                      />
+                      <div className="flex gap-2">
+                        <Input
+                          value={newLinkUrl}
+                          onChange={(e) => setNewLinkUrl(e.target.value)}
+                          placeholder="/services or /blog/post-slug"
+                          data-testid="input-link-url"
+                        />
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={addInternalLink}
+                          data-testid="button-add-link"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                    {formData.internalLinks.length > 0 && (
+                      <div className="space-y-2">
+                        {formData.internalLinks.map((link, index) => (
+                          <div 
+                            key={index} 
+                            className="flex items-center justify-between p-2 bg-gray-50 rounded"
+                          >
+                            <div>
+                              <span className="font-medium">{link.text}</span>
+                              <span className="text-gray-400 mx-2">→</span>
+                              <span className="text-[#970A44]">{link.url}</span>
+                            </div>
+                            <Button
+                              type="button"
+                              size="icon"
+                              variant="ghost"
+                              onClick={() => removeInternalLink(index)}
+                              data-testid={`button-remove-link-${index}`}
+                            >
+                              <Trash2 className="w-4 h-4 text-red-500" />
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </TabsContent>
+              </Tabs>
+              
+              <div className="flex justify-end gap-2 pt-4 border-t">
                 <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
                   Cancel
                 </Button>
                 <Button 
                   type="submit" 
-                  className="bg-[#970A44] hover:bg-[#720632]"
+                  className="bg-[#970A44]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-submit-post"
                 >

@@ -8,7 +8,10 @@ import {
   type Testimonial, type InsertTestimonial,
   type ContactInquiry, type InsertContactInquiry,
   type SeoSettings, type InsertSeoSettings,
-  type SiteSettings, type InsertSiteSettings
+  type SiteSettings, type InsertSiteSettings,
+  type PageContent, type InsertPageContent,
+  type TrackingCode, type InsertTrackingCode,
+  type LocationPage, type InsertLocationPage
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -80,6 +83,31 @@ export interface IStorage {
   // Site Settings
   getSiteSettings(): Promise<SiteSettings | undefined>;
   updateSiteSettings(settings: Partial<InsertSiteSettings>): Promise<SiteSettings>;
+
+  // Page Content
+  getAllPageContents(): Promise<PageContent[]>;
+  getPageContent(id: string): Promise<PageContent | undefined>;
+  getPageContentByPath(pagePath: string): Promise<PageContent | undefined>;
+  createPageContent(content: InsertPageContent): Promise<PageContent>;
+  updatePageContent(id: string, content: Partial<InsertPageContent>): Promise<PageContent | undefined>;
+  deletePageContent(id: string): Promise<boolean>;
+
+  // Tracking Codes
+  getAllTrackingCodes(): Promise<TrackingCode[]>;
+  getTrackingCode(id: string): Promise<TrackingCode | undefined>;
+  getActiveTrackingCodes(): Promise<TrackingCode[]>;
+  createTrackingCode(code: InsertTrackingCode): Promise<TrackingCode>;
+  updateTrackingCode(id: string, code: Partial<InsertTrackingCode>): Promise<TrackingCode | undefined>;
+  deleteTrackingCode(id: string): Promise<boolean>;
+
+  // Location Pages
+  getAllLocationPages(): Promise<LocationPage[]>;
+  getLocationPage(id: string): Promise<LocationPage | undefined>;
+  getLocationPageBySlug(slug: string): Promise<LocationPage | undefined>;
+  getActiveLocationPages(): Promise<LocationPage[]>;
+  createLocationPage(page: InsertLocationPage): Promise<LocationPage>;
+  updateLocationPage(id: string, page: Partial<InsertLocationPage>): Promise<LocationPage | undefined>;
+  deleteLocationPage(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -93,6 +121,9 @@ export class MemStorage implements IStorage {
   private contactInquiries: Map<string, ContactInquiry>;
   private seoSettings: Map<string, SeoSettings>;
   private siteSettings: SiteSettings | null;
+  private pageContents: Map<string, PageContent>;
+  private trackingCodes: Map<string, TrackingCode>;
+  private locationPages: Map<string, LocationPage>;
 
   constructor() {
     this.services = new Map();
@@ -105,6 +136,9 @@ export class MemStorage implements IStorage {
     this.contactInquiries = new Map();
     this.seoSettings = new Map();
     this.siteSettings = null;
+    this.pageContents = new Map();
+    this.trackingCodes = new Map();
+    this.locationPages = new Map();
     this.initializeMockData();
   }
 
@@ -2335,6 +2369,106 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
     const current = await this.getSiteSettings();
     this.siteSettings = { ...current!, ...updates };
     return this.siteSettings;
+  }
+
+  // Page Content methods
+  async getAllPageContents(): Promise<PageContent[]> {
+    return Array.from(this.pageContents.values());
+  }
+
+  async getPageContent(id: string): Promise<PageContent | undefined> {
+    return this.pageContents.get(id);
+  }
+
+  async getPageContentByPath(pagePath: string): Promise<PageContent | undefined> {
+    return Array.from(this.pageContents.values()).find(p => p.pagePath === pagePath);
+  }
+
+  async createPageContent(content: InsertPageContent): Promise<PageContent> {
+    const id = randomUUID();
+    const pageContent: PageContent = { ...content, id, updatedAt: new Date().toISOString() };
+    this.pageContents.set(id, pageContent);
+    return pageContent;
+  }
+
+  async updatePageContent(id: string, updates: Partial<InsertPageContent>): Promise<PageContent | undefined> {
+    const existing = this.pageContents.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates, updatedAt: new Date().toISOString() };
+    this.pageContents.set(id, updated);
+    return updated;
+  }
+
+  async deletePageContent(id: string): Promise<boolean> {
+    return this.pageContents.delete(id);
+  }
+
+  // Tracking Codes methods
+  async getAllTrackingCodes(): Promise<TrackingCode[]> {
+    return Array.from(this.trackingCodes.values());
+  }
+
+  async getTrackingCode(id: string): Promise<TrackingCode | undefined> {
+    return this.trackingCodes.get(id);
+  }
+
+  async getActiveTrackingCodes(): Promise<TrackingCode[]> {
+    return Array.from(this.trackingCodes.values()).filter(t => t.isActive);
+  }
+
+  async createTrackingCode(code: InsertTrackingCode): Promise<TrackingCode> {
+    const id = randomUUID();
+    const trackingCode: TrackingCode = { ...code, id };
+    this.trackingCodes.set(id, trackingCode);
+    return trackingCode;
+  }
+
+  async updateTrackingCode(id: string, updates: Partial<InsertTrackingCode>): Promise<TrackingCode | undefined> {
+    const existing = this.trackingCodes.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.trackingCodes.set(id, updated);
+    return updated;
+  }
+
+  async deleteTrackingCode(id: string): Promise<boolean> {
+    return this.trackingCodes.delete(id);
+  }
+
+  // Location Pages methods
+  async getAllLocationPages(): Promise<LocationPage[]> {
+    return Array.from(this.locationPages.values());
+  }
+
+  async getLocationPage(id: string): Promise<LocationPage | undefined> {
+    return this.locationPages.get(id);
+  }
+
+  async getLocationPageBySlug(slug: string): Promise<LocationPage | undefined> {
+    return Array.from(this.locationPages.values()).find(p => p.slug === slug);
+  }
+
+  async getActiveLocationPages(): Promise<LocationPage[]> {
+    return Array.from(this.locationPages.values()).filter(p => p.isActive);
+  }
+
+  async createLocationPage(page: InsertLocationPage): Promise<LocationPage> {
+    const id = randomUUID();
+    const locationPage: LocationPage = { ...page, id };
+    this.locationPages.set(id, locationPage);
+    return locationPage;
+  }
+
+  async updateLocationPage(id: string, updates: Partial<InsertLocationPage>): Promise<LocationPage | undefined> {
+    const existing = this.locationPages.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.locationPages.set(id, updated);
+    return updated;
+  }
+
+  async deleteLocationPage(id: string): Promise<boolean> {
+    return this.locationPages.delete(id);
   }
 }
 

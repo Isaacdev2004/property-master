@@ -36,6 +36,10 @@ The design adheres to a warm luxury minimalist aesthetic with a full-width, bran
 - **Ecommerce Shop Page:** Redesigned with a parallax hero, quick category icons, featured collections, a factory tour section, design ideas, a benefits bar, a product grid with filters, and a comprehensive product detail page.
 - **Comprehensive Page Set:** Includes Homepage, dynamic Services pages, About, Portfolio (with before/after slider), Shop with cart, multi-step Book Service form, Blog, and Contact page. All hero sections use professional stock photography with dark gradient overlays.
 - **Admin CMS System:** A secure, session-based `/admin` content management system providing full CRUD operations for services, blog posts, products, testimonials, portfolio projects, and SEO settings. It includes a dashboard, site settings (branding, colors, contact, social), bookings view, and contact inquiries management. Admin routes are protected with `requireAdmin` middleware and Zod validation.
+- **Page Content Editor:** Manage H1, H2, H3 headings, FAQs, hero images, and internal links for any page with JSON-LD schema markup support.
+- **Tracking Codes Manager:** Insert Google Analytics 4, Meta Pixel, and Google Tag Manager codes in header/footer with pre-built templates and code preview.
+- **Location Pages:** Create location-based service pages for Dubai areas (Dubai Marina, Downtown Dubai, Palm Jumeirah, etc.) with LocalBusiness schema for Local SEO optimization.
+- **Enhanced Blog SEO:** Blog posts support meta title, meta description, focus keywords, multiple additional images, and internal linking for comprehensive SEO.
 - **Reusable Page Templates:** `ServicePageTemplate` for consistent service detail pages, accepting `ServiceData` for dynamic content.
 - **Title Formatting Helper:** Auto-generates SEO-friendly titles from slugs, handling common abbreviations.
 - **Responsive Design:** Mobile-first approach for all devices.

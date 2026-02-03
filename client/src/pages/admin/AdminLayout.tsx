@@ -16,7 +16,10 @@ import {
   X,
   Layers,
   Globe,
-  Palette
+  Palette,
+  Code,
+  MapPin,
+  Edit3
 } from "lucide-react";
 import { useState } from "react";
 
@@ -33,6 +36,9 @@ const navItems = [
   { path: "/admin/portfolio", label: "Portfolio", icon: Briefcase },
   { path: "/admin/bookings", label: "Bookings", icon: Calendar },
   { path: "/admin/inquiries", label: "Inquiries", icon: Mail },
+  { path: "/admin/page-content", label: "Page Content", icon: Edit3 },
+  { path: "/admin/location-pages", label: "Location Pages", icon: MapPin },
+  { path: "/admin/tracking-codes", label: "Tracking Codes", icon: Code },
   { path: "/admin/seo", label: "SEO Settings", icon: Globe },
   { path: "/admin/site-settings", label: "Site Settings", icon: Palette },
 ];

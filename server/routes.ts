@@ -13,6 +13,9 @@ import {
   insertTestimonialSchema,
   insertSeoSettingsSchema,
   insertSiteSettingsSchema,
+  insertPageContentSchema,
+  insertTrackingCodeSchema,
+  insertLocationPageSchema,
 } from "@shared/schema";
 import { z } from "zod";
 
@@ -690,6 +693,221 @@ Message: ${validatedData.message}
       } else {
         res.status(500).json({ error: "Failed to update site settings" });
       }
+    }
+  });
+
+  // ============ PAGE CONTENT ROUTES ============
+  app.get("/api/admin/page-content", requireAdmin, async (_req, res) => {
+    try {
+      const contents = await storage.getAllPageContents();
+      res.json(contents);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch page contents" });
+    }
+  });
+
+  app.get("/api/page-content/:path(*)", async (req, res) => {
+    try {
+      const pagePath = "/" + req.params.path;
+      const content = await storage.getPageContentByPath(pagePath);
+      if (content) {
+        res.json(content);
+      } else {
+        res.status(404).json({ error: "Page content not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch page content" });
+    }
+  });
+
+  app.post("/api/admin/page-content", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertPageContentSchema.parse(req.body);
+      const content = await storage.createPageContent(validatedData);
+      res.status(201).json(content);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid page content data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create page content" });
+      }
+    }
+  });
+
+  app.patch("/api/admin/page-content/:id", requireAdmin, async (req, res) => {
+    try {
+      const partialSchema = insertPageContentSchema.partial();
+      const validatedData = partialSchema.parse(req.body);
+      const updated = await storage.updatePageContent(req.params.id, validatedData);
+      if (updated) {
+        res.json(updated);
+      } else {
+        res.status(404).json({ error: "Page content not found" });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid page content data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update page content" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/page-content/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deletePageContent(req.params.id);
+      if (deleted) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "Page content not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete page content" });
+    }
+  });
+
+  // ============ TRACKING CODE ROUTES ============
+  app.get("/api/admin/tracking-codes", requireAdmin, async (_req, res) => {
+    try {
+      const codes = await storage.getAllTrackingCodes();
+      res.json(codes);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch tracking codes" });
+    }
+  });
+
+  // Public endpoint for active tracking codes (used by frontend)
+  app.get("/api/tracking-codes", async (_req, res) => {
+    try {
+      const codes = await storage.getActiveTrackingCodes();
+      res.json(codes);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch tracking codes" });
+    }
+  });
+
+  app.post("/api/admin/tracking-codes", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertTrackingCodeSchema.parse(req.body);
+      const code = await storage.createTrackingCode(validatedData);
+      res.status(201).json(code);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid tracking code data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create tracking code" });
+      }
+    }
+  });
+
+  app.patch("/api/admin/tracking-codes/:id", requireAdmin, async (req, res) => {
+    try {
+      const partialSchema = insertTrackingCodeSchema.partial();
+      const validatedData = partialSchema.parse(req.body);
+      const updated = await storage.updateTrackingCode(req.params.id, validatedData);
+      if (updated) {
+        res.json(updated);
+      } else {
+        res.status(404).json({ error: "Tracking code not found" });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid tracking code data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update tracking code" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/tracking-codes/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteTrackingCode(req.params.id);
+      if (deleted) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "Tracking code not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete tracking code" });
+    }
+  });
+
+  // ============ LOCATION PAGES ROUTES ============
+  app.get("/api/admin/location-pages", requireAdmin, async (_req, res) => {
+    try {
+      const pages = await storage.getAllLocationPages();
+      res.json(pages);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch location pages" });
+    }
+  });
+
+  // Public endpoint for active location pages
+  app.get("/api/location-pages", async (_req, res) => {
+    try {
+      const pages = await storage.getActiveLocationPages();
+      res.json(pages);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch location pages" });
+    }
+  });
+
+  app.get("/api/location-pages/:slug", async (req, res) => {
+    try {
+      const page = await storage.getLocationPageBySlug(req.params.slug);
+      if (page && page.isActive) {
+        res.json(page);
+      } else {
+        res.status(404).json({ error: "Location page not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch location page" });
+    }
+  });
+
+  app.post("/api/admin/location-pages", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertLocationPageSchema.parse(req.body);
+      const page = await storage.createLocationPage(validatedData);
+      res.status(201).json(page);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid location page data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create location page" });
+      }
+    }
+  });
+
+  app.patch("/api/admin/location-pages/:id", requireAdmin, async (req, res) => {
+    try {
+      const partialSchema = insertLocationPageSchema.partial();
+      const validatedData = partialSchema.parse(req.body);
+      const updated = await storage.updateLocationPage(req.params.id, validatedData);
+      if (updated) {
+        res.json(updated);
+      } else {
+        res.status(404).json({ error: "Location page not found" });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid location page data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update location page" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/location-pages/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteLocationPage(req.params.id);
+      if (deleted) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "Location page not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete location page" });
     }
   });
 
