@@ -152,6 +152,295 @@ Indoor wellness in Dubai represents a continuous balancing act between external 
         author: "The Property Masters",
         publishedAt: new Date().toISOString(),
         featured: true,
+      },
+      {
+        id: randomUUID(),
+        title: "Modular Kitchen Design Trends for Dubai Homes in 2024",
+        slug: "modular-kitchen-design-trends-dubai-2024",
+        excerpt: "Discover the latest kitchen design innovations that combine style with functionality, tailored for Dubai's modern lifestyle.",
+        content: `The modern Dubai kitchen has evolved far beyond a simple cooking space. Today's homeowners demand kitchens that are stylish, functional, and built to withstand the unique demands of the UAE climate.
+
+### Top Kitchen Design Trends
+
+**1. Handle-less Cabinets**
+Sleek, minimalist cabinet designs with push-to-open mechanisms create clean lines and are easier to clean in Dubai's dusty environment.
+
+**2. Quartz Countertops**
+Heat-resistant and non-porous, quartz has become the preferred choice over marble for Dubai kitchens, offering durability without compromising on luxury aesthetics.
+
+**3. Smart Storage Solutions**
+From corner carousels to pull-out pantries, maximizing storage in compact Dubai apartments has become an art form.
+
+**4. Integrated Appliances**
+Built-in refrigerators, dishwashers, and ovens create a seamless look while protecting appliances from temperature fluctuations.
+
+**5. Sustainable Materials**
+Eco-conscious homeowners are opting for bamboo cabinets, recycled glass countertops, and energy-efficient lighting.
+
+### Climate Considerations
+- Moisture-resistant materials prevent warping
+- Proper ventilation design for humidity control
+- UV-protected finishes near windows
+
+### Final Thought
+A well-designed kitchen in Dubai should balance aesthetics with practicality, creating a space that looks beautiful and performs flawlessly for years.`,
+        category: "Interior Design",
+        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 86400000).toISOString(),
+        featured: false,
+      },
+      {
+        id: randomUUID(),
+        title: "The Complete Guide to Living Room Layouts in Dubai Apartments",
+        slug: "living-room-layouts-dubai-apartments",
+        excerpt: "Learn how to maximize your living space with smart furniture placement and design strategies for Dubai's unique apartment layouts.",
+        content: `Dubai apartments come in various configurations, from compact studios to sprawling penthouses. Regardless of size, the living room remains the heart of the home where families gather and guests are entertained.
+
+### Understanding Your Space
+
+**Open-Plan Living**
+Many Dubai developments feature open-plan layouts combining living, dining, and kitchen areas. This requires careful zoning through:
+- Area rugs to define spaces
+- Furniture placement as visual dividers
+- Consistent color palettes that flow seamlessly
+
+**The L-Shaped Dilemma**
+L-shaped living rooms are common in Dubai. Maximize them by:
+- Placing the sofa along the longer wall
+- Creating a reading nook in the corner
+- Using floating furniture arrangements
+
+### Furniture Selection Tips
+- Choose sofas with removable, washable covers for Dubai's dusty environment
+- Opt for leather or performance fabrics that resist fading
+- Consider modular furniture for flexibility
+
+### Lighting Layers
+1. **Ambient:** Ceiling lights or chandeliers
+2. **Task:** Reading lamps and desk lights
+3. **Accent:** LED strips and picture lights
+
+### Final Thought
+The perfect living room layout balances comfort with functionality, creating a space that adapts to your lifestyle while reflecting your personal style.`,
+        category: "Interior Design",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 172800000).toISOString(),
+        featured: false,
+      },
+      {
+        id: randomUUID(),
+        title: "AC Maintenance: The Hidden Factor in Dubai Home Comfort",
+        slug: "ac-maintenance-dubai-home-comfort",
+        excerpt: "Your air conditioning system works harder in Dubai than almost anywhere else. Here's why regular maintenance isn't optional—it's essential.",
+        content: `In Dubai, air conditioning isn't a luxury—it's a necessity. Your AC system runs for the majority of the year, often 24/7 during summer months. This constant operation demands attention that many homeowners overlook.
+
+### Why AC Maintenance Matters More in Dubai
+
+**The Numbers Don't Lie**
+- Average Dubai AC runs 8,000+ hours annually
+- Dust and sand particles reduce efficiency by 5-15% per year
+- Unmaintained units consume 20-30% more electricity
+
+### Essential Maintenance Tasks
+
+**Monthly:**
+- Check and clean/replace filters
+- Inspect for unusual sounds or odors
+- Verify thermostat accuracy
+
+**Quarterly:**
+- Professional coil cleaning
+- Drain line inspection and clearing
+- Refrigerant level check
+
+**Annually:**
+- Complete system inspection
+- Duct cleaning and sanitization
+- Motor and component lubrication
+
+### Warning Signs of AC Problems
+1. Weak airflow from vents
+2. Inconsistent temperatures between rooms
+3. Unusual odors when system starts
+4. Increased electricity bills
+5. Excessive condensation or leaks
+
+### The Cost of Neglect
+A neglected AC system doesn't just cost more to run—it can fail when you need it most. Emergency repairs during Dubai summers are expensive and uncomfortable.
+
+### Final Thought
+Regular AC maintenance is the most cost-effective investment you can make in your Dubai home's comfort and air quality.`,
+        category: "Maintenance",
+        image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 259200000).toISOString(),
+        featured: false,
+      },
+      {
+        id: randomUUID(),
+        title: "Preventing Water Damage: A Dubai Property Owner's Guide",
+        slug: "preventing-water-damage-dubai-properties",
+        excerpt: "Water damage can devastate a property in hours. Learn the common causes and prevention strategies specific to Dubai buildings.",
+        content: `Water damage is one of the most destructive and costly problems a property can face. In Dubai, the combination of intense AC usage, aging plumbing, and construction quality variations makes water damage prevention critical.
+
+### Common Causes of Water Damage in Dubai
+
+**1. AC Condensation Issues**
+The most common cause. When drain lines clog or overflow pans fail, water can damage ceilings, walls, and floors throughout the property.
+
+**2. Plumbing Failures**
+Corroded pipes, loose connections, and water heater leaks often go unnoticed until significant damage occurs.
+
+**3. Washing Machine Hoses**
+Rubber supply hoses deteriorate in Dubai's heat. A burst hose can release hundreds of liters of water in minutes.
+
+**4. Bathroom Seal Failures**
+Shower seals and bath caulking degrade over time, allowing water to seep into walls and subfloors.
+
+### Prevention Strategies
+
+**Regular Inspections:**
+- Check under sinks monthly
+- Inspect AC drip pans quarterly
+- Test water heater pressure relief valves annually
+
+**Upgrades Worth Making:**
+- Replace rubber hoses with braided steel
+- Install water leak detectors near appliances
+- Add secondary drain pans under water heaters
+
+**Emergency Preparedness:**
+- Know your main water shutoff location
+- Keep contact for emergency plumber accessible
+- Document your property for insurance purposes
+
+### Final Thought
+Prevention is always cheaper than repair. A few hours of inspection and maintenance can save thousands in water damage restoration.`,
+        category: "Maintenance",
+        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 345600000).toISOString(),
+        featured: false,
+      },
+      {
+        id: randomUUID(),
+        title: "Indoor Air Quality: What Every Dubai Resident Should Know",
+        slug: "indoor-air-quality-dubai-residents",
+        excerpt: "The air inside your Dubai home may be more polluted than you think. Understand the factors affecting your indoor air and how to improve it.",
+        content: `Most Dubai residents spend 90% of their time indoors. Yet few consider the quality of the air they breathe inside their homes. Indoor air pollution can be 2-5 times worse than outdoor air, even in a city known for construction dust.
+
+### Sources of Indoor Air Pollution in Dubai
+
+**Building Materials:**
+- Volatile organic compounds (VOCs) from paints and finishes
+- Formaldehyde from furniture and flooring
+- Dust from concrete and plaster
+
+**HVAC Systems:**
+- Mold growth in duct systems
+- Accumulated dust and debris
+- Bacterial contamination in drain pans
+
+**Lifestyle Factors:**
+- Cooking fumes and particles
+- Cleaning product chemicals
+- Pet dander and allergens
+
+### Measuring Air Quality
+Key metrics to monitor:
+- **PM2.5:** Fine particulate matter
+- **CO2 levels:** Indicator of ventilation
+- **Humidity:** Optimal range 40-60%
+- **VOCs:** Chemical pollutants
+
+### Improvement Strategies
+
+**Immediate Actions:**
+- Change AC filters regularly
+- Increase ventilation when possible
+- Use air purifiers with HEPA filters
+
+**Long-term Solutions:**
+- Professional duct cleaning
+- Low-VOC paint and materials
+- Indoor plants for natural filtration
+
+### Professional Testing
+Consider professional indoor air quality testing if you experience:
+- Persistent allergies or respiratory issues
+- Musty or chemical odors
+- Visible mold or excessive dust
+
+### Final Thought
+Clean indoor air is essential for health and wellbeing. In Dubai's sealed, air-conditioned environments, proactive management is necessary.`,
+        category: "Wellness",
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 432000000).toISOString(),
+        featured: false,
+      },
+      {
+        id: randomUUID(),
+        title: "Deep Cleaning vs Regular Cleaning: When Your Dubai Home Needs More",
+        slug: "deep-cleaning-vs-regular-cleaning-dubai",
+        excerpt: "Regular cleaning keeps surfaces tidy, but deep cleaning addresses the hidden dirt that accumulates in Dubai's challenging environment.",
+        content: `Every Dubai home needs regular cleaning to stay presentable. But the city's unique environment—constant dust, high humidity in bathrooms, and sealed AC spaces—means periodic deep cleaning is essential for true cleanliness.
+
+### What Regular Cleaning Covers
+- Surface dusting and wiping
+- Floor vacuuming and mopping
+- Bathroom fixture cleaning
+- Kitchen counter sanitizing
+- Bed making and tidying
+
+### What Deep Cleaning Addresses
+
+**Hidden Dust Accumulation:**
+- Inside cabinets and drawers
+- Behind and under appliances
+- Ceiling fans and light fixtures
+- Window tracks and frames
+
+**Grease and Grime:**
+- Kitchen exhaust hoods
+- Oven interiors
+- Stovetop burner assemblies
+- Refrigerator coils
+
+**Bathroom Deep Clean:**
+- Grout scrubbing and treatment
+- Drain cleaning and sanitizing
+- Exhaust fan cleaning
+- Scale removal from fixtures
+
+### When to Schedule Deep Cleaning
+
+**Quarterly Deep Clean:**
+- Seasonal transitions
+- After extended travel
+- Following home renovations
+
+**Move-In/Move-Out:**
+- Essential for deposits
+- Health and hygiene reset
+- Fresh start for new occupants
+
+### Professional vs DIY
+Some deep cleaning tasks require professional equipment:
+- Mattress sanitization
+- Carpet extraction cleaning
+- AC duct cleaning
+- Marble polishing and sealing
+
+### Final Thought
+Regular cleaning maintains appearance, but deep cleaning protects health and extends the life of your home's finishes and fixtures.`,
+        category: "Wellness",
+        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800",
+        author: "The Property Masters",
+        publishedAt: new Date(Date.now() - 518400000).toISOString(),
+        featured: false,
       }
     ];
     initialPosts.forEach(post => this.posts.set(post.id, post));
