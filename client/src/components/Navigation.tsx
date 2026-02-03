@@ -361,7 +361,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Left side: Logo + Phone */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <Link href="/" data-testid="link-home">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
@@ -403,7 +403,7 @@ export function Navigation() {
             </div>
 
             {/* Center: Main Navigation */}
-            <nav className="hidden lg:flex items-center gap-5">
+            <nav className="hidden lg:flex items-center gap-8">
               {navItems.map((item, index) => (
                 item.hasMegaMenu ? (
                   <div
@@ -487,7 +487,7 @@ export function Navigation() {
             </nav>
 
             {/* Right side: Icons + CTA */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-4">
               <Button 
                 variant={(isScrolled || !isHomePage) ? "ghost" : "outline"} 
                 size="icon" 
