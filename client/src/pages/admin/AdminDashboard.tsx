@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { adminFetch } from "@/contexts/AdminContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Package, Star, Calendar, Mail, Briefcase } from "lucide-react";
+import { FileText, Package, Star, Calendar, Mail, Briefcase, Layers, Globe, Palette } from "lucide-react";
+import { Link } from "wouter";
 
 export default function AdminDashboard() {
   const { data: posts = [] } = useQuery({
@@ -52,13 +53,31 @@ export default function AdminDashboard() {
     },
   });
 
+  const { data: services = [] } = useQuery({
+    queryKey: ["/api/admin/services"],
+    queryFn: async () => {
+      const res = await adminFetch("/api/admin/services");
+      return res.json();
+    },
+  });
+
+  const { data: seoSettings = [] } = useQuery({
+    queryKey: ["/api/admin/seo"],
+    queryFn: async () => {
+      const res = await adminFetch("/api/admin/seo");
+      return res.json();
+    },
+  });
+
   const stats = [
-    { label: "Blog Posts", value: posts.length, icon: FileText, color: "bg-blue-500" },
-    { label: "Products", value: products.length, icon: Package, color: "bg-green-500" },
-    { label: "Testimonials", value: testimonials.length, icon: Star, color: "bg-yellow-500" },
-    { label: "Portfolio Projects", value: portfolio.length, icon: Briefcase, color: "bg-purple-500" },
-    { label: "Bookings", value: bookings.length, icon: Calendar, color: "bg-[#970A44]" },
-    { label: "Inquiries", value: inquiries.length, icon: Mail, color: "bg-[#1C4668]" },
+    { label: "Services", value: services.length, icon: Layers, color: "bg-indigo-500", path: "/admin/services" },
+    { label: "Blog Posts", value: posts.length, icon: FileText, color: "bg-blue-500", path: "/admin/posts" },
+    { label: "Products", value: products.length, icon: Package, color: "bg-green-500", path: "/admin/products" },
+    { label: "Testimonials", value: testimonials.length, icon: Star, color: "bg-yellow-500", path: "/admin/testimonials" },
+    { label: "Portfolio Projects", value: portfolio.length, icon: Briefcase, color: "bg-purple-500", path: "/admin/portfolio" },
+    { label: "SEO Pages", value: seoSettings.length, icon: Globe, color: "bg-teal-500", path: "/admin/seo" },
+    { label: "Bookings", value: bookings.length, icon: Calendar, color: "bg-[#970A44]", path: "/admin/bookings" },
+    { label: "Inquiries", value: inquiries.length, icon: Mail, color: "bg-[#1C4668]", path: "/admin/inquiries" },
   ];
 
   return (
@@ -68,23 +87,25 @@ export default function AdminDashboard() {
         <p className="text-gray-500 mt-1">Overview of your website content</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card key={stat.label} data-testid={`card-stat-${stat.label.toLowerCase().replace(' ', '-')}`}>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-gray-500">
-                  {stat.label}
-                </CardTitle>
-                <div className={`p-2 rounded-lg ${stat.color}`}>
-                  <Icon className="w-4 h-4 text-white" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-3xl font-bold">{stat.value}</p>
-              </CardContent>
-            </Card>
+            <Link key={stat.label} href={stat.path}>
+              <Card className="hover-elevate cursor-pointer" data-testid={`card-stat-${stat.label.toLowerCase().replace(' ', '-')}`}>
+                <CardHeader className="flex flex-row items-center justify-between gap-2 pb-2">
+                  <CardTitle className="text-sm font-medium text-gray-500">
+                    {stat.label}
+                  </CardTitle>
+                  <div className={`p-2 rounded-lg ${stat.color}`}>
+                    <Icon className="w-4 h-4 text-white" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-3xl font-bold">{stat.value}</p>
+                </CardContent>
+              </Card>
+            </Link>
           );
         })}
       </div>

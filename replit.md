@@ -90,11 +90,18 @@ All animations use professional easing curves `[0.25, 0.46, 0.45, 0.94]` with Fr
 **Admin CMS System:**
 A secure admin content management system accessible at `/admin` with session-based authentication:
 - **Authentication:** Password-based login with 24-hour session expiry. Password set via `ADMIN_PASSWORD` environment variable (defaults to "admin123" in development only - must be set in production).
-- **Dashboard:** Overview of all content with statistics for blog posts, products, testimonials, portfolio projects, bookings, and inquiries.
+- **Dashboard:** Overview of all content with clickable statistics for services, blog posts, products, testimonials, portfolio projects, SEO pages, bookings, and inquiries.
+- **Services Management:** Full CRUD operations for service pages with category (Interior Design, Wellness, Maintenance), features list, and icon configuration.
 - **Blog Post Management:** Full CRUD operations for blog posts with category filtering, featured post toggle, and rich content editing.
 - **Product Management:** Full CRUD operations for shop products with category assignment, pricing, discount, and stock management.
 - **Testimonials Management:** Full CRUD operations for customer testimonials with star rating system.
 - **Portfolio Management:** Edit portfolio projects including before/after images and tags.
+- **SEO Management:** Configure meta titles, descriptions, keywords, and Open Graph settings for each page. Quick-add buttons for unconfigured pages.
+- **Site Settings:** Global branding settings with four tabs:
+  - Branding: Site name, tagline, logo URL, favicon URL, footer text
+  - Colors: Primary, secondary, accent, background, and text colors with visual color pickers and preview
+  - Contact: Email, phone, address
+  - Social: Facebook, Instagram, LinkedIn, Twitter URLs
 - **Bookings View:** Read-only view of service booking requests with status indicators.
 - **Contact Inquiries:** View and delete contact form submissions.
 - **Security:** All admin routes protected with `requireAdmin` middleware, Zod validation on all PATCH/POST operations.

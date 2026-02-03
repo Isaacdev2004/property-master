@@ -13,7 +13,10 @@ import {
   LogOut,
   Settings,
   Menu,
-  X
+  X,
+  Layers,
+  Globe,
+  Palette
 } from "lucide-react";
 import { useState } from "react";
 
@@ -23,12 +26,15 @@ interface AdminLayoutProps {
 
 const navItems = [
   { path: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { path: "/admin/services", label: "Services", icon: Layers },
   { path: "/admin/posts", label: "Blog Posts", icon: FileText },
   { path: "/admin/products", label: "Products", icon: Package },
   { path: "/admin/testimonials", label: "Testimonials", icon: Star },
   { path: "/admin/portfolio", label: "Portfolio", icon: Briefcase },
   { path: "/admin/bookings", label: "Bookings", icon: Calendar },
   { path: "/admin/inquiries", label: "Inquiries", icon: Mail },
+  { path: "/admin/seo", label: "SEO Settings", icon: Globe },
+  { path: "/admin/site-settings", label: "Site Settings", icon: Palette },
 ];
 
 export default function AdminLayout({ children }: AdminLayoutProps) {

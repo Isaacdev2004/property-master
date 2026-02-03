@@ -9,6 +9,9 @@ import AdminTestimonials from "./AdminTestimonials";
 import AdminBookings from "./AdminBookings";
 import AdminInquiries from "./AdminInquiries";
 import AdminPortfolio from "./AdminPortfolio";
+import AdminServices from "./AdminServices";
+import AdminSEO from "./AdminSEO";
+import AdminSiteSettings from "./AdminSiteSettings";
 
 function AdminRoutes() {
   const { isAuthenticated, isLoading } = useAdmin();
@@ -38,12 +41,15 @@ function AdminRoutes() {
     <AdminLayout>
       <Switch>
         <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/services" component={AdminServices} />
         <Route path="/admin/posts" component={AdminPosts} />
         <Route path="/admin/products" component={AdminProducts} />
         <Route path="/admin/testimonials" component={AdminTestimonials} />
         <Route path="/admin/bookings" component={AdminBookings} />
         <Route path="/admin/inquiries" component={AdminInquiries} />
         <Route path="/admin/portfolio" component={AdminPortfolio} />
+        <Route path="/admin/seo" component={AdminSEO} />
+        <Route path="/admin/site-settings" component={AdminSiteSettings} />
         <Route>
           <Redirect to="/admin" />
         </Route>

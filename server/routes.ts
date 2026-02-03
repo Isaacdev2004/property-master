@@ -11,6 +11,8 @@ import {
   insertBlogPostSchema,
   insertContactInquirySchema,
   insertTestimonialSchema,
+  insertSeoSettingsSchema,
+  insertSiteSettingsSchema,
 } from "@shared/schema";
 import { z } from "zod";
 
@@ -556,6 +558,138 @@ Message: ${validatedData.message}
       }
     } catch (error) {
       res.status(500).json({ error: "Failed to delete inquiry" });
+    }
+  });
+
+  // Admin Services - Full CRUD (create new service pages)
+  app.post("/api/admin/services", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertServiceSchema.parse(req.body);
+      const service = await storage.createService(validatedData);
+      res.status(201).json(service);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid service data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create service" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/services/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteService(req.params.id);
+      if (deleted) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "Service not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete service" });
+    }
+  });
+
+  // ============ SEO SETTINGS ROUTES ============
+  app.get("/api/admin/seo", requireAdmin, async (_req, res) => {
+    try {
+      const settings = await storage.getAllSeoSettings();
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch SEO settings" });
+    }
+  });
+
+  app.get("/api/admin/seo/:path", requireAdmin, async (req, res) => {
+    try {
+      const settings = await storage.getSeoSettingsByPath(decodeURIComponent(req.params.path));
+      if (settings) {
+        res.json(settings);
+      } else {
+        res.status(404).json({ error: "SEO settings not found for this path" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch SEO settings" });
+    }
+  });
+
+  app.post("/api/admin/seo", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertSeoSettingsSchema.parse(req.body);
+      const settings = await storage.createSeoSettings(validatedData);
+      res.status(201).json(settings);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid SEO data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create SEO settings" });
+      }
+    }
+  });
+
+  app.patch("/api/admin/seo/:id", requireAdmin, async (req, res) => {
+    try {
+      const partialSeoSchema = insertSeoSettingsSchema.partial();
+      const validatedData = partialSeoSchema.parse(req.body);
+      const updated = await storage.updateSeoSettings(req.params.id, validatedData);
+      if (updated) {
+        res.json(updated);
+      } else {
+        res.status(404).json({ error: "SEO settings not found" });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid SEO data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update SEO settings" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/seo/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteSeoSettings(req.params.id);
+      if (deleted) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "SEO settings not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete SEO settings" });
+    }
+  });
+
+  // ============ SITE SETTINGS ROUTES ============
+  app.get("/api/admin/site-settings", requireAdmin, async (_req, res) => {
+    try {
+      const settings = await storage.getSiteSettings();
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch site settings" });
+    }
+  });
+
+  // Public endpoint to get site settings (for frontend theming)
+  app.get("/api/site-settings", async (_req, res) => {
+    try {
+      const settings = await storage.getSiteSettings();
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch site settings" });
+    }
+  });
+
+  app.patch("/api/admin/site-settings", requireAdmin, async (req, res) => {
+    try {
+      const partialSettingsSchema = insertSiteSettingsSchema.partial();
+      const validatedData = partialSettingsSchema.parse(req.body);
+      const updated = await storage.updateSiteSettings(validatedData);
+      res.json(updated);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: "Invalid settings data", details: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update site settings" });
+      }
     }
   });
 

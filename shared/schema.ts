@@ -131,3 +131,46 @@ export const contactInquirySchema = z.object({
 export const insertContactInquirySchema = contactInquirySchema.omit({ id: true, createdAt: true });
 export type ContactInquiry = z.infer<typeof contactInquirySchema>;
 export type InsertContactInquiry = z.infer<typeof insertContactInquirySchema>;
+
+// SEO Settings Schema
+export const seoSettingsSchema = z.object({
+  id: z.string(),
+  pagePath: z.string(),
+  pageTitle: z.string(),
+  metaTitle: z.string(),
+  metaDescription: z.string(),
+  metaKeywords: z.string().optional(),
+  ogTitle: z.string().optional(),
+  ogDescription: z.string().optional(),
+  ogImage: z.string().optional(),
+});
+
+export const insertSeoSettingsSchema = seoSettingsSchema.omit({ id: true });
+export type SeoSettings = z.infer<typeof seoSettingsSchema>;
+export type InsertSeoSettings = z.infer<typeof insertSeoSettingsSchema>;
+
+// Global Site Settings Schema
+export const siteSettingsSchema = z.object({
+  id: z.string(),
+  siteName: z.string(),
+  tagline: z.string().optional(),
+  primaryColor: z.string(),
+  secondaryColor: z.string(),
+  accentColor: z.string(),
+  backgroundColor: z.string(),
+  textColor: z.string(),
+  logoUrl: z.string().optional(),
+  faviconUrl: z.string().optional(),
+  contactEmail: z.string().email().optional(),
+  contactPhone: z.string().optional(),
+  contactAddress: z.string().optional(),
+  socialFacebook: z.string().optional(),
+  socialInstagram: z.string().optional(),
+  socialLinkedin: z.string().optional(),
+  socialTwitter: z.string().optional(),
+  footerText: z.string().optional(),
+});
+
+export const insertSiteSettingsSchema = siteSettingsSchema.omit({ id: true });
+export type SiteSettings = z.infer<typeof siteSettingsSchema>;
+export type InsertSiteSettings = z.infer<typeof insertSiteSettingsSchema>;

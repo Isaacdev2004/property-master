@@ -6,7 +6,9 @@ import {
   type Booking, type InsertBooking,
   type BlogPost, type InsertBlogPost,
   type Testimonial, type InsertTestimonial,
-  type ContactInquiry, type InsertContactInquiry
+  type ContactInquiry, type InsertContactInquiry,
+  type SeoSettings, type InsertSeoSettings,
+  type SiteSettings, type InsertSiteSettings
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -67,6 +69,17 @@ export interface IStorage {
   getAllContactInquiries(): Promise<ContactInquiry[]>;
   createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry>;
   deleteContactInquiry(id: string): Promise<boolean>;
+
+  // SEO Settings
+  getAllSeoSettings(): Promise<SeoSettings[]>;
+  getSeoSettingsByPath(pagePath: string): Promise<SeoSettings | undefined>;
+  createSeoSettings(settings: InsertSeoSettings): Promise<SeoSettings>;
+  updateSeoSettings(id: string, settings: Partial<InsertSeoSettings>): Promise<SeoSettings | undefined>;
+  deleteSeoSettings(id: string): Promise<boolean>;
+
+  // Site Settings
+  getSiteSettings(): Promise<SiteSettings | undefined>;
+  updateSiteSettings(settings: Partial<InsertSiteSettings>): Promise<SiteSettings>;
 }
 
 export class MemStorage implements IStorage {
@@ -78,6 +91,8 @@ export class MemStorage implements IStorage {
   private posts: Map<string, BlogPost>;
   private testimonials: Map<string, Testimonial>;
   private contactInquiries: Map<string, ContactInquiry>;
+  private seoSettings: Map<string, SeoSettings>;
+  private siteSettings: SiteSettings | null;
 
   constructor() {
     this.services = new Map();
@@ -88,6 +103,8 @@ export class MemStorage implements IStorage {
     this.posts = new Map();
     this.testimonials = new Map();
     this.contactInquiries = new Map();
+    this.seoSettings = new Map();
+    this.siteSettings = null;
     this.initializeMockData();
   }
 
@@ -2262,6 +2279,62 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
 
   async deletePortfolioProject(id: string): Promise<boolean> {
     return this.portfolioProjects.delete(id);
+  }
+
+  // SEO Settings methods
+  async getAllSeoSettings(): Promise<SeoSettings[]> {
+    return Array.from(this.seoSettings.values());
+  }
+
+  async getSeoSettingsByPath(pagePath: string): Promise<SeoSettings | undefined> {
+    return Array.from(this.seoSettings.values()).find(s => s.pagePath === pagePath);
+  }
+
+  async createSeoSettings(settings: InsertSeoSettings): Promise<SeoSettings> {
+    const id = randomUUID();
+    const seo: SeoSettings = { ...settings, id };
+    this.seoSettings.set(id, seo);
+    return seo;
+  }
+
+  async updateSeoSettings(id: string, updates: Partial<InsertSeoSettings>): Promise<SeoSettings | undefined> {
+    const existing = this.seoSettings.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.seoSettings.set(id, updated);
+    return updated;
+  }
+
+  async deleteSeoSettings(id: string): Promise<boolean> {
+    return this.seoSettings.delete(id);
+  }
+
+  // Site Settings methods
+  async getSiteSettings(): Promise<SiteSettings | undefined> {
+    if (!this.siteSettings) {
+      // Initialize with default settings
+      this.siteSettings = {
+        id: randomUUID(),
+        siteName: "The Property Masters",
+        tagline: "Complete Property Solutions Partner",
+        primaryColor: "#970A44",
+        secondaryColor: "#720632",
+        accentColor: "#1C4668",
+        backgroundColor: "#F6F4EB",
+        textColor: "#09263D",
+        contactEmail: "info@thepropertymasters.ae",
+        contactPhone: "+971 4 123 4567",
+        contactAddress: "AL Saqr Business Tower - Office A-36, Dubai, UAE",
+        footerText: "© 2024 The Property Masters. All rights reserved."
+      };
+    }
+    return this.siteSettings;
+  }
+
+  async updateSiteSettings(updates: Partial<InsertSiteSettings>): Promise<SiteSettings> {
+    const current = await this.getSiteSettings();
+    this.siteSettings = { ...current!, ...updates };
+    return this.siteSettings;
   }
 }
 
