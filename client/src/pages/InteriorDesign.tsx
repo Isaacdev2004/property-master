@@ -293,59 +293,7 @@ const videoTestimonials = [
   { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
   { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-export default function InteriorDesign() {
-  const { data: posts = [] } = useQuery<BlogPost[]>({ queryKey: ["/api/blog"] });
-  const filteredBlogPosts = posts.filter(p => p.category === "Interior Design");
-  const [activeTab, setActiveTab] = useState("wall-colour");
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              <span className="inline-block px-4 py-2 bg-[#970A44]/20 backdrop-blur-sm border border-[#970A44]/30 rounded-full text-white text-sm font-medium mb-6">
-                Interior Design & Fit-Out
-              </span>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-serif leading-tight">
-                Interior Design that Speaks of <span className="text-[#970A44]">You</span>
-              </h1>
-              <p className="text-lg text-white/80 mb-8 leading-relaxed">
-                From foundation to furnishings, we style your home like our own.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button 
-                  asChild
-                  size="lg"
-                  className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
-                  data-testid="button-hero-consultation"
-                >
-                  <Link href="/contact">
-                    Book Free Consultation
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-              </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden lg:grid grid-cols-2 gap-4"
-            >
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 text-center"
-                    data-testid={`stat-${index}`}
-                  >
-                    <div className="w-12 h-12 mx-auto mb-3 bg-[#970A44]/20 rounded-xl flex items-center justify-center">
                       <Icon className="w-6 h-6 text-[#970A44]" />
                     </div>
                     <div className="text-2xl font-bold text-white">{stat.value}</div>
