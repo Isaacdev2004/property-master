@@ -67,7 +67,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <p className="text-sm text-white/60">Admin Panel</p>
         </div>
 
-        <nav className="p-4 space-y-1">
+        <nav className="p-4 space-y-2">
           {navItems.map((item) => {
             const isActive = location === item.path || 
               (item.path !== "/admin" && location.startsWith(item.path));
