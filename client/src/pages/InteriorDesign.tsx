@@ -16,6 +16,7 @@ import {
   DoorOpen,
   Table2,
   Play,
+  Pause,
   Award,
   Users,
   Building2,
@@ -315,6 +316,18 @@ export default function InteriorDesign() {
   const filteredBlogPosts = posts.filter(p => p.category === "Interior Design");
   const [activeTab, setActiveTab] = useState("wall-colour");
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isJourneyPlaying, setIsJourneyPlaying] = useState(false);
+  const journeyVideoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleJourneyVideo = () => {
+    if (!journeyVideoRef.current) return;
+    if (isJourneyPlaying) {
+      journeyVideoRef.current.pause();
+    } else {
+      journeyVideoRef.current.play();
+    }
+    setIsJourneyPlaying(!isJourneyPlaying);
+  };
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -498,10 +511,11 @@ export default function InteriorDesign() {
               </div>
               <Button 
                 className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                onClick={toggleJourneyVideo}
                 data-testid="button-watch-video"
               >
-                <Play className="w-5 h-5 mr-2" />
-                Play Video
+                {isJourneyPlaying ? <Pause className="w-5 h-5 mr-2" /> : <Play className="w-5 h-5 mr-2" />}
+                {isJourneyPlaying ? "Pause Video" : "Play Video"}
               </Button>
             </motion.div>
 
@@ -512,21 +526,51 @@ export default function InteriorDesign() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80"
-                  alt="Factory Tour"
+              <div 
+                className="aspect-video rounded-2xl overflow-hidden shadow-2xl cursor-pointer relative bg-black"
+                onClick={toggleJourneyVideo}
+              >
+                <video
+                  ref={journeyVideoRef}
                   className="w-full h-full object-cover"
+                  src="/videos/interior-design-journey.mp4"
+                  playsInline
+                  onEnded={() => setIsJourneyPlaying(false)}
+                  data-testid="video-interior-journey"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <button 
-                  className="absolute inset-0 flex items-center justify-center"
-                  data-testid="button-play-factory-video"
-                >
-                  <div className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-xl">
-                    <Play className="w-8 h-8 text-[#970A44] ml-1" />
-                  </div>
-                </button>
+                <AnimatePresence>
+                  {!isJourneyPlaying && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-center justify-center"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.div
+                        className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-xl"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Play className="w-8 h-8 text-[#970A44] ml-1" />
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <AnimatePresence>
+                  {isJourneyPlaying && (
+                    <motion.div
+                      className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                    >
+                      <div className="w-16 h-16 rounded-full bg-black/40 flex items-center justify-center backdrop-blur-sm">
+                        <Pause className="w-6 h-6 text-white" />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           </div>
