@@ -318,6 +318,24 @@ export default function InteriorDesign() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isJourneyPlaying, setIsJourneyPlaying] = useState(false);
   const journeyVideoRef = useRef<HTMLVideoElement>(null);
+  const [playingTestimonialId, setPlayingTestimonialId] = useState<number | null>(null);
+  const testimonialVideoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
+
+  const toggleTestimonialVideo = (id: number) => {
+    const video = testimonialVideoRefs.current[id];
+    if (!video) return;
+    if (playingTestimonialId === id) {
+      video.pause();
+      setPlayingTestimonialId(null);
+    } else {
+      if (playingTestimonialId !== null) {
+        const prev = testimonialVideoRefs.current[playingTestimonialId];
+        if (prev) prev.pause();
+      }
+      video.play();
+      setPlayingTestimonialId(id);
+    }
+  };
 
   const toggleJourneyVideo = () => {
     if (!journeyVideoRef.current) return;
@@ -1274,20 +1292,38 @@ export default function InteriorDesign() {
               >
                 <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-testimonial-${testimonial.id}`}>
                   <CardContent className="p-6">
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-muted">
-                      <img 
-                        src={testimonial.image}
-                        alt={testimonial.name}
+                    <div 
+                      className="relative aspect-video rounded-lg overflow-hidden mb-4 bg-black cursor-pointer group"
+                      onClick={() => toggleTestimonialVideo(testimonial.id)}
+                      data-testid={`button-play-testimonial-${testimonial.id}`}
+                    >
+                      <video
+                        ref={(el) => { testimonialVideoRefs.current[testimonial.id] = el; }}
                         className="w-full h-full object-cover"
+                        src="/videos/testimonial-interior.mp4"
+                        playsInline
+                        onEnded={() => setPlayingTestimonialId((prev) => prev === testimonial.id ? null : prev)}
+                        data-testid={`video-testimonial-${testimonial.id}`}
                       />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <button 
-                          className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110"
-                          data-testid={`button-play-testimonial-${testimonial.id}`}
-                        >
-                          <Play className="w-6 h-6 text-[#970A44] ml-1" />
-                        </button>
-                      </div>
+                      <AnimatePresence>
+                        {playingTestimonialId !== testimonial.id && (
+                          <motion.div
+                            className="absolute inset-0 bg-black/40 flex items-center justify-center"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <motion.div
+                              className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-lg"
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <Play className="w-6 h-6 text-[#970A44] ml-1" />
+                            </motion.div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
