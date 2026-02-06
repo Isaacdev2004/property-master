@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Search, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle, Layers, Grid3X3, TreePine, Fence, GlassWater, Gem, Store, Hotel, ShoppingBag, Shirt, Scissors, Pipette, Thermometer, FlaskConical, Lightbulb, Plug, Cable, MonitorSpeaker, DoorOpen, LayoutGrid } from "lucide-react";
+import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle, Layers, Grid3X3, TreePine, Fence, GlassWater, Gem, Store, Hotel, ShoppingBag, Shirt, Scissors, Pipette, Thermometer, FlaskConical, Lightbulb, Plug, Cable, MonitorSpeaker, DoorOpen, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -325,7 +325,7 @@ export function Navigation() {
     { href: "/interior-design", label: "Interior Design", hasMegaMenu: true, menuKey: "interior" },
     { href: "/wellness", label: "Wellness", hasMegaMenu: true, menuKey: "wellness" },
     { href: "/maintenance", label: "Maintenance", hasMegaMenu: true, menuKey: "maintenance" },
-    { href: "/shop", label: "Furniture Store" },
+    { href: "/shop", label: "Custom Furniture" },
     { href: "/portfolio", label: "Portfolio" },
     { href: null, label: "About", hasDropdown: true },
     { href: "/blog", label: "Blogs" },
@@ -488,14 +488,6 @@ export function Navigation() {
 
             {/* Right side: Icons + CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <Button 
-                variant={(isScrolled || !isHomePage) ? "ghost" : "outline"} 
-                size="icon" 
-                className={`${(!isScrolled && isHomePage) ? "border-white/50 text-white hover:bg-white/10" : ""}`}
-                data-testid="button-search"
-              >
-                <Search className="w-5 h-5" />
-              </Button>
               <Link href="/cart" data-testid="link-cart">
                 <Button 
                   variant={(isScrolled || !isHomePage) ? "ghost" : "outline"} 
@@ -683,12 +675,12 @@ export function Navigation() {
                 </span>
               </Link>
 
-              {/* Furniture Store */}
+              {/* Custom Furniture */}
               <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
                   location === "/shop" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
                 }`}>
-                  Furniture Store
+                  Custom Furniture
                 </span>
               </Link>
 
