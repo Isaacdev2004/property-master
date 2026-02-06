@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Star, Quote, Play } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Quote, Play, Pause } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const customerStories = [
@@ -69,6 +70,18 @@ const luxuryEasing = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function ListenToCustomers() {
   const featuredStory = customerStories.find(s => s.featured);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleVideo = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <section 
@@ -157,23 +170,57 @@ export default function ListenToCustomers() {
                     </div>
                   </div>
 
-                  {/* Video/Visual Section */}
+                  {/* Video Section */}
                   <div 
-                    className="relative aspect-video bg-muted rounded-2xl overflow-hidden group cursor-pointer"
+                    className="relative aspect-video bg-black rounded-2xl overflow-hidden group cursor-pointer"
+                    onClick={toggleVideo}
                     data-testid="button-watch-video"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#970A44]/20 to-black/60 flex items-center justify-center">
-                      <motion.div
-                        className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Play className="w-8 h-8 text-[#970A44] fill-[#970A44] ml-1" />
-                      </motion.div>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <p className="text-sm font-semibold" data-testid="text-video-label">Watch Customer Story</p>
-                      <p className="text-xs text-white/70" data-testid="text-video-duration">2:34 min</p>
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      src="/videos/customer-story.mp4"
+                      playsInline
+                      onEnded={() => setIsPlaying(false)}
+                      data-testid="video-customer-story"
+                    />
+                    <AnimatePresence>
+                      {!isPlaying && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-br from-[#970A44]/20 to-black/60 flex items-center justify-center"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <motion.div
+                            className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Play className="w-8 h-8 text-[#970A44] fill-[#970A44] ml-1" />
+                          </motion.div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    <AnimatePresence>
+                      {isPlaying && (
+                        <motion.div
+                          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                        >
+                          <div className="w-16 h-16 rounded-full bg-black/40 flex items-center justify-center backdrop-blur-sm">
+                            <Pause className="w-6 h-6 text-white" />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
+                      <p className="text-sm font-semibold" data-testid="text-video-label">
+                        {isPlaying ? "Now Playing" : "Watch Customer Story"}
+                      </p>
                     </div>
                   </div>
                 </div>
