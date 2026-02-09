@@ -210,6 +210,8 @@ export default function MaintenanceServices() {
 
   const filteredBlogPosts = posts.filter(p => p.category === "Maintenance");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isMaintenanceVideoPlaying, setIsMaintenanceVideoPlaying] = useState(false);
+  const maintenanceVideoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -441,22 +443,49 @@ export default function MaintenanceServices() {
       {/* How It Works Section */}
       <section className="relative py-0" data-testid="section-how-it-works">
         <div className="grid lg:grid-cols-2">
-          {/* Left - Image with Video Play Button */}
-          <div className="relative min-h-[500px] lg:min-h-[700px]">
-            <img 
-              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80"
-              alt="Relax while we work"
-              className="w-full h-full object-cover"
+          {/* Left - Video Section */}
+          <div 
+            className="relative min-h-[500px] lg:min-h-[700px] cursor-pointer bg-black"
+            onClick={() => {
+              const video = maintenanceVideoRef.current;
+              if (!video) return;
+              if (isMaintenanceVideoPlaying) {
+                video.pause();
+                setIsMaintenanceVideoPlaying(false);
+              } else {
+                video.play();
+                setIsMaintenanceVideoPlaying(true);
+              }
+            }}
+            data-testid="button-play-video"
+          >
+            <video
+              ref={maintenanceVideoRef}
+              src="/videos/maintenance-page.mp4"
+              className="w-full h-full object-cover absolute inset-0"
+              playsInline
+              onEnded={() => setIsMaintenanceVideoPlaying(false)}
+              data-testid="video-maintenance"
             />
-            <div className="absolute inset-0 bg-black/30" />
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl"
-              data-testid="button-play-video"
-            >
-              <Play className="w-8 h-8 text-[#970A44] ml-1" />
-            </motion.button>
+            <AnimatePresence>
+              {!isMaintenanceVideoPlaying && (
+                <motion.div
+                  className="absolute inset-0 bg-black/30 flex items-center justify-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Play className="w-8 h-8 text-[#970A44] ml-1" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Right - Steps and Description */}
