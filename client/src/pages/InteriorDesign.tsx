@@ -291,8 +291,8 @@ const happyHomes = [
 
 // Video Testimonials
 const videoTestimonials = [
-  { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true },
-  { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true },
+  { id: 1, name: "Aisha Mohammed", role: "Homeowner", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", rating: 5, hasVideo: true, video: "/videos/testimonial-interior.mp4" },
+  { id: 2, name: "John Smith", role: "Business Owner", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", rating: 5, hasVideo: true, video: "/videos/testimonial-interior-2.mp4" },
 ];
 
 // Animation variants
@@ -1300,7 +1300,7 @@ export default function InteriorDesign() {
                       <video
                         ref={(el) => { testimonialVideoRefs.current[testimonial.id] = el; }}
                         className="w-full h-full object-cover"
-                        src="/videos/testimonial-interior.mp4"
+                        src={testimonial.video}
                         playsInline
                         onEnded={() => setPlayingTestimonialId((prev) => prev === testimonial.id ? null : prev)}
                         data-testid={`video-testimonial-${testimonial.id}`}
