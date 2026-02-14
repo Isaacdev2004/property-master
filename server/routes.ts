@@ -1,5 +1,8 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
+import path from "path";
+import fs from "fs";
+import { execSync } from "child_process";
 import { storage } from "./storage";
 import { odooService } from "./odoo";
 import { registerObjectStorageRoutes } from "./replit_integrations/object_storage";
@@ -921,6 +924,22 @@ Message: ${validatedData.message}
       }
     } catch (error) {
       res.status(500).json({ error: "Failed to delete location page" });
+    }
+  });
+
+  app.get("/download-project-x9k2m", (_req: Request, res: Response) => {
+    const archivePath = "/tmp/thepropertymasters-deploy.tar.gz";
+    try {
+      if (!fs.existsSync(archivePath)) {
+        const projectDir = process.cwd();
+        execSync(
+          `tar czf ${archivePath} --exclude='node_modules' --exclude='.git' --exclude='.cache' --exclude='.config' --exclude='.local' --exclude='.upm' --exclude='attached_assets' -C "${projectDir}" .`,
+          { timeout: 120000 }
+        );
+      }
+      res.download(archivePath, "thepropertymasters-deploy.tar.gz");
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create archive" });
     }
   });
 
