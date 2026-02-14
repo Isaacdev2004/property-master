@@ -54,21 +54,56 @@ const staggerItem = {
   whileInView: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }
 };
 
-// Categories with icons (inspired by thehealthyhome.me)
 const quickCategories = [
-  { name: "Sofas", icon: Sofa, href: "#sofas", color: "bg-[#970A44]" },
-  { name: "Beds", icon: BedDouble, href: "#beds", color: "bg-[#1C4668]" },
-  { name: "Tables", icon: Table, href: "#tables", color: "bg-[#720632]" },
-  { name: "Chairs", icon: Armchair, href: "#chairs", color: "bg-[#09263D]" },
-  { name: "Lighting", icon: Lamp, href: "#lighting", color: "bg-[#970A44]" },
-  { name: "Clocks", icon: Clock, href: "#clocks", color: "bg-[#1C4668]" },
-  { name: "Kitchen", icon: ChefHat, href: "#kitchen", color: "bg-[#720632]" },
-  { name: "Decor", icon: Frame, href: "#decor", color: "bg-[#09263D]" },
-  { name: "All Products", icon: Package, href: "#products", color: "bg-[#970A44]" },
+  { name: "Sofas", icon: Sofa, category: "Sofas", color: "bg-[#970A44]" },
+  { name: "Beds", icon: BedDouble, category: "Beds", color: "bg-[#1C4668]" },
+  { name: "Tables", icon: Table, category: "Coffee Tables", color: "bg-[#720632]" },
+  { name: "Chairs", icon: Armchair, category: "Chairs", color: "bg-[#09263D]" },
+  { name: "Lighting", icon: Lamp, category: "Lighting", color: "bg-[#970A44]" },
+  { name: "Dining", icon: ChefHat, category: "Dining", color: "bg-[#1C4668]" },
+  { name: "Storage", icon: Package, category: "Storage", color: "bg-[#720632]" },
+  { name: "Decor", icon: Frame, category: "Decor", color: "bg-[#09263D]" },
+  { name: "Kitchen", icon: Wind, category: "Kitchen", color: "bg-[#970A44]" },
+  { name: "All", icon: Sparkles, category: "All", color: "bg-[#09263D]" },
 ];
 
-// Featured collections (inspired by interiorcompany.com)
 const featuredCollections = [
+  {
+    name: "Luxury Sofas",
+    discount: 20,
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
+    category: "Sofas"
+  },
+  {
+    name: "Premium Beds",
+    discount: 18,
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80",
+    category: "Beds"
+  },
+  {
+    name: "Dining Collection",
+    discount: 8,
+    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80",
+    category: "Dining"
+  },
+  {
+    name: "Designer Chairs",
+    discount: 10,
+    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80",
+    category: "Chairs"
+  },
+  {
+    name: "Coffee Tables",
+    discount: 15,
+    image: "https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?w=800&q=80",
+    category: "Coffee Tables"
+  },
+  {
+    name: "Lighting",
+    discount: 12,
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057ab3fe?w=800&q=80",
+    category: "Lighting"
+  },
   {
     name: "Wallpapers",
     discount: 27,
@@ -76,58 +111,22 @@ const featuredCollections = [
     category: "Wallpapers"
   },
   {
-    name: "Luxury Sofas",
-    discount: 55,
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
-    category: "Sofas"
+    name: "Storage Solutions",
+    discount: 5,
+    image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=800&q=80",
+    category: "Storage"
   },
   {
-    name: "Premium Beds",
-    discount: 48,
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80",
-    category: "Beds"
+    name: "Decor & Accessories",
+    discount: 15,
+    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800&q=80",
+    category: "Decor"
   },
   {
-    name: "Coffee Tables",
-    discount: 50,
-    image: "https://images.unsplash.com/photo-1611048267451-e6ed903d4a38?w=800&q=80",
-    category: "Coffee Tables"
-  },
-  {
-    name: "Side Tables",
-    discount: 50,
-    image: "https://images.unsplash.com/photo-1616046386908-a13cc9058d29?w=800&q=80",
-    category: "Side Tables"
-  },
-  {
-    name: "Designer Clocks",
-    discount: 50,
-    image: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=800&q=80",
-    category: "Clocks"
-  },
-  {
-    name: "Kitchen Hobs",
+    name: "Kitchen Appliances",
     discount: 29,
     image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80",
-    category: "Hobs"
-  },
-  {
-    name: "Chimneys",
-    discount: 60,
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-    category: "Chimneys"
-  },
-  {
-    name: "Accent Chairs",
-    discount: 45,
-    image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80",
-    category: "Chairs"
-  },
-  {
-    name: "Bedside Tables",
-    discount: 48,
-    image: "https://images.unsplash.com/photo-1595428773881-b2b9f7c9388d?w=800&q=80",
-    category: "Bedside Tables"
+    category: "Kitchen"
   },
 ];
 
@@ -289,14 +288,14 @@ export default function Shop() {
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <Badge className="bg-[#970A44] text-white mb-6 px-4 py-2 text-sm">
-                Premium Furniture Store
+                Custom Furniture by The Property Masters
               </Badge>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight" data-testid="text-shop-title">
-                Discover Your 
-                <span className="text-[#970A44] block">Dream Home</span>
+                Bespoke Furniture
+                <span className="text-[#970A44] block">Crafted for You</span>
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-lg leading-relaxed">
-                Dive into our curated collection of luxury furniture and décor pieces designed to transform your living spaces.
+                Handcrafted luxury furniture designed for Dubai's finest homes. From concept to creation, every piece is made to your exact specifications.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-12">
@@ -369,11 +368,7 @@ export default function Shop() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
                 onClick={() => {
-                  if (category.href === "#products") {
-                    setSelectedCategory("All");
-                  } else {
-                    setSelectedCategory(category.name.includes("Tables") ? "Coffee Tables" : category.name);
-                  }
+                  setSelectedCategory(category.category);
                   document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="flex flex-col items-center gap-2 min-w-[80px] group"

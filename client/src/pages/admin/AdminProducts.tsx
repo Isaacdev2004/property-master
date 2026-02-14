@@ -29,14 +29,17 @@ import type { Product } from "@shared/schema";
 const categories = [
   "Sofas",
   "Beds",
-  "Tables",
+  "Coffee Tables",
+  "Side Tables",
+  "Bedside Tables",
   "Chairs",
+  "Dining",
   "Lighting",
   "Clocks",
   "Kitchen",
   "Decor",
   "Storage",
-  "Outdoor"
+  "Wallpapers",
 ];
 
 export default function AdminProducts() {
@@ -51,6 +54,11 @@ export default function AdminProducts() {
     price: 0,
     category: "",
     image: "",
+    additionalImages: "",
+    materials: "",
+    dimensions: "",
+    colors: "",
+    sku: "",
     inStock: true,
     featured: false,
     discount: 0,
@@ -131,6 +139,11 @@ export default function AdminProducts() {
       price: 0,
       category: "",
       image: "",
+      additionalImages: "",
+      materials: "",
+      dimensions: "",
+      colors: "",
+      sku: "",
       inStock: true,
       featured: false,
       discount: 0,
@@ -140,12 +153,20 @@ export default function AdminProducts() {
 
   const handleEdit = (product: Product) => {
     setEditingProduct(product);
+    const extraImages = product.images 
+      ? product.images.filter(img => img !== product.image).join("\n")
+      : "";
     setFormData({
       name: product.name,
       description: product.description,
       price: product.price,
       category: product.category,
       image: product.image,
+      additionalImages: extraImages,
+      materials: product.materials || "",
+      dimensions: product.dimensions || "",
+      colors: product.colors?.join(", ") || "",
+      sku: product.sku || "",
       inStock: product.inStock,
       featured: product.featured,
       discount: product.discount || 0,
@@ -155,9 +176,27 @@ export default function AdminProducts() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const colorsArray = formData.colors
+      ? formData.colors.split(",").map(c => c.trim()).filter(Boolean)
+      : undefined;
+    const imagesArray = formData.image 
+      ? [
+          formData.image, 
+          ...formData.additionalImages
+            .split("\n")
+            .map(u => u.trim())
+            .filter(Boolean)
+        ] 
+      : undefined;
     const productData = {
       ...formData,
+      images: imagesArray,
+      colors: colorsArray,
+      materials: formData.materials || undefined,
+      dimensions: formData.dimensions || undefined,
+      sku: formData.sku || undefined,
       discount: formData.discount || undefined,
+      additionalImages: undefined,
     };
 
     if (editingProduct) {
@@ -194,7 +233,7 @@ export default function AdminProducts() {
               Add Product
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-lg">
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingProduct ? "Edit Product" : "Create New Product"}</DialogTitle>
             </DialogHeader>
@@ -251,11 +290,32 @@ export default function AdminProducts() {
                 </Select>
               </div>
               <ImageUpload
-                label="Product Image"
+                label="Main Product Image"
                 value={formData.image}
                 onChange={(url) => setFormData({ ...formData, image: url })}
                 placeholder="Upload or enter image URL"
               />
+              <div className="space-y-2">
+                <Label htmlFor="additionalImages">Additional Gallery Images (one URL per line)</Label>
+                <Textarea
+                  id="additionalImages"
+                  value={formData.additionalImages}
+                  onChange={(e) => setFormData({ ...formData, additionalImages: e.target.value })}
+                  rows={3}
+                  placeholder={"https://example.com/image2.jpg\nhttps://example.com/image3.jpg"}
+                  data-testid="input-additional-images"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="sku">SKU</Label>
+                <Input
+                  id="sku"
+                  value={formData.sku}
+                  onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
+                  placeholder="e.g. SF-MIL-001"
+                  data-testid="input-sku"
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
                 <Textarea
@@ -265,6 +325,36 @@ export default function AdminProducts() {
                   rows={3}
                   required
                   data-testid="input-description"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="materials">Materials</Label>
+                <Input
+                  id="materials"
+                  value={formData.materials}
+                  onChange={(e) => setFormData({ ...formData, materials: e.target.value })}
+                  placeholder="e.g. Solid oak, Italian linen"
+                  data-testid="input-materials"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="dimensions">Dimensions</Label>
+                <Input
+                  id="dimensions"
+                  value={formData.dimensions}
+                  onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+                  placeholder="e.g. 220cm x 90cm x 82cm (H)"
+                  data-testid="input-dimensions"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="colors">Colors (comma-separated)</Label>
+                <Input
+                  id="colors"
+                  value={formData.colors}
+                  onChange={(e) => setFormData({ ...formData, colors: e.target.value })}
+                  placeholder="e.g. Ivory, Charcoal, Navy"
+                  data-testid="input-colors"
                 />
               </div>
               <div className="flex gap-4">

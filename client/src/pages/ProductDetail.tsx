@@ -18,7 +18,11 @@ import {
   Minus,
   Plus,
   Check,
-  Sparkles
+  Sparkles,
+  MessageCircle,
+  Ruler,
+  Palette,
+  Layers
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -28,7 +32,6 @@ import { apiRequest, queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/cart";
 import type { Product } from "@shared/schema";
 
-// Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
@@ -45,20 +48,11 @@ const staggerItem = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }
 };
 
-// Benefits
 const benefits = [
   { icon: Truck, title: "Free Delivery", description: "On orders above AED 500" },
   { icon: Shield, title: "2 Year Warranty", description: "On all furniture" },
   { icon: RotateCcw, title: "30-Day Returns", description: "Easy return policy" },
   { icon: Package, title: "Premium Quality", description: "Handcrafted furniture" },
-];
-
-// Additional product images (mock for gallery)
-const getGalleryImages = (mainImage: string) => [
-  mainImage,
-  mainImage.replace('w=800', 'w=801'),
-  mainImage.replace('w=800', 'w=802'),
-  mainImage.replace('w=800', 'w=803'),
 ];
 
 export default function ProductDetail() {
@@ -67,6 +61,7 @@ export default function ProductDetail() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [activeTab, setActiveTab] = useState<"description" | "specifications" | "shipping">("description");
   const sessionId = getSessionId();
 
   const { data: product, isLoading, error } = useQuery<Product>({
@@ -104,7 +99,13 @@ export default function ProductDetail() {
     .filter(p => p.category === product?.category && p.id !== product?.id)
     .slice(0, 4);
 
-  const galleryImages = product ? getGalleryImages(product.image) : [];
+  const galleryImages = product?.images && product.images.length > 0 
+    ? product.images 
+    : product ? [product.image] : [];
+
+  const whatsappMessage = product 
+    ? encodeURIComponent(`Hi, I'm interested in the "${product.name}" (SKU: ${product.sku || 'N/A'}) priced at AED ${product.price.toLocaleString()}. Could you provide more details?`)
+    : "";
 
   if (isLoading) {
     return (
@@ -141,34 +142,30 @@ export default function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-[#F6F4EB]">
-      {/* Breadcrumb */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-[#09263D]/60">
+          <nav className="flex items-center gap-2 text-sm text-[#09263D]/60 flex-wrap">
             <Link href="/" className="hover:text-[#970A44] transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/shop" className="hover:text-[#970A44] transition-colors">Shop</Link>
+            <Link href="/shop" className="hover:text-[#970A44] transition-colors">Custom Furniture</Link>
             <span>/</span>
-            <Link href={`/shop?category=${product.category}`} className="hover:text-[#970A44] transition-colors">
+            <span className="hover:text-[#970A44] transition-colors">
               {product.category}
-            </Link>
+            </span>
             <span>/</span>
             <span className="text-[#09263D]">{product.name}</span>
           </nav>
         </div>
       </div>
 
-      {/* Product Details */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Image Gallery */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              {/* Main Image */}
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F6F4EB] mb-4">
                 <motion.img
                   key={selectedImage}
@@ -180,7 +177,6 @@ export default function ProductDetail() {
                   className="w-full h-full object-cover"
                 />
 
-                {/* Badges */}
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
                   {product.featured && (
                     <Badge className="bg-[#970A44] text-white">Featured</Badge>
@@ -190,65 +186,72 @@ export default function ProductDetail() {
                   )}
                 </div>
 
-                {/* Navigation Arrows */}
-                <Button
-                  size="icon"
-                  variant="secondary"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white shadow-lg"
-                  onClick={() => setSelectedImage(prev => prev === 0 ? galleryImages.length - 1 : prev - 1)}
-                  data-testid="button-prev-image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </Button>
-                <Button
-                  size="icon"
-                  variant="secondary"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white shadow-lg"
-                  onClick={() => setSelectedImage(prev => prev === galleryImages.length - 1 ? 0 : prev + 1)}
-                  data-testid="button-next-image"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </Button>
+                {galleryImages.length > 1 && (
+                  <>
+                    <Button
+                      size="icon"
+                      variant="secondary"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 shadow-lg"
+                      onClick={() => setSelectedImage(prev => prev === 0 ? galleryImages.length - 1 : prev - 1)}
+                      data-testid="button-prev-image"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="secondary"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 shadow-lg"
+                      onClick={() => setSelectedImage(prev => prev === galleryImages.length - 1 ? 0 : prev + 1)}
+                      data-testid="button-next-image"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </Button>
+                  </>
+                )}
               </div>
 
-              {/* Thumbnails */}
-              <div className="grid grid-cols-4 gap-3">
-                {galleryImages.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(index)}
-                    className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                      selectedImage === index 
-                        ? 'border-[#970A44]' 
-                        : 'border-transparent hover:border-[#970A44]/30'
-                    }`}
-                    data-testid={`thumbnail-${index}`}
-                  >
-                    <img 
-                      src={img} 
-                      alt={`${product.name} ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
-              </div>
+              {galleryImages.length > 1 && (
+                <div className="grid grid-cols-4 gap-3">
+                  {galleryImages.map((img, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImage(index)}
+                      className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
+                        selectedImage === index 
+                          ? 'border-[#970A44]' 
+                          : 'border-transparent hover:border-[#970A44]/30'
+                      }`}
+                      data-testid={`thumbnail-${index}`}
+                    >
+                      <img 
+                        src={img} 
+                        alt={`${product.name} ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
 
-            {/* Product Info */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <Badge variant="secondary" className="mb-4 bg-[#F6F4EB] text-[#09263D]">
-                {product.category}
-              </Badge>
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="secondary" className="bg-[#F6F4EB] text-[#09263D]">
+                  {product.category}
+                </Badge>
+                {product.sku && (
+                  <span className="text-xs text-[#09263D]/40">SKU: {product.sku}</span>
+                )}
+              </div>
               
               <h1 className="text-3xl md:text-4xl font-bold text-[#09263D] mb-4 font-serif" data-testid="text-product-name">
                 {product.name}
               </h1>
 
-              {/* Rating */}
               <div className="flex items-center gap-2 mb-6">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -258,7 +261,6 @@ export default function ProductDetail() {
                 <span className="text-[#09263D]/60">(4.9) · 128 Reviews</span>
               </div>
 
-              {/* Price */}
               <div className="flex items-baseline gap-4 mb-6">
                 <span className="text-4xl font-bold text-[#970A44]" data-testid="text-price">
                   AED {product.price.toLocaleString()}
@@ -269,20 +271,35 @@ export default function ProductDetail() {
                   </span>
                 )}
                 {product.discount && product.discount > 0 && (
-                  <Badge className="bg-green-500 text-white">Save {product.discount}%</Badge>
+                  <Badge className="bg-green-600 text-white">Save {product.discount}%</Badge>
                 )}
               </div>
 
-              <p className="text-[#09263D]/70 text-lg mb-8 leading-relaxed" data-testid="text-description">
+              <p className="text-[#09263D]/70 text-lg mb-6 leading-relaxed" data-testid="text-description">
                 {product.description}
               </p>
 
-              {/* Stock Status */}
-              <div className="flex items-center gap-2 mb-8">
+              {product.colors && product.colors.length > 0 && (
+                <div className="mb-6">
+                  <p className="text-sm font-medium text-[#09263D] mb-2 flex items-center gap-2">
+                    <Palette className="w-4 h-4 text-[#970A44]" />
+                    Available Colors
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {product.colors.map((color) => (
+                      <Badge key={color} variant="outline" className="border-[#09263D]/20 text-[#09263D] px-3 py-1">
+                        {color}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center gap-2 mb-6">
                 {product.inStock ? (
                   <>
                     <div className="w-3 h-3 bg-green-500 rounded-full" />
-                    <span className="text-green-600 font-medium">In Stock</span>
+                    <span className="text-green-600 font-medium">In Stock — Ready to Ship</span>
                   </>
                 ) : (
                   <>
@@ -292,8 +309,7 @@ export default function ProductDetail() {
                 )}
               </div>
 
-              {/* Quantity Selector */}
-              <div className="flex items-center gap-6 mb-8">
+              <div className="flex items-center gap-6 mb-6">
                 <span className="text-[#09263D] font-medium">Quantity:</span>
                 <div className="flex items-center border border-[#09263D]/20 rounded-full">
                   <Button
@@ -306,7 +322,7 @@ export default function ProductDetail() {
                   >
                     <Minus className="w-4 h-4" />
                   </Button>
-                  <span className="w-12 text-center font-semibold" data-testid="text-quantity">{quantity}</span>
+                  <span className="w-12 text-center font-semibold text-[#09263D]" data-testid="text-quantity">{quantity}</span>
                   <Button
                     size="icon"
                     variant="ghost"
@@ -319,8 +335,7 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-3 mb-6">
                 <Button
                   size="lg"
                   className="flex-1 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6 text-lg"
@@ -354,7 +369,23 @@ export default function ProductDetail() {
                 </Button>
               </div>
 
-              {/* Benefits */}
+              <a
+                href={`https://wa.me/971501234567?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mb-8"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full rounded-full py-6 border-green-600 text-green-700 hover:bg-green-50"
+                  data-testid="button-whatsapp-inquiry"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Inquire via WhatsApp
+                </Button>
+              </a>
+
               <div className="grid grid-cols-2 gap-4">
                 {benefits.map((benefit) => (
                   <div key={benefit.title} className="flex items-center gap-3 p-3 bg-[#F6F4EB] rounded-xl">
@@ -373,43 +404,213 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Product Features */}
       <section className="py-16 bg-[#F6F4EB]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div {...fadeInUp}>
-            <h2 className="text-2xl font-bold text-[#09263D] mb-8 font-serif">Product Features</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                "Premium quality materials",
-                "Handcrafted by skilled artisans",
-                "Modern and elegant design",
-                "Easy to clean and maintain",
-                "Durable construction",
-                "Eco-friendly production",
-                "Customization available",
-                "Complimentary assembly"
-              ].map((feature, index) => (
-                <div key={index} className="flex items-center gap-3 bg-white p-4 rounded-xl">
-                  <div className="w-6 h-6 bg-[#970A44]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-[#970A44]" />
+          <div className="flex gap-1 mb-8 border-b border-[#09263D]/10">
+            {[
+              { key: "description" as const, label: "Description", icon: Layers },
+              { key: "specifications" as const, label: "Specifications", icon: Ruler },
+              { key: "shipping" as const, label: "Shipping & Returns", icon: Truck },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`flex items-center gap-2 px-6 py-4 text-sm font-medium transition-colors border-b-2 -mb-px ${
+                  activeTab === tab.key
+                    ? "border-[#970A44] text-[#970A44]"
+                    : "border-transparent text-[#09263D]/60 hover:text-[#09263D]"
+                }`}
+                data-testid={`tab-${tab.key}`}
+              >
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === "description" && (
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold text-[#09263D] mb-4 font-serif">About This Product</h3>
+                  <p className="text-[#09263D]/70 leading-relaxed mb-6">{product.description}</p>
+                  <div className="space-y-3">
+                    {[
+                      "Premium quality materials",
+                      "Handcrafted by skilled artisans",
+                      "Customization available on request",
+                      "Complimentary assembly included",
+                      "Eco-friendly production process",
+                    ].map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-[#970A44]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-[#970A44]" />
+                        </div>
+                        <span className="text-[#09263D]">{feature}</span>
+                      </div>
+                    ))}
                   </div>
-                  <span className="text-[#09263D]">{feature}</span>
                 </div>
-              ))}
-            </div>
+                <div className="bg-white rounded-2xl p-6">
+                  <h4 className="font-bold text-[#09263D] mb-4">Quick Specs</h4>
+                  <div className="space-y-4">
+                    {product.materials && (
+                      <div className="flex items-start gap-3">
+                        <Layers className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-sm font-medium text-[#09263D]">Materials</p>
+                          <p className="text-sm text-[#09263D]/60">{product.materials}</p>
+                        </div>
+                      </div>
+                    )}
+                    {product.dimensions && (
+                      <div className="flex items-start gap-3">
+                        <Ruler className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-sm font-medium text-[#09263D]">Dimensions</p>
+                          <p className="text-sm text-[#09263D]/60">{product.dimensions}</p>
+                        </div>
+                      </div>
+                    )}
+                    {product.colors && product.colors.length > 0 && (
+                      <div className="flex items-start gap-3">
+                        <Palette className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-sm font-medium text-[#09263D]">Available Colors</p>
+                          <p className="text-sm text-[#09263D]/60">{product.colors.join(", ")}</p>
+                        </div>
+                      </div>
+                    )}
+                    {product.sku && (
+                      <div className="flex items-start gap-3">
+                        <Package className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <div>
+                          <p className="text-sm font-medium text-[#09263D]">SKU</p>
+                          <p className="text-sm text-[#09263D]/60">{product.sku}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "specifications" && (
+              <div className="bg-white rounded-2xl p-8">
+                <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Product Specifications</h3>
+                <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                    <span className="text-[#09263D]/60">Category</span>
+                    <span className="font-medium text-[#09263D]">{product.category}</span>
+                  </div>
+                  {product.sku && (
+                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                      <span className="text-[#09263D]/60">SKU</span>
+                      <span className="font-medium text-[#09263D]">{product.sku}</span>
+                    </div>
+                  )}
+                  {product.materials && (
+                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                      <span className="text-[#09263D]/60">Materials</span>
+                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.materials}</span>
+                    </div>
+                  )}
+                  {product.dimensions && (
+                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                      <span className="text-[#09263D]/60">Dimensions</span>
+                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.dimensions}</span>
+                    </div>
+                  )}
+                  {product.colors && product.colors.length > 0 && (
+                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                      <span className="text-[#09263D]/60">Colors</span>
+                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.colors.join(", ")}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                    <span className="text-[#09263D]/60">Availability</span>
+                    <span className={`font-medium ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
+                      {product.inStock ? "In Stock" : "Out of Stock"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                    <span className="text-[#09263D]/60">Warranty</span>
+                    <span className="font-medium text-[#09263D]">2 Years</span>
+                  </div>
+                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
+                    <span className="text-[#09263D]/60">Assembly</span>
+                    <span className="font-medium text-[#09263D]">Included Free</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === "shipping" && (
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-2xl p-8">
+                  <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Shipping Information</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Truck className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <div>
+                        <p className="font-medium text-[#09263D]">Free Delivery</p>
+                        <p className="text-sm text-[#09263D]/60">Free delivery across UAE on orders above AED 500. Standard delivery within 3-5 business days.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Package className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <div>
+                        <p className="font-medium text-[#09263D]">Assembly Service</p>
+                        <p className="text-sm text-[#09263D]/60">Complimentary assembly by our professional team at the time of delivery.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Shield className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <div>
+                        <p className="font-medium text-[#09263D]">Secure Packaging</p>
+                        <p className="text-sm text-[#09263D]/60">All items are carefully packed with protective materials to ensure safe delivery.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white rounded-2xl p-8">
+                  <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Return Policy</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <RotateCcw className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <div>
+                        <p className="font-medium text-[#09263D]">30-Day Returns</p>
+                        <p className="text-sm text-[#09263D]/60">Return or exchange within 30 days of delivery. Items must be in original condition.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Shield className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <div>
+                        <p className="font-medium text-[#09263D]">2-Year Warranty</p>
+                        <p className="text-sm text-[#09263D]/60">All furniture comes with a comprehensive 2-year warranty covering manufacturing defects.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div {...fadeInUp} className="flex items-center justify-between mb-8">
+            <motion.div {...fadeInUp} className="flex items-center justify-between gap-4 mb-8 flex-wrap">
               <h2 className="text-2xl font-bold text-[#09263D] font-serif">You May Also Like</h2>
               <Button 
                 variant="outline" 
-                className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full"
+                className="border-[#970A44] text-[#970A44] rounded-full"
                 asChild
               >
                 <Link href="/shop">
@@ -463,27 +664,42 @@ export default function ProductDetail() {
         </section>
       )}
 
-      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#970A44] to-[#720632]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
             <Sparkles className="w-12 h-12 text-white/80 mx-auto mb-4" />
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 font-serif">
-              Need Help Choosing?
+              Need a Custom Design?
             </h2>
             <p className="text-white/80 mb-6">
-              Our interior design experts can help you find the perfect pieces for your space.
+              We craft bespoke furniture tailored to your exact specifications. Share your vision with our design team.
             </p>
-            <Button 
-              asChild
-              size="lg"
-              className="bg-white text-[#970A44] hover:bg-white/90 rounded-full"
-            >
-              <Link href="/book">
-                Book Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button 
+                asChild
+                size="lg"
+                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full"
+              >
+                <Link href="/book">
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <a
+                href={`https://wa.me/971501234567?text=${encodeURIComponent("Hi, I'd like to discuss a custom furniture order.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/50 text-white rounded-full backdrop-blur-sm"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Chat on WhatsApp
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

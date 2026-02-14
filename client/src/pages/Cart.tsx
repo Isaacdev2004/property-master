@@ -1,10 +1,11 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { ShoppingBag, Trash2, Plus, Minus, ArrowRight } from "lucide-react";
+import { ShoppingBag, Trash2, Plus, Minus, ArrowRight, ArrowLeft, Truck, Shield, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { getSessionId } from "@/lib/cart";
 import type { CartItem, Product } from "@shared/schema";
@@ -13,7 +14,7 @@ const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
 };
 
 type CartItemWithProduct = CartItem & {
@@ -65,10 +66,10 @@ export default function Cart() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading cart...</p>
+          <div className="w-16 h-16 border-4 border-[#970A44] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#09263D]/60">Loading cart...</p>
         </div>
       </div>
     );
@@ -76,22 +77,27 @@ export default function Cart() {
 
   if (cartItemsWithProducts.length === 0) {
     return (
-      <div className="min-h-screen pt-20">
-        <div className="max-w-4xl mx-auto px-6 py-24">
+      <div className="min-h-screen bg-[#F6F4EB]">
+        <div className="max-w-4xl mx-auto px-6 py-32">
           <motion.div {...fadeInUp} className="text-center">
-            <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-              <ShoppingBag className="w-12 h-12 text-muted-foreground" />
+            <div className="w-24 h-24 bg-[#970A44]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <ShoppingBag className="w-12 h-12 text-[#970A44]" />
             </div>
-            <h1 className="text-4xl font-bold mb-4 font-[Montserrat]">Your Cart is Empty</h1>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Looks like you haven't added any items to your cart yet.
+            <h1 className="text-4xl font-bold mb-4 text-[#09263D] font-serif">Your Cart is Empty</h1>
+            <p className="text-[#09263D]/60 mb-8 text-lg">
+              Discover our curated collection of luxury custom furniture.
             </p>
-            <Link href="/shop" data-testid="button-continue-shopping">
-              <Button size="lg">
-                Continue Shopping
+            <Button 
+              asChild 
+              size="lg" 
+              className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+              data-testid="button-continue-shopping"
+            >
+              <Link href="/shop">
+                Browse Custom Furniture
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </div>
@@ -99,42 +105,84 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen pt-20">
-      <section className="py-24 bg-gradient-to-b from-primary/10 to-background">
+    <div className="min-h-screen bg-[#F6F4EB]">
+      <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">Shopping Cart</h1>
-            <p className="text-xl text-muted-foreground">Review your items and proceed to checkout</p>
+            <nav className="flex items-center gap-2 text-sm text-[#09263D]/60 mb-6">
+              <Link href="/" className="hover:text-[#970A44] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/shop" className="hover:text-[#970A44] transition-colors">Custom Furniture</Link>
+              <span>/</span>
+              <span className="text-[#09263D]">Cart</span>
+            </nav>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#09263D] font-serif">
+              Shopping Cart
+              <span className="text-lg font-normal text-[#09263D]/60 ml-3">
+                ({cartItemsWithProducts.length} {cartItemsWithProducts.length === 1 ? 'item' : 'items'})
+              </span>
+            </h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 bg-background">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-4">
               {cartItemsWithProducts.map((item, index) => (
-                <motion.div key={item.id} {...fadeInUp} transition={{ delay: index * 0.05 }}>
-                  <Card>
+                <motion.div 
+                  key={item.id} 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  <Card className="border-0 shadow-sm bg-white">
                     <CardContent className="p-6">
-                      <div className="flex gap-4">
-                        <div className="w-24 h-24 bg-muted rounded-lg overflow-hidden flex-shrink-0">
-                          <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold mb-1 font-[Montserrat]">{item.product.name}</h3>
-                          <p className="text-sm text-muted-foreground mb-3">{item.product.category}</p>
-                          <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-2 border border-border rounded-lg">
+                      <div className="flex gap-5">
+                        <Link href={`/shop/${item.product.id}`} className="flex-shrink-0">
+                          <div className="w-28 h-28 bg-[#F6F4EB] rounded-xl overflow-hidden">
+                            <img 
+                              src={item.product.image} 
+                              alt={item.product.name} 
+                              className="w-full h-full object-cover" 
+                            />
+                          </div>
+                        </Link>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <Link href={`/shop/${item.product.id}`}>
+                                <h3 className="font-bold text-[#09263D] hover:text-[#970A44] transition-colors line-clamp-1">
+                                  {item.product.name}
+                                </h3>
+                              </Link>
+                              <p className="text-sm text-[#09263D]/60 mt-1">{item.product.category}</p>
+                              {item.product.sku && (
+                                <p className="text-xs text-[#09263D]/40 mt-0.5">SKU: {item.product.sku}</p>
+                              )}
+                            </div>
+                            <Button
+                              size="icon"
+                              variant="ghost"
+                              className="text-[#09263D]/40 hover:text-red-500 flex-shrink-0"
+                              onClick={() => removeItemMutation.mutate(item.id)}
+                              disabled={removeItemMutation.isPending}
+                              data-testid={`button-remove-${item.id}`}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                          <div className="flex items-center justify-between mt-4 flex-wrap gap-3">
+                            <div className="flex items-center border border-[#09263D]/15 rounded-full">
                               <Button
                                 size="icon"
                                 variant="ghost"
-                                className="h-8 w-8"
+                                className="rounded-full h-8 w-8"
                                 onClick={() => {
                                   if (item.quantity > 1) {
                                     updateQuantityMutation.mutate({ id: item.id, quantity: item.quantity - 1 });
@@ -143,76 +191,113 @@ export default function Cart() {
                                 disabled={updateQuantityMutation.isPending}
                                 data-testid={`button-decrease-${item.id}`}
                               >
-                                <Minus className="w-4 h-4" />
+                                <Minus className="w-3 h-3" />
                               </Button>
-                              <span className="w-8 text-center font-medium">{item.quantity}</span>
+                              <span className="w-10 text-center font-semibold text-[#09263D] text-sm">{item.quantity}</span>
                               <Button
                                 size="icon"
                                 variant="ghost"
-                                className="h-8 w-8"
+                                className="rounded-full h-8 w-8"
                                 onClick={() => updateQuantityMutation.mutate({ id: item.id, quantity: item.quantity + 1 })}
                                 disabled={updateQuantityMutation.isPending}
                                 data-testid={`button-increase-${item.id}`}
                               >
-                                <Plus className="w-4 h-4" />
+                                <Plus className="w-3 h-3" />
                               </Button>
                             </div>
-                            <span className="text-lg font-bold text-primary">
+                            <span className="text-xl font-bold text-[#970A44]">
                               AED {(item.product.price * item.quantity).toLocaleString()}
                             </span>
                           </div>
                         </div>
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          className="text-destructive"
-                          onClick={() => removeItemMutation.mutate(item.id)}
-                          disabled={removeItemMutation.isPending}
-                          data-testid={`button-remove-${item.id}`}
-                        >
-                          <Trash2 className="w-5 h-5" />
-                        </Button>
                       </div>
                     </CardContent>
                   </Card>
                 </motion.div>
               ))}
+
+              <motion.div {...fadeInUp}>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-[#970A44]/20 text-[#970A44] rounded-full"
+                >
+                  <Link href="/shop">
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Continue Shopping
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
 
             <div className="lg:col-span-1">
               <motion.div {...fadeInUp}>
-                <Card className="sticky top-24">
+                <Card className="sticky top-24 border-0 shadow-lg bg-white">
                   <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Order Summary</h2>
+                    <h2 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Order Summary</h2>
+                    
                     <div className="space-y-3 mb-4">
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Subtotal</span>
-                        <span className="font-medium">AED {subtotal.toLocaleString()}</span>
+                        <span className="text-[#09263D]/60">Subtotal ({cartItemsWithProducts.length} items)</span>
+                        <span className="font-medium text-[#09263D]">AED {subtotal.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Shipping</span>
-                        <span className="font-medium">{shipping === 0 ? "FREE" : `AED ${shipping}`}</span>
+                        <span className="text-[#09263D]/60">Shipping</span>
+                        <span className={`font-medium ${shipping === 0 ? 'text-green-600' : 'text-[#09263D]'}`}>
+                          {shipping === 0 ? "FREE" : `AED ${shipping}`}
+                        </span>
                       </div>
                       {subtotal < 5000 && shipping > 0 && (
-                        <p className="text-xs text-muted-foreground">
-                          Free shipping on orders over AED 5,000
-                        </p>
+                        <div className="bg-[#F6F4EB] rounded-lg p-3">
+                          <p className="text-xs text-[#09263D]/60 flex items-center gap-2">
+                            <Truck className="w-3 h-3 text-[#970A44]" />
+                            Add AED {(5000 - subtotal).toLocaleString()} more for free shipping
+                          </p>
+                        </div>
                       )}
                     </div>
-                    <Separator className="my-4" />
+                    
+                    <Separator className="my-4 bg-[#09263D]/10" />
+                    
                     <div className="flex justify-between mb-6">
-                      <span className="text-lg font-semibold">Total</span>
-                      <span className="text-2xl font-bold text-primary">AED {total.toLocaleString()}</span>
+                      <span className="text-lg font-semibold text-[#09263D]">Total</span>
+                      <span className="text-2xl font-bold text-[#970A44]">AED {total.toLocaleString()}</span>
                     </div>
-                    <Button className="w-full mb-3" size="lg" data-testid="button-checkout">
+                    
+                    <Button 
+                      className="w-full mb-3 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" 
+                      size="lg" 
+                      data-testid="button-checkout"
+                    >
                       Proceed to Checkout
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
-                    <Link href="/shop" data-testid="link-continue-shopping">
-                      <Button variant="outline" className="w-full">
-                        Continue Shopping
+                    
+                    <a
+                      href={`https://wa.me/971501234567?text=${encodeURIComponent(`Hi, I'd like to place an order for ${cartItemsWithProducts.length} item(s) totalling AED ${total.toLocaleString()}.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-green-600 text-green-700 hover:bg-green-50 rounded-full"
+                      >
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Order via WhatsApp
                       </Button>
-                    </Link>
+                    </a>
+
+                    <div className="mt-6 space-y-3">
+                      <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
+                        <Truck className="w-4 h-4 text-[#970A44]" />
+                        <span>Free delivery on orders above AED 5,000</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
+                        <Shield className="w-4 h-4 text-[#970A44]" />
+                        <span>Secure checkout with SSL encryption</span>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
