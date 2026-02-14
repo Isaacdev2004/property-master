@@ -927,7 +927,7 @@ Message: ${validatedData.message}
     }
   });
 
-  app.get("/download-project-x9k2m", (_req: Request, res: Response) => {
+  app.get("/api/download-project-x9k2m", (_req: Request, res: Response) => {
     const archivePath = "/tmp/thepropertymasters-deploy.tar.gz";
     try {
       if (!fs.existsSync(archivePath)) {
