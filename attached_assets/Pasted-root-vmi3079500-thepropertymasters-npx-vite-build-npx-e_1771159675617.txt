@@ -1,0 +1,36 @@
+root@vmi3079500:~/thepropertymasters# npx vite build && npx esbuild server/index.ts -- platform=node --package=external --bundle --format=esm --outdir=dist
+vite v5.4.20 building for production...
+transforming (4) src/App.tsx
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 2152 modules transformed.
+../dist/public/index.html                                                  1.15 kB │ gzip:   0.59 kB
+../dist/public/assets/modern_corporate_off_09bac916-C4UnSjaA.jpg         127.93 kB
+../dist/public/assets/smart_home_technolog_7bd73d0f-Ca1dMtJ6.jpg         129.52 kB
+../dist/public/assets/luxury_residential_i_c7a66543-CIyhB05v.jpg         157.71 kB
+../dist/public/assets/modern_luxury_office_a24abf7a-DrbQ4hCk.jpg         167.64 kB
+../dist/public/assets/luxury_hotel_hospita_bc97f394-CGyLvcB8.jpg         213.81 kB
+../dist/public/assets/modern_facility_main_fe205381-wpeaf1Z3.jpg         216.82 kB
+../dist/public/assets/luxury_furniture_sho_9ccd6a99-Dqy3bWNA.jpg         216.98 kB
+../dist/public/assets/spa_wellness_retreat_7460672e-CaisflJs.jpg         258.06 kB
+../dist/public/assets/modern_luxury_interi_bd2412e2-B1qENCAL.jpg         273.61 kB
+../dist/public/assets/luxury_kitchen_desig_9dd78270-CW5fF3Fm.jpg         324.72 kB
+../dist/public/assets/professional_design__a5c51df4-D1Q9kQtJ.jpg         376.00 kB
+../dist/public/assets/luxury_spa_wellness__2284ee07-CSRjIHtW.jpg         486.54 kB
+../dist/public/assets/kitchen_after_renovation_cecd16b9-DMOJCG45.png   1,382.80 kB
+../dist/public/assets/luxury_living_room_hero_1b740bbd-Bao3GNL8.png    1,428.01 kB
+../dist/public/assets/bathroom_renovation_f7c2a685-BlzZuPcE.png        1,461.38 kB
+../dist/public/assets/bedroom_interior_design_d3372076-CNtnDqOa.png    1,522.25 kB
+../dist/public/assets/kitchen_before_renovation_de1bcc3a-BywB7El4.png  1,597.21 kB
+../dist/public/assets/commercial_office_design_d5324a05-Dr21ohZo.png   1,600.40 kB
+../dist/public/assets/index-CK9or9o-.css                                 129.75 kB │ gzip:  19.21 kB
+../dist/public/assets/index-onNdoHXP.js                                1,222.85 kB │ gzip: 322.50 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 10.93s
+✘ [ERROR] Invalid build flag: "--"
+
+1 error
+root@vmi3079500:~/thepropertymasters#
