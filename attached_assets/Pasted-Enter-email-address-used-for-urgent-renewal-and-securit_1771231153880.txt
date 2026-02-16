@@ -1,0 +1,34 @@
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): info@propertymaster.ae
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.6-August-18-2025.pdf. You must agree
+in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+Account registered.
+Requesting a certificate for thepropertymasters.ae and ww.thepropertymasters.ae
+
+Certbot failed to authenticate some domains (authenticator: nginx). The Certificate Authority reported these problems:
+  Domain: thepropertymasters.ae
+  Type:   dns
+  Detail: no valid A records found for thepropertymasters.ae; no valid AAAA records found for thepropertymasters.ae
+
+  Domain: ww.thepropertymasters.ae
+  Type:   dns
+  Detail: DNS problem: NXDOMAIN looking up A for ww.thepropertymasters.ae - check that a DNS record exists for this domain; DNS problem: NXDOMAIN looking up AAAA for ww.thepropertymasters.ae - check that a DNS record exists for this domain
+
+Hint: The Certificate Authority failed to verify the temporary nginx configuration changes made by Certbot. Ensure the listed domains point to this nginx server and that it is accessible from the internet.
+
+Some challenges have failed.
+Ask for help or search for solutions at https://community.letsencrypt.org. See the logfile /var/log/letsencrypt/letsencrypt.log or re-run Certbot with -v for more details.
