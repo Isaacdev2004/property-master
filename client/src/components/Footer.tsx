@@ -53,7 +53,7 @@ export function Footer() {
   ];
 
   const cities = [
-    "Dubai", "Abu Dhabi", "Sharjah", "Ajman", "RAK", "Fujairah"
+    "UAE", "Pakistan", "UK", "Saudi Arabia"
   ];
 
   return (
@@ -83,7 +83,7 @@ export function Footer() {
                 className="border-white/50 text-white hover:bg-white/10 rounded-full px-6"
                 data-testid="button-footer-call"
               >
-                <a href="tel:+97125500888">
+                <a href="tel:+971585707110">
                   <Phone className="mr-2 w-4 h-4" />
                   Call Now
                 </a>
@@ -288,25 +288,21 @@ export function Footer() {
                   <MapPin className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-sm text-white/90">AL Saqr Business Tower - Office A-36</p>
-                    <p className="text-sm text-white/70">Sheikh Zayed Road, Dubai, UAE</p>
+                    <p className="text-sm text-white/70">Dubai, UAE</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-[#970A44] flex-shrink-0" />
                   <div>
-                    <a href="tel:+97125500888" className="text-sm text-white/90 hover:text-white transition-colors">
-                      +971 2550 0888
-                    </a>
-                    <span className="text-white/50 mx-2">|</span>
-                    <a href="tel:+971501234567" className="text-sm text-white/90 hover:text-white transition-colors">
-                      +971 50 123 4567
+                    <a href="tel:+971585707110" className="text-sm text-white/90 hover:text-white transition-colors">
+                      +971 58 570 7110
                     </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-[#970A44] flex-shrink-0" />
-                  <a href="mailto:info@thepropertymasters.ae" className="text-sm text-white/90 hover:text-white transition-colors">
-                    info@thepropertymasters.ae
+                  <a href="mailto:Info@thepropertymasters.ae" className="text-sm text-white/90 hover:text-white transition-colors">
+                    Info@thepropertymasters.ae
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
@@ -318,7 +314,7 @@ export function Footer() {
 
             {/* Cities We Serve */}
             <div>
-              <h4 className="font-semibold text-sm mb-4">Cities We Serve</h4>
+              <h4 className="font-semibold text-sm mb-4">Our Locations</h4>
               <div className="flex flex-wrap gap-2">
                 {cities.map((city) => (
                   <span 

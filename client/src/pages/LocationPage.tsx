@@ -298,7 +298,7 @@ export default function LocationPage() {
               >
                 <a href="tel:+97141234567">
                   <Phone className="mr-2 w-5 h-5" />
-                  +971 4 123 4567
+                  +971 58 570 7110
                 </a>
               </Button>
             </div>

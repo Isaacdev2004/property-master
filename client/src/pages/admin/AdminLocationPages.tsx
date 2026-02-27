@@ -237,7 +237,7 @@ export default function AdminLocationPages() {
       "name": `The Property Masters - ${formData.location}`,
       "description": formData.description,
       "url": `https://thepropertymasters.ae/location/${formData.slug}`,
-      "telephone": "+971 4 123 4567",
+      "telephone": "+971 58 570 7110",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": formData.location,

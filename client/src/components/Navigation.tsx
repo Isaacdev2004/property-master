@@ -381,7 +381,7 @@ export function Navigation() {
 
               {/* Phone Number */}
               <a 
-                href="tel:+97125500888" 
+                href="tel:+971585707110" 
                 className="hidden md:flex items-center gap-2"
                 data-testid="link-phone"
               >
@@ -397,7 +397,7 @@ export function Navigation() {
                     ? "text-gray-900" 
                     : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                 }`}>
-                  +971 2550 0888
+                  +971 58 570 7110
                 </span>
               </a>
             </div>

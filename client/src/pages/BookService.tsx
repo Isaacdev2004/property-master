@@ -255,7 +255,7 @@ export default function BookService() {
                                 <FormItem>
                                   <FormLabel>Phone *</FormLabel>
                                   <FormControl>
-                                    <Input type="tel" placeholder="+971 50 123 4567" {...field} data-testid="input-phone" />
+                                    <Input type="tel" placeholder="+971 58 570 7110" {...field} data-testid="input-phone" />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>

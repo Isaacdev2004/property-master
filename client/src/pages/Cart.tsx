@@ -274,7 +274,7 @@ export default function Cart() {
                     </Button>
                     
                     <a
-                      href={`https://wa.me/971501234567?text=${encodeURIComponent(`Hi, I'd like to place an order for ${cartItemsWithProducts.length} item(s) totalling AED ${total.toLocaleString()}.`)}`}
+                      href={`https://wa.me/971585707110?text=${encodeURIComponent(`Hi, I'd like to place an order for ${cartItemsWithProducts.length} item(s) totalling AED ${total.toLocaleString()}.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block"

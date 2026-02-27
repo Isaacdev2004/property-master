@@ -234,7 +234,7 @@ export default function DesignDetail() {
                 className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full px-8 flex-1 sm:flex-none"
                 data-testid="button-call-now"
               >
-                <a href="tel:+97125500888">
+                <a href="tel:+971585707110">
                   <Phone className="mr-2 w-5 h-5" />
                   Call Now
                 </a>

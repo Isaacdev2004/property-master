@@ -2710,8 +2710,8 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
         accentColor: "#1C4668",
         backgroundColor: "#F6F4EB",
         textColor: "#09263D",
-        contactEmail: "info@thepropertymasters.ae",
-        contactPhone: "+971 4 123 4567",
+        contactEmail: "Info@thepropertymasters.ae",
+        contactPhone: "+971 58 570 7110",
         contactAddress: "AL Saqr Business Tower - Office A-36, Dubai, UAE",
         footerText: "© 2024 The Property Masters. All rights reserved."
       };

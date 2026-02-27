@@ -370,7 +370,7 @@ export default function ProductDetail() {
               </div>
 
               <a
-                href={`https://wa.me/971501234567?text=${whatsappMessage}`}
+                href={`https://wa.me/971585707110?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block mb-8"
@@ -686,7 +686,7 @@ export default function ProductDetail() {
                 </Link>
               </Button>
               <a
-                href={`https://wa.me/971501234567?text=${encodeURIComponent("Hi, I'd like to discuss a custom furniture order.")}`}
+                href={`https://wa.me/971585707110?text=${encodeURIComponent("Hi, I'd like to discuss a custom furniture order.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >

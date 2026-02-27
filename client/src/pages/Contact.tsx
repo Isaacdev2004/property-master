@@ -29,12 +29,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+971 50 123 4567", "+971 4 123 4567", "Mon-Sat: 9AM - 6PM"],
+    details: ["+971 58 570 7110", "Mon-Sat: 9AM - 6PM"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@propertymasters.com", "support@propertymasters.com", "24/7 Response Time"],
+    details: ["Info@thepropertymasters.ae", "24/7 Response Time"],
   },
 ];
 
@@ -78,7 +78,7 @@ export default function Contact() {
   };
 
   const openWhatsApp = () => {
-    window.open("https://wa.me/971501234567", "_blank");
+    window.open("https://wa.me/971585707110", "_blank");
   };
 
   return (
@@ -176,7 +176,7 @@ export default function Contact() {
                             <FormItem>
                               <FormLabel>Phone *</FormLabel>
                               <FormControl>
-                                <Input type="tel" placeholder="+971 50 123 4567" {...field} data-testid="input-contact-phone" />
+                                <Input type="tel" placeholder="+971 58 570 7110" {...field} data-testid="input-contact-phone" />
                               </FormControl>
                               <FormMessage />
                             </FormItem>

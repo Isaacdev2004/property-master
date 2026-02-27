@@ -375,7 +375,7 @@ export default function AdminSiteSettings() {
                       data-testid="input-contact-phone"
                       value={formData.contactPhone || ""}
                       onChange={(e) => setFormData({ ...formData, contactPhone: e.target.value })}
-                      placeholder="+971 4 123 4567"
+                      placeholder="+971 58 570 7110"
                     />
                   </div>
                 </div>

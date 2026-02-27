@@ -124,7 +124,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                 className="border-white/30 text-white rounded-full px-6 md:px-8 w-full sm:w-auto backdrop-blur-sm"
                 data-testid="button-call"
               >
-                <a href="tel:+97125500888">
+                <a href="tel:+971585707110">
                   <Phone className="mr-2 w-4 h-4" />
                   Call Now
                 </a>
@@ -431,7 +431,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                 className="border-white/50 text-white rounded-full px-8 md:px-10 py-6 md:py-7 text-base md:text-lg backdrop-blur-sm"
                 data-testid="button-cta-call"
               >
-                <a href="tel:+97125500888">
+                <a href="tel:+971585707110">
                   <Phone className="mr-2 w-5 h-5" />
                   +971 2550 0888
                 </a>

@@ -1306,7 +1306,7 @@ export default function MaintenanceServices() {
                   className="border-white/50 text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg"
                   data-testid="button-cta-call"
                 >
-                  <a href="tel:+97125500888">
+                  <a href="tel:+971585707110">
                     <Phone className="mr-2 w-5 h-5" />
                     Call +971 2550 0888
                   </a>
