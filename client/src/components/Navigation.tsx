@@ -382,28 +382,28 @@ export function Navigation() {
               {/* Phone Number */}
               <a 
                 href="tel:+971585707110" 
-                className="hidden md:flex items-center gap-2"
+                className="hidden lg:flex items-center gap-1.5 whitespace-nowrap"
                 data-testid="link-phone"
               >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
                   isScrolled || !isHomePage ? "bg-[#970A44]" : "bg-white/90"
                 }`}>
-                  <Phone className={`w-4 h-4 ${
+                  <Phone className={`w-3.5 h-3.5 ${
                     isScrolled || !isHomePage ? "text-white" : "text-[#970A44]"
                   }`} />
                 </div>
-                <span className={`text-sm font-semibold ${
+                <span className={`text-xs font-semibold ${
                   isScrolled || !isHomePage 
                     ? "text-gray-900" 
                     : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                 }`}>
-                  +971 58 570 7110
+                  +971 585 707 110
                 </span>
               </a>
             </div>
 
             {/* Center: Main Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-5">
               {navItems.map((item, index) => (
                 item.hasMegaMenu ? (
                   <div
