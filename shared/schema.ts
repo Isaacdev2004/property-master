@@ -235,22 +235,35 @@ export type InsertTrackingCode = z.infer<typeof insertTrackingCodeSchema>;
 // Location Page Schema (for Local SEO)
 export const locationPageSchema = z.object({
   id: z.string(),
-  location: z.string(), // e.g., "Dubai Marina", "Downtown Dubai"
+  location: z.string(),
   slug: z.string(),
-  serviceId: z.string().optional(), // Link to a specific service
+  serviceId: z.string().optional(),
+  serviceName: z.string().optional(),
   h1: z.string(),
   h2: z.string().optional(),
+  h3: z.string().optional(),
   heroImage: z.string().optional(),
   description: z.string(),
   content: z.string(),
-  localInfo: z.string().optional(), // Area-specific information
+  localInfo: z.string().optional(),
+  serviceFeatures: z.array(z.string()).optional(),
+  whyChooseUs: z.string().optional(),
+  processSteps: z.array(z.object({
+    title: z.string(),
+    description: z.string(),
+  })).optional(),
   faqs: z.array(z.object({
     question: z.string(),
     answer: z.string(),
   })).optional(),
-  schema: z.string().optional(), // Local business JSON-LD
+  internalLinks: z.array(z.object({
+    text: z.string(),
+    url: z.string(),
+  })).optional(),
+  schema: z.string().optional(),
   metaTitle: z.string(),
   metaDescription: z.string(),
+  focusKeyword: z.string().optional(),
   isActive: z.boolean(),
 });
 
