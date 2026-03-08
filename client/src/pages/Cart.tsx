@@ -205,9 +205,7 @@ export default function Cart() {
                                 <Plus className="w-3 h-3" />
                               </Button>
                             </div>
-                            <span className="text-xl font-bold text-[#970A44]">
-                              AED {(item.product.price * item.quantity).toLocaleString()}
-                            </span>
+                            
                           </div>
                         </div>
                       </div>
@@ -234,35 +232,16 @@ export default function Cart() {
               <motion.div {...fadeInUp}>
                 <Card className="sticky top-24 border-0 shadow-lg bg-white">
                   <CardContent className="p-6">
-                    <h2 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Order Summary</h2>
+                    <h2 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Inquiry Summary</h2>
                     
                     <div className="space-y-3 mb-4">
                       <div className="flex justify-between text-sm">
-                        <span className="text-[#09263D]/60">Subtotal ({cartItemsWithProducts.length} items)</span>
-                        <span className="font-medium text-[#09263D]">AED {subtotal.toLocaleString()}</span>
+                        <span className="text-[#09263D]/60">Items ({cartItemsWithProducts.length})</span>
+                        <span className="font-medium text-[#09263D]">Quote on request</span>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-[#09263D]/60">Shipping</span>
-                        <span className={`font-medium ${shipping === 0 ? 'text-green-600' : 'text-[#09263D]'}`}>
-                          {shipping === 0 ? "FREE" : `AED ${shipping}`}
-                        </span>
-                      </div>
-                      {subtotal < 5000 && shipping > 0 && (
-                        <div className="bg-[#F6F4EB] rounded-lg p-3">
-                          <p className="text-xs text-[#09263D]/60 flex items-center gap-2">
-                            <Truck className="w-3 h-3 text-[#970A44]" />
-                            Add AED {(5000 - subtotal).toLocaleString()} more for free shipping
-                          </p>
-                        </div>
-                      )}
                     </div>
                     
                     <Separator className="my-4 bg-[#09263D]/10" />
-                    
-                    <div className="flex justify-between mb-6">
-                      <span className="text-lg font-semibold text-[#09263D]">Total</span>
-                      <span className="text-2xl font-bold text-[#970A44]">AED {total.toLocaleString()}</span>
-                    </div>
                     
                     <Button 
                       className="w-full mb-3 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" 
@@ -274,7 +253,7 @@ export default function Cart() {
                     </Button>
                     
                     <a
-                      href={`https://wa.me/971585707110?text=${encodeURIComponent(`Hi, I'd like to place an order for ${cartItemsWithProducts.length} item(s) totalling AED ${total.toLocaleString()}.`)}`}
+                      href={`https://wa.me/971585707110?text=${encodeURIComponent(`Hi, I'd like to get a quote for ${cartItemsWithProducts.length} item(s): ${cartItemsWithProducts.map(i => i.product.name).join(', ')}.`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block"
@@ -291,7 +270,7 @@ export default function Cart() {
                     <div className="mt-6 space-y-3">
                       <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
                         <Truck className="w-4 h-4 text-[#970A44]" />
-                        <span>Free delivery on orders above AED 5,000</span>
+                        <span>Free delivery across UAE</span>
                       </div>
                       <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
                         <Shield className="w-4 h-4 text-[#970A44]" />

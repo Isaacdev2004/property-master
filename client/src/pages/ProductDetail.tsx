@@ -49,7 +49,7 @@ const staggerItem = {
 };
 
 const benefits = [
-  { icon: Truck, title: "Free Delivery", description: "On orders above AED 500" },
+  { icon: Truck, title: "Free Delivery", description: "Across UAE" },
   { icon: Shield, title: "2 Year Warranty", description: "On all furniture" },
   { icon: RotateCcw, title: "30-Day Returns", description: "Easy return policy" },
   { icon: Package, title: "Premium Quality", description: "Handcrafted furniture" },
@@ -104,7 +104,7 @@ export default function ProductDetail() {
     : product ? [product.image] : [];
 
   const whatsappMessage = product 
-    ? encodeURIComponent(`Hi, I'm interested in the "${product.name}" (SKU: ${product.sku || 'N/A'}) priced at AED ${product.price.toLocaleString()}. Could you provide more details?`)
+    ? encodeURIComponent(`Hi, I'm interested in the "${product.name}" (SKU: ${product.sku || 'N/A'}). Could you provide a quote and more details?`)
     : "";
 
   if (isLoading) {
@@ -181,9 +181,7 @@ export default function ProductDetail() {
                   {product.featured && (
                     <Badge className="bg-[#970A44] text-white">Featured</Badge>
                   )}
-                  {product.discount && product.discount > 0 && (
-                    <Badge className="bg-[#09263D] text-white">{product.discount}% Off</Badge>
-                  )}
+                  
                 </div>
 
                 {galleryImages.length > 1 && (
@@ -261,19 +259,7 @@ export default function ProductDetail() {
                 <span className="text-[#09263D]/60">(4.9) · 128 Reviews</span>
               </div>
 
-              <div className="flex items-baseline gap-4 mb-6">
-                <span className="text-4xl font-bold text-[#970A44]" data-testid="text-price">
-                  AED {product.price.toLocaleString()}
-                </span>
-                {originalPrice && (
-                  <span className="text-xl text-[#09263D]/40 line-through">
-                    AED {originalPrice.toLocaleString()}
-                  </span>
-                )}
-                {product.discount && product.discount > 0 && (
-                  <Badge className="bg-green-600 text-white">Save {product.discount}%</Badge>
-                )}
-              </div>
+              
 
               <p className="text-[#09263D]/70 text-lg mb-6 leading-relaxed" data-testid="text-description">
                 {product.description}
@@ -309,42 +295,17 @@ export default function ProductDetail() {
                 )}
               </div>
 
-              <div className="flex items-center gap-6 mb-6">
-                <span className="text-[#09263D] font-medium">Quantity:</span>
-                <div className="flex items-center border border-[#09263D]/20 rounded-full">
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="rounded-full"
-                    onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                    disabled={quantity <= 1}
-                    data-testid="button-decrease-qty"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </Button>
-                  <span className="w-12 text-center font-semibold text-[#09263D]" data-testid="text-quantity">{quantity}</span>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="rounded-full"
-                    onClick={() => setQuantity(q => q + 1)}
-                    data-testid="button-increase-qty"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-
               <div className="flex flex-wrap gap-3 mb-6">
                 <Button
+                  asChild
                   size="lg"
                   className="flex-1 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6 text-lg"
-                  disabled={!product.inStock || addToCartMutation.isPending}
-                  onClick={() => addToCartMutation.mutate({ productId: product.id, qty: quantity })}
-                  data-testid="button-add-to-cart"
+                  data-testid="button-get-quote"
                 >
-                  <ShoppingCart className="w-5 h-5 mr-2" />
-                  {addToCartMutation.isPending ? "Adding..." : "Add to Cart"}
+                  <Link href={`/book?product=${encodeURIComponent(product.name)}`}>
+                    Get Quote
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
                 </Button>
                 <Button
                   size="lg"
@@ -559,7 +520,7 @@ export default function ProductDetail() {
                       <Truck className="w-5 h-5 text-[#970A44] mt-0.5" />
                       <div>
                         <p className="font-medium text-[#09263D]">Free Delivery</p>
-                        <p className="text-sm text-[#09263D]/60">Free delivery across UAE on orders above AED 500. Standard delivery within 3-5 business days.</p>
+                        <p className="text-sm text-[#09263D]/60">Free delivery across UAE. Standard delivery within 3-5 business days.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -637,11 +598,6 @@ export default function ProductDetail() {
                             alt={relatedProduct.name}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           />
-                          {relatedProduct.discount && relatedProduct.discount > 0 && (
-                            <Badge className="absolute top-3 left-3 bg-[#970A44] text-white">
-                              {relatedProduct.discount}% Off
-                            </Badge>
-                          )}
                         </div>
                         <div className="p-4">
                           <h3 className="font-semibold text-[#09263D] mb-1 line-clamp-1">{relatedProduct.name}</h3>
@@ -650,9 +606,15 @@ export default function ProductDetail() {
                               <Star key={i} className="w-3 h-3 fill-[#970A44] text-[#970A44]" />
                             ))}
                           </div>
-                          <p className="text-lg font-bold text-[#970A44]">
-                            AED {relatedProduct.price.toLocaleString()}
-                          </p>
+                          <Button
+                            asChild
+                            className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full text-sm"
+                            data-testid={`button-get-quote-related-${relatedProduct.id}`}
+                          >
+                            <Link href={`/book?product=${encodeURIComponent(relatedProduct.name)}`}>
+                              Get Quote
+                            </Link>
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>

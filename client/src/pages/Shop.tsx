@@ -189,7 +189,7 @@ const stats = [
 
 // Benefits
 const benefits = [
-  { icon: Truck, title: "Free Delivery", description: "On orders above AED 500" },
+  { icon: Truck, title: "Free Delivery", description: "Across UAE" },
   { icon: Shield, title: "Quality Guarantee", description: "Premium materials only" },
   { icon: HeadphonesIcon, title: "24/7 Support", description: "Always here to help" },
   { icon: Package, title: "Easy Returns", description: "30-day return policy" },
@@ -347,9 +347,9 @@ export default function Shop() {
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 max-w-sm">
                 <div className="text-center">
                   <Sparkles className="w-12 h-12 text-[#970A44] mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Low Cost EMI</h3>
-                  <p className="text-white/70 mb-4">Starting from AED 99/month</p>
-                  <p className="text-sm text-white/50">Easy payment plans available on all products above AED 2,000</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">Custom Solutions</h3>
+                  <p className="text-white/70 mb-4">Tailored to your needs</p>
+                  <p className="text-sm text-white/50">Get a personalized quote for any product in our collection</p>
                 </div>
               </div>
             </motion.div>
@@ -444,10 +444,7 @@ export default function Shop() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   
-                  {/* Discount Badge */}
-                  <div className="absolute top-4 left-4 bg-[#970A44] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Up to {collection.discount}% Off
-                  </div>
+                  
 
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -725,9 +722,7 @@ export default function Shop() {
                           {product.featured && (
                             <Badge className="bg-[#970A44] text-white">Featured</Badge>
                           )}
-                          {product.discount && product.discount > 0 && (
-                            <Badge className="bg-[#09263D] text-white">{product.discount}% Off</Badge>
-                          )}
+                          
                         </div>
 
                         {/* Quick Actions */}
@@ -763,22 +758,7 @@ export default function Shop() {
                           </div>
                         )}
 
-                        {/* Add to Cart - Slides up on hover */}
-                        <div 
-                          className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent transition-all duration-300 ${
-                            hoveredProduct === product.id ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-full opacity-0 pointer-events-none'
-                          }`}
-                        >
-                          <Button
-                            className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
-                            disabled={!product.inStock || addToCartMutation.isPending}
-                            onClick={(e) => { e.stopPropagation(); addToCart(product); }}
-                            data-testid={`button-add-to-cart-${product.id}`}
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Add to Cart
-                          </Button>
-                        </div>
+                        
                       </div>
 
                       <Link href={`/shop/${product.id}`} className="block">
@@ -801,19 +781,17 @@ export default function Shop() {
                           <span className="text-xs text-[#09263D]/60 ml-1">(4.9)</span>
                         </div>
 
-                        {/* Price */}
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <span className="text-2xl font-bold text-[#970A44]">
-                              AED {product.price.toLocaleString()}
-                            </span>
-                            {product.discount && product.discount > 0 && (
-                              <span className="text-sm text-[#09263D]/40 line-through ml-2">
-                                AED {Math.round(product.price / (1 - product.discount / 100)).toLocaleString()}
-                              </span>
-                            )}
-                          </div>
-                        </div>
+                        {/* Get Quote CTA */}
+                        <Button
+                          asChild
+                          className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+                          data-testid={`button-get-quote-${product.id}`}
+                        >
+                          <Link href={`/book?product=${encodeURIComponent(product.name)}`}>
+                            Get Quote
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Link>
+                        </Button>
                       </div>
                       </Link>
                     </CardContent>
