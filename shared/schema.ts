@@ -232,6 +232,24 @@ export const insertTrackingCodeSchema = trackingCodeSchema.omit({ id: true });
 export type TrackingCode = z.infer<typeof trackingCodeSchema>;
 export type InsertTrackingCode = z.infer<typeof insertTrackingCodeSchema>;
 
+// Maintenance Package Schema
+export const maintenancePackageSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  price: z.string(),
+  period: z.string(),
+  subtitle: z.string().optional(),
+  features: z.array(z.string()),
+  popular: z.boolean(),
+  isCustom: z.boolean(),
+  isActive: z.boolean(),
+  sortOrder: z.number(),
+});
+
+export const insertMaintenancePackageSchema = maintenancePackageSchema.omit({ id: true });
+export type MaintenancePackage = z.infer<typeof maintenancePackageSchema>;
+export type InsertMaintenancePackage = z.infer<typeof insertMaintenancePackageSchema>;
+
 // Location Page Schema (for Local SEO)
 export const locationPageSchema = z.object({
   id: z.string(),

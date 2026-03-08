@@ -15,6 +15,7 @@ import AdminSiteSettings from "./AdminSiteSettings";
 import AdminPageContent from "./AdminPageContent";
 import AdminTrackingCodes from "./AdminTrackingCodes";
 import AdminLocationPages from "./AdminLocationPages";
+import AdminMaintenancePackages from "./AdminMaintenancePackages";
 
 function AdminRoutes() {
   const { isAuthenticated, isLoading } = useAdmin();
@@ -59,6 +60,7 @@ function AdminRoutes() {
         <Route path="/admin/page-content" component={AdminPageContent} />
         <Route path="/admin/tracking-codes" component={AdminTrackingCodes} />
         <Route path="/admin/location-pages" component={AdminLocationPages} />
+        <Route path="/admin/maintenance-packages" component={AdminMaintenancePackages} />
         <Route>
           <Redirect to="/admin" />
         </Route>

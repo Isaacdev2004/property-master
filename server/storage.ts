@@ -11,7 +11,8 @@ import {
   type SiteSettings, type InsertSiteSettings,
   type PageContent, type InsertPageContent,
   type TrackingCode, type InsertTrackingCode,
-  type LocationPage, type InsertLocationPage
+  type LocationPage, type InsertLocationPage,
+  type MaintenancePackage, type InsertMaintenancePackage
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -100,6 +101,14 @@ export interface IStorage {
   updateTrackingCode(id: string, code: Partial<InsertTrackingCode>): Promise<TrackingCode | undefined>;
   deleteTrackingCode(id: string): Promise<boolean>;
 
+  // Maintenance Packages
+  getAllMaintenancePackages(): Promise<MaintenancePackage[]>;
+  getActiveMaintenancePackages(): Promise<MaintenancePackage[]>;
+  getMaintenancePackage(id: string): Promise<MaintenancePackage | undefined>;
+  createMaintenancePackage(pkg: InsertMaintenancePackage): Promise<MaintenancePackage>;
+  updateMaintenancePackage(id: string, pkg: Partial<InsertMaintenancePackage>): Promise<MaintenancePackage | undefined>;
+  deleteMaintenancePackage(id: string): Promise<boolean>;
+
   // Location Pages
   getAllLocationPages(): Promise<LocationPage[]>;
   getLocationPage(id: string): Promise<LocationPage | undefined>;
@@ -124,6 +133,7 @@ export class MemStorage implements IStorage {
   private pageContents: Map<string, PageContent>;
   private trackingCodes: Map<string, TrackingCode>;
   private locationPages: Map<string, LocationPage>;
+  private maintenancePackages: Map<string, MaintenancePackage>;
 
   constructor() {
     this.services = new Map();
@@ -139,7 +149,9 @@ export class MemStorage implements IStorage {
     this.pageContents = new Map();
     this.trackingCodes = new Map();
     this.locationPages = new Map();
+    this.maintenancePackages = new Map();
     this.initializeMockData();
+    this.initializeMaintenancePackages();
   }
 
   private initializeMockData() {
@@ -2823,6 +2835,90 @@ Think of your home's cleanliness in layers. Regular upkeep manages the surface l
 
   async deleteLocationPage(id: string): Promise<boolean> {
     return this.locationPages.delete(id);
+  }
+
+  private initializeMaintenancePackages() {
+    const defaultPackages: MaintenancePackage[] = [
+      {
+        id: randomUUID(),
+        title: "Basic",
+        price: "AED 1458",
+        period: "/YEAR",
+        features: ["AC Servicing", "Basic Plumbing", "Electrical Checks", "Emergency Support"],
+        popular: false,
+        isCustom: false,
+        isActive: true,
+        sortOrder: 1,
+      },
+      {
+        id: randomUUID(),
+        title: "Standard",
+        price: "AED 2508",
+        period: "/YEAR",
+        features: ["Everything in Basic", "Deep Cleaning", "Priority Response", "Preventive Checks"],
+        popular: true,
+        isCustom: false,
+        isActive: true,
+        sortOrder: 2,
+      },
+      {
+        id: randomUUID(),
+        title: "Executive",
+        price: "AED 3768",
+        period: "/YEAR",
+        features: ["Everything in Standard", "Dedicated Manager", "Smart Home Support", "Pool Maintenance"],
+        popular: false,
+        isCustom: false,
+        isActive: true,
+        sortOrder: 3,
+      },
+      {
+        id: randomUUID(),
+        title: "Custom",
+        price: "Custom",
+        period: "",
+        subtitle: "Customize your package",
+        features: ["Tailored Services", "Flexible Scheduling", "Custom Pricing", "Enterprise Support"],
+        popular: false,
+        isCustom: true,
+        isActive: true,
+        sortOrder: 4,
+      },
+    ];
+    defaultPackages.forEach(pkg => this.maintenancePackages.set(pkg.id, pkg));
+  }
+
+  async getAllMaintenancePackages(): Promise<MaintenancePackage[]> {
+    return Array.from(this.maintenancePackages.values()).sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  async getActiveMaintenancePackages(): Promise<MaintenancePackage[]> {
+    return Array.from(this.maintenancePackages.values())
+      .filter(p => p.isActive)
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+  }
+
+  async getMaintenancePackage(id: string): Promise<MaintenancePackage | undefined> {
+    return this.maintenancePackages.get(id);
+  }
+
+  async createMaintenancePackage(pkg: InsertMaintenancePackage): Promise<MaintenancePackage> {
+    const id = randomUUID();
+    const newPkg: MaintenancePackage = { ...pkg, id };
+    this.maintenancePackages.set(id, newPkg);
+    return newPkg;
+  }
+
+  async updateMaintenancePackage(id: string, updates: Partial<InsertMaintenancePackage>): Promise<MaintenancePackage | undefined> {
+    const existing = this.maintenancePackages.get(id);
+    if (!existing) return undefined;
+    const updated = { ...existing, ...updates };
+    this.maintenancePackages.set(id, updated);
+    return updated;
+  }
+
+  async deleteMaintenancePackage(id: string): Promise<boolean> {
+    return this.maintenancePackages.delete(id);
   }
 }
 

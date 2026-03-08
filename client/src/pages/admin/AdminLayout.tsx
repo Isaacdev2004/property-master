@@ -19,7 +19,8 @@ import {
   Palette,
   Code,
   MapPin,
-  Edit3
+  Edit3,
+  Wrench
 } from "lucide-react";
 import { useState } from "react";
 
@@ -38,6 +39,7 @@ const navItems = [
   { path: "/admin/inquiries", label: "Inquiries", icon: Mail },
   { path: "/admin/page-content", label: "Page Content", icon: Edit3 },
   { path: "/admin/location-pages", label: "Location Service Pages", icon: MapPin },
+  { path: "/admin/maintenance-packages", label: "Maintenance Packages", icon: Wrench },
   { path: "/admin/tracking-codes", label: "Tracking Codes", icon: Code },
   { path: "/admin/seo", label: "SEO Settings", icon: Globe },
   { path: "/admin/site-settings", label: "Site Settings", icon: Palette },

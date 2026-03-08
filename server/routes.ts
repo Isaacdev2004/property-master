@@ -20,6 +20,7 @@ import {
   insertPageContentSchema,
   insertTrackingCodeSchema,
   insertLocationPageSchema,
+  insertMaintenancePackageSchema,
 } from "@shared/schema";
 import { z } from "zod";
 
@@ -845,6 +846,70 @@ Message: ${validatedData.message}
       }
     } catch (error) {
       res.status(500).json({ error: "Failed to delete tracking code" });
+    }
+  });
+
+  // ============ MAINTENANCE PACKAGES ROUTES ============
+  app.get("/api/maintenance-packages", async (_req, res) => {
+    try {
+      const packages = await storage.getActiveMaintenancePackages();
+      res.json(packages);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch maintenance packages" });
+    }
+  });
+
+  app.get("/api/admin/maintenance-packages", requireAdmin, async (_req, res) => {
+    try {
+      const packages = await storage.getAllMaintenancePackages();
+      res.json(packages);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch maintenance packages" });
+    }
+  });
+
+  app.post("/api/admin/maintenance-packages", requireAdmin, async (req, res) => {
+    try {
+      const data = insertMaintenancePackageSchema.parse(req.body);
+      const pkg = await storage.createMaintenancePackage(data);
+      res.status(201).json(pkg);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to create maintenance package" });
+      }
+    }
+  });
+
+  app.patch("/api/admin/maintenance-packages/:id", requireAdmin, async (req, res) => {
+    try {
+      const data = insertMaintenancePackageSchema.partial().parse(req.body);
+      const pkg = await storage.updateMaintenancePackage(req.params.id, data);
+      if (!pkg) {
+        res.status(404).json({ error: "Package not found" });
+        return;
+      }
+      res.json(pkg);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ error: error.errors });
+      } else {
+        res.status(500).json({ error: "Failed to update maintenance package" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/maintenance-packages/:id", requireAdmin, async (req, res) => {
+    try {
+      const success = await storage.deleteMaintenancePackage(req.params.id);
+      if (!success) {
+        res.status(404).json({ error: "Package not found" });
+        return;
+      }
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete maintenance package" });
     }
   });
 

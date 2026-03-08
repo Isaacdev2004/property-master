@@ -80,39 +80,7 @@ const howItWorks = [
   { step: 3, title: "Sit back and relax", subtitle: "while we get to work", icon: ThumbsUp },
 ];
 
-// Maintenance Packages matching hitchesglitches.com
-const maintenancePackages = [
-  {
-    title: "Basic",
-    price: "AED 1458",
-    period: "/YEAR",
-    features: ["AC Servicing", "Basic Plumbing", "Electrical Checks", "Emergency Support"],
-    popular: false,
-  },
-  {
-    title: "Standard",
-    price: "AED 2508",
-    period: "/YEAR",
-    features: ["Everything in Basic", "Deep Cleaning", "Priority Response", "Preventive Checks"],
-    popular: true,
-  },
-  {
-    title: "Executive",
-    price: "AED 3768",
-    period: "/YEAR",
-    features: ["Everything in Standard", "Dedicated Manager", "Smart Home Support", "Pool Maintenance"],
-    popular: false,
-  },
-  {
-    title: "Custom",
-    price: "Custom",
-    period: "",
-    subtitle: "Customize your package",
-    features: ["Tailored Services", "Flexible Scheduling", "Custom Pricing", "Enterprise Support"],
-    popular: false,
-    isCustom: true,
-  },
-];
+// Maintenance Packages - now fetched from API
 
 // Statistics
 const statistics = [
@@ -201,11 +169,16 @@ const staggerItem = {
 };
 
 import { useQuery } from "@tanstack/react-query";
+import type { MaintenancePackage } from "@shared/schema";
 import type { BlogPost } from "@shared/schema";
 
 export default function MaintenanceServices() {
   const { data: posts = [] } = useQuery<BlogPost[]>({
     queryKey: ["/api/blog"],
+  });
+
+  const { data: maintenancePackages = [] } = useQuery<MaintenancePackage[]>({
+    queryKey: ["/api/maintenance-packages"],
   });
 
   const filteredBlogPosts = posts.filter(p => p.category === "Maintenance");
