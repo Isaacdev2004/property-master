@@ -25,6 +25,7 @@ import ProductDetail from "@/pages/ProductDetail";
 import LocationPage from "@/pages/LocationPage";
 import NotFound from "@/pages/NotFound";
 import Admin from "@/pages/admin";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 
 function Router() {
   const [location] = useLocation();
@@ -62,6 +63,7 @@ function Router() {
         </Switch>
       </main>
       <Footer />
+      {!location.startsWith("/admin") && !location.startsWith("/cms-portal") && <WhatsAppFloat />}
     </div>
   );
 }

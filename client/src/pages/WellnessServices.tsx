@@ -1597,7 +1597,7 @@ export default function WellnessServices() {
                 className="border-white text-white hover:bg-white/10 rounded-full px-8"
                 data-testid="button-call-us"
               >
-                <a href="tel:+97143456789">
+                <a href="tel:+971585707110">
                   <Phone className="mr-2 w-5 h-5" />
                   Call Us
                 </a>

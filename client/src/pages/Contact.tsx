@@ -29,7 +29,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+971 58 570 7110", "Mon-Sat: 9AM - 6PM"],
+    details: ["+971 585 707 110", "Mon-Sat: 9AM - 6PM"],
   },
   {
     icon: Mail,
@@ -176,7 +176,7 @@ export default function Contact() {
                             <FormItem>
                               <FormLabel>Phone *</FormLabel>
                               <FormControl>
-                                <Input type="tel" placeholder="+971 58 570 7110" {...field} data-testid="input-contact-phone" />
+                                <Input type="tel" placeholder="+971 585 707 110" {...field} data-testid="input-contact-phone" />
                               </FormControl>
                               <FormMessage />
                             </FormItem>

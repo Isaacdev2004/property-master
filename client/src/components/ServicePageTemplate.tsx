@@ -433,7 +433,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
               >
                 <a href="tel:+971585707110">
                   <Phone className="mr-2 w-5 h-5" />
-                  +971 2550 0888
+                  +971 585 707 110
                 </a>
               </Button>
             </div>

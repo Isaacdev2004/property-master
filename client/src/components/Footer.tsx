@@ -295,7 +295,7 @@ export function Footer() {
                   <Phone className="w-5 h-5 text-[#970A44] flex-shrink-0" />
                   <div>
                     <a href="tel:+971585707110" className="text-sm text-white/90 hover:text-white transition-colors">
-                      +971 58 570 7110
+                      +971 585 707 110
                     </a>
                   </div>
                 </div>
