@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
-import kitchenBefore from "@assets/generated_images/kitchen_before_renovation_de1bcc3a.png";
-import kitchenAfter from "@assets/generated_images/kitchen_after_renovation_cecd16b9.png";
-import officeImage from "@assets/generated_images/commercial_office_design_d5324a05.png";
-import bedroomImage from "@assets/generated_images/bedroom_interior_design_d3372076.png";
-import bathroomImage from "@assets/generated_images/bathroom_renovation_f7c2a685.png";
+import kitchenBefore from "@assets/generated_images/kitchen_before_renovation_de1bcc3a.jpg";
+import kitchenAfter from "@assets/generated_images/kitchen_after_renovation_cecd16b9.jpg";
+import officeImage from "@assets/generated_images/commercial_office_design_d5324a05.jpg";
+import bedroomImage from "@assets/generated_images/bedroom_interior_design_d3372076.jpg";
+import bathroomImage from "@assets/generated_images/bathroom_renovation_f7c2a685.jpg";
 import portfolioHeroImage from "@assets/stock_images/luxury_interior_desi_7c187bff.jpg";
 
 const fadeInUp = {

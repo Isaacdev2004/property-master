@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Award, Users, CheckCircle2, Clock, Heart, BadgeCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.png";
+import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.jpg";
 import StickyScrollServices from "@/components/StickyScrollServices";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
 import ServiceCardsSlider from "@/components/ServiceCardsSlider";
