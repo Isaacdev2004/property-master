@@ -1,0 +1,114 @@
+Welcome!
+
+This server is hosted by Contabo. If you have any questions or need help,
+please don't hesitate to contact us at support@contabo.com.
+
+Last login: Fri Feb 27 13:57:19 2026 from 41.216.53.131
+root@vmi3079500:~# cd /var/www/thepropertymasters
+root@vmi3079500:/var/www/thepropertymasters# git pull
+remote: Enumerating objects: 182, done.
+remote: Counting objects: 100% (182/182), done.
+remote: Compressing objects: 100% (37/37), done.
+remote: Total 141 (delta 119), reused 123 (delta 101), pack-reused 0 (from 0)
+Receiving objects: 100% (141/141), 816.47 KiB | 26.34 MiB/s, done.
+Resolving deltas: 100% (119/119), completed with 39 local objects.
+From https://github.com/Isaacdev2004/property-master
+   735c12e..9e47f33  main       -> origin/main
+Updating 735c12e..9e47f33
+error: Your local changes to the following files would be overwritten by merge:
+        client/src/components/Footer.tsx
+        client/src/components/Navigation.tsx
+        client/src/components/ServicePageTemplate.tsx
+        client/src/pages/BookService.tsx
+        client/src/pages/Cart.tsx
+        client/src/pages/Contact.tsx
+        client/src/pages/DesignDetail.tsx
+        client/src/pages/InteriorServiceDetail.tsx
+        client/src/pages/LocationPage.tsx
+        client/src/pages/MaintenanceServiceDetail.tsx
+        client/src/pages/MaintenanceServices.tsx
+        client/src/pages/ProductDetail.tsx
+        client/src/pages/admin/AdminLocationPages.tsx
+        client/src/pages/admin/AdminSiteSettings.tsx
+        server/storage.ts
+Please commit your changes or stash them before you merge.
+Aborting
+root@vmi3079500:/var/www/thepropertymasters# npm install
+
+up to date, audited 601 packages in 4s
+
+83 packages are looking for funding
+  run `npm fund` for details
+
+20 vulnerabilities (10 low, 6 moderate, 3 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.11.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.11.0
+npm notice To update run: npm install -g npm@11.11.0
+npm notice
+root@vmi3079500:/var/www/thepropertymasters# npm run build
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v5.4.20 building for production...
+transforming (4) src/App.tsx
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 2152 modules transformed.
+../dist/public/index.html                                                  1.15 kB │ gzip:   0.59 kB
+../dist/public/assets/modern_corporate_off_09bac916-C4UnSjaA.jpg         127.93 kB
+../dist/public/assets/smart_home_technolog_7bd73d0f-Ca1dMtJ6.jpg         129.52 kB
+../dist/public/assets/luxury_residential_i_c7a66543-CIyhB05v.jpg         157.71 kB
+../dist/public/assets/modern_luxury_office_a24abf7a-DrbQ4hCk.jpg         167.64 kB
+../dist/public/assets/luxury_hotel_hospita_bc97f394-CGyLvcB8.jpg         213.81 kB
+../dist/public/assets/modern_facility_main_fe205381-wpeaf1Z3.jpg         216.82 kB
+../dist/public/assets/luxury_furniture_sho_9ccd6a99-Dqy3bWNA.jpg         216.98 kB
+../dist/public/assets/spa_wellness_retreat_7460672e-CaisflJs.jpg         258.06 kB
+../dist/public/assets/modern_luxury_interi_bd2412e2-B1qENCAL.jpg         273.61 kB
+../dist/public/assets/luxury_kitchen_desig_9dd78270-CW5fF3Fm.jpg         324.72 kB
+../dist/public/assets/professional_design__a5c51df4-D1Q9kQtJ.jpg         376.00 kB
+../dist/public/assets/luxury_spa_wellness__2284ee07-CSRjIHtW.jpg         486.54 kB
+../dist/public/assets/kitchen_after_renovation_cecd16b9-DMOJCG45.png   1,382.80 kB
+../dist/public/assets/luxury_living_room_hero_1b740bbd-Bao3GNL8.png    1,428.01 kB
+../dist/public/assets/bathroom_renovation_f7c2a685-BlzZuPcE.png        1,461.38 kB
+../dist/public/assets/bedroom_interior_design_d3372076-CNtnDqOa.png    1,522.25 kB
+../dist/public/assets/kitchen_before_renovation_de1bcc3a-BywB7El4.png  1,597.21 kB
+../dist/public/assets/commercial_office_design_d5324a05-Dr21ohZo.png   1,600.40 kB
+../dist/public/assets/index-CK9or9o-.css                                 129.75 kB │ gzip:  19.21 kB
+../dist/public/assets/index-O4LBX4ex.js                                1,222.84 kB │ gzip: 322.51 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 19.70s
+
+  dist/index.js  186.8kb
+
+⚡ Done in 47ms
+root@vmi3079500:/var/www/thepropertymasters# pm2 delete all
+[PM2] Applying action deleteProcessId on app [all](ids: [ 0 ])
+[PM2] [thepropertymasters](0) ✓
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+root@vmi3079500:/var/www/thepropertymasters# NODE_ENV=production pm2 start dist/index.js --name
+
+  error: option `-n --name <name>' argument missing
+
+root@vmi3079500:/var/www/thepropertymasters# NODE_ENV=production pm2 start dist/index.js --name the propertymasters
+[PM2] Starting /var/www/thepropertymasters/dist/index.js in fork_mode (1 instance)
+[PM2] Done.
+[PM2][ERROR] Script not found: /var/www/thepropertymasters/propertymasters
+root@vmi3079500:/var/www/thepropertymasters# pm2 save
+[PM2] Saving current process list...
+[PM2] Successfully saved in /root/.pm2/dump.pm2
+root@vmi3079500:/var/www/thepropertymasters#
