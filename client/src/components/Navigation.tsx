@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, ShoppingCart, ChevronDown, ChevronRight, Phone, Home, Paintbrush, Building2, Sofa, Wrench, Zap, Droplets, Wind, Shield, Heart, Sparkles, Bath, UtensilsCrossed, Bed, Lamp, Clock, FlameKindling, Bug, Waves, TestTube, Stethoscope, Baby, Dumbbell, Truck, PaintBucket, Wifi, Hammer, ArrowRight, Star, Users, Award, CheckCircle, Layers, Grid3X3, TreePine, Fence, GlassWater, Gem, Store, Hotel, ShoppingBag, Shirt, Scissors, Pipette, Thermometer, FlaskConical, Lightbulb, Plug, Cable, MonitorSpeaker, DoorOpen, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import headerLogo from "@assets/logo_header_mobile_1773052295052.png";
 
 // Comprehensive mega menu data with ALL services from the provided list
 const interiorDesignMenu = {
@@ -367,15 +368,16 @@ export function Navigation() {
                   whileHover={{ scale: 1.02 }}
                   className="cursor-pointer"
                 >
-                  <div className={`w-10 h-10 rounded-md flex items-center justify-center transition-colors ${
-                    isScrolled || !isHomePage 
-                      ? "bg-[#970A44]" 
-                      : "bg-white/90"
-                  }`}>
-                    <span className={`font-bold text-lg font-[Montserrat] ${
-                      isScrolled || !isHomePage ? "text-white" : "text-[#970A44]"
-                    }`}>PM</span>
-                  </div>
+                  <img 
+                    src={headerLogo} 
+                    alt="The Property Masters" 
+                    className={`h-10 w-auto transition-all ${
+                      isScrolled || !isHomePage 
+                        ? "" 
+                        : "brightness-0 invert"
+                    }`}
+                    data-testid="img-header-logo"
+                  />
                 </motion.div>
               </Link>
 

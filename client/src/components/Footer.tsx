@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import footerLogo from "@assets/logo_footer_1773052295055.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -142,11 +143,14 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">PM</span>
-              </div>
-              <span className="text-lg font-bold">The Property Masters</span>
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src={footerLogo} 
+                alt="The Property Masters" 
+                className="h-12 w-auto brightness-0 invert"
+                loading="lazy"
+                data-testid="img-footer-logo"
+              />
             </div>
             <p className="text-sm text-white/70 leading-relaxed mb-6 max-w-sm">
               Dubai's premier property solutions company offering complete interior design, wellness facilities, and maintenance services. Transform your space with our expert team.
