@@ -148,6 +148,7 @@ export default function SignatureSpacesShowcase() {
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient}`} />

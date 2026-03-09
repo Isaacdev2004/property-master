@@ -162,7 +162,7 @@ export default function DesignDetail() {
                   }`}
                   data-testid={`button-gallery-${index}`}
                 >
-                  <img 
+                  <img loading="lazy" 
                     src={img}
                     alt={`Gallery ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
@@ -279,7 +279,7 @@ export default function DesignDetail() {
                 <Link href={`/interior-design/${related.slug}`} data-testid={`link-related-${related.id}`}>
                   <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-related-${related.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={related.image}
                         alt={related.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

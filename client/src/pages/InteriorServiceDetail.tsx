@@ -916,7 +916,7 @@ export default function InteriorServiceDetail() {
                 data-testid={`gallery-${index}`}
               >
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img 
+                  <img loading="lazy" 
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

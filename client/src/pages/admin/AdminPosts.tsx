@@ -463,7 +463,7 @@ export default function AdminPosts() {
                       <div className="grid grid-cols-3 gap-2">
                         {formData.additionalImages.map((img, index) => (
                           <div key={index} className="relative group">
-                            <img 
+                            <img loading="lazy" 
                               src={img} 
                               alt={`Additional ${index + 1}`}
                               className="w-full h-24 object-cover rounded"

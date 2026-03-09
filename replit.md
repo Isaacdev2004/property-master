@@ -43,6 +43,7 @@ The design adheres to a warm luxury minimalist aesthetic with a full-width, bran
 - **Enhanced Blog SEO:** Blog posts support meta title, meta description, focus keywords, multiple additional images, and internal linking for comprehensive SEO.
 - **Reusable Page Templates:** `ServicePageTemplate` for consistent service detail pages, accepting `ServiceData` for dynamic content.
 - **Title Formatting Helper:** Auto-generates SEO-friendly titles from slugs, handling common abbreviations.
+- **Performance Optimization:** Code splitting via `React.lazy`/`Suspense` for all pages in `App.tsx`, non-render-blocking Google Fonts loading (preload/onload pattern in `index.html`), reduced font weights (only 400/600/700 for Montserrat, 400/700 for Playfair Display), and `loading="lazy"` on all below-the-fold images across the application. Hero images are excluded from lazy loading to preserve LCP scores.
 - **Responsive Design:** Mobile-first approach for all devices.
 - **Loading & Error States:** User-friendly loading indicators and error handling.
 - **Session Management:** Cart persistence managed via `localStorage`.

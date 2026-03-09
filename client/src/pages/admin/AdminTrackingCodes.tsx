@@ -81,7 +81,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', 'YOUR_PIXEL_ID');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img loading="lazy" height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->`,
   },

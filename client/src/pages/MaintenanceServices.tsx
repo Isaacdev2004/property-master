@@ -675,7 +675,7 @@ export default function MaintenanceServices() {
                   <CardContent className="p-8 md:p-12">
                     <div className="flex flex-col md:flex-row items-center gap-8">
                       <div className="flex-shrink-0">
-                        <img 
+                        <img loading="lazy" 
                           src={testimonials[currentTestimonial].image}
                           alt={testimonials[currentTestimonial].name}
                           className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#970A44]/20"
@@ -775,7 +775,7 @@ export default function MaintenanceServices() {
                     data-testid={`card-blog-${post.id}`}
                   >
                     <div className="relative h-48 overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={post.image}
                         alt={post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

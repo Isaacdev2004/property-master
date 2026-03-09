@@ -637,7 +637,7 @@ export default function InteriorDesign() {
                   <Link href="/shop">
                     <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-furniture-${item.id}`}>
                       <div className="relative aspect-square overflow-hidden">
-                        <img 
+                        <img loading="lazy" 
                           src={item.image}
                           alt={item.name}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -743,7 +743,7 @@ export default function InteriorDesign() {
                         <Link href={`/interior-design/${idea.slug}`}>
                           <Card className="group overflow-hidden border-0 shadow-sm hover-elevate cursor-pointer" data-testid={`card-idea-${idea.id}`}>
                             <div className="relative aspect-[3/4] overflow-hidden">
-                              <img 
+                              <img loading="lazy" 
                                 src={idea.image}
                                 alt={idea.title}
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -817,7 +817,7 @@ export default function InteriorDesign() {
               >
                 <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-tour-${project.id}`}>
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
+                    <img loading="lazy" 
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -940,7 +940,7 @@ export default function InteriorDesign() {
               >
                 <Card className="overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-team-${member.id}`}>
                   <div className="relative aspect-[3/4] overflow-hidden">
-                    <img 
+                    <img loading="lazy" 
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
@@ -970,7 +970,7 @@ export default function InteriorDesign() {
             className="text-center mb-16"
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
+              <img loading="lazy" src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
               <span className="text-lg font-semibold">Google Reviews</span>
             </div>
             <div className="flex items-center justify-center gap-1 mb-4">
@@ -997,7 +997,7 @@ export default function InteriorDesign() {
                 <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-review-${review.id}`}>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <img 
+                      <img loading="lazy" 
                         src={review.image}
                         alt={review.name}
                         className="w-12 h-12 rounded-full object-cover"
@@ -1128,7 +1128,7 @@ export default function InteriorDesign() {
               >
                 <Card className="group overflow-hidden border-0 shadow-lg hover-elevate" data-testid={`card-home-${home.id}`}>
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <img 
+                    <img loading="lazy" 
                       src={home.image}
                       alt={home.name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -1368,7 +1368,7 @@ export default function InteriorDesign() {
                 <Link href={`/blog/${post.slug}`}>
                   <Card className="group overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`card-blog-${post.id}`}>
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={post.image}
                         alt={post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

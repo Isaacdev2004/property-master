@@ -221,7 +221,7 @@ export default function ProductDetail() {
                       }`}
                       data-testid={`thumbnail-${index}`}
                     >
-                      <img 
+                      <img loading="lazy" 
                         src={img} 
                         alt={`${product.name} ${index + 1}`}
                         className="w-full h-full object-cover"

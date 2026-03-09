@@ -87,7 +87,7 @@ export function ImageUpload({ label, value, onChange, placeholder = "Enter image
               </div>
             ) : preview ? (
               <div className="relative">
-                <img 
+                <img loading="lazy" 
                   src={preview.startsWith("/objects/") ? preview : preview} 
                   alt="Preview" 
                   className="max-h-32 mx-auto rounded"
@@ -136,7 +136,7 @@ export function ImageUpload({ label, value, onChange, placeholder = "Enter image
           />
           {preview && (
             <div className="relative inline-block">
-              <img 
+              <img loading="lazy" 
                 src={preview} 
                 alt="Preview" 
                 className="max-h-32 rounded"

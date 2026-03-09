@@ -171,7 +171,7 @@ export default function AdminSiteSettings() {
                     />
                     {formData.logoUrl && (
                       <div className="mt-2 p-2 bg-gray-100 rounded">
-                        <img src={formData.logoUrl} alt="Logo preview" className="h-12 object-contain" />
+                        <img loading="lazy" src={formData.logoUrl} alt="Logo preview" className="h-12 object-contain" />
                       </div>
                     )}
                   </div>

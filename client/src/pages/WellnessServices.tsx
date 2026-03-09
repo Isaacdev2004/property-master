@@ -416,7 +416,7 @@ export default function WellnessServices() {
                   <Link href={service.href}>
                     <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer" data-testid={`new-service-${service.id}`}>
                       <div className="relative aspect-[2.5/1] overflow-hidden">
-                        <img 
+                        <img loading="lazy" 
                           src={service.image}
                           alt={service.name}
                           className="w-full h-full object-cover"
@@ -473,7 +473,7 @@ export default function WellnessServices() {
                   <Link href={category.href}>
                     <Card className="overflow-hidden border-0 shadow-xl hover-elevate cursor-pointer group h-full" data-testid={`category-${category.id}`}>
                       <div className="relative aspect-[4/5] overflow-hidden">
-                        <img 
+                        <img loading="lazy" 
                           src={category.image}
                           alt={category.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -551,7 +551,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`ac-service-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -632,7 +632,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`furniture-service-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -713,7 +713,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`water-service-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -783,7 +783,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`deep-cleaning-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -864,7 +864,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-lg hover-elevate cursor-pointer group" data-testid={`pest-service-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -966,7 +966,7 @@ export default function WellnessServices() {
                 >
                   <Card className="overflow-hidden border-0 shadow-xl hover-elevate cursor-pointer group" data-testid={`personal-service-${service.id}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <img 
+                      <img loading="lazy" 
                         src={service.image}
                         alt={service.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -1082,7 +1082,7 @@ export default function WellnessServices() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
+              <img loading="lazy" src="https://www.google.com/favicon.ico" alt="Google" className="w-8 h-8" />
               <span className="font-semibold text-lg">Google Reviews</span>
             </div>
             <div className="flex items-center justify-center gap-1 mb-4">
@@ -1118,7 +1118,7 @@ export default function WellnessServices() {
                   "{testimonials[currentTestimonial].content}"
                 </p>
                 <div className="flex items-center justify-center gap-4">
-                  <img 
+                  <img loading="lazy" 
                     src={testimonials[currentTestimonial].image}
                     alt={testimonials[currentTestimonial].name}
                     className="w-16 h-16 rounded-full object-cover"

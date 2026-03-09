@@ -341,7 +341,7 @@ export default function DesignCategory() {
                 <Link href={`/interior-design/${design.slug}`} data-testid={`link-design-${design.id}`}>
                   <Card className="group overflow-hidden border-0 shadow-md hover-elevate cursor-pointer" data-testid={`card-design-${design.id}`}>
                     <div className={`relative overflow-hidden ${viewMode === "large" ? "aspect-[4/3]" : "aspect-square"}`}>
-                      <img 
+                      <img loading="lazy" 
                         src={design.image}
                         alt={design.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

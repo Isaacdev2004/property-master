@@ -146,7 +146,7 @@ export default function Cart() {
                       <div className="flex gap-5">
                         <Link href={`/shop/${item.product.id}`} className="flex-shrink-0">
                           <div className="w-28 h-28 bg-[#F6F4EB] rounded-xl overflow-hidden">
-                            <img 
+                            <img loading="lazy" 
                               src={item.product.image} 
                               alt={item.product.name} 
                               className="w-full h-full object-cover" 
