@@ -365,9 +365,12 @@ export default function InteriorDesign() {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=75"
+            srcSet="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=70 800w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=75 1200w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80 1920w"
+            sizes="100vw"
             alt="Luxury Interior Design"
             className="w-full h-full object-cover"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+  src: local('Montserrat');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+  src: local('Playfair Display');
+}
+
 /* LIGHT MODE - New Palette: #720632, #970A44, #F6F4EB, #1C4668, #09263D */
 :root {
   --button-outline: rgba(0,0,0, .10);

@@ -211,9 +211,12 @@ export default function MaintenanceServices() {
           className="absolute inset-0"
         >
           <img 
-            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=75"
+            srcSet="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=70 800w, https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=75 1200w, https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=80 1920w"
+            sizes="100vw"
             alt="Professional Maintenance Services"
             className="w-full h-full object-cover"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/60" />
         </motion.div>

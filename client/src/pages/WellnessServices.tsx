@@ -280,9 +280,12 @@ export default function WellnessServices() {
       <section className="relative pt-24 pb-16 overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=75"
+            srcSet="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=70 800w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=75 1200w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80 1920w"
+            sizes="100vw"
             alt="Wellness Home"
             className="w-full h-full object-cover"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-transparent" />
         </div>

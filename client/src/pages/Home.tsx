@@ -4,6 +4,7 @@ import { ArrowRight, Award, Users, CheckCircle2, Clock, Heart, BadgeCheck, Star 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroImage from "@assets/generated_images/luxury_living_room_hero_1b740bbd.jpg";
+import heroImageMobile from "@assets/generated_images/luxury_living_room_hero_mobile.jpg";
 import StickyScrollServices from "@/components/StickyScrollServices";
 import SignatureSpacesShowcase from "@/components/SignatureSpacesShowcase";
 import ServiceCardsSlider from "@/components/ServiceCardsSlider";
@@ -123,8 +124,11 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <img 
               src={heroImage} 
+              srcSet={`${heroImageMobile} 800w, ${heroImage} 1408w`}
+              sizes="100vw"
               alt="Luxury interior design" 
               className="w-full h-full object-cover"
+              decoding="async"
             />
             {/* Dark overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
