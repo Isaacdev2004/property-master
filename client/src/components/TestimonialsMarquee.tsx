@@ -75,7 +75,7 @@ export default function TestimonialsMarquee() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-sm uppercase tracking-wider text-[#970A44] font-semibold mb-4">
+          <p className="text-sm uppercase tracking-wider text-[#CD9342] font-semibold mb-4">
             Success Powered by The Property Masters
           </p>
           <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
@@ -112,14 +112,14 @@ export default function TestimonialsMarquee() {
               <CardContent className="p-6">
                 <div className="flex gap-1 mb-4" data-testid={`rating-${index}`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                    <Star key={i} className="w-4 h-4 fill-[#CD9342] text-[#CD9342]" />
                   ))}
                 </div>
                 <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-4">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#CD9342] to-[#A67A2E] flex items-center justify-center text-white font-bold text-lg">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
@@ -160,14 +160,14 @@ export default function TestimonialsMarquee() {
               <CardContent className="p-6">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                    <Star key={i} className="w-4 h-4 fill-[#CD9342] text-[#CD9342]" />
                   ))}
                 </div>
                 <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-4">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-lg">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#CD9342] to-[#A67A2E] flex items-center justify-center text-white font-bold text-lg">
                     {testimonial.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>

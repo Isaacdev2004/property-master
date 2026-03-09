@@ -190,7 +190,7 @@ export default function AdminServices() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]">Services Management</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">Services Management</h1>
           <p className="text-gray-600">Create and manage service pages for your website</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={(open) => {
@@ -198,7 +198,7 @@ export default function AdminServices() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button data-testid="button-add-service" className="bg-[#970A44] hover:bg-[#720632]">
+            <Button data-testid="button-add-service" className="bg-[#CD9342] hover:bg-[#A67A2E]">
               <Plus className="w-4 h-4 mr-2" />
               Add Service
             </Button>
@@ -321,7 +321,7 @@ export default function AdminServices() {
                 <Button
                   type="submit"
                   data-testid="button-save-service"
-                  className="bg-[#970A44] hover:bg-[#720632]"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                 >
                   {createMutation.isPending || updateMutation.isPending ? "Saving..." : editingService ? "Update Service" : "Create Service"}
@@ -358,8 +358,8 @@ export default function AdminServices() {
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-semibold text-lg text-[#09263D]">{service.title}</h3>
-                      <span className="px-2 py-1 text-xs rounded-full bg-[#F6F4EB] text-[#970A44]">
+                      <h3 className="font-semibold text-lg text-[#1A1A1A]">{service.title}</h3>
+                      <span className="px-2 py-1 text-xs rounded-full bg-[#FAFAFA] text-[#CD9342]">
                         {getCategoryLabel(service.category)}
                       </span>
                     </div>

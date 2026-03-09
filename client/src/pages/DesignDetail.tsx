@@ -146,10 +146,10 @@ export default function DesignDetail() {
               />
               <div className="absolute top-4 right-4 flex gap-2">
                 <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white" data-testid="button-favorite">
-                  <Heart className="w-5 h-5 text-[#970A44]" />
+                  <Heart className="w-5 h-5 text-[#CD9342]" />
                 </Button>
                 <Button variant="secondary" size="icon" className="rounded-full bg-white/90 hover:bg-white" data-testid="button-share">
-                  <Share2 className="w-5 h-5 text-[#970A44]" />
+                  <Share2 className="w-5 h-5 text-[#CD9342]" />
                 </Button>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function DesignDetail() {
                 <button
                   key={index}
                   className={`relative rounded-lg overflow-hidden aspect-square ${
-                    index === 0 ? "ring-2 ring-[#970A44]" : ""
+                    index === 0 ? "ring-2 ring-[#CD9342]" : ""
                   }`}
                   data-testid={`button-gallery-${index}`}
                 >
@@ -178,7 +178,7 @@ export default function DesignDetail() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-3 py-1 bg-[#970A44]/10 text-[#970A44] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#CD9342]/10 text-[#CD9342] text-sm font-medium rounded-full mb-4">
               {design.categoryLabel}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold mb-6 font-serif leading-tight">
@@ -207,7 +207,7 @@ export default function DesignDetail() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {design.features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-2">
-                    <Check className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-[#CD9342] flex-shrink-0 mt-0.5" />
                     <span className="text-sm">{feature}</span>
                   </div>
                 ))}
@@ -219,7 +219,7 @@ export default function DesignDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8 flex-1 sm:flex-none"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8 flex-1 sm:flex-none"
                 data-testid="button-book-consultation"
               >
                 <Link href="/contact">
@@ -231,7 +231,7 @@ export default function DesignDetail() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full px-8 flex-1 sm:flex-none"
+                className="border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white rounded-full px-8 flex-1 sm:flex-none"
                 data-testid="button-call-now"
               >
                 <a href="tel:+971585707110">
@@ -258,7 +258,7 @@ export default function DesignDetail() {
             <Button 
               asChild
               variant="outline"
-              className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-related"
             >
               <Link href="/interior-design">
@@ -286,13 +286,13 @@ export default function DesignDetail() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-10 h-10 bg-[#970A44] rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-[#CD9342] rounded-full flex items-center justify-center">
                           <ArrowRight className="w-5 h-5 text-white" />
                         </div>
                       </div>
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="font-semibold line-clamp-2 group-hover:text-[#970A44] transition-colors">
+                      <h3 className="font-semibold line-clamp-2 group-hover:text-[#CD9342] transition-colors">
                         {related.title}
                       </h3>
                     </CardContent>
@@ -305,7 +305,7 @@ export default function DesignDetail() {
       </div>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-[#970A44] to-[#720632] mt-12">
+      <section className="py-16 bg-gradient-to-br from-[#CD9342] to-[#A67A2E] mt-12">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">
             Love This Design?
@@ -317,7 +317,7 @@ export default function DesignDetail() {
             <Button 
               asChild
               size="lg"
-              className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+              className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-8"
               data-testid="button-get-quote"
             >
               <Link href="/contact">

@@ -66,10 +66,10 @@ export default function Cart() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#970A44] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-[#09263D]/60">Loading cart...</p>
+          <div className="w-16 h-16 border-4 border-[#CD9342] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#1A1A1A]/60">Loading cart...</p>
         </div>
       </div>
     );
@@ -77,20 +77,20 @@ export default function Cart() {
 
   if (cartItemsWithProducts.length === 0) {
     return (
-      <div className="min-h-screen bg-[#F6F4EB]">
+      <div className="min-h-screen bg-[#FAFAFA]">
         <div className="max-w-4xl mx-auto px-6 py-32">
           <motion.div {...fadeInUp} className="text-center">
-            <div className="w-24 h-24 bg-[#970A44]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-              <ShoppingBag className="w-12 h-12 text-[#970A44]" />
+            <div className="w-24 h-24 bg-[#CD9342]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <ShoppingBag className="w-12 h-12 text-[#CD9342]" />
             </div>
-            <h1 className="text-4xl font-bold mb-4 text-[#09263D] font-serif">Your Cart is Empty</h1>
-            <p className="text-[#09263D]/60 mb-8 text-lg">
+            <h1 className="text-4xl font-bold mb-4 text-[#1A1A1A] font-serif">Your Cart is Empty</h1>
+            <p className="text-[#1A1A1A]/60 mb-8 text-lg">
               Discover our curated collection of luxury custom furniture.
             </p>
             <Button 
               asChild 
               size="lg" 
-              className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+              className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full"
               data-testid="button-continue-shopping"
             >
               <Link href="/shop">
@@ -105,7 +105,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -113,16 +113,16 @@ export default function Cart() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <nav className="flex items-center gap-2 text-sm text-[#09263D]/60 mb-6">
-              <Link href="/" className="hover:text-[#970A44] transition-colors">Home</Link>
+            <nav className="flex items-center gap-2 text-sm text-[#1A1A1A]/60 mb-6">
+              <Link href="/" className="hover:text-[#CD9342] transition-colors">Home</Link>
               <span>/</span>
-              <Link href="/shop" className="hover:text-[#970A44] transition-colors">Custom Furniture</Link>
+              <Link href="/shop" className="hover:text-[#CD9342] transition-colors">Custom Furniture</Link>
               <span>/</span>
-              <span className="text-[#09263D]">Cart</span>
+              <span className="text-[#1A1A1A]">Cart</span>
             </nav>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#09263D] font-serif">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-serif">
               Shopping Cart
-              <span className="text-lg font-normal text-[#09263D]/60 ml-3">
+              <span className="text-lg font-normal text-[#1A1A1A]/60 ml-3">
                 ({cartItemsWithProducts.length} {cartItemsWithProducts.length === 1 ? 'item' : 'items'})
               </span>
             </h1>
@@ -145,7 +145,7 @@ export default function Cart() {
                     <CardContent className="p-6">
                       <div className="flex gap-5">
                         <Link href={`/shop/${item.product.id}`} className="flex-shrink-0">
-                          <div className="w-28 h-28 bg-[#F6F4EB] rounded-xl overflow-hidden">
+                          <div className="w-28 h-28 bg-[#FAFAFA] rounded-xl overflow-hidden">
                             <img loading="lazy" 
                               src={item.product.image} 
                               alt={item.product.name} 
@@ -157,19 +157,19 @@ export default function Cart() {
                           <div className="flex items-start justify-between gap-4">
                             <div>
                               <Link href={`/shop/${item.product.id}`}>
-                                <h3 className="font-bold text-[#09263D] hover:text-[#970A44] transition-colors line-clamp-1">
+                                <h3 className="font-bold text-[#1A1A1A] hover:text-[#CD9342] transition-colors line-clamp-1">
                                   {item.product.name}
                                 </h3>
                               </Link>
-                              <p className="text-sm text-[#09263D]/60 mt-1">{item.product.category}</p>
+                              <p className="text-sm text-[#1A1A1A]/60 mt-1">{item.product.category}</p>
                               {item.product.sku && (
-                                <p className="text-xs text-[#09263D]/40 mt-0.5">SKU: {item.product.sku}</p>
+                                <p className="text-xs text-[#1A1A1A]/40 mt-0.5">SKU: {item.product.sku}</p>
                               )}
                             </div>
                             <Button
                               size="icon"
                               variant="ghost"
-                              className="text-[#09263D]/40 hover:text-red-500 flex-shrink-0"
+                              className="text-[#1A1A1A]/40 hover:text-red-500 flex-shrink-0"
                               onClick={() => removeItemMutation.mutate(item.id)}
                               disabled={removeItemMutation.isPending}
                               data-testid={`button-remove-${item.id}`}
@@ -178,7 +178,7 @@ export default function Cart() {
                             </Button>
                           </div>
                           <div className="flex items-center justify-between mt-4 flex-wrap gap-3">
-                            <div className="flex items-center border border-[#09263D]/15 rounded-full">
+                            <div className="flex items-center border border-[#1A1A1A]/15 rounded-full">
                               <Button
                                 size="icon"
                                 variant="ghost"
@@ -193,7 +193,7 @@ export default function Cart() {
                               >
                                 <Minus className="w-3 h-3" />
                               </Button>
-                              <span className="w-10 text-center font-semibold text-[#09263D] text-sm">{item.quantity}</span>
+                              <span className="w-10 text-center font-semibold text-[#1A1A1A] text-sm">{item.quantity}</span>
                               <Button
                                 size="icon"
                                 variant="ghost"
@@ -218,7 +218,7 @@ export default function Cart() {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-[#970A44]/20 text-[#970A44] rounded-full"
+                  className="border-[#CD9342]/20 text-[#CD9342] rounded-full"
                 >
                   <Link href="/shop">
                     <ArrowLeft className="w-4 h-4 mr-2" />
@@ -232,19 +232,19 @@ export default function Cart() {
               <motion.div {...fadeInUp}>
                 <Card className="sticky top-24 border-0 shadow-lg bg-white">
                   <CardContent className="p-6">
-                    <h2 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Inquiry Summary</h2>
+                    <h2 className="text-xl font-bold text-[#1A1A1A] mb-6 font-serif">Inquiry Summary</h2>
                     
                     <div className="space-y-3 mb-4">
                       <div className="flex justify-between text-sm">
-                        <span className="text-[#09263D]/60">Items ({cartItemsWithProducts.length})</span>
-                        <span className="font-medium text-[#09263D]">Quote on request</span>
+                        <span className="text-[#1A1A1A]/60">Items ({cartItemsWithProducts.length})</span>
+                        <span className="font-medium text-[#1A1A1A]">Quote on request</span>
                       </div>
                     </div>
                     
-                    <Separator className="my-4 bg-[#09263D]/10" />
+                    <Separator className="my-4 bg-[#1A1A1A]/10" />
                     
                     <Button 
-                      className="w-full mb-3 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" 
+                      className="w-full mb-3 bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full py-6" 
                       size="lg" 
                       data-testid="button-checkout"
                     >
@@ -268,12 +268,12 @@ export default function Cart() {
                     </a>
 
                     <div className="mt-6 space-y-3">
-                      <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
-                        <Truck className="w-4 h-4 text-[#970A44]" />
+                      <div className="flex items-center gap-2 text-xs text-[#1A1A1A]/60">
+                        <Truck className="w-4 h-4 text-[#CD9342]" />
                         <span>Free delivery across UAE</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-[#09263D]/60">
-                        <Shield className="w-4 h-4 text-[#970A44]" />
+                      <div className="flex items-center gap-2 text-xs text-[#1A1A1A]/60">
+                        <Shield className="w-4 h-4 text-[#CD9342]" />
                         <span>Secure checkout with SSL encryption</span>
                       </div>
                     </div>

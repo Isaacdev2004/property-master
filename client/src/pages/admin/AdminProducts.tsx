@@ -228,7 +228,7 @@ export default function AdminProducts() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44] hover:bg-[#720632]" data-testid="button-add-product">
+            <Button className="bg-[#CD9342] hover:bg-[#A67A2E]" data-testid="button-add-product">
               <Plus className="w-4 h-4 mr-2" />
               Add Product
             </Button>
@@ -385,7 +385,7 @@ export default function AdminProducts() {
                 </Button>
                 <Button 
                   type="submit" 
-                  className="bg-[#970A44] hover:bg-[#720632]"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-submit-product"
                 >
@@ -430,7 +430,7 @@ export default function AdminProducts() {
                 <p className="text-sm text-gray-500 line-clamp-2">{product.description}</p>
                 <div className="flex items-center justify-between mt-3">
                   <div>
-                    <span className="font-bold text-[#970A44]">AED {product.price}</span>
+                    <span className="font-bold text-[#CD9342]">AED {product.price}</span>
                     {product.discount && product.discount > 0 && (
                       <span className="ml-2 text-xs text-green-600">-{product.discount}%</span>
                     )}

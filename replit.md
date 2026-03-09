@@ -7,12 +7,12 @@ The Property Masters is a full-stack web application for a luxury interior desig
 ## User Preferences
 
 - Luxury minimalist design aesthetic
-- New color palette: Maroon/Navy/Cream theme
-  - Primary Maroon: #970A44 (CTAs, buttons, accents)
-  - Dark Maroon: #720632 (hover states, dark accents)
-  - Cream: #F6F4EB (backgrounds, cards)
-  - Steel Blue: #1C4668 (secondary accent)
-  - Dark Navy: #09263D (dark backgrounds, text)
+- Brand color palette: Gold/Black/White theme
+  - Primary Gold: #CD9342 (CTAs, buttons, accents)
+  - Dark Gold: #A67A2E (hover states, dark accents)
+  - Light Gold: #E2CC92 (secondary accent)
+  - Near White: #FAFAFA (backgrounds, cards)
+  - Near Black: #1A1A1A (dark backgrounds, text)
 - Generous white space
 - Smooth, subtle animations
 - Premium feel throughout the application
@@ -23,7 +23,7 @@ The Property Masters is a full-stack web application for a luxury interior desig
 The application is built with a React 18, TypeScript, and Tailwind CSS frontend, using Wouter for routing, Framer Motion for animations, and Shadcn UI for components. The backend uses Express.js with TypeScript and an in-memory data store (`MemStorage`). Data fetching is managed by TanStack Query v5, and forms utilize React Hook Form with Zod validation.
 
 **UI/UX Decisions:**
-The design adheres to a warm luxury minimalist aesthetic with a full-width, brand-focused hero section, using a new Maroon (#970A44) color scheme. Navigation features bold white text on the hero, switching to dark text on a white background when scrolled. Subtle, refined animations with professional easing curves `[0.25, 0.46, 0.45, 0.94]` are used throughout for elements like hero sections, statistics, sticky scrolls, and product grids.
+The design adheres to a warm luxury minimalist aesthetic with a full-width, brand-focused hero section, using a Gold (#CD9342) color scheme. Typography uses Archivo (primary/headings) and Inter (secondary/body). Navigation features bold white text on the hero, switching to dark text on a white background when scrolled. Subtle, refined animations with professional easing curves `[0.25, 0.46, 0.45, 0.94]` are used throughout for elements like hero sections, statistics, sticky scrolls, and product grids.
 
 **Technical Implementations & Features:**
 - **Dynamic Mega Menu Navigation:** Services are categorized into Interior Design & Fit-Out Works, Wellness Services, and Maintenance Services, with dynamic content fetched from the backend.
@@ -43,7 +43,7 @@ The design adheres to a warm luxury minimalist aesthetic with a full-width, bran
 - **Enhanced Blog SEO:** Blog posts support meta title, meta description, focus keywords, multiple additional images, and internal linking for comprehensive SEO.
 - **Reusable Page Templates:** `ServicePageTemplate` for consistent service detail pages, accepting `ServiceData` for dynamic content.
 - **Title Formatting Helper:** Auto-generates SEO-friendly titles from slugs, handling common abbreviations.
-- **Performance Optimization:** Code splitting via `React.lazy`/`Suspense` for all pages in `App.tsx`, non-render-blocking Google Fonts loading (preload/onload pattern in `index.html`), reduced font weights (only 400/600/700 for Montserrat, 400/700 for Playfair Display), and `loading="lazy"` on all below-the-fold images across the application. Hero images are excluded from lazy loading to preserve LCP scores.
+- **Performance Optimization:** Code splitting via `React.lazy`/`Suspense` for all pages in `App.tsx`, non-render-blocking Google Fonts loading (preload/onload pattern in `index.html`), optimized font weights (400/500/600/700 for Archivo, 300/400/500/700/900 for Inter), and `loading="lazy"` on all below-the-fold images across the application. Hero images are excluded from lazy loading to preserve LCP scores.
 - **Responsive Design:** Mobile-first approach for all devices.
 - **Loading & Error States:** User-friendly loading indicators and error handling.
 - **Session Management:** Cart persistence managed via `localStorage`.
@@ -51,5 +51,5 @@ The design adheres to a warm luxury minimalist aesthetic with a full-width, bran
 ## External Dependencies
 
 - **Odoo XML-RPC:** Optional integration for CRM lead creation.
-- **Google Fonts:** Used for Montserrat and Playfair Display typography.
+- **Google Fonts:** Used for Archivo (primary/headings) and Inter (secondary/body) typography.
 - **Google Maps:** Embedded on the Contact page for office location.

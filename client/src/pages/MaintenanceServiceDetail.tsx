@@ -51,7 +51,7 @@ const serviceData: Record<string, {
     tagline: "Professional Sanitization for a Healthier Environment",
     description: "Our comprehensive disinfection services ensure your home or office is thoroughly sanitized using hospital-grade disinfectants and advanced techniques. We eliminate 99.9% of harmful bacteria, viruses, and pathogens.",
     icon: Sparkles,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1600&q=80",
     features: [
       "Hospital-grade disinfectants",
@@ -88,7 +88,7 @@ const serviceData: Record<string, {
     tagline: "Keep Your Kitchen Running at Peak Performance",
     description: "Professional maintenance and repair services for all kitchen equipment including ovens, refrigerators, dishwashers, exhaust systems, and commercial kitchen appliances. Extend the life of your equipment and ensure food safety compliance.",
     icon: Flame,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80",
     features: [
       "Commercial & residential equipment",
@@ -125,7 +125,7 @@ const serviceData: Record<string, {
     tagline: "Quality Construction & Repair Solutions",
     description: "From minor repairs to small construction projects, our civil works team handles painting, plastering, tiling, waterproofing, and structural repairs with precision and attention to detail.",
     icon: Hammer,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
     features: [
       "Wall repairs & plastering",
@@ -162,7 +162,7 @@ const serviceData: Record<string, {
     tagline: "Deep Cleaning Beyond the Ordinary",
     description: "Specialized cleaning services for those hard-to-reach places and challenging cleaning tasks. From post-construction cleanup to marble polishing, we handle the tough jobs with expertise.",
     icon: Sparkles,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=1600&q=80",
     features: [
       "Post-construction cleaning",
@@ -199,7 +199,7 @@ const serviceData: Record<string, {
     tagline: "Transform Your Home with Smart Technology",
     description: "Complete smart home installation and integration services. From smart locks and lighting to full home automation systems, we make your home intelligent and connected.",
     icon: Smartphone,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1600&q=80",
     features: [
       "Smart lighting systems",
@@ -236,7 +236,7 @@ const serviceData: Record<string, {
     tagline: "Seamless Transitions for Your Property",
     description: "Complete move-in and move-out services including deep cleaning, minor repairs, painting touch-ups, and property inspections. Perfect for tenants, landlords, and property managers.",
     icon: Truck,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1600&q=80",
     features: [
       "Deep cleaning services",
@@ -273,7 +273,7 @@ const serviceData: Record<string, {
     tagline: "Protect Your Property from Unwanted Guests",
     description: "Comprehensive pest control solutions for residential and commercial properties. We eliminate cockroaches, bed bugs, termites, rodents, and other pests safely and effectively.",
     icon: Bug,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1632935191452-6f7c4dc7e6f8?w=1600&q=80",
     features: [
       "General pest control",
@@ -310,7 +310,7 @@ const serviceData: Record<string, {
     tagline: "Clean Water for a Healthy Home",
     description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. Municipality approved methods and certified technicians.",
     icon: Droplets,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=1600&q=80",
     features: [
       "Tank draining & cleaning",
@@ -347,7 +347,7 @@ const serviceData: Record<string, {
     tagline: "Crystal Clear Pools All Year Round",
     description: "Complete swimming pool maintenance, repair, and renovation services. From regular cleaning to equipment repair and pool resurfacing, we keep your pool in perfect condition.",
     icon: Waves,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1600&q=80",
     features: [
       "Regular pool cleaning",
@@ -384,7 +384,7 @@ const serviceData: Record<string, {
     tagline: "Expert Plumbing Solutions You Can Trust",
     description: "Professional plumbing services for all your needs - from emergency repairs to complete bathroom renovations. Licensed plumbers available 24/7 for residential and commercial properties.",
     icon: Droplets,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80",
     features: [
       "Leak detection & repair",
@@ -421,7 +421,7 @@ const serviceData: Record<string, {
     tagline: "Transform Your Living Space",
     description: "Comprehensive home improvement services to enhance your property's value and comfort. From small upgrades to complete renovations, we bring your vision to life.",
     icon: Home,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1600&q=80",
     features: [
       "Kitchen remodeling",
@@ -458,7 +458,7 @@ const serviceData: Record<string, {
     tagline: "Safe & Reliable Electrical Solutions",
     description: "Licensed electricians for all your electrical needs. From simple repairs to complete rewiring, we ensure your property's electrical systems are safe and efficient.",
     icon: Zap,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80",
     features: [
       "Electrical repairs",
@@ -495,7 +495,7 @@ const serviceData: Record<string, {
     tagline: "Professional Cleaning for Every Space",
     description: "Comprehensive cleaning services for homes, offices, and commercial spaces. From regular maid service to deep cleaning, we keep your space spotless and healthy.",
     icon: Sparkles,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1600&q=80",
     features: [
       "Regular house cleaning",
@@ -532,7 +532,7 @@ const serviceData: Record<string, {
     tagline: "Stay Cool All Year Round",
     description: "Complete AC solutions from installation to maintenance and repair. Keep your cooling systems running efficiently with our expert technicians and genuine spare parts.",
     icon: Wind,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1625961332771-3f40b0e2bdcf?w=1600&q=80",
     features: [
       "AC installation",
@@ -569,7 +569,7 @@ const serviceData: Record<string, {
     tagline: "Protect What Matters Most",
     description: "Complete security solutions for residential and commercial properties. From CCTV installation to access control and smart security systems, we keep you safe.",
     icon: Shield,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1600&q=80",
     features: [
       "CCTV installation",
@@ -606,7 +606,7 @@ const serviceData: Record<string, {
     tagline: "Comprehensive Care for Your Property",
     description: "Annual maintenance contracts that cover all your property needs. Choose from our range of packages or customize your own for complete peace of mind.",
     icon: Package,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80",
     features: [
       "AC maintenance",
@@ -643,7 +643,7 @@ const serviceData: Record<string, {
     tagline: "24/7 Fast Response AC Emergency Services",
     description: "When your AC breaks down unexpectedly, our emergency repair team is ready to respond immediately. We provide round-the-clock service with certified technicians who can diagnose and fix most AC issues on the spot.",
     icon: Wind,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1631545806609-15df2e5c252a?w=1600&q=80",
     features: [
       "24/7 emergency response",
@@ -680,7 +680,7 @@ const serviceData: Record<string, {
     tagline: "Professional AC Installation by Certified Experts",
     description: "Complete AC installation services for residential and commercial properties. We help you choose the right unit, handle professional installation, and ensure optimal performance from day one.",
     icon: Wind,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
     features: [
       "Free site assessment",
@@ -717,7 +717,7 @@ const serviceData: Record<string, {
     tagline: "Expert Ductwork Installation & Repair",
     description: "Professional AC duct installation, repair, and cleaning services. Proper ductwork ensures efficient cooling, better air quality, and lower energy bills for your property.",
     icon: Wind,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1504280317859-665893143562?w=1600&q=80",
     features: [
       "New duct installation",
@@ -754,7 +754,7 @@ const serviceData: Record<string, {
     tagline: "Transform Your Walls with Professional Painting",
     description: "Expert wall painting services for homes and offices. We use premium paints and professional techniques to deliver flawless finishes that enhance your space and last for years.",
     icon: Hammer,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=80",
     features: [
       "Interior & exterior walls",
@@ -794,7 +794,7 @@ const defaultService = {
   tagline: "Professional Property Maintenance",
   description: "Quality maintenance services for residential and commercial properties. Our certified technicians deliver reliable repairs and maintenance with guaranteed satisfaction.",
   icon: Wrench,
-  color: "bg-[#970A44]",
+  color: "bg-[#CD9342]",
   heroImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1600&q=80",
   features: [
     "Licensed professionals",
@@ -888,7 +888,7 @@ export default function MaintenanceServiceDetail() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${service.heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 to-[#09263D]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 to-[#1A1A1A]/70" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
           <motion.div
@@ -907,7 +907,7 @@ export default function MaintenanceServiceDetail() {
               <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center`}>
                 <ServiceIcon className="w-8 h-8 text-white" />
               </div>
-              <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest">
+              <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest">
                 Maintenance Service
               </p>
             </div>
@@ -923,7 +923,7 @@ export default function MaintenanceServiceDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8"
                 data-testid="button-book-service"
               >
                 <Link href="/book">
@@ -953,7 +953,7 @@ export default function MaintenanceServiceDetail() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div {...fadeInUp}>
-              <h2 className="text-3xl font-bold text-[#09263D] mb-6 font-serif">
+              <h2 className="text-3xl font-bold text-[#1A1A1A] mb-6 font-serif">
                 About This Service
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -963,10 +963,10 @@ export default function MaintenanceServiceDetail() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {service.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#970A44]/10 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#970A44]" />
+                    <div className="w-6 h-6 rounded-full bg-[#CD9342]/10 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#CD9342]" />
                     </div>
-                    <span className="text-[#09263D]">{feature}</span>
+                    <span className="text-[#1A1A1A]">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -987,7 +987,7 @@ export default function MaintenanceServiceDetail() {
                         <benefit.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-[#09263D] mb-1">{benefit.title}</h3>
+                        <h3 className="font-bold text-[#1A1A1A] mb-1">{benefit.title}</h3>
                         <p className="text-muted-foreground text-sm">{benefit.description}</p>
                       </div>
                     </CardContent>
@@ -1000,13 +1000,13 @@ export default function MaintenanceServiceDetail() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-[#F6F4EB]">
+      <section className="py-24 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               How It Works
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#09263D] font-serif">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] font-serif">
               Our Process
             </h2>
           </motion.div>
@@ -1021,14 +1021,14 @@ export default function MaintenanceServiceDetail() {
             {service.process.map((step, index) => (
               <motion.div key={step.step} variants={staggerItem} className="text-center">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 mx-auto bg-[#970A44] text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                  <div className="w-16 h-16 mx-auto bg-[#CD9342] text-white rounded-full flex items-center justify-center text-2xl font-bold">
                     {step.step}
                   </div>
                   {index < service.process.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-[#970A44]/20" />
+                    <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-[#CD9342]/20" />
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-[#09263D] mb-2">{step.title}</h3>
+                <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">{step.title}</h3>
                 <p className="text-muted-foreground">{step.description}</p>
               </motion.div>
             ))}
@@ -1040,10 +1040,10 @@ export default function MaintenanceServiceDetail() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               Pricing
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#09263D] font-serif">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1A1A1A] font-serif">
               Service Packages
             </h2>
           </motion.div>
@@ -1059,21 +1059,21 @@ export default function MaintenanceServiceDetail() {
               <motion.div key={pkg.name} variants={staggerItem} whileHover={{ y: -8 }}>
                 <Card 
                   className={`h-full border-0 shadow-xl transition-all ${
-                    index === 1 ? 'ring-2 ring-[#970A44] bg-[#970A44] text-white' : 'bg-white'
+                    index === 1 ? 'ring-2 ring-[#CD9342] bg-[#CD9342] text-white' : 'bg-white'
                   }`}
                   data-testid={`card-pricing-${index}`}
                 >
                   <CardContent className="p-8">
-                    <h3 className={`text-xl font-bold mb-2 ${index === 1 ? 'text-white' : 'text-[#09263D]'}`}>
+                    <h3 className={`text-xl font-bold mb-2 ${index === 1 ? 'text-white' : 'text-[#1A1A1A]'}`}>
                       {pkg.name}
                     </h3>
-                    <p className={`text-3xl font-bold mb-6 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`}>
+                    <p className={`text-3xl font-bold mb-6 ${index === 1 ? 'text-white' : 'text-[#CD9342]'}`}>
                       {pkg.price}
                     </p>
                     <ul className="space-y-3 mb-8">
                       {pkg.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className={`w-4 h-4 flex-shrink-0 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`} />
+                          <Check className={`w-4 h-4 flex-shrink-0 ${index === 1 ? 'text-white' : 'text-[#CD9342]'}`} />
                           <span className={index === 1 ? 'text-white/90' : ''}>{feature}</span>
                         </li>
                       ))}
@@ -1082,8 +1082,8 @@ export default function MaintenanceServiceDetail() {
                       asChild
                       className={`w-full rounded-full ${
                         index === 1 
-                          ? 'bg-white text-[#970A44] hover:bg-white/90' 
-                          : 'bg-[#970A44] hover:bg-[#720632] text-white'
+                          ? 'bg-white text-[#CD9342] hover:bg-white/90' 
+                          : 'bg-[#CD9342] hover:bg-[#A67A2E] text-white'
                       }`}
                       data-testid={`button-select-${pkg.name.toLowerCase()}`}
                     >
@@ -1098,10 +1098,10 @@ export default function MaintenanceServiceDetail() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#09263D]">
+      <section className="py-24 bg-[#1A1A1A]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               FAQ
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-white font-serif">
@@ -1131,7 +1131,7 @@ export default function MaintenanceServiceDetail() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#970A44] to-[#720632]">
+      <section className="py-24 bg-gradient-to-r from-[#CD9342] to-[#A67A2E]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1150,7 +1150,7 @@ export default function MaintenanceServiceDetail() {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-10 py-7 text-lg shadow-2xl"
+                  className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-10 py-7 text-lg shadow-2xl"
                   data-testid="button-cta-book"
                 >
                   <Link href="/book">

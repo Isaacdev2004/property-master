@@ -64,7 +64,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${service.heroImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/80 to-[#1A1A1A]/60" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 pb-12 md:pb-16 w-full">
@@ -95,7 +95,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
             
             <h1 
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 md:mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
               data-testid="heading-title"
             >
               {service.title}
@@ -109,7 +109,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
               <Button 
                 asChild 
                 size="lg"
-                className="bg-[#970A44] text-white rounded-full px-6 md:px-8 w-full sm:w-auto"
+                className="bg-[#CD9342] text-white rounded-full px-6 md:px-8 w-full sm:w-auto"
                 data-testid="button-book-service"
               >
                 <Link href="/book">
@@ -135,24 +135,24 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
       </section>
 
       {/* About This Service Section */}
-      <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-about">
+      <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div {...fadeInUp}>
               <h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D] mb-4 md:mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] mb-4 md:mb-6"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 About This Service
               </h2>
-              <p className="text-[#09263D]/70 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-[#1A1A1A]/70 text-base md:text-lg leading-relaxed mb-6">
                 {service.description}
               </p>
               <ul className="space-y-3">
                 {service.features.slice(0, 6).map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
-                    <span className="text-[#09263D]/80 text-sm md:text-base">{feature}</span>
+                    <Check className="w-5 h-5 text-[#CD9342] flex-shrink-0 mt-0.5" />
+                    <span className="text-[#1A1A1A]/80 text-sm md:text-base">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -172,10 +172,10 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                     <div className={`w-10 h-10 md:w-12 md:h-12 ${service.color} rounded-lg flex items-center justify-center mx-auto mb-3`}>
                       <benefit.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                     </div>
-                    <h3 className="font-bold text-[#09263D] text-sm md:text-base mb-1">
+                    <h3 className="font-bold text-[#1A1A1A] text-sm md:text-base mb-1">
                       {benefit.title}
                     </h3>
-                    <p className="text-[#09263D]/60 text-xs md:text-sm">
+                    <p className="text-[#1A1A1A]/60 text-xs md:text-sm">
                       {benefit.description}
                     </p>
                   </CardContent>
@@ -190,12 +190,12 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
       <section className="py-12 md:py-20 bg-white" data-testid="section-process">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-            <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+            <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
               How It Works
             </p>
             <h2 
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
             >
               Our Process
             </h2>
@@ -218,10 +218,10 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                 <div className={`w-12 h-12 md:w-16 md:h-16 ${service.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
                   <span className="text-xl md:text-2xl font-bold text-white">{step.step}</span>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-[#09263D] mb-2">{step.title}</h3>
-                <p className="text-[#09263D]/60 text-sm md:text-base">{step.description}</p>
+                <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-2">{step.title}</h3>
+                <p className="text-[#1A1A1A]/60 text-sm md:text-base">{step.description}</p>
                 {index < service.process.length - 1 && (
-                  <div className="hidden lg:block absolute right-0 top-1/2 w-12 h-0.5 bg-[#970A44]/20" />
+                  <div className="hidden lg:block absolute right-0 top-1/2 w-12 h-0.5 bg-[#CD9342]/20" />
                 )}
               </motion.div>
             ))}
@@ -230,15 +230,15 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
       </section>
 
       {/* Pricing Section */}
-      <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-pricing">
+      <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-pricing">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-            <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+            <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
               Transparent Pricing
             </p>
             <h2 
-              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
             >
               Service Packages
             </h2>
@@ -256,23 +256,23 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                 <Card 
                   className={`border-0 h-full ${
                     index === 1 
-                      ? 'bg-gradient-to-br from-[#970A44] to-[#720632] text-white shadow-2xl scale-100 lg:scale-105' 
+                      ? 'bg-gradient-to-br from-[#CD9342] to-[#A67A2E] text-white shadow-2xl scale-100 lg:scale-105' 
                       : 'bg-white shadow-xl'
                   }`}
                   data-testid={`card-pricing-${index}`}
                 >
                   <CardContent className="p-6 md:p-8">
-                    <h3 className={`text-lg md:text-xl font-bold mb-2 ${index === 1 ? 'text-white' : 'text-[#09263D]'}`}>
+                    <h3 className={`text-lg md:text-xl font-bold mb-2 ${index === 1 ? 'text-white' : 'text-[#1A1A1A]'}`}>
                       {pkg.name}
                     </h3>
-                    <p className={`text-2xl md:text-3xl font-bold mb-6 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`}>
+                    <p className={`text-2xl md:text-3xl font-bold mb-6 ${index === 1 ? 'text-white' : 'text-[#CD9342]'}`}>
                       {pkg.price}
                     </p>
                     <ul className="space-y-3 mb-6 md:mb-8">
                       {pkg.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className={`w-4 h-4 flex-shrink-0 ${index === 1 ? 'text-white' : 'text-[#970A44]'}`} />
-                          <span className={index === 1 ? 'text-white/90' : 'text-[#09263D]/80'}>{feature}</span>
+                          <Check className={`w-4 h-4 flex-shrink-0 ${index === 1 ? 'text-white' : 'text-[#CD9342]'}`} />
+                          <span className={index === 1 ? 'text-white/90' : 'text-[#1A1A1A]/80'}>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -280,8 +280,8 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                       asChild
                       className={`w-full rounded-full ${
                         index === 1 
-                          ? 'bg-white text-[#970A44]' 
-                          : 'bg-[#970A44] text-white'
+                          ? 'bg-white text-[#CD9342]' 
+                          : 'bg-[#CD9342] text-white'
                       }`}
                       data-testid={`button-select-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
                     >
@@ -296,15 +296,15 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 md:py-20 bg-[#09263D]" data-testid="section-faq">
+      <section className="py-12 md:py-20 bg-[#1A1A1A]" data-testid="section-faq">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-            <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+            <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
               FAQ
             </p>
             <h2 
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-white"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
             >
               Common Questions
             </h2>
@@ -331,9 +331,9 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                     >
                       <h3 className="text-base md:text-lg font-bold text-white pr-4">{faq.question}</h3>
                       {expandedFaq === index ? (
-                        <ChevronUp className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                        <ChevronUp className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                        <ChevronDown className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                       )}
                     </button>
                     {expandedFaq === index && (
@@ -357,12 +357,12 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
 
       {/* Related Services Section */}
       {service.relatedServices && service.relatedServices.length > 0 && (
-        <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-related">
+        <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-related">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-10 md:mb-12">
               <h2 
-                className="text-2xl md:text-3xl font-bold text-[#09263D]"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl font-bold text-[#1A1A1A]"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 Related Services
               </h2>
@@ -380,7 +380,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
                   <Button
                     asChild
                     variant="outline"
-                    className="border-[#970A44]/30 text-[#970A44] rounded-full"
+                    className="border-[#CD9342]/30 text-[#CD9342] rounded-full"
                     data-testid={`link-related-${index}`}
                   >
                     <Link href={`/${service.category}/${related.slug}`}>
@@ -395,7 +395,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
       )}
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-[#970A44] to-[#720632]" data-testid="section-cta">
+      <section className="py-12 md:py-20 bg-gradient-to-r from-[#CD9342] to-[#A67A2E]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -405,7 +405,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
           >
             <h2 
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
             >
               Ready to Get Started?
             </h2>
@@ -416,7 +416,7 @@ export default function ServicePageTemplate({ service, backLink, backLabel }: Se
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] rounded-full px-8 md:px-10 py-6 md:py-7 text-base md:text-lg shadow-2xl"
+                className="bg-white text-[#CD9342] rounded-full px-8 md:px-10 py-6 md:py-7 text-base md:text-lg shadow-2xl"
                 data-testid="button-cta-book"
               >
                 <Link href="/book">

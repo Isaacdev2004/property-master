@@ -31,9 +31,9 @@ const Admin = lazy(() => import("@/pages/admin"));
 
 function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+    <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
       <div className="text-center">
-        <div className="w-12 h-12 border-3 border-[#970A44] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+        <div className="w-12 h-12 border-3 border-[#CD9342] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
       </div>
     </div>
   );

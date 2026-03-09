@@ -67,7 +67,7 @@ export default function About() {
       <section className="py-20 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <motion.div {...fadeInUp}>
-            <h2 className="text-4xl font-bold mb-6 font-[Montserrat]">Our Story</h2>
+            <h2 className="text-4xl font-bold mb-6 font-[Archivo]">Our Story</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
                 Founded in Dubai in 2009, The Property Masters began with a simple vision: to create beautiful, 
@@ -96,7 +96,7 @@ export default function About() {
             {stats.map((stat, index) => (
               <Card key={index} className="p-6 text-center hover-elevate">
                 <stat.icon className="w-10 h-10 mx-auto mb-3 text-primary" />
-                <div className="text-3xl font-bold mb-2 font-[Montserrat]">{stat.value}</div>
+                <div className="text-3xl font-bold mb-2 font-[Archivo]">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </Card>
             ))}
@@ -104,7 +104,7 @@ export default function About() {
         </div>
 
         <motion.div {...fadeInUp} className="mb-20">
-          <h2 className="text-4xl font-bold mb-12 text-center font-[Montserrat]">Our Core Values</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center font-[Archivo]">Our Core Values</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <motion.div
@@ -113,7 +113,7 @@ export default function About() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
                 <Card className="p-6 h-full hover-elevate">
-                  <h3 className="text-xl font-bold mb-3 text-primary font-[Montserrat]">{value.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-primary font-[Archivo]">{value.title}</h3>
                   <p className="text-sm text-muted-foreground">{value.description}</p>
                 </Card>
               </motion.div>
@@ -122,7 +122,7 @@ export default function About() {
         </motion.div>
 
         <motion.div {...fadeInUp} className="text-center bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-12">
-          <h2 className="text-3xl font-bold mb-4 font-[Montserrat]">Why Choose Us?</h2>
+          <h2 className="text-3xl font-bold mb-4 font-[Archivo]">Why Choose Us?</h2>
           <p className="text-muted-foreground max-w-3xl mx-auto mb-8">
             We combine creative excellence with technical expertise and unwavering commitment to quality. 
             Our comprehensive services, from initial design concepts to ongoing maintenance, ensure your 

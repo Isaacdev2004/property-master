@@ -98,7 +98,7 @@ export default function ListenToCustomers() {
           transition={{ duration: 0.6, ease: luxuryEasing }}
         >
           <p 
-            className="text-sm font-semibold tracking-widest text-[#970A44] uppercase mb-4"
+            className="text-sm font-semibold tracking-widest text-[#CD9342] uppercase mb-4"
             data-testid="text-section-label"
           >
             Success Stories
@@ -127,16 +127,16 @@ export default function ListenToCustomers() {
             transition={{ duration: 0.6, ease: luxuryEasing }}
             data-testid="card-featured-testimonial"
           >
-            <Card className="relative overflow-hidden border-[#970A44]/20 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-transparent">
+            <Card className="relative overflow-hidden border-[#CD9342]/20 shadow-xl bg-gradient-to-br from-[#CD9342]/5 to-transparent">
               <CardContent className="p-8 lg:p-12">
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
                   {/* Quote Section */}
                   <div className="relative">
-                    <Quote className="absolute -top-2 -left-2 w-16 h-16 text-[#970A44]/20" />
+                    <Quote className="absolute -top-2 -left-2 w-16 h-16 text-[#CD9342]/20" />
                     <div className="relative z-10">
                       <div className="flex gap-1 mb-6" data-testid="featured-rating">
                         {[...Array(featuredStory.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-[#970A44] text-[#970A44]" />
+                          <Star key={i} className="w-5 h-5 fill-[#CD9342] text-[#CD9342]" />
                         ))}
                       </div>
                       <p 
@@ -147,7 +147,7 @@ export default function ListenToCustomers() {
                       </p>
                       <div className="flex items-center gap-4" data-testid="featured-author">
                         <div 
-                          className="w-16 h-16 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-xl"
+                          className="w-16 h-16 rounded-full bg-gradient-to-br from-[#CD9342] to-[#A67A2E] flex items-center justify-center text-white font-bold text-xl"
                           data-testid="avatar-featured-author"
                         >
                           {featuredStory.name.split(' ').map(n => n[0]).join('')}
@@ -187,7 +187,7 @@ export default function ListenToCustomers() {
                     <AnimatePresence>
                       {!isPlaying && (
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-br from-[#970A44]/20 to-black/60 flex items-center justify-center"
+                          className="absolute inset-0 bg-gradient-to-br from-[#CD9342]/20 to-black/60 flex items-center justify-center"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -198,7 +198,7 @@ export default function ListenToCustomers() {
                             whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <Play className="w-8 h-8 text-[#970A44] fill-[#970A44] ml-1" />
+                            <Play className="w-8 h-8 text-[#CD9342] fill-[#CD9342] ml-1" />
                           </motion.div>
                         </motion.div>
                       )}

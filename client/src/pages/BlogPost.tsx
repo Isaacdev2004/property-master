@@ -74,7 +74,7 @@ export default function BlogPostPage() {
               transition={{ duration: 0.6 }}
             >
               <Badge className="mb-4">{post.category}</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 font-[Montserrat]" data-testid="text-post-title">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 font-[Archivo]" data-testid="text-post-title">
                 {post.title}
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-8">
@@ -105,13 +105,13 @@ export default function BlogPostPage() {
             </motion.div>
 
             <motion.div {...fadeInUp} className="prose prose-lg max-w-none mb-12 blog-content" data-testid="text-post-content">
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6 font-medium border-l-4 border-[#970A44] pl-4 italic">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-6 font-medium border-l-4 border-[#CD9342] pl-4 italic">
                 {post.excerpt}
               </p>
               <div className="text-foreground leading-relaxed whitespace-pre-line space-y-4">
                 {post.content.split('\n\n').map((paragraph, i) => {
                   if (paragraph.startsWith('###')) {
-                    return <h3 key={i} className="text-2xl font-bold text-[#09263D] mt-8 mb-4">{paragraph.replace('###', '').trim()}</h3>;
+                    return <h3 key={i} className="text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">{paragraph.replace('###', '').trim()}</h3>;
                   }
                   return <p key={i} className="mb-4">{paragraph}</p>;
                 })}
@@ -132,7 +132,7 @@ export default function BlogPostPage() {
           <section className="py-16 bg-muted/30">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
               <motion.div {...fadeInUp}>
-                <h2 className="text-3xl font-bold mb-8 font-[Montserrat]">Related Articles</h2>
+                <h2 className="text-3xl font-bold mb-8 font-[Archivo]">Related Articles</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {relatedPosts.map((relatedPost, index) => (
                     <Link key={relatedPost.id} href={`/blog/${relatedPost.slug}`}>
@@ -147,7 +147,7 @@ export default function BlogPostPage() {
                           </div>
                           <div className="p-6">
                             <Badge variant="secondary" className="mb-3">{relatedPost.category}</Badge>
-                            <h3 className="text-lg font-bold mb-2 font-[Montserrat] line-clamp-2 group-hover:text-primary transition-colors">
+                            <h3 className="text-lg font-bold mb-2 font-[Archivo] line-clamp-2 group-hover:text-primary transition-colors">
                               {relatedPost.title}
                             </h3>
                             <p className="text-sm text-muted-foreground line-clamp-2">{relatedPost.excerpt}</p>

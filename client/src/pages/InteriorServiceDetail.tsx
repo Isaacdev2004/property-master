@@ -65,7 +65,7 @@ const serviceData: Record<string, {
     tagline: "Transform Your Culinary Space",
     description: "Complete kitchen renovation services including layout redesign, cabinet installation, countertop fitting, and modern appliance integration. Create your dream kitchen with our expert designers and craftsmen.",
     icon: UtensilsCrossed,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80",
     features: [
       "Custom cabinet design & installation",
@@ -110,7 +110,7 @@ const serviceData: Record<string, {
     tagline: "Organize Your Life in Style",
     description: "Custom wardrobe solutions designed to maximize storage and complement your bedroom aesthetics. From walk-in closets to built-in wardrobes, we create functional and beautiful storage spaces.",
     icon: LayoutGrid,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1600&q=80",
     features: [
       "Custom dimensions & layouts",
@@ -155,7 +155,7 @@ const serviceData: Record<string, {
     tagline: "Smart, Stylish & Functional",
     description: "Pre-fabricated modular kitchen solutions that combine style with functionality. Quick installation, easy maintenance, and endless customization options for the modern home.",
     icon: UtensilsCrossed,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1600&q=80",
     features: [
       "Ready-to-install modules",
@@ -200,7 +200,7 @@ const serviceData: Record<string, {
     tagline: "Where Life Happens",
     description: "Create the perfect living space that reflects your personality and lifestyle. From minimalist modern to classic elegance, our designers bring your vision to life.",
     icon: Sofa,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80",
     features: [
       "Space planning & layout",
@@ -245,7 +245,7 @@ const serviceData: Record<string, {
     tagline: "Your Personal Sanctuary",
     description: "Design your dream master bedroom - a personal retreat that combines comfort, style, and functionality. From bed placement to wardrobe integration, we create restful havens.",
     icon: Bed,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=80",
     features: [
       "Bed & headboard design",
@@ -290,7 +290,7 @@ const serviceData: Record<string, {
     tagline: "Spaces That Grow With Them",
     description: "Fun, functional, and safe children's room designs that inspire creativity and support development. From nurseries to teen spaces, we create rooms kids love.",
     icon: Baby,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1600&q=80",
     features: [
       "Age-appropriate design",
@@ -335,7 +335,7 @@ const serviceData: Record<string, {
     tagline: "Your Personal Spa",
     description: "Transform your bathroom into a luxurious retreat with our comprehensive bathroom design and renovation services. From powder rooms to master bathrooms, we create stunning wet spaces.",
     icon: Bath,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600&q=80",
     features: [
       "Complete bathroom renovation",
@@ -381,7 +381,7 @@ const serviceData: Record<string, {
     tagline: "Luxury Vinyl Tile Excellence",
     description: "Premium Luxury Vinyl Tile flooring that combines the beauty of natural materials with exceptional durability and easy maintenance. Perfect for residential and commercial spaces.",
     icon: Layers,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1600&q=80",
     features: [
       "Realistic wood & stone looks",
@@ -426,7 +426,7 @@ const serviceData: Record<string, {
     tagline: "Stone Polymer Composite Strength",
     description: "SPC (Stone Polymer Composite) flooring offers the ultimate combination of durability, waterproof performance, and aesthetic appeal. Ideal for high-traffic areas and commercial spaces.",
     icon: Layers,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=80",
     features: [
       "Rigid core construction",
@@ -471,7 +471,7 @@ const serviceData: Record<string, {
     tagline: "Elevate Your Interiors",
     description: "Transform your space with stunning false ceiling designs. From modern minimalist to elaborate decorative ceilings, we create architectural features that define your space.",
     icon: Layers,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80",
     features: [
       "Gypsum board ceilings",
@@ -516,7 +516,7 @@ const serviceData: Record<string, {
     tagline: "Entertainment Center Excellence",
     description: "Custom TV unit and entertainment center designs that combine style with functionality. From floating units to full wall installations, we create the perfect focal point for your living space.",
     icon: Lamp,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1600&q=80",
     features: [
       "Custom sizing",
@@ -562,7 +562,7 @@ const serviceData: Record<string, {
     tagline: "Your Private Oasis Awaits",
     description: "Complete swimming pool design and construction services. From concept to completion, we create stunning pools that transform your outdoor space into a private resort.",
     icon: Waves,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&q=80",
     features: [
       "Custom pool design",
@@ -608,7 +608,7 @@ const serviceData: Record<string, {
     tagline: "Restore the Natural Beauty",
     description: "Professional marble polishing services to restore the shine and beauty of your marble floors, countertops, and surfaces. We bring back the original luster of your natural stone.",
     icon: Gem,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1600&q=80",
     features: [
       "Diamond polishing",
@@ -656,7 +656,7 @@ const defaultService = {
   tagline: "Transform Your Space",
   description: "Professional interior design and renovation services tailored to your needs. Our expert team delivers exceptional results for residential and commercial projects.",
   icon: Paintbrush,
-  color: "bg-[#970A44]",
+  color: "bg-[#CD9342]",
   heroImage: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1600&q=80",
   features: [
     "Custom design solutions",
@@ -716,7 +716,7 @@ export default function InteriorServiceDetail() {
   const Icon = service.icon;
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
       <section className="relative pt-24 pb-20" data-testid="section-hero">
         <div className="absolute inset-0">
@@ -725,7 +725,7 @@ export default function InteriorServiceDetail() {
             alt={service.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/90 via-[#1A1A1A]/70 to-[#1A1A1A]/50" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-16">
@@ -751,7 +751,7 @@ export default function InteriorServiceDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] rounded-full px-8"
                 data-testid="button-book-now"
               >
                 <Link href="/book">
@@ -783,7 +783,7 @@ export default function InteriorServiceDetail() {
             {...fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               What's Included
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -799,11 +799,11 @@ export default function InteriorServiceDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-start gap-3 p-4 rounded-xl bg-[#F6F4EB]"
+                className="flex items-start gap-3 p-4 rounded-xl bg-[#FAFAFA]"
                 data-testid={`feature-${index}`}
               >
-                <Check className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
-                <span className="text-[#09263D] font-medium">{feature}</span>
+                <Check className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
+                <span className="text-[#1A1A1A] font-medium">{feature}</span>
               </motion.div>
             ))}
           </div>
@@ -811,13 +811,13 @@ export default function InteriorServiceDetail() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-benefits">
+      <section className="py-16 bg-[#FAFAFA]" data-testid="section-benefits">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Why Choose This Service
             </h2>
           </motion.div>
@@ -835,10 +835,10 @@ export default function InteriorServiceDetail() {
                 >
                   <Card className="border-0 shadow-lg text-center h-full" data-testid={`benefit-${index}`}>
                     <CardContent className="p-8">
-                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
-                        <BenefitIcon className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 mx-auto bg-[#CD9342]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <BenefitIcon className="w-8 h-8 text-[#CD9342]" />
                       </div>
-                      <h3 className="text-xl font-bold text-[#09263D] mb-2">{benefit.title}</h3>
+                      <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">{benefit.title}</h3>
                       <p className="text-muted-foreground">{benefit.description}</p>
                     </CardContent>
                   </Card>
@@ -856,7 +856,7 @@ export default function InteriorServiceDetail() {
             {...fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Our Process
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -875,13 +875,13 @@ export default function InteriorServiceDetail() {
                 className="text-center relative"
                 data-testid={`process-${index}`}
               >
-                <div className="w-16 h-16 mx-auto bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                <div className="w-16 h-16 mx-auto bg-[#CD9342] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.step}
                 </div>
-                <h3 className="font-bold text-lg text-[#09263D] mb-2">{step.title}</h3>
+                <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm">{step.description}</p>
                 {index < service.process.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#970A44]/20" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#CD9342]/20" />
                 )}
               </motion.div>
             ))}
@@ -890,13 +890,13 @@ export default function InteriorServiceDetail() {
       </section>
 
       {/* Design Gallery Section */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-gallery">
+      <section className="py-16 bg-[#FAFAFA]" data-testid="section-gallery">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Design Inspiration
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -938,7 +938,7 @@ export default function InteriorServiceDetail() {
             <Button 
               asChild
               size="lg"
-              className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+              className="bg-[#CD9342] hover:bg-[#A67A2E] rounded-full px-8"
             >
               <Link href="/book">
                 Book Free Consultation
@@ -956,7 +956,7 @@ export default function InteriorServiceDetail() {
             {...fadeInUp}
             className="mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
               FAQs
             </h2>
           </motion.div>
@@ -971,11 +971,11 @@ export default function InteriorServiceDetail() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <details className="group" data-testid={`faq-${index}`}>
-                  <summary className="flex items-center justify-between p-5 bg-[#F6F4EB] rounded-lg cursor-pointer hover-elevate list-none">
-                    <span className="font-medium text-[#09263D] pr-4">{faq.question}</span>
-                    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#970A44] text-xl font-light group-open:rotate-45 transition-transform duration-200">+</span>
+                  <summary className="flex items-center justify-between p-5 bg-[#FAFAFA] rounded-lg cursor-pointer hover-elevate list-none">
+                    <span className="font-medium text-[#1A1A1A] pr-4">{faq.question}</span>
+                    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#CD9342] text-xl font-light group-open:rotate-45 transition-transform duration-200">+</span>
                   </summary>
-                  <div className="px-5 pb-5 pt-3 bg-[#F6F4EB] rounded-b-lg -mt-2">
+                  <div className="px-5 pb-5 pt-3 bg-[#FAFAFA] rounded-b-lg -mt-2">
                     <p className="text-muted-foreground">{faq.answer}</p>
                   </div>
                 </details>
@@ -986,13 +986,13 @@ export default function InteriorServiceDetail() {
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-related">
+      <section className="py-16 bg-[#FAFAFA]" data-testid="section-related">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Related Services
             </h2>
           </motion.div>
@@ -1017,10 +1017,10 @@ export default function InteriorServiceDetail() {
                       <Link href={`/interior-design/${related.slug}`}>
                         <Card className="border-0 shadow-md hover:shadow-lg transition-shadow cursor-pointer group" data-testid={`related-service-${index}`}>
                           <CardContent className="p-6 text-center">
-                            <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors">
+                            <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#CD9342] transition-colors">
                               {related.name}
                             </h3>
-                            <div className="mt-3 flex items-center justify-center text-[#970A44] text-sm font-medium">
+                            <div className="mt-3 flex items-center justify-center text-[#CD9342] text-sm font-medium">
                               View Service
                               <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </div>
@@ -1032,11 +1032,11 @@ export default function InteriorServiceDetail() {
                 ))}
               </CarouselContent>
               <CarouselPrevious 
-                className="absolute -left-2 top-1/2 -translate-y-1/2 bg-white border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white" 
+                className="absolute -left-2 top-1/2 -translate-y-1/2 bg-white border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white" 
                 data-testid="carousel-prev"
               />
               <CarouselNext 
-                className="absolute -right-2 top-1/2 -translate-y-1/2 bg-white border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white" 
+                className="absolute -right-2 top-1/2 -translate-y-1/2 bg-white border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white" 
                 data-testid="carousel-next"
               />
             </Carousel>
@@ -1045,7 +1045,7 @@ export default function InteriorServiceDetail() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-[#970A44]" data-testid="section-cta">
+      <section className="py-20 bg-[#CD9342]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1063,7 +1063,7 @@ export default function InteriorServiceDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+                className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-8"
               >
                 <Link href="/book">
                   Book Free Consultation

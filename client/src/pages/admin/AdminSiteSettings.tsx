@@ -26,11 +26,11 @@ export default function AdminSiteSettings() {
   const [formData, setFormData] = useState<Partial<SiteSettings>>({
     siteName: "",
     tagline: "",
-    primaryColor: "#970A44",
-    secondaryColor: "#720632",
-    accentColor: "#1C4668",
-    backgroundColor: "#F6F4EB",
-    textColor: "#09263D",
+    primaryColor: "#CD9342",
+    secondaryColor: "#A67A2E",
+    accentColor: "#1A1A1A",
+    backgroundColor: "#FAFAFA",
+    textColor: "#1A1A1A",
     logoUrl: "",
     faviconUrl: "",
     contactEmail: "",
@@ -88,7 +88,7 @@ export default function AdminSiteSettings() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]">Site Settings</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">Site Settings</h1>
           <p className="text-gray-600">Manage your website's global settings, colors, and branding</p>
         </div>
         <div className="flex gap-2">
@@ -98,7 +98,7 @@ export default function AdminSiteSettings() {
           </Button>
           <Button
             onClick={handleSubmit}
-            className="bg-[#970A44] hover:bg-[#720632]"
+            className="bg-[#CD9342] hover:bg-[#A67A2E]"
             disabled={updateMutation.isPending}
             data-testid="button-save-settings"
           >
@@ -217,15 +217,15 @@ export default function AdminSiteSettings() {
                         id="primaryColor"
                         type="color"
                         data-testid="input-primary-color"
-                        value={formData.primaryColor || "#970A44"}
+                        value={formData.primaryColor || "#CD9342"}
                         onChange={(e) => setFormData({ ...formData, primaryColor: e.target.value })}
                         className="w-16 h-10 p-1 cursor-pointer"
                       />
                       <Input
-                        value={formData.primaryColor || "#970A44"}
+                        value={formData.primaryColor || "#CD9342"}
                         onChange={(e) => setFormData({ ...formData, primaryColor: e.target.value })}
                         className="flex-1 font-mono"
-                        placeholder="#970A44"
+                        placeholder="#CD9342"
                       />
                     </div>
                     <p className="text-xs text-gray-500">Used for CTAs, buttons, and accents</p>
@@ -238,15 +238,15 @@ export default function AdminSiteSettings() {
                         id="secondaryColor"
                         type="color"
                         data-testid="input-secondary-color"
-                        value={formData.secondaryColor || "#720632"}
+                        value={formData.secondaryColor || "#A67A2E"}
                         onChange={(e) => setFormData({ ...formData, secondaryColor: e.target.value })}
                         className="w-16 h-10 p-1 cursor-pointer"
                       />
                       <Input
-                        value={formData.secondaryColor || "#720632"}
+                        value={formData.secondaryColor || "#A67A2E"}
                         onChange={(e) => setFormData({ ...formData, secondaryColor: e.target.value })}
                         className="flex-1 font-mono"
-                        placeholder="#720632"
+                        placeholder="#A67A2E"
                       />
                     </div>
                     <p className="text-xs text-gray-500">Used for hover states and dark accents</p>
@@ -259,15 +259,15 @@ export default function AdminSiteSettings() {
                         id="accentColor"
                         type="color"
                         data-testid="input-accent-color"
-                        value={formData.accentColor || "#1C4668"}
+                        value={formData.accentColor || "#1A1A1A"}
                         onChange={(e) => setFormData({ ...formData, accentColor: e.target.value })}
                         className="w-16 h-10 p-1 cursor-pointer"
                       />
                       <Input
-                        value={formData.accentColor || "#1C4668"}
+                        value={formData.accentColor || "#1A1A1A"}
                         onChange={(e) => setFormData({ ...formData, accentColor: e.target.value })}
                         className="flex-1 font-mono"
-                        placeholder="#1C4668"
+                        placeholder="#1A1A1A"
                       />
                     </div>
                     <p className="text-xs text-gray-500">Secondary accent color</p>
@@ -280,15 +280,15 @@ export default function AdminSiteSettings() {
                         id="backgroundColor"
                         type="color"
                         data-testid="input-bg-color"
-                        value={formData.backgroundColor || "#F6F4EB"}
+                        value={formData.backgroundColor || "#FAFAFA"}
                         onChange={(e) => setFormData({ ...formData, backgroundColor: e.target.value })}
                         className="w-16 h-10 p-1 cursor-pointer"
                       />
                       <Input
-                        value={formData.backgroundColor || "#F6F4EB"}
+                        value={formData.backgroundColor || "#FAFAFA"}
                         onChange={(e) => setFormData({ ...formData, backgroundColor: e.target.value })}
                         className="flex-1 font-mono"
-                        placeholder="#F6F4EB"
+                        placeholder="#FAFAFA"
                       />
                     </div>
                     <p className="text-xs text-gray-500">Main background and cards</p>
@@ -301,15 +301,15 @@ export default function AdminSiteSettings() {
                         id="textColor"
                         type="color"
                         data-testid="input-text-color"
-                        value={formData.textColor || "#09263D"}
+                        value={formData.textColor || "#1A1A1A"}
                         onChange={(e) => setFormData({ ...formData, textColor: e.target.value })}
                         className="w-16 h-10 p-1 cursor-pointer"
                       />
                       <Input
-                        value={formData.textColor || "#09263D"}
+                        value={formData.textColor || "#1A1A1A"}
                         onChange={(e) => setFormData({ ...formData, textColor: e.target.value })}
                         className="flex-1 font-mono"
-                        placeholder="#09263D"
+                        placeholder="#1A1A1A"
                       />
                     </div>
                     <p className="text-xs text-gray-500">Main text and headings</p>

@@ -103,8 +103,8 @@ export default function AdminDashboard() {
     { label: "Location Pages", value: locationPages.length, icon: MapPin, color: "bg-orange-500", path: "/admin/location-pages" },
     { label: "Tracking Codes", value: trackingCodes.length, icon: Code, color: "bg-cyan-500", path: "/admin/tracking-codes" },
     { label: "SEO Pages", value: seoSettings.length, icon: Globe, color: "bg-teal-500", path: "/admin/seo" },
-    { label: "Bookings", value: bookings.length, icon: Calendar, color: "bg-[#970A44]", path: "/admin/bookings" },
-    { label: "Inquiries", value: inquiries.length, icon: Mail, color: "bg-[#1C4668]", path: "/admin/inquiries" },
+    { label: "Bookings", value: bookings.length, icon: Calendar, color: "bg-[#CD9342]", path: "/admin/bookings" },
+    { label: "Inquiries", value: inquiries.length, icon: Mail, color: "bg-[#1A1A1A]", path: "/admin/inquiries" },
   ];
 
   return (

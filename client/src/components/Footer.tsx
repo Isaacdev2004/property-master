@@ -58,9 +58,9 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#09263D] text-white">
+    <footer className="bg-[#1A1A1A] text-white">
       {/* Top CTA Section */}
-      <div className="bg-gradient-to-r from-[#970A44] to-[#720632]">
+      <div className="bg-gradient-to-r from-[#CD9342] to-[#A67A2E]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -70,7 +70,7 @@ export function Footer() {
             <div className="flex flex-wrap gap-3">
               <Button 
                 asChild 
-                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-6"
+                className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-6"
                 data-testid="button-footer-consultation"
               >
                 <Link href="/contact">
@@ -100,7 +100,7 @@ export function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Shield className="w-6 h-6 text-[#970A44]" />
+                <Shield className="w-6 h-6 text-[#CD9342]" />
               </div>
               <div>
                 <p className="font-semibold text-sm">10 Year Warranty</p>
@@ -109,7 +109,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Clock className="w-6 h-6 text-[#970A44]" />
+                <Clock className="w-6 h-6 text-[#CD9342]" />
               </div>
               <div>
                 <p className="font-semibold text-sm">45 Day Delivery</p>
@@ -118,7 +118,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Award className="w-6 h-6 text-[#970A44]" />
+                <Award className="w-6 h-6 text-[#CD9342]" />
               </div>
               <div>
                 <p className="font-semibold text-sm">ISO Certified</p>
@@ -127,7 +127,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Headphones className="w-6 h-6 text-[#970A44]" />
+                <Headphones className="w-6 h-6 text-[#CD9342]" />
               </div>
               <div>
                 <p className="font-semibold text-sm">24/7 Support</p>
@@ -167,7 +167,7 @@ export function Footer() {
                   data-testid="input-newsletter-email"
                 />
                 <Button 
-                  className="bg-[#970A44] hover:bg-[#720632] rounded-full px-4"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E] rounded-full px-4"
                   data-testid="button-newsletter-subscribe"
                 >
                   <ArrowRight className="w-4 h-4" />
@@ -181,7 +181,7 @@ export function Footer() {
                 href="https://facebook.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-[#970A44] rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-white/10 hover:bg-[#CD9342] rounded-full flex items-center justify-center transition-colors"
                 data-testid="link-social-facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -190,7 +190,7 @@ export function Footer() {
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-[#970A44] rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-white/10 hover:bg-[#CD9342] rounded-full flex items-center justify-center transition-colors"
                 data-testid="link-social-instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -199,7 +199,7 @@ export function Footer() {
                 href="https://linkedin.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-[#970A44] rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-white/10 hover:bg-[#CD9342] rounded-full flex items-center justify-center transition-colors"
                 data-testid="link-social-linkedin"
               >
                 <Linkedin className="w-4 h-4" />
@@ -208,7 +208,7 @@ export function Footer() {
                 href="https://youtube.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-[#970A44] rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-white/10 hover:bg-[#CD9342] rounded-full flex items-center justify-center transition-colors"
                 data-testid="link-social-youtube"
               >
                 <Youtube className="w-4 h-4" />
@@ -218,7 +218,7 @@ export function Footer() {
 
           {/* Interior Design */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-[#970A44]">Interior Design</h4>
+            <h4 className="font-semibold text-sm mb-4 text-[#CD9342]">Interior Design</h4>
             <ul className="space-y-2.5">
               {services.map((item) => (
                 <li key={item.name}>
@@ -234,7 +234,7 @@ export function Footer() {
 
           {/* Wellness */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-[#970A44]">Wellness Services</h4>
+            <h4 className="font-semibold text-sm mb-4 text-[#CD9342]">Wellness Services</h4>
             <ul className="space-y-2.5">
               {wellness.map((item) => (
                 <li key={item.name}>
@@ -250,7 +250,7 @@ export function Footer() {
 
           {/* Maintenance */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-[#970A44]">Maintenance</h4>
+            <h4 className="font-semibold text-sm mb-4 text-[#CD9342]">Maintenance</h4>
             <ul className="space-y-2.5">
               {maintenance.map((item) => (
                 <li key={item.name}>
@@ -266,7 +266,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-[#970A44]">Quick Links</h4>
+            <h4 className="font-semibold text-sm mb-4 text-[#CD9342]">Quick Links</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((item) => (
                 <li key={item.name}>
@@ -289,14 +289,14 @@ export function Footer() {
               <h4 className="font-semibold text-sm mb-4">Contact Us</h4>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-sm text-white/90">AL Saqr Business Tower - Office A-36</p>
                     <p className="text-sm text-white/70">Dubai, UAE</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                   <div>
                     <a href="tel:+971585707110" className="text-sm text-white/90 hover:text-white transition-colors">
                       +971 585 707 110
@@ -304,13 +304,13 @@ export function Footer() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                   <a href="mailto:Info@thepropertymasters.ae" className="text-sm text-white/90 hover:text-white transition-colors">
                     Info@thepropertymasters.ae
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                   <p className="text-sm text-white/70">Mon - Sat: 9:00 AM - 7:00 PM</p>
                 </div>
               </div>
@@ -323,7 +323,7 @@ export function Footer() {
                 {cities.map((city) => (
                   <span 
                     key={city}
-                    className="px-3 py-1.5 bg-white/10 rounded-full text-xs text-white/80 hover:bg-[#970A44] hover:text-white transition-colors cursor-pointer"
+                    className="px-3 py-1.5 bg-white/10 rounded-full text-xs text-white/80 hover:bg-[#CD9342] hover:text-white transition-colors cursor-pointer"
                     data-testid={`badge-city-${city.toLowerCase()}`}
                   >
                     {city}

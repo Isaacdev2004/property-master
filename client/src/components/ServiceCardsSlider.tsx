@@ -12,7 +12,7 @@ const fitoutServices = [
     description: "Transform your space with bespoke interior designs that reflect your unique style and personality.",
     icon: Paintbrush,
     link: "/services/interior-design",
-    gradient: "from-[#970A44]/90 to-[#720632]/90",
+    gradient: "from-[#CD9342]/90 to-[#A67A2E]/90",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const fitoutServices = [
     description: "Complete fit-out solutions from concept to completion for residential and commercial spaces.",
     icon: Building2,
     link: "/services/fit-out",
-    gradient: "from-[#1C4668]/90 to-[#09263D]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const fitoutServices = [
     description: "Expert renovation services to breathe new life into your existing property with modern upgrades.",
     icon: Home,
     link: "/services/renovation",
-    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const fitoutServices = [
     description: "Create the perfect ambiance with custom lighting solutions for every room and occasion.",
     icon: Lightbulb,
     link: "/services/lighting",
-    gradient: "from-[#720632]/90 to-[#970A44]/90",
+    gradient: "from-[#A67A2E]/90 to-[#CD9342]/90",
   },
 ];
 
@@ -47,7 +47,7 @@ const wellnessServices = [
     description: "Professional AC cleaning and air quality testing to ensure healthy indoor environments.",
     icon: Wind,
     link: "/wellness",
-    gradient: "from-[#1C4668]/90 to-[#09263D]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ const wellnessServices = [
     description: "Comprehensive deep cleaning services for mattresses, carpets, sofas and entire homes.",
     icon: Sparkles,
     link: "/wellness",
-    gradient: "from-[#970A44]/90 to-[#720632]/90",
+    gradient: "from-[#CD9342]/90 to-[#A67A2E]/90",
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const wellnessServices = [
     description: "Water tank cleaning and water quality testing for safe and clean water supply.",
     icon: Droplets,
     link: "/wellness",
-    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ const wellnessServices = [
     description: "Mold removal, pest control, and allergen reduction for a healthier home environment.",
     icon: Leaf,
     link: "/wellness",
-    gradient: "from-[#720632]/90 to-[#970A44]/90",
+    gradient: "from-[#A67A2E]/90 to-[#CD9342]/90",
   },
 ];
 
@@ -82,7 +82,7 @@ const maintenanceServices = [
     description: "Comprehensive maintenance services to keep your property in pristine condition year-round.",
     icon: Wrench,
     link: "/maintenance",
-    gradient: "from-[#09263D]/90 to-[#1C4668]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
   {
     id: 10,
@@ -90,7 +90,7 @@ const maintenanceServices = [
     description: "Expert mechanical, electrical, and plumbing services for all your property needs.",
     icon: Zap,
     link: "/maintenance",
-    gradient: "from-[#720632]/90 to-[#970A44]/90",
+    gradient: "from-[#A67A2E]/90 to-[#CD9342]/90",
   },
   {
     id: 11,
@@ -98,7 +98,7 @@ const maintenanceServices = [
     description: "Professional handyman services for repairs, installations, and general property upkeep.",
     icon: Hammer,
     link: "/maintenance",
-    gradient: "from-[#970A44]/90 to-[#720632]/90",
+    gradient: "from-[#CD9342]/90 to-[#A67A2E]/90",
   },
   {
     id: 12,
@@ -106,7 +106,7 @@ const maintenanceServices = [
     description: "Advanced security solutions to protect your property with modern surveillance technology.",
     icon: Shield,
     link: "/maintenance",
-    gradient: "from-[#1C4668]/90 to-[#09263D]/90",
+    gradient: "from-[#1A1A1A]/90 to-[#1A1A1A]/90",
   },
 ];
 
@@ -216,8 +216,8 @@ function ServiceRow({ title, icon: Icon, services, testIdPrefix }: ServiceRowPro
         data-testid={`label-${testIdPrefix}-services`}
       >
         <div className="flex items-center gap-2">
-          <Icon className="w-5 h-5 text-[#970A44]" />
-          <h3 className="text-lg font-semibold text-[#970A44]">{title}</h3>
+          <Icon className="w-5 h-5 text-[#CD9342]" />
+          <h3 className="text-lg font-semibold text-[#CD9342]">{title}</h3>
         </div>
         
         {/* Navigation Arrows */}
@@ -226,7 +226,7 @@ function ServiceRow({ title, icon: Icon, services, testIdPrefix }: ServiceRowPro
             variant="outline"
             size="icon"
             onClick={prevSlide}
-            className="w-10 h-10 rounded-full border-[#970A44]/30 hover:bg-[#970A44] hover:text-white hover:border-[#970A44] transition-all"
+            className="w-10 h-10 rounded-full border-[#CD9342]/30 hover:bg-[#CD9342] hover:text-white hover:border-[#CD9342] transition-all"
             data-testid={`button-prev-${testIdPrefix}`}
           >
             <ArrowLeft className="w-4 h-4" />
@@ -235,7 +235,7 @@ function ServiceRow({ title, icon: Icon, services, testIdPrefix }: ServiceRowPro
             variant="outline"
             size="icon"
             onClick={nextSlide}
-            className="w-10 h-10 rounded-full border-[#970A44]/30 hover:bg-[#970A44] hover:text-white hover:border-[#970A44] transition-all"
+            className="w-10 h-10 rounded-full border-[#CD9342]/30 hover:bg-[#CD9342] hover:text-white hover:border-[#CD9342] transition-all"
             data-testid={`button-next-${testIdPrefix}`}
           >
             <ArrowRight className="w-4 h-4" />
@@ -270,8 +270,8 @@ function ServiceRow({ title, icon: Icon, services, testIdPrefix }: ServiceRowPro
               onClick={() => setCurrentSlide(idx)}
               className={`w-2 h-2 rounded-full transition-all ${
                 idx === currentSlide 
-                  ? "bg-[#970A44] w-6" 
-                  : "bg-[#970A44]/30 hover:bg-[#970A44]/50"
+                  ? "bg-[#CD9342] w-6" 
+                  : "bg-[#CD9342]/30 hover:bg-[#CD9342]/50"
               }`}
               data-testid={`indicator-${testIdPrefix}-${idx}`}
             />
@@ -345,7 +345,7 @@ export default function ServiceCardsSlider() {
           <Button 
             asChild
             variant="outline"
-            className="rounded-full px-8 py-6 h-auto border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+            className="rounded-full px-8 py-6 h-auto border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
             data-testid="button-view-all-services"
           >
             <Link href="/services">

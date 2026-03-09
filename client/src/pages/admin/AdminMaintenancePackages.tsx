@@ -180,7 +180,7 @@ export default function AdminMaintenancePackages() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#970A44]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#CD9342]" />
       </div>
     );
   }
@@ -189,14 +189,14 @@ export default function AdminMaintenancePackages() {
     <div className="space-y-6" data-testid="admin-maintenance-packages">
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]" data-testid="text-page-title">Maintenance Packages</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]" data-testid="text-page-title">Maintenance Packages</h1>
           <p className="text-muted-foreground mt-1">
             Manage pricing packages displayed on the Maintenance Services page
           </p>
         </div>
         <Button
           onClick={openCreateDialog}
-          className="bg-[#970A44] hover:bg-[#720632] text-white"
+          className="bg-[#CD9342] hover:bg-[#A67A2E] text-white"
           data-testid="button-add-package"
         >
           <Plus className="w-4 h-4 mr-2" />
@@ -216,7 +216,7 @@ export default function AdminMaintenancePackages() {
                 <div className="flex items-center gap-2 flex-wrap">
                   <CardTitle className="text-lg">{pkg.title}</CardTitle>
                   {pkg.popular && (
-                    <Badge className="bg-[#970A44] text-white text-xs">Popular</Badge>
+                    <Badge className="bg-[#CD9342] text-white text-xs">Popular</Badge>
                   )}
                 </div>
                 <div className="flex items-center gap-1">
@@ -256,7 +256,7 @@ export default function AdminMaintenancePackages() {
                 {pkg.isCustom ? (
                   <p className="text-sm text-muted-foreground">{pkg.subtitle}</p>
                 ) : (
-                  <p className="text-xl font-bold text-[#970A44]">
+                  <p className="text-xl font-bold text-[#CD9342]">
                     {pkg.price}<span className="text-sm font-normal text-muted-foreground">{pkg.period}</span>
                   </p>
                 )}
@@ -264,7 +264,7 @@ export default function AdminMaintenancePackages() {
               <ul className="space-y-1">
                 {pkg.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2 text-sm">
-                    <Check className="w-3 h-3 text-[#970A44] flex-shrink-0" />
+                    <Check className="w-3 h-3 text-[#CD9342] flex-shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -286,7 +286,7 @@ export default function AdminMaintenancePackages() {
         <Card>
           <CardContent className="flex flex-col items-center justify-center py-12">
             <p className="text-muted-foreground mb-4">No maintenance packages yet</p>
-            <Button onClick={openCreateDialog} className="bg-[#970A44] hover:bg-[#720632] text-white">
+            <Button onClick={openCreateDialog} className="bg-[#CD9342] hover:bg-[#A67A2E] text-white">
               <Plus className="w-4 h-4 mr-2" /> Add Your First Package
             </Button>
           </CardContent>
@@ -428,7 +428,7 @@ export default function AdminMaintenancePackages() {
               </Button>
               <Button
                 type="submit"
-                className="bg-[#970A44] hover:bg-[#720632] text-white"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white"
                 disabled={createMutation.isPending || updateMutation.isPending}
                 data-testid="button-save-package"
               >

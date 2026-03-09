@@ -157,7 +157,7 @@ export default function AdminTestimonials() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44] hover:bg-[#720632]" data-testid="button-add-testimonial">
+            <Button className="bg-[#CD9342] hover:bg-[#A67A2E]" data-testid="button-add-testimonial">
               <Plus className="w-4 h-4 mr-2" />
               Add Testimonial
             </Button>
@@ -246,7 +246,7 @@ export default function AdminTestimonials() {
                 </Button>
                 <Button 
                   type="submit" 
-                  className="bg-[#970A44] hover:bg-[#720632]"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-submit-testimonial"
                 >
@@ -277,7 +277,7 @@ export default function AdminTestimonials() {
                       className="w-12 h-12 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-[#970A44]/10 flex items-center justify-center text-[#970A44] font-bold">
+                    <div className="w-12 h-12 rounded-full bg-[#CD9342]/10 flex items-center justify-center text-[#CD9342] font-bold">
                       {testimonial.name.charAt(0)}
                     </div>
                   )}

@@ -17,8 +17,8 @@ const services = [
       "Office Fit-Out Solutions",
       "3D Visualization & Planning"
     ],
-    gradient: "from-[#970A44]/20 via-[#970A44]/10 to-[#720632]/5",
-    accentColor: "#970A44",
+    gradient: "from-[#CD9342]/20 via-[#CD9342]/10 to-[#A67A2E]/5",
+    accentColor: "#CD9342",
     ctaLink: "/interior-design"
   },
   {

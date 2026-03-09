@@ -30,10 +30,10 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#09263D] to-[#1C4668] p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-[#1A1A1A] p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <div className="mx-auto w-12 h-12 bg-[#970A44] rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-12 h-12 bg-[#CD9342] rounded-full flex items-center justify-center mb-4">
             <Lock className="w-6 h-6 text-white" />
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
@@ -83,7 +83,7 @@ export default function AdminLogin() {
             </div>
             <Button
               type="submit"
-              className="w-full bg-[#970A44] hover:bg-[#720632]"
+              className="w-full bg-[#CD9342] hover:bg-[#A67A2E]"
               disabled={isLoading}
               data-testid="button-login"
             >

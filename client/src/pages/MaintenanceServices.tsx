@@ -55,22 +55,22 @@ const heroBadges = [
 
 // 16 Services matching hitchesglitches.com - using brand colors only
 const services = [
-  { icon: Sparkles, title: "Disinfection Service", href: "/maintenance/disinfection", color: "bg-[#970A44]" },
-  { icon: Flame, title: "Kitchen Equipment Maintenance", href: "/maintenance/kitchen", color: "bg-[#1C4668]" },
-  { icon: Hammer, title: "Civil Minor Work", href: "/maintenance/civil", color: "bg-[#09263D]" },
-  { icon: Sparkles, title: "Special Cleaning", href: "/maintenance/cleaning-special", color: "bg-[#720632]" },
-  { icon: Smartphone, title: "Smart Product Installation", href: "/maintenance/smart-home", color: "bg-[#1C4668]" },
-  { icon: Truck, title: "Move In / Move Out", href: "/maintenance/moving", color: "bg-[#970A44]" },
-  { icon: Bug, title: "Pest Control", href: "/maintenance/pest-control", color: "bg-[#09263D]" },
-  { icon: Droplets, title: "Water Tank Cleaning", href: "/maintenance/water-tank", color: "bg-[#1C4668]" },
-  { icon: Waves, title: "Swimming Pool Service", href: "/maintenance/pool", color: "bg-[#720632]" },
-  { icon: Droplets, title: "Plumbing Service", href: "/maintenance/plumbing", color: "bg-[#09263D]" },
-  { icon: Home, title: "Home Improvement", href: "/maintenance/home-improvement", color: "bg-[#970A44]" },
-  { icon: Zap, title: "Electrical Services", href: "/maintenance/electrical", color: "bg-[#1C4668]" },
-  { icon: Sparkles, title: "Cleaning Services", href: "/maintenance/cleaning", color: "bg-[#720632]" },
-  { icon: Wind, title: "Air Conditioning", href: "/maintenance/ac", color: "bg-[#09263D]" },
-  { icon: Shield, title: "Security Systems", href: "/maintenance/security", color: "bg-[#1C4668]" },
-  { icon: Package, title: "Maintenance Packages", href: "/maintenance/packages", color: "bg-[#970A44]" },
+  { icon: Sparkles, title: "Disinfection Service", href: "/maintenance/disinfection", color: "bg-[#CD9342]" },
+  { icon: Flame, title: "Kitchen Equipment Maintenance", href: "/maintenance/kitchen", color: "bg-[#1A1A1A]" },
+  { icon: Hammer, title: "Civil Minor Work", href: "/maintenance/civil", color: "bg-[#1A1A1A]" },
+  { icon: Sparkles, title: "Special Cleaning", href: "/maintenance/cleaning-special", color: "bg-[#A67A2E]" },
+  { icon: Smartphone, title: "Smart Product Installation", href: "/maintenance/smart-home", color: "bg-[#1A1A1A]" },
+  { icon: Truck, title: "Move In / Move Out", href: "/maintenance/moving", color: "bg-[#CD9342]" },
+  { icon: Bug, title: "Pest Control", href: "/maintenance/pest-control", color: "bg-[#1A1A1A]" },
+  { icon: Droplets, title: "Water Tank Cleaning", href: "/maintenance/water-tank", color: "bg-[#1A1A1A]" },
+  { icon: Waves, title: "Swimming Pool Service", href: "/maintenance/pool", color: "bg-[#A67A2E]" },
+  { icon: Droplets, title: "Plumbing Service", href: "/maintenance/plumbing", color: "bg-[#1A1A1A]" },
+  { icon: Home, title: "Home Improvement", href: "/maintenance/home-improvement", color: "bg-[#CD9342]" },
+  { icon: Zap, title: "Electrical Services", href: "/maintenance/electrical", color: "bg-[#1A1A1A]" },
+  { icon: Sparkles, title: "Cleaning Services", href: "/maintenance/cleaning", color: "bg-[#A67A2E]" },
+  { icon: Wind, title: "Air Conditioning", href: "/maintenance/ac", color: "bg-[#1A1A1A]" },
+  { icon: Shield, title: "Security Systems", href: "/maintenance/security", color: "bg-[#1A1A1A]" },
+  { icon: Package, title: "Maintenance Packages", href: "/maintenance/packages", color: "bg-[#CD9342]" },
 ];
 
 // How it works steps
@@ -218,7 +218,7 @@ export default function MaintenanceServices() {
             className="w-full h-full object-cover"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/80 to-[#1A1A1A]/60" />
         </motion.div>
         
         <motion.div 
@@ -237,7 +237,7 @@ export default function MaintenanceServices() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-[#970A44] font-semibold text-lg mb-4 tracking-wide"
+                  className="text-[#CD9342] font-semibold text-lg mb-4 tracking-wide"
                 >
                   Quality Repairs & Maintenance, Hassle-Free
                 </motion.p>
@@ -249,7 +249,7 @@ export default function MaintenanceServices() {
                   className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 font-serif leading-tight"
                 >
                   Best Home Maintenance{" "}
-                  <span className="text-[#970A44]">Company in UAE</span>
+                  <span className="text-[#CD9342]">Company in UAE</span>
                 </motion.h1>
                 
                 <motion.div
@@ -260,7 +260,7 @@ export default function MaintenanceServices() {
                   <Button 
                     asChild
                     size="lg"
-                    className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-[#970A44]/30"
+                    className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-[#CD9342]/30"
                     data-testid="button-hero-enquiry"
                   >
                     <Link href="/contact">
@@ -288,7 +288,7 @@ export default function MaintenanceServices() {
                     className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center cursor-pointer transition-all"
                     data-testid={`badge-${badge.title.toLowerCase()}`}
                   >
-                    <div className="w-16 h-16 mx-auto mb-3 bg-[#970A44] rounded-2xl flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-3 bg-[#CD9342] rounded-2xl flex items-center justify-center">
                       <badge.icon className="w-8 h-8 text-white" />
                     </div>
                     <p className="text-white font-bold text-lg">{badge.title}</p>
@@ -318,16 +318,16 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Services Grid Section - "How can we help you today?" */}
-      <section className="py-24 bg-gradient-to-b from-[#F6F4EB] to-white" data-testid="section-services">
+      <section className="py-24 bg-gradient-to-b from-[#FAFAFA] to-white" data-testid="section-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-16"
           >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               CHOOSE YOUR SERVICE
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#1A1A1A]">
               How can we help you today?
             </h2>
           </motion.div>
@@ -359,7 +359,7 @@ export default function MaintenanceServices() {
                       >
                         <service.icon className="w-8 h-8 text-white" />
                       </motion.div>
-                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors text-sm md:text-base">
+                      <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#CD9342] transition-colors text-sm md:text-base">
                         {service.title}
                       </h3>
                     </CardContent>
@@ -372,7 +372,7 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Free Consultation CTA Section */}
-      <section className="py-20 bg-[#970A44] relative overflow-hidden" data-testid="section-consultation-cta">
+      <section className="py-20 bg-[#CD9342] relative overflow-hidden" data-testid="section-consultation-cta">
         <motion.div 
           className="absolute inset-0 opacity-10"
           animate={{ 
@@ -403,7 +403,7 @@ export default function MaintenanceServices() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-10 py-7 text-lg font-bold shadow-2xl"
+                className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-10 py-7 text-lg font-bold shadow-2xl"
                 data-testid="button-consultation"
               >
                 <Link href="/contact">
@@ -457,7 +457,7 @@ export default function MaintenanceServices() {
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Play className="w-8 h-8 text-[#970A44] ml-1" />
+                    <Play className="w-8 h-8 text-[#CD9342] ml-1" />
                   </motion.div>
                 </motion.div>
               )}
@@ -465,7 +465,7 @@ export default function MaintenanceServices() {
           </div>
 
           {/* Right - Steps and Description */}
-          <div className="bg-[#09263D] p-8 lg:p-16 flex flex-col justify-center">
+          <div className="bg-[#1A1A1A] p-8 lg:p-16 flex flex-col justify-center">
             {/* Steps */}
             <motion.div 
               variants={staggerContainer}
@@ -483,7 +483,7 @@ export default function MaintenanceServices() {
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="w-16 h-16 mx-auto mb-4 bg-[#970A44] rounded-2xl flex items-center justify-center"
+                    className="w-16 h-16 mx-auto mb-4 bg-[#CD9342] rounded-2xl flex items-center justify-center"
                   >
                     <step.icon className="w-8 h-8 text-white" />
                   </motion.div>
@@ -524,16 +524,16 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Maintenance Packages Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-[#F6F4EB]" data-testid="section-packages">
+      <section className="py-24 bg-gradient-to-b from-white to-[#FAFAFA]" data-testid="section-packages">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-16"
           >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               Choose
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#1A1A1A] mb-4">
               Maintenance Packages
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -546,7 +546,7 @@ export default function MaintenanceServices() {
               <Button 
                 asChild
                 variant="outline"
-                className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
                 data-testid="button-view-packages"
               >
                 <Link href="/maintenance/packages">
@@ -572,12 +572,12 @@ export default function MaintenanceServices() {
               >
                 <Card 
                   className={`h-full border-0 shadow-xl transition-all duration-300 overflow-hidden ${
-                    pkg.popular ? 'ring-2 ring-[#970A44] bg-[#970A44] text-white' : 'bg-white'
+                    pkg.popular ? 'ring-2 ring-[#CD9342] bg-[#CD9342] text-white' : 'bg-white'
                   }`}
                   data-testid={`card-package-${pkg.title.toLowerCase()}`}
                 >
                   <CardContent className="p-8">
-                    <h3 className={`text-2xl font-bold mb-2 ${pkg.popular ? 'text-white' : 'text-[#09263D]'}`}>
+                    <h3 className={`text-2xl font-bold mb-2 ${pkg.popular ? 'text-white' : 'text-[#1A1A1A]'}`}>
                       {pkg.title}
                     </h3>
                     {pkg.isCustom ? (
@@ -589,7 +589,7 @@ export default function MaintenanceServices() {
                         <p className={`text-sm mb-2 ${pkg.popular ? 'text-white/80' : 'text-muted-foreground'}`}>
                           Starting at
                         </p>
-                        <p className={`text-3xl font-bold mb-6 ${pkg.popular ? 'text-white' : 'text-[#970A44]'}`}>
+                        <p className={`text-3xl font-bold mb-6 ${pkg.popular ? 'text-white' : 'text-[#CD9342]'}`}>
                           {pkg.price}<span className="text-base font-normal">{pkg.period}</span>
                         </p>
                       </>
@@ -597,7 +597,7 @@ export default function MaintenanceServices() {
                     <ul className="space-y-3 mb-8">
                       {pkg.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className={`w-4 h-4 flex-shrink-0 ${pkg.popular ? 'text-white' : 'text-[#970A44]'}`} />
+                          <Check className={`w-4 h-4 flex-shrink-0 ${pkg.popular ? 'text-white' : 'text-[#CD9342]'}`} />
                           <span className={pkg.popular ? 'text-white/90' : ''}>{feature}</span>
                         </li>
                       ))}
@@ -605,8 +605,8 @@ export default function MaintenanceServices() {
                     <Button 
                       className={`w-full rounded-full ${
                         pkg.popular 
-                          ? 'bg-white text-[#970A44] hover:bg-white/90' 
-                          : 'bg-[#970A44] hover:bg-[#720632] text-white'
+                          ? 'bg-white text-[#CD9342] hover:bg-white/90' 
+                          : 'bg-[#CD9342] hover:bg-[#A67A2E] text-white'
                       }`}
                       data-testid={`button-select-${pkg.title.toLowerCase()}`}
                     >
@@ -621,7 +621,7 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-statistics">
+      <section className="py-20 bg-[#1A1A1A]" data-testid="section-statistics">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div 
             variants={staggerContainer}
@@ -638,7 +638,7 @@ export default function MaintenanceServices() {
                 data-testid={`stat-${index}`}
               >
                 <motion.p 
-                  className="text-5xl md:text-6xl font-bold text-[#970A44] mb-2"
+                  className="text-5xl md:text-6xl font-bold text-[#CD9342] mb-2"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -654,13 +654,13 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Client Feedback / Testimonials Section */}
-      <section className="py-24 bg-[#F6F4EB]" data-testid="section-testimonials">
+      <section className="py-24 bg-[#FAFAFA]" data-testid="section-testimonials">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#1A1A1A]">
               Client Feedback
             </h2>
           </motion.div>
@@ -681,21 +681,21 @@ export default function MaintenanceServices() {
                         <img loading="lazy" 
                           src={testimonials[currentTestimonial].image}
                           alt={testimonials[currentTestimonial].name}
-                          className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#970A44]/20"
+                          className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-[#CD9342]/20"
                         />
                       </div>
                       <div className="flex-1 text-center md:text-left">
                         <div className="flex justify-center md:justify-start gap-1 mb-4">
                           {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                            <Star key={i} className="w-5 h-5 fill-[#970A44] text-[#970A44]" />
+                            <Star key={i} className="w-5 h-5 fill-[#CD9342] text-[#CD9342]" />
                           ))}
                         </div>
-                        <Quote className="w-10 h-10 text-[#970A44]/20 mb-4 mx-auto md:mx-0" />
-                        <p className="text-lg md:text-xl text-[#09263D] leading-relaxed mb-6">
+                        <Quote className="w-10 h-10 text-[#CD9342]/20 mb-4 mx-auto md:mx-0" />
+                        <p className="text-lg md:text-xl text-[#1A1A1A] leading-relaxed mb-6">
                           {testimonials[currentTestimonial].content}
                         </p>
                         <div>
-                          <p className="font-bold text-[#09263D] text-lg">{testimonials[currentTestimonial].name}</p>
+                          <p className="font-bold text-[#1A1A1A] text-lg">{testimonials[currentTestimonial].name}</p>
                           <p className="text-muted-foreground">{testimonials[currentTestimonial].role}</p>
                         </div>
                       </div>
@@ -711,7 +711,7 @@ export default function MaintenanceServices() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-[#09263D] hover:bg-[#970A44] hover:text-white transition-colors"
+                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-[#1A1A1A] hover:bg-[#CD9342] hover:text-white transition-colors"
                 data-testid="button-prev-testimonial"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -720,7 +720,7 @@ export default function MaintenanceServices() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-[#09263D] hover:bg-[#970A44] hover:text-white transition-colors"
+                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-[#1A1A1A] hover:bg-[#CD9342] hover:text-white transition-colors"
                 data-testid="button-next-testimonial"
               >
                 <ChevronRight className="w-6 h-6" />
@@ -734,7 +734,7 @@ export default function MaintenanceServices() {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-[#970A44]' : 'bg-[#970A44]/30'
+                    index === currentTestimonial ? 'bg-[#CD9342]' : 'bg-[#CD9342]/30'
                   }`}
                   data-testid={`dot-testimonial-${index}`}
                 />
@@ -751,10 +751,10 @@ export default function MaintenanceServices() {
             {...fadeInUp}
             className="text-center mb-16"
           >
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-3">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-3">
               Resources
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-[#1A1A1A]">
               Latest News & Blogs
             </h2>
           </motion.div>
@@ -786,7 +786,7 @@ export default function MaintenanceServices() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-semibold text-[#09263D] group-hover:text-[#970A44] transition-colors line-clamp-2 mb-3">
+                      <h3 className="font-semibold text-[#1A1A1A] group-hover:text-[#CD9342] transition-colors line-clamp-2 mb-3">
                         {post.title}
                       </h3>
                       <div className="flex items-center gap-2 text-muted-foreground text-sm">
@@ -794,7 +794,7 @@ export default function MaintenanceServices() {
                         <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
                       </div>
                       <motion.p 
-                        className="text-[#970A44] font-semibold text-sm mt-4 flex items-center gap-1"
+                        className="text-[#CD9342] font-semibold text-sm mt-4 flex items-center gap-1"
                         whileHover={{ x: 5 }}
                       >
                         Read more <ArrowRight className="w-4 h-4" />
@@ -819,7 +819,7 @@ export default function MaintenanceServices() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#1A1A1A]">
               Maintenance Services in Dubai
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -835,14 +835,14 @@ export default function MaintenanceServices() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-16"
           >
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#CD9342]/5 to-[#A67A2E]/10">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-7 h-7 text-[#970A44]" />
+                  <div className="w-14 h-14 bg-[#CD9342]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-7 h-7 text-[#CD9342]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-[#09263D]">Why Maintenance Services Matter in Dubai</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-[#1A1A1A]">Why Maintenance Services Matter in Dubai</h3>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       Without proper maintenance, small issues can quickly turn into costly repairs or disruptions. Effective maintenance is not about reacting to problems when they appear, but about identifying and addressing issues early through structured, professional care.
                     </p>
@@ -854,7 +854,7 @@ export default function MaintenanceServices() {
                         "Increased maintenance needs in shared spaces"
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                           <span className="text-muted-foreground">{item}</span>
                         </div>
                       ))}
@@ -873,11 +873,11 @@ export default function MaintenanceServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#970A44]" />
-                <span className="text-[#970A44] font-medium">Our Approach to Property Maintenance</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#CD9342]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#CD9342]" />
+                <span className="text-[#CD9342] font-medium">Our Approach to Property Maintenance</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#1A1A1A]">
                 Planned, Consistent & Professional
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
@@ -891,7 +891,7 @@ export default function MaintenanceServices() {
                   "Reliable execution with minimal disruption"
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#CD9342] flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}
@@ -904,11 +904,11 @@ export default function MaintenanceServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
-                <Eye className="w-5 h-5 text-[#1C4668]" />
-                <span className="text-[#1C4668] font-medium">What Our Maintenance Services Cover</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1A1A1A]/10 rounded-full mb-6">
+                <Eye className="w-5 h-5 text-[#1A1A1A]" />
+                <span className="text-[#1A1A1A] font-medium">What Our Maintenance Services Cover</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#1A1A1A]">
                 Comprehensive Property Care
               </h3>
               <div className="space-y-4">
@@ -922,7 +922,7 @@ export default function MaintenanceServices() {
                 ].map((item, idx) => (
                   <Card key={idx} className="border hover-elevate" data-testid={`maintenance-cover-${idx}`}>
                     <CardContent className="p-4">
-                      <h4 className="font-bold text-[#09263D] mb-1">{item.title}</h4>
+                      <h4 className="font-bold text-[#1A1A1A] mb-1">{item.title}</h4>
                       <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </CardContent>
                   </Card>
@@ -940,7 +940,7 @@ export default function MaintenanceServices() {
             className="mb-16"
           >
             <div className="text-center mb-10">
-              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
                 Who These Services Are For
               </h3>
               <p className="text-muted-foreground">Each property is assessed individually to determine the most appropriate maintenance support.</p>
@@ -961,10 +961,10 @@ export default function MaintenanceServices() {
                 >
                   <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`maintenance-for-${idx}`}>
                     <CardContent className="p-6">
-                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
-                        <item.icon className="w-7 h-7 text-[#970A44]" />
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#CD9342]/10 rounded-2xl flex items-center justify-center">
+                        <item.icon className="w-7 h-7 text-[#CD9342]" />
                       </div>
-                      <h4 className="font-bold mb-2 text-[#09263D]">{item.title}</h4>
+                      <h4 className="font-bold mb-2 text-[#1A1A1A]">{item.title}</h4>
                       <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </CardContent>
                   </Card>
@@ -980,7 +980,7 @@ export default function MaintenanceServices() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#1A1A1A] to-[#1A1A1A]">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -999,7 +999,7 @@ export default function MaintenanceServices() {
                     { step: "4", title: "Review", desc: "Reviewing outcomes to ensure resolution" },
                   ].map((item, idx) => (
                     <div key={idx} className="text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      <div className="w-12 h-12 mx-auto mb-4 bg-[#CD9342] rounded-full flex items-center justify-center text-white font-bold text-xl">
                         {item.step}
                       </div>
                       <h4 className="font-bold text-white mb-2">{item.title}</h4>
@@ -1014,7 +1014,7 @@ export default function MaintenanceServices() {
       </section>
 
       {/* COMPREHENSIVE FAQ SECTION */}
-      <section className="py-24 bg-[#F6F4EB]" data-testid="section-maintenance-faq">
+      <section className="py-24 bg-[#FAFAFA]" data-testid="section-maintenance-faq">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1023,7 +1023,7 @@ export default function MaintenanceServices() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#1A1A1A]">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -1045,7 +1045,7 @@ export default function MaintenanceServices() {
                 <TabsTrigger 
                   key={tab.value} 
                   value={tab.value}
-                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  className="px-4 py-2 data-[state=active]:bg-[#CD9342] data-[state=active]:text-white rounded-full"
                   data-testid={`tab-maintenance-faq-${tab.value}`}
                 >
                   {tab.label}
@@ -1071,7 +1071,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-overview-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1098,7 +1098,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-general-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1125,7 +1125,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-electrical-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1152,7 +1152,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-plumbing-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1179,7 +1179,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-hvac-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1206,7 +1206,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-handyman-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1233,7 +1233,7 @@ export default function MaintenanceServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-amc-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1246,7 +1246,7 @@ export default function MaintenanceServices() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#09263D] to-[#1C4668]" data-testid="section-final-cta">
+      <section className="py-24 bg-gradient-to-r from-[#1A1A1A] to-[#1A1A1A]" data-testid="section-final-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1265,7 +1265,7 @@ export default function MaintenanceServices() {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-10 py-7 text-lg shadow-2xl"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-10 py-7 text-lg shadow-2xl"
                   data-testid="button-cta-quote"
                 >
                   <Link href="/contact">

@@ -252,7 +252,7 @@ export default function AdminPosts() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44] hover:bg-[#720632]" data-testid="button-add-post">
+            <Button className="bg-[#CD9342] hover:bg-[#A67A2E]" data-testid="button-add-post">
               <Plus className="w-4 h-4 mr-2" />
               Add Post
             </Button>
@@ -440,7 +440,7 @@ export default function AdminPosts() {
                 <TabsContent value="media" className="space-y-6">
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
-                      <Image className="w-5 h-5 text-[#970A44]" />
+                      <Image className="w-5 h-5 text-[#CD9342]" />
                       <Label className="text-lg font-semibold">Additional Images</Label>
                     </div>
                     <div className="flex gap-2">
@@ -484,7 +484,7 @@ export default function AdminPosts() {
                   
                   <div className="space-y-4">
                     <div className="flex items-center gap-2">
-                      <Link2 className="w-5 h-5 text-[#970A44]" />
+                      <Link2 className="w-5 h-5 text-[#CD9342]" />
                       <Label className="text-lg font-semibold">Internal Links</Label>
                     </div>
                     <p className="text-sm text-gray-500">
@@ -524,7 +524,7 @@ export default function AdminPosts() {
                             <div>
                               <span className="font-medium">{link.text}</span>
                               <span className="text-gray-400 mx-2">→</span>
-                              <span className="text-[#970A44]">{link.url}</span>
+                              <span className="text-[#CD9342]">{link.url}</span>
                             </div>
                             <Button
                               type="button"
@@ -549,7 +549,7 @@ export default function AdminPosts() {
                 </Button>
                 <Button 
                   type="submit" 
-                  className="bg-[#970A44]"
+                  className="bg-[#CD9342]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-submit-post"
                 >
@@ -596,7 +596,7 @@ export default function AdminPosts() {
                       <h3 className="font-semibold text-lg truncate">{post.title}</h3>
                       <p className="text-sm text-gray-500 line-clamp-2">{post.excerpt}</p>
                       <div className="flex gap-2 mt-2">
-                        <span className="px-2 py-0.5 bg-[#970A44]/10 text-[#970A44] rounded text-xs">
+                        <span className="px-2 py-0.5 bg-[#CD9342]/10 text-[#CD9342] rounded text-xs">
                           {post.category}
                         </span>
                         {post.featured && (

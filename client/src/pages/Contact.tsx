@@ -123,7 +123,7 @@ export default function Contact() {
                     <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <info.icon className="w-7 h-7 text-primary" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 font-[Montserrat]">{info.title}</h3>
+                    <h3 className="text-xl font-bold mb-3 font-[Archivo]">{info.title}</h3>
                     {info.details.map((detail, i) => (
                       <p key={i} className="text-muted-foreground text-sm mb-1">
                         {detail}
@@ -139,7 +139,7 @@ export default function Contact() {
             <motion.div {...fadeInUp}>
               <Card>
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Send Us a Message</h2>
+                  <h2 className="text-2xl font-bold mb-6 font-[Archivo]">Send Us a Message</h2>
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                       <FormField
@@ -245,7 +245,7 @@ export default function Contact() {
                       <MessageCircle className="w-6 h-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 font-[Montserrat]">Chat with us on WhatsApp</h3>
+                      <h3 className="text-xl font-bold mb-2 font-[Archivo]">Chat with us on WhatsApp</h3>
                       <p className="text-sm text-muted-foreground mb-4">
                         Get instant answers to your questions. We're online and ready to help!
                       </p>
@@ -269,7 +269,7 @@ export default function Contact() {
                       <Clock className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 font-[Montserrat]">Business Hours</h3>
+                      <h3 className="text-xl font-bold mb-2 font-[Archivo]">Business Hours</h3>
                       <div className="space-y-1 text-sm text-muted-foreground">
                         <p><span className="font-medium text-foreground">Monday - Friday:</span> 9:00 AM - 6:00 PM</p>
                         <p><span className="font-medium text-foreground">Saturday:</span> 10:00 AM - 4:00 PM</p>

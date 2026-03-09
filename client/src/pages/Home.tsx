@@ -149,7 +149,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold text-white mb-2 sm:mb-3"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: "'Inter', Georgia, serif" }}
                   >
                     Your Complete Property Solutions Partner
                   </motion.h1>
@@ -170,7 +170,7 @@ export default function Home() {
                     <Button 
                       asChild 
                       size="lg"
-                      className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full shadow-xl"
+                      className="bg-[#CD9342] hover:bg-[#A67A2E] text-white font-semibold rounded-full shadow-xl"
                       data-testid="button-hero-consultation"
                     >
                       <Link href="/contact">
@@ -209,7 +209,7 @@ export default function Home() {
                       className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 sm:p-4 text-center"
                     >
                       <div className="flex justify-center mb-1 sm:mb-2">
-                        <div className="w-7 h-7 sm:w-10 sm:h-10 bg-[#970A44] rounded-lg flex items-center justify-center">
+                        <div className="w-7 h-7 sm:w-10 sm:h-10 bg-[#CD9342] rounded-lg flex items-center justify-center">
                           <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={stat.icon} />
                           </svg>
@@ -234,7 +234,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="text-center"
             >
-              <p className="text-xs uppercase tracking-wider text-[#970A44] font-semibold mb-1">
+              <p className="text-xs uppercase tracking-wider text-[#CD9342] font-semibold mb-1">
                 Trusted by 5000+ Happy Clients
               </p>
               <h2 className="text-xl md:text-2xl font-bold font-serif">
@@ -272,14 +272,14 @@ export default function Home() {
                 >
                   <div className="flex gap-0.5 mb-1.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-[#970A44] text-[#970A44]" />
+                      <Star key={i} className="w-3 h-3 fill-[#CD9342] text-[#CD9342]" />
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground leading-snug mb-2 line-clamp-2">
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#970A44] to-[#720632] flex items-center justify-center text-white font-bold text-[10px]">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#CD9342] to-[#A67A2E] flex items-center justify-center text-white font-bold text-[10px]">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
@@ -335,12 +335,12 @@ export default function Home() {
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <motion.div 
-                          className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#970A44]/10 flex items-center justify-center" 
+                          className="flex-shrink-0 w-12 h-12 rounded-lg bg-[#CD9342]/10 flex items-center justify-center" 
                           data-testid={`why-choose-icon-${index}`}
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <Icon className="w-6 h-6 text-[#970A44]" />
+                          <Icon className="w-6 h-6 text-[#CD9342]" />
                         </motion.div>
                         <div>
                           <h3 className="text-xl font-bold mb-2" data-testid={`why-choose-title-${index}`}>{item.title}</h3>

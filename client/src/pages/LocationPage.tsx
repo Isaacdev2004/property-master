@@ -47,18 +47,18 @@ export default function LocationPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#970A44]" />
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#CD9342]" />
       </div>
     );
   }
 
   if (error || !page) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F6F4EB] px-4">
-        <h1 className="text-3xl font-bold text-[#09263D] mb-4">Location Not Found</h1>
-        <p className="text-[#09263D]/70 mb-8">The location page you're looking for doesn't exist.</p>
-        <Button asChild className="bg-[#970A44]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAFAFA] px-4">
+        <h1 className="text-3xl font-bold text-[#1A1A1A] mb-4">Location Not Found</h1>
+        <p className="text-[#1A1A1A]/70 mb-8">The location page you're looking for doesn't exist.</p>
+        <Button asChild className="bg-[#CD9342]">
           <Link href="/">Return Home</Link>
         </Button>
       </div>
@@ -79,9 +79,9 @@ export default function LocationPage() {
       <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center" data-testid="section-hero">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: page.heroImage ? `url(${page.heroImage})` : "linear-gradient(to right, #09263D, #1C4668)" }}
+          style={{ backgroundImage: page.heroImage ? `url(${page.heroImage})` : "linear-gradient(to right, #1A1A1A, #1A1A1A)" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-[#09263D]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/80 to-[#1A1A1A]/60" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-24 pb-12 md:pb-16 w-full">
@@ -103,7 +103,7 @@ export default function LocationPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-[#970A44] rounded-full px-4 py-2 mb-4 md:mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#CD9342] rounded-full px-4 py-2 mb-4 md:mb-6">
               <MapPin className="w-4 h-4 md:w-5 md:h-5 text-white" />
               <span className="text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
                 {page.location}
@@ -112,7 +112,7 @@ export default function LocationPage() {
             
             <h1 
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 md:mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
               data-testid="heading-h1"
             >
               {page.h1}
@@ -128,7 +128,7 @@ export default function LocationPage() {
               <Button 
                 asChild 
                 size="lg"
-                className="bg-[#970A44] text-white rounded-full px-6 md:px-8 w-full sm:w-auto"
+                className="bg-[#CD9342] text-white rounded-full px-6 md:px-8 w-full sm:w-auto"
                 data-testid="button-book"
               >
                 <Link href="/book">
@@ -153,20 +153,20 @@ export default function LocationPage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-description">
+      <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-description">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div {...fadeInUp}>
               <h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D] mb-4 md:mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] mb-4 md:mb-6"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 {page.serviceName ? `${page.serviceName} Services in ${page.location}` : `Services in ${page.location}`}
               </h2>
-              <p className="text-[#09263D]/70 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-[#1A1A1A]/70 text-base md:text-lg leading-relaxed mb-6">
                 {page.description}
               </p>
-              <Button asChild className="bg-[#970A44] rounded-full" data-testid="button-explore">
+              <Button asChild className="bg-[#CD9342] rounded-full" data-testid="button-explore">
                 <Link href="/contact">
                   Get Free Quote
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -180,10 +180,10 @@ export default function LocationPage() {
               ).map((feature, index) => (
                 <Card key={index} className="bg-white">
                   <CardContent className="p-4 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#970A44]/10 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#970A44]" />
+                    <div className="w-8 h-8 rounded-full bg-[#CD9342]/10 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#CD9342]" />
                     </div>
-                    <span className="text-sm font-medium text-[#09263D]">{feature}</span>
+                    <span className="text-sm font-medium text-[#1A1A1A]">{feature}</span>
                   </CardContent>
                 </Card>
               ))}
@@ -196,12 +196,12 @@ export default function LocationPage() {
         <section className="py-12 md:py-20 bg-white" data-testid="section-features">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-              <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+              <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
                 What We Offer
               </p>
               <h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 Our {page.serviceName || "Service"} Features
               </h2>
@@ -215,12 +215,12 @@ export default function LocationPage() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="bg-[#F6F4EB] border-none h-full">
+                  <Card className="bg-[#FAFAFA] border-none h-full">
                     <CardContent className="p-6 flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-[#970A44]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-5 h-5 text-[#970A44]" />
+                      <div className="w-10 h-10 rounded-full bg-[#CD9342]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-5 h-5 text-[#CD9342]" />
                       </div>
-                      <span className="text-[#09263D] font-medium">{feature}</span>
+                      <span className="text-[#1A1A1A] font-medium">{feature}</span>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -234,7 +234,7 @@ export default function LocationPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp}>
             <div 
-              className="prose prose-lg max-w-none text-[#09263D]/80"
+              className="prose prose-lg max-w-none text-[#1A1A1A]/80"
               dangerouslySetInnerHTML={{ __html: page.content.replace(/\n/g, "<br />") }}
             />
           </motion.div>
@@ -242,15 +242,15 @@ export default function LocationPage() {
       </section>
 
       {page.processSteps && page.processSteps.length > 0 && (
-        <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-process">
+        <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-process">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-              <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+              <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
                 How It Works
               </p>
               <h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 Our Process
               </h2>
@@ -266,11 +266,11 @@ export default function LocationPage() {
                 >
                   <Card className="bg-white h-full text-center">
                     <CardContent className="p-6">
-                      <div className="w-12 h-12 rounded-full bg-[#970A44] text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                      <div className="w-12 h-12 rounded-full bg-[#CD9342] text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">
                         {index + 1}
                       </div>
-                      <h3 className="font-bold text-[#09263D] mb-2">{step.title}</h3>
-                      <p className="text-sm text-[#09263D]/70">{step.description}</p>
+                      <h3 className="font-bold text-[#1A1A1A] mb-2">{step.title}</h3>
+                      <p className="text-sm text-[#1A1A1A]/70">{step.description}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -284,13 +284,13 @@ export default function LocationPage() {
         <section className="py-12 md:py-20 bg-white" data-testid="section-why-choose">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-8">
-              <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+              <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
                 Why Choose Us
               </p>
               {page.h3 && (
                 <h3 
-                  className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+                  style={{ fontFamily: "'Inter', Georgia, serif" }}
                   data-testid="heading-h3"
                 >
                   {page.h3}
@@ -299,7 +299,7 @@ export default function LocationPage() {
             </motion.div>
             <motion.div {...fadeInUp}>
               <div 
-                className="prose prose-lg max-w-none text-[#09263D]/80"
+                className="prose prose-lg max-w-none text-[#1A1A1A]/80"
                 dangerouslySetInnerHTML={{ __html: page.whyChooseUs.replace(/\n/g, "<br />") }}
               />
             </motion.div>
@@ -308,12 +308,12 @@ export default function LocationPage() {
       )}
 
       {page.localInfo && (
-        <section className="py-12 md:py-20 bg-[#09263D]" data-testid="section-local-info">
+        <section className="py-12 md:py-20 bg-[#1A1A1A]" data-testid="section-local-info">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center">
               <h2 
                 className="text-2xl md:text-3xl font-bold text-white mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 About {page.location}
               </h2>
@@ -327,15 +327,15 @@ export default function LocationPage() {
       )}
 
       {page.faqs && page.faqs.length > 0 && (
-        <section className="py-12 md:py-20 bg-[#F6F4EB]" data-testid="section-faqs">
+        <section className="py-12 md:py-20 bg-[#FAFAFA]" data-testid="section-faqs">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
-              <p className="text-[#970A44] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
+              <p className="text-[#CD9342] font-semibold text-xs md:text-sm uppercase tracking-widest mb-2 md:mb-3">
                 FAQ
               </p>
               <h2 
-                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09263D]"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A]"
+                style={{ fontFamily: "'Inter', Georgia, serif" }}
               >
                 Frequently Asked Questions
               </h2>
@@ -356,16 +356,16 @@ export default function LocationPage() {
                       onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
                       data-testid={`button-faq-${index}`}
                     >
-                      <span className="font-semibold text-[#09263D] pr-4">{faq.question}</span>
+                      <span className="font-semibold text-[#1A1A1A] pr-4">{faq.question}</span>
                       {expandedFaq === index ? (
-                        <ChevronUp className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                        <ChevronUp className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                        <ChevronDown className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                       )}
                     </button>
                     {expandedFaq === index && (
                       <div className="px-4 md:px-6 pb-4 md:pb-6">
-                        <p className="text-[#09263D]/70">{faq.answer}</p>
+                        <p className="text-[#1A1A1A]/70">{faq.answer}</p>
                       </div>
                     )}
                   </Card>
@@ -380,12 +380,12 @@ export default function LocationPage() {
         <section className="py-12 md:py-16 bg-white" data-testid="section-internal-links">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp}>
-              <h3 className="text-lg font-bold text-[#09263D] mb-4">Related Services</h3>
+              <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">Related Services</h3>
               <div className="flex flex-wrap gap-3">
                 {page.internalLinks.map((link, index) => (
                   <Link key={index} href={link.url}>
                     <span 
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6F4EB] text-[#09263D] rounded-full text-sm font-medium hover:bg-[#970A44] hover:text-white transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#FAFAFA] text-[#1A1A1A] rounded-full text-sm font-medium hover:bg-[#CD9342] hover:text-white transition-colors cursor-pointer"
                       data-testid={`link-internal-${index}`}
                     >
                       <ArrowRight className="w-3 h-3" />
@@ -399,7 +399,7 @@ export default function LocationPage() {
         </section>
       )}
 
-      <section className="py-12 md:py-20 bg-gradient-to-r from-[#970A44] to-[#720632]" data-testid="section-cta">
+      <section className="py-12 md:py-20 bg-gradient-to-r from-[#CD9342] to-[#A67A2E]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -409,7 +409,7 @@ export default function LocationPage() {
           >
             <h2 
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Inter', Georgia, serif" }}
             >
               Ready to Transform Your Space in {page.location}?
             </h2>
@@ -423,7 +423,7 @@ export default function LocationPage() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] rounded-full px-8 md:px-10 py-6 md:py-7 text-base md:text-lg shadow-2xl"
+                className="bg-white text-[#CD9342] rounded-full px-8 md:px-10 py-6 md:py-7 text-base md:text-lg shadow-2xl"
                 data-testid="button-cta-book"
               >
                 <Link href="/book">

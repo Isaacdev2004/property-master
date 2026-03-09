@@ -453,12 +453,12 @@ export default function AdminLocationPages() {
     <div className="space-y-6">
       <div className="flex flex-wrap justify-between items-start gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]" data-testid="heading-location-pages">Location-wise Service Pages</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]" data-testid="heading-location-pages">Location-wise Service Pages</h1>
           <p className="text-gray-600">Create location + service combination pages for Local SEO (e.g., "Interior Design in Dubai Marina")</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44]" onClick={resetForm} data-testid="button-add-location">
+            <Button className="bg-[#CD9342]" onClick={resetForm} data-testid="button-add-location">
               <Plus className="w-4 h-4 mr-2" />
               Create Location Service Page
             </Button>
@@ -470,7 +470,7 @@ export default function AdminLocationPages() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {!editingPage && (
                 <div className="space-y-4 p-4 bg-gray-50 rounded-lg border">
-                  <h3 className="font-semibold text-[#09263D]">Step 1: Select Service + Location</h3>
+                  <h3 className="font-semibold text-[#1A1A1A]">Step 1: Select Service + Location</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>Select Service</Label>
@@ -507,7 +507,7 @@ export default function AdminLocationPages() {
                           variant={formData.location === location ? "default" : "outline"}
                           size="sm"
                           onClick={() => handleLocationSelect(location)}
-                          className={formData.location === location ? "bg-[#970A44]" : ""}
+                          className={formData.location === location ? "bg-[#CD9342]" : ""}
                           data-testid={`button-location-${location.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           {location}
@@ -956,7 +956,7 @@ export default function AdminLocationPages() {
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#970A44]"
+                  className="bg-[#CD9342]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-save-location"
                 >
@@ -1002,11 +1002,11 @@ export default function AdminLocationPages() {
           <Card key={page.id} className={!page.isActive ? "opacity-60" : ""} data-testid={`card-location-${page.id}`}>
             <CardHeader className="flex flex-row items-start justify-between gap-2">
               <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-lg ${page.isActive ? "bg-[#970A44]/10" : "bg-gray-100"}`}>
+                <div className={`p-2 rounded-lg ${page.isActive ? "bg-[#CD9342]/10" : "bg-gray-100"}`}>
                   {page.serviceName ? (
-                    <Wrench className={`w-5 h-5 ${page.isActive ? "text-[#970A44]" : "text-gray-400"}`} />
+                    <Wrench className={`w-5 h-5 ${page.isActive ? "text-[#CD9342]" : "text-gray-400"}`} />
                   ) : (
-                    <MapPin className={`w-5 h-5 ${page.isActive ? "text-[#970A44]" : "text-gray-400"}`} />
+                    <MapPin className={`w-5 h-5 ${page.isActive ? "text-[#CD9342]" : "text-gray-400"}`} />
                   )}
                 </div>
                 <div>
@@ -1020,7 +1020,7 @@ export default function AdminLocationPages() {
                   </CardTitle>
                   <CardDescription>/location/{page.slug}</CardDescription>
                   {page.focusKeyword && (
-                    <p className="text-xs text-[#970A44] mt-1">Keyword: {page.focusKeyword}</p>
+                    <p className="text-xs text-[#CD9342] mt-1">Keyword: {page.focusKeyword}</p>
                   )}
                 </div>
               </div>
@@ -1051,7 +1051,7 @@ export default function AdminLocationPages() {
               <p className="text-sm text-gray-600 line-clamp-2">{page.description}</p>
               <div className="flex flex-wrap gap-2 mt-3 text-sm">
                 {page.serviceName && (
-                  <span className="px-2 py-1 bg-[#970A44]/10 text-[#970A44] rounded">{page.serviceName}</span>
+                  <span className="px-2 py-1 bg-[#CD9342]/10 text-[#CD9342] rounded">{page.serviceName}</span>
                 )}
                 {page.faqs && page.faqs.length > 0 && (
                   <span className="px-2 py-1 bg-green-100 text-green-700 rounded">{page.faqs.length} FAQs</span>

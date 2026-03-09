@@ -275,7 +275,7 @@ export default function WellnessServices() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* SECTION 1: HERO - matching thehealthyhome.me */}
       <section className="relative pt-24 pb-16 overflow-hidden" data-testid="section-hero">
         <div className="absolute inset-0">
@@ -287,7 +287,7 @@ export default function WellnessServices() {
             className="w-full h-full object-cover"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/90 via-[#1A1A1A]/70 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -329,10 +329,10 @@ export default function WellnessServices() {
               data-testid="section-widgets"
             >
               <div className="flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-full px-5 py-2.5 shadow-lg">
-                <Wind className="w-6 h-6 text-[#970A44]" />
+                <Wind className="w-6 h-6 text-[#CD9342]" />
                 <div>
                   <span className="text-xs text-muted-foreground block">Air Quality Today</span>
-                  <div className="font-bold text-[#09263D] text-sm">Good - 85 AQI</div>
+                  <div className="font-bold text-[#1A1A1A] text-sm">Good - 85 AQI</div>
                 </div>
               </div>
               
@@ -363,11 +363,11 @@ export default function WellnessServices() {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                 >
                   <Link href={service.href}>
-                    <div className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-[#F6F4EB] transition-colors cursor-pointer group" data-testid={`quick-service-${service.id}`}>
-                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-3 group-hover:bg-[#970A44]/20 transition-colors">
-                        <Icon className="w-8 h-8 text-[#970A44]" />
+                    <div className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-[#FAFAFA] transition-colors cursor-pointer group" data-testid={`quick-service-${service.id}`}>
+                      <div className="w-16 h-16 bg-[#CD9342]/10 rounded-2xl flex items-center justify-center mb-3 group-hover:bg-[#CD9342]/20 transition-colors">
+                        <Icon className="w-8 h-8 text-[#CD9342]" />
                       </div>
-                      <span className="text-sm font-medium text-[#09263D]">{service.name}</span>
+                      <span className="text-sm font-medium text-[#1A1A1A]">{service.name}</span>
                     </div>
                   </Link>
                 </motion.div>
@@ -378,14 +378,14 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 4: DISCOVER NEW SERVICES - matching thehealthyhome.me */}
-      <section className="py-16 bg-[#F6F4EB]" data-testid="section-new-services">
+      <section className="py-16 bg-[#FAFAFA]" data-testid="section-new-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Discover Our New Services!
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -396,7 +396,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollNewServices('left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-new-services-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -424,7 +424,7 @@ export default function WellnessServices() {
                           alt={service.name}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#970A44]/80 to-transparent flex items-center">
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#CD9342]/80 to-transparent flex items-center">
                           <h3 className="text-white font-bold text-lg px-6">{service.name}</h3>
                         </div>
                       </div>
@@ -436,7 +436,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollNewServices('right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-new-services-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -453,8 +453,8 @@ export default function WellnessServices() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-[#970A44] font-medium uppercase tracking-wider text-sm">Our Top Category</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mt-2 mb-4">
+            <span className="text-[#CD9342] font-medium uppercase tracking-wider text-sm">Our Top Category</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mt-2 mb-4">
               Your Partner in Healthier Living
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -481,10 +481,10 @@ export default function WellnessServices() {
                           alt={category.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#09263D] via-[#09263D]/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/50 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-8">
                           <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-4">
-                            <Icon className="w-7 h-7 text-[#970A44]" />
+                            <Icon className="w-7 h-7 text-[#CD9342]" />
                           </div>
                           <h3 className="text-2xl font-bold text-white mb-3">{category.title}</h3>
                           <p className="text-white/80 text-sm">{category.description}</p>
@@ -500,7 +500,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 6: AC SERVICES - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#F6F4EB]" id="home-services" data-testid="section-ac-services">
+      <section className="py-20 bg-[#FAFAFA]" id="home-services" data-testid="section-ac-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
@@ -509,8 +509,8 @@ export default function WellnessServices() {
           >
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <Wind className="w-8 h-8 text-[#970A44]" />
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                <Wind className="w-8 h-8 text-[#CD9342]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                   AC Services
                 </h2>
               </div>
@@ -519,7 +519,7 @@ export default function WellnessServices() {
             <Button 
               asChild
               variant="outline"
-              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="hidden md:flex rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-ac"
             >
               <Link href="/wellness/ac-services">
@@ -532,7 +532,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollServices(acServicesRef, 'left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-ac-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -561,7 +561,7 @@ export default function WellnessServices() {
                       />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -571,7 +571,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollServices(acServicesRef, 'right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-ac-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -590,8 +590,8 @@ export default function WellnessServices() {
           >
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <Sofa className="w-8 h-8 text-[#970A44]" />
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                <Sofa className="w-8 h-8 text-[#CD9342]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                   Furniture Cleaning Services
                 </h2>
               </div>
@@ -600,7 +600,7 @@ export default function WellnessServices() {
             <Button 
               asChild
               variant="outline"
-              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="hidden md:flex rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-furniture"
             >
               <Link href="/wellness/furniture-cleaning">
@@ -613,7 +613,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollServices(furnitureServicesRef, 'left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-furniture-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -642,7 +642,7 @@ export default function WellnessServices() {
                       />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -652,7 +652,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollServices(furnitureServicesRef, 'right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-furniture-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -662,7 +662,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 8: WATER & PIPELINE SERVICES - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-water-services">
+      <section className="py-20 bg-[#FAFAFA]" data-testid="section-water-services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
@@ -671,8 +671,8 @@ export default function WellnessServices() {
           >
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <Droplets className="w-8 h-8 text-[#970A44]" />
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                <Droplets className="w-8 h-8 text-[#CD9342]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                   Water & Pipeline Services
                 </h2>
               </div>
@@ -681,7 +681,7 @@ export default function WellnessServices() {
             <Button 
               asChild
               variant="outline"
-              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="hidden md:flex rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-water"
             >
               <Link href="/wellness/water-services">
@@ -694,7 +694,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollServices(waterServicesRef, 'left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-water-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -723,7 +723,7 @@ export default function WellnessServices() {
                       />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -733,7 +733,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollServices(waterServicesRef, 'right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-water-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -752,8 +752,8 @@ export default function WellnessServices() {
           >
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <Home className="w-8 h-8 text-[#970A44]" />
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                <Home className="w-8 h-8 text-[#CD9342]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                   Home Deep Cleaning Services
                 </h2>
               </div>
@@ -764,7 +764,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollServices(deepCleaningRef, 'left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-deep-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -793,7 +793,7 @@ export default function WellnessServices() {
                       />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -803,7 +803,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollServices(deepCleaningRef, 'right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-deep-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -813,7 +813,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 10: PEST CONTROL SERVICES - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-pest-control">
+      <section className="py-20 bg-[#FAFAFA]" data-testid="section-pest-control">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
@@ -822,8 +822,8 @@ export default function WellnessServices() {
           >
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <Bug className="w-8 h-8 text-[#970A44]" />
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+                <Bug className="w-8 h-8 text-[#CD9342]" />
+                <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                   Pest Control Services
                 </h2>
               </div>
@@ -832,7 +832,7 @@ export default function WellnessServices() {
             <Button 
               asChild
               variant="outline"
-              className="hidden md:flex rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="hidden md:flex rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-pest"
             >
               <Link href="/wellness/pest-control">
@@ -845,7 +845,7 @@ export default function WellnessServices() {
           <div className="relative -mx-6 lg:-mx-8">
             <button
               onClick={() => scrollServices(pestServicesRef, 'left')}
-              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-pest-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -874,7 +874,7 @@ export default function WellnessServices() {
                       />
                     </div>
                     <CardContent className="p-5">
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -884,7 +884,7 @@ export default function WellnessServices() {
 
             <button
               onClick={() => scrollServices(pestServicesRef, 'right')}
-              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors"
+              className="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors"
               data-testid="button-pest-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -902,8 +902,8 @@ export default function WellnessServices() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-3 mb-2">
-              <TestTube className="w-8 h-8 text-[#970A44]" />
-              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+              <TestTube className="w-8 h-8 text-[#CD9342]" />
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                 Indoor Environmental Testing
               </h2>
             </div>
@@ -925,10 +925,10 @@ export default function WellnessServices() {
                 >
                   <Card className="border-0 shadow-lg hover-elevate cursor-pointer text-center" data-testid={`testing-service-${service.id}`}>
                     <CardContent className="p-6">
-                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
-                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 mx-auto bg-[#CD9342]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <Icon className="w-8 h-8 text-[#CD9342]" />
                       </div>
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{service.name}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{service.name}</h3>
                       <p className="text-muted-foreground text-sm">{service.description}</p>
                     </CardContent>
                   </Card>
@@ -940,14 +940,14 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 12: PERSONAL WELLNESS SERVICES - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#09263D]" id="personal-services" data-testid="section-personal-wellness">
+      <section className="py-20 bg-[#1A1A1A]" id="personal-services" data-testid="section-personal-wellness">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-[#970A44] font-medium uppercase tracking-wider text-sm">Personal Services</span>
+            <span className="text-[#CD9342] font-medium uppercase tracking-wider text-sm">Personal Services</span>
             <h2 className="text-3xl md:text-4xl font-bold font-serif text-white mt-2 mb-4">
               Personal Wellness Services
             </h2>
@@ -978,7 +978,7 @@ export default function WellnessServices() {
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                            <Icon className="w-5 h-5 text-[#970A44]" />
+                            <Icon className="w-5 h-5 text-[#CD9342]" />
                           </div>
                           <h3 className="font-bold text-lg text-white">{service.name}</h3>
                         </div>
@@ -1002,8 +1002,8 @@ export default function WellnessServices() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-3 mb-2">
-              <Wrench className="w-8 h-8 text-[#970A44]" />
-              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+              <Wrench className="w-8 h-8 text-[#CD9342]" />
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
                 Home Improvement Services
               </h2>
             </div>
@@ -1023,7 +1023,7 @@ export default function WellnessServices() {
               >
                 <Card className="border-0 shadow-md hover-elevate cursor-pointer" data-testid={`improvement-service-${service.id}`}>
                   <CardContent className="p-5">
-                    <h3 className="font-bold text-[#09263D] mb-1">{service.name}</h3>
+                    <h3 className="font-bold text-[#1A1A1A] mb-1">{service.name}</h3>
                     <p className="text-muted-foreground text-sm">{service.description}</p>
                   </CardContent>
                 </Card>
@@ -1034,14 +1034,14 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 14: WHY CHOOSE US - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-why-choose">
+      <section className="py-20 bg-[#FAFAFA]" data-testid="section-why-choose">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Why Choose Property Masters Wellness?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -1062,10 +1062,10 @@ export default function WellnessServices() {
                 >
                   <Card className="border-0 shadow-lg hover-elevate" data-testid={`why-choose-${index}`}>
                     <CardContent className="p-6 text-center">
-                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
-                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 mx-auto bg-[#CD9342]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <Icon className="w-8 h-8 text-[#CD9342]" />
                       </div>
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{item.title}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{item.title}</h3>
                       <p className="text-muted-foreground text-sm">{item.description}</p>
                     </CardContent>
                   </Card>
@@ -1095,7 +1095,7 @@ export default function WellnessServices() {
               <span className="ml-2 text-xl font-bold">4.9</span>
               <span className="text-muted-foreground">(7,000+ reviews)</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A]">
               What Our Customers Say
             </h2>
           </motion.div>
@@ -1103,7 +1103,7 @@ export default function WellnessServices() {
           <div className="relative max-w-4xl mx-auto">
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-6"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors -ml-6"
               data-testid="button-prev-testimonial"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -1116,8 +1116,8 @@ export default function WellnessServices() {
                     <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <Quote className="w-12 h-12 mx-auto text-[#970A44]/20 mb-4" />
-                <p className="text-xl text-[#09263D] italic mb-8 leading-relaxed">
+                <Quote className="w-12 h-12 mx-auto text-[#CD9342]/20 mb-4" />
+                <p className="text-xl text-[#1A1A1A] italic mb-8 leading-relaxed">
                   "{testimonials[currentTestimonial].content}"
                 </p>
                 <div className="flex items-center justify-center gap-4">
@@ -1127,7 +1127,7 @@ export default function WellnessServices() {
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div className="text-left">
-                    <h4 className="font-bold text-[#09263D]">{testimonials[currentTestimonial].name}</h4>
+                    <h4 className="font-bold text-[#1A1A1A]">{testimonials[currentTestimonial].name}</h4>
                     <p className="text-sm text-muted-foreground">{testimonials[currentTestimonial].service}</p>
                   </div>
                 </div>
@@ -1136,7 +1136,7 @@ export default function WellnessServices() {
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-6"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors -mr-6"
               data-testid="button-next-testimonial"
             >
               <ChevronRight className="w-6 h-6" />
@@ -1148,7 +1148,7 @@ export default function WellnessServices() {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-[#970A44]' : 'bg-gray-300'
+                    index === currentTestimonial ? 'bg-[#CD9342]' : 'bg-gray-300'
                   }`}
                   data-testid={`testimonial-dot-${index}`}
                 />
@@ -1169,7 +1169,7 @@ export default function WellnessServices() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-[#1A1A1A]">
               Wellness Services in Dubai
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -1185,14 +1185,14 @@ export default function WellnessServices() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-16"
           >
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#CD9342]/5 to-[#A67A2E]/10">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-7 h-7 text-[#970A44]" />
+                  <div className="w-14 h-14 bg-[#CD9342]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-7 h-7 text-[#CD9342]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-[#09263D]">Why Wellness Services Matter in Dubai</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-[#1A1A1A]">Why Wellness Services Matter in Dubai</h3>
                     <p className="text-muted-foreground leading-relaxed mb-4">
                       Dubai's climate, combined with modern building designs, often leads to unique indoor environment challenges that require professional attention.
                     </p>
@@ -1204,7 +1204,7 @@ export default function WellnessServices() {
                         "Increased reliance on air conditioning"
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-[#CD9342] flex-shrink-0" />
                           <span className="text-muted-foreground">{item}</span>
                         </div>
                       ))}
@@ -1223,11 +1223,11 @@ export default function WellnessServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#970A44]" />
-                <span className="text-[#970A44] font-medium">Our Approach to Wellness</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#CD9342]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#CD9342]" />
+                <span className="text-[#CD9342] font-medium">Our Approach to Wellness</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#1A1A1A]">
                 Preventive, Structured & Practical
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
@@ -1241,7 +1241,7 @@ export default function WellnessServices() {
                   "Supporting long-term improvement rather than temporary fixes"
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#CD9342] flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}
@@ -1254,11 +1254,11 @@ export default function WellnessServices() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
-                <Eye className="w-5 h-5 text-[#1C4668]" />
-                <span className="text-[#1C4668] font-medium">What Our Wellness Services Cover</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1A1A1A]/10 rounded-full mb-6">
+                <Eye className="w-5 h-5 text-[#1A1A1A]" />
+                <span className="text-[#1A1A1A] font-medium">What Our Wellness Services Cover</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#09263D]">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif text-[#1A1A1A]">
                 Comprehensive Indoor Health
               </h3>
               <div className="space-y-4">
@@ -1271,7 +1271,7 @@ export default function WellnessServices() {
                 ].map((item, idx) => (
                   <Card key={idx} className="border hover-elevate" data-testid={`wellness-cover-${idx}`}>
                     <CardContent className="p-4">
-                      <h4 className="font-bold text-[#09263D] mb-1">{item.title}</h4>
+                      <h4 className="font-bold text-[#1A1A1A] mb-1">{item.title}</h4>
                       <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </CardContent>
                   </Card>
@@ -1289,7 +1289,7 @@ export default function WellnessServices() {
             className="mb-16"
           >
             <div className="text-center mb-10">
-              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+              <h3 className="text-2xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
                 Who These Services Are For
               </h3>
               <p className="text-muted-foreground">Each project is approached with attention to specific needs and usage patterns.</p>
@@ -1310,10 +1310,10 @@ export default function WellnessServices() {
                 >
                   <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`wellness-for-${idx}`}>
                     <CardContent className="p-6">
-                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
-                        <item.icon className="w-7 h-7 text-[#970A44]" />
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#CD9342]/10 rounded-2xl flex items-center justify-center">
+                        <item.icon className="w-7 h-7 text-[#CD9342]" />
                       </div>
-                      <h4 className="font-bold mb-2 text-[#09263D]">{item.title}</h4>
+                      <h4 className="font-bold mb-2 text-[#1A1A1A]">{item.title}</h4>
                       <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </CardContent>
                   </Card>
@@ -1329,7 +1329,7 @@ export default function WellnessServices() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#1A1A1A] to-[#1A1A1A]">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -1348,7 +1348,7 @@ export default function WellnessServices() {
                     { step: "4", title: "Review", desc: "Reviewing outcomes to ensure improvement" },
                   ].map((item, idx) => (
                     <div key={idx} className="text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl">
+                      <div className="w-12 h-12 mx-auto mb-4 bg-[#CD9342] rounded-full flex items-center justify-center text-white font-bold text-xl">
                         {item.step}
                       </div>
                       <h4 className="font-bold text-white mb-2">{item.title}</h4>
@@ -1363,7 +1363,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 19: COMPREHENSIVE FAQ */}
-      <section className="py-24 bg-[#F6F4EB]" data-testid="section-wellness-faq">
+      <section className="py-24 bg-[#FAFAFA]" data-testid="section-wellness-faq">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1372,7 +1372,7 @@ export default function WellnessServices() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#09263D]">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-[#1A1A1A]">
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -1393,7 +1393,7 @@ export default function WellnessServices() {
                 <TabsTrigger 
                   key={tab.value} 
                   value={tab.value}
-                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  className="px-4 py-2 data-[state=active]:bg-[#CD9342] data-[state=active]:text-white rounded-full"
                   data-testid={`tab-wellness-faq-${tab.value}`}
                 >
                   {tab.label}
@@ -1419,7 +1419,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-overview-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1446,7 +1446,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-air-quality-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1473,7 +1473,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-hygiene-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1500,7 +1500,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-mold-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1527,7 +1527,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-water-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1554,7 +1554,7 @@ export default function WellnessServices() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`faq-allergy-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1567,7 +1567,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 20: BOOK NOW CTA - matching thehealthyhome.me */}
-      <section className="py-20 bg-[#970A44]" data-testid="section-book-cta">
+      <section className="py-20 bg-[#CD9342]" data-testid="section-book-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1585,7 +1585,7 @@ export default function WellnessServices() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-gray-100 rounded-full px-8"
+                className="bg-white text-[#CD9342] hover:bg-gray-100 rounded-full px-8"
                 data-testid="button-book-now"
               >
                 <Link href="/book">
@@ -1611,7 +1611,7 @@ export default function WellnessServices() {
       </section>
 
       {/* SECTION 17: CONTACT INFO - matching thehealthyhome.me */}
-      <section className="py-16 bg-[#09263D]" data-testid="section-contact-info">
+      <section className="py-16 bg-[#1A1A1A]" data-testid="section-contact-info">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <motion.div
@@ -1620,7 +1620,7 @@ export default function WellnessServices() {
               viewport={{ once: true }}
               className="flex flex-col items-center"
             >
-              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#CD9342] rounded-2xl flex items-center justify-center mb-4">
                 <Phone className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">Call Us</h3>
@@ -1634,7 +1634,7 @@ export default function WellnessServices() {
               transition={{ delay: 0.1 }}
               className="flex flex-col items-center"
             >
-              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#CD9342] rounded-2xl flex items-center justify-center mb-4">
                 <MapPin className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">Visit Us</h3>
@@ -1648,7 +1648,7 @@ export default function WellnessServices() {
               transition={{ delay: 0.2 }}
               className="flex flex-col items-center"
             >
-              <div className="w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#CD9342] rounded-2xl flex items-center justify-center mb-4">
                 <Calendar className="w-7 h-7 text-white" />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">Working Hours</h3>

@@ -103,7 +103,7 @@ export default function BookService() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Montserrat]">Book a Service</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 font-[Archivo]">Book a Service</h1>
             <p className="text-xl text-muted-foreground">Tell us about your project and we'll get back to you</p>
           </motion.div>
         </div>
@@ -148,7 +148,7 @@ export default function BookService() {
                   <AnimatePresence mode="wait">
                     {currentStep === 1 && (
                       <motion.div key="step1" {...fadeInUp}>
-                        <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Select Service Type</h2>
+                        <h2 className="text-2xl font-bold mb-6 font-[Archivo]">Select Service Type</h2>
                         <FormField
                           control={form.control}
                           name="serviceType"
@@ -176,7 +176,7 @@ export default function BookService() {
 
                     {currentStep === 2 && (
                       <motion.div key="step2" {...fadeInUp}>
-                        <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Choose Date & Time</h2>
+                        <h2 className="text-2xl font-bold mb-6 font-[Archivo]">Choose Date & Time</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <FormField
                             control={form.control}
@@ -219,7 +219,7 @@ export default function BookService() {
 
                     {currentStep === 3 && (
                       <motion.div key="step3" {...fadeInUp}>
-                        <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Contact Information</h2>
+                        <h2 className="text-2xl font-bold mb-6 font-[Archivo]">Contact Information</h2>
                         <div className="space-y-4">
                           <FormField
                             control={form.control}
@@ -313,7 +313,7 @@ export default function BookService() {
 
                     {currentStep === 4 && (
                       <motion.div key="step4" {...fadeInUp}>
-                        <h2 className="text-2xl font-bold mb-6 font-[Montserrat]">Confirm Your Booking</h2>
+                        <h2 className="text-2xl font-bold mb-6 font-[Archivo]">Confirm Your Booking</h2>
                         <div className="space-y-4 bg-muted/30 rounded-lg p-6">
                           <div>
                             <p className="text-sm text-muted-foreground mb-1">Service</p>

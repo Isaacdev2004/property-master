@@ -56,7 +56,7 @@ const serviceData: Record<string, {
     tagline: "Breathe Cleaner, Healthier Air",
     description: "Professional AC cleaning and sanitization services to improve indoor air quality, reduce energy consumption, and extend the life of your air conditioning system. Our certified technicians use hospital-grade disinfectants and advanced cleaning techniques.",
     icon: Wind,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1600&q=80",
     features: [
       "Deep coil cleaning",
@@ -98,7 +98,7 @@ const serviceData: Record<string, {
     tagline: "Deep Clean for Fresh, Healthy Carpets",
     description: "Professional carpet cleaning using hot water extraction and steam cleaning methods. We remove deep-seated dirt, stains, allergens, and bacteria, leaving your carpets fresh, sanitized, and looking like new.",
     icon: Sofa,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1600&q=80",
     features: [
       "Hot water extraction",
@@ -140,7 +140,7 @@ const serviceData: Record<string, {
     tagline: "Sleep Better on a Clean, Sanitized Mattress",
     description: "Professional mattress cleaning and sanitization to eliminate dust mites, allergens, bacteria, and odors. Our UV treatment and steam cleaning ensures a hygienic sleeping environment for better health and rest.",
     icon: Sofa,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80",
     features: [
       "UV-C light sanitization",
@@ -182,7 +182,7 @@ const serviceData: Record<string, {
     tagline: "Revitalize Your Sofas and Upholstery",
     description: "Complete furniture cleaning and sanitization for sofas, chairs, ottomans, and all upholstered items. Our professional deep cleaning removes stains, odors, and allergens while preserving fabric quality.",
     icon: Sofa,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80",
     features: [
       "Deep steam cleaning",
@@ -224,7 +224,7 @@ const serviceData: Record<string, {
     tagline: "Complete Home Transformation",
     description: "Comprehensive deep cleaning services for your entire home. From move-in/move-out cleaning to regular deep cleaning, we cover every corner of your property with meticulous attention to detail.",
     icon: Home,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&q=80",
     features: [
       "Kitchen deep clean",
@@ -266,7 +266,7 @@ const serviceData: Record<string, {
     tagline: "Transform Your Space with Color",
     description: "Professional interior and exterior painting services with premium quality paints and expert workmanship. From single room touch-ups to complete property repainting, we deliver flawless finishes.",
     icon: Paintbrush,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600&q=80",
     features: [
       "Interior painting",
@@ -308,7 +308,7 @@ const serviceData: Record<string, {
     tagline: "Pure Water for a Healthy Family",
     description: "Professional water tank cleaning and sanitization services to ensure your family has access to clean, safe drinking water. We remove sediment, bacteria, algae, and contaminants from all tank types.",
     icon: Droplets,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=1600&q=80",
     features: [
       "Complete tank drainage",
@@ -350,7 +350,7 @@ const serviceData: Record<string, {
     tagline: "Complete Care at Better Value",
     description: "Comprehensive wellness service packages and annual maintenance contracts designed to keep your home healthy year-round. Save money while ensuring regular professional care for all your wellness needs.",
     icon: Package,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80",
     features: [
       "Bundled services",
@@ -392,7 +392,7 @@ const serviceData: Record<string, {
     tagline: "Protect Your Home from Unwanted Guests",
     description: "Comprehensive pest control solutions for residential and commercial properties. We safely eliminate cockroaches, bed bugs, rodents, termites, mosquitoes, and other pests using eco-friendly methods.",
     icon: Bug,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1632935190767-4be97c0a228b?w=1600&q=80",
     features: [
       "Cockroach control",
@@ -434,7 +434,7 @@ const serviceData: Record<string, {
     tagline: "Wellness & Rejuvenation Delivered to You",
     description: "Professional IV therapy services in the comfort of your home. Our certified nurses administer vitamin infusions, hydration therapy, and wellness drips for energy, immunity, and recovery.",
     icon: Stethoscope,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80",
     features: [
       "Vitamin infusions",
@@ -476,7 +476,7 @@ const serviceData: Record<string, {
     tagline: "Stress-Free Moving Experience",
     description: "Professional moving and packing services for residential and commercial relocations. Our trained team handles your belongings with care, ensuring safe and efficient transport to your new location.",
     icon: Truck,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=1600&q=80",
     features: [
       "Professional packing",
@@ -518,7 +518,7 @@ const serviceData: Record<string, {
     tagline: "Medical Care in Your Comfort Zone",
     description: "Comprehensive home healthcare services including doctor visits, blood tests, vaccinations, and health consultations. Our licensed healthcare professionals bring quality medical care to your doorstep.",
     icon: Stethoscope,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
     features: [
       "Doctor consultations",
@@ -560,7 +560,7 @@ const serviceData: Record<string, {
     tagline: "Eliminate Mold, Protect Your Health",
     description: "Professional mold inspection, testing, and complete remediation services. We identify the source, remove mold safely, and implement prevention measures to keep your home mold-free.",
     icon: TestTube,
-    color: "bg-[#720632]",
+    color: "bg-[#A67A2E]",
     heroImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1600&q=80",
     features: [
       "Mold inspection",
@@ -602,7 +602,7 @@ const serviceData: Record<string, {
     tagline: "Breathe Easy with Confidence",
     description: "Comprehensive indoor air quality assessment using advanced testing equipment. We measure pollutants, allergens, VOCs, and other contaminants to help you understand and improve your indoor air.",
     icon: Wind,
-    color: "bg-[#1C4668]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1530533718754-001d2668365a?w=1600&q=80",
     features: [
       "Particulate matter testing",
@@ -644,7 +644,7 @@ const serviceData: Record<string, {
     tagline: "Clean Water, Healthy Life",
     description: "Complete water system care including tank cleaning, pipeline disinfection, water filtration, and quality testing. Ensure your family has access to safe, clean water throughout your home.",
     icon: Droplets,
-    color: "bg-[#09263D]",
+    color: "bg-[#1A1A1A]",
     heroImage: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80",
     features: [
       "Water tank cleaning",
@@ -686,7 +686,7 @@ const serviceData: Record<string, {
     tagline: "Your AC Care Specialists",
     description: "Full range of AC services from cleaning and maintenance to repair and installation. Keep your home cool and comfortable year-round with our expert technicians and quality service.",
     icon: Wind,
-    color: "bg-[#970A44]",
+    color: "bg-[#CD9342]",
     heroImage: "https://images.unsplash.com/photo-1631545806609-11e27e55a72d?w=1600&q=80",
     features: [
       "AC cleaning",
@@ -731,7 +731,7 @@ const defaultService = {
   tagline: "Premium Home Wellness Solutions",
   description: "Professional wellness services designed to create a healthier home environment. Our certified experts use advanced technology and eco-friendly solutions for optimal results.",
   icon: Heart,
-  color: "bg-[#970A44]",
+  color: "bg-[#CD9342]",
   heroImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=80",
   features: [
     "Certified professionals",
@@ -801,7 +801,7 @@ export default function WellnessServiceDetail() {
   const Icon = service.icon;
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section */}
       <section className="relative pt-24 pb-20" data-testid="section-hero">
         <div className="absolute inset-0">
@@ -810,7 +810,7 @@ export default function WellnessServiceDetail() {
             alt={service.title}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/90 via-[#09263D]/70 to-[#09263D]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/90 via-[#1A1A1A]/70 to-[#1A1A1A]/40" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -845,7 +845,7 @@ export default function WellnessServiceDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] rounded-full px-8"
                 data-testid="button-book-now"
               >
                 <Link href="/book">
@@ -878,7 +878,7 @@ export default function WellnessServiceDetail() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               What's Included
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -894,13 +894,13 @@ export default function WellnessServiceDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex items-center gap-3 p-4 bg-[#F6F4EB] rounded-xl"
+                className="flex items-center gap-3 p-4 bg-[#FAFAFA] rounded-xl"
                 data-testid={`feature-${index}`}
               >
-                <div className="w-8 h-8 bg-[#970A44]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-[#970A44]" />
+                <div className="w-8 h-8 bg-[#CD9342]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-[#CD9342]" />
                 </div>
-                <span className="text-[#09263D] font-medium">{feature}</span>
+                <span className="text-[#1A1A1A] font-medium">{feature}</span>
               </motion.div>
             ))}
           </div>
@@ -908,14 +908,14 @@ export default function WellnessServiceDetail() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-benefits">
+      <section className="py-20 bg-[#FAFAFA]" data-testid="section-benefits">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Why Choose This Service
             </h2>
           </motion.div>
@@ -933,10 +933,10 @@ export default function WellnessServiceDetail() {
                 >
                   <Card className="border-0 shadow-lg text-center h-full" data-testid={`benefit-${index}`}>
                     <CardContent className="p-8">
-                      <div className="w-16 h-16 mx-auto bg-[#970A44]/10 rounded-2xl flex items-center justify-center mb-4">
-                        <BenefitIcon className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 mx-auto bg-[#CD9342]/10 rounded-2xl flex items-center justify-center mb-4">
+                        <BenefitIcon className="w-8 h-8 text-[#CD9342]" />
                       </div>
-                      <h3 className="font-bold text-lg text-[#09263D] mb-2">{benefit.title}</h3>
+                      <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{benefit.title}</h3>
                       <p className="text-muted-foreground">{benefit.description}</p>
                     </CardContent>
                   </Card>
@@ -955,7 +955,7 @@ export default function WellnessServiceDetail() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Our Process
             </h2>
             <p className="text-muted-foreground">Simple, efficient, and professional</p>
@@ -972,13 +972,13 @@ export default function WellnessServiceDetail() {
                 className="text-center relative"
                 data-testid={`process-${index}`}
               >
-                <div className="w-16 h-16 mx-auto bg-[#970A44] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+                <div className="w-16 h-16 mx-auto bg-[#CD9342] rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.step}
                 </div>
-                <h3 className="font-bold text-lg text-[#09263D] mb-2">{step.title}</h3>
+                <h3 className="font-bold text-lg text-[#1A1A1A] mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm">{step.description}</p>
                 {index < service.process.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#970A44]/20" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-[#CD9342]/20" />
                 )}
               </motion.div>
             ))}
@@ -987,7 +987,7 @@ export default function WellnessServiceDetail() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-[#09263D]" data-testid="section-pricing">
+      <section className="py-20 bg-[#1A1A1A]" data-testid="section-pricing">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
@@ -1009,26 +1009,26 @@ export default function WellnessServiceDetail() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className={`border-0 shadow-xl h-full ${index === 1 ? 'ring-2 ring-[#970A44]' : ''}`} data-testid={`pricing-${index}`}>
+                <Card className={`border-0 shadow-xl h-full ${index === 1 ? 'ring-2 ring-[#CD9342]' : ''}`} data-testid={`pricing-${index}`}>
                   <CardContent className="p-8">
                     {index === 1 && (
-                      <span className="inline-block bg-[#970A44] text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
+                      <span className="inline-block bg-[#CD9342] text-white text-xs font-bold px-3 py-1 rounded-full mb-4">
                         Most Popular
                       </span>
                     )}
-                    <h3 className="font-bold text-xl text-[#09263D] mb-2">{plan.name}</h3>
-                    <div className="text-3xl font-bold text-[#970A44] mb-6">{plan.price}</div>
+                    <h3 className="font-bold text-xl text-[#1A1A1A] mb-2">{plan.name}</h3>
+                    <div className="text-3xl font-bold text-[#CD9342] mb-6">{plan.price}</div>
                     <ul className="space-y-3 mb-8">
                       {plan.features.map((feature, i) => (
                         <li key={i} className="flex items-center gap-2 text-muted-foreground">
-                          <Check className="w-5 h-5 text-[#970A44]" />
+                          <Check className="w-5 h-5 text-[#CD9342]" />
                           {feature}
                         </li>
                       ))}
                     </ul>
                     <Button 
                       asChild
-                      className={`w-full rounded-full ${index === 1 ? 'bg-[#970A44] hover:bg-[#720632]' : 'bg-[#09263D] hover:bg-[#09263D]/90'}`}
+                      className={`w-full rounded-full ${index === 1 ? 'bg-[#CD9342] hover:bg-[#A67A2E]' : 'bg-[#1A1A1A] hover:bg-[#1A1A1A]/90'}`}
                       data-testid={`button-select-${index}`}
                     >
                       <Link href="/book">
@@ -1051,7 +1051,7 @@ export default function WellnessServiceDetail() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Frequently Asked Questions
             </h2>
           </motion.div>
@@ -1067,7 +1067,7 @@ export default function WellnessServiceDetail() {
               >
                 <Card className="border-0 shadow-md" data-testid={`faq-${index}`}>
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-[#09263D] mb-2">{faq.question}</h3>
+                    <h3 className="font-bold text-[#1A1A1A] mb-2">{faq.question}</h3>
                     <p className="text-muted-foreground">{faq.answer}</p>
                   </CardContent>
                 </Card>
@@ -1078,14 +1078,14 @@ export default function WellnessServiceDetail() {
       </section>
 
       {/* Related Services */}
-      <section className="py-20 bg-[#F6F4EB]" data-testid="section-related">
+      <section className="py-20 bg-[#FAFAFA]" data-testid="section-related">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             {...fadeInUp}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#09263D] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-[#1A1A1A] mb-4">
               Related Services
             </h2>
           </motion.div>
@@ -1102,7 +1102,7 @@ export default function WellnessServiceDetail() {
                 <Link href={`/wellness/${related.slug}`}>
                   <Button 
                     variant="outline" 
-                    className="rounded-full border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                    className="rounded-full border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
                     data-testid={`related-${index}`}
                   >
                     {related.name}
@@ -1116,7 +1116,7 @@ export default function WellnessServiceDetail() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#970A44]" data-testid="section-cta">
+      <section className="py-20 bg-[#CD9342]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1134,7 +1134,7 @@ export default function WellnessServiceDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-gray-100 rounded-full px-8"
+                className="bg-white text-[#CD9342] hover:bg-gray-100 rounded-full px-8"
                 data-testid="button-cta-book"
               >
                 <Link href="/book">

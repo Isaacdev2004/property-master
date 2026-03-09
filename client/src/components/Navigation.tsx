@@ -14,7 +14,7 @@ const interiorDesignMenu = {
     {
       title: "Residential Renovation",
       icon: Home,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "Kitchen Remodeling", href: "/interior-design/kitchen-remodeling" },
         { label: "Wardrobe Design", href: "/interior-design/wardrobe" },
@@ -31,7 +31,7 @@ const interiorDesignMenu = {
     {
       title: "Flooring Solutions",
       icon: Layers,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "LVT Flooring", href: "/interior-design/lvt-flooring" },
         { label: "SPC Flooring", href: "/interior-design/spc-flooring" },
@@ -47,7 +47,7 @@ const interiorDesignMenu = {
     {
       title: "Interior Elements",
       icon: Paintbrush,
-      color: "#09263D",
+      color: "#1A1A1A",
       services: [
         { label: "TV Unit Design", href: "/interior-design/tv-unit" },
         { label: "False Ceiling", href: "/interior-design/false-ceiling" },
@@ -63,7 +63,7 @@ const interiorDesignMenu = {
     {
       title: "Swimming Pool Services",
       icon: Waves,
-      color: "#720632",
+      color: "#A67A2E",
       services: [
         { label: "Pool Design & Build", href: "/interior-design/pool-design" },
         { label: "Infinity Pool", href: "/interior-design/infinity-pool" },
@@ -78,7 +78,7 @@ const interiorDesignMenu = {
     {
       title: "Outdoor & Landscape",
       icon: TreePine,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "Gardens & Landscape", href: "/interior-design/landscape" },
         { label: "Pergola & Gazebo", href: "/interior-design/pergola" },
@@ -89,7 +89,7 @@ const interiorDesignMenu = {
     {
       title: "Restoring & Commercial",
       icon: Gem,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "Marble Polishing", href: "/interior-design/marble-polishing" },
         { label: "Marble Stain Removal", href: "/interior-design/marble-stain" },
@@ -116,7 +116,7 @@ const wellnessMenu = {
     {
       title: "AC Services",
       icon: Wind,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "AC Cleaning", href: "/wellness/ac-cleaning" },
         { label: "AC Coil Cleaning", href: "/wellness/ac-coil-cleaning" },
@@ -131,7 +131,7 @@ const wellnessMenu = {
     {
       title: "Furniture Cleaning",
       icon: Sofa,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "Mattress Cleaning", href: "/wellness/mattress-cleaning" },
         { label: "Sofa Cleaning", href: "/wellness/furniture-cleaning" },
@@ -145,7 +145,7 @@ const wellnessMenu = {
     {
       title: "Water & Pipeline",
       icon: Droplets,
-      color: "#09263D",
+      color: "#1A1A1A",
       services: [
         { label: "Water Tank Cleaning", href: "/wellness/water-tank" },
         { label: "Pipeline Disinfection", href: "/wellness/pipeline" },
@@ -157,7 +157,7 @@ const wellnessMenu = {
     {
       title: "Home Deep Cleaning",
       icon: Sparkles,
-      color: "#720632",
+      color: "#A67A2E",
       services: [
         { label: "Move-In/Out Cleaning", href: "/wellness/deep-cleaning" },
         { label: "Premium Deep Cleaning", href: "/wellness/premium-cleaning" },
@@ -167,7 +167,7 @@ const wellnessMenu = {
     {
       title: "Pest Control",
       icon: Bug,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "Drainage Cleaning", href: "/wellness/drainage-cleaning" },
         { label: "Pest Control Contracts", href: "/wellness/pest-contracts" },
@@ -182,7 +182,7 @@ const wellnessMenu = {
     {
       title: "Testing & Mold",
       icon: TestTube,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "Mold Inspection & Testing", href: "/wellness/mold-inspection" },
         { label: "Mold Remediation", href: "/wellness/mold-remediation" },
@@ -209,7 +209,7 @@ const maintenanceMenu = {
     {
       title: "Painting Services",
       icon: PaintBucket,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "Wall Painting", href: "/maintenance/wall-painting" },
         { label: "Interior Painting", href: "/maintenance/interior-painting" },
@@ -219,7 +219,7 @@ const maintenanceMenu = {
     {
       title: "Moving Services",
       icon: Truck,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "Move In/Out Cleaning", href: "/maintenance/move-cleaning" },
         { label: "Home Moving Services", href: "/maintenance/home-moving" },
@@ -229,7 +229,7 @@ const maintenanceMenu = {
     {
       title: "AC Maintenance",
       icon: Wind,
-      color: "#09263D",
+      color: "#1A1A1A",
       services: [
         { label: "Emergency AC Repair", href: "/maintenance/emergency-ac" },
         { label: "New AC Installation", href: "/maintenance/ac-installation" },
@@ -242,7 +242,7 @@ const maintenanceMenu = {
     {
       title: "Plumbing Services",
       icon: Droplets,
-      color: "#720632",
+      color: "#A67A2E",
       services: [
         { label: "Sanitary Services", href: "/maintenance/sanitary" },
         { label: "Drainage Cleaning", href: "/maintenance/drainage" },
@@ -255,7 +255,7 @@ const maintenanceMenu = {
     {
       title: "Electrical Services",
       icon: Zap,
-      color: "#970A44",
+      color: "#CD9342",
       services: [
         { label: "Electrical Contracting", href: "/maintenance/electrical-contracting" },
         { label: "Interior/Exterior Lighting", href: "/maintenance/lighting" },
@@ -270,7 +270,7 @@ const maintenanceMenu = {
     {
       title: "Handyman & More",
       icon: Hammer,
-      color: "#1C4668",
+      color: "#1A1A1A",
       services: [
         { label: "Furniture Installation", href: "/maintenance/furniture-install" },
         { label: "TV Installation", href: "/maintenance/tv-installation" },
@@ -338,8 +338,8 @@ export function Navigation() {
   ];
 
   const navTextClass = (isScrolled || !isHomePage) 
-    ? "text-gray-900 hover:text-[#970A44]" 
-    : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#970A44]";
+    ? "text-gray-900 hover:text-[#CD9342]" 
+    : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-[#CD9342]";
 
   const getMegaMenuData = (menuKey: string) => {
     switch (menuKey) {
@@ -388,10 +388,10 @@ export function Navigation() {
                 data-testid="link-phone"
               >
                 <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                  isScrolled || !isHomePage ? "bg-[#970A44]" : "bg-white/90"
+                  isScrolled || !isHomePage ? "bg-[#CD9342]" : "bg-white/90"
                 }`}>
                   <Phone className={`w-3.5 h-3.5 ${
-                    isScrolled || !isHomePage ? "text-white" : "text-[#970A44]"
+                    isScrolled || !isHomePage ? "text-white" : "text-[#CD9342]"
                   }`} />
                 </div>
                 <span className={`text-xs font-semibold ${
@@ -417,8 +417,8 @@ export function Navigation() {
                     <Link href={item.href!} data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
                       <span
                         className={`text-sm font-semibold transition-all flex items-center gap-1 py-2 cursor-pointer ${
-                          location === item.href ? "text-[#970A44]" : navTextClass
-                        } ${activeMenu === item.menuKey ? "text-[#970A44]" : ""}`}
+                          location === item.href ? "text-[#CD9342]" : navTextClass
+                        } ${activeMenu === item.menuKey ? "text-[#CD9342]" : ""}`}
                       >
                         {item.label}
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeMenu === item.menuKey ? "rotate-180" : ""}`} />
@@ -434,7 +434,7 @@ export function Navigation() {
                   >
                     <button
                       className={`text-sm font-semibold transition-all flex items-center gap-1 py-2 ${navTextClass} ${
-                        activeMenu === "about" ? "text-[#970A44]" : ""
+                        activeMenu === "about" ? "text-[#CD9342]" : ""
                       }`}
                       data-testid="menu-about"
                     >
@@ -461,7 +461,7 @@ export function Navigation() {
                               onClick={() => setActiveMenu(null)}
                             >
                               <span 
-                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#970A44] hover:text-white transition-colors cursor-pointer"
+                                className="block px-4 py-3 text-sm text-gray-700 hover:bg-[#CD9342] hover:text-white transition-colors cursor-pointer"
                                 data-testid={`menu-${dropdownItem.label.toLowerCase().replace(/\s+/g, '-')}`}
                               >
                                 {dropdownItem.label}
@@ -477,7 +477,7 @@ export function Navigation() {
                     <span
                       className={`text-sm font-semibold transition-all cursor-pointer ${
                         location === item.href
-                          ? "text-[#970A44]" 
+                          ? "text-[#CD9342]" 
                           : navTextClass
                       }`}
                     >
@@ -501,7 +501,7 @@ export function Navigation() {
               </Link>
               <Link href="/book" data-testid="link-consultation">
                 <Button 
-                  className="bg-[#970A44] hover:bg-[#720632] text-white font-semibold rounded-full px-6"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E] text-white font-semibold rounded-full px-6"
                 >
                   Get Free Estimate
                 </Button>
@@ -543,7 +543,7 @@ export function Navigation() {
               return (
                 <div className="w-full">
                   {/* Header Bar */}
-                  <div className="bg-gradient-to-r from-[#09263D] to-[#1C4668] text-white py-4 px-8">
+                  <div className="bg-gradient-to-r from-[#1A1A1A] to-[#1A1A1A] text-white py-4 px-8">
                     <div className="max-w-7xl mx-auto flex items-center justify-between">
                       <div>
                         <h2 className="text-2xl font-bold font-serif">{menuData.title}</h2>
@@ -552,7 +552,7 @@ export function Navigation() {
                       <div className="flex items-center gap-8">
                         {Object.entries(menuData.stats).map(([key, value]) => (
                           <div key={key} className="text-center">
-                            <div className="text-xl font-bold text-[#F6F4EB]">{value}</div>
+                            <div className="text-xl font-bold text-[#FAFAFA]">{value}</div>
                             <div className="text-xs text-white/70 capitalize">{key}</div>
                           </div>
                         ))}
@@ -575,7 +575,7 @@ export function Navigation() {
                               >
                                 <Icon className="w-4 h-4" style={{ color: category.color }} />
                               </div>
-                              <h3 className="font-bold text-sm text-[#09263D]">{category.title}</h3>
+                              <h3 className="font-bold text-sm text-[#1A1A1A]">{category.title}</h3>
                             </div>
                             
                             {/* Service Links */}
@@ -587,8 +587,8 @@ export function Navigation() {
                                     onClick={() => setActiveMenu(null)}
                                   >
                                     <span className="group flex items-start gap-1 py-1.5 cursor-pointer">
-                                      <ChevronRight className="w-3 h-3 mt-0.5 text-gray-400 group-hover:text-[#970A44] transition-colors flex-shrink-0" />
-                                      <span className="text-xs text-gray-700 group-hover:text-[#970A44] transition-colors leading-tight">
+                                      <ChevronRight className="w-3 h-3 mt-0.5 text-gray-400 group-hover:text-[#CD9342] transition-colors flex-shrink-0" />
+                                      <span className="text-xs text-gray-700 group-hover:text-[#CD9342] transition-colors leading-tight">
                                         {service.label}
                                       </span>
                                     </span>
@@ -613,19 +613,19 @@ export function Navigation() {
                           <span>5-Star Rated Services</span>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-600">
-                          <Users className="w-4 h-4 text-[#970A44]" />
+                          <Users className="w-4 h-4 text-[#CD9342]" />
                           <span>Certified Professionals</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <Link href={activeMenu === "interior" ? "/interior-design" : activeMenu === "wellness" ? "/wellness" : "/maintenance"} onClick={() => setActiveMenu(null)}>
-                          <Button variant="outline" className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full px-6">
+                          <Button variant="outline" className="border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white rounded-full px-6">
                             View All Services
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
                         <Link href={menuData.featured.href} onClick={() => setActiveMenu(null)}>
-                          <Button className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-6">
+                          <Button className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-6">
                             {menuData.featured.cta}
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
@@ -653,7 +653,7 @@ export function Navigation() {
               {/* Interior Design */}
               <Link href="/interior-design" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-interior-design">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/interior-design" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/interior-design" ? "text-[#CD9342] font-semibold" : "text-foreground hover:text-[#CD9342]"
                 }`}>
                   Interior Design
                 </span>
@@ -662,7 +662,7 @@ export function Navigation() {
               {/* Wellness */}
               <Link href="/wellness" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-wellness">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/wellness" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/wellness" ? "text-[#CD9342] font-semibold" : "text-foreground hover:text-[#CD9342]"
                 }`}>
                   Wellness
                 </span>
@@ -671,7 +671,7 @@ export function Navigation() {
               {/* Maintenance Services */}
               <Link href="/maintenance" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-maintenance">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/maintenance" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/maintenance" ? "text-[#CD9342] font-semibold" : "text-foreground hover:text-[#CD9342]"
                 }`}>
                   Maintenance Services
                 </span>
@@ -680,7 +680,7 @@ export function Navigation() {
               {/* Custom Furniture */}
               <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-shop">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/shop" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/shop" ? "text-[#CD9342] font-semibold" : "text-foreground hover:text-[#CD9342]"
                 }`}>
                   Custom Furniture
                 </span>
@@ -688,15 +688,15 @@ export function Navigation() {
 
               {/* About Section */}
               <div className="py-3 border-b border-border">
-                <span className="text-base font-semibold text-[#970A44] block mb-2">About</span>
+                <span className="text-base font-semibold text-[#CD9342] block mb-2">About</span>
                 <div className="pl-4 space-y-2">
                   <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-about-us">
-                    <span className="text-sm text-foreground hover:text-[#970A44] block py-1">
+                    <span className="text-sm text-foreground hover:text-[#CD9342] block py-1">
                       About Us
                     </span>
                   </Link>
                   <Link href="/about#journey" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-our-journey">
-                    <span className="text-sm text-foreground hover:text-[#970A44] block py-1">
+                    <span className="text-sm text-foreground hover:text-[#CD9342] block py-1">
                       Our Journey
                     </span>
                   </Link>
@@ -706,7 +706,7 @@ export function Navigation() {
               {/* Blogs */}
               <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-blogs">
                 <span className={`text-base font-medium transition-colors cursor-pointer block py-3 border-b border-border ${
-                  location === "/blog" ? "text-[#970A44] font-semibold" : "text-foreground hover:text-[#970A44]"
+                  location === "/blog" ? "text-[#CD9342] font-semibold" : "text-foreground hover:text-[#CD9342]"
                 }`}>
                   Blogs
                 </span>
@@ -715,12 +715,12 @@ export function Navigation() {
               {/* Quick Links */}
               <div className="pt-4 space-y-2">
                 <Link href="/portfolio" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-portfolio">
-                  <span className="text-sm text-muted-foreground hover:text-[#970A44] block py-2">
+                  <span className="text-sm text-muted-foreground hover:text-[#CD9342] block py-2">
                     Portfolio
                   </span>
                 </Link>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} data-testid="mobile-link-contact">
-                  <span className="text-sm text-muted-foreground hover:text-[#970A44] block py-2">
+                  <span className="text-sm text-muted-foreground hover:text-[#CD9342] block py-2">
                     Contact
                   </span>
                 </Link>
@@ -734,7 +734,7 @@ export function Navigation() {
                   </Button>
                 </Link>
                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full bg-[#970A44] hover:bg-[#720632]" data-testid="button-mobile-estimate">
+                  <Button className="w-full bg-[#CD9342] hover:bg-[#A67A2E]" data-testid="button-mobile-estimate">
                     Get Free Estimate
                   </Button>
                 </Link>

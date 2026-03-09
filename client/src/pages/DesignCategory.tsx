@@ -255,7 +255,7 @@ export default function DesignCategory() {
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 bg-[#970A44] rounded-xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-[#CD9342] rounded-xl flex items-center justify-center">
                 <Icon className="w-7 h-7 text-white" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white font-serif">
@@ -285,7 +285,7 @@ export default function DesignCategory() {
                     size="sm"
                     onClick={() => setActiveFilter(filter)}
                     className={activeFilter === filter 
-                      ? "bg-[#970A44] hover:bg-[#720632] rounded-full" 
+                      ? "bg-[#CD9342] hover:bg-[#A67A2E] rounded-full" 
                       : "rounded-full"
                     }
                     data-testid={`filter-${filter.toLowerCase().replace(/\s+/g, "-")}`}
@@ -348,18 +348,18 @@ export default function DesignCategory() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-[#970A44]">
+                        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-[#CD9342]">
                           {design.style}
                         </span>
                       </div>
                       <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-10 h-10 bg-[#970A44] rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-[#CD9342] rounded-full flex items-center justify-center">
                           <ArrowRight className="w-5 h-5 text-white" />
                         </div>
                       </div>
                     </div>
                     <CardContent className="p-4">
-                      <h3 className="font-semibold text-sm line-clamp-2 group-hover:text-[#970A44] transition-colors">
+                      <h3 className="font-semibold text-sm line-clamp-2 group-hover:text-[#CD9342] transition-colors">
                         {design.title}
                       </h3>
                     </CardContent>
@@ -373,7 +373,7 @@ export default function DesignCategory() {
           <div className="text-center mt-12">
             <Button 
               variant="outline"
-              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid={`button-load-more-${category}`}
             >
               Load More Designs
@@ -393,9 +393,9 @@ export default function DesignCategory() {
               return (
                 <Link key={key} href="/interior-design" data-testid={`link-category-${key}`}>
                   <div className={`p-4 rounded-xl text-center hover-elevate cursor-pointer transition-all ${
-                    key === category ? "bg-[#970A44] text-white" : "bg-background border hover:border-[#970A44]"
+                    key === category ? "bg-[#CD9342] text-white" : "bg-background border hover:border-[#CD9342]"
                   }`}>
-                    <CatIcon className={`w-6 h-6 mx-auto mb-2 ${key === category ? "text-white" : "text-[#970A44]"}`} />
+                    <CatIcon className={`w-6 h-6 mx-auto mb-2 ${key === category ? "text-white" : "text-[#CD9342]"}`} />
                     <span className="text-xs font-medium">{cat.title.replace(" Designs", "")}</span>
                   </div>
                 </Link>
@@ -406,7 +406,7 @@ export default function DesignCategory() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-[#970A44] to-[#720632]">
+      <section className="py-16 bg-gradient-to-br from-[#CD9342] to-[#A67A2E]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">
             Ready to Create Your Dream {data.title.replace(" Designs", "")}?
@@ -418,7 +418,7 @@ export default function DesignCategory() {
             <Button 
               asChild
               size="lg"
-              className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-8"
+              className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-8"
               data-testid="button-category-consultation"
             >
               <Link href="/contact">

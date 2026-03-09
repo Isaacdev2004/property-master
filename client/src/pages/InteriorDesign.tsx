@@ -66,19 +66,19 @@ const turnkeyServices = [
     icon: Paintbrush,
     title: "We Design",
     description: "From completed homes to modular kitchens, and storage to decor, our top interior designers create spaces that match your vision.",
-    gradient: "from-[#970A44] to-[#720632]",
+    gradient: "from-[#CD9342] to-[#A67A2E]",
   },
   {
     icon: Ruler,
     title: "We Execute",
     description: "We follow a meticulous planning approach with detail-driven designs for interiors of your homes.",
-    gradient: "from-[#1C4668] to-[#09263D]",
+    gradient: "from-[#1A1A1A] to-[#1A1A1A]",
   },
   {
     icon: CheckCircle2,
     title: "We Manage",
     description: "Our top interior designers spearhead quality assurance by extending support after the execution of home projects.",
-    gradient: "from-[#09263D] to-[#1C4668]",
+    gradient: "from-[#1A1A1A] to-[#1A1A1A]",
   },
 ];
 
@@ -383,7 +383,7 @@ export default function InteriorDesign() {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight"
             >
-              Transform Your Space Into a <span className="text-[#970A44]">Masterpiece</span>
+              Transform Your Space Into a <span className="text-[#CD9342]">Masterpiece</span>
             </motion.h1>
             
             <motion.p
@@ -404,7 +404,7 @@ export default function InteriorDesign() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8"
                 data-testid="button-hero-consultation"
               >
                 <Link href="/book">
@@ -440,8 +440,8 @@ export default function InteriorDesign() {
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center"
                   data-testid={`stat-${index}`}
                 >
-                  <div className="w-12 h-12 mx-auto mb-2 bg-[#970A44]/20 rounded-lg flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-[#970A44]" />
+                  <div className="w-12 h-12 mx-auto mb-2 bg-[#CD9342]/20 rounded-lg flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-[#CD9342]" />
                   </div>
                   <div className="text-2xl font-bold text-white">{stat.value}</div>
                   <div className="text-xs text-white/70 mt-1">{stat.label}</div>
@@ -469,7 +469,7 @@ export default function InteriorDesign() {
             <Button 
               asChild
               variant="outline"
-              className="mt-6 rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="mt-6 rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-know-more"
             >
               <Link href="/about">
@@ -518,20 +518,20 @@ export default function InteriorDesign() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-sm font-semibold text-[#970A44] uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-[#CD9342] uppercase tracking-wider mb-4">
                 From Concept to Creation
               </h3>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
                 Your Furniture's Journey
               </h2>
-              <div className="bg-[#970A44]/5 border border-[#970A44]/20 rounded-xl p-6 mb-6">
+              <div className="bg-[#CD9342]/5 border border-[#CD9342]/20 rounded-xl p-6 mb-6">
                 <h4 className="font-semibold text-lg mb-2">Step Inside Our Factory:</h4>
                 <p className="text-muted-foreground">
                   See Your Kitchen or Wardrobe Come to Life
                 </p>
               </div>
               <Button 
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8"
                 onClick={toggleJourneyVideo}
                 data-testid="button-watch-video"
               >
@@ -573,7 +573,7 @@ export default function InteriorDesign() {
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Play className="w-8 h-8 text-[#970A44] ml-1" />
+                        <Play className="w-8 h-8 text-[#CD9342] ml-1" />
                       </motion.div>
                     </motion.div>
                   )}
@@ -617,7 +617,7 @@ export default function InteriorDesign() {
           <div className="relative">
             <button 
               onClick={scrollLeft}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -ml-4"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors -ml-4"
               data-testid="button-scroll-left"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -645,14 +645,14 @@ export default function InteriorDesign() {
                           alt={item.name}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
-                        <div className="absolute top-3 left-3 px-3 py-1 bg-[#970A44] text-white text-xs font-bold rounded-full">
+                        <div className="absolute top-3 left-3 px-3 py-1 bg-[#CD9342] text-white text-xs font-bold rounded-full">
                           Upto {item.discount} Off
                         </div>
                       </div>
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <h3 className="font-semibold">{item.name}</h3>
-                          <ArrowRight className="w-4 h-4 text-[#970A44]" />
+                          <ArrowRight className="w-4 h-4 text-[#CD9342]" />
                         </div>
                       </CardContent>
                     </Card>
@@ -668,13 +668,13 @@ export default function InteriorDesign() {
                 className="flex-shrink-0 w-64"
               >
                 <Link href="/shop">
-                  <Card className="group h-full overflow-hidden border-2 border-dashed border-[#970A44]/30 hover:border-[#970A44] cursor-pointer transition-colors" data-testid="card-explore-more">
+                  <Card className="group h-full overflow-hidden border-2 border-dashed border-[#CD9342]/30 hover:border-[#CD9342] cursor-pointer transition-colors" data-testid="card-explore-more">
                     <CardContent className="p-4 h-full flex flex-col items-center justify-center text-center aspect-square">
-                      <div className="w-16 h-16 bg-[#970A44]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#970A44]/20 transition-colors">
-                        <ArrowRight className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 bg-[#CD9342]/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#CD9342]/20 transition-colors">
+                        <ArrowRight className="w-8 h-8 text-[#CD9342]" />
                       </div>
                       <h3 className="font-bold text-lg mb-2">Explore More Deals</h3>
-                      <span className="text-[#970A44] font-medium">Shop Now</span>
+                      <span className="text-[#CD9342] font-medium">Shop Now</span>
                     </CardContent>
                   </Card>
                 </Link>
@@ -683,7 +683,7 @@ export default function InteriorDesign() {
 
             <button 
               onClick={scrollRight}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#970A44] hover:text-white transition-colors -mr-4"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-[#CD9342] hover:text-white transition-colors -mr-4"
               data-testid="button-scroll-right"
             >
               <ArrowRight className="w-5 h-5" />
@@ -716,7 +716,7 @@ export default function InteriorDesign() {
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="data-[state=active]:bg-[#970A44] data-[state=active]:text-white px-3 py-2 rounded-full border border-border data-[state=active]:border-[#970A44] transition-all flex items-center gap-1.5 text-xs md:text-sm"
+                    className="data-[state=active]:bg-[#CD9342] data-[state=active]:text-white px-3 py-2 rounded-full border border-border data-[state=active]:border-[#CD9342] transition-all flex items-center gap-1.5 text-xs md:text-sm"
                     data-testid={`tab-${category.id}`}
                   >
                     <Icon className="w-3.5 h-3.5" />
@@ -758,7 +758,7 @@ export default function InteriorDesign() {
                               </div>
                             </div>
                             <CardContent className="p-3">
-                              <h3 className="font-medium text-xs line-clamp-2 group-hover:text-[#970A44] transition-colors">
+                              <h3 className="font-medium text-xs line-clamp-2 group-hover:text-[#CD9342] transition-colors">
                                 {idea.title}
                               </h3>
                             </CardContent>
@@ -777,7 +777,7 @@ export default function InteriorDesign() {
                     <Button 
                       asChild
                       variant="outline"
-                      className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+                      className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
                       data-testid={`button-explore-${category.id}`}
                     >
                       <Link href="/interior-design">
@@ -828,7 +828,7 @@ export default function InteriorDesign() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute top-4 right-4">
                       <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
-                        <Eye className="w-6 h-6 text-[#970A44]" />
+                        <Eye className="w-6 h-6 text-[#CD9342]" />
                       </div>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4">
@@ -857,7 +857,7 @@ export default function InteriorDesign() {
             <Button 
               asChild
               variant="outline"
-              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-tours"
             >
               <Link href="/portfolio">
@@ -899,7 +899,7 @@ export default function InteriorDesign() {
                   <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-process-${step.step}`}>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-14 h-14 bg-[#970A44] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
+                        <div className="flex-shrink-0 w-14 h-14 bg-[#CD9342] rounded-2xl flex items-center justify-center text-white font-bold text-xl">
                           {step.step}
                         </div>
                         <div>
@@ -952,7 +952,7 @@ export default function InteriorDesign() {
                     <div className="absolute bottom-4 left-4 right-4 text-white">
                       <h3 className="font-bold text-lg">{member.name}</h3>
                       <p className="text-white/80 text-sm">{member.role}</p>
-                      <span className="inline-block mt-2 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                      <span className="inline-block mt-2 px-3 py-1 bg-[#CD9342] text-white text-xs font-medium rounded-full">
                         {member.experience}
                       </span>
                     </div>
@@ -1055,8 +1055,8 @@ export default function InteriorDesign() {
                 >
                   <Card className="h-full border-0 shadow-lg hover-elevate" data-testid={`card-why-${index}`}>
                     <CardContent className="p-6 text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-[#970A44]" />
+                      <div className="w-16 h-16 mx-auto mb-4 bg-[#CD9342]/10 rounded-2xl flex items-center justify-center">
+                        <Icon className="w-8 h-8 text-[#CD9342]" />
                       </div>
                       <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                       <p className="text-muted-foreground">{item.description}</p>
@@ -1141,7 +1141,7 @@ export default function InteriorDesign() {
                       <h3 className="text-lg font-bold text-white mb-1">{home.name}</h3>
                       <p className="text-white/80 text-sm">{home.location}</p>
                     </div>
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-[#CD9342] text-white text-xs font-medium rounded-full">
                       {home.type}
                     </div>
                   </div>
@@ -1160,7 +1160,7 @@ export default function InteriorDesign() {
             <Button 
               asChild
               variant="outline"
-              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-projects"
             >
               <Link href="/portfolio">
@@ -1173,7 +1173,7 @@ export default function InteriorDesign() {
       </section>
 
       {/* SECTION 13: FREE ESTIMATE */}
-      <section className="py-24 bg-[#970A44]" data-testid="section-free-estimate">
+      <section className="py-24 bg-[#CD9342]" data-testid="section-free-estimate">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -1256,7 +1256,7 @@ export default function InteriorDesign() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6" data-testid="button-get-estimate">
+                    <Button className="w-full bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full py-6" data-testid="button-get-estimate">
                       Get Free Estimate
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
@@ -1322,7 +1322,7 @@ export default function InteriorDesign() {
                               whileHover={{ scale: 1.1 }}
                               transition={{ duration: 0.3 }}
                             >
-                              <Play className="w-6 h-6 text-[#970A44] ml-1" />
+                              <Play className="w-6 h-6 text-[#CD9342] ml-1" />
                             </motion.div>
                           </motion.div>
                         )}
@@ -1330,7 +1330,7 @@ export default function InteriorDesign() {
                     </div>
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                        <Star key={i} className="w-4 h-4 fill-[#CD9342] text-[#CD9342]" />
                       ))}
                     </div>
                     <h4 className="font-bold text-lg">{testimonial.name}</h4>
@@ -1377,7 +1377,7 @@ export default function InteriorDesign() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-[#970A44] text-white text-xs font-medium rounded-full">
+                        <span className="px-3 py-1 bg-[#CD9342] text-white text-xs font-medium rounded-full">
                           {post.category}
                         </span>
                       </div>
@@ -1390,7 +1390,7 @@ export default function InteriorDesign() {
                         </span>
                         <span>{"5 min read"}</span>
                       </div>
-                      <h3 className="font-bold text-lg group-hover:text-[#970A44] transition-colors line-clamp-2">
+                      <h3 className="font-bold text-lg group-hover:text-[#CD9342] transition-colors line-clamp-2">
                         {post.title}
                       </h3>
                     </CardContent>
@@ -1410,7 +1410,7 @@ export default function InteriorDesign() {
             <Button 
               asChild
               variant="outline"
-              className="rounded-full px-8 border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white"
+              className="rounded-full px-8 border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white"
               data-testid="button-view-all-blogs"
             >
               <Link href="/blog">
@@ -1449,11 +1449,11 @@ export default function InteriorDesign() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-20"
           >
-            <Card className="border-0 shadow-lg bg-gradient-to-br from-[#970A44]/5 to-[#720632]/10">
+            <Card className="border-0 shadow-lg bg-gradient-to-br from-[#CD9342]/5 to-[#A67A2E]/10">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-[#970A44]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-[#970A44]" />
+                  <div className="w-12 h-12 bg-[#CD9342]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-[#CD9342]" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-4">Designed for Dubai's Unique Environment</h3>
@@ -1474,9 +1474,9 @@ export default function InteriorDesign() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#970A44]/10 rounded-full mb-6">
-                <Users className="w-5 h-5 text-[#970A44]" />
-                <span className="text-[#970A44] font-medium">Who We Are</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#CD9342]/10 rounded-full mb-6">
+                <Users className="w-5 h-5 text-[#CD9342]" />
+                <span className="text-[#CD9342] font-medium">Who We Are</span>
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif">
                 Planning Over Excess
@@ -1495,9 +1495,9 @@ export default function InteriorDesign() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1C4668]/10 rounded-full mb-6">
-                <Target className="w-5 h-5 text-[#1C4668]" />
-                <span className="text-[#1C4668] font-medium">Our Mission & Philosophy</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1A1A1A]/10 rounded-full mb-6">
+                <Target className="w-5 h-5 text-[#1A1A1A]" />
+                <span className="text-[#1A1A1A] font-medium">Our Mission & Philosophy</span>
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6 font-serif">
                 Practical, Reliable, Comfortable
@@ -1513,7 +1513,7 @@ export default function InteriorDesign() {
                   "Interiors should age well, not demand constant correction"
                 ].map((belief, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#970A44] flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#CD9342] flex-shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{belief}</span>
                   </li>
                 ))}
@@ -1541,8 +1541,8 @@ export default function InteriorDesign() {
             {/* Interior Design & Renovation Services */}
             <div className="mb-12">
               <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#970A44]/10 rounded-lg flex items-center justify-center">
-                  <Paintbrush className="w-5 h-5 text-[#970A44]" />
+                <div className="w-10 h-10 bg-[#CD9342]/10 rounded-lg flex items-center justify-center">
+                  <Paintbrush className="w-5 h-5 text-[#CD9342]" />
                 </div>
                 Interior Design & Renovation Services
               </h4>
@@ -1574,7 +1574,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-service-overview-${idx}`}>
                       <CardContent className="p-5">
-                        <h5 className="font-bold mb-2 text-[#09263D]">{service.title}</h5>
+                        <h5 className="font-bold mb-2 text-[#1A1A1A]">{service.title}</h5>
                         <p className="text-sm text-muted-foreground">{service.desc}</p>
                       </CardContent>
                     </Card>
@@ -1586,8 +1586,8 @@ export default function InteriorDesign() {
             {/* Commercial Interior Design */}
             <div className="mb-12">
               <h4 className="text-xl font-bold mb-6 flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#1C4668]/10 rounded-lg flex items-center justify-center">
-                  <Building2 className="w-5 h-5 text-[#1C4668]" />
+                <div className="w-10 h-10 bg-[#1A1A1A]/10 rounded-lg flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-[#1A1A1A]" />
                 </div>
                 Commercial Interior Design
               </h4>
@@ -1609,7 +1609,7 @@ export default function InteriorDesign() {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="mb-20"
           >
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#09263D] to-[#1C4668]">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-[#1A1A1A] to-[#1A1A1A]">
               <CardContent className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -1661,8 +1661,8 @@ export default function InteriorDesign() {
                 >
                   <Card className="h-full border-0 shadow-lg hover-elevate text-center" data-testid={`card-client-${idx}`}>
                     <CardContent className="p-6">
-                      <div className="w-14 h-14 mx-auto mb-4 bg-[#970A44]/10 rounded-2xl flex items-center justify-center">
-                        <client.icon className="w-7 h-7 text-[#970A44]" />
+                      <div className="w-14 h-14 mx-auto mb-4 bg-[#CD9342]/10 rounded-2xl flex items-center justify-center">
+                        <client.icon className="w-7 h-7 text-[#CD9342]" />
                       </div>
                       <h4 className="font-bold mb-2">{client.title}</h4>
                       <p className="text-sm text-muted-foreground">{client.desc}</p>
@@ -1706,7 +1706,7 @@ export default function InteriorDesign() {
                 <TabsTrigger 
                   key={tab.value} 
                   value={tab.value}
-                  className="px-4 py-2 data-[state=active]:bg-[#970A44] data-[state=active]:text-white rounded-full"
+                  className="px-4 py-2 data-[state=active]:bg-[#CD9342] data-[state=active]:text-white rounded-full"
                   data-testid={`tab-faq-${tab.value}`}
                 >
                   {tab.label}
@@ -1733,7 +1733,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-general-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1761,7 +1761,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-residential-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1789,7 +1789,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-kitchen-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1817,7 +1817,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-bedroom-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1845,7 +1845,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-bathroom-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1873,7 +1873,7 @@ export default function InteriorDesign() {
                   >
                     <Card className="h-full border hover-elevate" data-testid={`card-faq-commercial-${idx}`}>
                       <CardContent className="p-6">
-                        <h4 className="font-bold mb-3 text-[#09263D]">{faq.q}</h4>
+                        <h4 className="font-bold mb-3 text-[#1A1A1A]">{faq.q}</h4>
                         <p className="text-muted-foreground">{faq.a}</p>
                       </CardContent>
                     </Card>
@@ -1886,7 +1886,7 @@ export default function InteriorDesign() {
       </section>
 
       {/* SECTION 19: FINAL CTA */}
-      <section className="py-24 bg-[#09263D]" data-testid="section-cta">
+      <section className="py-24 bg-[#1A1A1A]" data-testid="section-cta">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1904,7 +1904,7 @@ export default function InteriorDesign() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8"
                 data-testid="button-cta-consultation"
               >
                 <Link href="/contact">

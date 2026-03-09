@@ -206,7 +206,7 @@ export default function AdminPortfolio() {
               </Button>
               <Button 
                 type="submit" 
-                className="bg-[#970A44] hover:bg-[#720632]"
+                className="bg-[#CD9342] hover:bg-[#A67A2E]"
                 disabled={updateMutation.isPending}
                 data-testid="button-submit-project"
               >
@@ -260,7 +260,7 @@ export default function AdminPortfolio() {
                 <h3 className="font-semibold">{project.title}</h3>
                 <p className="text-sm text-gray-500 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-1 mt-2">
-                  <span className="px-2 py-0.5 bg-[#970A44]/10 text-[#970A44] rounded text-xs">
+                  <span className="px-2 py-0.5 bg-[#CD9342]/10 text-[#CD9342] rounded text-xs">
                     {project.category}
                   </span>
                   {project.featured && (

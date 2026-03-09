@@ -109,10 +109,10 @@ export default function ProductDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#970A44] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-[#09263D]/60">Loading product...</p>
+          <div className="w-16 h-16 border-4 border-[#CD9342] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#1A1A1A]/60">Loading product...</p>
         </div>
       </div>
     );
@@ -120,12 +120,12 @@ export default function ProductDetail() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
-          <Package className="w-16 h-16 text-[#09263D]/20 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-[#09263D] mb-4">Product Not Found</h1>
-          <p className="text-[#09263D]/60 mb-8">The product you're looking for doesn't exist.</p>
-          <Button asChild className="bg-[#970A44] hover:bg-[#720632] rounded-full">
+          <Package className="w-16 h-16 text-[#1A1A1A]/20 mx-auto mb-4" />
+          <h1 className="text-3xl font-bold text-[#1A1A1A] mb-4">Product Not Found</h1>
+          <p className="text-[#1A1A1A]/60 mb-8">The product you're looking for doesn't exist.</p>
+          <Button asChild className="bg-[#CD9342] hover:bg-[#A67A2E] rounded-full">
             <Link href="/shop">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Shop
@@ -141,19 +141,19 @@ export default function ProductDetail() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-[#09263D]/60 flex-wrap">
-            <Link href="/" className="hover:text-[#970A44] transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-[#1A1A1A]/60 flex-wrap">
+            <Link href="/" className="hover:text-[#CD9342] transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/shop" className="hover:text-[#970A44] transition-colors">Custom Furniture</Link>
+            <Link href="/shop" className="hover:text-[#CD9342] transition-colors">Custom Furniture</Link>
             <span>/</span>
-            <span className="hover:text-[#970A44] transition-colors">
+            <span className="hover:text-[#CD9342] transition-colors">
               {product.category}
             </span>
             <span>/</span>
-            <span className="text-[#09263D]">{product.name}</span>
+            <span className="text-[#1A1A1A]">{product.name}</span>
           </nav>
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function ProductDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F6F4EB] mb-4">
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#FAFAFA] mb-4">
                 <motion.img
                   key={selectedImage}
                   initial={{ opacity: 0 }}
@@ -179,7 +179,7 @@ export default function ProductDetail() {
 
                 <div className="absolute top-4 left-4 flex flex-col gap-2">
                   {product.featured && (
-                    <Badge className="bg-[#970A44] text-white">Featured</Badge>
+                    <Badge className="bg-[#CD9342] text-white">Featured</Badge>
                   )}
                   
                 </div>
@@ -216,8 +216,8 @@ export default function ProductDetail() {
                       onClick={() => setSelectedImage(index)}
                       className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
                         selectedImage === index 
-                          ? 'border-[#970A44]' 
-                          : 'border-transparent hover:border-[#970A44]/30'
+                          ? 'border-[#CD9342]' 
+                          : 'border-transparent hover:border-[#CD9342]/30'
                       }`}
                       data-testid={`thumbnail-${index}`}
                     >
@@ -238,42 +238,42 @@ export default function ProductDetail() {
               transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <Badge variant="secondary" className="bg-[#F6F4EB] text-[#09263D]">
+                <Badge variant="secondary" className="bg-[#FAFAFA] text-[#1A1A1A]">
                   {product.category}
                 </Badge>
                 {product.sku && (
-                  <span className="text-xs text-[#09263D]/40">SKU: {product.sku}</span>
+                  <span className="text-xs text-[#1A1A1A]/40">SKU: {product.sku}</span>
                 )}
               </div>
               
-              <h1 className="text-3xl md:text-4xl font-bold text-[#09263D] mb-4 font-serif" data-testid="text-product-name">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4 font-serif" data-testid="text-product-name">
                 {product.name}
               </h1>
 
               <div className="flex items-center gap-2 mb-6">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-[#970A44] text-[#970A44]" />
+                    <Star key={i} className="w-5 h-5 fill-[#CD9342] text-[#CD9342]" />
                   ))}
                 </div>
-                <span className="text-[#09263D]/60">(4.9) · 128 Reviews</span>
+                <span className="text-[#1A1A1A]/60">(4.9) · 128 Reviews</span>
               </div>
 
               
 
-              <p className="text-[#09263D]/70 text-lg mb-6 leading-relaxed" data-testid="text-description">
+              <p className="text-[#1A1A1A]/70 text-lg mb-6 leading-relaxed" data-testid="text-description">
                 {product.description}
               </p>
 
               {product.colors && product.colors.length > 0 && (
                 <div className="mb-6">
-                  <p className="text-sm font-medium text-[#09263D] mb-2 flex items-center gap-2">
-                    <Palette className="w-4 h-4 text-[#970A44]" />
+                  <p className="text-sm font-medium text-[#1A1A1A] mb-2 flex items-center gap-2">
+                    <Palette className="w-4 h-4 text-[#CD9342]" />
                     Available Colors
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
-                      <Badge key={color} variant="outline" className="border-[#09263D]/20 text-[#09263D] px-3 py-1">
+                      <Badge key={color} variant="outline" className="border-[#1A1A1A]/20 text-[#1A1A1A] px-3 py-1">
                         {color}
                       </Badge>
                     ))}
@@ -299,7 +299,7 @@ export default function ProductDetail() {
                 <Button
                   asChild
                   size="lg"
-                  className="flex-1 bg-[#970A44] hover:bg-[#720632] text-white rounded-full py-6 text-lg"
+                  className="flex-1 bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full py-6 text-lg"
                   data-testid="button-get-quote"
                 >
                   <Link href={`/book?product=${encodeURIComponent(product.name)}`}>
@@ -312,18 +312,18 @@ export default function ProductDetail() {
                   variant="outline"
                   className={`rounded-full px-6 py-6 ${
                     isWishlisted 
-                      ? 'border-[#970A44] text-[#970A44]' 
-                      : 'border-[#09263D]/20 text-[#09263D]'
+                      ? 'border-[#CD9342] text-[#CD9342]' 
+                      : 'border-[#1A1A1A]/20 text-[#1A1A1A]'
                   }`}
                   onClick={() => setIsWishlisted(!isWishlisted)}
                   data-testid="button-wishlist"
                 >
-                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-[#970A44]' : ''}`} />
+                  <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-[#CD9342]' : ''}`} />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-6 py-6 border-[#09263D]/20 text-[#09263D]"
+                  className="rounded-full px-6 py-6 border-[#1A1A1A]/20 text-[#1A1A1A]"
                   data-testid="button-share"
                 >
                   <Share2 className="w-5 h-5" />
@@ -349,13 +349,13 @@ export default function ProductDetail() {
 
               <div className="grid grid-cols-2 gap-4">
                 {benefits.map((benefit) => (
-                  <div key={benefit.title} className="flex items-center gap-3 p-3 bg-[#F6F4EB] rounded-xl">
-                    <div className="w-10 h-10 bg-[#970A44]/10 rounded-lg flex items-center justify-center">
-                      <benefit.icon className="w-5 h-5 text-[#970A44]" />
+                  <div key={benefit.title} className="flex items-center gap-3 p-3 bg-[#FAFAFA] rounded-xl">
+                    <div className="w-10 h-10 bg-[#CD9342]/10 rounded-lg flex items-center justify-center">
+                      <benefit.icon className="w-5 h-5 text-[#CD9342]" />
                     </div>
                     <div>
-                      <p className="font-medium text-[#09263D] text-sm">{benefit.title}</p>
-                      <p className="text-[#09263D]/60 text-xs">{benefit.description}</p>
+                      <p className="font-medium text-[#1A1A1A] text-sm">{benefit.title}</p>
+                      <p className="text-[#1A1A1A]/60 text-xs">{benefit.description}</p>
                     </div>
                   </div>
                 ))}
@@ -365,9 +365,9 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F6F4EB]">
+      <section className="py-16 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex gap-1 mb-8 border-b border-[#09263D]/10">
+          <div className="flex gap-1 mb-8 border-b border-[#1A1A1A]/10">
             {[
               { key: "description" as const, label: "Description", icon: Layers },
               { key: "specifications" as const, label: "Specifications", icon: Ruler },
@@ -378,8 +378,8 @@ export default function ProductDetail() {
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-2 px-6 py-4 text-sm font-medium transition-colors border-b-2 -mb-px ${
                   activeTab === tab.key
-                    ? "border-[#970A44] text-[#970A44]"
-                    : "border-transparent text-[#09263D]/60 hover:text-[#09263D]"
+                    ? "border-[#CD9342] text-[#CD9342]"
+                    : "border-transparent text-[#1A1A1A]/60 hover:text-[#1A1A1A]"
                 }`}
                 data-testid={`tab-${tab.key}`}
               >
@@ -398,8 +398,8 @@ export default function ProductDetail() {
             {activeTab === "description" && (
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold text-[#09263D] mb-4 font-serif">About This Product</h3>
-                  <p className="text-[#09263D]/70 leading-relaxed mb-6">{product.description}</p>
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 font-serif">About This Product</h3>
+                  <p className="text-[#1A1A1A]/70 leading-relaxed mb-6">{product.description}</p>
                   <div className="space-y-3">
                     {[
                       "Premium quality materials",
@@ -409,50 +409,50 @@ export default function ProductDetail() {
                       "Eco-friendly production process",
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
-                        <div className="w-6 h-6 bg-[#970A44]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-[#970A44]" />
+                        <div className="w-6 h-6 bg-[#CD9342]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-4 h-4 text-[#CD9342]" />
                         </div>
-                        <span className="text-[#09263D]">{feature}</span>
+                        <span className="text-[#1A1A1A]">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="bg-white rounded-2xl p-6">
-                  <h4 className="font-bold text-[#09263D] mb-4">Quick Specs</h4>
+                  <h4 className="font-bold text-[#1A1A1A] mb-4">Quick Specs</h4>
                   <div className="space-y-4">
                     {product.materials && (
                       <div className="flex items-start gap-3">
-                        <Layers className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <Layers className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-[#09263D]">Materials</p>
-                          <p className="text-sm text-[#09263D]/60">{product.materials}</p>
+                          <p className="text-sm font-medium text-[#1A1A1A]">Materials</p>
+                          <p className="text-sm text-[#1A1A1A]/60">{product.materials}</p>
                         </div>
                       </div>
                     )}
                     {product.dimensions && (
                       <div className="flex items-start gap-3">
-                        <Ruler className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <Ruler className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-[#09263D]">Dimensions</p>
-                          <p className="text-sm text-[#09263D]/60">{product.dimensions}</p>
+                          <p className="text-sm font-medium text-[#1A1A1A]">Dimensions</p>
+                          <p className="text-sm text-[#1A1A1A]/60">{product.dimensions}</p>
                         </div>
                       </div>
                     )}
                     {product.colors && product.colors.length > 0 && (
                       <div className="flex items-start gap-3">
-                        <Palette className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <Palette className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-[#09263D]">Available Colors</p>
-                          <p className="text-sm text-[#09263D]/60">{product.colors.join(", ")}</p>
+                          <p className="text-sm font-medium text-[#1A1A1A]">Available Colors</p>
+                          <p className="text-sm text-[#1A1A1A]/60">{product.colors.join(", ")}</p>
                         </div>
                       </div>
                     )}
                     {product.sku && (
                       <div className="flex items-start gap-3">
-                        <Package className="w-5 h-5 text-[#970A44] mt-0.5 flex-shrink-0" />
+                        <Package className="w-5 h-5 text-[#CD9342] mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-[#09263D]">SKU</p>
-                          <p className="text-sm text-[#09263D]/60">{product.sku}</p>
+                          <p className="text-sm font-medium text-[#1A1A1A]">SKU</p>
+                          <p className="text-sm text-[#1A1A1A]/60">{product.sku}</p>
                         </div>
                       </div>
                     )}
@@ -463,49 +463,49 @@ export default function ProductDetail() {
 
             {activeTab === "specifications" && (
               <div className="bg-white rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Product Specifications</h3>
+                <h3 className="text-xl font-bold text-[#1A1A1A] mb-6 font-serif">Product Specifications</h3>
                 <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
-                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                    <span className="text-[#09263D]/60">Category</span>
-                    <span className="font-medium text-[#09263D]">{product.category}</span>
+                  <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                    <span className="text-[#1A1A1A]/60">Category</span>
+                    <span className="font-medium text-[#1A1A1A]">{product.category}</span>
                   </div>
                   {product.sku && (
-                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                      <span className="text-[#09263D]/60">SKU</span>
-                      <span className="font-medium text-[#09263D]">{product.sku}</span>
+                    <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                      <span className="text-[#1A1A1A]/60">SKU</span>
+                      <span className="font-medium text-[#1A1A1A]">{product.sku}</span>
                     </div>
                   )}
                   {product.materials && (
-                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                      <span className="text-[#09263D]/60">Materials</span>
-                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.materials}</span>
+                    <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                      <span className="text-[#1A1A1A]/60">Materials</span>
+                      <span className="font-medium text-[#1A1A1A] text-right max-w-[60%]">{product.materials}</span>
                     </div>
                   )}
                   {product.dimensions && (
-                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                      <span className="text-[#09263D]/60">Dimensions</span>
-                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.dimensions}</span>
+                    <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                      <span className="text-[#1A1A1A]/60">Dimensions</span>
+                      <span className="font-medium text-[#1A1A1A] text-right max-w-[60%]">{product.dimensions}</span>
                     </div>
                   )}
                   {product.colors && product.colors.length > 0 && (
-                    <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                      <span className="text-[#09263D]/60">Colors</span>
-                      <span className="font-medium text-[#09263D] text-right max-w-[60%]">{product.colors.join(", ")}</span>
+                    <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                      <span className="text-[#1A1A1A]/60">Colors</span>
+                      <span className="font-medium text-[#1A1A1A] text-right max-w-[60%]">{product.colors.join(", ")}</span>
                     </div>
                   )}
-                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                    <span className="text-[#09263D]/60">Availability</span>
+                  <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                    <span className="text-[#1A1A1A]/60">Availability</span>
                     <span className={`font-medium ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
                       {product.inStock ? "In Stock" : "Out of Stock"}
                     </span>
                   </div>
-                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                    <span className="text-[#09263D]/60">Warranty</span>
-                    <span className="font-medium text-[#09263D]">2 Years</span>
+                  <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                    <span className="text-[#1A1A1A]/60">Warranty</span>
+                    <span className="font-medium text-[#1A1A1A]">2 Years</span>
                   </div>
-                  <div className="flex justify-between py-3 border-b border-[#09263D]/10">
-                    <span className="text-[#09263D]/60">Assembly</span>
-                    <span className="font-medium text-[#09263D]">Included Free</span>
+                  <div className="flex justify-between py-3 border-b border-[#1A1A1A]/10">
+                    <span className="text-[#1A1A1A]/60">Assembly</span>
+                    <span className="font-medium text-[#1A1A1A]">Included Free</span>
                   </div>
                 </div>
               </div>
@@ -514,46 +514,46 @@ export default function ProductDetail() {
             {activeTab === "shipping" && (
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-white rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Shipping Information</h3>
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-6 font-serif">Shipping Information</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <Truck className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <Truck className="w-5 h-5 text-[#CD9342] mt-0.5" />
                       <div>
-                        <p className="font-medium text-[#09263D]">Free Delivery</p>
-                        <p className="text-sm text-[#09263D]/60">Free delivery across UAE. Standard delivery within 3-5 business days.</p>
+                        <p className="font-medium text-[#1A1A1A]">Free Delivery</p>
+                        <p className="text-sm text-[#1A1A1A]/60">Free delivery across UAE. Standard delivery within 3-5 business days.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Package className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <Package className="w-5 h-5 text-[#CD9342] mt-0.5" />
                       <div>
-                        <p className="font-medium text-[#09263D]">Assembly Service</p>
-                        <p className="text-sm text-[#09263D]/60">Complimentary assembly by our professional team at the time of delivery.</p>
+                        <p className="font-medium text-[#1A1A1A]">Assembly Service</p>
+                        <p className="text-sm text-[#1A1A1A]/60">Complimentary assembly by our professional team at the time of delivery.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Shield className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <Shield className="w-5 h-5 text-[#CD9342] mt-0.5" />
                       <div>
-                        <p className="font-medium text-[#09263D]">Secure Packaging</p>
-                        <p className="text-sm text-[#09263D]/60">All items are carefully packed with protective materials to ensure safe delivery.</p>
+                        <p className="font-medium text-[#1A1A1A]">Secure Packaging</p>
+                        <p className="text-sm text-[#1A1A1A]/60">All items are carefully packed with protective materials to ensure safe delivery.</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-white rounded-2xl p-8">
-                  <h3 className="text-xl font-bold text-[#09263D] mb-6 font-serif">Return Policy</h3>
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-6 font-serif">Return Policy</h3>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <RotateCcw className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <RotateCcw className="w-5 h-5 text-[#CD9342] mt-0.5" />
                       <div>
-                        <p className="font-medium text-[#09263D]">30-Day Returns</p>
-                        <p className="text-sm text-[#09263D]/60">Return or exchange within 30 days of delivery. Items must be in original condition.</p>
+                        <p className="font-medium text-[#1A1A1A]">30-Day Returns</p>
+                        <p className="text-sm text-[#1A1A1A]/60">Return or exchange within 30 days of delivery. Items must be in original condition.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Shield className="w-5 h-5 text-[#970A44] mt-0.5" />
+                      <Shield className="w-5 h-5 text-[#CD9342] mt-0.5" />
                       <div>
-                        <p className="font-medium text-[#09263D]">2-Year Warranty</p>
-                        <p className="text-sm text-[#09263D]/60">All furniture comes with a comprehensive 2-year warranty covering manufacturing defects.</p>
+                        <p className="font-medium text-[#1A1A1A]">2-Year Warranty</p>
+                        <p className="text-sm text-[#1A1A1A]/60">All furniture comes with a comprehensive 2-year warranty covering manufacturing defects.</p>
                       </div>
                     </div>
                   </div>
@@ -568,10 +568,10 @@ export default function ProductDetail() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <motion.div {...fadeInUp} className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-              <h2 className="text-2xl font-bold text-[#09263D] font-serif">You May Also Like</h2>
+              <h2 className="text-2xl font-bold text-[#1A1A1A] font-serif">You May Also Like</h2>
               <Button 
                 variant="outline" 
-                className="border-[#970A44] text-[#970A44] rounded-full"
+                className="border-[#CD9342] text-[#CD9342] rounded-full"
                 asChild
               >
                 <Link href="/shop">
@@ -592,7 +592,7 @@ export default function ProductDetail() {
                   <Link href={`/shop/${relatedProduct.id}`}>
                     <Card className="group h-full border-0 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden cursor-pointer" data-testid={`related-product-${relatedProduct.id}`}>
                       <CardContent className="p-0">
-                        <div className="relative aspect-square overflow-hidden bg-[#F6F4EB]">
+                        <div className="relative aspect-square overflow-hidden bg-[#FAFAFA]">
                           <img
                             src={relatedProduct.image}
                             alt={relatedProduct.name}
@@ -600,15 +600,15 @@ export default function ProductDetail() {
                           />
                         </div>
                         <div className="p-4">
-                          <h3 className="font-semibold text-[#09263D] mb-1 line-clamp-1">{relatedProduct.name}</h3>
+                          <h3 className="font-semibold text-[#1A1A1A] mb-1 line-clamp-1">{relatedProduct.name}</h3>
                           <div className="flex items-center gap-1 mb-2">
                             {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="w-3 h-3 fill-[#970A44] text-[#970A44]" />
+                              <Star key={i} className="w-3 h-3 fill-[#CD9342] text-[#CD9342]" />
                             ))}
                           </div>
                           <Button
                             asChild
-                            className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full text-sm"
+                            className="w-full bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full text-sm"
                             data-testid={`button-get-quote-related-${relatedProduct.id}`}
                           >
                             <Link href={`/book?product=${encodeURIComponent(relatedProduct.name)}`}>
@@ -626,7 +626,7 @@ export default function ProductDetail() {
         </section>
       )}
 
-      <section className="py-16 bg-gradient-to-r from-[#970A44] to-[#720632]">
+      <section className="py-16 bg-gradient-to-r from-[#CD9342] to-[#A67A2E]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
             <Sparkles className="w-12 h-12 text-white/80 mx-auto mb-4" />
@@ -640,7 +640,7 @@ export default function ProductDetail() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-white text-[#970A44] hover:bg-white/90 rounded-full"
+                className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full"
               >
                 <Link href="/book">
                   Book Free Consultation

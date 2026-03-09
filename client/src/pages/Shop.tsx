@@ -55,16 +55,16 @@ const staggerItem = {
 };
 
 const quickCategories = [
-  { name: "Sofas", icon: Sofa, category: "Sofas", color: "bg-[#970A44]" },
-  { name: "Beds", icon: BedDouble, category: "Beds", color: "bg-[#1C4668]" },
-  { name: "Tables", icon: Table, category: "Coffee Tables", color: "bg-[#720632]" },
-  { name: "Chairs", icon: Armchair, category: "Chairs", color: "bg-[#09263D]" },
-  { name: "Lighting", icon: Lamp, category: "Lighting", color: "bg-[#970A44]" },
-  { name: "Dining", icon: ChefHat, category: "Dining", color: "bg-[#1C4668]" },
-  { name: "Storage", icon: Package, category: "Storage", color: "bg-[#720632]" },
-  { name: "Decor", icon: Frame, category: "Decor", color: "bg-[#09263D]" },
-  { name: "Kitchen", icon: Wind, category: "Kitchen", color: "bg-[#970A44]" },
-  { name: "All", icon: Sparkles, category: "All", color: "bg-[#09263D]" },
+  { name: "Sofas", icon: Sofa, category: "Sofas", color: "bg-[#CD9342]" },
+  { name: "Beds", icon: BedDouble, category: "Beds", color: "bg-[#1A1A1A]" },
+  { name: "Tables", icon: Table, category: "Coffee Tables", color: "bg-[#A67A2E]" },
+  { name: "Chairs", icon: Armchair, category: "Chairs", color: "bg-[#1A1A1A]" },
+  { name: "Lighting", icon: Lamp, category: "Lighting", color: "bg-[#CD9342]" },
+  { name: "Dining", icon: ChefHat, category: "Dining", color: "bg-[#1A1A1A]" },
+  { name: "Storage", icon: Package, category: "Storage", color: "bg-[#A67A2E]" },
+  { name: "Decor", icon: Frame, category: "Decor", color: "bg-[#1A1A1A]" },
+  { name: "Kitchen", icon: Wind, category: "Kitchen", color: "bg-[#CD9342]" },
+  { name: "All", icon: Sparkles, category: "All", color: "bg-[#1A1A1A]" },
 ];
 
 const featuredCollections = [
@@ -255,17 +255,17 @@ export default function Shop() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F6F4EB]">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#970A44] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-[#09263D]/60">Loading our premium collection...</p>
+          <div className="w-16 h-16 border-4 border-[#CD9342] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[#1A1A1A]/60">Loading our premium collection...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F6F4EB]">
+    <div className="min-h-screen bg-[#FAFAFA]">
       {/* Hero Section with Parallax */}
       <section ref={heroRef} className="relative min-h-[80vh] flex items-center overflow-hidden">
         <motion.div 
@@ -275,7 +275,7 @@ export default function Shop() {
             y: heroY
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09263D]/95 via-[#09263D]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/80 to-transparent" />
         
         <motion.div 
           className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full"
@@ -287,12 +287,12 @@ export default function Shop() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <Badge className="bg-[#970A44] text-white mb-6 px-4 py-2 text-sm">
+              <Badge className="bg-[#CD9342] text-white mb-6 px-4 py-2 text-sm">
                 Custom Furniture by The Property Masters
               </Badge>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif leading-tight" data-testid="text-shop-title">
                 Bespoke Furniture
-                <span className="text-[#970A44] block">Crafted for You</span>
+                <span className="text-[#CD9342] block">Crafted for You</span>
               </h1>
               <p className="text-xl text-white/80 mb-8 max-w-lg leading-relaxed">
                 Handcrafted luxury furniture designed for Dubai's finest homes. From concept to creation, every piece is made to your exact specifications.
@@ -301,7 +301,7 @@ export default function Shop() {
               <div className="flex flex-wrap gap-4 mb-12">
                 <Button 
                   size="lg"
-                  className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full px-8 py-6 text-lg shadow-2xl"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full px-8 py-6 text-lg shadow-2xl"
                   onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
                   data-testid="button-shop-now"
                 >
@@ -346,7 +346,7 @@ export default function Shop() {
             >
               <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 max-w-sm">
                 <div className="text-center">
-                  <Sparkles className="w-12 h-12 text-[#970A44] mx-auto mb-4" />
+                  <Sparkles className="w-12 h-12 text-[#CD9342] mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-2">Custom Solutions</h3>
                   <p className="text-white/70 mb-4">Tailored to your needs</p>
                   <p className="text-sm text-white/50">Get a personalized quote for any product in our collection</p>
@@ -377,7 +377,7 @@ export default function Shop() {
                 <div className={`w-14 h-14 ${category.color} rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
                   <category.icon className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-xs font-medium text-[#09263D] text-center whitespace-nowrap">{category.name}</span>
+                <span className="text-xs font-medium text-[#1A1A1A] text-center whitespace-nowrap">{category.name}</span>
               </motion.button>
             ))}
           </div>
@@ -389,10 +389,10 @@ export default function Shop() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="flex items-center justify-between mb-12">
             <div>
-              <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-2">
+              <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-2">
                 Featured Collections
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#09263D] font-serif">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-serif">
                 Discover Our Décor & Furniture Collection
               </h2>
             </div>
@@ -401,7 +401,7 @@ export default function Shop() {
                 variant="outline" 
                 size="icon"
                 onClick={() => scrollCollections('left')}
-                className="rounded-full border-[#970A44]/20 hover:bg-[#970A44] hover:text-white"
+                className="rounded-full border-[#CD9342]/20 hover:bg-[#CD9342] hover:text-white"
                 data-testid="button-scroll-left"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -410,7 +410,7 @@ export default function Shop() {
                 variant="outline" 
                 size="icon"
                 onClick={() => scrollCollections('right')}
-                className="rounded-full border-[#970A44]/20 hover:bg-[#970A44] hover:text-white"
+                className="rounded-full border-[#CD9342]/20 hover:bg-[#CD9342] hover:text-white"
                 data-testid="button-scroll-right"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -436,7 +436,7 @@ export default function Shop() {
                 }}
                 data-testid={`collection-${collection.name.toLowerCase().replace(' ', '-')}`}
               >
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#F6F4EB]">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#FAFAFA]">
                   <img
                     src={collection.image}
                     alt={collection.name}
@@ -467,7 +467,7 @@ export default function Shop() {
               className="flex-shrink-0 w-[280px]"
             >
               <div 
-                className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-[#970A44] to-[#720632] flex flex-col items-center justify-center p-8 cursor-pointer group"
+                className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-[#CD9342] to-[#A67A2E] flex flex-col items-center justify-center p-8 cursor-pointer group"
                 onClick={() => {
                   setSelectedCategory("All");
                   document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
@@ -478,7 +478,7 @@ export default function Shop() {
                 <p className="text-white/70 text-center mb-6">Discover our complete collection</p>
                 <Button 
                   variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-[#970A44] rounded-full"
+                  className="border-white text-white hover:bg-white hover:text-[#CD9342] rounded-full"
                   data-testid="button-shop-all"
                 >
                   Shop Now
@@ -491,11 +491,11 @@ export default function Shop() {
       </section>
 
       {/* Factory Tour Section (inspired by interiorcompany.com) */}
-      <section className="py-20 bg-[#09263D]">
+      <section className="py-20 bg-[#1A1A1A]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeInUp}>
-              <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-4">
+              <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-4">
                 From Concept to Creation
               </p>
               <h2 className="text-3xl md:text-5xl font-bold text-white font-serif mb-6">
@@ -508,18 +508,18 @@ export default function Shop() {
               
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-white/5 rounded-xl p-4">
-                  <p className="text-3xl font-bold text-[#970A44]">200+</p>
+                  <p className="text-3xl font-bold text-[#CD9342]">200+</p>
                   <p className="text-white/60 text-sm">Skilled Craftsmen</p>
                 </div>
                 <div className="bg-white/5 rounded-xl p-4">
-                  <p className="text-3xl font-bold text-[#970A44]">50,000 sqft</p>
+                  <p className="text-3xl font-bold text-[#CD9342]">50,000 sqft</p>
                   <p className="text-white/60 text-sm">Manufacturing Facility</p>
                 </div>
               </div>
 
               <Button 
                 size="lg"
-                className="bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+                className="bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full"
               >
                 <Play className="mr-2 w-5 h-5" />
                 Watch Factory Tour
@@ -530,14 +530,14 @@ export default function Shop() {
               {...fadeInUp}
               className="relative"
             >
-              <div className="aspect-video rounded-2xl overflow-hidden bg-[#1C4668]">
+              <div className="aspect-video rounded-2xl overflow-hidden bg-[#1A1A1A]">
                 <img
                   src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80"
                   alt="Factory Tour"
                   className="w-full h-full object-cover opacity-80"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-[#970A44] rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-2xl">
+                  <div className="w-20 h-20 bg-[#CD9342] rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-2xl">
                     <Play className="w-8 h-8 text-white ml-1" />
                   </div>
                 </div>
@@ -548,16 +548,16 @@ export default function Shop() {
       </section>
 
       {/* Design Ideas Section (inspired by interiorcompany.com) */}
-      <section className="py-20 bg-[#F6F4EB]">
+      <section className="py-20 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-12">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-2">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-2">
               Get Inspired
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#09263D] font-serif mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-serif mb-4">
               Design Ideas for Every Space
             </h2>
-            <p className="text-[#09263D]/60 max-w-2xl mx-auto">
+            <p className="text-[#1A1A1A]/60 max-w-2xl mx-auto">
               Because every corner holds a unique design potential
             </p>
           </motion.div>
@@ -571,8 +571,8 @@ export default function Shop() {
                 onClick={() => setActiveDesignTab(tab)}
                 className={`rounded-full ${
                   activeDesignTab === tab 
-                    ? "bg-[#970A44] hover:bg-[#720632]" 
-                    : "border-[#970A44]/20 text-[#09263D] hover:border-[#970A44] hover:text-[#970A44]"
+                    ? "bg-[#CD9342] hover:bg-[#A67A2E]" 
+                    : "border-[#CD9342]/20 text-[#1A1A1A] hover:border-[#CD9342] hover:text-[#CD9342]"
                 }`}
                 data-testid={`tab-${tab.toLowerCase().replace(' ', '-')}`}
               >
@@ -616,7 +616,7 @@ export default function Shop() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-[#970A44] text-[#970A44] hover:bg-[#970A44] hover:text-white rounded-full"
+              className="border-[#CD9342] text-[#CD9342] hover:bg-[#CD9342] hover:text-white rounded-full"
             >
               View All Designs
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -626,7 +626,7 @@ export default function Shop() {
       </section>
 
       {/* Benefits Bar */}
-      <section className="py-12 bg-[#970A44]">
+      <section className="py-12 bg-[#CD9342]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
@@ -655,10 +655,10 @@ export default function Shop() {
       <section id="products" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-12">
-            <p className="text-[#970A44] font-semibold text-sm uppercase tracking-widest mb-2">
+            <p className="text-[#CD9342] font-semibold text-sm uppercase tracking-widest mb-2">
               Shop Our Collection
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#09263D] font-serif mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-serif mb-4">
               Premium Furniture & Décor
             </h2>
           </motion.div>
@@ -672,8 +672,8 @@ export default function Shop() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full ${
                   selectedCategory === category 
-                    ? "bg-[#970A44] hover:bg-[#720632]" 
-                    : "border-[#09263D]/20 text-[#09263D] hover:border-[#970A44] hover:text-[#970A44]"
+                    ? "bg-[#CD9342] hover:bg-[#A67A2E]" 
+                    : "border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#CD9342] hover:text-[#CD9342]"
                 }`}
                 data-testid={`filter-${category.toLowerCase().replace(' ', '-')}`}
               >
@@ -685,8 +685,8 @@ export default function Shop() {
           {/* Products Grid */}
           {filteredProducts.length === 0 ? (
             <div className="text-center py-16">
-              <Package className="w-16 h-16 text-[#09263D]/20 mx-auto mb-4" />
-              <p className="text-[#09263D]/60 text-lg">No products found in this category.</p>
+              <Package className="w-16 h-16 text-[#1A1A1A]/20 mx-auto mb-4" />
+              <p className="text-[#1A1A1A]/60 text-lg">No products found in this category.</p>
             </div>
           ) : (
             <motion.div 
@@ -708,7 +708,7 @@ export default function Shop() {
                     data-testid={`card-product-${product.id}`}
                   >
                     <CardContent className="p-0">
-                      <div className="relative aspect-square overflow-hidden bg-[#F6F4EB]">
+                      <div className="relative aspect-square overflow-hidden bg-[#FAFAFA]">
                           <Link href={`/shop/${product.id}`}>
                             <img
                               src={product.image}
@@ -720,7 +720,7 @@ export default function Shop() {
                         {/* Badges */}
                         <div className="absolute top-3 left-3 flex flex-col gap-2 pointer-events-none">
                           {product.featured && (
-                            <Badge className="bg-[#970A44] text-white">Featured</Badge>
+                            <Badge className="bg-[#CD9342] text-white">Featured</Badge>
                           )}
                           
                         </div>
@@ -734,7 +734,7 @@ export default function Shop() {
                           <Button 
                             size="icon" 
                             variant="secondary"
-                            className="w-10 h-10 rounded-full bg-white shadow-lg hover:bg-[#970A44] hover:text-white"
+                            className="w-10 h-10 rounded-full bg-white shadow-lg hover:bg-[#CD9342] hover:text-white"
                             onClick={(e) => e.stopPropagation()}
                             data-testid={`button-wishlist-${product.id}`}
                           >
@@ -743,7 +743,7 @@ export default function Shop() {
                           <Button 
                             size="icon" 
                             variant="secondary"
-                            className="w-10 h-10 rounded-full bg-white shadow-lg hover:bg-[#970A44] hover:text-white"
+                            className="w-10 h-10 rounded-full bg-white shadow-lg hover:bg-[#CD9342] hover:text-white"
                             onClick={(e) => e.stopPropagation()}
                             data-testid={`button-quickview-${product.id}`}
                           >
@@ -763,28 +763,28 @@ export default function Shop() {
 
                       <Link href={`/shop/${product.id}`} className="block">
                         <div className="p-5">
-                        <Badge variant="secondary" className="mb-2 text-xs bg-[#F6F4EB] text-[#09263D]">
+                        <Badge variant="secondary" className="mb-2 text-xs bg-[#FAFAFA] text-[#1A1A1A]">
                           {product.category}
                         </Badge>
-                        <h3 className="font-bold text-[#09263D] mb-2 line-clamp-1 text-lg">
+                        <h3 className="font-bold text-[#1A1A1A] mb-2 line-clamp-1 text-lg">
                           {product.name}
                         </h3>
-                        <p className="text-sm text-[#09263D]/60 mb-3 line-clamp-2">
+                        <p className="text-sm text-[#1A1A1A]/60 mb-3 line-clamp-2">
                           {product.description}
                         </p>
                         
                         {/* Rating */}
                         <div className="flex items-center gap-1 mb-3">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-[#970A44] text-[#970A44]" />
+                            <Star key={i} className="w-4 h-4 fill-[#CD9342] text-[#CD9342]" />
                           ))}
-                          <span className="text-xs text-[#09263D]/60 ml-1">(4.9)</span>
+                          <span className="text-xs text-[#1A1A1A]/60 ml-1">(4.9)</span>
                         </div>
 
                         {/* Get Quote CTA */}
                         <Button
                           asChild
-                          className="w-full bg-[#970A44] hover:bg-[#720632] text-white rounded-full"
+                          className="w-full bg-[#CD9342] hover:bg-[#A67A2E] text-white rounded-full"
                           data-testid={`button-get-quote-${product.id}`}
                         >
                           <Link href={`/book?product=${encodeURIComponent(product.name)}`}>
@@ -804,7 +804,7 @@ export default function Shop() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#970A44] to-[#720632]">
+      <section className="py-24 bg-gradient-to-r from-[#CD9342] to-[#A67A2E]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
             <Sparkles className="w-16 h-16 text-white/80 mx-auto mb-6" />
@@ -819,7 +819,7 @@ export default function Shop() {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-white text-[#970A44] hover:bg-white/90 rounded-full px-10 py-7 text-lg shadow-2xl"
+                  className="bg-white text-[#CD9342] hover:bg-white/90 rounded-full px-10 py-7 text-lg shadow-2xl"
                   data-testid="button-cta-consultation"
                 >
                   <Link href="/book">

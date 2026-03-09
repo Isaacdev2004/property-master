@@ -57,7 +57,7 @@ export function ImageUpload({ label, value, onChange, placeholder = "Enter image
           variant={mode === "upload" ? "default" : "outline"}
           size="sm"
           onClick={() => setMode("upload")}
-          className={mode === "upload" ? "bg-[#970A44] hover:bg-[#720632]" : ""}
+          className={mode === "upload" ? "bg-[#CD9342] hover:bg-[#A67A2E]" : ""}
         >
           <Upload className="w-4 h-4 mr-1" />
           Upload
@@ -67,7 +67,7 @@ export function ImageUpload({ label, value, onChange, placeholder = "Enter image
           variant={mode === "url" ? "default" : "outline"}
           size="sm"
           onClick={() => setMode("url")}
-          className={mode === "url" ? "bg-[#970A44] hover:bg-[#720632]" : ""}
+          className={mode === "url" ? "bg-[#CD9342] hover:bg-[#A67A2E]" : ""}
         >
           <LinkIcon className="w-4 h-4 mr-1" />
           URL
@@ -77,12 +77,12 @@ export function ImageUpload({ label, value, onChange, placeholder = "Enter image
       {mode === "upload" ? (
         <div className="space-y-2">
           <div 
-            className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-[#970A44] transition-colors"
+            className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:border-[#CD9342] transition-colors"
             onClick={() => fileInputRef.current?.click()}
           >
             {isUploading ? (
               <div className="space-y-2">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#970A44] mx-auto"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#CD9342] mx-auto"></div>
                 <p className="text-sm text-gray-500">Uploading... {progress}%</p>
               </div>
             ) : preview ? (

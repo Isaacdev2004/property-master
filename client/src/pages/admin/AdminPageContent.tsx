@@ -224,12 +224,12 @@ export default function AdminPageContent() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]">Page Content Manager</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">Page Content Manager</h1>
           <p className="text-gray-600">Manage H1, H2, H3 headings, FAQs, hero images, and internal links</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44]" onClick={resetForm} data-testid="button-add-content">
+            <Button className="bg-[#CD9342]" onClick={resetForm} data-testid="button-add-content">
               <Plus className="w-4 h-4 mr-2" />
               Add Page Content
             </Button>
@@ -510,7 +510,7 @@ export default function AdminPageContent() {
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#970A44]"
+                  className="bg-[#CD9342]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-save-content"
                 >

@@ -182,7 +182,7 @@ export default function AdminSEO() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]">SEO Management</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">SEO Management</h1>
           <p className="text-gray-600">Configure meta titles, descriptions, and Open Graph settings for each page</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={(open) => {
@@ -190,7 +190,7 @@ export default function AdminSEO() {
           if (!open) resetForm();
         }}>
           <DialogTrigger asChild>
-            <Button data-testid="button-add-seo" className="bg-[#970A44] hover:bg-[#720632]">
+            <Button data-testid="button-add-seo" className="bg-[#CD9342] hover:bg-[#A67A2E]">
               <Plus className="w-4 h-4 mr-2" />
               Add SEO Settings
             </Button>
@@ -310,7 +310,7 @@ export default function AdminSEO() {
                 <Button
                   type="submit"
                   data-testid="button-save-seo"
-                  className="bg-[#970A44] hover:bg-[#720632]"
+                  className="bg-[#CD9342] hover:bg-[#A67A2E]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                 >
                   {createMutation.isPending || updateMutation.isPending ? "Saving..." : editingSettings ? "Update Settings" : "Create Settings"}
@@ -372,8 +372,8 @@ export default function AdminSEO() {
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Globe className="w-4 h-4 text-[#970A44]" />
-                      <h3 className="font-semibold text-[#09263D]">{settings.pageTitle}</h3>
+                      <Globe className="w-4 h-4 text-[#CD9342]" />
+                      <h3 className="font-semibold text-[#1A1A1A]">{settings.pageTitle}</h3>
                       <span className="px-2 py-1 text-xs rounded bg-gray-100 text-gray-600 font-mono">
                         {settings.pagePath}
                       </span>

@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       </button>
 
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#09263D] text-white transform transition-transform duration-200 ease-in-out flex flex-col ${
+        className={`fixed lg:static inset-y-0 left-0 z-40 w-64 bg-[#1A1A1A] text-white transform transition-transform duration-200 ease-in-out flex flex-col ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -86,7 +86,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <div
                   className={`flex items-center gap-3 px-4 py-2.5 rounded-md cursor-pointer transition-colors ${
                     isActive
-                      ? "bg-[#970A44] text-white"
+                      ? "bg-[#CD9342] text-white"
                       : "text-white/70 hover:bg-white/10 hover:text-white"
                   }`}
                   data-testid={`nav-${item.label.toLowerCase().replace(' ', '-')}`}
@@ -99,7 +99,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           })}
         </nav>
 
-        <div className="p-4 border-t border-white/10 flex-shrink-0 bg-[#09263D]">
+        <div className="p-4 border-t border-white/10 flex-shrink-0 bg-[#1A1A1A]">
           <Link href="/">
             <div className="flex items-center gap-3 px-4 py-2.5 text-white/70 hover:bg-white/10 hover:text-white rounded-md cursor-pointer mb-1">
               <Settings className="w-5 h-5 flex-shrink-0" />

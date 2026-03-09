@@ -186,7 +186,7 @@ export default function Portfolio() {
                       </Button>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold mb-2 font-[Montserrat] group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-2 font-[Archivo] group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-3">{project.description}</p>

@@ -218,12 +218,12 @@ export default function AdminTrackingCodes() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-[#09263D]">Tracking Codes</h1>
+          <h1 className="text-2xl font-bold text-[#1A1A1A]">Tracking Codes</h1>
           <p className="text-gray-600">Manage Google Analytics, Meta Pixel, and other tracking codes</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-[#970A44]" onClick={resetForm} data-testid="button-add-tracking">
+            <Button className="bg-[#CD9342]" onClick={resetForm} data-testid="button-add-tracking">
               <Plus className="w-4 h-4 mr-2" />
               Add Tracking Code
             </Button>
@@ -328,7 +328,7 @@ export default function AdminTrackingCodes() {
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#970A44]"
+                  className="bg-[#CD9342]"
                   disabled={createMutation.isPending || updateMutation.isPending}
                   data-testid="button-save-tracking"
                 >
