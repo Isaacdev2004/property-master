@@ -33,8 +33,8 @@ const services = [
       "Relaxation Area Design",
       "Holistic Environment Planning"
     ],
-    gradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
-    accentColor: "#10b981",
+    gradient: "from-[#CD9342]/20 via-[#E2CC92]/10 to-[#A67A2E]/5",
+    accentColor: "#CD9342",
     ctaLink: "/wellness"
   },
   {
@@ -49,8 +49,8 @@ const services = [
       "Facility Management",
       "24/7 Support Available"
     ],
-    gradient: "from-blue-500/20 via-indigo-500/10 to-violet-500/5",
-    accentColor: "#3b82f6",
+    gradient: "from-[#CD9342]/20 via-[#E2CC92]/10 to-[#A67A2E]/5",
+    accentColor: "#CD9342",
     ctaLink: "/maintenance"
   },
   {
@@ -65,8 +65,8 @@ const services = [
       "Custom Upholstery Options",
       "Exclusive Discounts & Deals"
     ],
-    gradient: "from-purple-500/20 via-pink-500/10 to-rose-500/5",
-    accentColor: "#a855f7",
+    gradient: "from-[#CD9342]/20 via-[#E2CC92]/10 to-[#A67A2E]/5",
+    accentColor: "#CD9342",
     ctaLink: "/shop"
   }
 ];

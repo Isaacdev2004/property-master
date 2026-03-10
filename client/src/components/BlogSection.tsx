@@ -61,9 +61,9 @@ const luxuryEasing = [0.25, 0.46, 0.45, 0.94] as const;
 
 const categoryColors: Record<string, string> = {
   "Interior Design": "bg-[#CD9342]/10 text-[#CD9342] border-[#CD9342]/20",
-  "Wellness": "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
-  "Maintenance": "bg-blue-500/10 text-blue-600 border-blue-500/20",
-  "Furniture": "bg-purple-500/10 text-purple-600 border-purple-500/20"
+  "Wellness": "bg-[#CD9342]/10 text-[#CD9342] border-[#CD9342]/20",
+  "Maintenance": "bg-[#CD9342]/10 text-[#CD9342] border-[#CD9342]/20",
+  "Furniture": "bg-[#CD9342]/10 text-[#CD9342] border-[#CD9342]/20"
 };
 
 export default function BlogSection() {
